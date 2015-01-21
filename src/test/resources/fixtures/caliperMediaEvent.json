@@ -5,7 +5,6 @@
         "@id": "https://some-university.edu/user/554433",
         "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
         "name": null,
-        "properties": {},
         "lastModifiedTime": 1402965614516
     },
     "action": "paused",
@@ -14,12 +13,10 @@
         "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
         "name": "American Revolution - Key Figures Video",
         "objectType": [],
-        "properties": {},
         "alignedLearningObjective": [{
             "@id": "http://americanrevolution.com/personalities/learn",
             "@type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
             "name": null,
-            "properties": {},
             "lastModifiedTime": 0
         }],
         "keyword": [],
@@ -27,24 +24,25 @@
         "lastModifiedTime": 1402965614516,
         "duration": 1420
     },
-    "mediaLocation": {
+    "target": {
         "@id": "https://com.sat/super-media-tool/video/video1",
         "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
         "name": null,
-        "properties": {},
+        "objectType": [],
+        "alignedLearningObjective": [],
+        "keyword": [],
+        "partOf": null,
         "lastModifiedTime": 0,
         "currentTime": 710
     },
-    "target": null,
     "generated": null,
     "startedAtTime": 1402965614516,
     "endedAtTime": 0,
     "duration": null,
     "edApp": {
-        "@id": "https://github.com/readium/readium-js-viewer",
+        "@id": "https://com.sat/super-media-tool",
         "@type":"http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-        "name": "Readium",
-        "properties": {},
+        "name": "Super Media Tool",
         "lastModifiedTime": 1402965614516
     },
     "group": {
@@ -55,7 +53,6 @@
         "label": "Am Rev 101",
         "name": "American Revolution 101",
         "parentOrg": null,
-        "properties": {},
         "lastModifiedTime": 1402965614516
     }
 }
