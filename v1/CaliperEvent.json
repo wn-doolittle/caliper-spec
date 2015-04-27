@@ -1,5 +1,5 @@
 {
-  "@id" : "http://purl.imsglobal.org/ctx/caliper/v1/CaliperEvent",
+  "@id" : "http://purl.imsglobal.org/ctx/caliper/v1/Caliper",
   "@context" : [
     {
       "_comment": "namespaces",
@@ -39,39 +39,116 @@
 
     },
     {
-      "_comment": "CaliperEvent Properties and Common",
+      "_comment": "Caliper common properties",
 
       "actor": "as:actor",
-      "verb": "as:verb",
       "action": "as:verb",
       "object": "as:object",
       "startedAtTime": "prov:startedAtTime",
       "endedAtTime": "prov:endedAtTime",
 
-      "target": "caliper:target",
-      "generated": "prov:generated",
-      "edApp": "caliper:edApp",
-      "group": "caliper:group",
+      "name" : "schema:name",
 
-      "caliper:CaliperEvent" : {
+      "generated": "prov:generated",
+      "target": "caliper:target",
+      "edApp": "caliper:edApp",
+      "group": "caliper:group"
+    },
+    {
+      "_comment": "Events",
+
+      "caliper:Event" : {
         "_comment":   "Core caliper event structure and base class for all events",
         "caliper:requiredProperty": [
-          "as:actor",
-          "as:verb",
-          "as:object"
+          "actor",
+          "object"
         ],
         "caliper:requireOneProperty": [
           ["startedAtTime", "endedAtTime"]
         ],
         "caliper:optionalProperty": [
-          "caliper:target",
-          "prov:generated",
-          "caliper:edApp",
-          "caliper:group"
+          "target",
+          "generated",
+          "edApp",
+          "group"
         ]
       },
 
-      "name" : "schema:name"
+      "caliper:AssessmentEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+        ]
+      },
+
+      "caliper:AssessmentItemEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+        ]
+      },
+
+      "caliper:AnnotationEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+        ]
+      },
+      "caliper:AssignableEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+        ]
+      },
+      "caliper:MediaEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+        ]
+      },
+      "caliper:NavigationEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+          "navigatedFrom"
+        ]
+      },
+      "caliper:OutcomeEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+        ]
+      },
+      "caliper:SessionEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+        ]
+      },
+      "caliper:ViewEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "caliper:requiredProperty": [
+        ],
+        "caliper:optionalProperty": [
+        ]
+      }
 
     },
     {
@@ -439,88 +516,6 @@
         ]
       }
 
-    },
-    {
-      "_comment": "The Different Events",
-
-      "caliper:AssessmentEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
-      },
-
-      "caliper:AssessmentItemEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
-      },
-
-      "caliper:AnnotationEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
-      },
-      "caliper:AssignableEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
-      },
-      "caliper:MediaEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
-      },
-      "caliper:NavigationEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-          "navigatedFrom"
-        ]
-      },
-      "caliper:OutcomeEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
-      },
-      "caliper:SessionEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
-      },
-      "caliper:ViewEvent" : {
-        "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
-      }
-
     }
-
-
   ]
 }
