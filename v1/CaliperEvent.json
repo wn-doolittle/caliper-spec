@@ -1,5 +1,5 @@
 {
-  "@id" : "http://purl.imsglobal.org/ctx/caliper/v1/CaliperEvent",
+  "@id" : "http://purl.imsglobal.org/ctx/caliper/v1/Caliper",
   "@context" : [
     {
       "_comment": "namespaces",
@@ -39,40 +39,20 @@
 
     },
     {
-      "_comment": "CaliperEvent Properties and Common",
+      "_comment": "Caliper common properties",
 
       "actor": "as:actor",
-      "verb": "as:verb",
       "action": "as:verb",
       "object": "as:object",
       "startedAtTime": "prov:startedAtTime",
       "endedAtTime": "prov:endedAtTime",
 
-      "target": "caliper:target",
+      "name" : "schema:name",
+
       "generated": "prov:generated",
+      "target": "caliper:target",
       "edApp": "caliper:edApp",
-      "group": "caliper:group",
-
-      "caliper:CaliperEvent" : {
-        "_comment":   "Core caliper event structure and base class for all events",
-        "caliper:requiredProperty": [
-          "as:actor",
-          "as:verb",
-          "as:object"
-        ],
-        "caliper:requireOneProperty": [
-          ["startedAtTime", "endedAtTime"]
-        ],
-        "caliper:optionalProperty": [
-          "caliper:target",
-          "prov:generated",
-          "caliper:edApp",
-          "caliper:group"
-        ]
-      },
-
-      "name" : "schema:name"
-
+      "group": "caliper:group"
     },
     {
       "_comment": "Entities",
@@ -441,7 +421,24 @@
 
     },
     {
-      "_comment": "The Different Events",
+      "_comment": "Events",
+
+      "caliper:Event" : {
+        "_comment":   "Core caliper event structure and base class for all events",
+        "caliper:requiredProperty": [
+          "actor",
+          "object"
+        ],
+        "caliper:requireOneProperty": [
+          ["startedAtTime", "endedAtTime"]
+        ],
+        "caliper:optionalProperty": [
+          "target",
+          "generated",
+          "edApp",
+          "group"
+        ]
+      },
 
       "caliper:AssessmentEvent" : {
         "_comment":   "",
@@ -520,7 +517,5 @@
       }
 
     }
-
-
   ]
 }
