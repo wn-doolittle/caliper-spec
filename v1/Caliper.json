@@ -25,17 +25,16 @@
         "_comment":   "list of all properties required for a type",
         "rdfs:range": "xsd:list"
       },
+      "caliper:requiredWhen": {
+        "@type":      "rdf:Property",
+        "_comment":   "properties that are only required in some situations (otherwise they are optional)",
+        "rdfs:range": "xsd:list"
+      }
       "caliper:optionalProperty": {
         "@type":      "rdf:Property",
         "_comment":   "list of properties that are to be flagged as optional by validation for a type",
         "rdfs:range": "xsd:list"
       },
-
-      "caliper:requireOneProperty": {
-        "@type":      "rdf:Property",
-        "_comment":   "list of properties of which one is required",
-        "rdfs:range": "xsd:list"
-      }
 
     },
     {
@@ -74,11 +73,11 @@
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:requiredProperty": [
+          {"@id": "startedAtTime", "caliper:requiredWhen": "$parent.action=LoggedIn"}
+          {"@id": "endedAtTime", "caliper:requiredWhen": "$parent.action=LoggedOut"}
         ],
         "caliper:optionalProperty": [
           "actor",
-          "startedAtTime",
-          "endedAtTime",
           "duration"
         ]
       },
@@ -427,14 +426,14 @@
         "_comment":   "Core caliper event structure and base class for all events",
         "caliper:requiredProperty": [
           "actor",
-          "object"
-        ],
-        "caliper:requireOneProperty": [
-          ["startedAtTime", "endedAtTime"]
+          "action"
+          "object",
+          "startedAtTime"
         ],
         "caliper:optionalProperty": [
           "target",
           "generated",
+          "endedAtTime",
           "edApp",
           "group"
         ]
@@ -442,49 +441,39 @@
 
       "caliper:AssessmentEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "rdfs:subClassOf": "caliper:Event",
         "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
+          {
+            "@id": "endedAtTime", 
+            "caliper:requiredWhen": "action=Submitted"
+          }        
         ]
       },
-
       "caliper:AssessmentItemEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "rdfs:subClassOf": "caliper:Event",
         "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
+          {
+            "@id": "endedAtTime", 
+            "caliper:requiredWhen": "action=Completed"
+          }        
         ]
       },
-
       "caliper:AnnotationEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event"
       },
       "caliper:AssignableEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event"
       },
       "caliper:MediaEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event"
       },
       "caliper:NavigationEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "rdfs:subClassOf": "caliper:Event",
         "caliper:requiredProperty": [
         ],
         "caliper:optionalProperty": [
@@ -493,27 +482,25 @@
       },
       "caliper:OutcomeEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event"
+      },
+      "caliper:ReadingEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event"
       },
       "caliper:SessionEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "rdfs:subClassOf": "caliper:Event",
         "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
+          {
+            "@id": "endedAtTime", 
+            "caliper:requiredWhen": ["action=LoggedOut", "action=TimedOut"]
+          }        
         ]
       },
       "caliper:ViewEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event"
       }
 
     }
