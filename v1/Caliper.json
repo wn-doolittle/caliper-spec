@@ -29,7 +29,7 @@
         "@type":      "rdf:Property",
         "_comment":   "properties that are only required in some situations (otherwise they are optional)",
         "rdfs:range": "xsd:list"
-      }
+      },
       "caliper:optionalProperty": {
         "@type":      "rdf:Property",
         "_comment":   "list of properties that are to be flagged as optional by validation for a type",
