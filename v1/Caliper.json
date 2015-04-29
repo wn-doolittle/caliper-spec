@@ -34,7 +34,7 @@
         "@type":      "rdf:Property",
         "_comment":   "list of properties that are to be flagged as optional by validation for a type",
         "rdfs:range": "xsd:list"
-      },
+      }
 
     },
     {
