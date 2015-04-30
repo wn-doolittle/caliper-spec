@@ -20,6 +20,18 @@
     },
     {
       "_comment": "Validation Context",
+
+      "caliper:requiredPropertyValueForSequence": {
+        "@type":      "rdf:Property",
+        "_comment":   "list of property-value pairs that are considered required when a sequence of json-ld are recieved",
+        "rdfs:range": "xsd:list"
+      },
+      "caliper:optionalPropertyValueForSequence": {
+        "@type":      "rdf:Property",
+        "_comment":   "list of property-value pairs that are considered required when a sequence of json-ld are recieved",
+        "rdfs:range": "xsd:list"
+      },
+
       "caliper:requiredProperty": {
         "@type":      "rdf:Property",
         "_comment":   "list of all properties required for a type",
@@ -30,6 +42,7 @@
         "_comment":   "properties that are only required in some situations (otherwise they are optional)",
         "rdfs:range": "xsd:list"
       },
+
       "caliper:optionalProperty": {
         "@type":      "rdf:Property",
         "_comment":   "list of properties that are to be flagged as optional by validation for a type",
@@ -370,6 +383,8 @@
       "caliper:AssessmentEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Submitted"],
+        "caliper:optionalPropertyValueForSequence": ["action=Paused", "action=Restarted"],
         "caliper:requiredProperty": [
           {
             "@id": "endedAtTime", 
@@ -380,6 +395,8 @@
       "caliper:AssessmentItemEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Completed"],
+        "caliper:optionalPropertyValueForSequence": ["action=Skipped", "action=Reviewed", "action=Viewed"],
         "caliper:requiredProperty": [
           {
             "@id": "endedAtTime", 
@@ -389,15 +406,20 @@
       },
       "caliper:AnnotationEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Event"
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Bookmarked", "action=Highlighted", "action=Shared", "action=Tagged"]
       },
       "caliper:AssignableEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Event"
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Completed"],
+        "caliper:optionalPropertyValueForSequence": ["action=Activated", "action=Deactivated", "action=Showed", "action=Hid", "action=Reviewed", "action=Abandoned"]
       },
       "caliper:MediaEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Event"
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Resumed", "action=Paused", "action=Ended"],
+        "caliper:optionalPropertyValueForSequence": ["action=OpenedPopout", "action=ClosedPopout", "action=EnteredFullscreen", "action=ExitedFullscreen", "action=ChangedSize", "action=ChangedResolution", "action=Rewound", "action=ForwardedTo", "action=JumpedTo", "action=ChangedSpeed", "action=Muted", "action=Unmuted", "action=ChangedVolume", "action=EnabledCloseCaptioning", "action=DisabledCloseCaptioning"],
       },
       "caliper:NavigationEvent" : {
         "_comment":   "",
@@ -408,15 +430,20 @@
       },
       "caliper:OutcomeEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Event"
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Graded"]
       },
       "caliper:ReadingEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Event"
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=NavigatedTo", "action=Viewed"],
+        "caliper:optionalPropertyValueForSequence": ["action=Searched"]
       },
       "caliper:SessionEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=LoggedIn", "action=LoggedOut"],
+        "caliper:optionalPropertyValueForSequence": ["action=TimedOut"],
         "caliper:requiredProperty": [
           {
             "@id": "endedAtTime", 
