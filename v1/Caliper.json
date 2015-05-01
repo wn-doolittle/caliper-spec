@@ -20,20 +20,32 @@
     },
     {
       "_comment": "Validation Context",
+
+      "caliper:requiredPropertyValueForSequence": {
+        "@type":      "rdf:Property",
+        "_comment":   "list of property-value pairs that are considered required when a sequence of json-ld are recieved",
+        "rdfs:range": "xsd:list"
+      },
+      "caliper:optionalPropertyValueForSequence": {
+        "@type":      "rdf:Property",
+        "_comment":   "list of property-value pairs that are considered required when a sequence of json-ld are recieved",
+        "rdfs:range": "xsd:list"
+      },
+
       "caliper:requiredProperty": {
         "@type":      "rdf:Property",
         "_comment":   "list of all properties required for a type",
         "rdfs:range": "xsd:list"
       },
-      "caliper:optionalProperty": {
+      "caliper:requiredWhen": {
         "@type":      "rdf:Property",
-        "_comment":   "list of properties that are to be flagged as optional by validation for a type",
+        "_comment":   "properties that are only required in some situations (otherwise they are optional)",
         "rdfs:range": "xsd:list"
       },
 
-      "caliper:requireOneProperty": {
+      "caliper:optionalProperty": {
         "@type":      "rdf:Property",
-        "_comment":   "list of properties of which one is required",
+        "_comment":   "list of properties that are to be flagged as optional by validation for a type",
         "rdfs:range": "xsd:list"
       }
 
@@ -59,8 +71,6 @@
 
       "caliper:Entity" : {
         "_comment":   "",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "name",
           "description",
@@ -74,11 +84,11 @@
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:requiredProperty": [
+          {"@id": "startedAtTime", "caliper:requiredWhen": "$parent.action=LoggedIn"}
+          {"@id": "endedAtTime", "caliper:requiredWhen": "$parent.action=LoggedOut"}
         ],
         "caliper:optionalProperty": [
           "actor",
-          "startedAtTime",
-          "endedAtTime",
           "duration"
         ]
       },
@@ -86,8 +96,6 @@
       "caliper:Result" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "assignable",
           "actor",
@@ -105,25 +113,15 @@
       "caliper:LearningObjective" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
       },
 
       "caliper:SoftwareApplication" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
       },
       "caliper:lis/Person" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "hasMembership"
         ]
@@ -131,8 +129,6 @@
       "caliper:Organization" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "membership",
           "subOrganizationOf"
@@ -142,8 +138,6 @@
       "caliper:lis/Group" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "credits",
           "category",
@@ -155,8 +149,6 @@
       "caliper:lis/Membership" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "member",
           "organization",
@@ -168,8 +160,6 @@
       "caliper:lis/CourseOffering" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "academicSession",
           "membership",
@@ -179,8 +169,6 @@
       "caliper:lis/CourseSection" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:CourseOffering",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "category"
         ]
@@ -189,8 +177,6 @@
       "caliper:DigitalResource" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "objectType",
           "alignedLearningObjective",
@@ -203,8 +189,6 @@
       "caliper:AssignableDigitalResource" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:DigitalResource",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "dateToActivate",
           "dateToShow",
@@ -218,26 +202,18 @@
       "caliper:Frame" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:DigitalResource",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "index"
         ]
       },
       "caliper:WebPage" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:DigitalResource",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:DigitalResource"
       },
 
       "caliper:MediaLocation" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:DigitalResource",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "currentTime"
         ]
@@ -245,8 +221,6 @@
       "caliper:MediaObject" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:DigitalResource",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "duration"
         ]
@@ -254,8 +228,6 @@
       "caliper:AudioObject" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:MediaObject",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "duration",
           "volumeMin",
@@ -266,18 +238,12 @@
       },
       "caliper:VideoObject" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:MediaObject",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:MediaObject"
       },
 
       "caliper:Annotation" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "annotated"
         ]
@@ -285,8 +251,6 @@
       "caliper:BoorkmarkAnnotation" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Annotation",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "bookmarkNotes"
         ]
@@ -294,8 +258,6 @@
       "caliper:HighlightAnnotation" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Annotation",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "selection",
           "selectionText"
@@ -304,8 +266,6 @@
       "caliper:SharedAnnotation" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Annotation",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "withAgents"
         ]
@@ -313,8 +273,6 @@
       "caliper:TagAnnotation" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Annotation",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "tags"
         ]
@@ -323,8 +281,6 @@
       "caliper:Response" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "assignable",
           "actor",
@@ -337,8 +293,6 @@
       "caliper:Response/FillinBlankResponse" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Response",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "values"
         ]
@@ -346,8 +300,6 @@
       "caliper:Response/MultipleResponseResponse" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Response",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "values"
         ]
@@ -355,8 +307,6 @@
       "caliper:Response/SelectTextResponse" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Response",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "values"
         ]
@@ -364,8 +314,6 @@
       "caliper:Response/MultipleChoiceResponse" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Response",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "value"
         ]
@@ -373,8 +321,6 @@
       "caliper:Response/TrueFalseResponse" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Response",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "value"
         ]
@@ -387,8 +333,6 @@
       "caliper:Attempt" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "assignable",
           "actor",
@@ -402,8 +346,6 @@
       "caliper:AssessmentItem" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:AssignableDigitalResource",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "isTimeDependent"
         ]
@@ -412,8 +354,6 @@
       "caliper:Assessment" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:DigitalResource",
-        "caliper:requiredProperty": [
-        ],
         "caliper:optionalProperty": [
           "assessmentItems"
         ]
@@ -427,14 +367,14 @@
         "_comment":   "Core caliper event structure and base class for all events",
         "caliper:requiredProperty": [
           "actor",
-          "object"
-        ],
-        "caliper:requireOneProperty": [
-          ["startedAtTime", "endedAtTime"]
+          "action"
+          "object",
+          "startedAtTime"
         ],
         "caliper:optionalProperty": [
           "target",
           "generated",
+          "endedAtTime",
           "edApp",
           "group"
         ]
@@ -442,78 +382,78 @@
 
       "caliper:AssessmentEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Submitted"],
+        "caliper:optionalPropertyValueForSequence": ["action=Paused", "action=Restarted"],
         "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
+          {
+            "@id": "endedAtTime", 
+            "caliper:requiredWhen": "action=Submitted"
+          }        
         ]
       },
-
       "caliper:AssessmentItemEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Completed"],
+        "caliper:optionalPropertyValueForSequence": ["action=Skipped", "action=Reviewed", "action=Viewed"],
         "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
+          {
+            "@id": "endedAtTime", 
+            "caliper:requiredWhen": "action=Completed"
+          }        
         ]
       },
-
       "caliper:AnnotationEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Bookmarked", "action=Highlighted", "action=Shared", "action=Tagged"]
       },
       "caliper:AssignableEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Completed"],
+        "caliper:optionalPropertyValueForSequence": ["action=Activated", "action=Deactivated", "action=Showed", "action=Hid", "action=Reviewed", "action=Abandoned"]
       },
       "caliper:MediaEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Resumed", "action=Paused", "action=Ended"],
+        "caliper:optionalPropertyValueForSequence": ["action=OpenedPopout", "action=ClosedPopout", "action=EnteredFullscreen", "action=ExitedFullscreen", "action=ChangedSize", "action=ChangedResolution", "action=Rewound", "action=ForwardedTo", "action=JumpedTo", "action=ChangedSpeed", "action=Muted", "action=Unmuted", "action=ChangedVolume", "action=EnabledCloseCaptioning", "action=DisabledCloseCaptioning"],
       },
       "caliper:NavigationEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
+        "rdfs:subClassOf": "caliper:Event",
         "caliper:optionalProperty": [
           "navigatedFrom"
         ]
       },
       "caliper:OutcomeEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=Graded"]
+      },
+      "caliper:ReadingEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=NavigatedTo", "action=Viewed"],
+        "caliper:optionalPropertyValueForSequence": ["action=Searched"]
       },
       "caliper:SessionEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=LoggedIn", "action=LoggedOut"],
+        "caliper:optionalPropertyValueForSequence": ["action=TimedOut"],
         "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
+          {
+            "@id": "endedAtTime", 
+            "caliper:requiredWhen": ["action=LoggedOut", "action=TimedOut"]
+          }        
         ]
       },
       "caliper:ViewEvent" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:CaliperEvent",
-        "caliper:requiredProperty": [
-        ],
-        "caliper:optionalProperty": [
-        ]
+        "rdfs:subClassOf": "caliper:Event"
       }
 
     }
