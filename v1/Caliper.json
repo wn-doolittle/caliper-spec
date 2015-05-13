@@ -4,7 +4,7 @@
     {
       "_comment": "namespaces",
 
-      "@vocab": "http://purl.imsglobal.org/caliper/v1/",
+      "@vocab": "http://purl.imsglobal.org/vocab/caliper/v1/",
       "as" : "http://activitystrea.ms/2.0/",
       "caliper": "http://purl.imsglobal.org/caliper/v1/",
       "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#", 
@@ -84,8 +84,8 @@
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:requiredProperty": [
-          {"@id": "startedAtTime", "caliper:requiredWhen": "$parent.action=LoggedIn"}
-          {"@id": "endedAtTime", "caliper:requiredWhen": "$parent.action=LoggedOut"}
+          {"@id": "startedAtTime", "caliper:requiredWhen": "$parent.action=action#LoggedIn"},
+          {"@id": "endedAtTime", "caliper:requiredWhen": "$parent.action=action#LoggedOut"}
         ],
         "caliper:optionalProperty": [
           "actor",
@@ -112,12 +112,12 @@
 
       "caliper:LearningObjective" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Entity",
+        "rdfs:subClassOf": "caliper:Entity"
       },
 
       "caliper:SoftwareApplication" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Entity",
+        "rdfs:subClassOf": "caliper:Entity"
       },
       "caliper:lis/Person" : {
         "_comment":   "",
@@ -367,7 +367,7 @@
         "_comment":   "Core caliper event structure and base class for all events",
         "caliper:requiredProperty": [
           "actor",
-          "action"
+          "action",
           "object",
           "startedAtTime"
         ],
@@ -383,43 +383,43 @@
       "caliper:AssessmentEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
-        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Submitted"],
-        "caliper:optionalPropertyValueForSequence": ["action=Paused", "action=Restarted"],
+        "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Submitted"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#Paused", "action=action#Restarted"],
         "caliper:requiredProperty": [
           {
             "@id": "endedAtTime", 
-            "caliper:requiredWhen": "action=Submitted"
+            "caliper:requiredWhen": "action=action#Submitted"
           }        
         ]
       },
       "caliper:AssessmentItemEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
-        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Completed"],
-        "caliper:optionalPropertyValueForSequence": ["action=Skipped", "action=Reviewed", "action=Viewed"],
+        "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Completed"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#Skipped", "action=action#Reviewed", "action=action#Viewed"],
         "caliper:requiredProperty": [
           {
             "@id": "endedAtTime", 
-            "caliper:requiredWhen": "action=Completed"
+            "caliper:requiredWhen": "action=action#Completed"
           }        
         ]
       },
       "caliper:AnnotationEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
-        "caliper:requiredPropertyValueForSequence": ["action=Bookmarked", "action=Highlighted", "action=Shared", "action=Tagged"]
+        "caliper:requiredPropertyValueForSequence": ["action=action#Bookmarked", "action=action#Highlighted", "action=action#Shared", "action=action#Tagged"]
       },
       "caliper:AssignableEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
-        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Completed"],
-        "caliper:optionalPropertyValueForSequence": ["action=Activated", "action=Deactivated", "action=Showed", "action=Hid", "action=Reviewed", "action=Abandoned"]
+        "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Completed"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#Activated", "action=action#Deactivated", "action=action#Showed", "action=action#Hid", "action=action#Reviewed", "action=action#Abandoned"]
       },
       "caliper:MediaEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
-        "caliper:requiredPropertyValueForSequence": ["action=Started", "action=Resumed", "action=Paused", "action=Ended"],
-        "caliper:optionalPropertyValueForSequence": ["action=OpenedPopout", "action=ClosedPopout", "action=EnteredFullscreen", "action=ExitedFullscreen", "action=ChangedSize", "action=ChangedResolution", "action=Rewound", "action=ForwardedTo", "action=JumpedTo", "action=ChangedSpeed", "action=Muted", "action=Unmuted", "action=ChangedVolume", "action=EnabledCloseCaptioning", "action=DisabledCloseCaptioning"],
+        "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Resumed", "action=action#Paused", "action=action#Ended"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#OpenedPopout", "action=action#ClosedPopout", "action=action#EnteredFullscreen", "action=action#ExitedFullscreen", "action=action#ChangedSize", "action=action#ChangedResolution", "action=action#Rewound", "action=action#ForwardedTo", "action=action#JumpedTo", "action=action#ChangedSpeed", "action=action#Muted", "action=action#Unmuted", "action=action#ChangedVolume", "action=action#EnabledCloseCaptioning", "action=action#DisabledCloseCaptioning"]
       },
       "caliper:NavigationEvent" : {
         "_comment":   "",
@@ -431,23 +431,23 @@
       "caliper:OutcomeEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
-        "caliper:requiredPropertyValueForSequence": ["action=Graded"]
+        "caliper:requiredPropertyValueForSequence": ["action=action#Graded"]
       },
       "caliper:ReadingEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
-        "caliper:requiredPropertyValueForSequence": ["action=NavigatedTo", "action=Viewed"],
-        "caliper:optionalPropertyValueForSequence": ["action=Searched"]
+        "caliper:requiredPropertyValueForSequence": ["action=action#NavigatedTo", "action=action#Viewed"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#Searched"]
       },
       "caliper:SessionEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
-        "caliper:requiredPropertyValueForSequence": ["action=LoggedIn", "action=LoggedOut"],
-        "caliper:optionalPropertyValueForSequence": ["action=TimedOut"],
+        "caliper:requiredPropertyValueForSequence": ["action=action#LoggedIn", "action=action#LoggedOut"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#TimedOut"],
         "caliper:requiredProperty": [
           {
             "@id": "endedAtTime", 
-            "caliper:requiredWhen": ["action=LoggedOut", "action=TimedOut"]
+            "caliper:requiredWhen": ["action=action#LoggedOut", "action=action#TimedOut"]
           }        
         ]
       },
