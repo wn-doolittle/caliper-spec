@@ -2,7 +2,7 @@
   "@id" : "http://purl.imsglobal.org/ctx/caliper/v1/Caliper",
   "@context" : [
     {
-      "_comment": "namespaces",
+      "_comment": "Namespaces",
 
       "@vocab": "http://purl.imsglobal.org/vocab/caliper/v1/",
       "as" : "http://activitystrea.ms/2.0/",
@@ -70,7 +70,7 @@
       "_comment": "Entities",
 
       "caliper:Entity" : {
-        "_comment":   "",
+        "_comment": "The base Caliper Entity.  Analogous to a schema.org Thing",
         "caliper:optionalProperty": [
           "name",
           "description",
@@ -94,7 +94,7 @@
       },
 
       "caliper:Result" : {
-        "_comment":   "",
+        "_comment": "Representation of a Result. Result's are generated as part of an interaction represented by an OutcomeEvent",
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "assignable",
@@ -127,7 +127,11 @@
         ]
       },
       "caliper:Organization" : {
-        "_comment":   "",
+        "_comment": [
+          "A collection of people organized together into a community or other social, commercial or political structure.",
+          "The group has some common purpose or reason for existence which goes beyond the set of people belonging to it",
+          "and can act as an Agent. Organizations are often decomposable into hierarchical structures."
+        ],
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "membership",
@@ -136,7 +140,7 @@
       },
 
       "caliper:lis/Group" : {
-        "_comment":   "",
+        "_comment":   "A Caliper LIS Group represents a Course substructure that a Person is able to join as a member."
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "credits",
@@ -147,7 +151,11 @@
         ]
       },
       "caliper:lis/Membership" : {
-        "_comment":   "",
+        "_comment":   [
+          "A Caliper Membership is used to define the relationship between objects that can have memberIds and objects"
+          "that can be memberIds. Objects recognized as having memberIds are CourseOffering, CourseSection",
+          "and Group, all of which implement the Joinable marker interface. Only a Person object can be a memberId."
+        ],
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "member",
@@ -158,7 +166,11 @@
       },
 
       "caliper:lis/CourseOffering" : {
-        "_comment":   "",
+        "_comment": [
+          "A CourseOffering is the occurrence of a course in a specific term, semester, etc.  A Caliper",
+          "CourseOffering provides a subset of the CourseOffering properties specified in the IMS LTI 2.0",
+          "specification, which in turn, draws inspiration from the IMS LIS 1.0 specification."
+        ],
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "academicSession",
@@ -167,7 +179,16 @@
         ]
       },
       "caliper:lis/CourseSection" : {
-        "_comment":   "",
+        "_comment": [
+          "A CourseSection is a way to represent a group of people associated with a course or class.",
+          "These groups may include everyone in the class or course, or may be subsets of that whole group.",
+          "CourseSections may have sub-sections (these are created as separate Group objects linked using",
+          "the relationship). Examples of a CourseSection are Lecture, Laboratory, Studio, Seminar, etc.",
+          "There may be several instances of a type of CourseSection e.g., multiple lectures.",
+          "",
+          "A Caliper CourseSection provides a subset of the CourseSection properties specified in the",
+          "IMS LTI 2.0 specification, which in turn, draws inspiration from the IMS LIS 1.0 specification."
+        ],
         "rdfs:subClassOf": "caliper:CourseOffering",
         "caliper:optionalProperty": [
           "category"
@@ -175,7 +196,7 @@
       },
 
       "caliper:DigitalResource" : {
-        "_comment":   "",
+        "_comment": "Caliper representation of a CreativeWork (https://schema.org/CreativeWork)",
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "objectType",
@@ -187,7 +208,7 @@
         ]
       },
       "caliper:AssignableDigitalResource" : {
-        "_comment":   "",
+        "_comment":   "Assignable Digital Resource",
         "rdfs:subClassOf": "caliper:DigitalResource",
         "caliper:optionalProperty": [
           "dateToActivate",
@@ -212,21 +233,21 @@
       },
 
       "caliper:MediaLocation" : {
-        "_comment":   "",
+        "_comment":   "Media Location",
         "rdfs:subClassOf": "caliper:DigitalResource",
         "caliper:optionalProperty": [
           "currentTime"
         ]
       },
       "caliper:MediaObject" : {
-        "_comment":   "",
+        "_comment":   "An image, video, or audio object embedded in a web page.",
         "rdfs:subClassOf": "caliper:DigitalResource",
         "caliper:optionalProperty": [
           "duration"
         ]
       },
       "caliper:AudioObject" : {
-        "_comment":   "",
+        "_comment":   "An audio object embedded in a web page.",
         "rdfs:subClassOf": "caliper:MediaObject",
         "caliper:optionalProperty": [
           "duration",
@@ -237,12 +258,17 @@
         ]
       },
       "caliper:VideoObject" : {
-        "_comment":   "",
+        "_comment":   "A Video object embedded in a web page.",
         "rdfs:subClassOf": "caliper:MediaObject"
       },
 
       "caliper:Annotation" : {
-        "_comment":   "",
+        "_comment": [
+          "The super-class of all Annotation types.",
+          "",
+          "Direct sub-types can include - Highlight, Attachment, etc. - all of",
+          "which are specified in the Caliper Annotation Metric Profile"
+        ],
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "annotated"
@@ -291,35 +317,47 @@
         ]
       },
       "caliper:Response/FillinBlankResponse" : {
-        "_comment":   "",
+        "_comment": [
+          "Represents response text or integer/decimal/scientific numbers that completes a question",
+          "designed with one or more "fill in the blank" option prompts."
+        ],
         "rdfs:subClassOf": "caliper:Response",
         "caliper:optionalProperty": [
           "values"
         ]
       },
       "caliper:Response/MultipleResponseResponse" : {
-        "_comment":   "",
+        "_comment": [
+          "Representation of a response to a multiple choice question that permits one or more",
+          "options to be selected."
+        ],
         "rdfs:subClassOf": "caliper:Response",
         "caliper:optionalProperty": [
           "values"
         ]
       },
       "caliper:Response/SelectTextResponse" : {
-        "_comment":   "",
+        "_comment": [
+          "Represents a response that identifies text from a presented paragraph or list.",
+          "The response is the identified string or a mapping to a logical identifier"
+        ],
         "rdfs:subClassOf": "caliper:Response",
         "caliper:optionalProperty": [
           "values"
         ]
       },
       "caliper:Response/MultipleChoiceResponse" : {
-        "_comment":   "",
+        "_comment":   "Represents a response to a multiple choice question that permits a single option to be selected.",
         "rdfs:subClassOf": "caliper:Response",
         "caliper:optionalProperty": [
           "value"
         ]
       },
       "caliper:Response/TrueFalseResponse" : {
-        "_comment":   "",
+        "_comment": [
+          "Represents response to a multiple choice question that limits options to either 'true or false',",
+          "'agree or disagree', etc."
+        ],
         "rdfs:subClassOf": "caliper:Response",
         "caliper:optionalProperty": [
           "value"
@@ -331,7 +369,10 @@
       "_comment": "Assessment MP",
 
       "caliper:Attempt" : {
-        "_comment":   "",
+        "_comment": [
+          "Representation of an Attempt. Attempts are generated as part of or",
+          "are the object of an interaction represented by an AssignableEvent."
+        ],
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "assignable",
