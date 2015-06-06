@@ -320,7 +320,7 @@
       "caliper:Response/FillinBlankResponse" : {
         "_comment": [
           "Represents response text or integer/decimal/scientific numbers that completes a question",
-          "designed with one or more "fill in the blank" option prompts."
+          "designed with one or more 'fill in the blank' option prompts."
         ],
         "rdfs:subClassOf": "caliper:Response",
         "caliper:optionalProperty": [
