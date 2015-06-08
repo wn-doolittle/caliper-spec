@@ -317,7 +317,7 @@
           "duration"
         ]
       },
-      "caliper:Response/FillinBlankResponse" : {
+      "caliper:FillinBlankResponse" : {
         "_comment": [
           "Represents response text or integer/decimal/scientific numbers that completes a question",
           "designed with one or more 'fill in the blank' option prompts."
@@ -327,7 +327,7 @@
           "values"
         ]
       },
-      "caliper:Response/MultipleResponseResponse" : {
+      "caliper:MultipleResponseResponse" : {
         "_comment": [
           "Representation of a response to a multiple choice question that permits one or more",
           "options to be selected."
@@ -337,7 +337,7 @@
           "values"
         ]
       },
-      "caliper:Response/SelectTextResponse" : {
+      "caliper:SelectTextResponse" : {
         "_comment": [
           "Represents a response that identifies text from a presented paragraph or list.",
           "The response is the identified string or a mapping to a logical identifier"
@@ -347,14 +347,14 @@
           "values"
         ]
       },
-      "caliper:Response/MultipleChoiceResponse" : {
+      "caliper:MultipleChoiceResponse" : {
         "_comment":   "Represents a response to a multiple choice question that permits a single option to be selected.",
         "rdfs:subClassOf": "caliper:Response",
         "caliper:optionalProperty": [
           "value"
         ]
       },
-      "caliper:Response/TrueFalseResponse" : {
+      "caliper:TrueFalseResponse" : {
         "_comment": [
           "Represents response to a multiple choice question that limits options to either 'true or false',",
           "'agree or disagree', etc."
