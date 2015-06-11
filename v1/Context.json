@@ -141,7 +141,7 @@
       },
 
       "caliper:lis/Group" : {
-        "_comment":   "A Caliper LIS Group represents a Course substructure that a Person is able to join as a member."
+        "_comment":   "A Caliper LIS Group represents a Course substructure that a Person is able to join as a member.",
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
           "credits",
@@ -153,7 +153,7 @@
       },
       "caliper:lis/Membership" : {
         "_comment":   [
-          "A Caliper Membership is used to define the relationship between objects that can have memberIds and objects"
+          "A Caliper Membership is used to define the relationship between objects that can have memberIds and objects",
           "that can be memberIds. Objects recognized as having memberIds are CourseOffering, CourseSection",
           "and Group, all of which implement the Joinable marker interface. Only a Person object can be a memberId."
         ],
