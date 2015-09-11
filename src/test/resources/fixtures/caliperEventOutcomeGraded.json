@@ -37,7 +37,7 @@
       "dateCreated": "2015-08-01T06:00:00.000Z"
     }
   },
-  "startedAtTime": "2015-09-15T10:15:00.000Z",
+  "eventTime": "2015-09-15T10:15:00.000Z",
   "edApp": {
     "@id": "https://example.com/super-assessment-tool",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
