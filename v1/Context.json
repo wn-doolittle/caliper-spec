@@ -56,8 +56,7 @@
       "actor": "as:actor",
       "action": "as:verb",
       "object": "as:object",
-      "startedAtTime": "prov:startedAtTime",
-      "endedAtTime": "prov:endedAtTime",
+      "eventTime": "prov:startedAtTime",
 
       "name" : "schema:name",
 
@@ -66,6 +65,9 @@
       "edApp": "caliper:edApp",
       "group": "caliper:group",
       "federatedSession": "caliper:federatedSession"
+
+      "startedAtTime": "prov:startedAtTime",
+      "endedAtTime": "prov:endedAtTime",
     },
     {
       "_comment": "Entities",
@@ -411,12 +413,11 @@
           "actor",
           "action",
           "object",
-          "startedAtTime"
+          "eventTime"
         ],
         "caliper:optionalProperty": [
           "target",
           "generated",
-          "endedAtTime",
           "edApp",
           "group"
         ]
