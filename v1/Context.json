@@ -64,10 +64,10 @@
       "target": "caliper:target",
       "edApp": "caliper:edApp",
       "group": "caliper:group",
-      "federatedSession": "caliper:federatedSession"
+      "federatedSession": "caliper:federatedSession",
 
       "startedAtTime": "prov:startedAtTime",
-      "endedAtTime": "prov:endedAtTime",
+      "endedAtTime": "prov:endedAtTime"
     },
     {
       "_comment": "Entities",
