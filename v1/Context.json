@@ -51,20 +51,30 @@
 
     },
     {
-      "_comment": "Caliper common properties",
+      "_comment": "Event properties",
 
       "actor": "as:actor",
       "action": "as:verb",
       "object": "as:object",
       "eventTime": "prov:startedAtTime",
 
-      "name" : "schema:name",
-
       "generated": "prov:generated",
       "target": "caliper:target",
       "edApp": "caliper:edApp",
       "group": "caliper:group",
-      "federatedSession": "caliper:federatedSession",
+
+      "federatedSession": "caliper:federatedSession"
+
+    },
+    {
+      "_comment": "Caliper common properties",
+
+      "name" : "schema:name",
+      "description" : "schema:description",
+      "dateCreated" : "schema:dateCreated",
+      "dateModified" : "schema:dateModified",
+      "datePublished" : "schema:datePublished",
+      "extensions" : "caliper:extensions",
 
       "startedAtTime": "prov:startedAtTime",
       "endedAtTime": "prov:endedAtTime"
