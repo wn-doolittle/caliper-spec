@@ -63,6 +63,7 @@
       "edApp": "caliper:edApp",
       "group": "caliper:group",
 
+      "membership": "caliper:lis/membership",
       "federatedSession": "caliper:federatedSession"
 
     },
@@ -429,7 +430,9 @@
           "target",
           "generated",
           "edApp",
-          "group"
+          "group",
+          "membership"
+          "federatedSession"
         ]
       },
 
