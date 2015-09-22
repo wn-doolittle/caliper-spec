@@ -51,21 +51,34 @@
 
     },
     {
-      "_comment": "Caliper common properties",
+      "_comment": "Event properties",
 
       "actor": "as:actor",
       "action": "as:verb",
       "object": "as:object",
-      "startedAtTime": "prov:startedAtTime",
-      "endedAtTime": "prov:endedAtTime",
-
-      "name" : "schema:name",
+      "eventTime": "prov:startedAtTime",
 
       "generated": "prov:generated",
       "target": "caliper:target",
       "edApp": "caliper:edApp",
       "group": "caliper:group",
+
+      "membership": "caliper:lis/membership",
       "federatedSession": "caliper:federatedSession"
+
+    },
+    {
+      "_comment": "Caliper common properties",
+
+      "name" : "schema:name",
+      "description" : "schema:description",
+      "dateCreated" : "schema:dateCreated",
+      "dateModified" : "schema:dateModified",
+      "datePublished" : "schema:datePublished",
+      "extensions" : "caliper:extensions",
+
+      "startedAtTime": "prov:startedAtTime",
+      "endedAtTime": "prov:endedAtTime"
     },
     {
       "_comment": "Entities",
@@ -122,10 +135,7 @@
       },
       "caliper:lis/Person" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Entity",
-        "caliper:optionalProperty": [
-          "hasMembership"
-        ]
+        "rdfs:subClassOf": "caliper:Entity"
       },
       "caliper:Organization" : {
         "_comment": [
@@ -135,7 +145,6 @@
         ],
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
-          "membership",
           "subOrganizationOf"
         ]
       },
@@ -147,7 +156,6 @@
           "credits",
           "category",
           "academicSession",
-          "membership",
           "subOrganizationOf"
         ]
       },
@@ -411,14 +419,15 @@
           "actor",
           "action",
           "object",
-          "startedAtTime"
+          "eventTime"
         ],
         "caliper:optionalProperty": [
           "target",
           "generated",
-          "endedAtTime",
           "edApp",
-          "group"
+          "group",
+          "membership"
+          "federatedSession"
         ]
       },
 
