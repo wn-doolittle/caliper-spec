@@ -135,10 +135,7 @@
       },
       "caliper:lis/Person" : {
         "_comment":   "",
-        "rdfs:subClassOf": "caliper:Entity",
-        "caliper:optionalProperty": [
-          "hasMembership"
-        ]
+        "rdfs:subClassOf": "caliper:Entity"
       },
       "caliper:Organization" : {
         "_comment": [
@@ -148,7 +145,6 @@
         ],
         "rdfs:subClassOf": "caliper:Entity",
         "caliper:optionalProperty": [
-          "membership",
           "subOrganizationOf"
         ]
       },
@@ -160,7 +156,6 @@
           "credits",
           "category",
           "academicSession",
-          "membership",
           "subOrganizationOf"
         ]
       },
