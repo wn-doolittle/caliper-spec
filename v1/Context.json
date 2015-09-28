@@ -1,3 +1,4 @@
+
 {
   "@id" : "http://purl.imsglobal.org/ctx/caliper/v1/Caliper",
   "@context" : [
@@ -426,7 +427,7 @@
           "generated",
           "edApp",
           "group",
-          "membership"
+          "membership",
           "federatedSession"
         ]
       },
@@ -435,25 +436,13 @@
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
         "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Submitted"],
-        "caliper:optionalPropertyValueForSequence": ["action=action#Paused", "action=action#Restarted"],
-        "caliper:requiredProperty": [
-          {
-            "@id": "endedAtTime", 
-            "caliper:requiredWhen": "action=action#Submitted"
-          }        
-        ]
+        "caliper:optionalPropertyValueForSequence": ["action=action#Paused", "action=action#Restarted"]
       },
       "caliper:AssessmentItemEvent" : {
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
         "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Completed"],
-        "caliper:optionalPropertyValueForSequence": ["action=action#Skipped", "action=action#Reviewed", "action=action#Viewed"],
-        "caliper:requiredProperty": [
-          {
-            "@id": "endedAtTime", 
-            "caliper:requiredWhen": "action=action#Completed"
-          }        
-        ]
+        "caliper:optionalPropertyValueForSequence": ["action=action#Skipped", "action=action#Reviewed", "action=action#Viewed"]
       },
       "caliper:AnnotationEvent" : {
         "_comment":   "",
@@ -494,13 +483,7 @@
         "_comment":   "",
         "rdfs:subClassOf": "caliper:Event",
         "caliper:requiredPropertyValueForSequence": ["action=action#LoggedIn", "action=action#LoggedOut"],
-        "caliper:optionalPropertyValueForSequence": ["action=action#TimedOut"],
-        "caliper:requiredProperty": [
-          {
-            "@id": "endedAtTime", 
-            "caliper:requiredWhen": ["action=action#LoggedOut", "action=action#TimedOut"]
-          }        
-        ]
+        "caliper:optionalPropertyValueForSequence": ["action=action#TimedOut"]
       },
       "caliper:ViewEvent" : {
         "_comment":   "",
