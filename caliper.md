@@ -63,7 +63,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 | Name | Organization |
 | ------ | --------- |
-| [Anthony Whyte](http://github.com/@arwhyte) | University of Michigan |
+| [Anthony Whyte](http://github.com/arwhyte) | University of Michigan |
 
 
 <a name="appendixA"/>  
