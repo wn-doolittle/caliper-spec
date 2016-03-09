@@ -1,7 +1,21 @@
 ### Table of Contents
 * 1.x. [Namespaces](#namespaces)
+* 1.x. [Definitions](#definitions)
 * X.x. [Contributors](#contributors)
 *	[Appendix A: Caliper Actions](#appendixA) 
+
+
+<a name="definitions"/>  
+
+### 1.x. Definitions
+
+__blank node__: A locally-scoped identifier that is used to refer to a resource when a globally scoped identifier is either inappropriate, as in the case of transient data, or not provided.  A blank node is prefixed with an underscore (_) and is scoped to the document in which it is used (e.g., _:a1).
+
+__JSON-LD__:  TODO
+
+__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  The IRI is a globally scoped identifier used in linked data to refer to most nodes and properties.  An IRI reference may be absolute or relative to that of another absolute IRI.  In JSON-LD relative IRIs are resolved relative to the base IRI.
+
+__ISO 8601__: Caliper time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is in UTC. 
 
 <a name="namespaces"/>  
 
@@ -32,7 +46,7 @@ The Caliper information model references a number of terms derived from other on
 
 ### X.x Contributors
 
-The following Caliper Working Group participants contributed to the development of this specification:
+The following Caliper Working Group participants contributed to the writing of this specification:
 
 | Name | Organization |
 | ------ | --------- |
