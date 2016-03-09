@@ -11,7 +11,7 @@ The Caliper information model references a number of terms derived from other on
 | Prefix | Namespace | Description |
 | ------ | --------- | ----------- |
 | clpr | http://purl.imsglobal.org/caliper/v1/ | Caliper |
-| clpract | http://purl.imsglobal.org/vocab/caliper/v1/action# | Caliper action Vocabulary |
+| clpract | http://purl.imsglobal.org/vocab/caliper/v1/action# | Caliper actions |
 | clprlis | http://purl.imsglobal.org/caliper/v1/lis/ | Caliper LIS |
 | clprw3c | http://purl.imsglobal.org/caliper/v1/w3c/ | Caliper W3C |
 | dc | http://purl.org/dc/elements/1.1/	| Dublin Core Elements |
@@ -34,12 +34,12 @@ The Caliper information model references a number of terms derived from other on
 
 | Label | IRI | WordNet Gloss |
 | ------ | --- | ------------- |
-| created | http://purl.imsglobal.org/vocab/caliper/v1/action#Created | [create](http://wordnet-rdf.princeton.edu/wn31/201620211-v): make or cause to be or to become |
-| deleted | http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted | [delete](http://wordnet-rdf.princeton.edu/wn31/201001860-v): wipe out digitally |
-| markedAsRead | http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead | [mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v): designate as if by a mark, [read](http://wordnet-rdf.princeton.edu/wn31/200626756-v): interpret something that is written or printed |
-| markedAsUnread | http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread | inverse of markedAsRead |
-| posted | http://purl.imsglobal.org/vocab/caliper/v1/action#Posted | [post](http://wordnet-rdf.princeton.edu/wn31/201033289-v): to cause to be directed or transmitted to another place |
-| removed | http://purl.imsglobal.org/vocab/caliper/v1/action#Removed | [remove](http://wordnet-rdf.princeton.edu/wn31/200181704-v): remove from sight |
-| subscribed | http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed | [subscribe](http://wordnet-rdf.princeton.edu/wn31/202214527-v): receive or obtain regularly |
-| updated | http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead | [update](http://wordnet-rdf.princeton.edu/wn31/200835207-v): bring up to date; supply with recent information |
-| unsubscribed | http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed | inverse of subscribed |
+| created | [clpract:Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [create](http://wordnet-rdf.princeton.edu/wn31/201620211-v): make or cause to be or to become |
+| deleted | [clpract:Deleted](http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted) | [delete](http://wordnet-rdf.princeton.edu/wn31/201001860-v): wipe out digitally |
+| markedAsRead | [clpract:MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v): designate as if by a mark, [read](http://wordnet-rdf.princeton.edu/wn31/200626756-v): interpret something that is written or printed |
+| markedAsUnread | [clpract:MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
+| posted | [clpract:Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [post](http://wordnet-rdf.princeton.edu/wn31/201033289-v): to cause to be directed or transmitted to another place |
+| removed | [clpract:Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove](http://wordnet-rdf.princeton.edu/wn31/200181704-v): remove from sight |
+| subscribed | [clpract:Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [subscribe](http://wordnet-rdf.princeton.edu/wn31/202214527-v): receive or obtain regularly |
+| updated | [clpract:Updated](http://purl.imsglobal.org/vocab/caliper/v1/action#Updated) | [update](http://wordnet-rdf.princeton.edu/wn31/200835207-v): bring up to date; supply with recent information |
+| unsubscribed | [clpract:Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
