@@ -1,11 +1,19 @@
-### Caliper Analytics<sup>TM</sup>
+### Caliper Analytics<sup>TM</sup> Specification, version 1.0
 ### IMS Global Learning Consortium, Inc.
 
 ### Table of Contents
+* 1.0. [Introduction](#introduction)
 * 1.x. [Namespaces](#namespaces)
 * 1.x. [Definitions](#definitions)
 * X.x. [Contributors](#contributors)
 *	[Appendix A: Caliper Actions](#appendixA) 
+
+
+<a name="introduction"/>  
+
+### 1.0. Introduction
+
+TODO
 
 <a name="namespaces"/>  
 
