@@ -1,12 +1,13 @@
 ### Table of Contents
-* [Namespaces](#namespaces)
+* 1.x. [Namespaces](#namespaces)
+* X.x. [Contributors](#contributors)
 *	[Appendix A: Caliper Actions](#appendixA) 
 
 <a name="namespaces"/>  
 
-### 1.x Namespaces
+### 1.x. Namespaces
 
-The Caliper information model references a number of terms derived from other ontologies.  Such terms along with those native to Caliper are identified with a prefix drawn from the list below that maps to the relevant namespace as, for example, the data type xsd:dateTime.
+The Caliper information model references a number of terms derived from other ontologies.  Such terms along with those native to Caliper are identified with a prefix drawn from the list below that maps to the relevant namespace as, for example, the data type [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime).
 
 | Prefix | Namespace | Description |
 | ------ | --------- | ----------- |
@@ -26,6 +27,16 @@ The Caliper information model references a number of terms derived from other on
 | sdo | http://schema.org/ | schema.org |
 | skos |	http://www.w3.org/2004/02/skos/core# | Simple Knowledge Organization System |
 | xsd | https://www.w3.org/TR/xmlschema11-2/# | XML Schema Definition Language 1.1 |
+
+<a name="contributors"/>
+
+### X.x Contributors
+
+The following Caliper Working Group participants contributed to the development of this specification:
+
+| Name | Organization |
+| ------ | --------- |
+| Anthony Whyte | University of Michigan |
 
 
 <a name="appendixA"/>  
