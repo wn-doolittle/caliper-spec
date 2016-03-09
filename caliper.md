@@ -5,8 +5,12 @@
 * 1.0. [Introduction](#introduction)
 * 1.x. [Namespaces](#namespaces)
 * 1.x. [Definitions](#definitions)
+* X.0. [Event](#event)
+* X.0. [Entity](#entity)
+* X.0. [Profiles(#profiles)
 * X.x. [Contributors](#contributors)
-*	[Appendix A: Caliper Actions](#appendixA) 
+*	[Appendix A: Caliper Actions](#appendixA)
+* [Appendix B: Caliper Entities](#appendixB)
 
 
 <a name="introduction"/>  
@@ -44,6 +48,10 @@ The Caliper information model references a number of terms derived from other on
 
 ### 1.x. Definitions
 
+__actor__: TODO
+
+__action__: TODO
+
 __blank node__: A locally-scoped identifier that is used to refer to a resource when a globally scoped identifier is either inappropriate, as in the case of transient data, or not provided.  A blank node is prefixed with an underscore (_) and is scoped to the document in which it is used (e.g., _:a1).
 
 __context__: TODO
@@ -66,9 +74,67 @@ __profile__: TODO
 
 __sensor__: TODO
 
+<a name="event"/>
+
+### X.0. Event
+
+__Node type:__ [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
+
+__Comment:__ a [clpr:Event](#event) is a generic class that represents the interaction between a [clpr:actor](#actor) and a [clpr:object](#actor) at a specific moment in time, usually within the bounds of a specified context. For enhanced specificity utilize the several subclasses of [clpr:Event](#event) when constructing a [clpr:Event](#event) rather than instantiating instances of the [clpr:Event](#event) class itself.
+
+__Properties__
+
+| Property | Type | Description | &nbsp; | Conformance |
+| -------- | ---- | ----------- | ----------- | ----------- |
+| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | 1 | required |
+| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD type represented as a globally-scoped IRI. | 1 | required |
+| actor | [clpr:Agent](#agent) | The [clpr:Agent](#agent) who initiated or is the subject of the [clpr:Event](#event), typically a [clpr:Person]([#person), [clprw3c:Organization]([#organization) or [clpr:SoftwareApplication]([#softwareapplication). | 1 | required |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | . . . | 1 | required |
+| object | [clpr:Entity]([#entity) | . . . | 1 | required |
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when the [Event](#event) occurred. | 1 | required |
+| target | [clpr:Entity]([#entity) | . . . | 0..1 | optional |
+| generated | [clpr:Entity]([#entity) | . . . | 0..1 | optional |
+| edApp | [clpr:SoftwareApplication]([#softwareapplication) | . . . | 0..1 | optional |
+| group | [clprw3c:Organization]([#organization) | . . . | 0..1 | optional |
+| membership | [clprlis:Membership]([#membership) | . . . | 0..1 | optional |
+| session | [clpr:Session]([#session) | . . . | 0..1 | optional |
+
+<a name="entity">
+
+### X.0. Entity
+
+__type__: [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
+
+__Comment__: a [clpr:Entity](#entity) is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).  Given its generic nature it is *recommended* that only subclasses of [clpr:Entity](#entity) be employed to represent nodes in the learning graph.  
+
+__Properties__
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | :---------- | :---------- |
+| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | required |
+| @id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD identifier represented as a globally-scoped IRI or a locally-scoped blank node identifier. | required |
+| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD type represented as a globally-scoped IRI. | required |
+| name | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A word or phrase by which the [clpr:Entity](#entity) is known.  Analogous to [sdo:name](http://schema.org/name) | optional |
+| description | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A short representation of the [clpr:Entity](#entity) in written form.  Analogous to [sdo:description](http://schema.org/description) | optional |
+| extensions | Map&lt;[xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string), [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)&gt;   | &nbsp; | optional |
+| dateCreated | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when the [clpr:Entity](#entity) was created or added to a data set.  Analogous to [sdo:dateCreated](http://schema.org/dateCreated). | optional |
+| dateModified | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted  date and time expressed with millisecond precision that represents when the [clpr:Entity](#entity) was last modified.  Analogous to [sdo:dateModified](http://schema.org/dateModified) | optional |
+
+__Requirements:__ a [clpr:Entity](#entity) *should* be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [clpr:Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, a [clpr:Entity](#entity) can be assigned a blank node identifier.
+
+__Subclasses__
+
+[Agent](#agent), [Attempt](#attempt), [AudioObject](#audioobject), [Collection](#collection), [DigitalResource](#digitalresource), [Forum](#forum), [ImageObject](#imageobject), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [Organization](#organization), [Person](#person), [Thread](#thread), [Session](#session), [SoftwareApplication](#softwareapplication), [VideoObject](#videoobject)
+
+<a name="profiles"/>
+
+### X.0. Profiles
+
+TODO
+
 <a name="contributors"/>
 
-### X.x Contributors
+### X.x. Contributors
 
 The following Caliper Working Group participants contributed to the writing of this specification:
 
@@ -92,3 +158,19 @@ The following Caliper Working Group participants contributed to the writing of t
 | subscribed | [clpract:Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [subscribe](http://wordnet-rdf.princeton.edu/wn31/202214527-v): receive or obtain regularly |
 | updated | [clpract:Updated](http://purl.imsglobal.org/vocab/caliper/v1/action#Updated) | [update](http://wordnet-rdf.princeton.edu/wn31/200835207-v): bring up to date; supply with recent information |
 | unsubscribed | [clpract:Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
+
+<a name="appendixB" />
+
+### Appendix B: Caliper Entities
+
+<a name="agent" />
+
+#### Agent
+
+__subClassOf:__ [Entity](#entity)
+
+__type:__ [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
+
+__Comment:__ a [clpr:Agent](#agent) is a generic class that represents a [clpr:Entity](#entity) that can initiate or perform an [Action]([#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [clpr:Agent](#agent) represents a generic type it is *recommended* that only subclasses of [clpr:Agent](#agent) be used to represent a [clpr:actor](#actor).
+
+__Subclasses:__ [Person](#person), [Organization](#organization) and [SoftwareApplication](#softwareapplication)
