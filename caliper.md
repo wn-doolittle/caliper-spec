@@ -1,3 +1,6 @@
+### Caliper Analytics<sup>TM</sup>
+### IMS Global Learning Consortium, Inc.
+
 ### Table of Contents
 * 1.x. [Namespaces](#namespaces)
 * 1.x. [Definitions](#definitions)
