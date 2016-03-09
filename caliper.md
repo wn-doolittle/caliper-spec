@@ -51,9 +51,9 @@ __IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Res
 
 __ISO 8601__: Caliper time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is in UTC. 
 
-__ profile__: TODO
+__profile__: TODO
 
-__ sensor__: TODO
+__sensor__: TODO
 
 <a name="contributors"/>
 
