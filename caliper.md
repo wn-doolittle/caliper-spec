@@ -215,6 +215,10 @@ __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsgloba
 
 __Comment:__ a Caliper [Agent](#agent) is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of [Agent](#agent) be used to represent an [Event](#event) [actor](#actor).
 
+__Requirements__
+
+* If a generic [Agent](#agent) is included in an [Event](#event) instead of one of its subclasses, its [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Agent.
+
 __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
 <a name="organization" />
@@ -234,7 +238,7 @@ __Properties__
 
 __Requirements__
 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+* The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/w3c/Organization.
 
 __Example__
 
@@ -264,7 +268,7 @@ __Comment:__ a Caliper [Person](#person) represents a human being, alive or dece
 
 __Requirements__
 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Person.
+* The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Person.
 
 __Example__
 
@@ -297,7 +301,8 @@ __Properties__
 
 __Requirements__
 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Session.
+* The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Session.
+* An [actor](#actor) MUST be specified.  TODO CHANGE TO SHOULD BE SPECIFIED?
 * It is RECOMMENDED that a [startedAtTime](#startedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedIn](#loggedIn). 
 * [startedAtTime](#startedAtTime) MUST conform to the ISO-8601 date and time format with millisecond precision.
 * It is RECOMMENDED that a [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
@@ -333,7 +338,7 @@ __Comment:__ a Caliper [SoftwareApplication](#softwareapplication) represents a 
 
 __Requirements__
 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
+* The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
 __Sample JSON-LD__
 
