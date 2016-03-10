@@ -109,7 +109,7 @@ __Properties__
 
 __Requirements:__ 
 
-* An [Event](#event) @context and 
+* An [Event](#event) @context MUST be specified.  TODO 
 * An [Event](#event) @type MUST be specified.  TODO
 * An [Event](#event) MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
 * An [Event](#event) SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
@@ -123,7 +123,18 @@ __Example__
 
 ```
 {
-   TODO
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",             
+  "actor": {
+    "@id": "https://example.edu/user/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+  "object": {
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+    "@type": "http://www.idpf.org/epub/vocab/structure/#volume"
+  }
+  "eventTime": "2015-09-15T10:15:00.000Z"
 }
 ```
 
@@ -207,7 +218,7 @@ __Comment:__ a Caliper [Agent](#agent) is a generic class that represents an [En
 __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
 <a name="organization" />
-### Organization
+#### Organization
 
 __subClassOf:__ [Agent](#agent)
 
@@ -221,9 +232,13 @@ __Properties__
 | -------- | ---- | ----------- | -----------: |
 | subOrganizationOf | [Organization](#organization) | The parent organization of an [Organization](#organization). | 0..1 |
 
-__Sample JSON-LD__
+__Requirements__
 
-```JSONLD
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+
+__Example__
+
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/colleges/1/departments/2",
@@ -239,7 +254,7 @@ __Sample JSON-LD__
 ```
 
 <a name="person" />
-### Person
+#### Person
 
 __subClassOf:__ [Agent](#agent)
 
@@ -247,7 +262,11 @@ __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.ims
 
 __Comment:__ a Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
-__Sample JSON-LD__
+__Requirements__
+
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Person.
+
+__Example__
 
 ```
 {
@@ -258,8 +277,53 @@ __Sample JSON-LD__
 }
 ```
 
+<a name="session" />
+### Session
+
+__subClassOf:__ [Entity](#entity)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Session](http://purl.imsglobal.org/caliper/v1/Session)
+
+__Comment:__ a Caliper [Session](#session) represents a Web application user session.  [SessionEvent](../events/sessionevent.md) [loggedIn](#loggedIn) actions generate a [Session](#session).  For SessionEvent [loggedOut](#loggedOut) actions, the [Session](#session) represents the target of the interaction while in the case of a [SessionEvent](../events/sessionevent.md) [timedOut](#timedOut) action, the [Session](#session) constitutes the object of the interaction. 
+
+__Properties__
+
+| Property | Type | Description | Conformance |
+| -------- | ---- | ----------- | ----------- |
+| actor | [Agent](./agent.md) | The [Agent](./agent.md) who establishes the Session.| required |
+| startedAtTime | {{ book.dataType.xsd.dateTime }}  | The date and time expressed with millisecond precision that represents when a Session commenced (ISO 8601 format required).  Analogous to {{ book.dataProperty.provo.startedAtTime }}. | recommended |
+| endedAtTime | {{ book.dataType.xsd.dateTime }} | The date and time expressed with millisecond precision that represents when a Session ended or was terminated (ISO 8601 format required).  Analogous to {{ book.dataProperty.provo.endedAtTime }} | recommended |
+| duration | {{ book.dataType.xsd.string }} | The total interval of time required to complete the Attempt (ISO 8601 format required). | optional |
+
+__Requirements__
+
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Session.
+* It is RECOMMENDED that a [startedAtTime](#startedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedIn](#loggedIn). 
+* [startedAtTime](#startedAtTime) MUST conform to the ISO-8601 date and time format with millisecond precision.
+* It is RECOMMENDED that a [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
+* [endedAtTime](#endedAtTime) MUST conform to the ISO-8601 date and time format with millisecond precision.
+* [duration](#duration) MUST conform to the ISO-8601 duration format.
+
+__Example__
+
+```JSONLD
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/session-123456789",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+  "name": "session-123456789",
+  "actor": {
+    "@id": "https://example.edu/user/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+    "dateCreated": "2015-08-01T06:00:00.000Z"
+  },
+  "dateCreated": "2015-09-15T10:15:00.000Z",
+  "startedAtTime": "2015-09-15T10:15:00.000Z"
+}
+```
+
 <a name="softwareapplication" />
-### SoftwareApplication
+#### SoftwareApplication
 
 __subClassOf:__ [Agent](#agent)
 
@@ -267,9 +331,13 @@ __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/SoftwareApplication](http:/
 
 __Comment:__ a Caliper [SoftwareApplication](#softwareapplication) represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
+__Requirements__
+
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
+
 __Sample JSON-LD__
 
-```JSONLD
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.com/reader",
