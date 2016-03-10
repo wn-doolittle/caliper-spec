@@ -278,7 +278,7 @@ __Example__
 ```
 
 <a name="session" />
-### Session
+#### Session
 
 __subClassOf:__ [Entity](#entity)
 
@@ -288,12 +288,12 @@ __Comment:__ a Caliper [Session](#session) represents a Web application user ses
 
 __Properties__
 
-| Property | Type | Description | Conformance |
-| -------- | ---- | ----------- | ----------- |
-| actor | [Agent](./agent.md) | The [Agent](./agent.md) who establishes the Session.| required |
-| startedAtTime | {{ book.dataType.xsd.dateTime }}  | The date and time expressed with millisecond precision that represents when a Session commenced (ISO 8601 format required).  Analogous to {{ book.dataProperty.provo.startedAtTime }}. | recommended |
-| endedAtTime | {{ book.dataType.xsd.dateTime }} | The date and time expressed with millisecond precision that represents when a Session ended or was terminated (ISO 8601 format required).  Analogous to {{ book.dataProperty.provo.endedAtTime }} | recommended |
-| duration | {{ book.dataType.xsd.string }} | The total interval of time required to complete the Attempt (ISO 8601 format required). | optional |
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----------: |
+| actor | [Agent](#agent) | The [Agent](#agent) who establishes the [Session](#session).| 1 |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session commenced.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 1 |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete the Attempt. | 0..1 |
 
 __Requirements__
 
