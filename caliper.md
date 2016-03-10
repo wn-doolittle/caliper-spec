@@ -6,6 +6,7 @@
 * 1.x. [Namespaces](#namespaces)
 * 1.x. [Definitions](#definitions)
 * 1.x. [Terminology](#terminology)
+* 2.x. [Data and Semantic Interoperability](#interoperability)
 * X.0. [Event](#event)
 * X.0. [Entity](#entity)
 * X.0. [Profiles](#profiles)
@@ -16,13 +17,11 @@
 
 
 <a name="introduction"/>  
-
 ### 1.0. Introduction
 
 TODO
 
 <a name="namespaces"/>  
-
 ### 1.x. Namespaces
 
 The Caliper information model references a number of terms derived from other ontologies.  Such terms along with those native to Caliper are identified with a prefix drawn from the list below that maps to the relevant namespace as, for example, the data type [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime).
@@ -51,7 +50,6 @@ The Caliper information model references a number of terms derived from other on
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).
 
 <a name="definitions"/>  
-
 ### 1.x. Definitions
 
 __actor__: TODO
@@ -80,8 +78,12 @@ __profile__: TODO
 
 __sensor__: TODO
 
-<a name="event"/>
+<a name="interoperability">
+### 2.0 Data and Semantic Interoperability
 
+TODO
+
+<a name="event"/>
 ### X.0. Event
 
 __Node type:__ [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
@@ -107,6 +109,8 @@ __Properties__
 
 __Requirements:__ 
 
+* An [Event](#event) @context and 
+* An [Event](#event) @type MUST be specified.  TODO
 * An [Event](#event) MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
 * An [Event](#event) SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
 * Subclasses of [Event](#event) MAY specify additional properties or recommend inclusion of optional properties for a more concise representation of the [Event](#event).
@@ -124,7 +128,6 @@ __Example__
 ```
 
 <a name="entity">
-
 ### X.0. Entity
 
 __type__: [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
@@ -144,7 +147,9 @@ __Properties__
 | dateCreated | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when the [Entity](#entity) was created or added to a data set.  Analogous to [sdo:dateCreated](http://schema.org/dateCreated). | 0..1 |
 | dateModified | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted  date and time expressed with millisecond precision that represents when the [Entity](#entity) was last modified.  Analogous to [sdo:dateModified](http://schema.org/dateModified). | 0..1 |
 
-__Requirements:__ an [Entity](#entity) SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an [Entity](#entity) MUST be assigned a blank node identifier.
+__Requirements:__ 
+
+* An [Entity](#entity) SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an [Entity](#entity) MUST be assigned a blank node identifier.
 
 __Subclasses__
 
@@ -159,13 +164,11 @@ __Example__
 ```
 
 <a name="profiles"/>
-
 ### X.0. Profiles
 
 TODO
 
 <a name="contributors"/>
-
 ### X.x. Contributors
 
 The following Caliper Working Group participants contributed to the writing of this specification:
@@ -174,8 +177,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | ------ | --------- |
 | [Anthony Whyte](http://github.com/arwhyte) | University of Michigan |
 
-<a name="appendixA"/>  
- 
+<a name="appendixA"/>   
 ### Appendix A: Caliper Actions
 
 | Label | IRI | WordNet Gloss |
@@ -191,21 +193,92 @@ The following Caliper Working Group participants contributed to the writing of t
 | unsubscribed | [clpract:Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
 
 <a name="appendixB" />
-
 ### Appendix B: Caliper Entities
 
 <a name="agent" />
-
 #### Agent
 
 __subClassOf:__ [Entity](#entity)
 
-__type:__ [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
 
-__Comment:__ a [clpr:Agent](#agent) is a generic class that represents a [clpr:Entity](#entity) that can initiate or perform an [action]([#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [clpr:Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of [clpr:Agent](#agent) be used to represent a [clpr:actor](#actor).
+__Comment:__ a Caliper [Agent](#agent) is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of [Agent](#agent) be used to represent an [Event](#event) [actor](#actor).
 
-__Subclasses:__ [Person](#person), [Organization](#organization) and [SoftwareApplication](#softwareapplication)
+__Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
+<a name="organization" />
+### Organization
+
+__subClassOf:__ [Agent](#agent)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/w3c/Organization](http://purl.imsglobal.org/caliper/v1/w3c/Organization)
+
+__Comment:__ a Caliper [Organization](#organization) represents a group of people organized into a community or other social, commercial, educational or political structure.  The group has a common purpose or reason for existence that spans beyond the set of people belonging to it and can act as an [Agent](#agent). An [Organization](#organization) can often be decomposed into a hierarchical structure.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
+
+__Properties__
+
+| Property | Type | Description ||
+| -------- | ---- | ----------- | -----------: |
+| subOrganizationOf | [Organization](#organization) | The parent organization of an [Organization](#organization). | 0..1 |
+
+__Sample JSON-LD__
+
+```JSONLD
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/colleges/1/departments/2",
+  "@type": "http://purl.imsglobal.org/caliper/v1/w3c/Organization",
+  "name": "Department of History",
+  "subOrganizationOf": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/colleges/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/w3c/Organization",
+    "name": "College of Social Science"
+  }
+}
+```
+
+<a name="person" />
+### Person
+
+__subClassOf:__ [Agent](#agent)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.imsglobal.org/caliper/v1/lis/Person)
+
+__Comment:__ a Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
+
+__Sample JSON-LD__
+
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/users/554433",
+  "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+  "dateCreated": "2015-08-01T06:00:00.000Z"
+}
+```
+
+<a name="softwareapplication" />
+### SoftwareApplication
+
+__subClassOf:__ [Agent](#agent)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/SoftwareApplication](http://purl.imsglobal.org/caliper/v1/SoftwareApplication)
+
+__Comment:__ a Caliper [SoftwareApplication](#softwareapplication) represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
+
+__Sample JSON-LD__
+
+```JSONLD
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/reader",
+  "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+  "name": "ePub reader"
+}
+```
+
+<a name="reference" />
 ### References
 
 <a name="json-ld">
