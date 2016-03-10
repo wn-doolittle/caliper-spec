@@ -1,16 +1,18 @@
-### Caliper Analytics<sup>TM</sup> Specification, version 1.0
+### Caliper Analytics<sup>TM</sup> Specification, version 1.1
 ### IMS Global Learning Consortium, Inc.
 
 ### Table of Contents
 * 1.0. [Introduction](#introduction)
 * 1.x. [Namespaces](#namespaces)
 * 1.x. [Definitions](#definitions)
+* 1.x. [Terminology](#terminology)
 * X.0. [Event](#event)
 * X.0. [Entity](#entity)
 * X.0. [Profiles](#profiles)
 * X.x. [Contributors](#contributors)
 *	[Appendix A: Caliper Actions](#appendixA)
 * [Appendix B: Caliper Entities](#appendixB)
+* [References](#references)
 
 
 <a name="introduction"/>  
@@ -43,6 +45,10 @@ The Caliper information model references a number of terms derived from other on
 | sdo | http://schema.org/ | schema.org |
 | skos |	http://www.w3.org/2004/02/skos/core# | Simple Knowledge Organization System |
 | xsd | https://www.w3.org/TR/xmlschema11-2/# | XML Schema Definition Language 1.1 |
+
+### 1.x. Key words
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).
 
 <a name="definitions"/>  
 
@@ -99,6 +105,24 @@ __Properties__
 | membership | [clprlis:Membership]([#membership) | . . . | 0..1 |
 | session | [clpr:Session]([#session) | . . . | 0..1 |
 
+__Requirements:__ 
+
+* An [Event](#event) MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
+* An [Event](#event) SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
+* Subclasses of [Event](#event) MAY specify additional properties or recommend inclusion of optional properties for a more concise representation of the [Event](#event).
+
+__Subclasses__
+
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ReadingEvent](#readingEvent), [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ViewEvent](#viewEvent)
+
+__Example__
+
+```
+{
+   TODO
+}
+```
+
 <a name="entity">
 
 ### X.0. Entity
@@ -120,11 +144,19 @@ __Properties__
 | dateCreated | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when the [Entity](#entity) was created or added to a data set.  Analogous to [sdo:dateCreated](http://schema.org/dateCreated). | 0..1 |
 | dateModified | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted  date and time expressed with millisecond precision that represents when the [Entity](#entity) was last modified.  Analogous to [sdo:dateModified](http://schema.org/dateModified). | 0..1 |
 
-__Requirements:__ an [Entity](#entity) *should* be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an [Entity](#entity) can be assigned a blank node identifier.
+__Requirements:__ an [Entity](#entity) SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an [Entity](#entity) MUST be assigned a blank node identifier.
 
 __Subclasses__
 
 [Agent](#agent), [Attempt](#attempt), [AudioObject](#audioobject), [Collection](#collection), [DigitalResource](#digitalresource), [Forum](#forum), [ImageObject](#imageobject), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [Organization](#organization), [Person](#person), [Thread](#thread), [Session](#session), [SoftwareApplication](#softwareapplication), [VideoObject](#videoobject)
+
+__Example__
+
+```
+{
+   TODO
+}
+```
 
 <a name="profiles"/>
 
@@ -141,7 +173,6 @@ The following Caliper Working Group participants contributed to the writing of t
 | Name | Organization |
 | ------ | --------- |
 | [Anthony Whyte](http://github.com/arwhyte) | University of Michigan |
-
 
 <a name="appendixA"/>  
  
@@ -171,6 +202,17 @@ __subClassOf:__ [Entity](#entity)
 
 __type:__ [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
 
-__Comment:__ a [clpr:Agent](#agent) is a generic class that represents a [clpr:Entity](#entity) that can initiate or perform an [Action]([#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [clpr:Agent](#agent) represents a generic type it is *recommended* that only subclasses of [clpr:Agent](#agent) be used to represent a [clpr:actor](#actor).
+__Comment:__ a [clpr:Agent](#agent) is a generic class that represents a [clpr:Entity](#entity) that can initiate or perform an [action]([#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [clpr:Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of [clpr:Agent](#agent) be used to represent a [clpr:actor](#actor).
 
 __Subclasses:__ [Person](#person), [Organization](#organization) and [SoftwareApplication](#softwareapplication)
+
+### References
+
+<a name="json-ld">
+__JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler, N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
+
+<a name="lti">
+__LTI__  TODO
+
+<a name="rfc2119">
+__RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels". March 1997. URL: https://tools.ietf.org/html/rfc2119.
