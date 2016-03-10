@@ -88,7 +88,7 @@ TODO
 
 __Node type:__ [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
 
-__Comment:__ a Caliper [Event](#event) is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity utilize the several subclasses of [Event](#event) when constructing a [Event](#event) rather than instantiating instances of the [Event](#event) class itself.
+__Comment:__ a Caliper [Event](#event) is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) when constructing aN [Event](#event) rather than instantiating instances of the [Event](#event) class itself.
 
 __Properties__
 
@@ -143,7 +143,7 @@ __Example__
 
 __type__: [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
 
-__Comment__: a Caliper [Entity](#entity) is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).  Given its generic nature it is *recommended* that only subclasses of [Entity](#entity) be employed to represent nodes in the learning graph.  
+__Comment__: a Caliper [Entity](#entity) is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).  Given its generic nature it is RECOMMENDED that only subclasses of [Entity](#entity) be employed to represent nodes in the learning graph.  
 
 __Properties__
 
