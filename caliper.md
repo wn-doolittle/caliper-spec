@@ -201,7 +201,7 @@ __Comment__: TODO
 __Supported actions__: [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
 
 __Requirements__ 
-* [SessionEvent](#sessionEvent) property values vary between supported actions.  The following matrix of property values MUST be followed when generating a [SessionEvent](#sessionEvent).  In addition 
+* SessionEvent property values vary between supported actions.  When generating a SessionEvent, the following action/property value matrix MUST be followed.  In addition 
 * All REQUIRED properties MUST be specified.
 * All OPTIONAL properties SHOULD be specified if a value is listed.
 
@@ -219,7 +219,8 @@ __Requirements__
 | session | [Session]([#session) | [Session]([#session) | [Session]([#session) | 0..1 | 
 
 __Certification__
-* The [loggedIn](#loggedIn) action MUST be implemented.
+* [loggedIn](#loggedIn) is a REQUIRED action and MUST be implemented.
+* All other actions are considered OPTIONAL for certification purposes.
 
 <a name="endpoints"/>
 ### X.0. Endpoints
