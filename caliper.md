@@ -186,39 +186,42 @@ __Example__
 
 TODO
 
-
+<a name="sessionProfile" />
 ### X.x. Session Profile
 
-TODO The Session Profile models . . . .  [SessionEvent](../events/sessionevent.md) [loggedIn](#loggedIn) actions generate a [Session](#session).  For SessionEvent [loggedOut](#loggedOut) actions, the [Session](#session) represents the target of the interaction while in the case of a [SessionEvent](../events/sessionevent.md) [timedOut](#timedOut) action, the [Session](#session) constitutes the object of the interaction. 
+The Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
 
+<a name="sessionEvent" />
 #### X.x. SessionEvent
-
-__Comment__: TODO
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
 
-__Required actions__: [loggedIn](#loggedIn)
+__Comment__: TODO
 
-__Optional actions__:[loggedOut](#loggedOut), [timedOut](#timedOut)
+__Supported actions__: [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
 
-| SessionEvent  | loggedIn | loggedOut | timedOut | Conformance |
-| --------  | -------- | --------- | -------- | ----------- |
-| actor | [Person](#person) |[Person](#person) | [SoftwareApplication](#softwareApplication) | required |
-| action | [loggedIn](#loggedIn) | [loggedOut](#loggedOut) | [timedOut](#timedOut) | required |
-| object | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) | required |
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | required |
-| target | [DigitalResource](#digitalResource) | [Session]([#session) | &nbsp; | recommended |
-| generated | &nbsp; | &nbsp; | &nbsp; | NA |
-| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)| optional |
-| group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) | optional |
-| membership | [Membership]([#membership) |  [Membership]([#membership) |  [Membership]([#membership) | optional |
-| session | [Session]([#session) | [Session]([#session) | [Session]([#session) | optional |
+__Requirements__: [SessionEvent](#sessionEvent) property values vary between supported actions.  The following matrix of property values MUST be followed when generating a [SessionEvent](#sessionEvent).  
 
-__Requirements__:
+In addition:
+* All REQUIRED properties designated MUST be specified.  
+* OPTIONAL [target](#target) and [generated](#generated) properties SHOULD be specified if a value is listed.
 
-TODO
+| SessionEvent  | loggedIn | loggedOut | timedOut ||
+| --------  | -------- | --------- | -------- | ---: |
+| actor | [Person](#person) |[Person](#person) | [SoftwareApplication](#softwareApplication) | 1 |
+| action | [loggedIn](#loggedIn) | [loggedOut](#loggedOut) | [timedOut](#timedOut) | 1 |
+| object | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) | 1 |
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
+| target | [DigitalResource](#digitalResource) | [Session]([#session) | &nbsp; | 0..1 |
+| generated | [Session]([#session) | &nbsp; | &nbsp; | 0..1 |
+| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)| 0..1 |
+| group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) | 0..1 |
+| membership | [Membership]([#membership) |  [Membership]([#membership) |  [Membership]([#membership) | 0..1 |
+| session | [Session]([#session) | [Session]([#session) | [Session]([#session) | 0..1 | 
 
-
+__Certification__
+ 
+* The [loggedIn](#loggedIn) action MUST be implemented.
 
 <a name="endpoints"/>
 ### X.0. Endpoints
@@ -281,12 +284,12 @@ __Comment:__ a Caliper [Organization](#organization) represents a group of peopl
 __Properties__
 
 | Property | Type | Description ||
-| -------- | ---- | ----------- | -----------: |
+| -------- | ---- | ----------- |---: |
 | subOrganizationOf | [Organization](#organization) | The parent organization of an [Organization](#organization). | 0..1 |
 
 __Requirements__
 
-* The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/w3c/Organization.
 
 __Example__
 
@@ -316,7 +319,7 @@ __Comment:__ a Caliper [Person](#person) represents a human being, alive or dece
 
 __Requirements__
 
-* The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Person.
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Person.
 
 __Example__
 
@@ -341,7 +344,7 @@ __Comment:__ a Caliper [Session](#session) represents a Web application user ses
 __Properties__
 
 | Property | Type | Description ||
-| -------- | ---- | ----------- | ----------: |
+| -------- | ---- | ----------- | ---: |
 | actor | [Agent](#agent) | The [Agent](#agent) who establishes the [Session](#session).| 0..1 |
 | startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
 | endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
@@ -349,7 +352,7 @@ __Properties__
 
 __Requirements__
 
-* The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Session.
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Session.
 * It is RECOMMENDED that an [actor](#actor) be specified.
 * A [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent) with an action of [loggedIn](#loggedIn). 
 * If a [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
@@ -386,7 +389,7 @@ __Comment:__ a Caliper [SoftwareApplication](#softwareapplication) represents a 
 
 __Requirements__
 
-* The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
 __Sample JSON-LD__
 
