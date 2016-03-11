@@ -203,9 +203,8 @@ __Comment__: TODO
 __Supported actions__: [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
 
 __Requirements__ 
-* SessionEvent property values vary between supported actions.  When generating a SessionEvent, the following action/property value matrix MUST be followed.  In addition 
-* All REQUIRED properties MUST be specified.
-* All OPTIONAL properties SHOULD be specified if a value is listed.
+* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SessionEvent.
+* SessionEvent property values vary between supported actions.  When generating a SessionEvent, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
 
 | SessionEvent  | loggedIn | loggedOut | timedOut ||
 | --------  | -------- | --------- | -------- | ---: |
