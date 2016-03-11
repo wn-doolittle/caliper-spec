@@ -10,11 +10,14 @@
 * X.0. [Event](#event)
 * X.0. [Entity](#entity)
 * X.0. [Profiles](#profiles)
+* X.0. [Sensor API](#api)
+* X.0. [Transport](#transport)
+  * X.0 [Envelope](#envelope)
+* X.0. [Endpoints](#endpoints)
 * X.x. [Contributors](#contributors)
 *	[Appendix A: Caliper Actions](#appendixA)
 * [Appendix B: Caliper Entities](#appendixB)
 * [References](#references)
-
 
 <a name="introduction"/>  
 ### 1.0. Introduction
@@ -86,7 +89,7 @@ TODO
 <a name="event"/>
 ### X.0. Event
 
-__Node type:__ [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
+__&#64;type__: [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
 
 __Comment:__ a Caliper [Event](#event) is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) when constructing aN [Event](#event) rather than instantiating instances of the [Event](#event) class itself.
 
@@ -96,23 +99,25 @@ __Properties__
 | -------- | ---- | ----------- | -----------: |
 | @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | 1 |
 | @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD type represented as a globally-scoped IRI. | 1 |
-| actor | [clpr:Agent](#agent) | The [Agent](#agent) who initiated or is the subject of the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication]([#softwareapplication). | 1 |
+| actor | [Agent](#agent) | The [Agent](#agent) who initiated or is the subject of the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication]([#softwareapplication). | 1 |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | . . . | 1 |
-| object | [clpr:Entity]([#entity) | . . . | 1 |
+| object | [Entity]([#entity) | . . . | 1 |
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when the [Event](#event) occurred. | 1 |
-| target | [clpr:Entity]([#entity) | . . . | 0..1 |
-| generated | [clpr:Entity]([#entity) | . . . | 0..1 |
-| edApp | [clpr:SoftwareApplication]([#softwareapplication) | . . . | 0..1 |
-| group | [clprw3c:Organization]([#organization) | . . . | 0..1 |
-| membership | [clprlis:Membership]([#membership) | . . . | 0..1 |
-| session | [clpr:Session]([#session) | . . . | 0..1 |
+| target | [Entity]([#entity) | . . . | 0..1 |
+| generated | [Entity]([#entity) | . . . | 0..1 |
+| edApp | [SoftwareApplication]([#softwareapplication) | . . . | 0..1 |
+| group | [Organization]([#organization) | . . . | 0..1 |
+| membership | [Membership]([#membership) | . . . | 0..1 |
+| session | [Session]([#session) | . . . | 0..1 |
 
 __Requirements:__ 
 
 * An [Event](#event) @context MUST be specified.  TODO 
 * An [Event](#event) @type MUST be specified.  TODO
 * An [Event](#event) MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
+* [eventTime](#eventTime) value MUST conform to the ISO-8601 date and time format with millisecond precision.
 * An [Event](#event) SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
+* Properties whose values are null or empty SHOULD be excluded from the JSON-LD representation of the [Event](#event).
 * Subclasses of [Event](#event) MAY specify additional properties or recommend inclusion of optional properties for a more concise representation of the [Event](#event).
 
 __Subclasses__
@@ -141,7 +146,7 @@ __Example__
 <a name="entity">
 ### X.0. Entity
 
-__type__: [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
+__&#64;type__: [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
 
 __Comment__: a Caliper [Entity](#entity) is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).  Given its generic nature it is RECOMMENDED that only subclasses of [Entity](#entity) be employed to represent nodes in the learning graph.  
 
@@ -160,7 +165,9 @@ __Properties__
 
 __Requirements:__ 
 
-* An [Entity](#entity) SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an [Entity](#entity) MUST be assigned a blank node identifier.
+* An [Entity](#entity) SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an [Entity](#entity) MUST be assigned a blank node identifier. 
+* If a [dateCreated](#dateCreated) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
+* If a [dateModified](#dateModified) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 __Subclasses__
 
@@ -179,6 +186,45 @@ __Example__
 
 TODO
 
+
+### X.x. Session Profile
+
+TODO The Session Profile models . . . .  [SessionEvent](../events/sessionevent.md) [loggedIn](#loggedIn) actions generate a [Session](#session).  For SessionEvent [loggedOut](#loggedOut) actions, the [Session](#session) represents the target of the interaction while in the case of a [SessionEvent](../events/sessionevent.md) [timedOut](#timedOut) action, the [Session](#session) constitutes the object of the interaction. 
+
+#### X.x. SessionEvent
+
+__Comment__: TODO
+
+__&#64;type__: [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
+
+__Required actions__: [loggedIn](#loggedIn)
+
+__Optional actions__:[loggedOut](#loggedOut), [timedOut](#timedOut)
+
+| SessionEvent  | loggedIn | loggedOut | timedOut | Conformance |
+| --------  | -------- | --------- | -------- | ----------- |
+| actor | [Person](#person) |[Person](#person) | [SoftwareApplication](#softwareApplication) | required |
+| action | [loggedIn](#loggedIn) | [loggedOut](#loggedOut) | [timedOut](#timedOut) | required |
+| object | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) | required |
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | required |
+| target | [DigitalResource](#digitalResource) | [Session]([#session) | &nbsp; | recommended |
+| generated | &nbsp; | &nbsp; | &nbsp; | NA |
+| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)| optional |
+| group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) | optional |
+| membership | [Membership]([#membership) |  [Membership]([#membership) |  [Membership]([#membership) | optional |
+| session | [Session]([#session) | [Session]([#session) | [Session]([#session) | optional |
+
+__Requirements__:
+
+TODO
+
+
+
+<a name="endpoints"/>
+### X.0. Endpoints
+
+TODO
+
 <a name="contributors"/>
 ### X.x. Contributors
 
@@ -193,15 +239,17 @@ The following Caliper Working Group participants contributed to the writing of t
 
 | Label | IRI | WordNet Gloss |
 | ------ | --- | ------------- |
-| created | [clpract:Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [create](http://wordnet-rdf.princeton.edu/wn31/201620211-v): make or cause to be or to become |
+| <a name="created" />created | [clpract:Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [create](http://wordnet-rdf.princeton.edu/wn31/201620211-v): make or cause to be or to become |
 | deleted | [clpract:Deleted](http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted) | [delete](http://wordnet-rdf.princeton.edu/wn31/201001860-v): wipe out digitally |
-| markedAsRead | [clpract:MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v): designate as if by a mark, [read](http://wordnet-rdf.princeton.edu/wn31/200626756-v): interpret something that is written or printed |
-| markedAsUnread | [clpract:MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
-| posted | [clpract:Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [post](http://wordnet-rdf.princeton.edu/wn31/201033289-v): to cause to be directed or transmitted to another place |
-| removed | [clpract:Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove](http://wordnet-rdf.princeton.edu/wn31/200181704-v): remove from sight |
-| subscribed | [clpract:Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [subscribe](http://wordnet-rdf.princeton.edu/wn31/202214527-v): receive or obtain regularly |
-| updated | [clpract:Updated](http://purl.imsglobal.org/vocab/caliper/v1/action#Updated) | [update](http://wordnet-rdf.princeton.edu/wn31/200835207-v): bring up to date; supply with recent information |
-| unsubscribed | [clpract:Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
+| <a name="loggedIn" />logged in | [clpract:LoggedIn](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn) | [log in](http://wordnet-rdf.princeton.edu/wn31/202253955-v): enter a computer or software application |
+| <a name="loggedIn" />logged out | [clpract:LoggedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut) | [log out](http://wordnet-rdf.princeton.edu/wn31/202254101-v): exit a computer or software application |
+| <a name="markedAsRead" />marked as read | [clpract:MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v): designate as if by a mark, [read](http://wordnet-rdf.princeton.edu/wn31/200626756-v): interpret something that is written or printed |
+| <a name="markedAsUnread" />marked as unread | [clpract:MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
+| <a name="posted" />posted | [clpract:Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [post](http://wordnet-rdf.princeton.edu/wn31/201033289-v): to cause to be directed or transmitted to another place |
+| <a name="removed" />removed | [clpract:Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove](http://wordnet-rdf.princeton.edu/wn31/200181704-v): remove from sight |
+| <a name="subscribed" />subscribed | [clpract:Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [subscribe](http://wordnet-rdf.princeton.edu/wn31/202214527-v): receive or obtain regularly |
+| <a name="updated" />updated | [clpract:Updated](http://purl.imsglobal.org/vocab/caliper/v1/action#Updated) | [update](http://wordnet-rdf.princeton.edu/wn31/200835207-v): bring up to date; supply with recent information |
+| <a name="unsubscribed" />unsubscribed | [clpract:Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
 
 <a name="appendixB" />
 ### Appendix B: Caliper Entities
@@ -211,7 +259,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 __subClassOf:__ [Entity](#entity)
 
-__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
+__&#64;type__: [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
 
 __Comment:__ a Caliper [Agent](#agent) is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of [Agent](#agent) be used to represent an [Event](#event) [actor](#actor).
 
@@ -226,7 +274,7 @@ __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareAppli
 
 __subClassOf:__ [Agent](#agent)
 
-__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/w3c/Organization](http://purl.imsglobal.org/caliper/v1/w3c/Organization)
+__&#64;type__: [http://purl.imsglobal.org/caliper/v1/w3c/Organization](http://purl.imsglobal.org/caliper/v1/w3c/Organization)
 
 __Comment:__ a Caliper [Organization](#organization) represents a group of people organized into a community or other social, commercial, educational or political structure.  The group has a common purpose or reason for existence that spans beyond the set of people belonging to it and can act as an [Agent](#agent). An [Organization](#organization) can often be decomposed into a hierarchical structure.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
@@ -262,7 +310,7 @@ __Example__
 
 __subClassOf:__ [Agent](#agent)
 
-__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.imsglobal.org/caliper/v1/lis/Person)
+__&#64;type__: [http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.imsglobal.org/caliper/v1/lis/Person)
 
 __Comment:__ a Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
@@ -286,28 +334,28 @@ __Example__
 
 __subClassOf:__ [Entity](#entity)
 
-__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Session](http://purl.imsglobal.org/caliper/v1/Session)
+__&#64;type__: [http://purl.imsglobal.org/caliper/v1/Session](http://purl.imsglobal.org/caliper/v1/Session)
 
-__Comment:__ a Caliper [Session](#session) represents a Web application user session.  [SessionEvent](../events/sessionevent.md) [loggedIn](#loggedIn) actions generate a [Session](#session).  For SessionEvent [loggedOut](#loggedOut) actions, the [Session](#session) represents the target of the interaction while in the case of a [SessionEvent](../events/sessionevent.md) [timedOut](#timedOut) action, the [Session](#session) constitutes the object of the interaction. 
+__Comment:__ a Caliper [Session](#session) represents a Web application user session.
 
 __Properties__
 
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----------: |
-| actor | [Agent](#agent) | The [Agent](#agent) who establishes the [Session](#session).| 1 |
-| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session commenced.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 1 |
+| actor | [Agent](#agent) | The [Agent](#agent) who establishes the [Session](#session).| 0..1 |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
 | endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
 | duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete the Attempt. | 0..1 |
 
 __Requirements__
 
 * The [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Session.
-* An [actor](#actor) MUST be specified.  TODO CHANGE TO SHOULD BE SPECIFIED?
-* It is RECOMMENDED that a [startedAtTime](#startedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedIn](#loggedIn). 
-* [startedAtTime](#startedAtTime) MUST conform to the ISO-8601 date and time format with millisecond precision.
-* It is RECOMMENDED that a [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
-* [endedAtTime](#endedAtTime) MUST conform to the ISO-8601 date and time format with millisecond precision.
-* [duration](#duration) MUST conform to the ISO-8601 duration format.
+* It is RECOMMENDED that an [actor](#actor) be specified.
+* A [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent) with an action of [loggedIn](#loggedIn). 
+* If a [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* It is RECOMMENDED that an [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
+* If a [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* If a [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
 __Example__
 
@@ -332,7 +380,7 @@ __Example__
 
 __subClassOf:__ [Agent](#agent)
 
-__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/SoftwareApplication](http://purl.imsglobal.org/caliper/v1/SoftwareApplication)
+__&#64;type__: [http://purl.imsglobal.org/caliper/v1/SoftwareApplication](http://purl.imsglobal.org/caliper/v1/SoftwareApplication)
 
 __Comment:__ a Caliper [SoftwareApplication](#softwareapplication) represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
