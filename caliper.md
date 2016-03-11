@@ -10,6 +10,8 @@
 * X.0. [Event](#event)
 * X.0. [Entity](#entity)
 * X.0. [Profiles](#profiles)
+  * X.x. [Session Profile](#sessionProfile)
+    * X.X. [SessionEvent](#sessionEvent)
 * X.0. [Sensor API](#api)
 * X.0. [Transport](#transport)
   * X.0 [Envelope](#envelope)
