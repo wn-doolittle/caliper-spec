@@ -36,6 +36,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 *	[Appendix A: Caliper Actions](#appendixA)
 * [Appendix B: Caliper Entities](#appendixB)
 * [References](#references)
+* [Revision History](#revisionHistory)
 
 <a name="introduction"/>  
 ### 1.0. Introduction
@@ -66,7 +67,7 @@ The Caliper information model references a number of terms derived from other on
 | skos |	http://www.w3.org/2004/02/skos/core# | Simple Knowledge Organization System |
 | xsd | https://www.w3.org/TR/xmlschema11-2/# | XML Schema Definition Language 1.1 |
 
-### 1.x. Key words
+### 1.x. Terminology
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).
 
@@ -451,3 +452,7 @@ __LTI__  TODO
 
 <a name="rfc2119">
 __RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels". March 1997. URL: https://tools.ietf.org/html/rfc2119.
+
+### Revision History
+
+TODO
