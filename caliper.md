@@ -1,6 +1,22 @@
 ### Caliper Analytics<sup>TM</sup> Specification, version 1.1
 ### IMS Global Learning Consortium, Inc.
 
+### IPR and Distribution Notices
+
+Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
+
+IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
+
+Copyright © 2016 IMS Global Learning Consortium. All Rights Reserved.
+
+Use of this specification to develop products or services is governed by the license with IMS found on the IMS website: [http://www.imsglobal.org/license.html](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
+
+Permission is granted to all parties to use excerpts from this document as needed in producing requests for proposals.
+
+The limited permissions granted above are perpetual and will not be revoked by IMS or its successors or assigns.
+
+THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICATION SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.
+
 ### Table of Contents
 * 1.0. [Introduction](#introduction)
 * 1.x. [Namespaces](#namespaces)
@@ -191,7 +207,9 @@ TODO
 <a name="sessionProfile" />
 ### X.x. Session Profile
 
-The Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
+__Comment__: The Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
+
+__Supported actions__: [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
 
 <a name="sessionEvent" />
 #### X.x. SessionEvent
@@ -199,8 +217,6 @@ The Session Profile models activities associated with a user session established
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
 
 __Comment__: TODO
-
-__Supported actions__: [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
 
 __Requirements__ 
 * [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SessionEvent.
@@ -271,6 +287,28 @@ __Requirements__
 * If a generic [Agent](#agent) is included in an [Event](#event) instead of one of its subclasses, its [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Agent.
 
 __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
+
+
+<a name="digitalResource" />
+#### DigitalResource
+
+__subClassOf:__ [Entity](#entity)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/DigitalResource](http://purl.imsglobal.org/caliper/v1/DigitalResource)
+
+__Comment:__ a Caliper DigitalResource is a generic class that represents a content item.  It is analogous to an [sdo:CreativeWork](https://schema.org/CreativeWork).  Given that DigitalResource represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+
+__Properties__
+
+| Property | Type | Description | Conformance |
+| -------- | ---- | ----------- | ----------- |
+| creator | [Agent](./agent.md) | The [Agent](./agent.md) responsible for bringing the described DigitalResource into being.  Analogous to {{ book.dataProperty.sdo.creator }} or {{ book.dataProperty.dcterms.creator }}. | optional |
+| ~~objectType~~ | ~~[Collection](./collection.md)&lt;{{ book.dataType.xsd.string }}&gt;~~ | &nbsp;| deprecated |
+| keywords | [Collection](./collection.md)&lt;{{ book.dataType.xsd.string }}&gt; | A short representation of the Entity in written form.  Analogous to {{ book.dataProperty.sdo.description }} | optional |
+| alignedLearningObjective | [Collection](./collection.md)&lt;[LearningObjective](./learningobjective.md)&gt; | One or more [LearningObjectives](./learningobject.md)s that describe what the [Person](./person.md) is expected to accomplish after engaging with this DigitalResource | optional |
+| isPartOf | [DigitalResource](./digitalresource.md) | A related DigitalResource that includes or incorporates the described DigitalResource as a part of its whole.  Analogous to {{ book.dataProperty.sdo.isPartOf }} or {{ book.dataProperty.dcterms.isPartOf }}. | optional |
+| datePublished | {{ book.dataType.xsd.dateTime }} | The date and time expressed with millisecond precision that represents the publication date of the DigitalResource (ISO 8601 format required).  Analogous to {{ book.dataProperty.sdo.datePublished }} | optional |
+| version | {{ book.dataType.xsd.string }} | An identifier that designates the current form of the DigitalResource.  Analogous to {{ book.dataProperty.sdo.version }} | optional |
 
 <a name="organization" />
 #### Organization
@@ -354,7 +392,7 @@ __Requirements__
 
 * [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Session.
 * It is RECOMMENDED that an [actor](#actor) be specified.
-* A [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent) with an action of [loggedIn](#loggedIn). 
+* A [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent). 
 * If a [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 * It is RECOMMENDED that an [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
 * If a [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
@@ -362,7 +400,7 @@ __Requirements__
 
 __Example__
 
-```JSONLD
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.com/viewer/session-123456789",
