@@ -133,7 +133,7 @@ __Requirements:__
 
 * An Event @context MUST be specified.  TODO ELABORATE 
 * An Event @type MUST be specified.  TODO ELABORATE
-* If a generic Event is created instead of one of its subclasses, the Event [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Event.
+* If a generic Event is created instead of one of its subclasses, the Event [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Event.
 * An Event MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
 * An Event [eventTime](#eventTime) value MUST conform to the ISO-8601 date and time format with millisecond precision.
 * An Event SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
@@ -186,7 +186,7 @@ __Properties__
 __Requirements:__ 
 
 * An Entity SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
-* If a generic Entity is included in an [Event](#event) instead of one of its subclasses, the Entity [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Entity.
+* If a generic Entity is included in an [Event](#event) instead of one of its subclasses, the Entity [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Entity.
 * If an Entity [dateCreated](#dateCreated) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
 * If an Entity [dateModified](#dateModified) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
@@ -226,7 +226,7 @@ __&#64;type__: [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.i
 __Comment__: TODO
 
 __Requirements__ 
-* A SessionEvent [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SessionEvent.
+* A SessionEvent [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
 * SessionEvent property values vary between supported actions.  When generating a SessionEvent, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
 
 | SessionEvent  | loggedIn | loggedOut | timedOut ||
@@ -287,7 +287,7 @@ __Comment:__ a Caliper [Agent](#agent) is a generic class that represents an [En
 
 __Requirements__
 
-* If a generic Agent is included in an [Event](#event) instead of one of its subclasses, the Agent [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Agent.
+* If a generic Agent is included in an [Event](#event) instead of one of its subclasses, the Agent [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Agent.
 
 __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
@@ -315,7 +315,7 @@ __Properties__
 
 __Requirements__
 
-* If a generic [DigitalResource](#digitalResource) is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/DigitalResource. 
+* If a generic [DigitalResource](#digitalResource) is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
 * If a DigitalResource [datePublished](#datePublished) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 <a name="organization" />
@@ -335,7 +335,7 @@ __Properties__
 
 __Requirements__
 
-* An Organization [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+* An Organization [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/w3c/Organization.
 
 __Example__
 
@@ -365,7 +365,7 @@ __Comment:__ a Caliper [Person](#person) represents a human being, alive or dece
 
 __Requirements__
 
-* A Person [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Person.
+* A Person [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
 
 __Example__
 
@@ -398,7 +398,7 @@ __Properties__
 
 __Requirements__
 
-* A Session [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Session.
+* A Session [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session.
 * It is RECOMMENDED that a Session [actor](#actor) be specified.
 * A Session [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent). 
 * If a Session [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
@@ -435,7 +435,7 @@ __Comment:__ a Caliper [SoftwareApplication](#softwareapplication) represents a 
 
 __Requirements__
 
-* A SoftwareApplication [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
+* A SoftwareApplication [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
 __Sample JSON-LD__
 
