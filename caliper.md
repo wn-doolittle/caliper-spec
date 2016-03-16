@@ -31,7 +31,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
     * 3.3.2. [Annotation Profile](#annotationProfile) 
       * 3.3.2.1 [AnnotationEvent](#annotationEvent) 
     * 3.3.3. [Assignable Profile](#assignableProfile)
-       * 3.3.3.1 [AssignableEvent](#assignableEvent) 
+      * 3.3.3.1 [AssignableEvent](#assignableEvent) 
     * 3.3.4. [Assessment Profile](#assessmentProfile)
       * 3.3.4.1. [AssessmentEvent](#assessmentEvent)
     * 3.3.5. [AssessmentItem Profile](#assessmentItemProfile) 
@@ -297,7 +297,7 @@ __Conformance__
 * All other Session Profile supported actions are considered OPTIONAL for conformance purposes.
 
 <a name="sessionEvent" />
-#### X.x. SessionEvent
+#### 3.3.11.1. SessionEvent
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
 
@@ -320,13 +320,23 @@ __Requirements__
 | membership | [Membership]([#membership) |  [Membership]([#membership) |  [Membership]([#membership) | 0..1 |
 | session | [Session]([#session) | [Session]([#session) | [Session]([#session) | 0..1 | 
 
+<a name="api"/>
+### 4.0. Sensor API
+
+TODO
+
+<a name="transport"/>
+### 5.0. Transport
+
+TODO
+
 <a name="endpoints"/>
-### X.0. Endpoints
+### 6.0. Endpoints
 
 TODO
 
 <a name="contributors"/>
-### X.x. Contributors
+### 7.0. Contributors
 
 The following Caliper Working Group participants contributed to the writing of this specification:
 
