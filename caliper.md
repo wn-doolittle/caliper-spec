@@ -17,26 +17,48 @@ The limited permissions granted above are perpetual and will not be revoked by I
 
 THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICATION SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.
 
-### Table of Contents
-* 1.0. [Introduction](#introduction)
-* 1.x. [Namespaces](#namespaces)
-* 1.x. [Definitions](#definitions)
-* 1.x. [Terminology](#terminology)
-* 2.x. [Data and Semantic Interoperability](#interoperability)
-* X.0. [Event](#event)
-* X.0. [Entity](#entity)
-* X.0. [Profiles](#profiles)
-  * X.x. [Session Profile](#sessionProfile)
-    * X.X. [SessionEvent](#sessionEvent)
-* X.0. [Sensor API](#api)
-* X.0. [Transport](#transport)
-  * X.0 [Envelope](#envelope)
-* X.0. [Endpoints](#endpoints)
-* X.x. [Contributors](#contributors)
-*	[Appendix A: Caliper Actions](#appendixA)
-* [Appendix B: Caliper Entities](#appendixB)
-* [References](#references)
-* [Revision History](#revisionHistory)
+### Table of Contents 
+* 1.0. [Introduction](#introduction) 
+  * 1.x. [Namespaces](#namespaces) 
+  * 1.x. [Definitions](#definitions) 
+  * 1.x. [Terminology](#terminology)
+* 2.0. [Data and Semantic Interoperability](#interoperability) 
+* 3.0. [Information Model](#infomodel)  
+  * 3.1. [Event](#event) 
+  * 3.2. [Entity](#entity) 
+  * 3.3. [Profiles](#profiles) 
+    * 3.3.1. [Free Form Profile](#freeFormProfile)
+    * 3.3.2. [Annotation Profile](#annotationProfile) 
+      * 3.3.2.1 [AnnotationEvent](#annotationEvent) 
+    * 3.3.3. [Assignable Profile](#assignableProfile)
+       * 3.3.3.1 [AssignableEvent](#assignableEvent) 
+    * 3.3.4. [Assessment Profile](#assessmentProfile)
+      * 3.3.4.1. [AssessmentEvent](#assessmentEvent)
+    * 3.3.5. [AssessmentItem Profile](#assessmentItemProfile) 
+      * 3.3.5.1. [AssessmentItemEvent](#assessmentItemEvent)
+    * 3.3.6. [Discussion Forum Profile](#discussionForumProfile) 
+      * 3.3.6.1. [ForumEvent](#ForumEvent) 
+      * 3.3.6.2. [ThreadEvent](#ThreadEvent) 
+      * 3.3.6.3. [MessageEvent](#messageEvent) 
+    * 3.3.7. [Media Profile](#mediaProfile) 
+      * 3.3.7.1. [MediaEvent](#mediaEvent) 
+    * 3.3.8. [Navigation Profile](#navigationProfile) TODO APPROVE 
+      * 3.3.8.1 [NavigationEvent](#navigationEvent) 
+    * 3.3.9. [Outcome Profile](#outcomeProfile) 
+      * 3.3.9.1 [OutcomeEvent](#outcomeEvent) 
+    * 3.3.10. [Reading Profile](#readingProfile) 
+      * 3.3.10.1 [ViewEvent](#viewEvent) 
+    * 3.3.11. [Session Profile](#sessionProfile) 
+      * 3.3.11.1. [SessionEvent](#sessionEvent)
+  * 4.0. [Sensor API](#api) 
+  * 5.0. [Transport](#transport) 
+    * 5.x.x. [Envelope](#envelope) 
+  * 6.0. [Endpoints](#endpoints)
+  * 7.x. [Contributors](#contributors) 
+  *	[Appendix A: Caliper Actions](#appendixA)
+  * [Appendix B: Caliper Entities](#appendixB)
+  * [References](#references) 
+  * [Revision History](#revisionHistory)
 
 <a name="introduction"/>  
 ### 1.0. Introduction
@@ -105,8 +127,13 @@ __sensor__: TODO
 
 TODO
 
+<a name="infoModel">
+### 3.0 Information Model
+
+TODO
+
 <a name="event"/>
-### X.0. Event
+### 3.1. Event
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
 
@@ -164,7 +191,7 @@ __Example__
 ```
 
 <a name="entity">
-### X.0. Entity
+### 3.2. Entity
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
 
@@ -203,12 +230,63 @@ __Example__
 ```
 
 <a name="profiles"/>
-### X.0. Profiles
+### 3.3. Profiles
+
+TODO
+
+<a name="freeFormProfile" />
+#### 3.3.1. Free Form Profile
+
+TODO
+
+
+<a name="annotationProfile" />
+#### 3.3.2. Annotation Profile
+
+TODO
+
+<a name="assignableProfile" />
+#### 3.3.3. Assignable Profile
+
+TODO
+
+<a name="assessmentProfile" />
+#### 3.3.4. Assessment Profile
+
+TODO
+
+<a name="assessmentItemProfile" />
+#### 3.3.5. AssessmentItem Profile
+
+TODO
+
+<a name="discussionForumProfile" />
+#### 3.3.6. Discussion Forum Profile
+
+TODO
+
+<a name="mediaProfile" />
+#### 3.3.7. Media Profile
+
+TODO
+
+<a name="navigationProfile" />
+#### 3.3.8. Navigation Profile
+
+TODO NEEDS APPROVAL
+
+<a name="outcomeProfile" />
+#### 3.3.9. Outcome Profile
+
+TODO
+
+<a name="readingProfile" />
+#### 3.3.10. Reading Profile
 
 TODO
 
 <a name="sessionProfile" />
-### X.x. Session Profile
+### 3.3.11. Session Profile
 
 __Comment__: The Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
 
