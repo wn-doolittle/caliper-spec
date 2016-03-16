@@ -110,7 +110,7 @@ TODO
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
 
-__Comment:__ a Caliper [Event](#event) is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) when constructing aN [Event](#event) rather than instantiating instances of the [Event](#event) class itself.
+__Comment:__ a Caliper [Event](#event) is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) when constructing an [Event](#event) rather than instantiating instances of the [Event](#event) class itself.
 
 __Properties__
 
@@ -131,13 +131,14 @@ __Properties__
 
 __Requirements:__ 
 
-* An [Event](#event) @context MUST be specified.  TODO 
-* An [Event](#event) @type MUST be specified.  TODO
-* An [Event](#event) MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
-* [eventTime](#eventTime) value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* An [Event](#event) SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
-* Properties whose values are null or empty SHOULD be excluded from the JSON-LD representation of the [Event](#event).
-* Subclasses of [Event](#event) MAY specify additional properties or recommend inclusion of optional properties for a more concise representation of the [Event](#event).
+* An Event @context MUST be specified.  TODO ELABORATE 
+* An Event @type MUST be specified.  TODO ELABORATE
+* If a generic Event is created instead of one of its subclasses, the Event [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Event.
+* An Event MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
+* An Event [eventTime](#eventTime) value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* An Event SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
+* Event properties with a value of null or empty SHOULD be excluded from the JSON-LD representation of the Event.
+* Subclasses of Event MAY specify additional properties or RECOMMEND inclusion of optional properties for a more concise representation of the Event.
 
 __Subclasses__
 
@@ -178,15 +179,16 @@ __Properties__
 | @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD type represented as a globally-scoped IRI. | 1 |
 | name | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A word or phrase by which the [Entity](#entity) is known.  Analogous to [sdo:name](http://schema.org/name). | 0..1 |
 | description | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A short representation of the [Entity](#entity) in written form.  Analogous to [sdo:description](http://schema.org/description). | 0..1 |
-| extensions | Map&lt;[xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string), [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)&gt;   | A map of additional key/value properties relevant to the [Entity](#entity). | 0..1 |
+| extensions | Map&lt;[xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string), [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)&gt; | A map of additional key/value properties relevant to the [Entity](#entity). | 0..1 |
 | dateCreated | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when the [Entity](#entity) was created or added to a data set.  Analogous to [sdo:dateCreated](http://schema.org/dateCreated). | 0..1 |
 | dateModified | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted  date and time expressed with millisecond precision that represents when the [Entity](#entity) was last modified.  Analogous to [sdo:dateModified](http://schema.org/dateModified). | 0..1 |
 
 __Requirements:__ 
 
-* An [Entity](#entity) SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an [Entity](#entity) MUST be assigned a blank node identifier. 
-* If a [dateCreated](#dateCreated) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
-* If a [dateModified](#dateModified) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* An Entity SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
+* If a generic Entity is included in an [Event](#event) instead of one of its subclasses, the Entity [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Entity.
+* If an Entity [dateCreated](#dateCreated) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
+* If an Entity [dateModified](#dateModified) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 __Subclasses__
 
@@ -212,6 +214,10 @@ __Comment__: The Session Profile models activities associated with a user sessio
 
 __Supported actions__: [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
 
+__Conformance__
+* The [loggedIn](#loggedIn) action is a REQUIRED action and MUST be implemented.
+* All other Session Profile supported actions are considered OPTIONAL for conformance purposes.
+
 <a name="sessionEvent" />
 #### X.x. SessionEvent
 
@@ -220,7 +226,7 @@ __&#64;type__: [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.i
 __Comment__: TODO
 
 __Requirements__ 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SessionEvent.
+* A SessionEvent [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SessionEvent.
 * SessionEvent property values vary between supported actions.  When generating a SessionEvent, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
 
 | SessionEvent  | loggedIn | loggedOut | timedOut ||
@@ -235,10 +241,6 @@ __Requirements__
 | group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) | 0..1 |
 | membership | [Membership]([#membership) |  [Membership]([#membership) |  [Membership]([#membership) | 0..1 |
 | session | [Session]([#session) | [Session]([#session) | [Session]([#session) | 0..1 | 
-
-__Certification__
-* [loggedIn](#loggedIn) is a REQUIRED action and MUST be implemented.
-* All other actions are considered OPTIONAL for certification purposes.
 
 <a name="endpoints"/>
 ### X.0. Endpoints
@@ -285,7 +287,7 @@ __Comment:__ a Caliper [Agent](#agent) is a generic class that represents an [En
 
 __Requirements__
 
-* If a generic [Agent](#agent) is included in an [Event](#event) instead of one of its subclasses, its [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Agent.
+* If a generic Agent is included in an [Event](#event) instead of one of its subclasses, the Agent [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Agent.
 
 __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
@@ -301,15 +303,20 @@ __Comment:__ a Caliper DigitalResource is a generic class that represents a cont
 
 __Properties__
 
-| Property | Type | Description | Conformance |
-| -------- | ---- | ----------- | ----------- |
-| creator | [Agent](./agent.md) | The [Agent](./agent.md) responsible for bringing the described DigitalResource into being.  Analogous to {{ book.dataProperty.sdo.creator }} or {{ book.dataProperty.dcterms.creator }}. | optional |
-| ~~objectType~~ | ~~[Collection](./collection.md)&lt;{{ book.dataType.xsd.string }}&gt;~~ | &nbsp;| deprecated |
-| keywords | [Collection](./collection.md)&lt;{{ book.dataType.xsd.string }}&gt; | A short representation of the Entity in written form.  Analogous to {{ book.dataProperty.sdo.description }} | optional |
-| alignedLearningObjective | [Collection](./collection.md)&lt;[LearningObjective](./learningobjective.md)&gt; | One or more [LearningObjectives](./learningobject.md)s that describe what the [Person](./person.md) is expected to accomplish after engaging with this DigitalResource | optional |
-| isPartOf | [DigitalResource](./digitalresource.md) | A related DigitalResource that includes or incorporates the described DigitalResource as a part of its whole.  Analogous to {{ book.dataProperty.sdo.isPartOf }} or {{ book.dataProperty.dcterms.isPartOf }}. | optional |
-| datePublished | {{ book.dataType.xsd.dateTime }} | The date and time expressed with millisecond precision that represents the publication date of the DigitalResource (ISO 8601 format required).  Analogous to {{ book.dataProperty.sdo.datePublished }} | optional |
-| version | {{ book.dataType.xsd.string }} | An identifier that designates the current form of the DigitalResource.  Analogous to {{ book.dataProperty.sdo.version }} | optional |
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ---: |
+| creator | [Agent](#agent) | The [Agent](#agent) responsible for bringing the described DigitalResource into being.  Analogous to [sdo:Creator](http://schema.org/Creator) or [dcterms:creator](http://purl.org/dc/terms/creator). | 0..1 |
+| ~~objectType~~ | ~~[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)~~ | ~~decremented~~| ~~0..1~~ |
+| keywords | List&lt;[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)&gt; | A set of one or more words that are used to tag the content.  Analogous to [sdo:keywords](http://schema.org/keywords) | 0..1 |
+| alignedLearningObjective | List&lt;[LearningObjective](#learningobjective)&gt; | One or more [LearningObjectives](#learningobject) that describe what [actor](#actor) is expected to accomplish after engaging with this DigitalResource | 0..1 |
+| isPartOf | [DigitalResource](#digitalresource) | A related DigitalResource that includes or incorporates the described DigitalResource as a part of its whole.  Analogous to [sdo:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf). | 0..1 |
+| datePublished | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents the publication date of the DigitalResource.  Analogous to [sdo:datePublished](http://schema.org/datePublished) | 0..1 |
+| version | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | An identifier that designates the current form of the DigitalResource.  Analogous to [sdo:version](http://schema.org/version) | 0..1 |
+
+__Requirements__
+
+* If a generic [DigitalResource](#digitalResource) is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/DigitalResource. 
+* If a DigitalResource [datePublished](#datePublished) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 <a name="organization" />
 #### Organization
@@ -328,7 +335,7 @@ __Properties__
 
 __Requirements__
 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+* An Organization [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/w3c/Organization.
 
 __Example__
 
@@ -358,7 +365,7 @@ __Comment:__ a Caliper [Person](#person) represents a human being, alive or dece
 
 __Requirements__
 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Person.
+* A Person [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Person.
 
 __Example__
 
@@ -391,13 +398,13 @@ __Properties__
 
 __Requirements__
 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/Session.
-* It is RECOMMENDED that an [actor](#actor) be specified.
-* A [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent). 
-* If a [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* It is RECOMMENDED that an [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
-* If a [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* If a [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
+* A Session [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/Session.
+* It is RECOMMENDED that a Session [actor](#actor) be specified.
+* A Session [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent). 
+* If a Session [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* It is RECOMMENDED that a Session [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
+* If a Session [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* If a Session [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
 __Example__
 
@@ -428,7 +435,7 @@ __Comment:__ a Caliper [SoftwareApplication](#softwareapplication) represents a 
 
 __Requirements__
 
-* [@type](#type) MUST be specified with an IRI value of http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
+* A SoftwareApplication [@type](#type) MUST be assigned the value http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
 __Sample JSON-LD__
 
