@@ -219,7 +219,7 @@ __Requirements:__
 
 __Subclasses__
 
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [LearningObjective](#learningObjective), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 __Example__
 
@@ -379,6 +379,55 @@ __Requirements__
 
 __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
+<a name="annotation" />
+#### Annotation
+
+TODO
+
+<a name="assessment" />
+#### Assessment
+
+TODO
+
+<a name="assessmentItem" />
+#### AssessmentItem
+
+TODO
+
+<a name="assignableDigitalResource" />
+#### AssignableDigitalResource
+
+TODO
+
+<a name="attempt" />
+#### Attempt
+
+TODO
+
+<a name="audioObject" />
+#### AudioObject
+
+TODO
+
+<a name="bookmarkAnnotation" />
+#### BookmarkAnnotation
+
+TODO
+
+<a name="collection" />
+#### Collection
+
+TODO
+
+<a name="courseOffering" />
+#### CourseOffering
+
+TODO
+
+<a name="courseSection" />
+#### CourseSection
+
+TODO
 
 <a name="digitalResource" />
 #### DigitalResource
@@ -409,6 +458,91 @@ __Requirements__
 __Subclasses__
 
 [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [AudioObject](#audioobject), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Frame](#frame), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Reading](#reading), [Thread](#thread), [VideoObject](#videoobject), [WebPage](#webpage)
+
+<a name="epubChapter" />
+#### EpubChapter
+
+TODO
+
+<a name="epubPart" />
+#### EpubPart
+
+TODO
+
+<a name="epubSubChapter" />
+#### EpubSubChapter
+
+TODO
+
+<a name="epubVolume" />
+#### EpubVolume
+
+TODO
+
+<a name="fillinBlankResponse" />
+#### FillinBlankResponse
+
+TODO
+
+<a name="frame" />
+#### Frame
+
+TODO
+
+<a name="forum" />
+#### Forum
+
+TODO
+
+<a name="group" />
+#### Group
+
+TODO
+
+<a name="highlightAnnotation" />
+#### HighlightAnnotation
+
+TODO
+
+<a name="imageObject" />
+#### ImageObject
+
+TODO
+
+<a name="learningObjective" />
+#### LearningObjective
+
+TODO
+
+<a name="mediaLocation" />
+#### MediaLocation
+
+TODO
+
+<a name="mediaObject" />
+#### MediaObject
+
+TODO
+
+<a name="membership" />
+#### Membership
+
+TODO
+
+<a name="message" />
+#### Message
+
+TODO
+
+<a name="multipleChoiceResponse" />
+#### MultipleChoiceResponse
+
+TODO
+
+<a name="multipleResponseResponse" />
+#### MultipleResponseResponse
+
+TODO
 
 <a name="organization" />
 #### Organization
@@ -474,6 +608,26 @@ __Example__
 }
 ```
 
+<a name="reading" />
+#### Reading
+
+TODO
+
+<a name="response" />
+#### Response
+
+TODO
+
+<a name="result" />
+#### Result
+
+TODO
+
+<a name="selectTextResponse" />
+#### SelectTextResponse
+
+TODO
+
 <a name="session" />
 #### Session
 
@@ -520,6 +674,11 @@ __Example__
 }
 ```
 
+<a name="sharedAnnotation" />
+#### SharedAnnotation
+
+TODO
+
 <a name="softwareapplication" />
 #### SoftwareApplication
 
@@ -543,6 +702,31 @@ __Sample JSON-LD__
   "name": "ePub reader"
 }
 ```
+
+<a name="tagAnnotation" />
+#### TagAnnotation
+
+TODO
+
+<a name="thread" />
+#### Thread
+
+TODO
+
+<a name="trueFalseResponse" />
+#### TrueFalseResponse
+
+TODO
+
+<a name="videoObject" />
+#### VideoObject
+
+TODO
+
+<a name="webPage" />
+#### WebPage
+
+TODO
 
 <a name="reference" />
 ### References
