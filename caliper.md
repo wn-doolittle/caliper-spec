@@ -288,9 +288,13 @@ TODO
 <a name="sessionProfile" />
 ### 3.3.11. Session Profile
 
-__Comment__: The Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
+__Comment__: The Caliper Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
+
+__Supported events__: [SessionEvent](#sessionEvent)
 
 __Supported actions__: [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
+
+__Required entities__: [Person](#person), [Session](#session), [SoftwareApplication](#softwareApplication)
 
 __Conformance__
 * The [loggedIn](#loggedIn) action is a REQUIRED action and MUST be implemented.
@@ -371,7 +375,7 @@ __subClassOf:__ [Entity](#entity)
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
 
-__Comment:__ a Caliper [Agent](#agent) is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of [Agent](#agent) be used to represent an [Event](#event) [actor](#actor).
+__Comment:__ a Caliper Agent is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of Agent be used to represent an [Event](#event) [actor](#actor).
 
 __Requirements__
 
@@ -387,12 +391,88 @@ TODO
 <a name="assessment" />
 #### Assessment
 
-TODO
+__subClassOf:__ [AssignableDigitalResource](#assignableDigitalResource), [Collection](#collection), 
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Assessment](http://purl.imsglobal.org/caliper/v1/Assessment)
+
+__Comment:__ a Caliper Assessment represents . . . TODO.
+
+__Properties__
+
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| items | List&lt;[AssessmentItem](#assessmentItem)&gt; | The set of items that comprise this Assessment. | 0..1 |
+
+__Requirements__
+
+* An Assessment [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment.
+
+__Example__
+
+```
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+    "name": "Stamp Act Crisis Quiz",
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "dateModified": "2015-09-02T11:30:00.000Z",
+    "datePublished": "2015-08-15T09:30:00.000Z",
+    "dateToActivate": "2015-08-16T05:00:00.000Z",
+    "dateToShow": "2015-08-16T05:00:00.000Z",
+    "dateToStartOn": "2015-08-16T05:00:00.000Z",
+    "dateToSubmit": "2015-09-28T11:59:59.000Z",
+    "maxAttempts": 2,
+    "maxScore": 10,
+    "maxSubmits": 2,
+    "version": "1.0"
+}
+```
 
 <a name="assessmentItem" />
 #### AssessmentItem
 
-TODO
+__subClassOf:__ [AssignableDigitalResource](#assignableDigitalResource)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Assessment](http://purl.imsglobal.org/caliper/v1/Assessment)
+
+__Comment:__ a Caliper AssessmentItem represents . . . TODO.
+
+__Requirements__
+
+* An AssessmentItem [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem.
+
+__Example__
+
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+  "name": "Assessment Item 1",
+  "isPartOf": {
+    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+    "name": "Stamp Act Crisis Quiz",
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "dateModified": "2015-09-02T11:30:00.000Z",
+    "datePublished": "2015-08-15T09:30:00.000Z",
+    "dateToActivate": "2015-08-16T05:00:00.000Z",
+    "dateToShow": "2015-08-16T05:00:00.000Z",
+    "dateToStartOn": "2015-08-16T05:00:00.000Z",
+    "dateToSubmit": "2015-09-28T11:59:59.000Z",
+    "maxAttempts": 2,
+    "maxScore": 3.0,
+    "maxSubmits": 2,
+    "version": "1.0"
+  },
+  "isTimeDependent": false,
+  "maxAttempts": 2,
+  "maxScore": 1.0,
+  "maxSubmits": 2,
+  "version": "1.0"
+}
+```
 
 <a name="assignableDigitalResource" />
 #### AssignableDigitalResource
@@ -417,7 +497,23 @@ TODO
 <a name="collection" />
 #### Collection
 
-TODO
+__subClassOf:__ [Entity](#entity)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Collection](http://purl.imsglobal.org/caliper/v1/Collection)
+
+__Comment:__ a Caliper Collection is a generic class that represents a set of entities.  It is analogous to a [dcmitype:Collection](http://purl.org/dc/dcmitype/Collection) or a [sioc:Container](http://rdfs.org/sioc/spec/#term_Container).  
+
+__Properties__
+
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| ~~isChildOf~~ | ~~[Collection](#collection)~~ | ~~The parent Collection of this Collection.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent).~~ | ~~0..1~~ |
+| items | List&lt;[Entity](#entity)&gt; | The set of items that comprise this Collection. | 0..1 |
+
+__Requirements__
+* Given that a Caliper Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.
+
+__Subclasses:__ [Assessment](./assessment.md), [Forum](./forum.md), [Thread](./thread.md)
 
 <a name="courseOffering" />
 #### CourseOffering
@@ -452,7 +548,7 @@ __Properties__
 
 __Requirements__
 
-* If a generic [DigitalResource](#digitalResource) is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
+* If a generic DigitalResource is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
 * If a DigitalResource [datePublished](#datePublished) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 __Subclasses__
@@ -492,7 +588,31 @@ TODO
 <a name="forum" />
 #### Forum
 
-TODO
+__subClassOf:__ [Collection](#collection)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Forum](http://purl.imsglobal.org/caliper/v1/Forum)
+
+__Comment:__ a Caliper Forum is a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded discussions to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
+
+__Properties__
+
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| items | List&lt;[Thread](#thread)&gt; | The set of items that comprise this Forum. | 0..1 |
+
+__Requirements__
+
+* A Forum [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum.
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="group" />
 #### Group
@@ -514,6 +634,28 @@ TODO
 
 TODO
 
+__Example__
+
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/super-media-tool/videos/1225",
+  "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+  "name": "American Revolution - Key Figures Video",
+  "alignedLearningObjective": [
+    {
+      "@id": "https://example.edu/courses/5678/assignments/1/learningobjectives/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
+      "dateCreated": "2015-08-01T06:00:00.000Z"
+    }
+  ],
+  "duration": 1420,
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "dateModified": "2015-09-02T11:30:00.000Z",
+  "version": "1.0"
+}
+```
+
 <a name="mediaLocation" />
 #### MediaLocation
 
@@ -522,7 +664,22 @@ TODO
 <a name="mediaObject" />
 #### MediaObject
 
-TODO
+__subClassOf:__ [DigitalResource](#digitalResource)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/MediaObject](http://purl.imsglobal.org/caliper/v1/MediaObject)
+
+__Comment:__ a Caliper MediaObject represents a generic piece of media content analogous to {{ book.class.sdo.MediaObject }}.  Given that MediaObject represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+
+__Properties__
+
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| duration | [xsd:long](https://www.w3.org/TR/xmlschema11-2/#long) | The length of time to completion.  Analogous to [sdo:duration](http://schema.org/duration).  | 0..1 |
+
+__Requirements__
+* If a generic MediaObject is included in an [Event](#event) instead of one of its subclasses, the MediaObject [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject. 
+
+__Subclasses:__ [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject) 
 
 <a name="membership" />
 #### Membership
@@ -532,7 +689,87 @@ TODO
 <a name="message" />
 #### Message
 
-TODO
+__subClassOf:__ [DigitalResource](#digitalResource)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Message](http://purl.imsglobal.org/caliper/v1/Message)
+
+__Comment:__ a Caliper Message is a digital form of written communication sent to a recipient. A series of Messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships. It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
+
+__Properties__
+
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ---: |
+| creator | [Agent](#agent) | The author or originator of this Message, typically a [Person](#person).  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator) or [sdo:creator](http://schema.org/creator). | 0..1|
+| replyTo | [Message](#message) | The prior Message, if any, that prompted the posting of this Message in the form of a reply or response.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). | 0..1 |
+| isPartOf | [Thread](#thread) | The Thread of which this Message forms a part.  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator). | 0..1 |
+| content | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | Plain-text rendering of the content of the Message.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). | 0..1 |
+| attachments | List&lt;[DigitalResource](#digitalResource)&gt; | A set of one or more DigitalResources attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). | 0..1 |
+
+__Requirements__
+
+* A Message [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Message.
+* A Message SHOULD specify a [creator](#creator).
+* A Message SHOULD specify a [replyTo](#replyTo) if the Message represents a response to a previously posted Message.
+
+TODO SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWING MINIMUM PROPERTIES:
+body string
+isAbbreviated or isTruncated boolean
+
+__Example__
+
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/2/courses/1/forums/2/topics/1/messages/2",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+  "creator": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+  },
+  "replyTo": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/terms/2/courses/1/forums/2/topics/1/messages/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+    "creator": {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@id": "https://example.edu/users/12345",
+      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+    },
+    "content": "Do you like Caliper?",
+    "dateCreated": "2016-09-02T11:30:00.000Z"
+  },
+  "isPartOf": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/terms/2/courses/1/forums/2/topics/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+    "name": "Caliper Happiness Index",
+    "creator": {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@id": "https://example.edu/users/56789",
+      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+    },
+    "isPartOf": {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@id": "https://example.edu/terms/2/courses/1/forums/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+      "name": "Caliper Forum",
+      "creator": {
+        "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+        "@id": "https://example.edu/users/56789",
+        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+      },
+      "dateCreated": "2016-09-01T09:28:00.000Z"
+    },
+    "dateCreated": "2016-09-01T09:30:00.000Z"
+  },
+  "content": "I love Caliper!",
+  "dateCreated": "2016-09-02T11:32:00.000Z"
+}
+```
+
+
+
 
 <a name="multipleChoiceResponse" />
 #### MultipleChoiceResponse
@@ -551,13 +788,13 @@ __subClassOf:__ [Agent](#agent)
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/w3c/Organization](http://purl.imsglobal.org/caliper/v1/w3c/Organization)
 
-__Comment:__ a Caliper [Organization](#organization) represents a group of people organized into a community or other social, commercial, educational or political structure.  The group has a common purpose or reason for existence that spans beyond the set of people belonging to it and can act as an [Agent](#agent). An [Organization](#organization) can often be decomposed into a hierarchical structure.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
+__Comment:__ a Caliper Organization represents a group of people organized into a community or other social, commercial, educational or political structure.  The group has a common purpose or reason for existence that spans beyond the set of people belonging to it and can act as an [Agent](#agent). An Organization can often be decomposed into a hierarchical structure.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
 __Properties__
 
 | Property | Type | Description ||
 | -------- | ---- | ----------- |---: |
-| subOrganizationOf | [Organization](#organization) | The parent organization of an [Organization](#organization). | 0..1 |
+| subOrganizationOf | [Organization](#organization) | The parent Organization of this Organization. | 0..1 |
 
 __Requirements__
 
@@ -591,7 +828,7 @@ __subClassOf:__ [Agent](#agent)
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.imsglobal.org/caliper/v1/lis/Person)
 
-__Comment:__ a Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
+__Comment:__ a Caliper Person represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
 __Requirements__
 
@@ -635,13 +872,13 @@ __subClassOf:__ [Entity](#entity)
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/Session](http://purl.imsglobal.org/caliper/v1/Session)
 
-__Comment:__ a Caliper [Session](#session) represents a Web application user session.
+__Comment:__ a Caliper Session represents a Web application user session.
 
 __Properties__
 
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ---: |
-| actor | [Agent](#agent) | The [Agent](#agent) who establishes the [Session](#session).| 0..1 |
+| actor | [Agent](#agent) | The [Agent](#agent) who establishes the Session.| 0..1 |
 | startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
 | endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
 | duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete the Attempt. | 0..1 |
@@ -686,7 +923,7 @@ __subClassOf:__ [Agent](#agent)
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/SoftwareApplication](http://purl.imsglobal.org/caliper/v1/SoftwareApplication)
 
-__Comment:__ a Caliper [SoftwareApplication](#softwareapplication) represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
+__Comment:__ a Caliper SoftwareApplication represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
 __Requirements__
 
@@ -711,7 +948,30 @@ TODO
 <a name="thread" />
 #### Thread
 
-TODO
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Thread](http://purl.imsglobal.org/caliper/v1/Thread)
+
+__Comment:__ a Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships. It is analogous to a [sioc:Thread](http://rfds.org/sioc/spec/#term_Thread).
+
+__Properties__
+
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ---: |
+| isChildOf | [Forum](#forum) | The parent Forum of this Thread.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent). | 0..1 |
+| items | List&lt;[Message](#message)&gt; | The set of items that comprise this Thread. | 0.1 |
+
+__Requirements__
+
+* A Thread [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread.
+
+__Example__
+
+```
+{
+
+  TODO
+  
+}
+```
 
 <a name="trueFalseResponse" />
 #### TrueFalseResponse
@@ -721,12 +981,59 @@ TODO
 <a name="videoObject" />
 #### VideoObject
 
-TODO
+__subClassOf:__ [MediaObject](#mediaobject)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/VideoObject](http://purl.imsglobal.org/caliper/v1/VideoObject)
+
+__Comment:__ a Caliper VideoObject represents a visual recording stored in digital form. It is analogous to [sdo:VideoObject](http://schema.org/VideoObject).
+
+__Requirements__
+
+* A VideoObject [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject.
+
+__Example__
+
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/super-media-tool/videos/1225",
+  "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+  "name": "American Revolution - Key Figures Video",
+  "duration": 1420,
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "dateModified": "2015-09-02T11:30:00.000Z",
+  "version": "1.0"
+}
+```
 
 <a name="webPage" />
 #### WebPage
 
-TODO
+__subClassOf:__ [DigitalResource](#digitalresource)
+
+__&#64;type:__ [http://purl.imsglobal.org/caliper/v1/WebPage](http://purl.imsglobal.org/caliper/v1/WebPage)
+
+__Comment:__ a Caliper WebPage represents a document suitable for display in a web browser.  It is analogous to a [sdo:WebPage](http://schema.org/WebPage).
+
+__Requirements__
+
+* A WebPage [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage.
+
+__Example__
+
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/politicalScience/2015/american-revolution-101/index.html",
+  "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
+  "name": "American Revolution 101 Landing Page",
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "dateModified": "2015-09-02T11:30:00.000Z",
+  "version": "1.0"
+}
+```
+
+__Sample JSON-LD__
 
 <a name="reference" />
 ### References
