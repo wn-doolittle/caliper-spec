@@ -388,6 +388,16 @@ __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareAppli
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="assessment" />
 #### Assessment
 
@@ -479,20 +489,60 @@ __Example__
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="attempt" />
 #### Attempt
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="audioObject" />
 #### AudioObject
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="bookmarkAnnotation" />
 #### BookmarkAnnotation
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="collection" />
 #### Collection
@@ -520,10 +570,30 @@ __Subclasses:__ [Assessment](./assessment.md), [Forum](./forum.md), [Thread](./t
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="courseSection" />
 #### CourseSection
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="digitalResource" />
 #### DigitalResource
@@ -560,30 +630,90 @@ __Subclasses__
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="epubPart" />
 #### EpubPart
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="epubSubChapter" />
 #### EpubSubChapter
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="epubVolume" />
 #### EpubVolume
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="fillinBlankResponse" />
 #### FillinBlankResponse
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="frame" />
 #### Frame
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="forum" />
 #### Forum
@@ -619,15 +749,45 @@ __Example__
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="highlightAnnotation" />
 #### HighlightAnnotation
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="imageObject" />
 #### ImageObject
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="learningObjective" />
 #### LearningObjective
@@ -661,6 +821,16 @@ __Example__
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="mediaObject" />
 #### MediaObject
 
@@ -685,6 +855,16 @@ __Subclasses:__ [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), 
 #### Membership
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="message" />
 #### Message
@@ -768,18 +948,35 @@ __Example__
 }
 ```
 
-
-
-
 <a name="multipleChoiceResponse" />
 #### MultipleChoiceResponse
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="multipleResponseResponse" />
 #### MultipleResponseResponse
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="organization" />
 #### Organization
@@ -850,20 +1047,60 @@ __Example__
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="response" />
 #### Response
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="result" />
 #### Result
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="selectTextResponse" />
 #### SelectTextResponse
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="session" />
 #### Session
@@ -916,6 +1153,16 @@ __Example__
 
 TODO
 
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="softwareapplication" />
 #### SoftwareApplication
 
@@ -944,6 +1191,16 @@ __Sample JSON-LD__
 #### TagAnnotation
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="thread" />
 #### Thread
@@ -977,6 +1234,16 @@ __Example__
 #### TrueFalseResponse
 
 TODO
+
+__Example__
+
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="videoObject" />
 #### VideoObject
@@ -1032,8 +1299,6 @@ __Example__
   "version": "1.0"
 }
 ```
-
-__Sample JSON-LD__
 
 <a name="reference" />
 ### References
