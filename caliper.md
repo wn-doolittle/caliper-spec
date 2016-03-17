@@ -219,7 +219,7 @@ __Requirements:__
 
 __Subclasses__
 
-[Agent](#agent), [Attempt](#attempt), [AudioObject](#audioobject), [Collection](#collection), [DigitalResource](#digitalresource), [Forum](#forum), [ImageObject](#imageobject), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [Organization](#organization), [Person](#person), [Thread](#thread), [Session](#session), [SoftwareApplication](#softwareapplication), [VideoObject](#videoobject)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [LearningObjective](#learningObjective), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 __Example__
 
@@ -406,6 +406,10 @@ __Requirements__
 * If a generic [DigitalResource](#digitalResource) is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
 * If a DigitalResource [datePublished](#datePublished) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
+__Subclasses__
+
+[Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [AudioObject](#audioobject), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Frame](#frame), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Reading](#reading), [Thread](#thread), [VideoObject](#videoobject), [WebPage](#webpage)
+
 <a name="organization" />
 #### Organization
 
@@ -424,6 +428,10 @@ __Properties__
 __Requirements__
 
 * An Organization [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+
+__Subclasses__
+
+[Group](#group)
 
 __Example__
 
