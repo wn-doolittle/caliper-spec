@@ -2,7 +2,6 @@
 ### IMS Global Learning Consortium, Inc.
 
 ### IPR and Distribution Notices
-
 Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
 
 IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
@@ -67,7 +66,6 @@ TODO
 
 <a name="namespaces"/>  
 ### 1.x. Namespaces
-
 The Caliper information model references a number of terms derived from other ontologies.  Such terms along with those native to Caliper are identified with a prefix drawn from the list below that maps to the relevant namespace as, for example, the data type [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime).
 
 | Prefix | Namespace | Description |
@@ -90,12 +88,10 @@ The Caliper information model references a number of terms derived from other on
 | xsd | https://www.w3.org/TR/xmlschema11-2/# | XML Schema Definition Language 1.1 |
 
 ### 1.x. Terminology
-
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
 <a name="definitions"/>  
 ### 1.x. Definitions
-
 __actor__: TODO
 
 __action__: TODO
@@ -134,13 +130,11 @@ TODO
 
 <a name="event"/>
 ### 3.1. Event
-
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
 
 __Comment:__ a Caliper [Event](#event) is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) when constructing an [Event](#event) rather than instantiating instances of the [Event](#event) class itself.
 
 __Properties__
-
 | Property | Type | Description ||
 | -------- | ---- | ----------- | -----------: |
 | @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | 1 |
@@ -157,10 +151,9 @@ __Properties__
 | session | [Session]([#session) | . . . | 0..1 |
 
 __Requirements:__ 
-
 * An Event @context MUST be specified.  TODO ELABORATE 
 * An Event @type MUST be specified.  TODO ELABORATE
-* If a generic Event is created instead of one of its subclasses, the Event [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Event.
+* If a generic Event is created instead of one of its subclasses, the Event [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Event.
 * An Event MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
 * An Event [eventTime](#eventTime) value MUST conform to the ISO-8601 date and time format with millisecond precision.
 * An Event SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
@@ -168,11 +161,9 @@ __Requirements:__
 * Subclasses of Event MAY specify additional properties or RECOMMEND inclusion of optional properties for a more concise representation of the Event.
 
 __Subclasses__
-
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ReadingEvent](#readingEvent), [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ViewEvent](#viewEvent)
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -192,13 +183,11 @@ __Example__
 
 <a name="entity">
 ### 3.2. Entity
-
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
 
-__Comment__: a Caliper [Entity](#entity) is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).  Given its generic nature it is RECOMMENDED that only subclasses of [Entity](#entity) be employed to represent nodes in the learning graph.  
+__Comment__: a Caliper [Entity](#entity) is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).  
 
 __Properties__
-
 | Property | Type | Description ||
 | -------- | ---- | ----------- | -----------: |
 | @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | 1 |
@@ -211,18 +200,16 @@ __Properties__
 | dateModified | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted  date and time expressed with millisecond precision that represents when the [Entity](#entity) was last modified.  Analogous to [sdo:dateModified](http://schema.org/dateModified). | 0..1 |
 
 __Requirements:__ 
-
+* Given that Entity represents a generic type it is RECOMMENDED that only subclasses of [Entity](#entity) be employed to represent nodes in the learning graph.
 * An Entity SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
-* If a generic Entity is included in an [Event](#event) instead of one of its subclasses, the Entity [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Entity.
+* If a generic Entity is included in an [Event](#event) instead of one of its subclasses, the Entity [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Entity.
 * If an Entity [dateCreated](#dateCreated) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
 * If an Entity [dateModified](#dateModified) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 __Subclasses__
-
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 __Example__
-
 ```
 {
    TODO
@@ -287,8 +274,7 @@ TODO
 
 <a name="sessionProfile" />
 ### 3.3.11. Session Profile
-
-__Comment__: The Caliper Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
+The Caliper Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
 
 __Supported events__: [SessionEvent](#sessionEvent)
 
@@ -302,13 +288,12 @@ __Conformance__
 
 <a name="sessionEvent" />
 #### 3.3.11.1. SessionEvent
-
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
 
 __Comment__: TODO
 
 __Requirements__ 
-* A SessionEvent [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
+* A SessionEvent [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
 * SessionEvent property values vary between supported actions.  When generating a SessionEvent, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
 
 | SessionEvent  | loggedIn | loggedOut | timedOut ||
@@ -341,7 +326,6 @@ TODO
 
 <a name="contributors"/>
 ### 7.0. Contributors
-
 The following Caliper Working Group participants contributed to the writing of this specification:
 
 | Name | Organization |
@@ -370,18 +354,18 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="agent" />
 #### Agent
-
 __subClassOf:__ [Entity](#entity)
 
 __&#64;type__: [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
 
-__Comment:__ a Caliper Agent is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that [Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of Agent be used to represent an [Event](#event) [actor](#actor).
+__Comment:__ a Caliper Agent is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).
 
 __Requirements__
+* Given that [Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of Agent be used to represent an [Event](#event) [actor](#actor).
+* If a generic Agent is included in an [Event](#event) instead of one of its subclasses, the Agent [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Agent.
 
-* If a generic Agent is included in an [Event](#event) instead of one of its subclasses, the Agent [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Agent.
-
-__Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
+__Subclasses__ 
+[Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
 <a name="annotation" />
 #### Annotation
@@ -389,7 +373,6 @@ __Subclasses:__ [Organization](#organization), [Person](#person), [SoftwareAppli
 TODO
 
 __Example__
-
 ```
 {
 
@@ -400,7 +383,6 @@ __Example__
 
 <a name="assessment" />
 #### Assessment
-
 __subClassOf:__ [AssignableDigitalResource](#assignableDigitalResource), [Collection](#collection), 
 
 __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Assessment](http://purl.imsglobal.org/caliper/v1/Assessment)
@@ -408,17 +390,14 @@ __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Assessment](http://purl.ims
 __Comment:__ a Caliper Assessment represents . . . TODO.
 
 __Properties__
-
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----: |
 | items | List&lt;[AssessmentItem](#assessmentItem)&gt; | The set of items that comprise this Assessment. | 0..1 |
 
 __Requirements__
-
-* An Assessment [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment.
+* An Assessment [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment.
 
 __Example__
-
 ```
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -441,7 +420,6 @@ __Example__
 
 <a name="assessmentItem" />
 #### AssessmentItem
-
 __subClassOf:__ [AssignableDigitalResource](#assignableDigitalResource)
 
 __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Assessment](http://purl.imsglobal.org/caliper/v1/Assessment)
@@ -449,11 +427,9 @@ __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Assessment](http://purl.ims
 __Comment:__ a Caliper AssessmentItem represents . . . TODO.
 
 __Requirements__
-
-* An AssessmentItem [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem.
+* An AssessmentItem [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem.
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -490,7 +466,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -505,7 +480,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -520,7 +494,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -535,7 +508,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -546,7 +518,6 @@ __Example__
 
 <a name="collection" />
 #### Collection
-
 __subClassOf:__ [Entity](#entity)
 
 __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Collection](http://purl.imsglobal.org/caliper/v1/Collection)
@@ -561,7 +532,8 @@ __Properties__
 | items | List&lt;[Entity](#entity)&gt; | The set of items that comprise this Collection. | 0..1 |
 
 __Requirements__
-* Given that a Caliper Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.
+* Given that a Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.
+* If a generic Collection is included in an [Event](#event) instead of one of its subclasses, the Collection [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Collection.
 
 __Subclasses:__ [Assessment](./assessment.md), [Forum](./forum.md), [Thread](./thread.md)
 
@@ -571,7 +543,6 @@ __Subclasses:__ [Assessment](./assessment.md), [Forum](./forum.md), [Thread](./t
 TODO
 
 __Example__
-
 ```
 {
 
@@ -586,7 +557,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -597,12 +567,11 @@ __Example__
 
 <a name="digitalResource" />
 #### DigitalResource
-
 __subClassOf:__ [Entity](#entity)
 
 __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/DigitalResource](http://purl.imsglobal.org/caliper/v1/DigitalResource)
 
-__Comment:__ a Caliper DigitalResource is a generic class that represents a content item.  It is analogous to an [sdo:CreativeWork](https://schema.org/CreativeWork).  Given that DigitalResource represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+__Comment:__ a Caliper DigitalResource is a generic class that represents a content item.  It is analogous to an [sdo:CreativeWork](https://schema.org/CreativeWork).
 
 __Properties__
 
@@ -617,12 +586,11 @@ __Properties__
 | version | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | An identifier that designates the current form of the DigitalResource.  Analogous to [sdo:version](http://schema.org/version) | 0..1 |
 
 __Requirements__
-
-* If a generic DigitalResource is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
+* Given that DigitalResource represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+* If a generic DigitalResource is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
 * If a DigitalResource [datePublished](#datePublished) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 __Subclasses__
-
 [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [AudioObject](#audioobject), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Frame](#frame), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Reading](#reading), [Thread](#thread), [VideoObject](#videoobject), [WebPage](#webpage)
 
 <a name="epubChapter" />
@@ -631,7 +599,6 @@ __Subclasses__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -646,7 +613,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -661,7 +627,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -676,7 +641,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -691,7 +655,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -706,7 +669,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -717,7 +679,6 @@ __Example__
 
 <a name="forum" />
 #### Forum
-
 __subClassOf:__ [Collection](#collection)
 
 __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Forum](http://purl.imsglobal.org/caliper/v1/Forum)
@@ -725,17 +686,14 @@ __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/Forum](http://purl.imsgloba
 __Comment:__ a Caliper Forum is a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded discussions to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
 
 __Properties__
-
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----: |
 | items | List&lt;[Thread](#thread)&gt; | The set of items that comprise this Forum. | 0..1 |
 
 __Requirements__
-
-* A Forum [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum.
+* A Forum [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum.
 
 __Example__
-
 ```
 {
 
@@ -750,7 +708,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -765,7 +722,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -780,7 +736,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -795,7 +750,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -822,7 +776,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -838,7 +791,7 @@ __subClassOf:__ [DigitalResource](#digitalResource)
 
 __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/MediaObject](http://purl.imsglobal.org/caliper/v1/MediaObject)
 
-__Comment:__ a Caliper MediaObject represents a generic piece of media content analogous to {{ book.class.sdo.MediaObject }}.  Given that MediaObject represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+__Comment:__ a Caliper MediaObject represents a generic piece of media content analogous to [sdo:MediaObject](http://schema.org/MediaObject).
 
 __Properties__
 
@@ -847,7 +800,8 @@ __Properties__
 | duration | [xsd:long](https://www.w3.org/TR/xmlschema11-2/#long) | The length of time to completion.  Analogous to [sdo:duration](http://schema.org/duration).  | 0..1 |
 
 __Requirements__
-* If a generic MediaObject is included in an [Event](#event) instead of one of its subclasses, the MediaObject [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject. 
+* Given that MediaObject represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+* If a generic MediaObject is included in an [Event](#event) instead of one of its subclasses, the MediaObject [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject. 
 
 __Subclasses:__ [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject) 
 
@@ -857,7 +811,6 @@ __Subclasses:__ [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), 
 TODO
 
 __Example__
-
 ```
 {
 
@@ -886,8 +839,7 @@ __Properties__
 | attachments | List&lt;[DigitalResource](#digitalResource)&gt; | A set of one or more DigitalResources attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). | 0..1 |
 
 __Requirements__
-
-* A Message [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Message.
+* A Message [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Message.
 * A Message SHOULD specify a [creator](#creator).
 * A Message SHOULD specify a [replyTo](#replyTo) if the Message represents a response to a previously posted Message.
 
@@ -896,7 +848,6 @@ body string
 isAbbreviated or isTruncated boolean
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -954,7 +905,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -969,7 +919,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -994,15 +943,13 @@ __Properties__
 | subOrganizationOf | [Organization](#organization) | The parent Organization of this Organization. | 0..1 |
 
 __Requirements__
-
-* An Organization [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+* An Organization [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/w3c/Organization.
 
 __Subclasses__
 
 [Group](#group)
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1028,11 +975,9 @@ __&#64;type__: [http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.ims
 __Comment:__ a Caliper Person represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
 __Requirements__
-
-* A Person [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
+* A Person [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1048,7 +993,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -1063,7 +1007,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -1078,7 +1021,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -1093,7 +1035,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -1121,8 +1062,7 @@ __Properties__
 | duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete the Attempt. | 0..1 |
 
 __Requirements__
-
-* A Session [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session.
+* A Session [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session.
 * It is RECOMMENDED that a Session [actor](#actor) be specified.
 * A Session [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent). 
 * If a Session [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
@@ -1131,7 +1071,6 @@ __Requirements__
 * If a Session [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1154,7 +1093,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -1173,11 +1111,9 @@ __&#64;type__: [http://purl.imsglobal.org/caliper/v1/SoftwareApplication](http:/
 __Comment:__ a Caliper SoftwareApplication represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
 __Requirements__
-
-* A SoftwareApplication [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
+* A SoftwareApplication [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
 __Sample JSON-LD__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1193,7 +1129,6 @@ __Sample JSON-LD__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -1217,11 +1152,9 @@ __Properties__
 | items | List&lt;[Message](#message)&gt; | The set of items that comprise this Thread. | 0.1 |
 
 __Requirements__
-
-* A Thread [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread.
+* A Thread [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread.
 
 __Example__
-
 ```
 {
 
@@ -1236,7 +1169,6 @@ __Example__
 TODO
 
 __Example__
-
 ```
 {
 
@@ -1247,7 +1179,6 @@ __Example__
 
 <a name="videoObject" />
 #### VideoObject
-
 __subClassOf:__ [MediaObject](#mediaobject)
 
 __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/VideoObject](http://purl.imsglobal.org/caliper/v1/VideoObject)
@@ -1255,11 +1186,9 @@ __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/VideoObject](http://purl.im
 __Comment:__ a Caliper VideoObject represents a visual recording stored in digital form. It is analogous to [sdo:VideoObject](http://schema.org/VideoObject).
 
 __Requirements__
-
-* A VideoObject [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject.
+* A VideoObject [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject.
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1275,7 +1204,6 @@ __Example__
 
 <a name="webPage" />
 #### WebPage
-
 __subClassOf:__ [DigitalResource](#digitalresource)
 
 __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/WebPage](http://purl.imsglobal.org/caliper/v1/WebPage)
@@ -1283,11 +1211,9 @@ __&#64;type:__ [http://purl.imsglobal.org/caliper/v1/WebPage](http://purl.imsglo
 __Comment:__ a Caliper WebPage represents a document suitable for display in a web browser.  It is analogous to a [sdo:WebPage](http://schema.org/WebPage).
 
 __Requirements__
-
-* A WebPage [@type](#type) MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage.
+* A WebPage [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage.
 
 __Example__
-
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1302,7 +1228,6 @@ __Example__
 
 <a name="reference" />
 ### References
-
 <a name="json-ld">
 __JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler, N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
 
