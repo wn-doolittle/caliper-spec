@@ -369,6 +369,15 @@ A Caliper Agent is a generic class that represents an [Entity](#entity) that can
 ###### Subclasses 
 [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
+###### Example
+```
+{
+
+ TODO
+ 
+}
+```
+
 <a name="annotation" />
 #### Annotation
 
@@ -542,7 +551,17 @@ A Caliper Collection is a generic class that represents a set of entities.  It i
 * Given that a Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.
 * If a generic Collection is included in an [Event](#event) instead of one of its subclasses, the Collection [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Collection.
 
-###### Subclasses [Assessment](./assessment.md), [Forum](./forum.md), [Thread](./thread.md)
+###### Subclasses 
+[Assessment](./assessment.md), [Forum](./forum.md), [Thread](./thread.md)
+
+###### Example
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="courseOffering" />
 #### CourseOffering
@@ -600,6 +619,15 @@ A Caliper DigitalResource is a generic class that represents a content item.  It
 
 ###### Subclasses
 [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [AudioObject](#audioobject), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Frame](#frame), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Reading](#reading), [Thread](#thread), [VideoObject](#videoobject), [WebPage](#webpage)
+
+###### Example
+```
+{
+
+ TODO
+ 
+}
+```
 
 <a name="epubChapter" />
 #### EpubChapter
@@ -855,9 +883,14 @@ A Caliper Message is a digital form of written communication sent to a recipient
 * A Message SHOULD specify a [replyTo](#replyTo) if the Message represents a response to a previously posted Message.
 
 ## TODO
-TODO SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWING MINIMUM PROPERTIES:
-body string
-isAbbreviated or isTruncated boolean
+SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWING MINIMUM PROPERTIES:
+
+```
+{
+   "body": "string",
+   "isTruncated": boolean
+}
+```
 
 ###### Example
 ```
@@ -1126,7 +1159,7 @@ A Caliper SoftwareApplication represents a computer program, application, module
 ###### Requirements
 * A SoftwareApplication [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
-__Sample JSON-LD__
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
