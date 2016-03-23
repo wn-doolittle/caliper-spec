@@ -130,7 +130,7 @@ TODO
 
 <a name="event"/>
 ### 3.1. Event
-A Caliper ```Event``` is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) when constructing an ```Event``` rather than instantiating instances of the ```Event``` class itself.
+A Caliper ```Event``` is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of ```Event``` rather than instantiating instances of the ```Event``` class itself.
 
 ###### &#64;type
 [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
@@ -276,7 +276,7 @@ TODO
 
 <a name="sessionProfile" />
 ### 3.3.11. Session Profile
-The Caliper Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
+The Caliper Session Profile models activities associated with a user session established by an [Agent](#agent), typically a [Person](#person), interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
 
 ###### Supported actions
 [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
@@ -296,7 +296,7 @@ TODO
 * A ```SessionEvent``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
 * ```SessionEvent``` property values vary between supported actions.  When generating a ```SessionEvent```, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
 
-| ```SessionEvent```  | loggedIn | loggedOut | timedOut ||
+| SessionEvent | loggedIn | loggedOut | timedOut ||
 | --------  | -------- | --------- | -------- | ---: |
 | actor | [Person](#person) |[Person](#person) | [SoftwareApplication](#softwareApplication) | 1 |
 | action | [loggedIn](#loggedIn) | [loggedOut](#loggedOut) | [timedOut](#timedOut) | 1 |
