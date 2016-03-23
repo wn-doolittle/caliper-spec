@@ -130,7 +130,7 @@ TODO
 
 <a name="event"/>
 ### 3.1. Event
-A Caliper Event is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) when constructing an Event rather than instantiating instances of the Event class itself.
+A Caliper ```Event``` is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of ```Event``` rather than instantiating instances of the ```Event``` class itself.
 
 ###### &#64;type
 [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
@@ -140,10 +140,10 @@ A Caliper Event is a generic class that represents the interaction between an [a
 | -------- | ---- | ----------- | -----------: |
 | @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | 1 |
 | @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD type represented as a globally-scoped IRI. | 1 |
-| actor | [Agent](#agent) | The [Agent](#agent) who initiated or is the subject of the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication]([#softwareapplication). | 1 |
+| actor | [Agent](#agent) | The ```Agent``` who initiated or is the subject of this ```Event```, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication]([#softwareapplication). | 1 |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | . . . | 1 |
 | object | [Entity]([#entity) | . . . | 1 |
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when the [Event](#event) occurred. | 1 |
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Event``` occurred. | 1 |
 | target | [Entity]([#entity) | . . . | 0..1 |
 | generated | [Entity]([#entity) | . . . | 0..1 |
 | edApp | [SoftwareApplication]([#softwareapplication) | . . . | 0..1 |
@@ -152,17 +152,17 @@ A Caliper Event is a generic class that represents the interaction between an [a
 | session | [Session]([#session) | . . . | 0..1 |
 
 ###### Requirements
-* An Event @context MUST be specified.  TODO ELABORATE 
-* An Event @type MUST be specified.  TODO ELABORATE
-* If a generic Event is created instead of one of its subclasses, the Event [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Event.
-* An Event MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
-* An Event [eventTime](#eventTime) value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* An Event SHOULD include a [session](#session) if the [Event](#event) is generated as a result of an [LTI](#lti) launch.
-* Event properties with a value of null or empty SHOULD be excluded from the JSON-LD representation of the Event.
-* Subclasses of Event MAY specify additional properties or RECOMMEND inclusion of optional properties for a more concise representation of the Event.
+* An ```Event``` @context MUST be specified.  TODO ELABORATE 
+* An ```Event``` @type MUST be specified.  TODO ELABORATE
+* If a generic ```Event``` is created instead of one of its subclasses, the ```Event``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Event.
+* An ```Event``` MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
+* An ```Event``` [eventTime](#eventTime) value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* An ```Event``` SHOULD include a ```Session``` if the ```Event``` is generated as a result of an [LTI](#lti) launch.
+* ```Event```  properties with a value of null or empty SHOULD be excluded from the JSON-LD representation of the ```Event```  prior to serialization.
+* Subclasses of ```Event``` MAY specify additional properties or RECOMMEND inclusion of optional properties for a more concise representation of the ```Event```.
 
 ###### Subclasses
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ReadingEvent](#readingEvent), [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [ReadingEvent](#readingEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 ###### Example
 ```
@@ -178,13 +178,13 @@ A Caliper Event is a generic class that represents the interaction between an [a
     "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
     "@type": "http://www.idpf.org/epub/vocab/structure/#volume"
   }
-  "eventTime": "2015-09-15T10:15:00.000Z"
+  "eventTime": "2016-09-15T10:15:00.000Z"
 }
 ```
 
 <a name="entity">
 ### 3.2. Entity
-A Caliper Entity is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).
+A Caliper ```Entity``` is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).
 
 ###### &#64;type 
 [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
@@ -202,11 +202,11 @@ A Caliper Entity is a generic class that is analogous to an [sdo:Thing](http://s
 | dateModified | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted  date and time expressed with millisecond precision that represents when the [Entity](#entity) was last modified.  Analogous to [sdo:dateModified](http://schema.org/dateModified). | 0..1 |
 
 ###### Requirements
-* Given that Entity represents a generic type it is RECOMMENDED that only subclasses of [Entity](#entity) be employed to represent nodes in the learning graph.
-* An Entity SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
-* If a generic Entity is included in an [Event](#event) instead of one of its subclasses, the Entity [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Entity.
-* If an Entity [dateCreated](#dateCreated) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
-* If an Entity [dateModified](#dateModified) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* Given that ```Entity``` represents a generic type it is RECOMMENDED that only subclasses of [Entity](#entity) be employed to represent nodes in the learning graph.
+* An ```Entity``` SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an ```Entity``` MUST be assigned a blank node identifier.
+* If a generic ```Entity``` is included in an [Event](#event) instead of one of its subclasses, the ```Entity``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Entity.
+* If an ```Entity``` [dateCreated](#dateCreated) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
+* If an ```Entity``` [dateModified](#dateModified) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 ###### Subclasses
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
@@ -276,7 +276,7 @@ TODO
 
 <a name="sessionProfile" />
 ### 3.3.11. Session Profile
-The Caliper Session Profile models activities associated with a user session established by an [actor](#actor) interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
+The Caliper Session Profile models activities associated with a user session established by an [Agent](#agent), typically a [Person](#person), interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
 
 ###### Supported actions
 [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
@@ -293,10 +293,10 @@ TODO
 [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
 
 ###### Requirements 
-* A SessionEvent [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
-* SessionEvent property values vary between supported actions.  When generating a SessionEvent, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
+* A ```SessionEvent``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
+* ```SessionEvent``` property values vary between supported actions.  When generating a ```SessionEvent```, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
 
-| SessionEvent  | loggedIn | loggedOut | timedOut ||
+| SessionEvent | loggedIn | loggedOut | timedOut ||
 | --------  | -------- | --------- | -------- | ---: |
 | actor | [Person](#person) |[Person](#person) | [SoftwareApplication](#softwareApplication) | 1 |
 | action | [loggedIn](#loggedIn) | [loggedOut](#loggedOut) | [timedOut](#timedOut) | 1 |
@@ -337,24 +337,24 @@ The following Caliper Working Group participants contributed to the writing of t
 
 | Label | IRI | WordNet Gloss |
 | ------ | --- | ------------- |
-| <a name="created" />created | [clpract:Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [create](http://wordnet-rdf.princeton.edu/wn31/201620211-v): make or cause to be or to become |
-| deleted | [clpract:Deleted](http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted) | [delete](http://wordnet-rdf.princeton.edu/wn31/201001860-v): wipe out digitally |
-| <a name="loggedIn" />logged in | [clpract:LoggedIn](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn) | [log in](http://wordnet-rdf.princeton.edu/wn31/202253955-v): enter a computer or software application |
-| <a name="loggedIn" />logged out | [clpract:LoggedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut) | [log out](http://wordnet-rdf.princeton.edu/wn31/202254101-v): exit a computer or software application |
-| <a name="markedAsRead" />marked as read | [clpract:MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v): designate as if by a mark, [read](http://wordnet-rdf.princeton.edu/wn31/200626756-v): interpret something that is written or printed |
-| <a name="markedAsUnread" />marked as unread | [clpract:MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
-| <a name="posted" />posted | [clpract:Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [post](http://wordnet-rdf.princeton.edu/wn31/201033289-v): to cause to be directed or transmitted to another place |
-| <a name="removed" />removed | [clpract:Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove](http://wordnet-rdf.princeton.edu/wn31/200181704-v): remove from sight |
-| <a name="subscribed" />subscribed | [clpract:Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [subscribe](http://wordnet-rdf.princeton.edu/wn31/202214527-v): receive or obtain regularly |
-| <a name="updated" />updated | [clpract:Updated](http://purl.imsglobal.org/vocab/caliper/v1/action#Updated) | [update](http://wordnet-rdf.princeton.edu/wn31/200835207-v): bring up to date; supply with recent information |
-| <a name="unsubscribed" />unsubscribed | [clpract:Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
+| <a name="created" />created | [http://purl.imsglobal.org/vocab/caliper/v1/action#Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [create](http://wordnet-rdf.princeton.edu/wn31/201620211-v): make or cause to be or to become |
+| deleted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted](http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted) | [delete](http://wordnet-rdf.princeton.edu/wn31/201001860-v): wipe out digitally |
+| <a name="loggedIn" />logged in | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn) | [log in](http://wordnet-rdf.princeton.edu/wn31/202253955-v): enter a computer or software application |
+| <a name="loggedIn" />logged out | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut) | [log out](http://wordnet-rdf.princeton.edu/wn31/202254101-v): exit a computer or software application |
+| <a name="markedAsRead" />marked as read | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v): designate as if by a mark, [read](http://wordnet-rdf.princeton.edu/wn31/200626756-v): interpret something that is written or printed |
+| <a name="markedAsUnread" />marked as unread | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
+| <a name="posted" />posted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [post](http://wordnet-rdf.princeton.edu/wn31/201033289-v): to cause to be directed or transmitted to another place |
+| <a name="removed" />removed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove](http://wordnet-rdf.princeton.edu/wn31/200181704-v): remove from sight |
+| <a name="subscribed" />subscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [subscribe](http://wordnet-rdf.princeton.edu/wn31/202214527-v): receive or obtain regularly |
+| <a name="updated" />updated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Updated](http://purl.imsglobal.org/vocab/caliper/v1/action#Updated) | [update](http://wordnet-rdf.princeton.edu/wn31/200835207-v): bring up to date; supply with recent information |
+| <a name="unsubscribed" />unsubscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
 
 <a name="appendixB" />
 ### Appendix B: Caliper Entities
 
 <a name="agent" />
 #### Agent
-A Caliper Agent is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).
+A Caliper ```Agent``` is a generic class that represents an [Entity](#entity) that can initiate or perform an [action](#appendixA).  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).
 
 ###### subClassOf
 [Entity](#entity)
@@ -363,8 +363,8 @@ A Caliper Agent is a generic class that represents an [Entity](#entity) that can
 [http://purl.imsglobal.org/caliper/v1/Agent](http://purl.imsglobal.org/caliper/v1/Agent)
 
 ###### Requirements
-* Given that [Agent](#agent) represents a generic type it is RECOMMENDED that only subclasses of Agent be used to represent an [Event](#event) [actor](#actor).
-* If a generic Agent is included in an [Event](#event) instead of one of its subclasses, the Agent [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Agent.
+* Given that ```Agent``` represents a generic type it is RECOMMENDED that only subclasses of ```Agent``` be used to represent an [Event](#event) [actor](#actor).
+* If a generic ```Agent``` is included in an [Event](#event) instead of one of its subclasses, the ```Agent``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Agent.
 
 ###### Subclasses 
 [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
@@ -394,7 +394,7 @@ TODO
 
 <a name="assessment" />
 #### Assessment
-A Caliper Assessment represents . . . TODO.
+A Caliper ```Assessment``` represents . . . TODO.
 
 ###### subClassOf 
 [AssignableDigitalResource](#assignableDigitalResource), [Collection](#collection), 
@@ -405,10 +405,10 @@ A Caliper Assessment represents . . . TODO.
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----: |
-| items | List&lt;[AssessmentItem](#assessmentItem)&gt; | The set of items that comprise this Assessment. | 0..1 |
+| items | List&lt;[AssessmentItem](#assessmentItem)&gt; | The set of items that comprise this ```Assessment```. | 0..1 |
 
 ###### Requirements
-* An Assessment [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment.
+* An ```Assessment``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment.
 
 ###### Example
 ```
@@ -417,13 +417,13 @@ A Caliper Assessment represents . . . TODO.
     "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
     "name": "Stamp Act Crisis Quiz",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z",
-    "datePublished": "2015-08-15T09:30:00.000Z",
-    "dateToActivate": "2015-08-16T05:00:00.000Z",
-    "dateToShow": "2015-08-16T05:00:00.000Z",
-    "dateToStartOn": "2015-08-16T05:00:00.000Z",
-    "dateToSubmit": "2015-09-28T11:59:59.000Z",
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z",
+    "datePublished": "2016-08-15T09:30:00.000Z",
+    "dateToActivate": "2016-08-16T05:00:00.000Z",
+    "dateToShow": "2016-08-16T05:00:00.000Z",
+    "dateToStartOn": "2016-08-16T05:00:00.000Z",
+    "dateToSubmit": "2016-09-28T11:59:59.000Z",
     "maxAttempts": 2,
     "maxScore": 10,
     "maxSubmits": 2,
@@ -433,7 +433,7 @@ A Caliper Assessment represents . . . TODO.
 
 <a name="assessmentItem" />
 #### AssessmentItem
-A Caliper AssessmentItem represents . . . TODO.
+A Caliper ```AssessmentItem``` represents . . . TODO.
 
 ###### subClassOf 
 [AssignableDigitalResource](#assignableDigitalResource)
@@ -442,7 +442,7 @@ A Caliper AssessmentItem represents . . . TODO.
 [http://purl.imsglobal.org/caliper/v1/Assessment](http://purl.imsglobal.org/caliper/v1/Assessment)
 
 ###### Requirements
-* An AssessmentItem [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem.
+* An ```AssessmentItem``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem.
 
 ###### Example
 ```
@@ -455,13 +455,13 @@ A Caliper AssessmentItem represents . . . TODO.
     "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
     "name": "Stamp Act Crisis Quiz",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z",
-    "datePublished": "2015-08-15T09:30:00.000Z",
-    "dateToActivate": "2015-08-16T05:00:00.000Z",
-    "dateToShow": "2015-08-16T05:00:00.000Z",
-    "dateToStartOn": "2015-08-16T05:00:00.000Z",
-    "dateToSubmit": "2015-09-28T11:59:59.000Z",
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z",
+    "datePublished": "2016-08-15T09:30:00.000Z",
+    "dateToActivate": "2016-08-16T05:00:00.000Z",
+    "dateToShow": "2016-08-16T05:00:00.000Z",
+    "dateToStartOn": "2016-08-16T05:00:00.000Z",
+    "dateToSubmit": "2016-09-28T11:59:59.000Z",
     "maxAttempts": 2,
     "maxScore": 3.0,
     "maxSubmits": 2,
@@ -491,8 +491,33 @@ TODO
 
 <a name="attempt" />
 #### Attempt
+A Caliper ```Attempt``` provides a count of the number of times an [Agent](#agent) interacts with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An ```Attempt``` is generated as the result of an action such as starting an [Assessment](#assessment). In the case of an [OutcomeEvent](#outcomeevent) graded action, the ```Attempt``` constitutes the object of the interaction. 
 
-TODO
+###### subClassOf 
+[Entity](#entity)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/Attempt](http://purl.imsglobal.org/caliper/v1/Attempt)
+
+####### Properties
+| Property | Type | Description | Conformance |
+| -------- | ---- | ----------- | ----------- |
+| assignable | [DigitalResource](#digitalResource) | The ```DigitalResource``` that is the target of this ```Attempt```. | 1 |
+| actor | [Agent](#agent) | The ```Agent``` who initiates the ```Attempt```.| 1 |
+| count | [xsd:nonNegativeInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) | The total number of attempts inclusive of the current ```Attempt``` that have been registered against the assigned ```DigitalResource```. | 1 |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete this ```Attempt```. | 0..1 |
+
+###### Requirements
+* An ```Attempt``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Attempt.
+* The ```assignable``` associated with this ```Attempt``` MUST be specified.
+* The ```actor``` initiating the ```Attempt``` MUST be specified.
+* An ```Attempt``` [startedAtTime](#startedAtTime) SHOULD be provided. 
+* If an ```Attempt``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision. 
+* If an ```Attempt``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* If an ```Attempt``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
+
 
 ###### Example
 ```
@@ -533,7 +558,7 @@ TODO
 
 <a name="collection" />
 #### Collection
-A Caliper Collection is a generic class that represents a set of entities.  It is analogous to a [dcmitype:Collection](http://purl.org/dc/dcmitype/Collection) or a [sioc:Container](http://rdfs.org/sioc/spec/#term_Container).
+A Caliper ```Collection``` is a generic class that represents a set of entities.  It is analogous to a [dcmitype:Collection](http://purl.org/dc/dcmitype/Collection) or a [sioc:Container](http://rdfs.org/sioc/spec/#term_Container).
 
 ###### subClassOf
 [Entity](#entity)
@@ -544,12 +569,12 @@ A Caliper Collection is a generic class that represents a set of entities.  It i
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----: |
-| ~~isChildOf~~ | ~~[Collection](#collection)~~ | ~~The parent Collection of this Collection.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent).~~ | ~~0..1~~ |
-| items | List&lt;[Entity](#entity)&gt; | The set of items that comprise this Collection. | 0..1 |
+| ~~isChildOf~~ | ~~[Collection](#collection)~~ | ~~The parent ```Collection``` of this ```Collection```.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent).~~ | ~~0..1~~ |
+| items | List&lt;[Entity](#entity)&gt; | The set of ```items``` that comprise this ```Collection```. | 0..1 |
 
 ###### Requirements
-* Given that a Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.
-* If a generic Collection is included in an [Event](#event) instead of one of its subclasses, the Collection [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Collection.
+* Given that a ```Collection``` represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.
+* If a generic ```Collection``` is included in an [Event](#event) instead of one of its subclasses, the ```Collection``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Collection.
 
 ###### Subclasses 
 [Assessment](./assessment.md), [Forum](./forum.md), [Thread](./thread.md)
@@ -593,7 +618,7 @@ TODO
 
 <a name="digitalResource" />
 #### DigitalResource
-A Caliper DigitalResource is a generic class that represents a content item.  It is analogous to an [sdo:CreativeWork](https://schema.org/CreativeWork).
+A Caliper ```DigitalResource``` is a generic class that represents a content item.  It is analogous to an [sdo:CreativeWork](https://schema.org/CreativeWork).
 
 ###### subClassOf 
 [Entity](#entity)
@@ -604,18 +629,18 @@ A Caliper DigitalResource is a generic class that represents a content item.  It
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ---: |
-| creator | [Agent](#agent) | The [Agent](#agent) responsible for bringing the described DigitalResource into being.  Analogous to [sdo:Creator](http://schema.org/Creator) or [dcterms:creator](http://purl.org/dc/terms/creator). | 0..1 |
+| creator | [Agent](#agent) | The ```Agent``` responsible for bringing the described ```DigitalResource``` into being.  Analogous to [sdo:Creator](http://schema.org/Creator) or [dcterms:creator](http://purl.org/dc/terms/creator). | 0..1 |
 | ~~objectType~~ | ~~[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)~~ | ~~decremented~~| ~~0..1~~ |
-| keywords | List&lt;[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)&gt; | A set of one or more words that are used to tag the content.  Analogous to [sdo:keywords](http://schema.org/keywords) | 0..1 |
-| alignedLearningObjective | List&lt;[LearningObjective](#learningobjective)&gt; | One or more [LearningObjectives](#learningobject) that describe what [actor](#actor) is expected to accomplish after engaging with this DigitalResource | 0..1 |
-| isPartOf | [DigitalResource](#digitalresource) | A related DigitalResource that includes or incorporates the described DigitalResource as a part of its whole.  Analogous to [sdo:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf). | 0..1 |
-| datePublished | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents the publication date of the DigitalResource.  Analogous to [sdo:datePublished](http://schema.org/datePublished) | 0..1 |
-| version | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | An identifier that designates the current form of the DigitalResource.  Analogous to [sdo:version](http://schema.org/version) | 0..1 |
+| keywords | List&lt;[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)&gt; | A set of one or more words that are used to tag this ```DigitalResource```.  Analogous to [sdo:keywords](http://schema.org/keywords) | 0..1 |
+| alignedLearningObjective | List&lt;[LearningObjective](#learningobjective)&gt; | One or more [LearningObjectives](#learningobject) that describe what the ```actor``` is expected to accomplish after engaging with this ```DigitalResource``` | 0..1 |
+| isPartOf | [DigitalResource](#digitalresource) | A related ```DigitalResource``` that includes or incorporates this ```DigitalResource``` as a part of its whole.  Analogous to [sdo:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf). | 0..1 |
+| datePublished | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents the publication date of this ```DigitalResource```.  Analogous to [sdo:datePublished](http://schema.org/datePublished) | 0..1 |
+| version | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | An identifier that designates the current form of this ```DigitalResource```.  Analogous to [sdo:version](http://schema.org/version) | 0..1 |
 
 ###### Requirements
-* Given that DigitalResource represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
-* If a generic DigitalResource is included in an [Event](#event) instead of one of its subclasses, the DigitalResource [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
-* If a DigitalResource [datePublished](#datePublished) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* Given that ```DigitalResource``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+* If a generic ```DigitalResource``` is included in an [Event](#event) instead of one of its subclasses, the ```DigitalResource``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
+* If a ```DigitalResource``` [datePublished](#datePublished) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
 ###### Subclasses
 [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [AudioObject](#audioobject), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Frame](#frame), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Reading](#reading), [Thread](#thread), [VideoObject](#videoobject), [WebPage](#webpage)
@@ -715,7 +740,7 @@ TODO
 
 <a name="forum" />
 #### Forum
-A Caliper Forum is a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded discussions to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
+A Caliper ```Forum``` is a channel or virtual space in which group discussions take place.  A ```Forum``` typically comprises one or more threaded discussions to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
 
 ###### subClassOf 
 [Collection](#collection)
@@ -726,10 +751,10 @@ A Caliper Forum is a channel or virtual space in which group discussions take pl
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----: |
-| items | List&lt;[Thread](#thread)&gt; | The set of items that comprise this Forum. | 0..1 |
+| items | List&lt;[Thread](#thread)&gt; | The set of ```items``` that comprise this ```Forum```. | 0..1 |
 
 ###### Requirements
-* A Forum [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum.
+* A ```Forum``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum.
 
 ###### Example
 ```
@@ -798,12 +823,12 @@ TODO
     {
       "@id": "https://example.edu/courses/5678/assignments/1/learningobjectives/1",
       "@type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
-      "dateCreated": "2015-08-01T06:00:00.000Z"
+      "dateCreated": "2016-08-01T06:00:00.000Z"
     }
   ],
   "duration": 1420,
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
   "version": "1.0"
 }
 ```
@@ -824,7 +849,7 @@ TODO
 
 <a name="mediaObject" />
 #### MediaObject
-A Caliper MediaObject represents a generic piece of media content analogous to [sdo:MediaObject](http://schema.org/MediaObject).
+A Caliper ```MediaObject``` represents a generic piece of media content analogous to [sdo:MediaObject](http://schema.org/MediaObject).
 
 ###### subClassOf 
 [DigitalResource](#digitalResource)
@@ -838,8 +863,8 @@ A Caliper MediaObject represents a generic piece of media content analogous to [
 | duration | [xsd:long](https://www.w3.org/TR/xmlschema11-2/#long) | The length of time to completion.  Analogous to [sdo:duration](http://schema.org/duration).  | 0..1 |
 
 ###### Requirements
-* Given that MediaObject represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
-* If a generic MediaObject is included in an [Event](#event) instead of one of its subclasses, the MediaObject [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject. 
+* Given that ```MediaObject``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+* If a generic ```MediaObject``` is included in an [Event](#event) instead of one of its subclasses, the ```MediaObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject. 
 
 ###### Subclasses
 [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject) 
@@ -860,7 +885,7 @@ TODO
 
 <a name="message" />
 #### Message
-A Caliper Message is a digital form of written communication sent to a recipient. A series of Messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships. It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
+A Caliper ```Message``` is a digital form of written communication sent to a recipient. A series of ```Messages``` may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships. It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
 
 ###### subClassOf 
 [DigitalResource](#digitalResource)
@@ -871,16 +896,16 @@ A Caliper Message is a digital form of written communication sent to a recipient
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ---: |
-| creator | [Agent](#agent) | The author or originator of this Message, typically a [Person](#person).  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator) or [sdo:creator](http://schema.org/creator). | 0..1|
-| replyTo | [Message](#message) | The prior Message, if any, that prompted the posting of this Message in the form of a reply or response.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). | 0..1 |
-| isPartOf | [Thread](#thread) | The Thread of which this Message forms a part.  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator). | 0..1 |
-| content | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | Plain-text rendering of the content of the Message.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). | 0..1 |
-| attachments | List&lt;[DigitalResource](#digitalResource)&gt; | A set of one or more DigitalResources attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). | 0..1 |
+| creator | [Agent](#agent) | The author or originator of this ```Message```, typically a [Person](#person).  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator) or [sdo:creator](http://schema.org/creator). | 0..1|
+| replyTo | [Message](#message) | The prior ```Message```, if any, that prompted the posting of this ```Message``` in the form of a reply or response.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). | 0..1 |
+| isPartOf | [Thread](#thread) | The ```Thread``` of which this Message forms a part.  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator). | 0..1 |
+| content | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | Plain-text rendering of the content of the ```Message```.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). | 0..1 |
+| attachments | List&lt;[DigitalResource](#digitalResource)&gt; | A set of one or more items attached to this ```Message```.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). | 0..1 |
 
 ###### Requirements
-* A Message [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Message.
-* A Message SHOULD specify a [creator](#creator).
-* A Message SHOULD specify a [replyTo](#replyTo) if the Message represents a response to a previously posted Message.
+* A ```Message``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Message.
+* A ```Message``` SHOULD specify a [creator](#creator).
+* A ```Message``` SHOULD specify a [replyTo](#replyTo) if the ```Message``` represents a response to a previously posted ```Message```.
 
 ## TODO
 SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWING MINIMUM PROPERTIES:
@@ -974,7 +999,7 @@ TODO
 
 <a name="organization" />
 #### Organization
-A Caliper Organization represents a group of people organized into a community or other social, commercial, educational or political structure.  The group has a common purpose or reason for existence that spans beyond the set of people belonging to it and can act as an [Agent](#agent). An Organization can often be decomposed into a hierarchical structure.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
+A Caliper ```Organization``` represents a group of people organized into a community or other social, commercial, educational or political structure.  The group has a common purpose or reason for existence that spans beyond the set of people belonging to it and can act as an [Agent](#agent). An ```Organization``` can often be decomposed into a hierarchical structure.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
 ###### subClassOf
 [Agent](#agent)
@@ -985,10 +1010,10 @@ A Caliper Organization represents a group of people organized into a community o
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- |---: |
-| subOrganizationOf | [Organization](#organization) | The parent Organization of this Organization. | 0..1 |
+| subOrganizationOf | [Organization](#organization) | The parent ```Organization``` of this ```Organization```. | 0..1 |
 
 ###### Requirements
-* An Organization [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+* An ```Organization``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/w3c/Organization.
 
 ###### Subclasses
 [Group](#group)
@@ -1011,7 +1036,7 @@ A Caliper Organization represents a group of people organized into a community o
 
 <a name="person" />
 #### Person
-A Caliper Person represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
+A Caliper ```Person``` represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
 ###### subClassOf
 [Agent](#agent)
@@ -1020,7 +1045,7 @@ A Caliper Person represents a human being, alive or deceased, real or imaginary.
 [http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.imsglobal.org/caliper/v1/lis/Person)
 
 ###### Requirements
-* A Person [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
+* A ```Person``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
 
 ###### Example
 ```
@@ -1028,7 +1053,7 @@ A Caliper Person represents a human being, alive or deceased, real or imaginary.
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/users/554433",
   "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
-  "dateCreated": "2015-08-01T06:00:00.000Z"
+  "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
@@ -1090,7 +1115,7 @@ TODO
 
 <a name="session" />
 #### Session
-A Caliper Session represents a Web application user session.
+A Caliper ```Session``` represents a Web application user session.
 
 ###### subClassOf
 [Entity](#entity)
@@ -1101,19 +1126,19 @@ A Caliper Session represents a Web application user session.
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ---: |
-| actor | [Agent](#agent) | The [Agent](#agent) who establishes the Session.| 0..1 |
-| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
-| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when a Session ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
-| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete the Attempt. | 0..1 |
+| actor | [Agent](#agent) | The ```Agent``` who establishes this ```Session```.| 0..1 |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when a ```Session``` commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when a ```Session``` ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete this ```Session```. | 0..1 |
 
 ###### Requirements
-* A Session [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session.
+* A ```Session``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session.
 * It is RECOMMENDED that a Session [actor](#actor) be specified.
-* A Session [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent). 
-* If a Session [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* It is RECOMMENDED that a Session [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
-* If a Session [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* If a Session [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
+* A ```Session``` [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent). 
+* If a ```Session``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* It is RECOMMENDED that a ```Session``` [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
+* If a ```Session``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* If a ```Session``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
 ###### Example
 ```
@@ -1125,10 +1150,10 @@ A Caliper Session represents a Web application user session.
   "actor": {
     "@id": "https://example.edu/user/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
-    "dateCreated": "2015-08-01T06:00:00.000Z"
+    "dateCreated": "2016-08-01T06:00:00.000Z"
   },
-  "dateCreated": "2015-09-15T10:15:00.000Z",
-  "startedAtTime": "2015-09-15T10:15:00.000Z"
+  "dateCreated": "2016-09-15T10:15:00.000Z",
+  "startedAtTime": "2016-09-15T10:15:00.000Z"
 }
 ```
 
@@ -1148,7 +1173,7 @@ TODO
 
 <a name="softwareapplication" />
 #### SoftwareApplication
-A Caliper SoftwareApplication represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
+A Caliper ```SoftwareApplication``` represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
 ###### subClassOf
 [Agent](#agent)
@@ -1157,7 +1182,7 @@ A Caliper SoftwareApplication represents a computer program, application, module
 [http://purl.imsglobal.org/caliper/v1/SoftwareApplication](http://purl.imsglobal.org/caliper/v1/SoftwareApplication)
 
 ###### Requirements
-* A SoftwareApplication [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
+* A ```SoftwareApplication``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
 ###### Example
 ```
@@ -1185,10 +1210,10 @@ TODO
 
 <a name="thread" />
 #### Thread
-A Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships. It is analogous to a [sioc:Thread](http://rfds.org/sioc/spec/#term_Thread).
+A Caliper ```Thread``` represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships. It is analogous to a [sioc:Thread](http://rfds.org/sioc/spec/#term_Thread).
 
 ###### subClassOf 
-[Agent](#agent)
+[Collection](#collection)
 
 ###### &#64;type 
 [http://purl.imsglobal.org/caliper/v1/Thread](http://purl.imsglobal.org/caliper/v1/Thread)
@@ -1196,11 +1221,11 @@ A Caliper Thread represents a series of one or more messages that share a common
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ---: |
-| isChildOf | [Forum](#forum) | The parent Forum of this Thread.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent). | 0..1 |
-| items | List&lt;[Message](#message)&gt; | The set of items that comprise this Thread. | 0.1 |
+| isChildOf | [Forum](#forum) | The parent ```Forum``` of this ```Thread```.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent). | 0..1 |
+| items | List&lt;[Message](#message)&gt; | The set of ```items``` that comprise this ```Thread```. | 0.1 |
 
 ###### Requirements
-* A Thread [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread.
+* A ```Thread``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread.
 
 ###### Example
 ```
@@ -1227,7 +1252,7 @@ TODO
 
 <a name="videoObject" />
 #### VideoObject
-A Caliper VideoObject represents a visual recording stored in digital form. It is analogous to [sdo:VideoObject](http://schema.org/VideoObject).
+A Caliper ```VideoObject``` represents a visual recording stored in digital form. It is analogous to [sdo:VideoObject](http://schema.org/VideoObject).
 
 ###### subClassOf 
 [MediaObject](#mediaobject)
@@ -1236,7 +1261,7 @@ A Caliper VideoObject represents a visual recording stored in digital form. It i
 [http://purl.imsglobal.org/caliper/v1/VideoObject](http://purl.imsglobal.org/caliper/v1/VideoObject)
 
 ###### Requirements
-* A VideoObject [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject.
+* A ```VideoObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject.
 
 ###### Example
 ```
@@ -1246,15 +1271,15 @@ A Caliper VideoObject represents a visual recording stored in digital form. It i
   "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
   "name": "American Revolution - Key Figures Video",
   "duration": 1420,
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
   "version": "1.0"
 }
 ```
 
 <a name="webPage" />
 #### WebPage
-A Caliper WebPage represents a document suitable for display in a web browser.  It is analogous to a [sdo:WebPage](http://schema.org/WebPage).
+A Caliper ```WebPage``` represents a document suitable for display in a web browser.  It is analogous to a [sdo:WebPage](http://schema.org/WebPage).
 
 ###### subClassOf 
 [DigitalResource](#digitalresource)
@@ -1263,7 +1288,7 @@ A Caliper WebPage represents a document suitable for display in a web browser.  
 [http://purl.imsglobal.org/caliper/v1/WebPage](http://purl.imsglobal.org/caliper/v1/WebPage)
 
 ###### Requirements
-* A WebPage [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage.
+* A ```WebPage``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage.
 
 ###### Example
 ```
@@ -1272,8 +1297,8 @@ A Caliper WebPage represents a document suitable for display in a web browser.  
   "@id": "https://example.edu/politicalScience/2015/american-revolution-101/index.html",
   "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
   "name": "American Revolution 101 Landing Page",
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
   "version": "1.0"
 }
 ```
