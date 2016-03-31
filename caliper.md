@@ -294,6 +294,9 @@ TODO
 
 ###### Requirements 
 * A ```SessionEvent``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
+* A ```Session``` [startedAtTime](#startedAtTime) SHOULD be provided.
+* For a ```loggedIn``` action, the generated [Session](#session) ```endedAtTime``` and ```duration``` SHOULD NOT be specified.
+* It is RECOMMENDED that a [Session](#session) ```endedAtTime``` and ```duration``` be provided for ```loggedOut``` and ```timedOut``` actions.  
 * ```SessionEvent``` property values vary between supported actions.  When generating a ```SessionEvent```, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
 
 | SessionEvent | loggedIn | loggedOut | timedOut ||
@@ -530,15 +533,25 @@ A Caliper ```Attempt``` provides a count of the number of times an [Agent](#agen
 
 <a name="audioObject" />
 #### AudioObject
+A Caliper ```AudioObject``` represents an audio or sound file.  It is analogous to [sdo:AudioObject](http://schema.org/AudioObject).
 
-TODO
+###### subClassOf 
+[MediaObject](#mediaObject)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/AudioObject](http://purl.imsglobal.org/caliper/v1/AudioObject)
+
+###### Requirements
+* An ```AudioObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AudioObject.
 
 ###### Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "http://www.fdrlibrary.marist.edu/archives/collections/utterances_audio/direct_download.php?file=afdr067.mp3",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AudioObject",
+  "name": "Franklin D. Roosevelt. Madison Square Garden Speech (31 October 1936)",
+  "duration": "PT36M55S"
 }
 ```
 
@@ -796,14 +809,24 @@ TODO
 <a name="imageObject" />
 #### ImageObject
 
-TODO
+A Caliper ```ImageObject``` represents an image file.  It is analogous to [sdo:ImageObject](http://schema.org/ImageObject).
+
+###### subClassOf 
+[MediaObject](#mediaObject)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/ImageObject](http://purl.imsglobal.org/caliper/v1/ImageObject)
+
+###### Requirements
+* An ```ImageObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ImageObject.
 
 ###### Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Jesse_Owens3.jpg",
+  "@type": "http://purl.imsglobal.org/caliper/v1/ImageObject",
+  "name": "Jesse Owens"
 }
 ```
 
@@ -860,11 +883,12 @@ A Caliper ```MediaObject``` represents a generic piece of media content analogou
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----: |
-| duration | [xsd:long](https://www.w3.org/TR/xmlschema11-2/#long) | The length of time to completion.  Analogous to [sdo:duration](http://schema.org/duration).  | 0..1 |
+| duration | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | The length of time to completion.  Analogous to [sdo:duration](http://schema.org/duration).  | 0..1 |
 
 ###### Requirements
 * Given that ```MediaObject``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
-* If a generic ```MediaObject``` is included in an [Event](#event) instead of one of its subclasses, the ```MediaObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject. 
+* If a generic ```MediaObject``` is included in an [Event](#event) instead of one of its subclasses, the ```MediaObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject.
+* If a ```duration``` is specified, the value MUST conform to the ISO-8601 duration format.
 
 ###### Subclasses
 [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject) 
@@ -1134,9 +1158,7 @@ A Caliper ```Session``` represents a Web application user session.
 ###### Requirements
 * A ```Session``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session.
 * It is RECOMMENDED that a Session [actor](#actor) be specified.
-* A ```Session``` [startedAtTime](#startedAtTime) SHOULD be provided for a [SessionEvent](#sessionEvent). 
-* If a ```Session``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* It is RECOMMENDED that a ```Session``` [endedAtTime](#endedAtTime) be provided for a [SessionEvent](#sessionEvent) with an action of [loggedOut](#loggedOut) or [timedOut](#timedOut).  
+* If a ```Session``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
 * If a ```Session``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 * If a ```Session``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
