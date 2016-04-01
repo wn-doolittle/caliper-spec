@@ -56,6 +56,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 7.x. [Contributors](#contributors) 
   *	[Appendix A: Caliper Actions](#appendixA)
   * [Appendix B: Caliper Entities](#appendixB)
+  * [Appendix C: Miscellaneous Classes](#appendixC)
   * [References](#references) 
   * [Revision History](#revisionHistory)
 
@@ -164,7 +165,7 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 ###### Subclasses
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [ReadingEvent](#readingEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -211,7 +212,7 @@ A Caliper ```Entity``` is a generic class that is analogous to an [sdo:Thing](ht
 ###### Subclasses
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
-###### Example
+###### JSON-LD Example
 ```
 {
    TODO
@@ -372,28 +373,28 @@ A Caliper ```Agent``` is a generic class that represents an [Entity](#entity) th
 ###### Subclasses 
 [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
-###### Example
-```
-{
-
- TODO
- 
-}
-```
-
 <a name="annotation" />
 #### Annotation
 
-TODO
+A Caliper ```Annotation``` is a generic class that represents a comment, explanation, highlight, mark, note, question or tag added to a ```DigitalResource```.  The act of sharing a ```DigitalResource``` with others is also considered a form of annotation.  
 
-###### Example
-```
-{
+###### subClassOf
+[Entity](#entity)
 
- TODO
- 
-}
-```
+###### &#64;type
+[http://purl.imsglobal.org/caliper/v1/Annotation](http://purl.imsglobal.org/caliper/v1/Annotation)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| annotated | [DigitalResource](#digitalResource) | The ```DigitalResource``` that is being annotated. | 0..1 |
+
+###### Requirements
+* Given that ```Annotation``` represents a generic type it is RECOMMENDED that only subclasses of ```Annotation``` be used to represent a ```Event``` [generated](#generated) ```Entity```.
+* If a generic ```Annotation``` is included in an [Event](#event) instead of one of its subclasses, the ```Annotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Annotation.
+
+###### Subclasses 
+[BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
 
 <a name="assessment" />
 #### Assessment
@@ -413,7 +414,7 @@ A Caliper ```Assessment``` represents . . . TODO.
 ###### Requirements
 * An ```Assessment``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment.
 
-###### Example
+###### JSON-LD example
 ```
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -447,7 +448,7 @@ A Caliper ```AssessmentItem``` represents . . . TODO.
 ###### Requirements
 * An ```AssessmentItem``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem.
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -483,7 +484,7 @@ A Caliper ```AssessmentItem``` represents . . . TODO.
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -522,7 +523,7 @@ A Caliper ```Attempt``` provides a count of the number of times an [Agent](#agen
 * If an ```Attempt``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -544,7 +545,7 @@ A Caliper ```AudioObject``` represents an audio or sound file.  It is analogous 
 ###### Requirements
 * An ```AudioObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AudioObject.
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -557,15 +558,32 @@ A Caliper ```AudioObject``` represents an audio or sound file.  It is analogous 
 
 <a name="bookmarkAnnotation" />
 #### BookmarkAnnotation
+A Caliper ```BookmarkAnnotation``` represents the act of marking a ```DigitalResource``` at a particular point . . . . TODO
 
-TODO
+###### subClassOf
+Annotation](#annotation)
 
-###### Example
+###### &#64;type
+[http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation](http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| bookmarkNotes | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A comment or note that accompanies the bookmark. | 0..1 |
+
+###### Requirements
+* A ```BookmarkAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation.
+
+###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/bookmarks/813cb2c6-75ec-410f-8dab-ef047afb92e5",
+  "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
+  "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/2)",
+  "bookmarkNotes": "The Intolerable Acts (1774)--bad idea Lord North",
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "dateModified": "2015-09-02T11:30:00.000Z"
 }
 ```
 
@@ -592,7 +610,7 @@ A Caliper ```Collection``` is a generic class that represents a set of entities.
 ###### Subclasses 
 [Assessment](./assessment.md), [Forum](./forum.md), [Thread](./thread.md)
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -606,7 +624,7 @@ A Caliper ```Collection``` is a generic class that represents a set of entities.
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -620,7 +638,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -658,7 +676,7 @@ A Caliper ```DigitalResource``` is a generic class that represents a content ite
 ###### Subclasses
 [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [AudioObject](#audioobject), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Frame](#frame), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Reading](#reading), [Thread](#thread), [VideoObject](#videoobject), [WebPage](#webpage)
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -672,7 +690,7 @@ A Caliper ```DigitalResource``` is a generic class that represents a content ite
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -686,7 +704,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -700,7 +718,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -714,7 +732,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -728,7 +746,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -742,7 +760,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -769,7 +787,7 @@ A Caliper ```Forum``` is a channel or virtual space in which group discussions t
 ###### Requirements
 * A ```Forum``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum.
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -783,7 +801,7 @@ A Caliper ```Forum``` is a channel or virtual space in which group discussions t
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -794,15 +812,37 @@ TODO
 
 <a name="highlightAnnotation" />
 #### HighlightAnnotation
+A Caliper ```HighlightAnnotation``` represents the act of marking a particular segment of a  ```DigitalResource``` . . . . TODO
 
-TODO
+###### subClassOf
+Annotation](#annotation)
 
-###### Example
+###### &#64;type
+[http://purl.imsglobal.org/caliper/v1/HighlightAnnotation](http://purl.imsglobal.org/caliper/v1/HighlightAnnotation)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| selection | [TextPositionSelector](#textPositionSelector) | The range of highlighted text based on its ```start``` and ```end``` positions.  | 0..1 |
+| selectionText | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)  | The highlighted segment or fragment of the annotated ```DigitalResource```. | 0..1 |
+
+###### Requirements
+* A ```HighlightAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/HighlightAnnotation.
+
+###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/highlights/12345",
+  "@type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
+  "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "dateModified": "2015-09-02T11:30:00.000Z",
+  "selection": {
+    "end": "489",
+    "start": "455"
+  },
+  "selectionText": "Life, Liberty and the pursuit of Happiness"
 }
 ```
 
@@ -835,7 +875,7 @@ A Caliper ```ImageObject``` represents an image file.  It is analogous to [sdo:I
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -861,7 +901,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -898,7 +938,7 @@ A Caliper ```MediaObject``` represents a generic piece of media content analogou
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -941,7 +981,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
 }
 ```
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -998,7 +1038,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -1012,7 +1052,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -1042,7 +1082,7 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 ###### Subclasses
 [Group](#group)
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1071,7 +1111,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 ###### Requirements
 * A ```Person``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1086,7 +1126,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -1100,7 +1140,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -1114,7 +1154,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -1128,7 +1168,7 @@ TODO
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -1162,7 +1202,7 @@ A Caliper ```Session``` represents a Web application user session.
 * If a ```Session``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 * If a ```Session``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1181,15 +1221,45 @@ A Caliper ```Session``` represents a Web application user session.
 
 <a name="sharedAnnotation" />
 #### SharedAnnotation
+A Caliper ```SharedAnnotation``` represents the act of sharing a reference to a ```DigitalResource``` with other agents.
 
-TODO
+###### subClassOf
+Annotation](#annotation)
 
-###### Example
+###### &#64;type
+[http://purl.imsglobal.org/caliper/v1/SharedAnnotation](http://purl.imsglobal.org/caliper/v1/SharedAnnotation)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| withAgents | List&lt;[Agent](#agent)&gt; | The set of one or more agents with whom a ```DigitalResource``` is shared. | 0..1 |
+
+###### Requirements
+* A ```SharedAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SharedAnnotation.
+
+###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/shared/9999",
+  "@type": "http://purl.imsglobal.org/caliper/v1/SharedAnnotation",
+  "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/3)",
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "dateModified": "2015-09-02T11:30:00.000Z",
+  "withAgents": [
+    {
+      "@id": "https://example.edu/user/657585",
+      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+      "dateCreated": "2015-08-01T06:00:00.000Z",
+      "dateModified": "2015-09-02T11:30:00.000Z"
+    },
+    {
+      "@id": "https://example.edu/user/667788",
+      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+      "dateCreated": "2015-08-01T06:00:00.000Z",
+      "dateModified": "2015-09-02T11:30:00.000Z"
+    }
+  ]
 }
 ```
 
@@ -1206,7 +1276,7 @@ A Caliper ```SoftwareApplication``` represents a computer program, application, 
 ###### Requirements
 * A ```SoftwareApplication``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1218,15 +1288,32 @@ A Caliper ```SoftwareApplication``` represents a computer program, application, 
 
 <a name="tagAnnotation" />
 #### TagAnnotation
+A Caliper ```TagAnnotation``` represents the act of tagging a ```DigitalResource``` with . . . . TODO
 
-TODO
+###### subClassOf
+Annotation](#annotation)
 
-###### Example
+###### &#64;type
+[http://purl.imsglobal.org/caliper/v1/TagAnnotation](http://purl.imsglobal.org/caliper/v1/TagAnnotation)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| tags | List&lt;[xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)&gt; | The set of one or more tags associated with the annotated ```DigitalResource```. | 0..1 |
+
+###### Requirements
+* A ```TagAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/TagAnnotation.
+
+###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/tags/7654",
+  "@type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
+  "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/4)",
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "dateModified": "2015-09-02T11:30:00.000Z",
+  "tags": ["to read", "1765", "shared with project team"]
 }
 ```
 
@@ -1249,7 +1336,7 @@ A Caliper ```Thread``` represents a series of one or more messages that share a 
 ###### Requirements
 * A ```Thread``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread.
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -1263,7 +1350,7 @@ A Caliper ```Thread``` represents a series of one or more messages that share a 
 
 TODO
 
-###### Example
+###### JSON-LD Example
 ```
 {
 
@@ -1285,7 +1372,7 @@ A Caliper ```VideoObject``` represents a visual recording stored in digital form
 ###### Requirements
 * A ```VideoObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject.
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1312,7 +1399,7 @@ A Caliper ```WebPage``` represents a document suitable for display in a web brow
 ###### Requirements
 * A ```WebPage``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage.
 
-###### Example
+###### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1324,6 +1411,15 @@ A Caliper ```WebPage``` represents a document suitable for display in a web brow
   "version": "1.0"
 }
 ```
+
+<a name="appendixC" />
+### Appendix C.  Miscellaneous Classes
+
+TODO
+
+#### TextPositionSelector
+
+TODO
 
 <a name="reference" />
 ### References
