@@ -1,7 +1,7 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-  "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+  "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
   "creators": [
     {"@id": "http://history.berkeley.edu/people/robert-l-middlekauff",
      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
