@@ -4,7 +4,7 @@
   "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
   "creators": [
     {"@id": "http://history.berkeley.edu/people/robert-l-middlekauff",
-     "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+     "@type": "http://purl.imsglobal.org/caliper/v1/Person",
      "name": "Robert Middlekauff"}
   ],
   "dateCreated": "2015-08-01T06:00:00.000Z",

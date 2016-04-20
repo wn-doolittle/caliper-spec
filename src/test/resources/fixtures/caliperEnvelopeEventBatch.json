@@ -7,7 +7,7 @@
       "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
       "actor": {
         "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person",
         "dateCreated": "2015-08-01T06:00:00.000Z",
         "dateModified": "2015-09-02T11:30:00.000Z"
       },
@@ -55,17 +55,17 @@
       },
       "group": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Group",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Group",
         "name": "Discussion Group 001",
         "subOrganizationOf": {
           "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-          "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseSection",
+          "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
           "courseNumber": "POL101",
           "name": "American Revolution 101",
           "academicSession": "Fall-2015",
           "subOrganizationOf": {
             "@id": "https://example.edu/politicalScience/2015/american-revolution-101",
-            "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
             "courseNumber": "POL101",
             "name": "Political Science 101: The American Revolution",
             "academicSession": "Fall-2015",
@@ -79,13 +79,13 @@
       },
       "membership": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Membership",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
         "name": "American Revolution 101",
         "description": "Roster entry",
         "member": "https://example.edu/user/554433",
         "organization": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-        "roles": ["http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": ["http://purl.imsglobal.org/vocab/v2/membership#Learner"],
+        "status": "http://purl.imsglobal.org/vocab/v2/status#Active",
         "dateCreated": "2015-08-01T06:00:00.000Z"
       },
       "federatedSession": "https://example.edu/lms/federatedSession/123456789"
@@ -95,7 +95,7 @@
       "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
       "actor": {
         "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person",
         "dateCreated": "2015-08-01T06:00:00.000Z",
         "dateModified": "2015-09-02T11:30:00.000Z"
       },
@@ -143,17 +143,17 @@
       },
       "group": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Group",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Group",
         "name": "Discussion Group 001",
         "subOrganizationOf": {
           "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-          "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseSection",
+          "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
           "courseNumber": "POL101",
           "name": "American Revolution 101",
           "academicSession": "Fall-2015",
           "subOrganizationOf": {
             "@id": "https://example.edu/politicalScience/2015/american-revolution-101",
-            "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
             "courseNumber": "POL101",
             "name": "Political Science 101: The American Revolution",
             "academicSession": "Fall-2015",
@@ -167,13 +167,13 @@
       },
       "membership": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Membership",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
         "name": "American Revolution 101",
         "description": "Roster entry",
         "member": "https://example.edu/user/554433",
         "organization": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-        "roles": ["http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": ["http://purl.imsglobal.org/vocab/v2/membership#Learner"],
+        "status": "http://purl.imsglobal.org/vocab/v2/status#Active",
         "dateCreated": "2015-08-01T06:00:00.000Z"
       },
       "federatedSession": "https://example.edu/lms/federatedSession/123456789"
@@ -183,7 +183,7 @@
       "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
       "actor": {
         "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person",
         "dateCreated": "2015-08-01T06:00:00.000Z",
         "dateModified": "2015-09-02T11:30:00.000Z"
       },
@@ -231,17 +231,17 @@
       },
       "group": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Group",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Group",
         "name": "Discussion Group 001",
         "subOrganizationOf": {
           "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-          "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseSection",
+          "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
           "courseNumber": "POL101",
           "name": "American Revolution 101",
           "academicSession": "Fall-2015",
           "subOrganizationOf": {
             "@id": "https://example.edu/politicalScience/2015/american-revolution-101",
-            "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
             "courseNumber": "POL101",
             "name": "Political Science 101: The American Revolution",
             "academicSession": "Fall-2015",
@@ -255,13 +255,13 @@
       },
       "membership": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Membership",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
         "name": "American Revolution 101",
         "description": "Roster entry",
         "member": "https://example.edu/user/554433",
         "organization": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-        "roles": ["http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": ["http://purl.imsglobal.org/vocab/v2/membership#Learner"],
+        "status": "http://purl.imsglobal.org/vocab/v2/status#Active",
         "dateCreated": "2015-08-01T06:00:00.000Z"
       },
       "federatedSession": "https://example.edu/lms/federatedSession/123456789"
@@ -271,7 +271,7 @@
       "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
       "actor": {
         "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person",
         "dateCreated": "2015-08-01T06:00:00.000Z",
         "dateModified": "2015-09-02T11:30:00.000Z"
       },
@@ -319,17 +319,17 @@
       },
       "group": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Group",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Group",
         "name": "Discussion Group 001",
         "subOrganizationOf": {
           "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-          "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseSection",
+          "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
           "courseNumber": "POL101",
           "name": "American Revolution 101",
           "academicSession": "Fall-2015",
           "subOrganizationOf": {
             "@id": "https://example.edu/politicalScience/2015/american-revolution-101",
-            "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
             "courseNumber": "POL101",
             "name": "Political Science 101: The American Revolution",
             "academicSession": "Fall-2015",
@@ -343,13 +343,13 @@
       },
       "membership": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Membership",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
         "name": "American Revolution 101",
         "description": "Roster entry",
         "member": "https://example.edu/user/554433",
         "organization": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-        "roles": ["http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": ["http://purl.imsglobal.org/vocab/v2/membership#Learner"],
+        "status": "http://purl.imsglobal.org/vocab/v2/status#Active",
         "dateCreated": "2015-08-01T06:00:00.000Z"
       },
       "federatedSession": "https://example.edu/lms/federatedSession/123456789"
