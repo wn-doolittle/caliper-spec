@@ -85,8 +85,8 @@
     "description": "Roster entry",
     "member": "https://example.edu/user/554433",
     "organization": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-    "roles": ["http://purl.imsglobal.org/vocab/v2/membership#Learner"],
-    "status": "http://purl.imsglobal.org/vocab/v2/status#Active",
+    "roles": ["http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"],
+    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2015-08-01T06:00:00.000Z"
   }
 }
