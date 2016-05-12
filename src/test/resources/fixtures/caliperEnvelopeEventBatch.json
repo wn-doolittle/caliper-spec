@@ -37,7 +37,7 @@
         "version": "2nd ed.",
         "index": 1
       },
-      "navigatedFrom": {
+      "referrer": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/index.html",
         "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
         "name": "American Revolution 101 Landing Page",
@@ -125,7 +125,7 @@
         "version": "2nd ed.",
         "index": 1
       },
-      "navigatedFrom": {
+      "referrer": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/index.html",
         "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
         "name": "American Revolution 101 Landing Page",
@@ -213,7 +213,7 @@
         "version": "2nd ed.",
         "index": 1
       },
-      "navigatedFrom": {
+      "referrer": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/index.html",
         "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
         "name": "American Revolution 101 Landing Page",
@@ -301,7 +301,7 @@
         "version": "2nd ed.",
         "index": 1
       },
-      "navigatedFrom": {
+      "referrer": {
         "@id": "https://example.edu/politicalScience/2015/american-revolution-101/index.html",
         "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
         "name": "American Revolution 101 Landing Page",
