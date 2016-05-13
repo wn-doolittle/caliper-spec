@@ -57,7 +57,8 @@
     "@id": "https://example.com/super-assessment-tool",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "name": "Super Assessment Tool",
-    "dateCreated": "2015-08-01T06:00:00.000Z"
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "version": "v2"
   },
   "group": {
     "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001",
