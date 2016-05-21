@@ -767,65 +767,127 @@ A Caliper ```DigitalResource``` is a generic class that represents a content ite
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  TODO
 }
 ```
 
 <a name="epubChapter" />
 #### EpubChapter
+A Caliper ```EpubChapter``` represents a major structural division of a piece of writing.  It is analogous to an [idpf:chapter](http://www.idpf.org/epub/vocab/structure/#chapter).
 
-TODO
+TODO - THIS IS A COLLECTION.
+
+###### subClassOf 
+[DigitalResource](#digitalResource)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/EpubChapter](http://purl.imsglobal.org/caliper/v1/EpubChapter)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
+  "@type": "http://www.idpf.org/epub/vocab/structure/#chapter",
+  "name": "Chapter 1",
+  "isPartOf": {
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+    "@type": "http://www.idpf.org/epub/vocab/structure/#part",
+    "name": "Part I",
+    "isPartof": {
+      "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+      "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+      "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+      "version": "2nd ed."
+    }
+  }
 }
 ```
 
 <a name="epubPart" />
 #### EpubPart
+A Caliper ```EpubPart``` represents major structural division of a piece of writing, typically encapsulating a set of related chapters.  It is analogous to an [idpf:part](http://www.idpf.org/epub/vocab/structure/#part).
 
-TODO
+TODO - THIS IS A COLLECTION.
+
+###### subClassOf 
+[DigitalResource](#digitalResource)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/EpubPart](http://purl.imsglobal.org/caliper/v1/EpubPart)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+  "@type": "http://www.idpf.org/epub/vocab/structure/#part",
+  "name": "Part I",
+  "isPartof": {
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+    "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+    "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+    "version": "2nd ed."
+  }
 }
 ```
 
 <a name="epubSubChapter" />
 #### EpubSubChapter
+A Caliper ```EpubSubChapter``` represents a major sub-division of a ```EpubChapter```.  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).
 
-TODO
+###### subClassOf 
+[DigitalResource](#digitalResource)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/EpubSubChapter](http://purl.imsglobal.org/caliper/v1/EpubSubChapter)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1/1)",
+  "@type": "http://www.idpf.org/epub/vocab/structure/#subchapter",
+  "name": "Section 1.1",
+  "isPartOf": {
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
+    "@type": "http://www.idpf.org/epub/vocab/structure/#chapter",
+    "name": "Chapter 1",
+    "isPartOf": {
+      "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+      "@type": "http://www.idpf.org/epub/vocab/structure/#part",
+      "name": "Part I",
+      "isPartof": {
+        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+        "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+        "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+        "version": "2nd ed."
+      }
+    }
+  }
 }
 ```
 
 <a name="epubVolume" />
 #### EpubVolume
+A Caliper ```EpubVolume``` represents a component of a collection.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).
 
-TODO
+TODO - THIS IS A COLLECTION.  RECHECK DEFINITION
+
+###### subClassOf 
+[DigitalResource](#digitalResource)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/EpubVolume](http://purl.imsglobal.org/caliper/v1/EpubVolume)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+  "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+  "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+  "version": "2nd ed."
 }
 ```
 
