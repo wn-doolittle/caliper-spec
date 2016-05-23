@@ -658,42 +658,80 @@ A Caliper ```Collection``` is a generic class that represents a set of entities.
 * If a generic ```Collection``` is included in an [Event](#event) instead of one of its subclasses, the ```Collection``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Collection.
 
 ###### Subclasses 
-[Assessment](./assessment.md), [Forum](./forum.md), [Thread](./thread.md)
+[Assessment](#assessment), [Forum](#forum), [Thread](#thread)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  TODO
 }
 ```
 
 <a name="courseOffering" />
 #### CourseOffering
+A Caliper ```CourseOffering``` represents the occurrence of a course or a class in a specific term, semester, etc.  ```CourseOffering``` is composed of a subset of properties specified in the IMS LTI 2.0 specification, which in turn, draws inspiration from the IMS LIS 1.0 specification.
 
-TODO
+###### subClassOf
+[Organization](#organization)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/CourseOffering](http://purl.imsglobal.org/caliper/v1/CourseOffering)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| courseNumber | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A short-hand identifer of this ```CourseOffering```. | 0..1 |
+| academicSession | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The term or other designated period in which this ```CourseOffering``` occurs.  | 0..1 |
+
+###### Subclasses 
+[CourseSection](#courseSection)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall",
+  "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+  "courseNumber": "POL101",
+  "name": "Political Science 101: The American Revolution",
+  "academicSession": "Fall 2016",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
 <a name="courseSection" />
 #### CourseSection
+A Caliper ```CourseSection``` represents an instance of a ```CourseOffering``` in a specific term, semester, etc..  These groups may include everyone in the class or course, or may be subsets of that whole group.  A ```CourseSections``` may include sub-sections (each is created as a separate ```Group```).  Examples of a ```CourseSection``` are Lecture, Laboratory, Studio, Seminar, etc.  ```CourseSection```  is composed of a subset of properties specified in the IMS LTI 2.0 specification, which in turn, draws inspiration from the IMS LIS 1.0 specification.
 
-TODO
+###### subClassOf
+[CourseOffering](#courseOffering)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/CourseSection](http://purl.imsglobal.org/caliper/v1/CourseSection)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| category | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | TODO | 0..1 |
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
+  "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseSection",
+  "courseNumber": "POL101",
+  "name": "Political Science 101: The American Revolution, Section 101",
+  "category": "Lab",
+  "academicSession": "Fall 2016",
+  "subOrganizationOf": {
+    "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
+    "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+    "courseNumber": "POL101",
+    "name": "Political Science 101: The American Revolution",
+    "academicSession": "Fall 2016",
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z"
+  }
 }
 ```
 
@@ -729,65 +767,127 @@ A Caliper ```DigitalResource``` is a generic class that represents a content ite
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  TODO
 }
 ```
 
 <a name="epubChapter" />
 #### EpubChapter
+A Caliper ```EpubChapter``` represents a major structural division of a piece of writing.  It is analogous to an [idpf:chapter](http://www.idpf.org/epub/vocab/structure/#chapter).
 
-TODO
+TODO - THIS IS A COLLECTION.
+
+###### subClassOf 
+[DigitalResource](#digitalResource)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/EpubChapter](http://purl.imsglobal.org/caliper/v1/EpubChapter)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
+  "@type": "http://www.idpf.org/epub/vocab/structure/#chapter",
+  "name": "Chapter 1",
+  "isPartOf": {
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+    "@type": "http://www.idpf.org/epub/vocab/structure/#part",
+    "name": "Part I",
+    "isPartof": {
+      "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+      "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+      "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+      "version": "2nd ed."
+    }
+  }
 }
 ```
 
 <a name="epubPart" />
 #### EpubPart
+A Caliper ```EpubPart``` represents major structural division of a piece of writing, typically encapsulating a set of related chapters.  It is analogous to an [idpf:part](http://www.idpf.org/epub/vocab/structure/#part).
 
-TODO
+TODO - THIS IS A COLLECTION.
+
+###### subClassOf 
+[DigitalResource](#digitalResource)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/EpubPart](http://purl.imsglobal.org/caliper/v1/EpubPart)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+  "@type": "http://www.idpf.org/epub/vocab/structure/#part",
+  "name": "Part I",
+  "isPartof": {
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+    "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+    "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+    "version": "2nd ed."
+  }
 }
 ```
 
 <a name="epubSubChapter" />
 #### EpubSubChapter
+A Caliper ```EpubSubChapter``` represents a major sub-division of a ```EpubChapter```.  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).
 
-TODO
+###### subClassOf 
+[DigitalResource](#digitalResource)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/EpubSubChapter](http://purl.imsglobal.org/caliper/v1/EpubSubChapter)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1/1)",
+  "@type": "http://www.idpf.org/epub/vocab/structure/#subchapter",
+  "name": "Section 1.1",
+  "isPartOf": {
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
+    "@type": "http://www.idpf.org/epub/vocab/structure/#chapter",
+    "name": "Chapter 1",
+    "isPartOf": {
+      "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+      "@type": "http://www.idpf.org/epub/vocab/structure/#part",
+      "name": "Part I",
+      "isPartof": {
+        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+        "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+        "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+        "version": "2nd ed."
+      }
+    }
+  }
 }
 ```
 
 <a name="epubVolume" />
 #### EpubVolume
+A Caliper ```EpubVolume``` represents a component of a collection.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).
 
-TODO
+TODO - THIS IS A COLLECTION.  RECHECK DEFINITION
+
+###### subClassOf 
+[DigitalResource](#digitalResource)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/EpubVolume](http://purl.imsglobal.org/caliper/v1/EpubVolume)
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+  "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
+  "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+  "version": "2nd ed."
 }
 ```
 
