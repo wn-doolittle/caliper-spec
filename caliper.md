@@ -73,7 +73,7 @@ The Caliper information model references a number of terms derived from other on
 | ------ | --------- | ----------- |
 | clpr | http://purl.imsglobal.org/caliper/v1/ | Caliper |
 | clpract | http://purl.imsglobal.org/vocab/caliper/v1/action# | Caliper actions |
-| clprlis | http://purl.imsglobal.org/caliper/v1/lis/ | Caliper LIS |
+| clprlis | http://purl.imsglobal.org/caliper/v1/ | Caliper LIS |
 | clprw3c | http://purl.imsglobal.org/caliper/v1/w3c/ | Caliper W3C |
 | dc | http://purl.org/dc/elements/1.1/	| Dublin Core Elements |
 | dcterms |	http://purl.org/dc/terms/	| Dublin Core Terms |
@@ -172,7 +172,7 @@ A Caliper ```Event``` is a generic class that represents the interaction between
   "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",             
   "actor": {
     "@id": "https://example.edu/user/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
   "object": {
@@ -690,7 +690,7 @@ A Caliper ```CourseOffering``` represents the occurrence of a course or a class 
 ```
 {
   "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall",
-  "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+  "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
   "courseNumber": "POL101",
   "name": "Political Science 101: The American Revolution",
   "academicSession": "Fall 2016",
@@ -718,14 +718,14 @@ A Caliper ```CourseSection``` represents an instance of a ```CourseOffering``` i
 ```
 {
   "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
-  "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseSection",
+  "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
   "courseNumber": "POL101",
   "name": "Political Science 101: The American Revolution, Section 101",
   "category": "Lab",
   "academicSession": "Fall 2016",
   "subOrganizationOf": {
     "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
-    "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
     "courseNumber": "POL101",
     "name": "Political Science 101: The American Revolution",
     "academicSession": "Fall 2016",
@@ -1143,7 +1143,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
   "creator": {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "replyTo": {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1152,7 +1152,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
     "creator": {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
       "@id": "https://example.edu/users/12345",
-      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "content": "Do you like Caliper?",
     "dateCreated": "2016-09-02T11:30:00.000Z"
@@ -1165,7 +1165,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
     "creator": {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
       "@id": "https://example.edu/users/56789",
-      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "isPartOf": {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1175,7 +1175,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
       "creator": {
         "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
         "@id": "https://example.edu/users/56789",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
       },
       "dateCreated": "2016-09-01T09:28:00.000Z"
     },
@@ -1222,7 +1222,7 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 [Agent](#agent)
 
 ###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/w3c/Organization](http://purl.imsglobal.org/caliper/v1/w3c/Organization)
+[http://purl.imsglobal.org/caliper/v1/Organization](http://purl.imsglobal.org/caliper/v1/Organization)
 
 ###### Properties
 | Property | Type | Description ||
@@ -1230,7 +1230,7 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 | subOrganizationOf | [Organization](#organization) | The parent ```Organization``` of this ```Organization```. | 0..1 |
 
 ###### Requirements
-* An ```Organization``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+* An ```Organization``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Organization.
 
 ###### Subclasses
 [Group](#group)
@@ -1240,12 +1240,12 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/colleges/1/departments/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/w3c/Organization",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
   "name": "Department of History",
   "subOrganizationOf": {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/colleges/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/w3c/Organization",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
     "name": "College of Social Science"
   }
 }
@@ -1259,7 +1259,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 [Agent](#agent)
 
 ###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.imsglobal.org/caliper/v1/lis/Person)
+[http://purl.imsglobal.org/caliper/v1/Person](http://purl.imsglobal.org/caliper/v1/Person)
 
 ###### Requirements
 * A ```Person``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
@@ -1269,7 +1269,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/users/554433",
-  "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Person",
   "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
@@ -1394,7 +1394,7 @@ A Caliper ```Session``` represents a Web application user session.
   "name": "session-123456789",
   "actor": {
     "@id": "https://example.edu/user/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "dateCreated": "2016-09-15T10:15:00.000Z",
@@ -1432,13 +1432,13 @@ Annotation](#annotation)
   "withAgents": [
     {
       "@id": "https://example.edu/user/657585",
-      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person",
       "dateCreated": "2015-08-01T06:00:00.000Z",
       "dateModified": "2015-09-02T11:30:00.000Z"
     },
     {
       "@id": "https://example.edu/user/667788",
-      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person",
       "dateCreated": "2015-08-01T06:00:00.000Z",
       "dateModified": "2015-09-02T11:30:00.000Z"
     }
