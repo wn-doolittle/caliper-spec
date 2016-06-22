@@ -1291,7 +1291,37 @@ TODO
 <a name="response" />
 #### Response
 
-TODO
+A Caliper ```Response``` is a generic class that represents the data provided by an [Agent](#agent) interacting with an [AssessmentItem](#assessmentItem).
+
+###### subClassOf 
+[Entity](#entity)
+
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/Response](http://purl.imsglobal.org/caliper/v1/Response)
+
+####### Properties
+| Property | Type | Description | Conformance |
+| -------- | ---- | ----------- | ----------- |
+| assignable | [DigitalResource](#digitalResource) | The ```DigitalResource``` that is the target of this ```Attempt```. | 1 |
+| actor | [Agent](#agent) | The ```Agent``` who initiates the ```Attempt```. | 1 |
+| attempt| [Attempt](#attempt) | The ```Attempt``` associated with this ```Response```. | 0..1 |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete this ```Attempt```. | 0..1 |
+
+###### Requirements
+* Given that ```Response``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+* If a generic ```REsponse``` is included in an [Event](#event) instead of one of its subclasses, the ```Response``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Response.
+* The ```assignable``` associated with this ```Attempt``` MUST be specified.
+* The ```actor``` initiating the ```Attempt``` MUST be specified.
+* An ```Response``` [startedAtTime](#startedAtTime) SHOULD be provided. 
+* If an ```Response``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision. 
+* If an ```Response``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* If an ```Response``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
+
+###### Subclasses
+[FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse) 
+
 
 ###### JSON-LD Example
 ```
