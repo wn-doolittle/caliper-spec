@@ -73,7 +73,7 @@ The Caliper information model references a number of terms derived from other on
 | ------ | --------- | ----------- |
 | clpr | http://purl.imsglobal.org/caliper/v1/ | Caliper |
 | clpract | http://purl.imsglobal.org/vocab/caliper/v1/action# | Caliper actions |
-| clprlis | http://purl.imsglobal.org/caliper/v1/lis/ | Caliper LIS |
+| clprlis | http://purl.imsglobal.org/caliper/v1/ | Caliper LIS |
 | clprw3c | http://purl.imsglobal.org/caliper/v1/w3c/ | Caliper W3C |
 | dc | http://purl.org/dc/elements/1.1/	| Dublin Core Elements |
 | dcterms |	http://purl.org/dc/terms/	| Dublin Core Terms |
@@ -172,7 +172,7 @@ A Caliper ```Event``` is a generic class that represents the interaction between
   "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",             
   "actor": {
     "@id": "https://example.edu/user/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
   "object": {
@@ -690,7 +690,7 @@ A Caliper ```CourseOffering``` represents the occurrence of a course or a class 
 ```
 {
   "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall",
-  "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+  "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
   "courseNumber": "POL101",
   "name": "Political Science 101: The American Revolution",
   "academicSession": "Fall 2016",
@@ -718,14 +718,14 @@ A Caliper ```CourseSection``` represents an instance of a ```CourseOffering``` i
 ```
 {
   "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
-  "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseSection",
+  "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
   "courseNumber": "POL101",
   "name": "Political Science 101: The American Revolution, Section 101",
   "category": "Lab",
   "academicSession": "Fall 2016",
   "subOrganizationOf": {
     "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
-    "@type": "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
     "courseNumber": "POL101",
     "name": "Political Science 101: The American Revolution",
     "academicSession": "Fall 2016",
@@ -893,15 +893,40 @@ TODO - THIS IS A COLLECTION.  RECHECK DEFINITION
 
 <a name="fillinBlankResponse" />
 #### FillinBlankResponse
+A Caliper ```FillinBlankResponse``` represents a form of response in which a respondent is asked to provide a single word or short textual response that correctly completes a statement.
 
-TODO
+###### subClassOf 
+[Response](#response)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| value | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | Single word or short phrase.  | 0..1 |
+
+###### JSON-LD Serialization
+* A ```FillinBlankResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/FillinBlankResponse.
+* A ```FillinBlankResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1/responses/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+  "actor": "https://example.edu/user/554433",
+  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1",
+  "attempt": {
+    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": "https://example.edu/user/554433",
+    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1",
+    "count": 1,
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "startedAtTime": "2015-09-15T10:15:00.000Z"
+  },
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "startedAtTime": "2015-09-15T10:15:00.000Z",
+  "values": ["2 July 1776"]
 }
 ```
 
@@ -1143,7 +1168,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
   "creator": {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "replyTo": {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1152,7 +1177,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
     "creator": {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
       "@id": "https://example.edu/users/12345",
-      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "content": "Do you like Caliper?",
     "dateCreated": "2016-09-02T11:30:00.000Z"
@@ -1165,7 +1190,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
     "creator": {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
       "@id": "https://example.edu/users/56789",
-      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "isPartOf": {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1175,7 +1200,7 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
       "creator": {
         "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
         "@id": "https://example.edu/users/56789",
-        "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person"
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
       },
       "dateCreated": "2016-09-01T09:28:00.000Z"
     },
@@ -1188,29 +1213,79 @@ SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWI
 
 <a name="multipleChoiceResponse" />
 #### MultipleChoiceResponse
+A Caliper ```MultipleChoiceResponse``` represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.
 
-TODO
+###### subClassOf 
+[Response](#response)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| value | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The selected choice.  | 0..1 |
+
+###### JSON-LD Serialization
+* A ```MultipleChoiceResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse.
+* A ```MultipleChoiceResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/2/responses/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+  "actor": "https://example.edu/user/554433",
+  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/2",
+  "attempt": {
+    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/2/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": "https://example.edu/user/554433",
+    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/2",
+    "count": 1,
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "startedAtTime": "2015-09-15T10:15:00.000Z"
+  },
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "startedAtTime": "2015-09-15T10:15:00.000Z",
+  "value": "C"
 }
 ```
 
 <a name="multipleResponseResponse" />
 #### MultipleResponseResponse
+A Caliper ```MultipleResponseResponse``` represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
-TODO
+###### subClassOf 
+[Response](#response)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| values | String array | One or more response values  | 0..1 |
+
+###### JSON-LD Serialization
+* A ```MultipleResponseResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse.
+* A ```MultipleResponseResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/3/responses/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+  "actor": "https://example.edu/user/554433",
+  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/3",
+  "attempt": {
+    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/3/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": "https://example.edu/user/554433",
+    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/3",
+    "count": 1,
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "startedAtTime": "2015-09-15T10:15:00.000Z"
+  },
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "startedAtTime": "2015-09-15T10:15:00.000Z",
+  "values": ["A", "D"]
 }
 ```
 
@@ -1222,7 +1297,7 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 [Agent](#agent)
 
 ###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/w3c/Organization](http://purl.imsglobal.org/caliper/v1/w3c/Organization)
+[http://purl.imsglobal.org/caliper/v1/Organization](http://purl.imsglobal.org/caliper/v1/Organization)
 
 ###### Properties
 | Property | Type | Description ||
@@ -1230,7 +1305,7 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 | subOrganizationOf | [Organization](#organization) | The parent ```Organization``` of this ```Organization```. | 0..1 |
 
 ###### Requirements
-* An ```Organization``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/w3c/Organization.
+* An ```Organization``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Organization.
 
 ###### Subclasses
 [Group](#group)
@@ -1240,12 +1315,12 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/colleges/1/departments/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/w3c/Organization",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
   "name": "Department of History",
   "subOrganizationOf": {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/colleges/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/w3c/Organization",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
     "name": "College of Social Science"
   }
 }
@@ -1259,7 +1334,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 [Agent](#agent)
 
 ###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/lis/Person](http://purl.imsglobal.org/caliper/v1/lis/Person)
+[http://purl.imsglobal.org/caliper/v1/Person](http://purl.imsglobal.org/caliper/v1/Person)
 
 ###### Requirements
 * A ```Person``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
@@ -1269,7 +1344,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/users/554433",
-  "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Person",
   "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
@@ -1290,17 +1365,39 @@ TODO
 
 <a name="response" />
 #### Response
+A Caliper ```Response``` is a generic class that represents the data provided by an [Agent](#agent) interacting with an [AssessmentItem](#assessmentItem).
 
-TODO
+###### subClassOf 
+[Entity](#entity)
 
-###### JSON-LD Example
-```
-{
+###### &#64;type 
+[http://purl.imsglobal.org/caliper/v1/Response](http://purl.imsglobal.org/caliper/v1/Response)
 
- TODO
- 
-}
-```
+####### Properties
+| Property | Type | Description | Conformance |
+| -------- | ---- | ----------- | ----------- |
+| assignable | [DigitalResource](#digitalResource) | The ```DigitalResource``` that is the target of this ```Attempt```. | 1 |
+| actor | [Agent](#agent) | The ```Agent``` who initiates the ```Attempt```. | 1 |
+| attempt| [Attempt](#attempt) | The ```Attempt``` associated with this ```Response```. | 0..1 |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete this ```Attempt```. | 0..1 |
+
+###### Requirements
+* Given that ```Response``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
+* The ```assignable``` associated with this ```Attempt``` MUST be specified.
+* The ```actor``` initiating the ```Attempt``` MUST be specified.
+* An ```Response``` [startedAtTime](#startedAtTime) SHOULD be provided. 
+* If an ```Response``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision. 
+* If an ```Response``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* If an ```Response``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
+
+###### JSON-LD Serialization
+* If a generic ```Response``` is included in an [Event](#event) instead of one of its subclasses, the ```Response``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Response.
+* A ```Response``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
+
+###### Subclasses
+[FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 <a name="result" />
 #### Result
@@ -1318,15 +1415,40 @@ TODO
 
 <a name="selectTextResponse" />
 #### SelectTextResponse
+A Caliper ```SelectTextResponse``` represents a response that identifies text or a mapping from a presented paragraph or list.
 
-TODO
+###### subClassOf 
+[Response](#response)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| values | String array | One or more response values  | 0..1 |
+
+###### JSON-LD Serialization
+* A ```SelectTextResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SelectTextResponse.
+* A ```SelectTextResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/4/responses/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+  "actor": "https://example.edu/user/554433",
+  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/4",
+  "attempt": {
+    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/4/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": "https://example.edu/user/554433",
+    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/4",
+    "count": 1,
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "startedAtTime": "2015-09-15T10:15:00.000Z"
+  },
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "startedAtTime": "2015-09-15T10:15:00.000Z",
+  "values": ["You are quite right in calling for negotiation. Indeed, this is the very purpose of direct action. Nonviolent direct action seeks to create such a crisis and foster such a tension that a community which has constantly refused to negotiate is forced to confront the issue. It seeks so to dramatize the issue that it can no longer be ignored."]
 }
 ```
 
@@ -1364,7 +1486,7 @@ A Caliper ```Session``` represents a Web application user session.
   "name": "session-123456789",
   "actor": {
     "@id": "https://example.edu/user/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "dateCreated": "2016-09-15T10:15:00.000Z",
@@ -1402,13 +1524,13 @@ Annotation](#annotation)
   "withAgents": [
     {
       "@id": "https://example.edu/user/657585",
-      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person",
       "dateCreated": "2015-08-01T06:00:00.000Z",
       "dateModified": "2015-09-02T11:30:00.000Z"
     },
     {
       "@id": "https://example.edu/user/667788",
-      "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person",
       "dateCreated": "2015-08-01T06:00:00.000Z",
       "dateModified": "2015-09-02T11:30:00.000Z"
     }
@@ -1500,15 +1622,40 @@ A Caliper ```Thread``` represents a series of one or more messages that share a 
 
 <a name="trueFalseResponse" />
 #### TrueFalseResponse
+A Caliper ```TrueFalseResponse``` represents a response to a question in which only two possible options are provided: true or false.
 
-TODO
+###### subClassOf 
+[Response](#response)
+
+###### Properties
+| Property | Type | Description ||
+| -------- | ---- | ----------- | ----: |
+| value | [xsd:boolean]( https://www.w3.org/TR/xmlschema11-2/#boolean) | Either a true or false value is provided.  | 0..1 |
+
+###### JSON-LD Serialization
+* A ```TrueFalseResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/TrueFalseResponse.
+* A ```TrueFalseResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/5/responses/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+  "actor": "https://example.edu/user/554433",
+  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/5",
+  "attempt": {
+    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/5/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": "https://example.edu/user/554433",
+    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/5",
+    "count": 1,
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "startedAtTime": "2015-09-15T10:15:00.000Z"
+  },
+  "dateCreated": "2015-08-01T06:00:00.000Z",
+  "startedAtTime": "2015-09-15T10:15:00.000Z",
+  "value": false
 }
 ```
 
