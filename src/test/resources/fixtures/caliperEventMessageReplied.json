@@ -15,7 +15,6 @@
         "@type": "http://purl.imsglobal.org/caliper/v1/Person"
       }
     ],
-    "content": "I love Caliper too!",
     "replyTo": {
       "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/2",
       "@type": "http://purl.imsglobal.org/caliper/v1/Message",
@@ -25,7 +24,6 @@
           "@type": "http://purl.imsglobal.org/caliper/v1/Person"
         }
       ],
-      "content": "I love Caliper!",
       "dateCreated": "2016-09-15T10:15:00.000Z"
     },
     "isPartOf": {
