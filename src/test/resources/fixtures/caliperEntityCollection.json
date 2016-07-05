@@ -1,26 +1,42 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/semesters/201601/courses/25/collections/1",
+  "@id": "https://example.edu/semesters/201601/courses/25/resources/1",
   "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
-  "name": "Video Collection",
-  "items": [
+  "name": "Course resources",
+  "creators": [
     {
-      "@id": "https://example.com/videos/1225",
-      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-      "mediaType": "video/ogg",
-      "name": "Video 1225",
-      "dateCreated": "2016-08-01T06:01:00.000Z",
-      "duration": "PT1H12M27S",
-      "version": "1.0"
+      "@id": "https://example.edu/user/112233",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     {
-      "@id": "https://example.com/videos/6789",
-      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-      "mediaType": "video/ogg",
-      "name": "Video 6789",
-      "dateCreated": "2016-09-02T11:30:00.000Z",
-      "duration": "PT55M13S",
-      "version": "2.1"
+      "@id": "https://example.edu/user/223344",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    }
+  ],
+  "items": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+      "name": "Document Collection",
+      "dateCreated": "2016-08-01T06:01:00.000Z",
+      "datePublished": "2016-08-15T09:30:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+      "name": "Image Collection",
+      "dateCreated": "2016-08-01T06:02:00.000Z",
+      "datePublished": "2016-08-15T09:30:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/3",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+      "name": "Video Collection",
+      "dateCreated": "2016-08-01T06:03:00.000Z",
+      "datePublished": "2016-08-15T09:30:00.000Z"
     }
   ],
   "isPartOf": {
@@ -28,5 +44,5 @@
     "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
   },
   "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+  "datePublished": "2016-08-15T09:30:00.000Z"
 }
