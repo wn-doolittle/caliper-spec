@@ -16,7 +16,6 @@
   "keywords": ["collections", "documents", "images", "videos"],
   "items": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
       "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/1",
       "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
       "name": "Document Collection",
@@ -24,7 +23,6 @@
       "datePublished": "2016-08-15T09:30:00.000Z"
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
       "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/2",
       "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
       "name": "Image Collection",
@@ -32,7 +30,6 @@
       "datePublished": "2016-08-15T09:30:00.000Z"
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
       "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/3",
       "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
       "name": "Video Collection",
