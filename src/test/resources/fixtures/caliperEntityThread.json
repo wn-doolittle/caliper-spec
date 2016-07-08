@@ -21,12 +21,15 @@
       "@type": "http://purl.imsglobal.org/caliper/v1/Message",
       "replyTo": {
         "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/2",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+        "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+        "replyTo": {
+          "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/1",
+          "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+        }
       }
     }
   ],
   "isPartOf": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/semesters/201601/courses/25/forums/2",
     "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
     "name": "Caliper Forum"
