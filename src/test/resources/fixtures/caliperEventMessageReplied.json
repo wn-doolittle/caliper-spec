@@ -2,7 +2,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
   "actor": {
-    "@id": "https://example.edu/user/778899",
+    "@id": "https://example.edu/users/778899",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
@@ -53,7 +53,7 @@
   "membership": {
     "@id": "https://example.edu/semesters/201601/courses/25/rosters/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
-    "member": "https://example.edu/user/778899",
+    "member": "https://example.edu/users/778899",
     "organization": "https://example.edu/semesters/201601/courses/25/sections/1",
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
