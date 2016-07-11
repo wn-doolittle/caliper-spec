@@ -1,0 +1,35 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/2",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+  "creators": [
+    {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    }
+  ],
+  "replyTo": {
+    "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+    "creators": [
+      {
+        "@id": "https://example.edu/users/12345",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      }
+    ],
+    "dateCreated": "2016-09-02T11:30:00.000Z"
+  },
+  "isPartOf": {
+    "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+    "name": "Caliper Happiness Index",
+    "isPartOf": {
+      "@id": "https://example.edu/semesters/201601/courses/25/forums/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+      "name": "Caliper Forum",
+      "dateCreated": "2016-09-01T09:28:00.000Z"
+    },
+    "dateCreated": "2016-09-01T09:30:00.000Z"
+  },
+  "dateCreated": "2016-09-02T11:32:00.000Z"
+}
