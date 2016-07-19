@@ -104,7 +104,7 @@
     },
     "alignedLearningObjective": {
       "@id": "caliper:alignedLearningObjective",
-      "@container": "@set"
+      "@container": "@list"
     },
     "bookmarkNotes": {
       "@id": "caliper:bookmarkNotes",
@@ -128,7 +128,7 @@
     },
     "creators": {
       "@id": "caliper:creators",
-      "@container": "@set"
+      "@container": "@list"
     },
     "currentTime": {
       "@id": "caliper:currentTime",
@@ -208,7 +208,7 @@
     },
     "keywords": {
       "@id": "caliper:keywords",
-      "@container": "@set"
+      "@container": "@list"
     },
     "maxAttempts": {
       "@id": "caliper:maxAttempts",
@@ -244,7 +244,7 @@
     },
     "roles": {
       "@id": "caliper:roles",
-      "@container": "@set"
+      "@container": "@list"
     },
     "selectionText": {
       "@id": "caliper:selectionText",
@@ -260,7 +260,7 @@
     },
     "tags": {
       "@id": "caliper:tags",
-      "@container": "@set"
+      "@container": "@list"
     },
     "totalScore": {
       "@id": "caliper:totalScore",
@@ -292,7 +292,7 @@
     },
     "withAgents": {
       "@id": "caliper:withAgents",
-      "@container": "@set"
+      "@container": "@list"
     }
   }
 }
