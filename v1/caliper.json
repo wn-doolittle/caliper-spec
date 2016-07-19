@@ -200,7 +200,7 @@
     },
     "items": {
       "@id": "caliper:items",
-      "@container": "@set"
+      "@container": "@list"
     },
     "isTimeDependent": {
       "@id": "caliper:isTimeDependent",
@@ -272,7 +272,7 @@
     },
     "values": {
       "@id": "caliper:values",
-      "@container": "@set"
+      "@container": "@list"
     },
     "version": {
       "@id": "caliper:version",
