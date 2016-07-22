@@ -78,7 +78,10 @@
     "annotated": "caliper:annotated",
     "assignable": "caliper:assignable",
     "attempt": "caliper:attempt",
-    "action": "caliper:action",
+    "action": {
+      "@id": "caliper:action",
+      "@type": "@id"
+    },
     "edApp": "caliper:edApp",
     "extensions": "caliper:extensions",
     "federatedSession": "caliper:federatedSession",
