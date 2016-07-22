@@ -28,7 +28,6 @@
     "AudioObject": "caliper:AudioObject",
     "BookmarkAnnotation": "caliper:BookmarkAnnotation",
     "Collection": "caliper:Collection",
-    "Course": "caliper:Course",
     "CourseOffering": "caliper:CourseOffering",
     "CourseSection": "caliper:CourseSection",
     "DigitalResource": "caliper:DigitalResource",
@@ -60,6 +59,7 @@
       "@id": "caliper:Role",
       "@type": "@id"
     },
+    "Selector": "caliper:Selector",
     "SelectTextResponse": "caliper:SelectTextResponse",
     "Session": "caliper:Session",
     "SharedAnnotation": "caliper:SharedAnnotation",
@@ -75,36 +75,66 @@
     "WebPage": "caliper:WebPage",
 
     "actor": "caliper:actor",
+    "alignedLearningObjective": {
+      "@id": "caliper:alignedLearningObjective",
+      "@container": "@list"
+    },
     "annotated": "caliper:annotated",
     "assignable": "caliper:assignable",
     "attempt": "caliper:attempt",
-    "action": "caliper:action",
+    "action": {
+      "@id": "caliper:action",
+      "@type": "@id"
+    },
+    "creators": {
+      "@id": "caliper:creators",
+      "@container": "@list"
+    },
     "edApp": "caliper:edApp",
     "extensions": "caliper:extensions",
     "federatedSession": "caliper:federatedSession",
     "generated": "caliper:generated",
     "group": "caliper:group",
     "isPartOf": "caliper:isPartOf",
+    "items": {
+      "@id": "caliper:items",
+      "@container": "@list"
+    },
+    "keywords": {
+      "@id": "caliper:keywords",
+      "@container": "@list"
+    },
     "member": "caliper:member",
-    "membership": "caliper:membership",
     "object": "caliper:object",
     "organization": "caliper:organization",
     "referrer": "caliper:referrer",
     "replyTo": "caliper:replyTo",
-    "target": "caliper:target",
+    "roles": {
+      "@id": "caliper:roles",
+      "@container": "@list"
+    },
     "scoredBy": "caliper:scoredBy",
     "selection": "caliper:selection",
     "session": "caliper:session",
     "subOrganizationOf": "caliper:subOrganizationOf",
     "status": "caliper:status",
+    "tags": {
+      "@id": "caliper:tags",
+      "@container": "@list"
+    },
+    "target": "caliper:target",
+    "values": {
+      "@id": "caliper:values",
+      "@container": "@list"
+    },
+    "withAgents": {
+      "@id": "caliper:withAgents",
+      "@container": "@list"
+    },
 
     "academicSession": {
       "@id": "caliper:academicSession",
       "@type": "xsd:string"
-    },
-    "alignedLearningObjective": {
-      "@id": "caliper:alignedLearningObjective",
-      "@container": "@list"
     },
     "bookmarkNotes": {
       "@id": "caliper:bookmarkNotes",
@@ -126,25 +156,17 @@
       "@id": "caliper:courseNumber",
       "@type": "xsd:string"
     },
-    "creators": {
-      "@id": "caliper:creators",
-      "@container": "@list"
-    },
     "currentTime": {
       "@id": "caliper:currentTime",
       "@type": "xsd:duration"
-    },
-    "curveFactor": {
-      "@id": "caliper:curveFactor",
-      "@type": "xsd:double"
     },
     "curvedTotalScore": {
       "@id": "caliper:curvedTotalScore",
       "@type": "xsd:double"
     },
-    "description": {
-      "@id": "caliper:description",
-      "@type": "xsd:string"
+    "curveFactor": {
+      "@id": "caliper:curveFactor",
+      "@type": "xsd:double"
     },
     "dateCreated": {
       "@id": "caliper:dateCreated",
@@ -174,13 +196,17 @@
       "@id": "caliper:dateToSubmit",
       "@type": "xsd:dateTime"
     },
+    "description": {
+      "@id": "caliper:description",
+      "@type": "xsd:string"
+    },
     "duration": {
       "@id": "caliper:duration",
       "@type": "xsd:duration"
     },
     "end": {
       "@id": "caliper:end",
-      "@type": "xsd:string"
+      "@type": "xsd:nonNegativeInteger"
     },
     "endedAtTime": {
       "@id": "caliper:endedAtTime",
@@ -198,21 +224,13 @@
       "@id": "caliper:index",
       "@type": "xsd:long"
     },
-    "items": {
-      "@id": "caliper:items",
-      "@container": "@list"
-    },
     "isTimeDependent": {
       "@id": "caliper:isTimeDependent",
       "@type": "xsd:boolean"
     },
-    "keywords": {
-      "@id": "caliper:keywords",
-      "@container": "@list"
-    },
     "maxAttempts": {
       "@id": "caliper:maxAttempts",
-      "@type": "xsd:int"
+      "@type": "xsd:nonNegativeInteger"
     },
     "maxScore": {
       "@id": "caliper:maxScore",
@@ -220,7 +238,7 @@
     },
     "maxSubmits": {
       "@id": "caliper:maxSubmits",
-      "@type": "xsd:int"
+      "@type": "xsd:nonNegativeInteger"
     },
     "mediaType": {
       "@id": "caliper:mediaType",
@@ -242,25 +260,17 @@
       "@id": "caliper:penaltyScore",
       "@type": "xsd:double"
     },
-    "roles": {
-      "@id": "caliper:roles",
-      "@container": "@list"
-    },
     "selectionText": {
       "@id": "caliper:selectionText",
       "@type": "xsd:string"
     },
     "start": {
       "@id": "caliper:start",
-      "@type": "xsd:string"
+      "@type": "xsd:nonNegativeInteger"
     },
     "startedAtTime": {
       "@id": "caliper:startedAtTime",
       "@type": "xsd:dateTime"
-    },
-    "tags": {
-      "@id": "caliper:tags",
-      "@container": "@list"
     },
     "totalScore": {
       "@id": "caliper:totalScore",
@@ -269,10 +279,6 @@
     "value": {
       "@id": "caliper:value",
       "@type": "xsd:string"
-    },
-    "values": {
-      "@id": "caliper:values",
-      "@container": "@list"
     },
     "version": {
       "@id": "caliper:version",
@@ -289,10 +295,6 @@
     "volumeMin": {
       "@id": "caliper:volumeMin",
       "@type": "xsd:string"
-    },
-    "withAgents": {
-      "@id": "caliper:withAgents",
-      "@container": "@list"
     }
   }
 }
