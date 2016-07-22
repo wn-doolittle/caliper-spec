@@ -28,7 +28,6 @@
     "AudioObject": "caliper:AudioObject",
     "BookmarkAnnotation": "caliper:BookmarkAnnotation",
     "Collection": "caliper:Collection",
-    "Course": "caliper:Course",
     "CourseOffering": "caliper:CourseOffering",
     "CourseSection": "caliper:CourseSection",
     "DigitalResource": "caliper:DigitalResource",
@@ -60,6 +59,7 @@
       "@id": "caliper:Role",
       "@type": "@id"
     },
+    "Selector": "caliper:Selector",
     "SelectTextResponse": "caliper:SelectTextResponse",
     "Session": "caliper:Session",
     "SharedAnnotation": "caliper:SharedAnnotation",
