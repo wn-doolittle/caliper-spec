@@ -1,5 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "id": "15128c13-ca75-4952-8cce-72a513ec337d",
   "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
   "actor": {
     "@id": "https://example.com/viewer",
@@ -58,6 +59,5 @@
       "dateModified": "2015-09-02T11:30:00.000Z"
     },
     "dateCreated": "2015-08-01T06:00:00.000Z"
-  },
-  "sourcedId": "15128c13-ca75-4952-8cce-72a513ec337d"
+  }
 }
