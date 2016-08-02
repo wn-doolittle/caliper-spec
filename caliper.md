@@ -143,6 +143,13 @@ The Caliper Basic Event Profile models a minimally compliant [Event](#event) com
 | -------  | -------- | -------- | -------- |  ----------- |
 | [Event](#event) | [Agent](#agent) | [action](#action) | [Entity](#entity) | [eventTime](#eventTime) |
 
+| Event | &nbsp; | &nbsp; |
+| -------------------  | ------| ------: |
+| actor | [Agent](#agent) | 1 |
+| action | [action](#actions) | 1 |
+| object | [Entity](#entity) | 1 | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | 1 |
+
 <a name="annotationProfile" />
 ### 4.2 Annotation Profile
 The Caliper Annotation Profile models activities related to the annotation of digital content.
@@ -171,7 +178,7 @@ The Assignable Profile provides coverage for all activity types that can be assi
 #### Supported Events
 | Event | actor | action | object | generated |
 | -------  | -------- | -------- | -------- |  ----------- |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [activated](#activated), [deactivated](#deactivated),[started](#started), [completed](#completed) | [DigitalResource](#digitalResource) | [Attempt](#attempt) |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [activated](#activated), [deactivated](#deactivated), [started](#started), [completed](#completed) | [DigitalResource](#digitalResource) | [Attempt](#attempt) |
 
 #### NOTE: ACTIONS REMOVED
 [abandoned](#abandoned), [reviewed](#reviewed), [hid](#hid) - deactivated, [showed](#showed] - activated
@@ -210,6 +217,22 @@ The online discussion forum is a core capability of many learning management sys
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [navigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | [DigitalResource](#digitalResource) |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
 |[ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) |  [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; |
+
+| Event | ForumEvent | MessageEvent | NavigationEvent | ThreadEvent | ViewEvent | &nbsp; |
+| -------- | ---------------- | --------------------- | ---------------------- | ----------------- | -------------- | --------: |
+| actor | [Person](#person) | [Person](#person) | [Person](#person) | [Person](#person) | [Person](#person) | 1 |
+| action | [subscribed](#subscribed), [unsubscribed](#unsubscribed) | [posted](#posted) | [navigatedTo](#navigatedTo) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) | [viewed](#viewed) | 1 |
+| object | [Forum](#forum) | [Message](#Message) | [Forum](#forum), [Message](#message), [Thread](#thread)  |  [Thread](#thread) | [Forum](#forum), [Message](#message), [Thread](#thread)  | 1 | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
+| target | &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; | 0..1 |
+| generated | &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |  0..1 |
+| referrer | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |  0..1 |
+| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | 0..1 |
+| group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) |[Organization]([#organization) | [Organization]([#organization) | 0..1 |
+| membership | [Membership]([#membership) | [Membership]([#membership) | [Membership]([#membership)| [Membership]([#membership) | [Membership]([#membership)| 0..1 |
+| session | [Session]([#session) | [Session]([#session)| [Session]([#session)| [Session]([#session)| [Session]([#session)| 0..1 | 
+| federatedExtension | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | 0..1 | 
+| extensions | object | object | object | object | object | 0..1 | 
 
 <a name="mediaProfile" />
 ### 4.7 Media Profile
