@@ -16,49 +16,49 @@ The limited permissions granted above are perpetual and will not be revoked by I
 
 THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICATION SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.
 
-### Table of Contents 
-* 1.0. [Introduction](#introduction) 
-  * 1.x. [Namespaces](#namespaces) 
-  * 1.x. [Definitions](#definitions) 
-  * 1.x. [Terminology](#terminology)
-* 2.0. [Data and Semantic Interoperability](#interoperability) 
-* 3.0. [Information Model](#infomodel)  
-  * 3.1. [Event](#event) 
-  * 3.2. [Entity](#entity) 
-  * 3.3. [Profiles](#profiles) 
-    * 3.3.1. [Free Form Profile](#freeFormProfile)
-    * 3.3.2. [Annotation Profile](#annotationProfile) 
-      * 3.3.2.1 [AnnotationEvent](#annotationEvent) 
-    * 3.3.3. [Assignable Profile](#assignableProfile)
-      * 3.3.3.1 [AssignableEvent](#assignableEvent) 
-    * 3.3.4. [Assessment Profile](#assessmentProfile)
-      * 3.3.4.1. [AssessmentEvent](#assessmentEvent)
-    * 3.3.5. [AssessmentItem Profile](#assessmentItemProfile) 
-      * 3.3.5.1. [AssessmentItemEvent](#assessmentItemEvent)
-    * 3.3.6. [Discussion Forum Profile](#discussionForumProfile) 
-      * 3.3.6.1. [ForumEvent](#ForumEvent) 
-      * 3.3.6.2. [ThreadEvent](#ThreadEvent) 
-      * 3.3.6.3. [MessageEvent](#messageEvent) 
-    * 3.3.7. [Media Profile](#mediaProfile) 
-      * 3.3.7.1. [MediaEvent](#mediaEvent) 
-    * 3.3.8. [Navigation Profile](#navigationProfile) TODO APPROVE 
-      * 3.3.8.1 [NavigationEvent](#navigationEvent) 
-    * 3.3.9. [Outcome Profile](#outcomeProfile) 
-      * 3.3.9.1 [OutcomeEvent](#outcomeEvent) 
-    * 3.3.10. [Reading Profile](#readingProfile) 
-      * 3.3.10.1 [ViewEvent](#viewEvent) 
-    * 3.3.11. [Session Profile](#sessionProfile) 
-      * 3.3.11.1. [SessionEvent](#sessionEvent)
-  * 4.0. [Sensor API](#api) 
-  * 5.0. [Transport](#transport) 
-    * 5.x.x. [Envelope](#envelope) 
-  * 6.0. [Endpoints](#endpoints)
-  * 7.x. [Contributors](#contributors) 
-  *	[Appendix A: Caliper Actions](#appendixA)
-  * [Appendix B: Caliper Entities](#appendixB)
-  * [Appendix C: Miscellaneous Classes](#appendixC)
-  * [References](#references) 
-  * [Revision History](#revisionHistory)
+### Table of Contents
+* 1.0 [Introduction](#introduction)
+  * 1.1 [Namespaces](#namespaces)
+  * 1.2 [Definitions](#definitions)
+  * 1.3 [Terminology](#terminology)
+* 2.0 [Data and Semantic Interoperability](#interoperability)
+* 3.0 [Information Model](#infomodel)
+* 4.0 [Profiles](#profiles)
+	* 4.1 [Basic Profile](#basicProfile)
+	* 4.2 [Annotation Profile](#annotationProfile)
+	* 4.3 [Assignable Profile](#assignableProfile)
+	* 4.4 [Assessment Profile](#assessmentProfile)
+	* 4.5 [Discussion Forum Profile](#discussionForumProfile)
+	* 4.6 [Media Profile](#mediaProfile)
+	* 4.7 [Outcome Profile](#outcomeProfile)
+	* 4.8 [Reading Profile](#readingProfile)
+	* 4.9 [Session Profile](#sessionProfile)
+* 5.0 [Events](#events)
+	* 5.1 [Event](#event)
+	* 5.2 [AnnotationEvent](#annotationEvent)
+	* 5.3 [AssessmentEvent](#assessmentEvent)
+	* 5.4 [AssessmentItemEvent](#assessmentItemEvent)
+    * 5.5 [AssignableEvent](#assignableEvent)
+	* 5.6 [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)
+	* 5.7 [ForumEvent](#ForumEvent)
+	* 5.8 [MediaEvent](#mediaEvent)
+	* 5.9 [MessageEvent](#messageEvent)
+	* 5.10 [NavigationEvent](#navigationEvent)
+	* 5.11 [OutcomeEvent](#outcomeEvent)
+	* 5.12 [SessionEvent](#sessionEvent)
+	* 5.13 [ThreadEvent](#ThreadEvent)
+	* 5.14 [ViewEvent](#viewEvent)
+* 6.0 [Actions](#actions)
+* 7.0 [Entities](#entities)    
+* 8.0 [Sensor API](#api)
+* 9.0 [Transport](#transport)
+    * 9.1 [Envelope](#envelope)
+	* 9.2 [Endpoints](#endpoints)
+* 10.0 [Contributors](#contributors)
+* [Appendix A: Caliper Entities](#appendixA)
+* [Appendix B: Miscellaneous Classes](#appendixB)
+* [Revision History](#revisionHistory)
+* [References](#references)
 
 <a name="introduction"/>  
 ### 1.0. Introduction
@@ -66,7 +66,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 TODO
 
 <a name="namespaces"/>  
-### 1.x. Namespaces
+### 1.1 Namespaces
 The Caliper information model references a number of terms derived from other ontologies.  Such terms along with those native to Caliper are identified with a prefix drawn from the list below that maps to the relevant namespace as, for example, the data type [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime).
 
 | Prefix | Namespace | Description |
@@ -88,11 +88,11 @@ The Caliper information model references a number of terms derived from other on
 | skos |	http://www.w3.org/2004/02/skos/core# | Simple Knowledge Organization System |
 | xsd | https://www.w3.org/TR/xmlschema11-2/# | XML Schema Definition Language 1.1 |
 
-### 1.x. Terminology
+### 1.2 Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
 <a name="definitions"/>  
-### 1.x. Definitions
+### 1.3 Definitions
 __actor__: TODO
 
 __action__: TODO
@@ -127,11 +127,142 @@ TODO
 <a name="infoModel">
 ### 3.0 Information Model
 
-TODO
+TODO: OVERVIEW 
+
+<a name="profiles" />
+### 4.0 Profiles
+The Caliper Information Model is comprised of a number of profiles, each of which models a particular learning activity or supporting activity.
+
+TODO: ADDITIONAL INTRO TEXT
+
+<a name="simpleEventProfile" />
+#### 4.1 Basic Event Profile
+The Caliper Basic Event Profile models a minimally compliant [Event](#event) composed of an [actor](#actor), [action](#action), [object](#object) and [eventTime](#eventTime).  
+
+| Event | actor | action | object | eventTime |
+| -------  | -------- | -------- | -------- |  ----------- |
+| [Event](#event) | [Agent](#agent) | [action](#action) | [Entity](#entity) | [eventTime](#eventTime) |
+
+<a name="annotationProfile" />
+#### 4.2 Annotation Profile
+The Caliper Annotation Profile models activities related to the annotation of digital content.
+
+##### Supported Events
+| Event | actor | action | object | generated |
+| -------  | -------- | -------- | -------- |  ----------- |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | [BookmarkAnnotation](#bookmarkAnnotation) |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [highlighted](#highlighted) | [DigitalResource](#digitalResource) | [HighlightAnnotation](#highlightAnnotation) |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [shared](#shared) | [DigitalResource](#digitalResource) | [SharedAnnotation](#sharedAnnotation) |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [tagged](#tagged) | [DigitalResource](#digitalResource) | [TagAnnotation](#tagAnnotation) |
+
+#### TODO: REMOVE FOLLOWING ACTIONS FROM PROFILE 
+[attached](#attached), [classified](#classified), [described](#described), [identified](#identified), [linked](#linked), [questioned](#questioned), [subscribed](#subscribed)
+
+#### TODO: MOVE TO RATING PROFILE (RATING ENTITY)?
+[disliked](#disliked), [liked](#liked), [ranked](#ranked), [recommended](#recommended)
+
+#### TODO: NEEDS GENERATED COMMENT ENTITY
+[commented](#commented), [replied](#replied)
+
+<a name="assignableProfile" />
+#### 4.3 Assignable Profile
+The Assignable Profile provides coverage for all activity types that can be assigned to a learner for completion according to specific criteria.  ~~Assignable is an interface that is implemented by the AssignableDigitalResource.  Any Entity can implement AssignableDigitalResource and become “assignable”.~~
+
+##### Supported Events
+| Event | actor | action | object | generated |
+| -------  | -------- | -------- | -------- |  ----------- |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [activated](#activated), [deactivated](#deactivated),[started](#started), [completed](#completed) | [DigitalResource](#digitalResource) | [Attempt](#attempt) |
+
+#### NOTE: ACTIONS REMOVED
+[abandoned](#abandoned), [reviewed](#reviewed), [hid](#hid) - deactivated, [showed](#showed] - activated
+ 
+<a name="assessmentProfile" />
+#### 4.4 Assessment Profile
+The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items.  
+
+##### Supported Events
+| Event | actor | action | object | generated | referrer |
+| -------  | -------- | -------- | -------- |  ----------- |  --------- |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [started](#started), [paused](#paused), [restarted](#restarted), [reset](#reset), [submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [started](#started), [skipped](#skipped) | [Attempt](#attempt) | &nbsp;  | &nbsp; |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [completed](#completed) | [Attempt](#attempt) | [Response](#response) | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [navigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | [DigitalResource](#digitalResource) |
+| [ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; |
+
+<a name="digitalResourceManagementProfile" />
+#### 4.5 DigitalResource Management Profile
+The DigitalResource Management Profile models activities associated with the creation and management of digital content.
+
+##### Supported Events
+| Event | actor | action | object |
+| -------  | -------- | -------- | -------- | 
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent) | [Agent](#agent) | [created](#created), [modified](#modified), [removed](#removed), [deleted](#deleted), [activated](#activated), [deactivated](#deactivated) | [DigitalResource](#digitalResource) |
+
+<a name="discussionForumProfile" />
+#### 4.6 Discussion Forum Profile
+The online discussion forum is a core capability of many learning management systems.  Forums typically encompass one or more topics to which actors can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  The profile leverages a number of Caliper [Event](#event) types to describe users administering and participating in online forum communities.
+
+##### Supported Events
+| Event | actor | action | object | referrer |
+| -------  | -------- | -------- | -------- | -------- |
+| [ForumEvent](#forumEvent) | [Person](#person) | [subscribed](#subscribed), [unsubscribed](#unsubscribed) | [Forum](#forum) | &nbsp; |
+| [MessageEvent](#messageEvent) | [Person](#person) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead), [posted](#posted) | [Message](#message) | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [navigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | [DigitalResource](#digitalResource) |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
+|[ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) |  [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; |
+
+<a name="mediaProfile" />
+#### 4.7 Media Profile
+The Caliper Media Profile models interactions between learners and rich media such as images, audio and video.  The profile is provisioned with a [MediaEvent]( #mediaEvent), [NavigationEvent](#navigationEvent) and  [ViewEvent](#ViewEvent) for describing media-related activities.   [Event](#event) objects include [AudioObject](#audioObject), [ImageObject](#audioObject), and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject). 
+
+TODO: ADD [MediaLocation](#mediaLocation) 
+
+##### Supported Events
+| Event | actor | action | object | referrer |
+| -------  | -------- | -------- | -------- | -------- |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [started](#started), [paused](#paused), [resumed](#resumed), [forwardedTo](#forwardedTo), [jumpedTo](#jumpedTo), [rewound](#rewound), [ended](#ended), [changedResolution](#changedResolution), [changedSize](#changedSize), [changedSpeed](#changedSpeed), [changedVolume](#changedVolume), [enabledClosedCaptioning](#enabledClosedCaptioning), [disabledClosedCaptioning](#disabledClosedCaptioning), [enteredFullScreen](#enteredFullScreen), [exitedFullScreen](#exitedFullScreen), [muted](#muted), [unmuted](#unmuted), [openedPopout](#openedPopout), [closedPopout](#closedPopout) | [MediaObject](#mediaObject) | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [navigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | [DigitalResource](#digitalResource) |
+| [ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) |  [MediaObject](#mediaObject) | &nbsp; |
+
+<a name="outcomeProfile" />
+#### 4.8 Outcome Profile
+The Caliper Outcome Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  The profile provides an [OutcomeEvent](#outcomeEvent) for describing a [Result](#result) generated by the grading of a learner's [Attempt](#attempt) as well as a [NavigationEvent](#navigationEvent) for describing the viewing of graded results.
+
+##### Supported Events
+| Event | actor | action | object | generated |
+| -------  | -------- | -------- | -------- |  ----------- | 
+| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [graded](#graded) | [Attempt](#attempt) | [Result](#result) |
+| [ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) | [Result](#result) | &nbsp; |
+
+<a name="readingProfile" />
+#### 4.9 Reading Profile
+The Caliper Reading Profile models activities associated with reading textual content.  The profile provides a [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).  [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subclassed from [DigitalResource](#digitalResource), are provided as [Event](#event) objects for an [actor](#actor) to navigate to and view.
+
+##### Supported Events
+| Event | actor | action | object | referrer |
+| -------  | -------- | -------- | -------- | -------- |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [navigatedTo](#navigatedTo) | [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Frame](#frame) | [DigitalResource](#digitalResource) |
+|[ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) |  [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Frame](#frame) | &nbsp; |
+
+<a name="sessionProfile" />
+#### 4.10 Session Profile
+The Caliper Session Profile models activities associated with a user session established by a [Person](#person), interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is modeled along with a small set of supported actions.
+
+| Event | actor | action | object | session |
+| -------  | -------- | -------- | -------- | -------- |
+| [SessionEvent](#sessionEvent) | [Person](#person) |  [loggedIn](#loggedIn), [loggedOut](#loggedIn) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) |
+| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication)  |  [timedOut](#timedOut) | [Session]([#session)  | &nbsp; |
+
+##### Certification
+* The [loggedIn](#loggedIn) action is a REQUIRED action and MUST be implemented.  All other Session Profile supported actions are considered OPTIONAL for certification purposes.
+
+<a name="events" />
+### 5.0 Events
+TODO: OVERVIEW
 
 <a name="event"/>
-### 3.1. Event
-A Caliper ```Event``` is a generic class that represents the interaction between an [actor](#actor) and an [object](#actor) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of ```Event``` rather than instantiating instances of the ```Event``` class itself.
+### 5.1 Event
+A Caliper ```Event``` is a generic class that represents the interaction between an [actor](#actor) and an [object](#object) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of ```Event``` rather than instantiating instances of the ```Event``` class itself.
 
 ###### &#64;type
 [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
@@ -183,7 +314,256 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 }
 ```
 
-<a name="entity">
+<a name="annotationEvent" />
+##### 5.2 AnnotationEvent
+
+[AnnotationEvent](#annotationEvent)
+
+TODO
+	
+<a name="assessmentEvent" />
+##### 5.3 AssessmentEvent
+
+[AssessmentEvent](#assessmentEvent)
+
+TODO
+
+<a name="assessmentItemEvent" />
+##### 5.4 AssessmentItemEvent
+
+[AssessmentItemEvent](#assessmentItemEvent)
+
+TODO
+
+<a name="assignableEvent" />
+##### 5.5 AssignableEvent
+
+[AssignableEvent](#assignableEvent)
+	
+TODO
+
+<a name="digitalResourceMgmtEvent" />
+##### 5.6 DigitalResourceMgmtEvent
+
+[DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)
+
+TODO
+
+<a name="forumEvent" />
+##### 5.7 ForumEvent
+
+[ForumEvent](#ForumEvent)
+
+TODO
+
+<a name="mediaEvent" />
+##### 5.8 MediaEvent
+
+[MediaEvent](#mediaEvent)
+
+TODO
+
+<a name="messageEvent" />
+##### 5.9 MessageEvent
+A Caliper [MessageEvent](#messageEvent) describes an [Agent](#agent) posting a [Message](#message) or marking a post as either read or unread.
+
+##### Supported actions
+[posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
+
+##### Requirements
+* The ```MessageEvent.@type``` property MUST be assigned the IRI value http://purl.imsglobal.org/caliper/v1/MessageEvent.
+* If the ```MessageEvent.object``` property represents a ```Message``` posted in reply to a previous message, the prior ```Message```  prompting the post SHOULD be referenced utilizing the ```Message.replyTo``` property.
+
+##### Example: MessageEvent posted (reply)
+```
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
+    "actor": {
+        "@id": "https://example.edu/users/778899",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
+    "object": {
+        "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/3",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+        "creators": [
+            {
+                "@id": "https://example.edu/users/778899",
+                "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+            }
+        ],
+        "replyTo": {
+            "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/2",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+        },
+        "isPartOf": {
+            "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+            "isPartOf": {
+                "@id": "https://example.edu/semesters/201601/courses/25/forums/2",
+                "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
+            }
+        },
+        "dateCreated": "2016-09-15T10:15:30.000Z"
+    },
+    "eventTime": "2016-09-15T10:15:30.000Z",
+    "edApp": {
+        "@id": "https://example.com/lms/forums",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/25/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "POL101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https://example.edu/semesters/201601/courses/25/rosters/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+        "member": "https://example.edu/users/778899",
+        "organization": "https://example.edu/semesters/201601/courses/25/sections/1",
+        "roles": [
+            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+        ],
+        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https://example.com/lms/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-15T10:12:00.000Z"
+    }
+}
+```
+<a name="navigationEvent" />
+##### 5.10 NavigationEvent
+
+TODO [NavigationEvent](#navigationEvent)
+
+<a name="outcomeEvent" />
+##### 5.11 OutcomeEvent
+
+TODO [OutcomeEvent](#outcomeEvent)
+
+<a name="sessionEvent" />
+#### 5.12 SessionEvent
+
+###### Supported actions
+[loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
+
+###### &#64;type
+[http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
+
+###### Requirements 
+* A ```SessionEvent``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
+* A ```Session``` [startedAtTime](#startedAtTime) SHOULD be provided.
+* For a ```loggedIn``` action, the generated [Session](#session) ```endedAtTime``` and ```duration``` MUST NOT be specified.
+* It is RECOMMENDED that a [Session](#session) ```endedAtTime``` and ```duration``` be provided for ```loggedOut``` and ```timedOut``` actions.  
+* ```SessionEvent``` property values vary between supported actions.  When generating a ```SessionEvent```, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
+
+| SessionEvent | log in | log out | time out | &nbsp; ||
+| --------  | -------- | --------- | -------- | ---: |
+| actor | [Person](#person) |[Person](#person) | [SoftwareApplication](#softwareApplication) | 1 |
+| action | [loggedIn](#loggedIn) | [loggedOut](#loggedOut) | [timedOut](#timedOut) | 1 |
+| object | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) | 1 |
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
+| target | [DigitalResource](#digitalResource) | [Session]([#session) | &nbsp; | 0..1 |
+| generated | [Session]([#session) | &nbsp; | &nbsp; | 0..1 |
+| referrer | [Entity](#entity) | [Entity](#entity) | [Entity](#entity) | 0..1 |
+| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)| 0..1 |
+| group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) | 0..1 |
+| membership | [Membership]([#membership) |  [Membership]([#membership) |  [Membership]([#membership) | 0..1 |
+| session | [Session]([#session) | [Session]([#session) | [Session]([#session) | 0..1 | 
+| federatedExtension | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | 0..1 | 
+| extensions | &nbsp; | &nbsp; | &nbsp; | 0..1 | 
+
+<a name="threadEvent" />
+##### 5.13 ThreadEvent
+
+TODO [ThreadEvent](#ThreadEvent)
+
+<a name="ViewEvent" />
+##### 5.14 ViewEvent
+
+TODO: [ViewEvent](#viewEvent)
+
+<a name="actions"/>   
+### 6.0 Actions
+TODO DESCRIPTION
+
+| Label | IRI | WordNet Gloss |
+| ------ | --- | ------------- |
+| <a name="abandoned" />abandoned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned](http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned) |  |
+| <a name="activated" />activated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Activated](http://purl.imsglobal.org/vocab/caliper/v1/action#Activated) |  |
+| <a name="attached" />attached | [http://purl.imsglobal.org/vocab/caliper/v1/action#Attached](http://purl.imsglobal.org/vocab/caliper/v1/action#Attached) |  |
+| <a name="bookmarked" />bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) |  |
+| <a name="changedResolution" />changed resolution | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution) | |
+| <a name="changedSize" />changed size | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize) | |
+| <a name="changedSpeed" />changed speed | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed) | |
+| <a name="changedVolume" />changed volume | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedVolume](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedVolume) | |
+| <a name="classified" />classified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Classified](http://purl.imsglobal.org/vocab/caliper/v1/action#Classified) | |
+| <a name="closedPopout" />closed popout | [http://purl.imsglobal.org/vocab/caliper/v1/action#ClosedPopout](http://purl.imsglobal.org/vocab/caliper/v1/action#ClosedPopout) | |
+| <a name="commented" />commented | [http://purl.imsglobal.org/vocab/caliper/v1/action#Commented](http://purl.imsglobal.org/vocab/caliper/v1/action#Commented) | |
+| <a name="completed" />completed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Completed](http://purl.imsglobal.org/vocab/caliper/v1/action#Completed) | |
+| <a name="created" />created | [http://purl.imsglobal.org/vocab/caliper/v1/action#Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v) |
+| <a name="deactivated" />deactivated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated](http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated) | |
+| deleted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted](http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted) | [wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v) |
+| <a name="described" />described | [http://purl.imsglobal.org/vocab/caliper/v1/action#Described](http://purl.imsglobal.org/vocab/caliper/v1/action#Described) | |
+| <a name="disabledClosedCaptioning" />disabled closed captioning | [http://purl.imsglobal.org/vocab/caliper/v1/action#DisabledClosedCaptioning](http://purl.imsglobal.org/vocab/caliper/v1/action#DisabledClosedCaptioning) | |
+| <a name="disliked" />disliked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Disliked](http://purl.imsglobal.org/vocab/caliper/v1/action#Disliked) | |
+| <a name="enabledClosedCaptioning" />enabled closed captioning | [http://purl.imsglobal.org/vocab/caliper/v1/action#EnabledClosedCaptioning](http://purl.imsglobal.org/vocab/caliper/v1/action#EnabledClosedCaptioning) | |
+| <a name="ended" />ended | [http://purl.imsglobal.org/vocab/caliper/v1/action#Ended](http://purl.imsglobal.org/vocab/caliper/v1/action#Ended) | |
+| <a name="enteredFullscreen" />entered full screen | [http://purl.imsglobal.org/vocab/caliper/v1/action#EnteredFullscreen](http://purl.imsglobal.org/vocab/caliper/v1/action#EnteredFullscreen) | |
+| <a name="exitedFullscreen" />exited full screen | [http://purl.imsglobal.org/vocab/caliper/v1/action#ExitedFullscreen](http://purl.imsglobal.org/vocab/caliper/v1/action#ExitedFullscreen) | |
+| <a name="forwardedTo" />forwarded to | [http://purl.imsglobal.org/vocab/caliper/v1/action#ForwardedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#ForwardedTo) | |
+| <a name="graded" />graded | [http://purl.imsglobal.org/vocab/caliper/v1/action#Graded](http://purl.imsglobal.org/vocab/caliper/v1/action#Graded) | |
+| <a name="hid" />hid | [http://purl.imsglobal.org/vocab/caliper/v1/action#Hid](http://purl.imsglobal.org/vocab/caliper/v1/action#Hid) | |
+| <a name="highlighted" />highlighted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted](http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted) | |
+| <a name="jumpedTo" />jumped to | [http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo) | |
+| <a name="identified" />identified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Identified](http://purl.imsglobal.org/vocab/caliper/v1/action#Identified) | |
+| <a name="liked" />liked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Liked](http://purl.imsglobal.org/vocab/caliper/v1/action#Liked) | |
+| <a name="linked" />linked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Linked](http://purl.imsglobal.org/vocab/caliper/v1/action#Linked) | |
+| <a name="loggedIn" />logged in | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn) | [enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v) |
+| <a name="loggedIn" />logged out | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut) | [exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v) |
+| <a name="markedAsRead" />marked as read | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v) |
+| <a name="markedAsUnread" />marked as unread | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
+| <a name="modified" />modified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Modified](http://purl.imsglobal.org/vocab/caliper/v1/action#Modified) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) |
+| <a name="muted" />muted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Muted](http://purl.imsglobal.org/vocab/caliper/v1/action#Muted) | |
+| <a name="navigated to" />navigated to | [http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo) | |
+| <a name="openedPopout" />opened popout | [http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout](http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout) | |
+| <a name="paused" />paused | [http://purl.imsglobal.org/vocab/caliper/v1/action#Paused](http://purl.imsglobal.org/vocab/caliper/v1/action#Paused) | |
+| <a name="posted" />posted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [to cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v)  |
+| <a name="questioned" />questioned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned](http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned) | |
+| <a name="ranked" />ranked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked](http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked) | |
+| <a name="recommended" />recommended | [http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended](http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended) | |
+| <a name="removed" />removed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v) |
+| <a name="reset" />reset | [http://purl.imsglobal.org/vocab/caliper/v1/action#Reset](http://purl.imsglobal.org/vocab/caliper/v1/action#Reset) | [set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) |
+| <a name="restarted" />restarted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted](http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted) | |
+| <a name="resumed" />resumed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Resumed](http://purl.imsglobal.org/vocab/caliper/v1/action#Resumed) | |
+| <a name="retrieved" />retrieved | [http://purl.imsglobal.org/vocab/caliper/v1/action#Retrieved](http://purl.imsglobal.org/vocab/caliper/v1/action#Retrieved) | [obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v) |
+| <a name="reviewed" />reviewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed) | |
+| <a name="rewound" />rewound | [http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound](http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound) | |
+| <a name="searched" />searched | [http://purl.imsglobal.org/vocab/caliper/v1/action#Searched](http://purl.imsglobal.org/vocab/caliper/v1/action#Searched) | |
+| <a name="shared" />shared | [http://purl.imsglobal.org/vocab/caliper/v1/action#Shared](http://purl.imsglobal.org/vocab/caliper/v1/action#Shared) | |
+| <a name="showed" />showed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Showed](http://purl.imsglobal.org/vocab/caliper/v1/action#Showed) | |
+| <a name="skipped" />skipped | [http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped](http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped) | |
+| <a name="started" />started | [http://purl.imsglobal.org/vocab/caliper/v1/action#Started](http://purl.imsglobal.org/vocab/caliper/v1/action#Started) | |
+| <a name="submitted" />submitted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted](http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted) | |
+| <a name="subscribed" />subscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [ receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v) |
+| <a name="tagged" />tagged | [http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged](http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged) | |
+| <a name="timedOut" />timed out | [http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut) | |
+| <a name="unmuted" />unmuted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted](http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted) | inverse of muted |
+| <a name="unsubscribed" />unsubscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
+| <a name="viewed" />viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) | |
+
+<a name="entities" />
+### 7.0 Entities
+
+TODO: OVERVIEW
+
+<a name="entity" />
 ### 3.2. Entity
 A Caliper ```Entity``` is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).
 
@@ -219,114 +599,28 @@ A Caliper ```Entity``` is a generic class that is analogous to an [sdo:Thing](ht
 }
 ```
 
-<a name="profiles"/>
-### 3.3. Profiles
-
-TODO
-
-<a name="freeFormProfile" />
-#### 3.3.1. Free Form Profile
-
-TODO
 
 
-<a name="annotationProfile" />
-#### 3.3.2. Annotation Profile
-
-TODO
-
-<a name="assignableProfile" />
-#### 3.3.3. Assignable Profile
-
-TODO
-
-<a name="assessmentProfile" />
-#### 3.3.4. Assessment Profile
-
-TODO
-
-<a name="assessmentItemProfile" />
-#### 3.3.5. AssessmentItem Profile
-
-TODO
-
-<a name="discussionForumProfile" />
-#### 3.3.6. Discussion Forum Profile
-
-TODO
-
-<a name="mediaProfile" />
-#### 3.3.7. Media Profile
-
-TODO
-
-<a name="navigationProfile" />
-#### 3.3.8. Navigation Profile
-
-TODO NEEDS APPROVAL
-
-<a name="outcomeProfile" />
-#### 3.3.9. Outcome Profile
-
-TODO
-
-<a name="readingProfile" />
-#### 3.3.10. Reading Profile
-
-TODO
-
-<a name="sessionProfile" />
-### 3.3.11. Session Profile
-The Caliper Session Profile models activities associated with a user session established by an [Agent](#agent), typically a [Person](#person), interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is provided along with a set of supported actions.
-
-###### Supported actions
-[loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
-
-###### Conformance
-* The [loggedIn](#loggedIn) action is a REQUIRED action and MUST be implemented.
-* All other Session Profile supported actions are considered OPTIONAL for conformance purposes.
-
-<a name="sessionEvent" />
-#### 3.3.11.1. SessionEvent
-TODO
-
-###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
-
-###### Requirements 
-* A ```SessionEvent``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
-* A ```Session``` [startedAtTime](#startedAtTime) SHOULD be provided.
-* For a ```loggedIn``` action, the generated [Session](#session) ```endedAtTime``` and ```duration``` MUST NOT be specified.
-* It is RECOMMENDED that a [Session](#session) ```endedAtTime``` and ```duration``` be provided for ```loggedOut``` and ```timedOut``` actions.  
-* ```SessionEvent``` property values vary between supported actions.  When generating a ```SessionEvent```, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
-
-| SessionEvent | loggedIn | loggedOut | timedOut ||
-| --------  | -------- | --------- | -------- | ---: |
-| actor | [Person](#person) |[Person](#person) | [SoftwareApplication](#softwareApplication) | 1 |
-| action | [loggedIn](#loggedIn) | [loggedOut](#loggedOut) | [timedOut](#timedOut) | 1 |
-| object | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) | 1 |
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
-| target | [DigitalResource](#digitalResource) | [Session]([#session) | &nbsp; | 0..1 |
-| generated | [Session]([#session) | &nbsp; | &nbsp; | 0..1 |
-| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)| 0..1 |
-| group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) | 0..1 |
-| membership | [Membership]([#membership) |  [Membership]([#membership) |  [Membership]([#membership) | 0..1 |
-| session | [Session]([#session) | [Session]([#session) | [Session]([#session) | 0..1 | 
 
 <a name="api"/>
-### 4.0. Sensor API
+### 8.0 Sensor API
 
-TODO
+TODO: OVERVIEW
 
 <a name="transport"/>
-### 5.0. Transport
+### 9.0 Transport
 
-TODO
+TODO: OVERVIEW
 
 <a name="endpoints"/>
-### 6.0. Endpoints
+#### 9.1 Envelope
 
-TODO
+TODO: OVERVIEW
+
+<a name="endpoints"/>
+#### 9.2 Endpoint
+
+TODO: OVERVIEW
 
 <a name="contributors"/>
 ### 7.0. Contributors
@@ -334,77 +628,13 @@ The following Caliper Working Group participants contributed to the writing of t
 
 | Name | Organization |
 | ------ | --------- |
-| [Anthony Whyte](http://github.com/arwhyte) | University of Michigan |
+| Anthony Whyte [arwhyte](http://github.com/arwhyte) | University of Michigan |
+| Viktor Haag [ViktorHaag](https://github.com/ViktorHaag) | DTL |
 
-<a name="appendixA"/>   
-### Appendix A: Caliper Actions
+TODO: ADD OTHERS
 
-| Label | IRI | WordNet Gloss |
-| ------ | --- | ------------- |
-| <a name="abandoned" />abandoned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned](http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned) |  |
-| <a name="activated" />activated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Activated](http://purl.imsglobal.org/vocab/caliper/v1/action#Activated) |  |
-| <a name="attached" />attached | [http://purl.imsglobal.org/vocab/caliper/v1/action#Attached](http://purl.imsglobal.org/vocab/caliper/v1/action#Attached) |  |
-| <a name="bookmarked" />bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) |  |
-| <a name="changedResolution" />changed resolution | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution) | |
-| <a name="changedSize" />changed size | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize) | |
-| <a name="changedSpeed" />changed speed | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed) | |
-| <a name="changedVolume" />changed volume | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedVolume](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedVolume) | |
-| <a name="classified" />classified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Classified](http://purl.imsglobal.org/vocab/caliper/v1/action#Classified) | |
-| <a name="closedPopout" />closed popout | [http://purl.imsglobal.org/vocab/caliper/v1/action#ClosedPopout](http://purl.imsglobal.org/vocab/caliper/v1/action#ClosedPopout) | |
-| <a name="commented" />commented | [http://purl.imsglobal.org/vocab/caliper/v1/action#Commented](http://purl.imsglobal.org/vocab/caliper/v1/action#Commented) | |
-| <a name="completed" />completed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Completed](http://purl.imsglobal.org/vocab/caliper/v1/action#Completed) | |
-| <a name="created" />created | [http://purl.imsglobal.org/vocab/caliper/v1/action#Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [create](http://wordnet-rdf.princeton.edu/wn31/201620211-v): make or cause to be or to become |
-| <a name="deactivated" />deactivated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated](http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated) | |
-| deleted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted](http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted) | [delete](http://wordnet-rdf.princeton.edu/wn31/201001860-v): wipe out digitally |
-| <a name="described" />described | [http://purl.imsglobal.org/vocab/caliper/v1/action#Described](http://purl.imsglobal.org/vocab/caliper/v1/action#Described) | |
-| <a name="disabledClosedCaptioning" />disabled closed captioning | [http://purl.imsglobal.org/vocab/caliper/v1/action#DisabledClosedCaptioning](http://purl.imsglobal.org/vocab/caliper/v1/action#DisabledClosedCaptioning) | |
-| <a name="disliked" />disliked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Disliked](http://purl.imsglobal.org/vocab/caliper/v1/action#Disliked) | |
-| <a name="enabledClosedCaptioning" />enabled closed captioning | [http://purl.imsglobal.org/vocab/caliper/v1/action#EnabledClosedCaptioning](http://purl.imsglobal.org/vocab/caliper/v1/action#EnabledClosedCaptioning) | |
-| <a name="ended" />ended | [http://purl.imsglobal.org/vocab/caliper/v1/action#Ended](http://purl.imsglobal.org/vocab/caliper/v1/action#Ended) | |
-| <a name="enteredFullscreen" />entered full screen | [http://purl.imsglobal.org/vocab/caliper/v1/action#EnteredFullscreen](http://purl.imsglobal.org/vocab/caliper/v1/action#EnteredFullscreen) | |
-| <a name="exitedFullscreen" />exited full screen | [http://purl.imsglobal.org/vocab/caliper/v1/action#ExitedFullscreen](http://purl.imsglobal.org/vocab/caliper/v1/action#ExitedFullscreen) | |
-| <a name="forwardedTo" />forwarded to | [http://purl.imsglobal.org/vocab/caliper/v1/action#ForwardedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#ForwardedTo) | |
-| <a name="graded" />graded | [http://purl.imsglobal.org/vocab/caliper/v1/action#Graded](http://purl.imsglobal.org/vocab/caliper/v1/action#Graded) | |
-| <a name="hid" />hid | [http://purl.imsglobal.org/vocab/caliper/v1/action#Hid](http://purl.imsglobal.org/vocab/caliper/v1/action#Hid) | |
-| <a name="highlighted" />highlighted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted](http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted) | |
-| <a name="jumpedTo" />jumped to | [http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo) | |
-| <a name="identified" />identified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Identified](http://purl.imsglobal.org/vocab/caliper/v1/action#Identified) | |
-| <a name="liked" />liked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Liked](http://purl.imsglobal.org/vocab/caliper/v1/action#Liked) | |
-| <a name="linked" />linked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Linked](http://purl.imsglobal.org/vocab/caliper/v1/action#Linked) | |
-| <a name="loggedIn" />logged in | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn) | [log in](http://wordnet-rdf.princeton.edu/wn31/202253955-v): enter a computer or software application |
-| <a name="loggedIn" />logged out | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut) | [log out](http://wordnet-rdf.princeton.edu/wn31/202254101-v): exit a computer or software application |
-| <a name="markedAsRead" />marked as read | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v): designate as if by a mark, [read](http://wordnet-rdf.princeton.edu/wn31/200626756-v): interpret something that is written or printed |
-| <a name="markedAsUnread" />marked as unread | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
-| <a name="muted" />muted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Muted](http://purl.imsglobal.org/vocab/caliper/v1/action#Muted) | |
-| <a name="navigated to" />navigated to | [http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo) | |
-| <a name="openedPopout" />opened popout | [http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout](http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout) | |
-| <a name="paused" />paused | [http://purl.imsglobal.org/vocab/caliper/v1/action#Paused](http://purl.imsglobal.org/vocab/caliper/v1/action#Paused) | |
-| <a name="posted" />posted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [post](http://wordnet-rdf.princeton.edu/wn31/201033289-v): to cause to be directed or transmitted to another place |
-| <a name="questioned" />questioned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned](http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned) | |
-| <a name="ranked" />ranked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked](http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked) | |
-| <a name="recommended" />recommended | [http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended](http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended) | |
-| <a name="removed" />removed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove](http://wordnet-rdf.princeton.edu/wn31/200181704-v): remove from sight |
-| <a name="reset" />hid | [http://purl.imsglobal.org/vocab/caliper/v1/action#Reset](http://purl.imsglobal.org/vocab/caliper/v1/action#Reset) | |
-| <a name="restarted" />restarted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted](http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted) | |
-| <a name="resumed" />resumed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Resumed](http://purl.imsglobal.org/vocab/caliper/v1/action#Resumed) | |
-| <a name="reviewed" />reviewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed) | |
-| <a name="rewound" />rewound | [http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound](http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound) | |
-| <a name="searched" />searched | [http://purl.imsglobal.org/vocab/caliper/v1/action#Searched](http://purl.imsglobal.org/vocab/caliper/v1/action#Searched) | |
-| <a name="shared" />shared | [http://purl.imsglobal.org/vocab/caliper/v1/action#Shared](http://purl.imsglobal.org/vocab/caliper/v1/action#Shared) | |
-| <a name="showed" />showed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Showed](http://purl.imsglobal.org/vocab/caliper/v1/action#Showed) | |
-| <a name="skipped" />skipped | [http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped](http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped) | |
-| <a name="started" />started | [http://purl.imsglobal.org/vocab/caliper/v1/action#Started](http://purl.imsglobal.org/vocab/caliper/v1/action#Started) | |
-| <a name="submitted" />submitted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted](http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted) | |
-| <a name="subscribed" />subscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [subscribe](http://wordnet-rdf.princeton.edu/wn31/202214527-v): receive or obtain regularly |
-| <a name="tagged" />tagged | [http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged](http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged) | |
-| <a name="timedOut" />timed out | [http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut) | |
-| <a name="unmuted" />unmuted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted](http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted) | |
-| <a name="unsubscribed" />unsubscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
-| <a name="updated" />updated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Updated](http://purl.imsglobal.org/vocab/caliper/v1/action#Updated) | [updated](http://wordnet-rdf.princeton.edu/wn31/200835207-v): bring up to date; supply with recent information |
-| <a name="viewed" />viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) | |
-
-<a name="appendixB" />
-### Appendix B: Caliper Entities
+<a name="appendixA" />
+### Appendix A: Caliper Entities
 
 <a name="agent" />
 #### Agent
@@ -650,7 +880,7 @@ A Caliper ```Collection``` is a generic class that represents a set of entities.
 ###### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----: |
-| ~~isChildOf~~ | ~~[Collection](#collection)~~ | ~~The parent ```Collection``` of this ```Collection```.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent).~~ | ~~0..1~~ |
+| isPartOf | [Entity](#entity) | The parent ```Entity``` of this ```Collection```.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent). |  0..1  |
 | items | List&lt;[Entity](#entity)&gt; | The set of ```items``` that comprise this ```Collection```. | 0..1 |
 
 ###### Requirements
@@ -663,10 +893,42 @@ A Caliper ```Collection``` is a generic class that represents a set of entities.
 ###### JSON-LD Example
 ```
 {
-  TODO
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/semesters/201601/courses/25/collections/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+  "name": "Video Collection",
+  "items": [
+    {
+      "@id": "https://example.com/videos/1225",
+      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Video 1225",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "duration": "PT1H12M27S",
+      "version": "1.0"
+    },
+    {
+      "@id": "https://example.com/videos/6789",
+      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Video 6789",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "duration": "PT55M13S",
+      "version": "2.1"
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://example.edu/semesters/201601/courses/25/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "subOrganizationOf": {
+      "@id": "https://example.edu/semesters/201601/courses/25",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+    }
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
-
 <a name="courseOffering" />
 #### CourseOffering
 A Caliper ```CourseOffering``` represents the occurrence of a course or a class in a specific term, semester, etc.  ```CourseOffering``` is composed of a subset of properties specified in the IMS LTI 2.0 specification, which in turn, draws inspiration from the IMS LIS 1.0 specification.
@@ -965,9 +1227,40 @@ A Caliper ```Forum``` is a channel or virtual space in which group discussions t
 ###### JSON-LD Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/semesters/201601/courses/25/forums/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+  "name": "Caliper Forum",
+  "items": [
+    {
+      "@id": "https://example.edu/semesters/201601/courses/25/forums/1/topics/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "name": "Caliper Information Model",
+      "dateCreated": "2016-09-01T09:30:00.000Z"
+    },
+    {
+      "@id": "https://example.edu/semesters/201601/courses/25/forums/1/topics/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "name": "Caliper Sensor API",
+      "dateCreated": "2016-09-01T09:30:00.000Z"
+    },
+    {
+      "@id": "https://example.edu/semesters/201601/courses/25/forums/1/topics/3",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "name": "Caliper Certification",
+      "dateCreated": "2016-09-01T09:30:00.000Z"
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://example.edu/semesters/201601/courses/25/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "subOrganizationOf": {
+      "@id": "https://example.edu/semesters/201601/courses/25",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+    }
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
@@ -1138,7 +1431,7 @@ A Caliper ```Message``` is a digital form of written communication sent to a rec
 | creator | [Agent](#agent) | The author or originator of this ```Message```, typically a [Person](#person).  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator) or [sdo:creator](http://schema.org/creator). | 0..1|
 | replyTo | [Message](#message) | The prior ```Message```, if any, that prompted the posting of this ```Message``` in the form of a reply or response.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). | 0..1 |
 | isPartOf | [Thread](#thread) | The ```Thread``` of which this Message forms a part.  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator). | 0..1 |
-| content | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | Plain-text rendering of the content of the ```Message```.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). | 0..1 |
+| ~~content~~ | ~~[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)~~ | ~~Plain-text rendering of the content of the ```Message```.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). ~~ | ~~ 0..1 ~~ |
 | attachments | List&lt;[DigitalResource](#digitalResource)&gt; | A set of one or more items attached to this ```Message```.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). | 0..1 |
 
 ###### Requirements
@@ -1149,68 +1442,56 @@ A Caliper ```Message``` is a digital form of written communication sent to a rec
 * A ```Message``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Message.
 * A ```Message``` @id property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
-## TODO
-SHOULD WE CONSIDER CREATING A "BODY" ENTITY FOR Message.content WITH THE FOLLOWING MINIMUM PROPERTIES:
-
+##### Example: MessageEvent.object posted
 ```
 {
-   "body": "string",
-   "isTruncated": boolean
-}
-```
-
-###### JSON-LD Example
+     "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/2",
+     "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+     "creators": [
+         {
+             "@id": "https://example.edu/users/554433",
+             "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+         }
+     ],
+     "isPartOf": {
+         "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1",
+         "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+         "name": "Caliper Adoption",
+         "isPartOf": {
+             "@id": "https://example.edu/semesters/201601/courses/25/forums/2",
+             "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+             "name": "Caliper Forum"
+         }
+     },
+     "dateCreated": "2016-09-15T10:15:00.000Z"
+ }
+ ```
+##### Example: Message Reply
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/2/courses/1/forums/2/topics/1/messages/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-  "creator": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-  },
-  "replyTo": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/terms/2/courses/1/forums/2/topics/1/messages/1",
+    "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/3",
     "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-    "creator": {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@id": "https://example.edu/users/12345",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "content": "Do you like Caliper?",
-    "dateCreated": "2016-09-02T11:30:00.000Z"
-  },
-  "isPartOf": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/terms/2/courses/1/forums/2/topics/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-    "name": "Caliper Happiness Index",
-    "creator": {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@id": "https://example.edu/users/56789",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "isPartOf": {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@id": "https://example.edu/terms/2/courses/1/forums/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
-      "name": "Caliper Forum",
-      "creator": {
-        "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-        "@id": "https://example.edu/users/56789",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-      },
-      "dateCreated": "2016-09-01T09:28:00.000Z"
-    },
-    "dateCreated": "2016-09-01T09:30:00.000Z"
-  },
-  "content": "I love Caliper!",
-  "dateCreated": "2016-09-02T11:32:00.000Z"
-}
-```
-
+    "creators": [
+        {
+             "@id": "https://example.edu/users/778899",
+             "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        }
+     ],
+     "replyTo": {
+         "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/2",
+         "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+     },
+     "isPartOf": {
+         "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1",
+         "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+         "isPartOf": {
+             "@id": "https://example.edu/semesters/201601/courses/25/forums/2",
+             "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
+         }
+     },
+     "dateCreated": "2016-09-15T10:15:30.000Z"
+ }
+ ```
 <a name="multipleChoiceResponse" />
 #### MultipleChoiceResponse
 A Caliper ```MultipleChoiceResponse``` represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.
@@ -1614,9 +1895,50 @@ A Caliper ```Thread``` represents a series of one or more messages that share a 
 ###### JSON-LD Example
 ```
 {
-
-  TODO
-  
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/semesters/201601/courses/25/forums/1/topics/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+  "name": "Caliper Information Model",
+  "items": [
+    {
+      "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+    },
+    {
+      "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+      "replyTo": {
+        "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+      }
+    },
+    {
+      "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/3",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+      "replyTo": {
+        "@id": "https://example.edu/semesters/201601/courses/25/forums/2/topics/1/messages/2",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+      }
+    }
+  ],
+  "isPartOf": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/25/forums/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+    "name": "Caliper Forum",
+    "isPartOf": {
+      "@id": "https://example.edu/semesters/201601/courses/25/sections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+      "subOrganizationOf": {
+        "@id": "https://example.edu/semesters/201601/courses/25",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+      }
+    },
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z"
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
@@ -1712,14 +2034,41 @@ A Caliper ```WebPage``` represents a document suitable for display in a web brow
 }
 ```
 
-<a name="appendixC" />
-### Appendix C.  Miscellaneous Classes
+<a name="appendixB" />
+### Appendix B.  Miscellaneous Classes
 
 TODO
 
 #### TextPositionSelector
 
 TODO
+
+<a name="revisionHistory" />
+### Revision History
+
+#### Profiles
+| Profile | Deprecated | Removed | Notes |
+| -------  | --------------- | ------------- | -------- |
+| [AssessmentItem Profile](#assessmentItemProfile)  | 1.1 | 1.1 | [AssessmentItemEvent] moved to [AssessmentProfile](#assessmentProfile) rendering the AssessmentItem Profile redundant. |
+
+#### Events
+| Event | Deprecated | Removed | Notes |
+| -------  | --------------- | ------------- | -------- |
+| [ReadingEvent](#readingEvent)  | 1.1 | &nbsp; | &nbsp; |
+
+### Entities
+| Event | Deprecated | Removed | Notes |
+| -------  | --------------- | ------------- | -------- |
+| [EpubChapter](#epubChapter) | 1.1 | &nbsp; | Deprecated in favor of [Chapter](#chapter) |
+| [EpubPart](#epubPart) | 1.1 | &nbsp; | &nbsp; |
+| [EpubSubchapter](#epubSubchapter) | 1.1 | &nbsp; | &nbsp; |
+| [EpubVolume](#epubVolume) | 1.1 | &nbsp; | &nbsp; |
+| [Reading](#reading) | 1.1 | &nbsp; | Deprecated in favor of [Document](#document) |
+
+### Data Properties
+| Event | Deprecated | Removed | Notes |
+| -------  | --------------- | ------------- | -------- |
+| [objectType](#objectType)  | 1.1 | &nbsp; | &nbsp; |
 
 <a name="reference" />
 ### References
@@ -1731,7 +2080,3 @@ __LTI__  TODO
 
 <a name="rfc2119">
 __RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels". March 1997. URL: https://tools.ietf.org/html/rfc2119.
-
-### Revision History
-
-TODO
