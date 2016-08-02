@@ -1,7 +1,7 @@
-### Caliper Analytics<sup>TM</sup> Specification, version 1.1
-### IMS Global Learning Consortium, Inc.
+## Caliper Analytics<sup>TM</sup> Specification, version 1.1
+## IMS Global Learning Consortium, Inc.
 
-### IPR and Distribution Notices
+## IPR and Distribution Notices
 Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
 
 IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
@@ -16,7 +16,7 @@ The limited permissions granted above are perpetual and will not be revoked by I
 
 THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICATION SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.
 
-### Table of Contents
+## Table of Contents
 * 1.0 [Introduction](#introduction)
   * 1.1 [Namespaces](#namespaces)
   * 1.2 [Definitions](#definitions)
@@ -61,7 +61,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [References](#references)
 
 <a name="introduction"/>  
-### 1.0. Introduction
+## 1.0. Introduction
 
 TODO
 
@@ -120,23 +120,23 @@ __profile__: TODO
 __sensor__: TODO
 
 <a name="interoperability">
-### 2.0 Data and Semantic Interoperability
+## 2.0 Data and Semantic Interoperability
 
 TODO
 
 <a name="infoModel">
-### 3.0 Information Model
+## 3.0 Information Model
 
 TODO: OVERVIEW 
 
 <a name="profiles" />
-### 4.0 Profiles
+## 4.0 Profiles
 The Caliper Information Model is comprised of a number of profiles, each of which models a particular learning activity or supporting activity.
 
 TODO: ADDITIONAL INTRO TEXT
 
 <a name="simpleEventProfile" />
-#### 4.1 Basic Event Profile
+### 4.1 Basic Event Profile
 The Caliper Basic Event Profile models a minimally compliant [Event](#event) composed of an [actor](#actor), [action](#action), [object](#object) and [eventTime](#eventTime).  
 
 | Event | actor | action | object | eventTime |
@@ -144,10 +144,10 @@ The Caliper Basic Event Profile models a minimally compliant [Event](#event) com
 | [Event](#event) | [Agent](#agent) | [action](#action) | [Entity](#entity) | [eventTime](#eventTime) |
 
 <a name="annotationProfile" />
-#### 4.2 Annotation Profile
+### 4.2 Annotation Profile
 The Caliper Annotation Profile models activities related to the annotation of digital content.
 
-##### Supported Events
+#### Supported Events
 | Event | actor | action | object | generated |
 | -------  | -------- | -------- | -------- |  ----------- |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | [BookmarkAnnotation](#bookmarkAnnotation) |
@@ -165,10 +165,10 @@ The Caliper Annotation Profile models activities related to the annotation of di
 [commented](#commented), [replied](#replied)
 
 <a name="assignableProfile" />
-#### 4.3 Assignable Profile
+### 4.3 Assignable Profile
 The Assignable Profile provides coverage for all activity types that can be assigned to a learner for completion according to specific criteria.  ~~Assignable is an interface that is implemented by the AssignableDigitalResource.  Any Entity can implement AssignableDigitalResource and become “assignable”.~~
 
-##### Supported Events
+#### Supported Events
 | Event | actor | action | object | generated |
 | -------  | -------- | -------- | -------- |  ----------- |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [activated](#activated), [deactivated](#deactivated),[started](#started), [completed](#completed) | [DigitalResource](#digitalResource) | [Attempt](#attempt) |
@@ -177,10 +177,10 @@ The Assignable Profile provides coverage for all activity types that can be assi
 [abandoned](#abandoned), [reviewed](#reviewed), [hid](#hid) - deactivated, [showed](#showed] - activated
  
 <a name="assessmentProfile" />
-#### 4.4 Assessment Profile
+### 4.4 Assessment Profile
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items.  
 
-##### Supported Events
+#### Supported Events
 | Event | actor | action | object | generated | referrer |
 | -------  | -------- | -------- | -------- |  ----------- |  --------- |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [started](#started), [paused](#paused), [restarted](#restarted), [reset](#reset), [submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
@@ -190,19 +190,19 @@ The Caliper Assessment Profile models assessment-related activities including in
 | [ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; |
 
 <a name="digitalResourceManagementProfile" />
-#### 4.5 DigitalResource Management Profile
+### 4.5 DigitalResource Management Profile
 The DigitalResource Management Profile models activities associated with the creation and management of digital content.
 
-##### Supported Events
+#### Supported Events
 | Event | actor | action | object |
 | -------  | -------- | -------- | -------- | 
 | [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent) | [Agent](#agent) | [created](#created), [modified](#modified), [removed](#removed), [deleted](#deleted), [activated](#activated), [deactivated](#deactivated) | [DigitalResource](#digitalResource) |
 
 <a name="discussionForumProfile" />
-#### 4.6 Discussion Forum Profile
+### 4.6 Discussion Forum Profile
 The online discussion forum is a core capability of many learning management systems.  Forums typically encompass one or more topics to which actors can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  The profile leverages a number of Caliper [Event](#event) types to describe users administering and participating in online forum communities.
 
-##### Supported Events
+#### Supported Events
 | Event | actor | action | object | referrer |
 | -------  | -------- | -------- | -------- | -------- |
 | [ForumEvent](#forumEvent) | [Person](#person) | [subscribed](#subscribed), [unsubscribed](#unsubscribed) | [Forum](#forum) | &nbsp; |
@@ -212,12 +212,12 @@ The online discussion forum is a core capability of many learning management sys
 |[ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) |  [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; |
 
 <a name="mediaProfile" />
-#### 4.7 Media Profile
+### 4.7 Media Profile
 The Caliper Media Profile models interactions between learners and rich media such as images, audio and video.  The profile is provisioned with a [MediaEvent]( #mediaEvent), [NavigationEvent](#navigationEvent) and  [ViewEvent](#ViewEvent) for describing media-related activities.   [Event](#event) objects include [AudioObject](#audioObject), [ImageObject](#audioObject), and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject). 
 
 TODO: ADD [MediaLocation](#mediaLocation) 
 
-##### Supported Events
+#### Supported Events
 | Event | actor | action | object | referrer |
 | -------  | -------- | -------- | -------- | -------- |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [started](#started), [paused](#paused), [resumed](#resumed), [forwardedTo](#forwardedTo), [jumpedTo](#jumpedTo), [rewound](#rewound), [ended](#ended), [changedResolution](#changedResolution), [changedSize](#changedSize), [changedSpeed](#changedSpeed), [changedVolume](#changedVolume), [enabledClosedCaptioning](#enabledClosedCaptioning), [disabledClosedCaptioning](#disabledClosedCaptioning), [enteredFullScreen](#enteredFullScreen), [exitedFullScreen](#exitedFullScreen), [muted](#muted), [unmuted](#unmuted), [openedPopout](#openedPopout), [closedPopout](#closedPopout) | [MediaObject](#mediaObject) | &nbsp; |
@@ -225,27 +225,27 @@ TODO: ADD [MediaLocation](#mediaLocation)
 | [ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) |  [MediaObject](#mediaObject) | &nbsp; |
 
 <a name="outcomeProfile" />
-#### 4.8 Outcome Profile
+### 4.8 Outcome Profile
 The Caliper Outcome Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  The profile provides an [OutcomeEvent](#outcomeEvent) for describing a [Result](#result) generated by the grading of a learner's [Attempt](#attempt) as well as a [NavigationEvent](#navigationEvent) for describing the viewing of graded results.
 
-##### Supported Events
+#### Supported Events
 | Event | actor | action | object | generated |
 | -------  | -------- | -------- | -------- |  ----------- | 
 | [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [graded](#graded) | [Attempt](#attempt) | [Result](#result) |
 | [ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) | [Result](#result) | &nbsp; |
 
 <a name="readingProfile" />
-#### 4.9 Reading Profile
+### 4.9 Reading Profile
 The Caliper Reading Profile models activities associated with reading textual content.  The profile provides a [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).  [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subclassed from [DigitalResource](#digitalResource), are provided as [Event](#event) objects for an [actor](#actor) to navigate to and view.
 
-##### Supported Events
+#### Supported Events
 | Event | actor | action | object | referrer |
 | -------  | -------- | -------- | -------- | -------- |
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [navigatedTo](#navigatedTo) | [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Frame](#frame) | [DigitalResource](#digitalResource) |
 |[ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) |  [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Frame](#frame) | &nbsp; |
 
 <a name="sessionProfile" />
-#### 4.10 Session Profile
+### 4.10 Session Profile
 The Caliper Session Profile models activities associated with a user session established by a [Person](#person), interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is modeled along with a small set of supported actions.
 
 | Event | actor | action | object | session |
@@ -253,21 +253,21 @@ The Caliper Session Profile models activities associated with a user session est
 | [SessionEvent](#sessionEvent) | [Person](#person) |  [loggedIn](#loggedIn), [loggedOut](#loggedIn) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) |
 | [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication)  |  [timedOut](#timedOut) | [Session]([#session)  | &nbsp; |
 
-##### Certification
+#### Certification
 * The [loggedIn](#loggedIn) action is a REQUIRED action and MUST be implemented.  All other Session Profile supported actions are considered OPTIONAL for certification purposes.
 
 <a name="events" />
-### 5.0 Events
+## 5.0 Events
 TODO: OVERVIEW
 
 <a name="event"/>
 ### 5.1 Event
 A Caliper ```Event``` is a generic class that represents the interaction between an [actor](#actor) and an [object](#object) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of ```Event``` rather than instantiating instances of the ```Event``` class itself.
 
-###### &#64;type
+##### &#64;type
 [http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
 
-###### Properties
+##### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | -----------: |
 | @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | 1 |
@@ -283,7 +283,7 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 | membership | [Membership]([#membership) | . . . | 0..1 |
 | session | [Session]([#session) | . . . | 0..1 |
 
-###### Requirements
+##### Requirements
 * An ```Event``` @context MUST be specified.  TODO ELABORATE 
 * An ```Event``` @type MUST be specified.  TODO ELABORATE
 * If a generic ```Event``` is created instead of one of its subclasses, the ```Event``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Event.
@@ -293,10 +293,10 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 * ```Event```  properties with a value of null or empty SHOULD be excluded from the JSON-LD representation of the ```Event```  prior to serialization.
 * Subclasses of ```Event``` MAY specify additional properties or RECOMMEND inclusion of optional properties for a more concise representation of the ```Event```.
 
-###### Subclasses
+##### Subclasses
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [ReadingEvent](#readingEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
-###### JSON-LD Example
+##### JSON-LD Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -315,66 +315,66 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 ```
 
 <a name="annotationEvent" />
-##### 5.2 AnnotationEvent
+### 5.2 AnnotationEvent
 
 [AnnotationEvent](#annotationEvent)
 
 TODO
 	
 <a name="assessmentEvent" />
-##### 5.3 AssessmentEvent
+### 5.3 AssessmentEvent
 
 [AssessmentEvent](#assessmentEvent)
 
 TODO
 
 <a name="assessmentItemEvent" />
-##### 5.4 AssessmentItemEvent
+### 5.4 AssessmentItemEvent
 
 [AssessmentItemEvent](#assessmentItemEvent)
 
 TODO
 
 <a name="assignableEvent" />
-##### 5.5 AssignableEvent
+### 5.5 AssignableEvent
 
 [AssignableEvent](#assignableEvent)
 	
 TODO
 
 <a name="digitalResourceMgmtEvent" />
-##### 5.6 DigitalResourceMgmtEvent
+### 5.6 DigitalResourceMgmtEvent
 
 [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)
 
 TODO
 
 <a name="forumEvent" />
-##### 5.7 ForumEvent
+### 5.7 ForumEvent
 
 [ForumEvent](#ForumEvent)
 
 TODO
 
 <a name="mediaEvent" />
-##### 5.8 MediaEvent
+### 5.8 MediaEvent
 
 [MediaEvent](#mediaEvent)
 
 TODO
 
 <a name="messageEvent" />
-##### 5.9 MessageEvent
+### 5.9 MessageEvent
 A Caliper [MessageEvent](#messageEvent) describes an [Agent](#agent) posting a [Message](#message) or marking a post as either read or unread.
 
-##### Supported actions
+#### Supported actions
 [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
 
-##### Requirements
+#### Requirements
 * The ```MessageEvent.@type``` property MUST be assigned the IRI value http://purl.imsglobal.org/caliper/v1/MessageEvent.
 * If the ```MessageEvent.object``` property represents a ```Message``` posted in reply to a previous message, the prior ```Message```  prompting the post SHOULD be referenced utilizing the ```Message.replyTo``` property.
 
-##### Example: MessageEvent posted (reply)
+#### Example: MessageEvent posted (reply)
 ```
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -438,25 +438,25 @@ A Caliper [MessageEvent](#messageEvent) describes an [Agent](#agent) posting a [
 }
 ```
 <a name="navigationEvent" />
-##### 5.10 NavigationEvent
+### 5.10 NavigationEvent
 
 TODO [NavigationEvent](#navigationEvent)
 
 <a name="outcomeEvent" />
-##### 5.11 OutcomeEvent
+### 5.11 OutcomeEvent
 
 TODO [OutcomeEvent](#outcomeEvent)
 
 <a name="sessionEvent" />
-#### 5.12 SessionEvent
+### 5.12 SessionEvent
 
-###### Supported actions
+#### Supported actions
 [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
 
-###### &#64;type
+#### &#64;type
 [http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
 
-###### Requirements 
+#### Requirements 
 * A ```SessionEvent``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
 * A ```Session``` [startedAtTime](#startedAtTime) SHOULD be provided.
 * For a ```loggedIn``` action, the generated [Session](#session) ```endedAtTime``` and ```duration``` MUST NOT be specified.
@@ -480,17 +480,17 @@ TODO [OutcomeEvent](#outcomeEvent)
 | extensions | &nbsp; | &nbsp; | &nbsp; | 0..1 | 
 
 <a name="threadEvent" />
-##### 5.13 ThreadEvent
+### 5.13 ThreadEvent
 
 TODO [ThreadEvent](#ThreadEvent)
 
 <a name="ViewEvent" />
-##### 5.14 ViewEvent
+### 5.14 ViewEvent
 
 TODO: [ViewEvent](#viewEvent)
 
 <a name="actions"/>   
-### 6.0 Actions
+## 6.0 Actions
 TODO DESCRIPTION
 
 | Label | IRI | WordNet Gloss |
@@ -559,18 +559,18 @@ TODO DESCRIPTION
 | <a name="viewed" />viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) | |
 
 <a name="entities" />
-### 7.0 Entities
+## 7.0 Entities
 
 TODO: OVERVIEW
 
 <a name="entity" />
-### 3.2. Entity
+### 7.1 Entity
 A Caliper ```Entity``` is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).
 
-###### &#64;type 
+#### &#64;type 
 [http://purl.imsglobal.org/caliper/v1/Entity](http://purl.imsglobal.org/caliper/v1/Entity)
 
-###### Properties
+#### Properties
 | Property | Type | Description ||
 | -------- | ---- | ----------- | -----------: |
 | @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | 1 |
@@ -582,14 +582,14 @@ A Caliper ```Entity``` is a generic class that is analogous to an [sdo:Thing](ht
 | dateCreated | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when the [Entity](#entity) was created or added to a data set.  Analogous to [sdo:dateCreated](http://schema.org/dateCreated). | 0..1 |
 | dateModified | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted  date and time expressed with millisecond precision that represents when the [Entity](#entity) was last modified.  Analogous to [sdo:dateModified](http://schema.org/dateModified). | 0..1 |
 
-###### Requirements
+#### Requirements
 * Given that ```Entity``` represents a generic type it is RECOMMENDED that only subclasses of [Entity](#entity) be employed to represent nodes in the learning graph.
 * An ```Entity``` SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that [Event](#event) data can be linked and shared.  In cases where an IRI is inappropriate, an ```Entity``` MUST be assigned a blank node identifier.
 * If a generic ```Entity``` is included in an [Event](#event) instead of one of its subclasses, the ```Entity``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Entity.
 * If an ```Entity``` [dateCreated](#dateCreated) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
 * If an ```Entity``` [dateModified](#dateModified) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 
-###### Subclasses
+#### Subclasses
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 ###### JSON-LD Example
@@ -603,27 +603,27 @@ A Caliper ```Entity``` is a generic class that is analogous to an [sdo:Thing](ht
 
 
 <a name="api"/>
-### 8.0 Sensor API
+## 8.0 Sensor API
 
 TODO: OVERVIEW
 
 <a name="transport"/>
-### 9.0 Transport
+## 9.0 Transport
 
 TODO: OVERVIEW
 
 <a name="endpoints"/>
-#### 9.1 Envelope
+### 9.1 Envelope
 
 TODO: OVERVIEW
 
 <a name="endpoints"/>
-#### 9.2 Endpoint
+### 9.2 Endpoint
 
 TODO: OVERVIEW
 
 <a name="contributors"/>
-### 7.0. Contributors
+## 10.0 Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
 | Name | Organization |
@@ -634,7 +634,7 @@ The following Caliper Working Group participants contributed to the writing of t
 TODO: ADD OTHERS
 
 <a name="appendixA" />
-### Appendix A: Caliper Entities
+## Appendix A: Caliper Entities
 
 <a name="agent" />
 #### Agent
@@ -714,7 +714,6 @@ A Caliper ```Assessment``` represents . . . TODO.
     "version": "1.0"
 }
 ```
-
 <a name="assessmentItem" />
 #### AssessmentItem
 A Caliper ```AssessmentItem``` represents . . . TODO.
@@ -2035,16 +2034,18 @@ A Caliper ```WebPage``` represents a document suitable for display in a web brow
 ```
 
 <a name="appendixB" />
-### Appendix B.  Miscellaneous Classes
+## Appendix B.  Miscellaneous Classes
 
 TODO
 
-#### TextPositionSelector
+### TextPositionSelector
 
 TODO
 
 <a name="revisionHistory" />
-### Revision History
+## Revision History
+
+### Deprecations and Removals
 
 #### Profiles
 | Profile | Deprecated | Removed | Notes |
@@ -2056,7 +2057,7 @@ TODO
 | -------  | --------------- | ------------- | -------- |
 | [ReadingEvent](#readingEvent)  | 1.1 | &nbsp; | &nbsp; |
 
-### Entities
+#### Entities
 | Event | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
 | [EpubChapter](#epubChapter) | 1.1 | &nbsp; | Deprecated in favor of [Chapter](#chapter) |
@@ -2065,7 +2066,7 @@ TODO
 | [EpubVolume](#epubVolume) | 1.1 | &nbsp; | &nbsp; |
 | [Reading](#reading) | 1.1 | &nbsp; | Deprecated in favor of [Document](#document) |
 
-### Data Properties
+#### Data Properties
 | Event | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
 | [objectType](#objectType)  | 1.1 | &nbsp; | &nbsp; |
