@@ -231,7 +231,7 @@ The online discussion forum is a core capability of many learning management sys
 | group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) |[Organization]([#organization) | [Organization]([#organization) | 0..1 |
 | membership | [Membership]([#membership) | [Membership]([#membership) | [Membership]([#membership)| [Membership]([#membership) | [Membership]([#membership)| 0..1 |
 | session | [Session]([#session) | [Session]([#session)| [Session]([#session)| [Session]([#session)| [Session]([#session)| 0..1 | 
-| federatedExtension | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | 0..1 | 
+| federatedSession | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | 0..1 | 
 | extensions | object | object | object | object | object | 0..1 | 
 
 <a name="mediaProfile" />
