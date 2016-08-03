@@ -188,13 +188,29 @@ The Assignable Profile provides coverage for all activity types that can be assi
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items.  
 
 #### Supported Events
-| Event | actor | action | object | generated | referrer |
-| -------  | -------- | -------- | -------- |  ----------- |  --------- |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [started](#started), [paused](#paused), [restarted](#restarted), [reset](#reset), [submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [started](#started), [skipped](#skipped) | [Attempt](#attempt) | &nbsp;  | &nbsp; |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [completed](#completed) | [Attempt](#attempt) | [Response](#response) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [navigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; |
+[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent) , [NavigationEvent](#navigationEvent),  [ViewEvent](#ViewEvent)
+
+#### Supported Actions
+| Event | action(s) |
+| -----  | --------- |
+| [AssessmentEvent](#assessmentEvent) | [started](#started), [paused](#paused), [restarted](#restarted), [reset](#reset), [submitted](#submitted) |
+|  [AssessmentItemEvent](#assessmentItemEvent) | [started](#started), [skipped](#skipped), [completed](#completed)  |
+| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
+| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
+
+#### Example Sequence
+ Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
+ 
+| Event | actor | action | object | eventTime | generated |
+| -----  | ----- | ------ | ------ | ----------- | ---------- |
+| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Assessment](#assessment) A1 | [dateTime](#dateTime) T1 | &nbsp; |
+| [AssessmentEvent](#assessmentEvent)  | [Person](#person) P1 | [started](#started) | [Assessment](#assessment) A1 | [dateTime](#dateTime) T2 | [Attempt](#attempt) A1A1 |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) P1 | [started](#started) | [AssessmentItem](#assessmentItem) I1 | [dateTime](#dateTime) T3 | [Attempt](#attempt) I1A1 | 
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) P1 | [completed](#completed) | [Attempt](#attempt) I1A1 | [dateTime](#dateTime) T4 | [Response](#response) R1 |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) P1 | [skipped](#skipped) | [AssessmentItem](#assessmentItem) I2 | [dateTime](#dateTime) T5 | &nbsp; |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) P1 | [started](#started) | [AssessmentItem](#assessmentItem) I3 | [dateTime](#dateTime) T6 | [Attempt](#attempt) I3A1 | 
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) P1 | [completed](#completed) |  [Attempt](#attempt) I3A1  | [dateTime](#dateTime) T7 | [Response](#response) R2 |
+| [AssessmentEvent](#assessmentEvent)  | [Person](#person) P1 | [submitted](#submitted) | [Attempt](#attempt) A1A1 | [dateTime](#dateTime) T8 | &nbsp; |
 
 <a name="digitalResourceManagementProfile" />
 ### 4.5 DigitalResource Management Profile
@@ -215,11 +231,11 @@ The DigitalResource Management Profile models activities associated with the cre
  
 | Event | actor | action | object | eventTime |
 | -----  | ----- | ------ | ------ | ----------- |
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [created](#created) | [Document](#document) D1 | [dateTime](#dateTime) DT1 |
-| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Document](#document) D1 | [dateTime](#dateTime) DT2 |
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [retrieved](#retrieved)| [Document](#document) D1 | [dateTime](#dateTime) DT3 |
-| [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) DT4 |
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) DT5 |
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [created](#created) | [Document](#document) D1 | [dateTime](#dateTime) T1 |
+| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Document](#document) D1 | [dateTime](#dateTime) T2 |
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [retrieved](#retrieved)| [Document](#document) D1 | [dateTime](#dateTime) T3 |
+| [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) T4 |
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) T5 |
 
 <a name="discussionForumProfile" />
 ### 4.6 Discussion Forum Profile
@@ -242,12 +258,12 @@ The online discussion forum is a core capability of many learning management sys
  
 | Event | actor | action | object | eventTime |
 | -----  | ----- | ------ | ------ | ----------- |
-| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Forum](#forum) F1 | [dateTime](#dateTime) DT1 |
-| [ForumEvent](#forumEvent) | [Person](#person) P1 | [subscribed](#subscribed) | [Forum](#forum) F1 | [dateTime](#dateTime) DT2 |
-| [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Thread](#thread) T1 (isPartOf F1) | [dateTime](#dateTime) DT3 |
-| [ViewEvent](#viewEvent) | [Person](#person) P1 | [viewed](#viewed) | [Message](#message) M1 (isPartOf T1) | [dateTime](#dateTime) DT4 |
-| [MessageEvent](#messageEvent) | [Person](#person) P1 | [posted](#posted) | [Message](#message) M2 (replyTo M1) | [dateTime](#dateTime) DT5 |
-| [ThreadEvent](#threadEvent)| [Person](#person) P1 | [markedAsRead](#markedAsRead) | [Thread](#thread) T1 (isPartOf F1) | [dateTime](#dateTime) DT6 |
+| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Forum](#forum) F1 | [dateTime](#dateTime) T1 |
+| [ForumEvent](#forumEvent) | [Person](#person) P1 | [subscribed](#subscribed) | [Forum](#forum) F1 | [dateTime](#dateTime) T2 |
+| [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Thread](#thread) Th1 isPartOf F1 | [dateTime](#dateTime) T3 |
+| [ViewEvent](#viewEvent) | [Person](#person) P1 | [viewed](#viewed) | [Message](#message) M1 isPartOf Th1 | [dateTime](#dateTime) T4 |
+| [MessageEvent](#messageEvent) | [Person](#person) P1 | [posted](#posted) | [Message](#message) M2 replyTo M1 | [dateTime](#dateTime) T5 |
+| [ThreadEvent](#threadEvent)| [Person](#person) P1 | [markedAsRead](#markedAsRead) | [Thread](#thread) Th1 isPartOf F1 | [dateTime](#dateTime) T6 |
 
 <a name="mediaProfile" />
 ### 4.7 Media Profile
@@ -280,8 +296,8 @@ The Caliper Outcome Profile models grading activities performed by an [Agent](#a
  
 | Event | actor | action | object | eventTime | generated |
 | -----  | ----- | ------ | ------ | ----------- | ---------- |
-|  [OutcomeEvent](#outcomeEvent) | [Person](#person) P1 | [graded](#graded) | [Attempt](#attempt) A1 | [dateTime](#dateTime) DT1 | [Result](#result) R1 |
-| [ViewEvent](#viewEvent)| [Person](#person) P2 | [viewed](#viewed) | [Result](#result) R1 | [dateTime](#dateTime) DT2 | &nbsp; |
+|  [OutcomeEvent](#outcomeEvent) | [Person](#person) P1 | [graded](#graded) | [Attempt](#attempt) A1 | [dateTime](#dateTime) T1 | [Result](#result) R1 |
+| [ViewEvent](#viewEvent)| [Person](#person) P2 | [viewed](#viewed) | [Result](#result) R1 | [dateTime](#dateTime) T2 | &nbsp; |
 
 <a name="readingProfile" />
 ### 4.9 Reading Profile
@@ -377,12 +393,19 @@ TODO
 
 TODO
 
+| Event | actor | action | object | generated | referrer |
+| -------  | -------- | -------- | -------- |  ----------- |  --------- |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [started](#started), [paused](#paused), [restarted](#restarted), [reset](#reset), [submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
+
 <a name="assessmentItemEvent" />
 ### 5.4 AssessmentItemEvent
 
 [AssessmentItemEvent](#assessmentItemEvent)
 
-TODO
+| Event | actor | action | object | generated | referrer |
+| -------  | -------- | -------- | -------- |  ----------- |  --------- |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [started](#started), [skipped](#skipped) | [Attempt](#attempt) | &nbsp;  | &nbsp; |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [completed](#completed) | [Attempt](#attempt) | [Response](#response) | &nbsp; |
 
 <a name="assignableEvent" />
 ### 5.5 AssignableEvent
