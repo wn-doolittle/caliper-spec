@@ -201,9 +201,25 @@ The Caliper Assessment Profile models assessment-related activities including in
 The DigitalResource Management Profile models activities associated with the creation and management of digital content.
 
 #### Supported Events
-| Event | actor | action | object |
-| -------  | -------- | -------- | -------- | 
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent) | [Agent](#agent) | [created](#created), [modified](#modified), [removed](#removed), [deleted](#deleted), [activated](#activated), [deactivated](#deactivated) | [DigitalResource](#digitalResource) |
+[DigitalResourceMgmtEvent](#digitalResourceMgmtEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#ViewEvent)
+
+#### Supported Actions
+| Event | action(s) |
+| -----  | --------- |
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent) | [created](#created), [retrieved](#retrieved), [modified](#modified), [removed](#removed), [deleted](#deleted), [activated](#activated), [deactivated](#deactivated) |
+| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
+| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
+
+#### Example Sequence
+ Note: *optional [Event](#event) properties that provide additional contextual information are assumed in example sequence*.
+ 
+| Event | actor | action | object | eventTime |
+| -----  | ----- | ------ | ------ | ----------- |
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) A1 | [created](#created) | [Document](#document) D1 | [dateTime](#dateTime) DT2 |
+| [NavigationEvent](#navigationEvent) | [Person](#person) A1 | [navigatedTo](#navigatedTo) | [Document](#document) D1 | [dateTime](#dateTime) DT1 |
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) A1 | [retrieved](#retrieved)| [Document](#document) D1 | [dateTime](#dateTime) DT2 |
+| [ViewEvent](#viewEvent)| [Person](#person) A1 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) DT3 |
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) A1 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) DT2 |
 
 <a name="discussionForumProfile" />
 ### 4.6 Discussion Forum Profile
@@ -222,7 +238,7 @@ The online discussion forum is a core capability of many learning management sys
 | [ViewEvent](#ViewEvent) | [viewed](#viewed) |
 
 #### Example Sequence
- Note: *optional [Event](#event) properties that provide additional contextual information are excluded*.
+ Note: *optional [Event](#event) properties that provide additional contextual information are assumed in example sequence*.
  
 | Event | actor | action | object | eventTime |
 | -----  | ----- | ------ | ------ | ----------- |
@@ -469,11 +485,11 @@ The ```NavigationEvent``` models an actor traversing a network of digital resour
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | 1 |
 | actor  | [Person](#person) | 1 |
 | action |  [navigatedTo](#navigatedTo) | 1 |
-| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | 1 | 
+| object | [DigitalResource](#digitalResource) | 1 | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
 | target | &nbsp; | 0..1 |
 | generated | &nbsp; | 0..1 |
-| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |  0..1 |
+| referrer | [DigitalResource](#digitalResource) |  0..1 |
 | edApp | [SoftwareApplication](#softwareApplication) | 0..1 |
 | group | [Organization]([#organization) | 0..1 |
 | membership | [Membership]([#membership) | 0..1 |
