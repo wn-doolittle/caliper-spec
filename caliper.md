@@ -213,113 +213,25 @@ The online discussion forum is a core capability of many learning management sys
 [ForumEvent](#forumEvent),  [MessageEvent](#messageEvent),  [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#ViewEvent)
 
 #### Supported Actions
-* ForumEvent
-	*  [subscribed](#subscribed), [unsubscribed](#unsubscribed)
-* MessageEvent
-	* [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead), [posted](#posted)
-* NavigationEvent
-	*  [navigatedTo](#navigatedTo)
-* ThreadEvent
-	* [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
-* ViewEvent
-	* [viewed](#viewed)
+| Event | action(s) |
+| -----  | --------- |
+| [ForumEvent](#forumEvent) |[subscribed](#subscribed), [unsubscribed](#unsubscribed) |
+| [MessageEvent](#messageEvent) | [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)|
+| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
+| [ThreadEvent](#threadEvent)|[markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) |
+| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
 
-#### Supported Property Types
-* ForumEvent
-	* actor: [Person](#person)
-	* action: [subscribed](#subscribed), [unsubscribed](#unsubscribed)
-	* object: [Forum](#forum)
-	* eventTime: [dateTime](#dateTime)
-	* target: &nbsp;
-	* generated: &nbsp;
-	* referrer: &nbsp;
-	* edApp:  [SoftwareApplication](#softwareApplication) 
-	* group:  [Organization]([#organization) 
-	* membership: [Membership]([#membership)
-	* session: [Session](#session)
-	* federatedSession: [LtiSession](#ltiSession) 
-	* extensions: object	
-* MessageEvent
-	* actor: [Person](#person)
-	* action: [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
-	* object: [Message](#message)
-	* eventTime: [dateTime](#dateTime)
-	* target: &nbsp;
-	* generated: &nbsp;
-	* referrer: &nbsp;
-	* edApp:  [SoftwareApplication](#softwareApplication) 
-	* group:  [Organization]([#organization) 
-	* membership: [Membership]([#membership)
-	* session: [Session](#session)
-	* federatedSession: [LtiSession](#ltiSession) 
-	* extensions: object	
-* NavigationEvent
-	*  [navigatedTo](#navigatedTo)
-* ThreadEvent
-	* actor: [Person](#person)
-	* action: [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
-	* object: [Thread](#thread)
-	* eventTime: [dateTime](#dateTime)
-	* target: &nbsp;
-	* generated: &nbsp;
-	* referrer: &nbsp;
-	* edApp:  [SoftwareApplication](#softwareApplication) 
-	* group:  [Organization]([#organization) 
-	* membership: [Membership]([#membership)
-	* session: [Session](#session)
-	* federatedSession: [LtiSession](#ltiSession) 
-	* extensions: object	
-* ViewEvent
-	* [viewed](#viewed)
-
-#### Event Properties
-| Event | ForumEvent | MessageEvent | NavigationEvent | ThreadEvent | ViewEvent | &nbsp; |
-| ----- | ---------- | ------------ | --------------- | ----------- | ----------| -----: |
-| actor | [Person](#person) | [Person](#person) | [Person](#person) | [Person](#person) | [Person](#person) | 1 |
-| action | [subscribed](#subscribed), [unsubscribed](#unsubscribed) | [posted](#posted) | [navigatedTo](#navigatedTo) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) | [viewed](#viewed) | 1 |
-| object | [Forum](#forum) | [Message](#Message) | [Forum](#forum), [Message](#message), [Thread](#thread)  |  [Thread](#thread) | [Forum](#forum), [Message](#message), [Thread](#thread)  | 1 | 
-| eventTime | [dateTime](#dateTime) | [dateTime](#dateTime)| [dateTime](#dateTime) | [dateTime](#dateTime) | [dateTime](#dateTime) | 1 |
-| target | &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; | 0..1 |
-| generated | &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |  0..1 |
-| referrer | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |  0..1 |
-| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | 0..1 |
-| group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) |[Organization]([#organization) | [Organization]([#organization) | 0..1 |
-| membership | [Membership]([#membership) | [Membership]([#membership) | [Membership]([#membership)| [Membership]([#membership) | [Membership]([#membership)| 0..1 |
-| session | [Session](#session) | [Session](#session) | [Session](#session) | [Session](#session) | [Session](#session)| 0..1 | 
-| federatedSession | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | 0..1 | 
-| extensions | object | object | object | object | object | 0..1 | 
-
-| Event | ForumEvent | MessageEvent  | ThreadEvent | &nbsp; |
-| -------- | ---------------- | -------------------- | ------------------ | --------: |
-| actor | [Person](#person) | [Person](#person) | [Person](#person) | 1 |
-| action | [subscribed](#subscribed), [unsubscribed](#unsubscribed) | [posted](#posted) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) | 1 |
-| object | [Forum](#forum) | [Message](#Message) |  [Thread](#thread)  | 1 | 
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
-| target | &nbsp; | &nbsp; | &nbsp; | 0..1 |
-| generated | &nbsp; | &nbsp; | &nbsp; |  0..1 |
-| referrer | &nbsp; | &nbsp; | &nbsp; |  0..1 |
-| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | 0..1 |
-| group | [Organization]([#organization) |[Organization]([#organization) | [Organization]([#organization) | 0..1 |
-| membership | [Membership]([#membership) | [Membership]([#membership) | [Membership]([#membership)| 0..1 |
-| session | [Session](#session) | [Session](#session) | [Session](#session)| 0..1 | 
-| federatedSession | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | 0..1 | 
-| extensions | object | object | object | 0..1 | 
-
-| Event  | NavigationEvent | ViewEvent | &nbsp; |
-| -------- | ---------------------- | -------------- | --------: |
-| actor  | [Person](#person) | [Person](#person) | 1 |
-| action | [navigatedTo](#navigatedTo) | [viewed](#viewed) | 1 |
-| object | [Forum](#forum), [Message](#message), [Thread](#thread)  | [Forum](#forum), [Message](#message), [Thread](#thread)  | 1 | 
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
-| target | &nbsp; | &nbsp; | 0..1 |
-| generated | &nbsp; | &nbsp; |  0..1 |
-| referrer | [DigitalResource](#digitalResource) | &nbsp; |  0..1 |
-| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | 0..1 |
-| group | [Organization]([#organization) | [Organization]([#organization) | 0..1 |
-| membership | [Membership]([#membership) | [Membership]([#membership)| 0..1 |
-| session | [Session](#session)| [Session](#session)| 0..1 | 
-| federatedSession | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | 0..1 | 
-| extensions | object | object | 0..1 | 
+#### Example Sequence
+ Note: *optional [Event](#event) properties that provide additional contextual information are excluded*.
+ 
+| Event | actor | action | object | eventTime |
+| -----  | ----- | ------ | ------ | ----------- |
+| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Forum](#forum) F1 | [dateTime](#dateTime) DT1 |
+| [ForumEvent](#forumEvent) | [Person](#person) P1 | [subscribed](#subscribed) | [Forum](#forum) F1 | [dateTime](#dateTime) DT2 |
+| [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Thread](#thread) T1 (isPartOf F1) | [dateTime](#dateTime) DT3 |
+| [ViewEvent](#viewEvent) | [Person](#person) P1 | [viewed](#viewed) | [Message](#message) M1 (isPartOf T1) | [dateTime](#dateTime) DT4 |
+| [MessageEvent](#messageEvent) | [Person](#person) P1 | [posted](#posted) | [Message](#message) M2 (replyTo M1) | [dateTime](#dateTime) DT5 |
+| [ThreadEvent](#threadEvent)| [Person](#person) P1 | [markedAsRead](#markedAsRead) | [Thread](#thread) T1 (isPartOf F1) | [dateTime](#dateTime) DT6 |
 
 <a name="mediaProfile" />
 ### 4.7 Media Profile
@@ -549,8 +461,39 @@ A Caliper [MessageEvent](#messageEvent) describes an [Agent](#agent) posting a [
 ```
 <a name="navigationEvent" />
 ### 5.10 NavigationEvent
+The ```NavigationEvent``` models an actor traversing a network of digital resources, albiet from one digital resource to another.
 
-TODO [NavigationEvent](#navigationEvent)
+| Property | Type | &nbsp; |
+| -------- | ------ | ------: |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |0..1 |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | 1 |
+| actor  | [Person](#person) | 1 |
+| action |  [navigatedTo](#navigatedTo) | 1 |
+| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | 1 | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
+| target | &nbsp; | 0..1 |
+| generated | &nbsp; | 0..1 |
+| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |  0..1 |
+| edApp | [SoftwareApplication](#softwareApplication) | 0..1 |
+| group | [Organization]([#organization) | 0..1 |
+| membership | [Membership]([#membership) | 0..1 |
+| session | [Session](#session)| 0..1 | 
+| federatedSession | [LtiSession]([#ltiSession) | 0..1 | 
+| extensions | object | 0..1 | 
+
+#### Requirements
+* ```type``` MUST be assigned the IRI value http://purl.imsglobal.org/caliper/v1/NavigationEvent.
+*  ```action``` MUST be assigned the IRI value http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo.
+*  TODO ``` referrer```
+
+#### JSON-LD Example
+
+```
+{
+TODO
+}
+
+```
 
 <a name="outcomeEvent" />
 ### 5.11 OutcomeEvent
@@ -596,9 +539,41 @@ TODO [ThreadEvent](#ThreadEvent)
 
 <a name="ViewEvent" />
 ### 5.14 ViewEvent
+The ```ViewEvent``` models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of content.
 
-TODO: [ViewEvent](#viewEvent)
+#### Supported actions
+[viewed](#viewed)
 
+| Property  | Type | &nbsp; |
+| -------- |  -----  | --------: |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |0..1 |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | 1 |
+| actor  | [Person](#person) | 1 |
+| action |  [viewed](#viewed) | 1 |
+| object | [DigitalResource](#digitalResource) | 1 | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
+| target | [Frame](#frame) | 0..1 |
+| generated | &nbsp; | 0..1 |
+| referrer | &nbsp; |  0..1 |
+| edApp | [SoftwareApplication](#softwareApplication) | 0..1 |
+| group | [Organization]([#organization) | 0..1 |
+| membership | [Membership]([#membership) | 0..1 |
+| session | [Session](#session)| 0..1 | 
+| federatedSession | [LtiSession]([#ltiSession) | 0..1 | 
+| extensions | object | 0..1 | 
+
+#### Requirements
+* ```type``` MUST be assigned the IRI value http://purl.imsglobal.org/caliper/v1/ViewEvent.
+*  ```action``` MUST be assigned the IRI value http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed.
+
+#### JSON-LD Example
+
+```
+{
+TODO
+}
+
+```
 <a name="actions"/>   
 ## 6.0 Actions
 TODO DESCRIPTION
@@ -666,7 +641,7 @@ TODO DESCRIPTION
 | <a name="timedOut" />timed out | [http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut) | |
 | <a name="unmuted" />unmuted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted](http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted) | inverse of muted |
 | <a name="unsubscribed" />unsubscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
-| <a name="viewed" />viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) | |
+| <a name="viewed" />viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) |[look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
 
 <a name="entities" />
 ## 7.0 Entities
