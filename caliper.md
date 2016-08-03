@@ -233,9 +233,8 @@ The DigitalResource Management Profile models activities associated with the cre
 | -----  | ----- | ------ | ------ | ----------- |
 | [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [created](#created) | [Document](#document) D1 | [dateTime](#dateTime) T1 |
 | [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Document](#document) D1 | [dateTime](#dateTime) T2 |
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [retrieved](#retrieved)| [Document](#document) D1 | [dateTime](#dateTime) T3 |
-| [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) T4 |
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) T5 |
+| [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) T3 |
+| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) T4 |
 
 <a name="discussionForumProfile" />
 ### 4.6 Discussion Forum Profile
