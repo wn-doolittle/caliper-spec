@@ -210,29 +210,116 @@ The DigitalResource Management Profile models activities associated with the cre
 The online discussion forum is a core capability of many learning management systems.  Forums typically encompass one or more topics to which actors can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  The profile leverages a number of Caliper [Event](#event) types to describe users administering and participating in online forum communities.
 
 #### Supported Events
-| Event | actor | action | object | referrer |
-| -------  | -------- | -------- | -------- | -------- |
-| [ForumEvent](#forumEvent) | [Person](#person) | [subscribed](#subscribed), [unsubscribed](#unsubscribed) | [Forum](#forum) | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead), [posted](#posted) | [Message](#message) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [navigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | [DigitalResource](#digitalResource) |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
-|[ViewEvent](#ViewEvent) | [Person](#person) | [viewed](#viewed) |  [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; |
+[ForumEvent](#forumEvent),  [MessageEvent](#messageEvent),  [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#ViewEvent)
 
+#### Supported Actions
+* ForumEvent
+	*  [subscribed](#subscribed), [unsubscribed](#unsubscribed)
+* MessageEvent
+	* [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead), [posted](#posted)
+* NavigationEvent
+	*  [navigatedTo](#navigatedTo)
+* ThreadEvent
+	* [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
+* ViewEvent
+	* [viewed](#viewed)
+
+#### Supported Property Types
+* ForumEvent
+	* actor: [Person](#person)
+	* action: [subscribed](#subscribed), [unsubscribed](#unsubscribed)
+	* object: [Forum](#forum)
+	* eventTime: [dateTime](#dateTime)
+	* target: &nbsp;
+	* generated: &nbsp;
+	* referrer: &nbsp;
+	* edApp:  [SoftwareApplication](#softwareApplication) 
+	* group:  [Organization]([#organization) 
+	* membership: [Membership]([#membership)
+	* session: [Session](#session)
+	* federatedSession: [LtiSession](#ltiSession) 
+	* extensions: object	
+* MessageEvent
+	* actor: [Person](#person)
+	* action: [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
+	* object: [Message](#message)
+	* eventTime: [dateTime](#dateTime)
+	* target: &nbsp;
+	* generated: &nbsp;
+	* referrer: &nbsp;
+	* edApp:  [SoftwareApplication](#softwareApplication) 
+	* group:  [Organization]([#organization) 
+	* membership: [Membership]([#membership)
+	* session: [Session](#session)
+	* federatedSession: [LtiSession](#ltiSession) 
+	* extensions: object	
+* NavigationEvent
+	*  [navigatedTo](#navigatedTo)
+* ThreadEvent
+	* actor: [Person](#person)
+	* action: [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
+	* object: [Thread](#thread)
+	* eventTime: [dateTime](#dateTime)
+	* target: &nbsp;
+	* generated: &nbsp;
+	* referrer: &nbsp;
+	* edApp:  [SoftwareApplication](#softwareApplication) 
+	* group:  [Organization]([#organization) 
+	* membership: [Membership]([#membership)
+	* session: [Session](#session)
+	* federatedSession: [LtiSession](#ltiSession) 
+	* extensions: object	
+* ViewEvent
+	* [viewed](#viewed)
+
+#### Event Properties
 | Event | ForumEvent | MessageEvent | NavigationEvent | ThreadEvent | ViewEvent | &nbsp; |
-| -------- | ---------------- | --------------------- | ---------------------- | ----------------- | -------------- | --------: |
+| ----- | ---------- | ------------ | --------------- | ----------- | ----------| -----: |
 | actor | [Person](#person) | [Person](#person) | [Person](#person) | [Person](#person) | [Person](#person) | 1 |
 | action | [subscribed](#subscribed), [unsubscribed](#unsubscribed) | [posted](#posted) | [navigatedTo](#navigatedTo) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) | [viewed](#viewed) | 1 |
 | object | [Forum](#forum) | [Message](#Message) | [Forum](#forum), [Message](#message), [Thread](#thread)  |  [Thread](#thread) | [Forum](#forum), [Message](#message), [Thread](#thread)  | 1 | 
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
+| eventTime | [dateTime](#dateTime) | [dateTime](#dateTime)| [dateTime](#dateTime) | [dateTime](#dateTime) | [dateTime](#dateTime) | 1 |
 | target | &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; | 0..1 |
 | generated | &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |  0..1 |
 | referrer | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |  0..1 |
 | edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | 0..1 |
 | group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) |[Organization]([#organization) | [Organization]([#organization) | 0..1 |
 | membership | [Membership]([#membership) | [Membership]([#membership) | [Membership]([#membership)| [Membership]([#membership) | [Membership]([#membership)| 0..1 |
-| session | [Session]([#session) | [Session]([#session)| [Session]([#session)| [Session]([#session)| [Session]([#session)| 0..1 | 
-| federatedSession | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | 0..1 | 
+| session | [Session](#session) | [Session](#session) | [Session](#session) | [Session](#session) | [Session](#session)| 0..1 | 
+| federatedSession | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | 0..1 | 
 | extensions | object | object | object | object | object | 0..1 | 
+
+| Event | ForumEvent | MessageEvent  | ThreadEvent | &nbsp; |
+| -------- | ---------------- | -------------------- | ------------------ | --------: |
+| actor | [Person](#person) | [Person](#person) | [Person](#person) | 1 |
+| action | [subscribed](#subscribed), [unsubscribed](#unsubscribed) | [posted](#posted) | [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) | 1 |
+| object | [Forum](#forum) | [Message](#Message) |  [Thread](#thread)  | 1 | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
+| target | &nbsp; | &nbsp; | &nbsp; | 0..1 |
+| generated | &nbsp; | &nbsp; | &nbsp; |  0..1 |
+| referrer | &nbsp; | &nbsp; | &nbsp; |  0..1 |
+| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | 0..1 |
+| group | [Organization]([#organization) |[Organization]([#organization) | [Organization]([#organization) | 0..1 |
+| membership | [Membership]([#membership) | [Membership]([#membership) | [Membership]([#membership)| 0..1 |
+| session | [Session](#session) | [Session](#session) | [Session](#session)| 0..1 | 
+| federatedSession | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | [LtiSession](#ltiSession) | 0..1 | 
+| extensions | object | object | object | 0..1 | 
+
+| Event  | NavigationEvent | ViewEvent | &nbsp; |
+| -------- | ---------------------- | -------------- | --------: |
+| actor  | [Person](#person) | [Person](#person) | 1 |
+| action | [navigatedTo](#navigatedTo) | [viewed](#viewed) | 1 |
+| object | [Forum](#forum), [Message](#message), [Thread](#thread)  | [Forum](#forum), [Message](#message), [Thread](#thread)  | 1 | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
+| target | &nbsp; | &nbsp; | 0..1 |
+| generated | &nbsp; | &nbsp; |  0..1 |
+| referrer | [DigitalResource](#digitalResource) | &nbsp; |  0..1 |
+| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | 0..1 |
+| group | [Organization]([#organization) | [Organization]([#organization) | 0..1 |
+| membership | [Membership]([#membership) | [Membership]([#membership)| 0..1 |
+| session | [Session](#session)| [Session](#session)| 0..1 | 
+| federatedSession | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | 0..1 | 
+| extensions | object | object | 0..1 | 
 
 <a name="mediaProfile" />
 ### 4.7 Media Profile
