@@ -28,11 +28,12 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* 4.2 [Annotation Profile](#annotationProfile)
 	* 4.3 [Assignable Profile](#assignableProfile)
 	* 4.4 [Assessment Profile](#assessmentProfile)
-	* 4.5 [Discussion Forum Profile](#discussionForumProfile)
-	* 4.6 [Media Profile](#mediaProfile)
-	* 4.7 [Outcome Profile](#outcomeProfile)
-	* 4.8 [Reading Profile](#readingProfile)
-	* 4.9 [Session Profile](#sessionProfile)
+	* 4.5 [Content Management Profile](#contentMgmtProfile)
+	* 4.6 [Discussion Forum Profile](#discussionForumProfile)
+	* 4.7 [Media Profile](#mediaProfile)
+	* 4.8 [Outcome Profile](#outcomeProfile)
+	* 4.9 [Reading Profile](#readingProfile)
+	* 4.10 [Session Profile](#sessionProfile)
 * 5.0 [Events](#events)
 	* 5.1 [Event](#event)
 	* 5.2 [AnnotationEvent](#annotationEvent)
@@ -212,17 +213,17 @@ The Caliper Assessment Profile models assessment-related activities including in
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) P1 | [completed](#completed) |  [Attempt](#attempt) I3A1  | [dateTime](#dateTime) T7 | [Response](#response) R2 |
 | [AssessmentEvent](#assessmentEvent)  | [Person](#person) P1 | [submitted](#submitted) | [Attempt](#attempt) A1A1 | [dateTime](#dateTime) T8 | &nbsp; |
 
-<a name="digitalResourceManagementProfile" />
-### 4.5 DigitalResource Management Profile
-The DigitalResource Management Profile models activities associated with the creation and management of digital content.
+<a name="contentManagementProfile" />
+### 4.5 Content Management Profile
+The Content Management Profile models activities associated with the creation and management of digital content.
 
 #### Supported Events
-[DigitalResourceMgmtEvent](#digitalResourceMgmtEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#ViewEvent)
+[ContentMgmtEvent](#contentMgmtEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#ViewEvent)
 
 #### Supported Actions
 | Event | action(s) |
 | -----  | --------- |
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent) | [created](#created), [retrieved](#retrieved), [modified](#modified), [removed](#removed), [deleted](#deleted), [activated](#activated), [deactivated](#deactivated) |
+| [ContentMgmtEvent](#contentMgmtEvent) | [created](#created), [retrieved](#retrieved), [modified](#modified), [removed](#removed), [deleted](#deleted), [activated](#activated), [deactivated](#deactivated) |
 | [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
 | [ViewEvent](#ViewEvent) | [viewed](#viewed) |
 
@@ -231,10 +232,10 @@ The DigitalResource Management Profile models activities associated with the cre
  
 | Event | actor | action | object | eventTime |
 | -----  | ----- | ------ | ------ | ----------- |
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [created](#created) | [Document](#document) D1 | [dateTime](#dateTime) T1 |
+| [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [created](#created) | [Document](#document) D1 | [dateTime](#dateTime) T1 |
 | [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Document](#document) D1 | [dateTime](#dateTime) T2 |
 | [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) T3 |
-| [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) T4 |
+| [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) T4 |
 
 <a name="discussionForumProfile" />
 ### 4.6 Discussion Forum Profile
