@@ -8,7 +8,7 @@
         "@id": "http://purl.imsglobal.org/caliper/v1/Person",
         "@type": "@id"}},
       { "object": {
-        "@id": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
+        "@id": "http://purl.imsglobal.org/caliper/v1/Document",
         "@type": "@id"}},
       { "target": {
         "@id": "http://purl.imsglobal.org/caliper/v1/Frame",

@@ -1,0 +1,18 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Page",
+  "name": "Page 1",
+  "isPartOf": {
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Chapter",
+    "name": "The Stamp Act Crisis",
+    "isPartOf": {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@id": "https://example.com/viewer/book/34843#epubcfi(/4)",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+      "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
+      "version": "2nd ed."
+    }
+  }
+}
