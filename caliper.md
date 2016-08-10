@@ -145,9 +145,7 @@ TODO: ADDITIONAL INTRO TEXT
 The Caliper Basic Profile models a minimally compliant [Event](#event) composed of an [actor](#actor), [action](#action), [object](#object) and [eventTime](#eventTime).  Any Caliper [action](#action) can be employed as the predicate.  All other [Event](#event) properties are considered optional. 
 
 #### Supported Events
-| Event | actor | action | object | eventTime |
-| -------  | -------- | -------- | -------- |  ----------- |
-| [Event](#event) | [Agent](#agent) | [action](#action) | [Entity](#entity) | [eventTime](#eventTime) |
+[Event](#Event)
 
 #### Supported Actions
 Any action included in the Caliper [actions](#actions) vocabulary can be employed to describe an actor's interaction with an object. 
