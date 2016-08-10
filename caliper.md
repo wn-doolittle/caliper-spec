@@ -169,7 +169,7 @@ The Caliper Annotation Profile models activities related to the annotation of di
 #### Supported Actions
 | Event | action(s) |
 | -----  | --------- |
-|[AnnotationEvent](#assignableEvent)  | [bookmarked](#bookmarked) , [highlighted](#highlighted) , [shared](#shared), [tagged](#tagged) |
+|[AnnotationEvent](#assignableEvent)  | [bookmarked](#bookmarked), [highlighted](#highlighted), [shared](#shared), [tagged](#tagged) |
 | [ViewEvent](#ViewEvent) | [viewed](#viewed) |
 
 #### Supported object and generated  entities
