@@ -177,6 +177,15 @@ The Caliper Annotation Profile models activities related to the annotation of di
 | [AnnotationEvent](#annotationEvent) | [tagged](#tagged) | [DigitalResource](#digitalResource) | [TagAnnotation](#tagAnnotation) |
 | [ViewEvent](#ViewEvent) | [viewed](#viewed) | [Annotation](#annotation) | &nbsp; |
 
+#### Example Sequence
+ Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
+ 
+| Event | actor | action | object | eventTime | generated |
+| -----  | ----- | ------ | ------ | ----------- | ---------- |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) P1 | [highlighted](#highlighted) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T1 | [HighlightAnnotation](#highlightAnnotation) |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) P1 | [tagged](#tagged) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T2 | [TagAnnotation](#tagAnnotation) |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) P1 | [bookmarked](#bookmarked) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T3 | [BookmarkAnnotation](#bookmarkAnnotation) |
+
 #### TODO
 * Remove following actions from profile (not annotation actions): [attached](#attached), [classified](#classified), [described](#described), [identified](#identified), [linked](#linked), [questioned](#questioned), [subscribed](#subscribed).
 * Q: is sharing a reference a form of annotation?
@@ -407,7 +416,7 @@ The Caliper Outcome Profile models grading activities performed by an [Agent](#a
 | Event | object | generated | target | referrer |
 | ----- | ------ | ----------- | ------ | ------- |
 | [OutcomeEvent](#mediaEvent) | [Attempt](#attempt) | [Result](#result) | &nbsp; | &nbsp; |
-| [ViewEvent](#ViewEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
+| [ViewEvent](#ViewEvent) | [Result](#result) | &nbsp; | &nbsp; | &nbsp; 
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
@@ -436,6 +445,14 @@ The Caliper Reading Profile models activities associated with reading textual co
 | [NavigationEvent](#navigationEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
 | [ViewEvent](#ViewEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
 
+#### Example Sequence
+ Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
+ 
+| Event | actor | action | object | eventTime | referrer |
+| -----  | ----- | ------ | ------ | ----------- | ---------- |
+| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) D2 | [dateTime](#dateTime) T1 | [DigitalResource](#digitalResource) D1 |
+| [ViewEvent](#viewEvent) | [Person](#person) P1 | [viewed](#viewed) | [DigitalResource](#digitalResource) D2 | [dateTime](#dateTime) T2 | &nbsp; |
+
 <a name="sessionProfile" />
 ### 4.10 Session Profile
 The Caliper Session Profile models activities associated with a user session established by a [Person](#person), interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is modeled along with a small set of supported actions.
@@ -453,6 +470,14 @@ The Caliper Session Profile models activities associated with a user session est
 | ----- | ------ | ------ | -------- | ------------------ |
 | [SessionEvent](#sessionEvent) | [loggedIn](#loggedIn), [loggedOut](#loggedIn) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) | [LtiSession]([#ltiSession)  |
 | [SessionEvent](#sessionEvent) | [timedOut](#timedOut) | [Session]([#session)  | &nbsp; | [LtiSession]([#ltiSession) |
+
+#### Example Sequence
+ Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
+ 
+| Event | actor | action | object | eventTime | session |
+| -----  | ----- | ------ | ------ | ----------- | ---------- |
+| [SessionEvent](#sessionEvent) | [Person](#person) P1 | [loggedIn](#loggedIn) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T1 |  [Session](#session) |
+| [SessionEvent](#sessionEvent) | [Person](#person) P1 | [loggedOut](#loggedIn) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T2 | [Session](#session) |
 
 #### TODO
 * Discuss [LtiSession](#ltiSession)
