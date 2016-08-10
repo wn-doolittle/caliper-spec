@@ -749,8 +749,94 @@ TODO [OutcomeEvent](#outcomeEvent)
 
 <a name="threadEvent" />
 ### 5.13 ThreadEvent
+The ```ThreadEvent``` models . . .
 
-TODO [ThreadEvent](#ThreadEvent)
+TODO add description
+
+#### Supported actions
+[markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnread)
+
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ThreadEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) |
+| object | [Thread](#thread) | &nbsp;  | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | &nbsp; | &nbsp;  |
+| referrer | &nbsp; |  &nbsp;  |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization]([#organization) | &nbsp; |
+| membership | [Membership]([#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession]([#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
+#### JSON-LD Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/ThreadEvent",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead",
+    "object": {
+        "@id": "https://example.edu/semesters/201601/courses/25/forums/1/topics/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+        "name": "Caliper Information Model",
+        "isPartOf": {
+            "@id": "https://example.edu/semesters/201601/courses/25/forums/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+            "name": "Caliper Forum",
+            "dateCreated": "2016-09-15T10:15:00.000Z"
+        },
+        "dateCreated": "2016-09-15T10:16:00.000Z"
+    },
+    "eventTime": "2016-09-15T10:16:00.000Z",
+    "edApp": {
+        "@id": "https://example.com/lms/forums",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/25/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "POL101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+        "member": {
+            "@id": "https://example.edu/people/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [
+            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+        ],
+        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https://example.com/lms/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-15T10:13:00.000Z"
+    }
+}
+```
 
 <a name="ViewEvent" />
 ### 5.14 ViewEvent
@@ -762,6 +848,7 @@ The ```ViewEvent``` models an actor's examination of digital content whenever th
 #### Required properties
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ViewEvent |
 | actor  | [Person](#person) | &nbsp; |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the  IRI http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed |
@@ -771,7 +858,6 @@ The ```ViewEvent``` models an actor's examination of digital content whenever th
 #### Optional properties
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
-| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | target | [Frame](#frame) | &nbsp;  |
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
