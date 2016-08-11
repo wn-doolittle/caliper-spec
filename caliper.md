@@ -340,7 +340,7 @@ The online discussion forum is a core capability of many learning management sys
 #### Supported Actions
 | Event | action(s) |
 | -----  | --------- |
-| [ForumEvent](#forumEvent) |[subscribed](#subscribed), [unsubscribed](#unsubscribed) |
+| [ForumEvent](#forumEvent) | [subscribed](#subscribed), [unsubscribed](#unsubscribed) |
 | [MessageEvent](#messageEvent) | [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)|
 | [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
 | [ThreadEvent](#threadEvent)|[markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) |
@@ -351,9 +351,9 @@ The online discussion forum is a core capability of many learning management sys
 | ----- | ------ | ----------- | ------ | ------- |
 | [ForumEvent](#forumEvent) | [Forum](#forum) | &nbsp; | &nbsp; | &nbsp; |
 | [MessageEvent](#messageEvent) | [Message](#message) | &nbsp; | &nbsp; | &nbsp; |
-| [ThreadEvent](#messageEvent) | [Thread](#thread) | &nbsp; | &nbsp; | &nbsp; |
+| [ThreadEvent](#threadEvent) | [Thread](#thread) | &nbsp; | &nbsp; | &nbsp; |
 | [NavigationEvent](#navigationEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
+| [ViewEvent](#viewEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information are assumed in example sequence*.
@@ -394,11 +394,11 @@ The Caliper Media Profile models interactions between learners and rich content 
 | Event | actor | action | object | eventTime | target |
 | -----  | ----- | ------ | ------ | ----------- | ------ |
 | [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T1 | &nbsp; |
-| [MediaEvent](#forumEvent) | [Person](#person) P1 | [started](#started) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T2 | [MediaLocation](#mediaLocation) L1 |
-| [MediaEvent](#forumEvent) | [Person](#person) P1 | [changedVolume](#changedVolume) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T3 |  [MediaLocation](#mediaLocation) L2 |
-| [MediaEvent](#forumEvent) | [Person](#person) P1 | [paused](#paused) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T4 |  [MediaLocation](#mediaLocation) L3 |
-| [MediaEvent](#forumEvent) | [Person](#person) P1 | [resumed](#resumed) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T5 |  [MediaLocation](#mediaLocation) L4 |
-| [MediaEvent](#forumEvent) | [Person](#person) P1 | [ended](#ended) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T6 |  [MediaLocation](#mediaLocation) L5 |
+| [MediaEvent](#mediaEvent) | [Person](#person) P1 | [started](#started) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T2 | [MediaLocation](#mediaLocation) L1 |
+| [MediaEvent](#mediaEvent) | [Person](#person) P1 | [changedVolume](#changedVolume) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T3 |  [MediaLocation](#mediaLocation) L2 |
+| [MediaEvent](#mediaEvent) | [Person](#person) P1 | [paused](#paused) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T4 |  [MediaLocation](#mediaLocation) L3 |
+| [MediaEvent](#mediaEvent) | [Person](#person) P1 | [resumed](#resumed) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T5 |  [MediaLocation](#mediaLocation) L4 |
+| [MediaEvent](#mediaEvent) | [Person](#person) P1 | [ended](#ended) | [VideoObject](#videoObject) V1 | [dateTime](#dateTime) T6 |  [MediaLocation](#mediaLocation) L5 |
 
 #### TODO
 * Confirm that MediaLocation should be utilized as the object of the interaction rather than the target.
@@ -589,9 +589,92 @@ TODO
 <a name="forumEvent" />
 ### 5.7 ForumEvent
 
-[ForumEvent](#ForumEvent)
+The ForumEvent models . . .
 
-TODO
+TODO add description
+
+#### Supported actions
+[subscribed](#subscribed), [unsubscribed](#unsubscribed)
+
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ForumEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed |
+| object | [Forum](#forum) | &nbsp;  | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | &nbsp; | &nbsp;  |
+| referrer | &nbsp; |  &nbsp;  |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | &nbsp; |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
+#### Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/ForumEvent",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed",
+    "object": {
+        "@id": "https://example.edu/semesters/201601/courses/25/forums/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+        "name": "Caliper Forum",
+        "isPartOf": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "dateCreated": "2016-09-14T11:00:00.000Z"
+    },
+    "eventTime": "2016-09-15T10:16:00.000Z",
+    "edApp": {
+        "@id": "https://example.com/lms/forums",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "CPS101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+        "member": {
+            "@id": "https://example.edu/people/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [
+            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+        ],
+        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https://example.com/lms/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-15T10:12:00.000Z"
+    }
+}
+```
 
 <a name="mediaEvent" />
 ### 5.8 MediaEvent
@@ -1079,9 +1162,9 @@ TODO add description
         "version": "v2"
     },
     "group": {
-        "@id": "https://example.edu/semesters/201601/courses/25/sections/1",
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "courseNumber": "POL101-01",
+        "courseNumber": "CPS101-01",
         "academicSession": "Fall-2016"
     },
     "membership": {
@@ -1102,9 +1185,9 @@ TODO add description
         "dateCreated": "2016-08-01T06:00:00.000Z"
     },
     "session": {
-        "@id": "https://example.com/lms/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
+        "@id": "https://example.com/lms/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
         "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-        "startedAtTime": "2016-09-15T10:13:00.000Z"
+        "startedAtTime": "2016-09-15T10:12:00.000Z"
     }
 }
 ```
