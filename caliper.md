@@ -619,7 +619,7 @@ TODO
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | target | [MediaLocation](#mediaLocation) | The MediaLocation [currentTime](#currentTime) property SHOULD be specified to provide a precise position in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". |
-| generated | [Result](#result) | &nbsp; |
+| generated | &nbsp;  | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) | &nbsp; |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | &nbsp; |
@@ -707,7 +707,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Agent](#agent) posting a [
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
-| generated | [Result](#result) | &nbsp; |
+| generated | &nbsp; | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | &nbsp; |
@@ -802,7 +802,7 @@ TODO note referrer property
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
-| generated | [Result](#result) | &nbsp; |
+| generated | &nbsp; | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | &nbsp; |
