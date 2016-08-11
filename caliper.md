@@ -526,7 +526,7 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 ##### Subclasses
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [ReadingEvent](#readingEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
-##### JSON-LD Example
+##### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -704,7 +704,7 @@ The NavigationEvent models an actor traversing a network of digital resources.
 TODO note referrer property
 
 #### Supported actions
-[navigateTo](#navigatedTo)
+[navigatedTo](#navigatedTo)
 
 #### Required properties
 | Property  | Type | Requirements |
@@ -729,7 +729,7 @@ TODO note referrer property
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
-#### JSON-LD Example
+#### Example
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -818,7 +818,7 @@ TODO add description
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
-#### JSON-LD Example
+#### Example
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -906,7 +906,7 @@ TODO add description
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
-#### JSON-LD Example
+#### Example
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -968,7 +968,7 @@ TODO add description
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
-#### JSON-LD Example
+#### Example
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1057,7 +1057,7 @@ The ViewEvent models an actor's examination of digital content whenever the acti
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
-#### JSON-LD Example
+#### Example
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1211,7 +1211,7 @@ A Caliper ```Entity``` is a generic class that is analogous to an [sdo:Thing](ht
 #### Subclasses
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
-###### JSON-LD Example
+###### Example
 ```
 {
    TODO
@@ -1313,7 +1313,7 @@ A Caliper ```Assessment``` represents . . . TODO.
 ###### Requirements
 * An ```Assessment``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment.
 
-###### JSON-LD example
+###### Example
 ```
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1346,7 +1346,7 @@ A Caliper ```AssessmentItem``` represents . . . TODO.
 ###### Requirements
 * An ```AssessmentItem``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1382,7 +1382,7 @@ A Caliper ```AssessmentItem``` represents . . . TODO.
 
 TODO
 
-###### JSON-LD Example
+###### Example
 ```
 {
 
@@ -1421,7 +1421,7 @@ A Caliper ```Attempt``` provides a count of the number of times an [Agent](#agen
 * If an ```Attempt``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
 
-###### JSON-LD Example
+###### Example
 ```
 {
 
@@ -1443,7 +1443,7 @@ A Caliper ```AudioObject``` represents an audio or sound file.  It is analogous 
 ###### Requirements
 * An ```AudioObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AudioObject.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1472,7 +1472,7 @@ Annotation](#annotation)
 ###### Requirements
 * A ```BookmarkAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1508,7 +1508,7 @@ A Caliper ```Collection``` is a generic class that represents a set of entities.
 ###### Subclasses 
 [Assessment](#assessment), [Forum](#forum), [Thread](#thread)
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1566,7 +1566,7 @@ A Caliper ```CourseOffering``` represents the occurrence of a course or a class 
 ###### Subclasses 
 [CourseSection](#courseSection)
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall",
@@ -1594,7 +1594,7 @@ A Caliper ```CourseSection``` represents an instance of a ```CourseOffering``` i
 | -------- | ---- | ----------- | ----: |
 | category | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | TODO | 0..1 |
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
@@ -1644,7 +1644,7 @@ A Caliper ```DigitalResource``` is a generic class that represents a content ite
 ###### Subclasses
 [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [AudioObject](#audioobject), [DigitalResource](#digitalresource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Frame](#frame), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Reading](#reading), [Thread](#thread), [VideoObject](#videoobject), [WebPage](#webpage)
 
-###### JSON-LD Example
+###### Example
 ```
 {
   TODO
@@ -1663,7 +1663,7 @@ TODO - THIS IS A COLLECTION.
 ###### &#64;type 
 [http://purl.imsglobal.org/caliper/v1/EpubChapter](http://purl.imsglobal.org/caliper/v1/EpubChapter)
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1696,7 +1696,7 @@ TODO - THIS IS A COLLECTION.
 ###### &#64;type 
 [http://purl.imsglobal.org/caliper/v1/EpubPart](http://purl.imsglobal.org/caliper/v1/EpubPart)
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1722,7 +1722,7 @@ A Caliper ```EpubSubChapter``` represents a major sub-division of a ```EpubChapt
 ###### &#64;type 
 [http://purl.imsglobal.org/caliper/v1/EpubSubChapter](http://purl.imsglobal.org/caliper/v1/EpubSubChapter)
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1760,7 +1760,7 @@ TODO - THIS IS A COLLECTION.  RECHECK DEFINITION
 ###### &#64;type 
 [http://purl.imsglobal.org/caliper/v1/EpubVolume](http://purl.imsglobal.org/caliper/v1/EpubVolume)
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1787,7 +1787,7 @@ A Caliper ```FillinBlankResponse``` represents a form of response in which a res
 * A ```FillinBlankResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/FillinBlankResponse.
 * A ```FillinBlankResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1815,7 +1815,7 @@ A Caliper ```FillinBlankResponse``` represents a form of response in which a res
 
 TODO
 
-###### JSON-LD Example
+###### Example
 ```
 {
 
@@ -1842,7 +1842,7 @@ A Caliper ```Forum``` is a channel or virtual space in which group discussions t
 ###### Requirements
 * A ```Forum``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1887,7 +1887,7 @@ A Caliper ```Forum``` is a channel or virtual space in which group discussions t
 
 TODO
 
-###### JSON-LD Example
+###### Example
 ```
 {
 
@@ -1915,7 +1915,7 @@ Annotation](#annotation)
 ###### Requirements
 * A ```HighlightAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/HighlightAnnotation.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1961,7 +1961,7 @@ A Caliper ```ImageObject``` represents an image file.  It is analogous to [sdo:I
 
 TODO
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1987,7 +1987,7 @@ TODO
 
 TODO
 
-###### JSON-LD Example
+###### Example
 ```
 {
 
@@ -2024,7 +2024,7 @@ A Caliper ```MediaObject``` represents a generic piece of media content analogou
 
 TODO
 
-###### JSON-LD Example
+###### Example
 ```
 {
 
@@ -2126,7 +2126,7 @@ A Caliper ```MultipleChoiceResponse``` represents a form of response in which a 
 * A ```MultipleChoiceResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse.
 * A ```MultipleChoiceResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2165,7 +2165,7 @@ A Caliper ```MultipleResponseResponse``` represents a form of response in which 
 * A ```MultipleResponseResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse.
 * A ```MultipleResponseResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2209,7 +2209,7 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 ###### Subclasses
 [Group](#group)
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2238,7 +2238,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 ###### Requirements
 * A ```Person``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2253,7 +2253,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 
 TODO
 
-###### JSON-LD Example
+###### Example
 ```
 {
 
@@ -2303,7 +2303,7 @@ A Caliper ```Response``` is a generic class that represents the data provided by
 
 TODO
 
-###### JSON-LD Example
+###### Example
 ```
 {
 
@@ -2328,7 +2328,7 @@ A Caliper ```SelectTextResponse``` represents a response that identifies text or
 * A ```SelectTextResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SelectTextResponse.
 * A ```SelectTextResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2376,7 +2376,7 @@ A Caliper ```Session``` represents a Web application user session.
 * If a ```Session``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
 * If a ```Session``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2411,7 +2411,7 @@ Annotation](#annotation)
 ###### Requirements
 * A ```SharedAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SharedAnnotation.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2450,7 +2450,7 @@ A Caliper ```SoftwareApplication``` represents a computer program, application, 
 ###### Requirements
 * A ```SoftwareApplication``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2478,7 +2478,7 @@ Annotation](#annotation)
 ###### Requirements
 * A ```TagAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/TagAnnotation.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2510,7 +2510,7 @@ A Caliper ```Thread``` represents a series of one or more messages that share a 
 ###### Requirements
 * A ```Thread``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2576,7 +2576,7 @@ A Caliper ```TrueFalseResponse``` represents a response to a question in which o
 * A ```TrueFalseResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/TrueFalseResponse.
 * A ```TrueFalseResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2612,7 +2612,7 @@ A Caliper ```VideoObject``` represents a visual recording stored in digital form
 ###### Requirements
 * A ```VideoObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2639,7 +2639,7 @@ A Caliper ```WebPage``` represents a document suitable for display in a web brow
 ###### Requirements
 * A ```WebPage``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage.
 
-###### JSON-LD Example
+###### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
