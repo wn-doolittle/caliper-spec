@@ -712,44 +712,157 @@ TODO
 
 <a name="outcomeEvent" />
 ### 5.11 OutcomeEvent
+The OutcomeEvent models . . . 
 
-TODO [OutcomeEvent](#outcomeEvent)
+TODO add description
+
+#### Supported actions
+[graded](#graded)
+
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/OutcomeEvent |
+| actor  | [Agent](#agent) |For automated grading a [SoftwareApplication](#softwareApplication) SHOULD be specified as the actor.  For manual grading a [Person](#person) SHOULD be specified as the actor. |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Graded |
+| object | [Attempt](#attempt) | The Attempt [actor](#actor), [assignable](#assignable) and [count](#count) MUST be provided.  The Attempt [startedAtTime](#startedAtTime) and [endedAtTime](#endedAtTime) and duration(#duration) SHOULD be provided.  | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | [Result](#result) | A generated Result SHOULD be provided.  |
+| referrer | &nbsp; |  &nbsp;  |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | &nbsp; |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
+#### JSON-LD Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/OutcomeEvent",
+    "actor": {
+        "@id": "https://example.com/autograder",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded",
+    "object": {
+        "@id": "https://example.edu/semesters/201601/courses/25/assess/1/users/554433/attempts/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/25/assess/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        },
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "count": 1,
+        "dateCreated": "2016-09-15T10:05:00.000Z",
+        "startedAtTime": "2016-09-15T10:05:00.000Z",
+        "endedAtTime": "2016-09-15T10:55:00.000Z"
+    },
+    "eventTime": "2016-09-15T10:57:06.000Z",
+    "generated": {
+        "@id": "https://example.edu/semesters/201601/courses/25/assess/1/users/554433/results/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Result",
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/25/assessments/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        },
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "normalScore": 3,
+        "totalScore": 3,
+        "scoredBy": {
+            "@id": "https://example.com/autograder",
+            "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+        },
+        "dateCreated": "2016-09-15T10:55:05.000Z"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/25/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "POL101-01",
+        "academicSession": "Fall-2016"
+    }
+}
+```
 
 <a name="sessionEvent" />
 ### 5.12 SessionEvent
+The SessionEvent models . . .
+
+TODO add description
 
 #### Supported actions
 [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
 
-#### &#64;type
-[http://purl.imsglobal.org/caliper/v1/SessionEvent](http://purl.imsglobal.org/caliper/v1/SessionEvent)
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent |
+| actor  | [Agent](#person) | For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [Person](#person) SHOULD be specified as the actor.  For a [timedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) SHOULD be specified as the actor. |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn |
+| object | [Entity](#entity) | For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) SHOULD be specified as the object.  For a [timedOut](#timedOut) action the [Session](#session) SHOULD be specified as the object.  | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
-#### Requirements 
-* A ```SessionEvent``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent.
-* A ```Session``` [startedAtTime](#startedAtTime) SHOULD be provided.
-* For a ```loggedIn``` action, the generated [Session](#session) ```endedAtTime``` and ```duration``` MUST NOT be specified.
-* It is RECOMMENDED that a [Session](#session) ```endedAtTime``` and ```duration``` be provided for ```loggedOut``` and ```timedOut``` actions.  
-* ```SessionEvent``` property values vary between supported actions.  When generating a ```SessionEvent```, the following action/property value matrix MUST be followed.  In addition, all REQUIRED properties MUST be specified while all OPTIONAL properties SHOULD be specified if a value is listed.
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | [DigitalResource](#digitalResource) | &nbsp;  |
+| generated | &nbsp; | &nbsp;  |
+| referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will represent the referring context. |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | &nbsp; |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session) | A Session [startedAtTime](#startedAtTime) SHOULD be provided.  For a [loggedIn](#loggedIn) action, the Session [endedAtTime](#endedAtTime) and [duration](#duration) MUST NOT be specified.  It is RECOMMENDED that a Session [endedAtTime](#endedAtTime) and [duration](#duration) be provided for [loggedOut](#loggedOut) and [timedOut](#timedOut) actions. | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
 
-| SessionEvent | log in | log out | time out | &nbsp; ||
-| --------  | -------- | --------- | -------- | ---: |
-| actor | [Person](#person) |[Person](#person) | [SoftwareApplication](#softwareApplication) | 1 |
-| action | [loggedIn](#loggedIn) | [loggedOut](#loggedOut) | [timedOut](#timedOut) | 1 |
-| object | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) | 1 |
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
-| target | [DigitalResource](#digitalResource) | [Session]([#session) | &nbsp; | 0..1 |
-| generated | [Session]([#session) | &nbsp; | &nbsp; | 0..1 |
-| referrer | [Entity](#entity) | [Entity](#entity) | [Entity](#entity) | 0..1 |
-| edApp | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication) | [SoftwareApplication](#softwareApplication)| 0..1 |
-| group | [Organization]([#organization) | [Organization]([#organization) | [Organization]([#organization) | 0..1 |
-| membership | [Membership]([#membership) |  [Membership]([#membership) |  [Membership]([#membership) | 0..1 |
-| session | [Session]([#session) | [Session]([#session) | [Session]([#session) | 0..1 | 
-| federatedExtension | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | [LtiSession]([#ltiSession) | 0..1 | 
-| extensions | &nbsp; | &nbsp; | &nbsp; | 0..1 | 
+#### JSON-LD Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "id": "15128c13-ca75-4952-8cce-72a513ec337d",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+    "actor": {
+        "@id": "https://example.com/viewer",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
+    "object": {
+        "@id": "https://example.com/viewer/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "startedAtTime": "2016-09-15T10:15:00.000Z",
+        "endedAtTime": "2016-09-15T11:05:00.000Z",
+        "duration": "PT3000S"
+    },
+    "eventTime": "2016-09-15T10:15:00.000Z",
+    "edApp": {
+        "@id": "https://example.com/viewer",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    }
+}
+```
 
 <a name="threadEvent" />
 ### 5.13 ThreadEvent
-The ```ThreadEvent``` models . . .
+The ThreadEvent models . . .
 
 TODO add description
 
@@ -762,7 +875,7 @@ TODO add description
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ThreadEvent |
 | actor  | [Person](#person) | &nbsp; |
-| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead |
 | object | [Thread](#thread) | &nbsp;  | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
@@ -773,10 +886,10 @@ TODO add description
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization]([#organization) | &nbsp; |
-| membership | [Membership]([#membership) | &nbsp; |
+| group | [Organization](#organization) | &nbsp; |
+| membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
-| federatedSession | [LtiSession]([#ltiSession) | &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
 #### JSON-LD Example
@@ -840,7 +953,7 @@ TODO add description
 
 <a name="ViewEvent" />
 ### 5.14 ViewEvent
-The ```ViewEvent``` models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of content.
+The ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of content.
 
 #### Supported actions
 [viewed](#viewed)
@@ -851,7 +964,7 @@ The ```ViewEvent``` models an actor's examination of digital content whenever th
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ViewEvent |
 | actor  | [Person](#person) | &nbsp; |
-| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the  IRI http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed |
 | object | [DigitalResource](#digitalResource) | &nbsp;  | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
@@ -862,10 +975,10 @@ The ```ViewEvent``` models an actor's examination of digital content whenever th
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization]([#organization) | &nbsp; |
-| membership | [Membership]([#membership) | &nbsp; |
+| group | [Organization](#organization) | &nbsp; |
+| membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
-| federatedSession | [LtiSession]([#ltiSession) | &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
 #### JSON-LD Example
