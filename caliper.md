@@ -607,6 +607,29 @@ A Caliper [MessageEvent](#messageEvent) describes an [Agent](#agent) posting a [
 #### Supported actions
 [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
 
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MessageEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Posted |
+| object | [Message](#Message) | If the object represents a Message posted in reply to a previous message, the prior message  prompting the post SHOULD be referenced utilizing the Message [replyTo](#replyTo) property.  | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | [Result](#result) | &nbsp; |
+| referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | &nbsp; |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
 #### Requirements
 * The ```MessageEvent.@type``` property MUST be assigned the IRI value http://purl.imsglobal.org/caliper/v1/MessageEvent.
 * If the ```MessageEvent.object``` property represents a ```Message``` posted in reply to a previous message, the prior ```Message```  prompting the post SHOULD be referenced utilizing the ```Message.replyTo``` property.
@@ -676,38 +699,91 @@ A Caliper [MessageEvent](#messageEvent) describes an [Agent](#agent) posting a [
 ```
 <a name="navigationEvent" />
 ### 5.10 NavigationEvent
-The ```NavigationEvent``` models an actor traversing a network of digital resources, albiet from one digital resource to another.
+The NavigationEvent models an actor traversing a network of digital resources.
 
-| Property | Type | &nbsp; |
-| -------- | ------ | ------: |
-| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |0..1 |
-| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | 1 |
-| actor  | [Person](#person) | 1 |
-| action |  [navigatedTo](#navigatedTo) | 1 |
-| object | [DigitalResource](#digitalResource) | 1 | 
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | 1 |
-| target | &nbsp; | 0..1 |
-| generated | &nbsp; | 0..1 |
-| referrer | [DigitalResource](#digitalResource) |  0..1 |
-| edApp | [SoftwareApplication](#softwareApplication) | 0..1 |
-| group | [Organization]([#organization) | 0..1 |
-| membership | [Membership]([#membership) | 0..1 |
-| session | [Session](#session)| 0..1 | 
-| federatedSession | [LtiSession]([#ltiSession) | 0..1 | 
-| extensions | object | 0..1 | 
+TODO note referrer property
 
-#### Requirements
-* ```type``` MUST be assigned the IRI value http://purl.imsglobal.org/caliper/v1/NavigationEvent.
-*  ```action``` MUST be assigned the IRI value http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo.
-*  TODO ``` referrer```
+#### Supported actions
+[navigateTo](#navigatedTo)
+
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/NavigationEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo |
+| object | [DigitalResource](#digitalResource) | &nbsp;  | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | [Result](#result) | &nbsp; |
+| referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | &nbsp; |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
 
 #### JSON-LD Example
-
-```
+```json
 {
-TODO
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
+    "object": {
+        "@id": "http://do1.dr-chuck.com/pythonlearn/EN_us/pythonlearn.pdf",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+        "name": "Python for Everybody.  Exploring Data using Python 3",
+        "version": "2016-Jul-05 First Complete Python 3.0 version"
+    },
+    "eventTime": "2015-09-15T10:15:00.000Z",
+    "referrer": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1/pages/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
+        "name": "Learn Python Landing Page"
+    },
+    "edApp": {
+        "@id": "https://example.edu/lms",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "CPS101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+        "member": {
+            "@id": "https://example.edu/people/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [
+            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+        ],
+        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https://example.com/lms/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-15T10:12:00.000Z"
+    }
 }
-
 ```
 
 <a name="outcomeEvent" />
@@ -726,7 +802,7 @@ TODO add description
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/OutcomeEvent |
 | actor  | [Agent](#agent) |For automated grading a [SoftwareApplication](#softwareApplication) SHOULD be specified as the actor.  For manual grading a [Person](#person) SHOULD be specified as the actor. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Graded |
-| object | [Attempt](#attempt) | The Attempt [actor](#actor), [assignable](#assignable) and [count](#count) MUST be provided.  The Attempt [startedAtTime](#startedAtTime) and [endedAtTime](#endedAtTime) and duration(#duration) SHOULD be provided.  | 
+| object | [Attempt](#attempt) | The Attempt [actor](#actor), [assignable](#assignable) and [count](#count) properties MUST be specified.  The Attempt [startedAtTime](#startedAtTime), [endedAtTime](#endedAtTime) and [duration](#duration) properties SHOULD be specified.  | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
@@ -822,11 +898,11 @@ TODO add description
 | -------- |  -----  | ----------- |
 | target | [DigitalResource](#digitalResource) | &nbsp;  |
 | generated | &nbsp; | &nbsp;  |
-| referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will represent the referring context. |
+| referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will comprise the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | &nbsp; |
 | membership | [Membership](#membership) | &nbsp; |
-| session | [Session](#session) | A Session [startedAtTime](#startedAtTime) SHOULD be provided.  For a [loggedIn](#loggedIn) action, the Session [endedAtTime](#endedAtTime) and [duration](#duration) MUST NOT be specified.  It is RECOMMENDED that a Session [endedAtTime](#endedAtTime) and [duration](#duration) be provided for [loggedOut](#loggedOut) and [timedOut](#timedOut) actions. | 
+| session | [Session](#session) | For all actions supported, the Session [startedAtTime](#startedAtTime) SHOULD be specified.  For a [loggedIn](#loggedIn) action, the Session [endedAtTime](#endedAtTime) and [duration](#duration) MUST NOT be specified.  It is RECOMMENDED that a Session [endedAtTime](#endedAtTime) and [duration](#duration) be provided for [loggedOut](#loggedOut) and [timedOut](#timedOut) actions. | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
@@ -953,7 +1029,7 @@ TODO add description
 
 <a name="ViewEvent" />
 ### 5.14 ViewEvent
-The ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of content.
+The ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a file.
 
 #### Supported actions
 [viewed](#viewed)
