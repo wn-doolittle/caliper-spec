@@ -595,10 +595,96 @@ TODO
 
 <a name="mediaEvent" />
 ### 5.8 MediaEvent
+A Caliper MediaEvent models . . . .
 
-[MediaEvent](#mediaEvent)
+TODO 
+* add additional description.  
+* Should MediaLocation be the object or the target of the interaction.
+* Should ImageObject be included in this event (ViewEvent appears more appropriate)?
 
-TODO
+#### Supported actions
+[started](#started), [paused](#paused), [resumed](#resumed), [forwardedTo](#forwardedTo), [jumpedTo](#jumpedTo), [rewound](#rewound), [ended](#ended), [changedResolution](#changedResolution), [changedSize](#changedSize), [changedSpeed](#changedSpeed), [changedVolume](#changedVolume), [enabledClosedCaptioning](#enabledClosedCaptioning), [disabledClosedCaptioning](#disabledClosedCaptioning), [enteredFullScreen](#enteredFullScreen), [exitedFullScreen](#exitedFullScreen), [muted](#muted), [unmuted](#unmuted), [openedPopout](#openedPopout), [closedPopout](#closedPopout)
+
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Paused |
+| object | [MediaObject](#mediaObject) | MediaObject subclasses include [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject). | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | [MediaLocation](#mediaLocation) | A MediaLocation [currentTime] SHOULD be specified to provide a precise position in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". |
+| generated | [Result](#result) | &nbsp; |
+| referrer | [DigitalResource](#digitalResource) | &nbsp; |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | &nbsp; |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
+#### Example
+```
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/MediaEvent",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused",
+    "object": {
+        "@id": "https://youtu.be/UQVK-dsU7-Y",
+        "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+        "name": "Python for Informatics: Information and Welcome",
+        "mediaType": "video/ogg",
+        "duration": "PT20M20S"
+    },
+    "target": {
+        "@id": "https://youtu.be/UQVK-dsU7-Y?t=321",
+        "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation"
+        "currentTime": "PT05M21S"
+    },
+    "eventTime": "2016-09-15T10:15:00.000Z",
+    "edApp": {
+        "@id": "http://www.pythonlearn.com/",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "CPS101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+        "member": {
+            "@id": "https://example.edu/people/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [
+            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+        ],
+        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https://example.com/lms/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-15T10:12:00.000Z"
+    }
+}
+```
 
 <a name="messageEvent" />
 ### 5.9 MessageEvent
