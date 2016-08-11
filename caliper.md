@@ -599,7 +599,7 @@ A Caliper MediaEvent models . . . .
 
 TODO 
 * add additional description.  
-* Should MediaLocation be the object or the target of the interaction.
+* Should MediaLocation be the object or the target of the interaction?
 * Should ImageObject be included in this event (ViewEvent appears more appropriate)?
 
 #### Supported actions
@@ -618,7 +618,7 @@ TODO
 #### Optional properties
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
-| target | [MediaLocation](#mediaLocation) | A MediaLocation [currentTime] SHOULD be specified to provide a precise position in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". |
+| target | [MediaLocation](#mediaLocation) | The MediaLocation [currentTime](#currentTime) property SHOULD be specified to provide a precise position in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". |
 | generated | [Result](#result) | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) | &nbsp; |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
