@@ -630,10 +630,6 @@ A Caliper [MessageEvent](#messageEvent) describes an [Agent](#agent) posting a [
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
 | extensions | object | &nbsp; | 
 
-#### Requirements
-* The ```MessageEvent.@type``` property MUST be assigned the IRI value http://purl.imsglobal.org/caliper/v1/MessageEvent.
-* If the ```MessageEvent.object``` property represents a ```Message``` posted in reply to a previous message, the prior ```Message```  prompting the post SHOULD be referenced utilizing the ```Message.replyTo``` property.
-
 #### Example: MessageEvent posted (reply)
 ```
 {
