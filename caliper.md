@@ -306,7 +306,7 @@ The Content Management Profile models activities associated with the creation an
 #### Supported Actions
 | Event | action(s) |
 | -----  | --------- |
-| [ContentMgmtEvent](#contentMgmtEvent) | [created](#created), [retrieved](#retrieved), [modified](#modified), [removed](#removed), [deleted](#deleted), ~~[published](#published)~~ |
+| [ContentMgmtEvent](#contentMgmtEvent) | [created](#created), [modified], (#modified), [published](#published), [retrieved](#retrieved), [removed](#removed), [deleted](#deleted) |
 | [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
 | [ViewEvent](#ViewEvent) | [viewed](#viewed) |
 
@@ -323,9 +323,11 @@ The Content Management Profile models activities associated with the creation an
 | Event | actor | action | object | eventTime |
 | -----  | ----- | ------ | ------ | ----------- |
 | [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [created](#created) | [Document](#document) D1 | [dateTime](#dateTime) T1 |
-| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Document](#document) D1 | [dateTime](#dateTime) T2 |
-| [ViewEvent](#viewEvent)| [Person](#person) P1 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) T3 |
-| [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) T4 |
+| [ContentMgmtEvent](#digitalResourceMgmtEvent) | [Person](#person) P2 | [retrieved](#retrieved) | [Document](#document) D1 | [dateTime](#dateTime) T2 |
+| [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P2 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) T3 |
+| [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [published](#published) | [Document](#document) D1 | [dateTime](#dateTime) T4 |
+| [NavigationEvent](#navigationEvent) | [Person](#person) P3 | [navigatedTo](#navigatedTo) | [Document](#document) D1 | [dateTime](#dateTime) T5 |
+| [ViewEvent](#viewEvent)| [Person](#person) P3 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) T6 |
 
 #### TODO
 * consider renaming to "Entity Management Profile" and widening object scope from [DigitalResource](#digitalResource) to [Entity](#entity).
@@ -510,7 +512,7 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 | target | [Entity]([#entity) | . . . | 0..1 |
 | generated | [Entity]([#entity) | . . . | 0..1 |
 | edApp | [SoftwareApplication]([#softwareapplication) | . . . | 0..1 |
-| group | [Organization]([#organization) | . . . | 0..1 |
+| group | [Organization]([#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   | 0..1 |
 | membership | [Membership]([#membership) | . . . | 0..1 |
 | session | [Session]([#session) | . . . | 0..1 |
 
@@ -581,25 +583,23 @@ TODO
 TODO
 
 <a name="contentMgmtEvent" />
-### 5.6 ContentMgmtEvent / ContentAuthoringEvent
+### 5.6 ContentMgmtEvent / EntityMgmtEvent
 
-TODO
+The ContentMgmtEvent models activities associated with the creation and management of digital content.
 
-The ContentMgmtEvent models . . .
-
-TODO add description
+TODO add additional intro text
 
 #### Supported actions
-[subscribed](#subscribed), [unsubscribed](#unsubscribed)
+[created](#created), [modified](#modified), [published](#published), [retrieved](#retrieved), [removed](#removed), [deleted](#deleted) 
 
 #### Required properties
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
-| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ForumEvent |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ContentMgmtEvent |
 | actor  | [Person](#person) | &nbsp; |
-| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed |
-| object | [Forum](#forum) | &nbsp;  | 
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Created |
+| object | [DigitalResource](#DigitalResource) | DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
@@ -609,7 +609,7 @@ TODO add description
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.  |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -617,7 +617,95 @@ TODO add description
 
 #### Example
 ```json
-
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/ContentMgmtEvent",
+    "actor": {
+        "@id": "https://example.edu/user/112233",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Published",
+    "object": {
+        "@id": "https://example.edu/semesters/201601/courses/301/resources/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+        "name": "Course resources",
+        "creators": [
+            {
+                "@id": "https://example.edu/user/112233",
+                "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+            },
+            {
+                "@id": "https://example.edu/user/223344",
+                "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+            }
+        ],
+        "keywords": [ "collections", "documents", "images", "videos"],
+        "items": [
+            {
+                "@id": "https://example.edu/semesters/201601/courses/301/resources/1/collections/1",
+                "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+                "name": "Document Collection",
+                "dateCreated": "2016-08-01T06:01:00.000Z",
+                "datePublished": "2016-08-15T09:30:00.000Z"
+            },
+            {
+                "@id": "https://example.edu/semesters/201601/courses/301/resources/1/collections/2",
+                "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+                "name": "Image Collection",
+                "dateCreated": "2016-08-01T06:02:00.000Z",
+                "datePublished": "2016-08-15T09:30:00.000Z"
+            },
+            {
+                "@id": "https://example.edu/semesters/201601/courses/301/resources/1/collections/3",
+                "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+                "name": "Video Collection",
+                "dateCreated": "2016-08-01T06:03:00.000Z",
+                "datePublished": "2016-08-15T09:30:00.000Z"
+            }
+        ],
+        "isPartOf": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "dateCreated": "2016-09-01T08:00:00.000Z",
+        "dateModified": "2016-09-01T08:55:00.000Z",
+        "datePublished": "2016-09-15T09:00:00.000Z"
+    },
+    "eventTime": "2016-09-15T09:00:00.000Z",
+    "edApp": {
+        "@id": "https://example.edu/",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "CPS101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+        "member": {
+            "@id": "https://example.edu/people/112233",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [
+            "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor"
+        ],
+        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https://example.com/lms/sessions/f489527a078617eb8a3c71f1a9aba8e6f166ece2",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-15T07:55:12.000Z"
+    }
+}
 ```
 
 <a name="forumEvent" />
@@ -647,7 +735,7 @@ TODO add description
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -739,7 +827,7 @@ TODO
 | generated | &nbsp;  | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) | &nbsp; |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -827,7 +915,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 | generated | &nbsp; | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -922,7 +1010,7 @@ TODO note referrer property
 | generated | &nbsp; | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1011,7 +1099,7 @@ TODO add description
 | generated | [Result](#result) | A generated Result SHOULD be provided.  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1099,7 +1187,7 @@ TODO add description
 | generated | &nbsp; | &nbsp;  |
 | referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will comprise the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session) | For all actions supported, the Session [startedAtTime](#startedAtTime) SHOULD be specified.  For a [loggedIn](#loggedIn) action, the Session [endedAtTime](#endedAtTime) and [duration](#duration) MUST NOT be specified.  It is RECOMMENDED that a Session [endedAtTime](#endedAtTime) and [duration](#duration) be provided for [loggedOut](#loggedOut) and [timedOut](#timedOut) actions. | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1161,7 +1249,7 @@ TODO add description
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1250,7 +1338,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
