@@ -532,18 +532,20 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 ##### Example
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",             
-  "actor": {
-    "@id": "https://example.edu/user/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-  },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
-  "object": {
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-    "@type": "http://www.idpf.org/epub/vocab/structure/#volume"
-  }
-  "eventTime": "2016-09-15T10:15:00.000Z"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+    "object": {
+        "@id": "http://do1.dr-chuck.com/pythonlearn/EN_us/pythonlearn.pdf",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+        "name": "Python for Everybody.  Exploring Data using Python 3",
+        "version": "2016-Jul-05 First Complete Python 3.0 version"
+    },
+    "eventTime": "2016-09-15T10:15:00.000Z"
 }
 ```
 
