@@ -512,7 +512,7 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 | target | [Entity]([#entity) | . . . | 0..1 |
 | generated | [Entity]([#entity) | . . . | 0..1 |
 | edApp | [SoftwareApplication]([#softwareapplication) | . . . | 0..1 |
-| group | [Organization]([#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   | 0..1 |
+| group | [Organization]([#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   | 0..1 |
 | membership | [Membership]([#membership) | . . . | 0..1 |
 | session | [Session]([#session) | . . . | 0..1 |
 
@@ -611,7 +611,7 @@ TODO add additional intro text
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.  |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -737,7 +737,7 @@ TODO add description
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -829,7 +829,7 @@ TODO
 | generated | &nbsp;  | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) | &nbsp; |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -917,7 +917,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 | generated | &nbsp; | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1012,7 +1012,7 @@ TODO note referrer property
 | generated | &nbsp; | &nbsp; |
 | referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1101,7 +1101,7 @@ TODO add description
 | generated | [Result](#result) | A generated Result SHOULD be provided.  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1189,7 +1189,7 @@ TODO add description
 | generated | &nbsp; | &nbsp;  |
 | referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will comprise the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session) | For all actions supported, the Session [startedAtTime](#startedAtTime) SHOULD be specified.  For a [loggedIn](#loggedIn) action, the Session [endedAtTime](#endedAtTime) and [duration](#duration) MUST NOT be specified.  It is RECOMMENDED that a Session [endedAtTime](#endedAtTime) and [duration](#duration) be provided for [loggedOut](#loggedOut) and [timedOut](#timedOut) actions. | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1251,7 +1251,7 @@ TODO add description
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
@@ -1340,7 +1340,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 | generated | &nbsp; | &nbsp;  |
 | referrer | &nbsp; |  &nbsp;  |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
-| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group.   |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
 | session | [Session](#session)| &nbsp; | 
 | federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
