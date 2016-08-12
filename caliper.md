@@ -819,7 +819,7 @@ TODO
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaEvent |
 | actor  | [Person](#person) | &nbsp; |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Paused |
-| object | [MediaObject](#mediaObject) | MediaObject subclasses include [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject). | 
+| object | [MediaObject](#mediaObject) | MediaObject is a generic type that is subclassed for greater type specificity.  Utilize MediaObject only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
@@ -1002,7 +1002,7 @@ TODO note referrer property
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/NavigationEvent |
 | actor  | [Person](#person) | &nbsp; |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo |
-| object | [DigitalResource](#digitalResource) | &nbsp;  | 
+| object | [DigitalResource](#digitalResource) | DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
@@ -1010,7 +1010,7 @@ TODO note referrer property
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
 | generated | &nbsp; | &nbsp; |
-| referrer | [Entity](#entity) |  A referrer SHOULD be provided.  A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
+| referrer | [Entity](#entity) |  The referrer SHOULD be provided.  A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
@@ -1330,7 +1330,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ViewEvent |
 | actor  | [Person](#person) | &nbsp; |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed |
-| object | [DigitalResource](#digitalResource) | &nbsp;  | 
+| object | [DigitalResource](#digitalResource) | DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
