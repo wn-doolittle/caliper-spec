@@ -609,7 +609,7 @@ TODO add additional intro text
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
 | generated | &nbsp; | &nbsp;  |
-| referrer | &nbsp; |  &nbsp;  |
+| referrer | [Entity](#entity) | Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
 | membership | [Membership](#membership) | &nbsp; |
@@ -735,7 +735,7 @@ TODO add description
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
 | generated | &nbsp; | &nbsp;  |
-| referrer | &nbsp; |  &nbsp;  |
+| referrer | [Entity](#entity) | Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
@@ -827,7 +827,7 @@ TODO
 | -------- |  -----  | ----------- |
 | target | [MediaLocation](#mediaLocation) | The MediaLocation [currentTime](#currentTime) property SHOULD be specified to provide a precise position in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". |
 | generated | &nbsp;  | &nbsp; |
-| referrer | [DigitalResource](#digitalResource) | &nbsp; |
+| referrer | [Entity](#entity) | Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
@@ -915,7 +915,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
 | generated | &nbsp; | &nbsp; |
-| referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
+| referrer | [Entity](#entity) |  A referrer SHOULD be provided.  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
@@ -1010,7 +1010,7 @@ TODO note referrer property
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
 | generated | &nbsp; | &nbsp; |
-| referrer | [DigitalResource](#digitalResource) |  A referring DigitalResource SHOULD be provided.  |
+| referrer | [Entity](#entity) |  A referrer SHOULD be provided.  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
@@ -1099,7 +1099,7 @@ TODO add description
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
 | generated | [Result](#result) | A generated Result SHOULD be provided.  |
-| referrer | &nbsp; |  &nbsp;  |
+| referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
@@ -1187,7 +1187,7 @@ TODO add description
 | -------- |  -----  | ----------- |
 | target | [DigitalResource](#digitalResource) | &nbsp;  |
 | generated | &nbsp; | &nbsp;  |
-| referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will comprise the referring context. |
+| referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
@@ -1249,7 +1249,7 @@ TODO add description
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
 | generated | &nbsp; | &nbsp;  |
-| referrer | &nbsp; |  &nbsp;  |
+| referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
@@ -1338,7 +1338,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 | -------- |  -----  | ----------- |
 | target | [Frame](#frame) | &nbsp;  |
 | generated | &nbsp; | &nbsp;  |
-| referrer | &nbsp; |  &nbsp;  |
+| referrer | [Entity](#entity) |  Typically a [SoftwareApplication](#softwareApplication) or  [DigitalResource](#digitalResource) will constitute the referrer.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referring context. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   |
 | membership | [Membership](#membership) | &nbsp; |
