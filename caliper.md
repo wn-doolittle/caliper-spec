@@ -581,7 +581,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
-| generated | [Attempt](#attempt) | The learner's Attempt SHOULD be specified in order to record a count of the number of times the actor has interacted with the Assessment. | &nbsp;  |
+| generated | [Attempt](#attempt) | The learner's Attempt SHOULD be specified in order to record a [count](#count) of the number of times the actor has interacted with the Assessment.  If an Attempt is included, both the actor and the assigned Assessment must be referenced. | &nbsp;  |
 | referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
@@ -599,7 +599,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentEvent |
 | actor  | [Person](#person) | &nbsp; |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Started |
-| object | [Attempt](#attempt) | The learner's Attempt MUST be specified in order to record a [count](#count) of the number of times the actor has interacted with the Assessment.  The Attempt MUST reference both the actor and the Assessment to which the Attempt refers. | 
+| object | [Attempt](#attempt) | The learner's Attempt MUST reference both the actor and the assigned Assessment.  A [count](#count) of the number of times the actor has interacted with the Assessment MUST also be specified. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
@@ -775,14 +775,15 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent |
 | actor  | [Person](#person) | &nbsp; |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Completed |
-| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [started](#started) and [skipped] actions the AssessmentItem is the REQUIRED object of the interaction; for a [completed](#completed) action it is RECOMMENDED that the [Attempt](#attempt) comprise the object.  The Attempt MUST reference both the actor and the AssessmentItem to which the Attempt refers. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
+| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [started](#started) and [skipped] actions the AssessmentItem is the REQUIRED object of the interaction; for a [completed](#completed) action it is RECOMMENDED that the learner's [Attempt](#attempt) comprise the object.  
+If the Attempt is provided it MUST reference both the actor and the assigned AssessmentItem.  A [count](#count) of the number of times the actor has interacted with the AssessmentItem MUST also be specified.  The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
-| generated | [Attempt](#attempt), [Response](#response) | For [started](#started) and [skipped] actions, the learner's Attempt SHOULD be specified in order to record a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  The Attempt MUST reference both the actor and the AssessmentItem to which the Attempt refers. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property.  For a [completed](#completed) action a generated Response MAY be referenced.  Note that Response is a generic type that is subclassed for greater type specificity.  Utilize Response only if no suitable subclass exists to represent the learner's response to the item. |
+| generated | [Attempt](#attempt), [Response](#response) | For [started](#started) and [skipped] actions, the learner's Attempt SHOULD be specified in order to record a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  If the Attempt is provided it MUST reference both the actor and the assigned AssessmentItem. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property.  For a [completed](#completed) action a generated Response MAY be referenced.  Note that Response is a generic type that is subclassed for greater type specificity.  Utilize Response only if no suitable subclass exists to represent the learner's response to the item. |
 | referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
