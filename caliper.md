@@ -560,7 +560,9 @@ TODO
 ### 5.3 AssessmentEvent
 The AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.
 
-TODO add additional intro text
+#### TODO
+* Add additional intro text
+* Confirm: Attempt as the object.
 
 #### Supported actions
 [started](#started), [paused](#paused), [restarted](#restarted), [submitted](#submitted)
@@ -579,7 +581,32 @@ TODO add additional intro text
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
-| generated | [Attempt](#attempt) | The Attempt SHOULD be specified in order to record a count of the number of times the actor has interacted with the Assessment. | &nbsp;  |
+| generated | [Attempt](#attempt) | The learner's Attempt SHOULD be specified in order to record a count of the number of times the actor has interacted with the Assessment. | &nbsp;  |
+| referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
+#### OR
+
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Started |
+| object | [Attempt](#attempt) | The learner's Attempt MUST be specified in order to record a [count](#count) of the number of times the actor has interacted with the Assessment.  The Attempt MUST reference both the actor and the Assessment to which the Attempt refers. | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | &nbsp; | &nbsp;  |
 | referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
@@ -660,16 +687,221 @@ TODO add additional intro text
     }
 }
 ```
+#### OR
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
+    "object": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/users/554433/attempts/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assessments/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+            "name": "Quiz One",
+            "dateToStartOn": "2016-09-16T05:00:00.000Z",
+            "dateToSubmit": "2016-09-18T11:59:59.000Z",
+            "maxAttempts": 2,
+            "maxSubmits": 2,
+            "maxScore": 25,
+            "version": "1.0"
+        },
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "count": 1,
+        "dateCreated": "2016-09-17T10:15:00.000Z",
+        "startedAtTime": "2016-09-17T10:15:00.000Z"
+    },
+    "eventTime": "2016-09-17T10:15:00.000Z",
+    "edApp": {
+        "@id": "https://example.edu/",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "CPS101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+        "member": {
+            "@id": "https://example.edu/people/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [
+            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+        ],
+        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https://example.com/lms/sessions/973465e7f388940324465caf55b4f761b0f4f093",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-17T10:00:00.000Z"
+    }
+}
+```
 
 <a name="assessmentItemEvent" />
 ### 5.4 AssessmentItemEvent
+The AssessmentItemEvent models a learner's interaction with an individual assessment item.
 
-[AssessmentItemEvent](#assessmentItemEvent)
+#### TODO
+* Confirm: Attempt as the object.
+* Confirm: "The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property."
+* Confirm: ". . . for a [completed](#completed) action it is RECOMMENDED that the [Attempt](#attempt) comprise the object."  (rationale: if generated is optional how can we require an Attempt).
 
-| Event | actor | action | object | generated | referrer |
-| -------  | -------- | -------- | -------- |  ----------- |  --------- |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [started](#started), [skipped](#skipped) | [Attempt](#attempt) | &nbsp;  | &nbsp; |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [completed](#completed) | [Attempt](#attempt) | [Response](#response) | &nbsp; |
+#### Supported actions
+[started](#started), [skipped], [completed](#completed)
+
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Completed |
+| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [started](#started) and [skipped] actions the AssessmentItem is the REQUIRED object of the interaction; for a [completed](#completed) action it is RECOMMENDED that the [Attempt](#attempt) comprise the object.  The Attempt MUST reference both the actor and the AssessmentItem to which the Attempt refers. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | [Attempt](#attempt), [Response](#response) | For [started](#started) and [skipped] actions, the learner's Attempt SHOULD be specified in order to record a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  The Attempt MUST reference both the actor and the AssessmentItem to which the Attempt refers. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property.  For a [completed](#completed) action a generated Response MAY be referenced.  Note that Response is a generic type that is subclassed for greater type specificity.  Utilize Response only if no suitable subclass exists to represent the learner's response to the item. |
+| referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
+### OR
+
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Completed |
+| object | [Attempt](#attempt) | The learner's Attempt MUST be specified in order to record a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  The Attempt MUST reference both the actor and the AssessmentItem to which the Attempt refers. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | [Response](#response) | For a [completed](#completed) action a generated Response MAY be referenced.  Note that Response is a generic type that is subclassed for greater type specificity.  Utilize Response only if no suitable subclass exists to represent the learner's response to the item. |
+| referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
+#### Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed",
+    "object": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3/users/554433/attempts/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3/",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/AssessmentItem",
+            "name": "Assessment Item 3",
+            "isPartOf": {
+                "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
+                "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+            },
+            "maxAttempts": 2,
+            "maxSubmits": 2,
+            "maxScore": 1,
+            "isTimeDependent": false
+        },
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "count": 1,
+        "dateCreated": "2016-09-17T10:15:00.000Z",
+        "startedAtTime": "2016-09-17T10:15:00.000Z",
+        "endedAtTime": "2016-09-17T10:15:12.000Z"
+    },
+    "generated": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3/users/554433/responses/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        },
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "attempt": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3/users/554433/attempts/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Attempt"
+        }
+    },
+    "eventTime": "2016-09-17T10:15:12.000Z",
+    "edApp": {
+        "@id": "https: //example.edu/",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
+    },
+    "group": {
+        "@id": "https: //example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "CPS101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https: //example.edu/semesters/201601/courses/301/rosters/20",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Membership",
+        "member": {
+            "@id": "https: //example.edu/people/554433",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+            "@id": "https: //example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [
+            "http: //purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+        ],
+        "status": "http: //purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https: //example.com/lms/sessions/973465e7f388940324465caf55b4f761b0f4f093",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-17T10:00:00.000Z"
+    }
+}
+```
 
 <a name="assignableEvent" />
 ### 5.5 AssignableEvent
