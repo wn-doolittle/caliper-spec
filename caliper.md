@@ -558,18 +558,7 @@ TODO
 	
 <a name="assessmentEvent" />
 ### 5.3 AssessmentEvent
-
-
-
-
-
-[AssessmentEvent](#assessmentEvent)
-
-TODO
-
-| Event | actor | action | object | generated | referrer |
-| -------  | -------- | -------- | -------- |  ----------- |  --------- |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [started](#started), [paused](#paused), [restarted](#restarted), [reset](#reset), [submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
+The AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.
 
 TODO add additional intro text
 
