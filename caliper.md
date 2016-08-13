@@ -594,7 +594,7 @@ The AnnotationEvent models . . . .
     },
     "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged",
     "object": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1/resources/1/csev/python/html/book011.html",
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1/resources/1/book011.html",
         "@type": "http://purl.imsglobal.org/caliper/v1/Chapter",
         "name": "Chapter 10. Tuples"
     },
@@ -606,7 +606,7 @@ The AnnotationEvent models . . . .
             "@type": "http://purl.imsglobal.org/caliper/v1/Person"
         },
         "annotated": {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/resources/1/csev/python/html/book011.html",
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/resources/1/book011.html",
             "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
         },
         "tags": [ "csev", "python" "tuple", "dictionaries" ],
