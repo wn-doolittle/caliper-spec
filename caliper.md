@@ -551,10 +551,103 @@ A Caliper ```Event``` is a generic class that represents the interaction between
 
 <a name="annotationEvent" />
 ### 5.2 AnnotationEvent
+The AnnotationEvent models . . . .
 
-[AnnotationEvent](#annotationEvent)
+#### TODO
+* Add additional intro text
+* Confirm: removal of actions
 
-TODO
+#### Supported actions
+ [bookmarked](#bookmarked), [highlighted](#highlighted), [shared](#shared), [tagged](#tagged)
+ 
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentEvent |
+| actor  | [Person](#person) | &nbsp; |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged |
+| object | [DigitalResource](#digitalResource) | DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | [Annotation](#annotation) | The Annotation SHOULD be specified.  Note that Annotation is a generic type that is subclassed for greater type specificity.  Utilize Annotation only if no suitable subclass exists to represent the object. | &nbsp;  |
+| referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| &nbsp; | 
+| federatedSession | [LtiSession](#ltiSession) | &nbsp; | 
+| extensions | object | &nbsp; | 
+
+#### Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@type": "http://purl.imsglobal.org/caliper/v1/AnnotationEvent",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged",
+    "object": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1/resources/1/csev/python/html/book011.html",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Chapter",
+        "name": "Chapter 10. Tuples"
+    },
+    "generated": {
+        "@id": "https://example.edu/tags/7654",
+        "@type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "annotated": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/resources/1/csev/python/html/book011.html",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+        },
+        "tags": [ "csev", "python" "tuple", "dictionaries" ],
+        "dateCreated": "2016-09-17T10:15:12.000Z"
+    },
+    "eventTime": "2016-09-17T10:15:12.000Z",
+    "edApp": {
+        "@id": "https://example.edu/",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
+    },
+    "group": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "CPS101-01",
+        "academicSession": "Fall-2016"
+    },
+    "membership": {
+        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+        "member": {
+            "@id": "https://example.edu/people/554433",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [
+            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+        ],
+        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "dateCreated": "2016-08-01T06:00:00.000Z"
+    },
+    "session": {
+        "@id": "https://example.com/lms/sessions/973465e7f388940324465caf55b4f761b0f4f093",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+        "startedAtTime": "2016-09-17T10:00:00.000Z"
+    }
+}
+```
 	
 <a name="assessmentEvent" />
 ### 5.3 AssessmentEvent
