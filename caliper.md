@@ -495,42 +495,42 @@ TODO: OVERVIEW
 
 <a name="event"/>
 ### 5.1 Event
-A Caliper ```Event``` is a generic class that represents the interaction between an [actor](#actor) and an [object](#object) at a specific moment in time within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of ```Event``` rather than instantiating instances of the ```Event``` class itself.
+A Caliper Event is a generic class that represents the interaction between an [actor](#actor) and an [object](#object) at a specific moment in time and within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of Event rather than instantiating instances of the Event class itself.
 
-##### &#64;type
-[http://purl.imsglobal.org/caliper/v1/Event](http://purl.imsglobal.org/caliper/v1/Event)
+For an Event to be minimally compliant it MUST specify an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
 
-##### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | -----------: |
-| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD context represented by a globally-scoped IRI. | 1 |
-| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | JSON-LD type represented as a globally-scoped IRI. | 1 |
-| actor | [Agent](#agent) | The ```Agent``` who initiated or is the subject of this ```Event```, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication]([#softwareapplication). | 1 |
-| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | . . . | 1 |
-| object | [Entity]([#entity) | . . . | 1 |
-| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Event``` occurred. | 1 |
-| target | [Entity]([#entity) | . . . | 0..1 |
-| generated | [Entity]([#entity) | . . . | 0..1 |
-| edApp | [SoftwareApplication]([#softwareapplication) | . . . | 0..1 |
-| group | [Organization]([#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.   | 0..1 |
-| membership | [Membership]([#membership) | . . . | 0..1 |
-| session | [Session]([#session) | . . . | 0..1 |
+### Supported actions
+TODO List all Actions?
 
-##### Requirements
-* An ```Event``` @context MUST be specified.  TODO ELABORATE 
-* An ```Event``` @type MUST be specified.  TODO ELABORATE
-* If a generic ```Event``` is created instead of one of its subclasses, the ```Event``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Event.
-* An ```Event``` MUST include an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
-* An ```Event``` [eventTime](#eventTime) value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* An ```Event``` SHOULD include a ```Session``` if the ```Event``` is generated as a result of an [LTI](#lti) launch.
-* ```Event```  properties with a value of null or empty SHOULD be excluded from the JSON-LD representation of the ```Event```  prior to serialization.
-* Subclasses of ```Event``` MAY specify additional properties or RECOMMEND inclusion of optional properties for a more concise representation of the ```Event```.
+#### Required properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Event is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Event; otherwise the value MUST be assigned the IRI appropirate for the subclass utilized, e.g., http://purl.imsglobal.org/caliper/v1/NavigationEvent.  |
+| actor  | [Agent](#agent) | The Agent who initiated or is the subject of this Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication]([#softwareapplication).  Note that Agent is a generic type that is subclassed for greater type specificity.  Utilize Agent only if no suitable subclass exists to represent the object.  |
+| action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The action or predicate that binds the actor or subject to the object.  The value range is limited to the actions defined in this specification.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed |
+| object | [Entity](#entity) | Entity is a generic type that is subclassed for greater type specificity.  Utilize Entity only if no suitable subclass exists to represent the object. | 
+| eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
+
+#### Optional properties
+| Property  | Type | Requirements |
+| -------- |  -----  | ----------- |
+| target | &nbsp; | &nbsp;  |
+| generated | &nbsp; | &nbsp; |
+| referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
+| edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
+| group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
+| membership | [Membership](#membership) | &nbsp; |
+| session | [Session](#session)| The current Session. | 
+| federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
+| extensions | object | Additional properties not defined by the model MAY be included for a more concise representation of the Event. | 
 
 ##### Subclasses
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ContentMgmtEvent](#contentMgmtEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 ##### Example
-```
+```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",
@@ -565,7 +565,7 @@ The AnnotationEvent models . . . .
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this AnnotationEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged |
 | object | [DigitalResource](#digitalResource) | DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -574,7 +574,7 @@ The AnnotationEvent models . . . .
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
-| generated | [Annotation](#annotation) | The Annotation SHOULD be specified.  Note that Annotation is a generic type that is subclassed for greater type specificity.  Utilize Annotation only if no suitable subclass exists to represent the object. | &nbsp;  |
+| generated | [Annotation](#annotation) | The Annotation SHOULD be specified.  Note that Annotation is a generic type that is subclassed for greater type specificity.  Utilize Annotation only if no suitable subclass exists to represent the object. |
 | referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
@@ -665,7 +665,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this AssessmentEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Started |
 | object | [Assessment](#assessment) | &nbsp; | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -674,7 +674,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 | Property  | Type | Requirements |
 | -------- |  -----  | ----------- |
 | target | &nbsp; | &nbsp;  |
-| generated | [Attempt](#attempt) | The learner's Attempt SHOULD be specified in order to record a [count](#count) of the number of times the actor has interacted with the Assessment.  If an Attempt is included, both the actor and the assigned Assessment must be referenced. | &nbsp;  |
+| generated | [Attempt](#attempt) | The learner's Attempt SHOULD be specified in order to record a [count](#count) of the number of times the actor has interacted with the Assessment.  If an Attempt is included, both the actor and the assigned Assessment must be referenced. |
 | referrer | [Entity](#entity) | A SoftwareApplication or a subclass of DigitalResource will typically constitute the referring context.  Note that both Entity and DigitalResource are generic types that are subclassed for greater type specificity.  Utilize Entity or DigitalResource only if no suitable subclass exists to represent the referrer. |
 | edApp | [SoftwareApplication](#softwareApplication) | &nbsp; |
 | group | [Organization](#organization) | Organization is a generic type that is subclassed for greater type specificity.  Utilize Organization only if no suitable subclass exists to represent the group context.  |
@@ -690,7 +690,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this AssessmentEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Started |
 | object | [Attempt](#attempt) | The learner's Attempt MUST reference both the actor and the assigned Assessment.  A [count](#count) of the number of times the actor has interacted with the Assessment MUST also be specified. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -866,7 +866,7 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this AssessmentItemEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Completed |
 | object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [started](#started) and [skipped] actions the AssessmentItem is the REQUIRED object of the interaction; for a [completed](#completed) action it is RECOMMENDED that the learner's [Attempt](#attempt) comprise the object.  
 If the Attempt is provided it MUST reference both the actor and the assigned AssessmentItem.  A [count](#count) of the number of times the actor has interacted with the AssessmentItem MUST also be specified.  The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
@@ -891,7 +891,7 @@ If the Attempt is provided it MUST reference both the actor and the assigned Ass
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this AssessmentItemEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Completed |
 | object | [Attempt](#attempt) | The learner's Attempt MUST be specified in order to record a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  The Attempt MUST reference both the actor and the AssessmentItem to which the Attempt refers. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1011,7 +1011,7 @@ TODO add additional intro text
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssignableEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this AssignableEvent.  |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Activated |
 | object | [AssignableDigitalResource](#assignableDigitalResource) | AssignableDigitalResource is a generic type that is subclassed for greater type specificity.  Utilize AssignableDigitalResource only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1101,7 +1101,7 @@ TODO add additional intro text
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ContentMgmtEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this ContentMgmtEvent.  |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Created |
 | object | [DigitalResource](#digitalResource) | DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1227,7 +1227,7 @@ TODO add description
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ForumEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this ForumEvent.  |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed |
 | object | [Forum](#forum) | &nbsp;  | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1319,7 +1319,7 @@ TODO
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this MediaEvent.  |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Paused |
 | object | [MediaObject](#mediaObject) | MediaObject is a generic type that is subclassed for greater type specificity.  Utilize MediaObject only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1407,7 +1407,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MessageEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this MessageEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Posted |
 | object | [Message](#Message) | If the object represents a Message posted in reply to a previous message, the prior message  prompting the post SHOULD be referenced utilizing the Message [replyTo](#replyTo) property.  | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1502,7 +1502,7 @@ TODO note referrer property
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/NavigationEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this NavigationEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo |
 | object | [DigitalResource](#digitalResource) | DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1591,7 +1591,7 @@ TODO add description
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/OutcomeEvent |
-| actor  | [Agent](#agent) |For automated grading a [SoftwareApplication](#softwareApplication) SHOULD be specified as the actor.  For manual grading a [Person](#person) SHOULD be specified as the actor. |
+| actor  | [Agent](#agent) | The Agent who initiated or is the subject of this OutcomeEvent.  For automated grading a [SoftwareApplication](#softwareApplication) SHOULD be specified as the actor.  For manual grading a [Person](#person) SHOULD be specified as the actor.  Note that Agent is a generic type that is subclassed for greater type specificity.  Utilize Agent only if no suitable subclass exists to represent the actor. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Graded |
 | object | [Attempt](#attempt) | The Attempt [actor](#actor), [assignable](#assignable) and [count](#count) properties MUST be specified.  The Attempt [startedAtTime](#startedAtTime), [endedAtTime](#endedAtTime) and [duration](#duration) properties SHOULD be specified.  | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1679,7 +1679,7 @@ TODO add description
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SessionEvent |
-| actor  | [Agent](#person) | For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [Person](#person) SHOULD be specified as the actor.  For a [timedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) SHOULD be specified as the actor. |
+| actor  | [Agent](#person) | The Agent who initiated or is the subject of this SessionEvent.  For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [Person](#person) SHOULD be specified as the actor.  For a [timedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) SHOULD be specified as the actor.  Note that Agent is a generic type that is subclassed for greater type specificity.  Utilize Agent only if no suitable subclass exists to represent the actor. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn |
 | object | [Entity](#entity) | For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) SHOULD be specified as the object.  For a [timedOut](#timedOut) action the [Session](#session) SHOULD be specified as the object.  | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1741,7 +1741,7 @@ TODO add description
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ThreadEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this ThreadEvent.   |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead |
 | object | [Thread](#thread) | &nbsp;  | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
@@ -1830,7 +1830,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 | -------- |  -----  | ----------- |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | &nbsp; |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ViewEvent |
-| actor  | [Person](#person) | &nbsp; |
+| actor  | [Person](#person) | The Person who initiated or is the subject of this ViewEvent.   |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed |
 | object | [DigitalResource](#digitalResource) | DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
