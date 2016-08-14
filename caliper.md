@@ -2074,7 +2074,7 @@ A Caliper Agent is a generic class that represents an Entity that can initiate o
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Agent is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Agent; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/Person. |
 
 #### Optional properties
-Same as [Entity](#entity).
+Inherited from [Entity](#entity).
 
 #### Example
 ```json
@@ -2105,7 +2105,7 @@ A Caliper Annotation is a generic class that represents a comment, explanation, 
 | annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
 #### Optional properties
-Same as [Entity](#entity).
+Inherited from [Entity](#entity).
 
 ###### Example
 ```json
@@ -2129,7 +2129,7 @@ A Caliper Assessment represents TODO . . . .  Assessment inherits all the proper
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment. |
 
 #### Optional properties
-Same as [AssignableDigitalResource](#assignableDigitalResource) and [Collection](#collection).  Note that the Assessment [items](#items) property is an ordered list of type [AssessmentItem](#assessmentItem).
+Inherited from [AssignableDigitalResource](#assignableDigitalResource) and [Collection](#collection).  Note that the Assessment [items](#items) property is an ordered list of type [AssessmentItem](#assessmentItem).
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
@@ -2184,7 +2184,7 @@ A Caliper AssessmentItem represents TODO . . . .  Assessment inherits all the pr
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem. |
 
 #### Optional properties
-Same as [AssignableDigitalResource](#assignableDigitalResource).
+Inherited from [AssignableDigitalResource](#assignableDigitalResource).
 
 #### Example
 ```json
@@ -2317,7 +2317,7 @@ A Caliper AudioObject represents an audio or sound file.  AudioObject inherits a
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AudioObject. |
 
 #### Optional properties
-Same as [MediaObject](#mediaObject).
+Inherited from [MediaObject](#mediaObject).
 
 #### Example
 ```json
@@ -2379,7 +2379,7 @@ A Caliper Chapter represents a major sub-division of a piece of digital content.
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Chapter. |
 
 #### Optional properties
-Same as [DigitalResource](#digitalResource).
+Inherited from [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -2660,7 +2660,7 @@ A Caliper Document represents a piece of digital content.  Document inherits all
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Document. |
 
 #### Optional properties
-Same as [DigitalResource](#digitalResource).
+Inherited from [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -2684,7 +2684,7 @@ A Caliper EpubChapter represents a major structural division of a piece of writi
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/EpubChapter. |
 
 #### Optional properties
-Same as [DigitalResource](#digitalResource).
+Inherited from [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -2722,7 +2722,7 @@ A Caliper EpubPart represents a major structural division of a piece of writing,
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/EpubPart. |
 
 #### Optional properties
-Same as [DigitalResource](#digitalResource).
+Inherited from [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -2755,7 +2755,7 @@ A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#Ep
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/EpubSubChapter. |
 
 #### Optional properties
-Same as [DigitalResource](#digitalResource).
+Inherited from [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -2798,7 +2798,7 @@ A Caliper EpubVolume represents a component of a collection.  EpubVolume inherit
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/EpubSubChapter. |
 
 #### Optional properties
-Same as [DigitalResource](#digitalResource).
+Inherited from [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -3279,7 +3279,7 @@ A Caliper Page represents an item of paginated content.  Page inherits all the p
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Page. |
 
 #### Optional properties
-Same as [DigitalResource](#digitalResource).
+Inherited from [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -3303,7 +3303,7 @@ A Caliper ```Person``` represents a human being, alive or deceased, real or imag
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person. |
 
 #### Optional properties
-Inherits from [Agent](#agent).
+Inherited from [Agent](#agent).
 
 #### Example
 ```json
