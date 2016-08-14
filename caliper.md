@@ -2116,7 +2116,7 @@ Same as [Entity](#entity).
 
 <a name="assessment" />
 ### Assessment
-A Caliper Assessment models TODO . . . .  Assessment inherits all the properties and requirements defined for both [AssignableDigitalResource](#assignableDigitalResource) and [Collection](#collection), its two superclasses.
+A Caliper Assessment represents TODO . . . .  Assessment inherits all the properties and requirements defined for both [AssignableDigitalResource](#assignableDigitalResource) and [Collection](#collection), its two superclasses.
 
 #### subClassOf 
 [AssignableDigitalResource](#assignableDigitalResource), [Collection](#collection)
@@ -2171,7 +2171,7 @@ Same as [AssignableDigitalResource](#assignableDigitalResource) and [Collection]
 ```
 <a name="assessmentItem" />
 ### AssessmentItem
-A Caliper AssessmentItem models TODO . . . .  Assessment inherits all the properties and requirements defined for [AssignableDigitalResource](#assignableDigitalResource), its superclass.
+A Caliper AssessmentItem represents TODO . . . .  Assessment inherits all the properties and requirements defined for [AssignableDigitalResource](#assignableDigitalResource), its superclass.
 
 #### subClassOf 
 [AssignableDigitalResource](#assignableDigitalResource)
@@ -2211,7 +2211,7 @@ Same as [AssignableDigitalResource](#assignableDigitalResource).
 ```
 
 <a name="assignableDigitalResource" />
-#### AssignableDigitalResource
+### AssignableDigitalResource
 A Caliper AssignableDigitalResource is a generic class that represents digital content associated with a graded or ungraded assignment.  AssignableDigitalResource inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  Given that AssignableDigitalResource represents a generic type it is RECOMMENDED that only subclasses of AssignableDigitalResource be employed to represent nodes in the learning graph.
 
 #### subClassOf
@@ -2228,7 +2228,7 @@ A Caliper AssignableDigitalResource is a generic class that represents digital c
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource. |
 
 #### Optional properties
-In addition to properties inherited from [DigitalResource](#digitalResource), AssignableDigitalResource includes the following additional optional  properties:
+In addition to properties inherited from [DigitalResource](#digitalResource), AssignableDigitalResource includes the following additional optional properties:
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
@@ -2273,7 +2273,7 @@ A Caliper Attempt provides a count of the number of times an actor has interacte
 | count | [xsd:nonNegativeInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) | The total number of attempts inclusive of the current Attempt that have been registered against the assigned DigitalResource. |
 
 #### Optional properties
-In addition to properties inherited from [Entity](#entity), Attempt includes the following additional optional  properties:
+In addition to properties inherited from [Entity](#entity), Attempt includes the following additional optional properties:
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
@@ -2303,8 +2303,8 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 ```
 
 <a name="audioObject" />
-#### AudioObject
-A Caliper AudioObject represents an audio or sound file.  It is analogous to an [sdo:AudioObject](http://schema.org/AudioObject).
+### AudioObject
+A Caliper AudioObject represents an audio or sound file.  AudioObject inherits all the properties and requirements defined for [MediaObject](#mediaObject), its superclass.  It is analogous to an [sdo:AudioObject](http://schema.org/AudioObject).
 
 #### subClassOf 
 [MediaObject](#mediaObject)
@@ -2331,33 +2331,36 @@ Same as [MediaObject](#mediaObject).
 ```
 
 <a name="bookmarkAnnotation" />
-#### BookmarkAnnotation
-A Caliper ```BookmarkAnnotation``` represents the act of marking a ```DigitalResource``` at a particular point . . . . TODO
+### BookmarkAnnotation
+A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#digitalResource) at a particular location.  BookmarkAnnotation inherits all the properties and requirements defined for [Annotation](#annotation), its superclass.
 
-###### subClassOf
-Annotation](#annotation)
+#### subClassOf
+[Annotation](#annotation)
 
-###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation](http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An BookmarkAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an BookmarkAnnotation MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation. |
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| bookmarkNotes | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A comment or note that accompanies the bookmark. | 0..1 |
+#### Optional properties
+In addition to properties inherited from Annotation](#annotation), BookmarkAnnotation includes the following additional optional properties:
 
-###### Requirements
-* A ```BookmarkAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation.
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| bookmarkNotes | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A comment or note that accompanies the bookmark. |
 
-###### Example
-```
+#### Example
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.com/bookmarks/813cb2c6-75ec-410f-8dab-ef047afb92e5",
   "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
   "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/2)",
   "bookmarkNotes": "The Intolerable Acts (1774)--bad idea Lord North",
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z"
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
