@@ -2278,7 +2278,7 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
 | startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Attempt commenced.  A start time SHOULD be provided.  If a start time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
-| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Attempt ended or was terminated.  If an end time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Attempt ended or was terminated.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be provided.  If an end time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
 | duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |Represents the total interval of time required to complete this Attempt.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
 
 #### Example
@@ -3340,40 +3340,43 @@ Inherited from [DigitalResource](#digitalResource).
 ```
 
 <a name="response" />
-#### Response
-A Caliper ```Response``` is a generic class that represents the data provided by an [Agent](#agent) interacting with an [AssessmentItem](#assessmentItem).
+### Response
+A Caliper Response is a generic class that represents the selected option provided by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).  Given that Response represents a generic type it is RECOMMENDED that only subclasses of Response be employed to represent nodes in the learning graph. 
 
-###### subClassOf 
+TODO
+* confirm deprecating actor and assignable in favor of Attempt to eliminate redundancy.  Make Attempt required.
+
+#### subClassOf 
 [Entity](#entity)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/Response](http://purl.imsglobal.org/caliper/v1/Response)
-
-####### Properties
-| Property | Type | Description | Conformance |
-| -------- | ---- | ----------- | ----------- |
-| assignable | [DigitalResource](#digitalResource) | The ```DigitalResource``` that is the target of this ```Attempt```. | 1 |
-| actor | [Agent](#agent) | The ```Agent``` who initiates the ```Attempt```. | 1 |
-| attempt| [Attempt](#attempt) | The ```Attempt``` associated with this ```Response```. | 0..1 |
-| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
-| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
-| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete this ```Attempt```. | 0..1 |
-
-###### Requirements
-* Given that ```Response``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
-* The ```assignable``` associated with this ```Attempt``` MUST be specified.
-* The ```actor``` initiating the ```Attempt``` MUST be specified.
-* An ```Response``` [startedAtTime](#startedAtTime) SHOULD be provided. 
-* If an ```Response``` [startedAtTime](#startedAtTime) is specified the value MUST conform to the ISO-8601 date and time format with millisecond precision. 
-* If an ```Response``` [endedAtTime](#endedAtTime) is specified the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* If an ```Response``` [duration](#duration) is specified the value MUST conform to the ISO-8601 duration format.
-
-###### JSON-LD Serialization
-* If a generic ```Response``` is included in an [Event](#event) instead of one of its subclasses, the ```Response``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Response.
-* A ```Response``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
-
-###### Subclasses
+#### Subclasses
 [FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Response SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Response MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic DigitalResource is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Response; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/TrueFalseResponse. |
+| actor | [Person](#person) | The Person who initiated the Response. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+
+#### Optional properties
+In addition to properties inherited from [Entity](#entity), Response includes the following additional optional properties:
+
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| attempt| [Attempt](#attempt) | The Attempt associated with this Response SHOULD BE referenced. |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Response commenced.  A start time SHOULD be provided.  If a start time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Response was completed or ended.  An end time SHOULD be provided.  If an end time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |Represents the total interval of time required to complete this Response.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
+
+#### Example
+```json
+{
+    TODO
+}
+```
 
 <a name="result" />
 #### Result
