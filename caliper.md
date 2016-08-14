@@ -2277,7 +2277,7 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Attempt commenced.  A start time SHOULD be provided.  If start time is specified, the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Attempt commenced.  A start time SHOULD be provided.  If a start time is specified, the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
 | endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Attempt ended or was terminated.  If an end time is specified, the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
 | duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |Represents the total interval of time required to complete this Attempt.  If a duration is specified, the value MUST conform to the ISO-8601 duration format. |
 
@@ -2304,19 +2304,23 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 
 <a name="audioObject" />
 #### AudioObject
-A Caliper ```AudioObject``` represents an audio or sound file.  It is analogous to [sdo:AudioObject](http://schema.org/AudioObject).
+A Caliper AudioObject represents an audio or sound file.  It is analogous to an [sdo:AudioObject](http://schema.org/AudioObject).
 
-###### subClassOf 
+#### subClassOf 
 [MediaObject](#mediaObject)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/AudioObject](http://purl.imsglobal.org/caliper/v1/AudioObject)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An AudioObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AudioObject MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AudioObject. |
 
-###### Requirements
-* An ```AudioObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AudioObject.
+#### Optional properties
+Same as [MediaObject](#mediaObject).
 
 ###### Example
-```
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "http://www.fdrlibrary.marist.edu/archives/collections/utterances_audio/direct_download.php?file=afdr067.mp3",
