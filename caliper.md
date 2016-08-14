@@ -1051,8 +1051,8 @@ TODO add additional intro text
         "name": "Quiz One",
         "dateCreated": "2016-08-01T06:00:00.000Z",
         "dateModified": "2016-09-02T11:30:00.000Z",
-        "datePublished": "2015-09-15T10:10:00.000Z",
-        "dateToActivate": "2015-09-15T10:15:00.000Z",
+        "datePublished": "2016-09-15T10:10:00.000Z",
+        "dateToActivate": "2016-09-15T10:15:00.000Z",
         "dateToStartOn": "2016-09-16T05:00:00.000Z",
         "dateToSubmit": "2016-09-18T11:59:59.000Z",
         "maxAttempts": 2,
@@ -1547,7 +1547,7 @@ TODO note referrer property
         "name": "Python for Everybody.  Exploring Data using Python 3",
         "version": "2016-Jul-05 First Complete Python 3.0 version"
     },
-    "eventTime": "2015-09-15T10:15:00.000Z",
+    "eventTime": "2016-09-15T10:15:00.000Z",
     "referrer": {
         "@id": "https://example.edu/semesters/201601/courses/301/sections/1/pages/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
@@ -1880,7 +1880,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
         "name": "Python for Everybody.  Exploring Data using Python 3",
         "version": "2016-Jul-05 First Complete Python 3.0 version"
     },
-    "eventTime": "2015-09-15T10:15:00.000Z",
+    "eventTime": "2016-09-15T10:15:00.000Z",
     "edApp": {
         "@id": "https://example.com/viewer",
         "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
@@ -2474,8 +2474,8 @@ In addition to properties inherited from [Organization](#organization), CourseOf
     "courseNumber": "POL101",
     "academicSession": "Fall-2016",
     "name": "Political Science 101: The American Revolution",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z"
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
@@ -2816,7 +2816,7 @@ Inherited from [DigitalResource](#digitalResource).
 ### FillinBlankResponse
 A Caliper FillinBlankResponse represents a form of response in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.  FillinBlankResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-TODO
+#### TODO
 * confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
 
 #### subClassOf 
@@ -2832,7 +2832,7 @@ TODO
 | assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
 #### Optional properties
-In addition to properties inherited from [Entity](#entity), Response includes the following additional optional properties:
+In addition to properties inherited from [Response](#response), FillinBlankResponse includes the following additional optional properties:
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
@@ -2872,13 +2872,12 @@ In addition to properties inherited from [Entity](#entity), Response includes th
             }
         },
         "count": 1,
-        "dateCreated": "2015-08-01T06:00:00.000Z",
-        "startedAtTime": "2015-09-15T10:15:00.000Z",
-        "endedAtTime": "2015-09-15T10:15:15.000Z"
+        "startedAtTime": "2016-09-15T10:15:02.000Z",
+        "endedAtTime": "2016-09-15T10:15:12.000Z"
     },
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "startedAtTime": "2015-09-15T10:15:00.000Z",
-    "endedAtTime": "2015-09-15T10:15:15.000Z",
+    "dateCreated": "2016-09-15T10:15:12.000Z",
+    "startedAtTime": "2016-09-15T10:15:02.000Z",
+    "endedAtTime": "2016-09-15T10:15:12.000Z",
     "values": [ "tuple", "immutable" ]
 }
 ```
@@ -2995,8 +2994,8 @@ Annotation](#annotation)
   "@id": "https://example.edu/highlights/12345",
   "@type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
   "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
   "selection": {
     "end": "489",
     "start": "455"
@@ -3185,79 +3184,141 @@ A Caliper ```Message``` is a digital form of written communication sent to a rec
  ```
 <a name="multipleChoiceResponse" />
 #### MultipleChoiceResponse
-A Caliper ```MultipleChoiceResponse``` represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.
+A Caliper MultipleChoiceResponse represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.  MultipleChoiceResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-###### subClassOf 
+#### TODO
+* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
+
+#### subClassOf 
 [Response](#response)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| value | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The selected choice.  | 0..1 |
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A MultipleChoiceResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MultipleChoiceResponse MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse. |
+| actor | [Person](#person) | The Person who initiated the Response MUST be specified. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
-###### JSON-LD Serialization
-* A ```MultipleChoiceResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse.
-* A ```MultipleChoiceResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
+#### Optional properties
+In addition to properties inherited from [Response](#response), MultipleChoiceResponse includes the following additional optional properties:
 
-###### Example
-```
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| value | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The selected option that constitutes the response MAY be provided.  |
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/2/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
-  "actor": "https://example.edu/user/554433",
-  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/2",
-  "attempt": {
-    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/2/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-    "actor": "https://example.edu/user/554433",
-    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/2",
-    "count": 1,
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "startedAtTime": "2015-09-15T10:15:00.000Z"
-  },
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "startedAtTime": "2015-09-15T10:15:00.000Z",
-  "value": "C"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/2/users/554433/responses/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+    },
+    "assignable": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/2",
+        "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+        "isPartOf": {
+            "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+        }
+    },
+    "attempt": {
+        "@id": "https: //example.edu/terms/2/courses/215/sections/3/assess/1/items/2/users/554433/attempts/1",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Attempt",
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+        },
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/2",
+            "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+            "isPartOf": {
+                "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+                "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+            }
+        },
+        "count": 1,
+        "startedAtTime": "2016-09-15T10:15:14.000Z",
+        "endedAtTime": "2016-09-15T10:15:20.000Z"
+    },
+    "dateCreated": "2016-09-15T10:15:20.000Z",
+    "startedAtTime": "2016-09-15T10:15:14.000Z",
+    "endedAtTime": "2016-09-15T10:15:20.000Z",
+    "value": "C"
 }
 ```
 
 <a name="multipleResponseResponse" />
-#### MultipleResponseResponse
-A Caliper ```MultipleResponseResponse``` represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
+### MultipleResponseResponse
+A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.  MultipleResponseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-###### subClassOf 
+#### TODO
+* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
+
+#### subClassOf 
 [Response](#response)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| values | String array | One or more response values  | 0..1 |
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A MultipleResponseResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MultipleResponseResponse MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse. |
+| actor | [Person](#person) | The Person who initiated the Response MUST be specified. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
-###### JSON-LD Serialization
-* A ```MultipleResponseResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse.
-* A ```MultipleResponseResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
+#### Optional properties
+In addition to properties inherited from [Response](#response), MultipleResponseResponse includes the following additional optional properties:
 
-###### Example
-```
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| values | List&lt;[xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)&gt; | The ordered set of one or more selected options that constitutes the response MAY be provided.  |
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/3/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
-  "actor": "https://example.edu/user/554433",
-  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/3",
-  "attempt": {
-    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/3/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-    "actor": "https://example.edu/user/554433",
-    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/3",
-    "count": 1,
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "startedAtTime": "2015-09-15T10:15:00.000Z"
-  },
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "startedAtTime": "2015-09-15T10:15:00.000Z",
-  "values": ["A", "D"]
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3/users/554433/responses/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+    },
+    "assignable": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3",
+        "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+        "isPartOf": {
+            "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+        }
+    },
+    "attempt": {
+        "@id": "https: //example.edu/terms/2/courses/215/sections/3/assess/1/items/3/users/554433/attempts/1",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Attempt",
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+        },
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3",
+            "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+            "isPartOf": {
+                "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+                "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+            }
+        },
+        "count": 1,
+        "startedAtTime": "2016-09-15T10:15:22.000Z",
+        "endedAtTime": "2016-09-15T10:15:30.000Z"
+    },
+    "dateCreated": "2016-09-15T10:15:22.000Z",
+    "startedAtTime": "2016-09-15T10:15:22.000Z",
+    "endedAtTime": "2016-09-15T10:15:30.000Z",
+    "values": [ "A", "D", "E" ]
 }
 ```
 
@@ -3428,40 +3489,71 @@ TODO
 
 <a name="selectTextResponse" />
 #### SelectTextResponse
-A Caliper ```SelectTextResponse``` represents a response that identifies text or a mapping from a presented paragraph or list.
+A Caliper SelectTextResponse represents a response that identifies text or a mapping from a presented paragraph or list.  SelectTextResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-###### subClassOf 
+#### TODO
+* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
+
+#### subClassOf 
 [Response](#response)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| values | String array | One or more response values  | 0..1 |
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A SelectTextResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a SelectTextResponse MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SelectTextResponse. |
+| actor | [Person](#person) | The Person who initiated the Response MUST be specified. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
-###### JSON-LD Serialization
-* A ```SelectTextResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SelectTextResponse.
-* A ```SelectTextResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
+#### Optional properties
+In addition to properties inherited from [Response](#response), SelectTextResponse includes the following additional optional properties:
 
-###### Example
-```
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| value | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The selected text that constitutes the response MAY be provided.  |
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/4/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
-  "actor": "https://example.edu/user/554433",
-  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/4",
-  "attempt": {
-    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/4/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-    "actor": "https://example.edu/user/554433",
-    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/4",
-    "count": 1,
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "startedAtTime": "2015-09-15T10:15:00.000Z"
-  },
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "startedAtTime": "2015-09-15T10:15:00.000Z",
-  "values": ["You are quite right in calling for negotiation. Indeed, this is the very purpose of direct action. Nonviolent direct action seeks to create such a crisis and foster such a tension that a community which has constantly refused to negotiate is forced to confront the issue. It seeks so to dramatize the issue that it can no longer be ignored."]
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/4/users/554433/responses/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+    },
+    "assignable": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/4",
+        "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+        "isPartOf": {
+            "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+        }
+    },
+    "attempt": {
+        "@id": "https: //example.edu/terms/2/courses/215/sections/3/assess/1/items/4/users/554433/attempts/1",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Attempt",
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+        },
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/4",
+            "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+            "isPartOf": {
+                "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+                "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+            }
+        },
+        "count": 1,
+        "startedAtTime": "2016-09-15T10:15:32.000Z",
+        "endedAtTime": "2016-09-15T10:15:38.000Z"
+    },
+    "dateCreated": "2016-09-15T10:15:32.000Z",
+    "startedAtTime": "2016-09-15T10:15:32.000Z",
+    "endedAtTime": "2016-09-15T10:15:38.000Z",
+    "value": "Caliper Sensor API"
 }
 ```
 
@@ -3532,20 +3624,20 @@ Annotation](#annotation)
   "@id": "https://example.edu/shared/9999",
   "@type": "http://purl.imsglobal.org/caliper/v1/SharedAnnotation",
   "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/3)",
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
   "withAgents": [
     {
       "@id": "https://example.edu/user/657585",
       "@type": "http://purl.imsglobal.org/caliper/v1/Person",
-      "dateCreated": "2015-08-01T06:00:00.000Z",
-      "dateModified": "2015-09-02T11:30:00.000Z"
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "dateModified": "2016-09-02T11:30:00.000Z"
     },
     {
       "@id": "https://example.edu/user/667788",
       "@type": "http://purl.imsglobal.org/caliper/v1/Person",
-      "dateCreated": "2015-08-01T06:00:00.000Z",
-      "dateModified": "2015-09-02T11:30:00.000Z"
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "dateModified": "2016-09-02T11:30:00.000Z"
     }
   ]
 }
@@ -3599,8 +3691,8 @@ Annotation](#annotation)
   "@id": "https://example.edu/tags/7654",
   "@type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
   "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/4)",
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
   "tags": ["to read", "1765", "shared with project team"]
 }
 ```
@@ -3676,40 +3768,71 @@ A Caliper ```Thread``` represents a series of one or more messages that share a 
 
 <a name="trueFalseResponse" />
 #### TrueFalseResponse
-A Caliper ```TrueFalseResponse``` represents a response to a question in which only two possible options are provided: true or false.
+A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided: true or false.   TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-###### subClassOf 
+#### TODO
+* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
+
+#### subClassOf 
 [Response](#response)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| value | [xsd:boolean]( https://www.w3.org/TR/xmlschema11-2/#boolean) | Either a true or false value is provided.  | 0..1 |
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A  TrueFalseResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a  TrueFalseResponse MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ TrueFalseResponse. |
+| actor | [Person](#person) | The Person who initiated the Response MUST be specified. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
-###### JSON-LD Serialization
-* A ```TrueFalseResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/TrueFalseResponse.
-* A ```TrueFalseResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
+#### Optional properties
+In addition to properties inherited from [Response](#response), SelectTextResponse includes the following additional optional properties:
 
-###### Example
-```
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| value | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The true/false, yes/no binary selection that constitutes the response MAY be provided.  |
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/5/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
-  "actor": "https://example.edu/user/554433",
-  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/5",
-  "attempt": {
-    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/5/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-    "actor": "https://example.edu/user/554433",
-    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/5",
-    "count": 1,
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "startedAtTime": "2015-09-15T10:15:00.000Z"
-  },
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "startedAtTime": "2015-09-15T10:15:00.000Z",
-  "value": false
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/5/users/554433/responses/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+    },
+    "assignable": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/5",
+        "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+        "isPartOf": {
+            "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+        }
+    },
+    "attempt": {
+        "@id": "https: //example.edu/terms/2/courses/215/sections/3/assess/1/items/5/users/554433/attempts/1",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Attempt",
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+        },
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/5",
+            "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+            "isPartOf": {
+                "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+                "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+            }
+        },
+        "count": 1,
+        "startedAtTime": "2016-09-15T10:15:40.000Z",
+        "endedAtTime": "2016-09-15T10:15:45.000Z"
+    },
+    "dateCreated": "2016-09-15T10:15:45.000Z",
+    "startedAtTime": "2016-09-15T10:15:40.000Z",
+    "endedAtTime": "2016-09-15T10:15:45.000Z",
+    "value": "true"
 }
 ```
 
