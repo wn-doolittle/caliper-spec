@@ -2364,6 +2364,30 @@ In addition to properties inherited from Annotation](#annotation), BookmarkAnnot
 }
 ```
 
+<a name="chapter" />
+### Chapter
+A Caliper Chapter represents a major sub-division of a piece of digital content.  Document inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
+
+#### subClassOf 
+[DigitalResource](#digitalResource)
+
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Chapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Chapter MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Chapter. |
+
+#### Optional properties
+Same as [DigitalResource](#digitalResource).
+
+#### Example
+```json
+{
+    TODO
+}
+```
+
 <a name="collection" />
 ### Collection
 A Caliper Collection is a generic class that represents an ordered set of entities.  Collection inherits all the properties and requirements defined for [Entity](#entity), its superclass.  It also includes an optional [items](#items) property for referencing the ordered list of entities that comprise the Collection.  Given that Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.  Collection is analogous to a [dcmitype:Collection](http://purl.org/dc/dcmitype/Collection) or a [sioc:Container](http://rdfs.org/sioc/spec/#term_Container).
@@ -2621,9 +2645,33 @@ A Caliper DigitalResourceCollection is a generic class that represents an ordere
 }
 ```
 
+<a name="document" />
+### Document
+A Caliper Document represents a piece of digital content.  Document inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
+
+#### subClassOf 
+[DigitalResource](#digitalResource)
+
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Document SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Document MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Document. |
+
+#### Optional properties
+Same as [DigitalResource](#digitalResource).
+
+#### Example
+```json
+{
+    TODO
+}
+```
+ 
 <a name="epubChapter" />
 ### EpubChapter (DEPRECATED)
-A Caliper EpubChapter represents a major structural division of a piece of writing.  It is analogous to an [idpf:chapter](http://www.idpf.org/epub/vocab/structure/#chapter).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubChapter represents a major structural division of a piece of writing.  EpubChapter inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:chapter](http://www.idpf.org/epub/vocab/structure/#chapter).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### subClassOf 
 [DigitalResource](#digitalResource)
@@ -2661,7 +2709,7 @@ Same as [DigitalResource](#digitalResource).
 
 <a name="epubPart" />
 ### EpubPart (DEPRECATED)
-A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  It is analogous to an [idpf:part](http://www.idpf.org/epub/vocab/structure/#part).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  EpubPart inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:part](http://www.idpf.org/epub/vocab/structure/#part).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### subClassOf 
 [DigitalResource](#digitalResource)
@@ -2694,7 +2742,7 @@ Same as [DigitalResource](#digitalResource).
 
 <a name="epubSubChapter" />
 #### EpubSubChapter (Deprecated)
-A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).  EpubSubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).  EpubSubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### subClassOf 
 [DigitalResource](#digitalResource)
@@ -2737,7 +2785,7 @@ Same as [DigitalResource](#digitalResource).
 
 <a name="epubVolume" />
 #### EpubVolume
-A Caliper EpubVolume represents a component of a collection.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).  EpubVolume is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).  EpubVolume is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### subClassOf 
 [DigitalResource](#digitalResource)
