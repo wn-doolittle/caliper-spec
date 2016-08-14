@@ -2277,9 +2277,9 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Attempt commenced.  A start time SHOULD be provided.  If a start time is specified, the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
-| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Attempt ended or was terminated.  If an end time is specified, the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
-| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |Represents the total interval of time required to complete this Attempt.  If a duration is specified, the value MUST conform to the ISO-8601 duration format. |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Attempt commenced.  A start time SHOULD be provided.  If a start time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Attempt ended or was terminated.  If an end time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |Represents the total interval of time required to complete this Attempt.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
 
 #### Example
 ```json
@@ -2495,38 +2495,66 @@ In addition to properties inherited from [CourseOffering](#courseOffering), Cour
 ```
 
 <a name="digitalResource" />
-#### DigitalResource
-A Caliper ```DigitalResource``` is a generic class that represents a content item.  It is analogous to an [sdo:CreativeWork](https://schema.org/CreativeWork).
+### DigitalResource
+A Caliper DigitalResource is a generic class that represents a content item.  DigitalResource inherits all the properties and requirements defined for [Entity](#entity), its superclass.  Given that DigitalResource represents a generic type it is RECOMMENDED that only subclasses of DigitalResource be employed to represent nodes in the learning graph.  It is analogous to an [sdo:CreativeWork](https://schema.org/CreativeWork).
 
-###### subClassOf 
+TODO
+* confirm: change property name alignedLearningObjective to learningObjectives to match naming pattern of other properties.
+
+#### subClassOf 
 [Entity](#entity)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/DigitalResource](http://purl.imsglobal.org/caliper/v1/DigitalResource)
+#### Subclasses
+[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Forum](#forum), [Frame](#frame), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Page](#page), [Thread](#thread), [WebPage](#webpage)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ---: |
-| creator | [Agent](#agent) | The ```Agent``` responsible for bringing the described ```DigitalResource``` into being.  Analogous to [sdo:Creator](http://schema.org/Creator) or [dcterms:creator](http://purl.org/dc/terms/creator). | 0..1 |
-| ~~objectType~~ | ~~[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)~~ | ~~decremented~~| ~~0..1~~ |
-| keywords | List&lt;[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)&gt; | A set of one or more words that are used to tag this ```DigitalResource```.  Analogous to [sdo:keywords](http://schema.org/keywords) | 0..1 |
-| alignedLearningObjective | List&lt;[LearningObjective](#learningobjective)&gt; | One or more [LearningObjectives](#learningobject) that describe what the ```actor``` is expected to accomplish after engaging with this ```DigitalResource``` | 0..1 |
-| isPartOf | [DigitalResource](#digitalResource) | A related ```DigitalResource``` that includes or incorporates this ```DigitalResource``` as a part of its whole.  Analogous to [sdo:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf). | 0..1 |
-| datePublished | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents the publication date of this ```DigitalResource```.  Analogous to [sdo:datePublished](http://schema.org/datePublished) | 0..1 |
-| version | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | An identifier that designates the current form of this ```DigitalResource```.  Analogous to [sdo:version](http://schema.org/version) | 0..1 |
+#### Deprecated subclasses
+[EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
 
-###### Requirements
-* Given that ```DigitalResource``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
-* If a generic ```DigitalResource``` is included in an [Event](#event) instead of one of its subclasses, the ```DigitalResource``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource. 
-* If a ```DigitalResource``` [datePublished](#datePublished) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A DigitalResource SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a DigitalResource MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |  If a generic DigitalResource is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/DigitalResource; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/Message.  |
 
-###### Subclasses
-[Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [AudioObject](#audioobject), [DigitalResource](#digitalResource), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Frame](#frame), [ImageObject](#imageobject), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Reading](#reading), [Thread](#thread), [VideoObject](#videoobject), [WebPage](#webpage)
+#### Optional properties
+In addition to properties inherited from [Entity](#entity), DigitalResource includes the following additional optional properties:
+
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| creators | List&lt;[Agent](#agent)&gt; | An ordered list of agents, typically of type Person, responsible for bringing this DigitalResource into being.  Analogous to [sdo:Creator](http://schema.org/Creator) or [dcterms:creator](http://purl.org/dc/terms/creator). |
+| mediaType | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | TODO |
+| keywords | List&lt;[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)&gt; | A set of one or more words or expressions that are used to identify this DigitalResource.  Analogous to [sdo:keywords](http://schema.org/keywords) |
+| alignedLearningObjective | List&lt;[LearningObjective](#learningobjective)&gt; | One or more [LearningObjectives](#learningobject) that describe what the actor is expected to accomplish after engaging with this DigitalResource. |
+| isPartOf | [DigitalResource](#digitalResource) | A related DigitalResource that includes or incorporates this DigitalResource as a part of its whole.  Analogous to [sdo:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf). |
+| datePublished | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents the publication date of this DigitalResource.  If a publication date is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [sdo:datePublished](http://schema.org/datePublished) |
+| version | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | An identifier that designates the current form of this DigitalResource.  Analogous to [sdo:version](http://schema.org/version) |
+
+#### Deprecated properties
+The following properties have been deprecated and will be removed in a future version of the specification.  Deprecated properties SHOULD NOT be referenced.
+
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| objectType | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) |  DEPRECATED |
 
 ###### Example
-```
+```json
 {
-  TODO
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https: //example.edu/semesters/201601/courses/1776/sections/3/resources/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResource",
+    "name": "Course Syllabus",
+    "creators": [
+        {
+            "@id": "https://example.edu/users/223344",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        }
+    ],
+    "isPartOf": {
+        "@id": "https: //example.edu/semesters/201601/courses/1776/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+    },
+    "dateCreated": "2016-08-02T11:32:00.000Z"
 }
 ```
 
@@ -2956,7 +2984,7 @@ A Caliper ```MediaObject``` represents a generic piece of media content analogou
 ###### Requirements
 * Given that ```MediaObject``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
 * If a generic ```MediaObject``` is included in an [Event](#event) instead of one of its subclasses, the ```MediaObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject.
-* If a ```duration``` is specified, the value MUST conform to the ISO-8601 duration format.
+* If a ```duration``` is specified the value MUST conform to the ISO-8601 duration format.
 
 ###### Subclasses
 [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject) 
@@ -3229,9 +3257,9 @@ A Caliper ```Response``` is a generic class that represents the data provided by
 * The ```assignable``` associated with this ```Attempt``` MUST be specified.
 * The ```actor``` initiating the ```Attempt``` MUST be specified.
 * An ```Response``` [startedAtTime](#startedAtTime) SHOULD be provided. 
-* If an ```Response``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision. 
-* If an ```Response``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* If an ```Response``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
+* If an ```Response``` [startedAtTime](#startedAtTime) is specified the value MUST conform to the ISO-8601 date and time format with millisecond precision. 
+* If an ```Response``` [endedAtTime](#endedAtTime) is specified the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* If an ```Response``` [duration](#duration) is specified the value MUST conform to the ISO-8601 duration format.
 
 ###### JSON-LD Serialization
 * If a generic ```Response``` is included in an [Event](#event) instead of one of its subclasses, the ```Response``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Response.
@@ -3314,9 +3342,9 @@ A Caliper ```Session``` represents a Web application user session.
 ###### Requirements
 * A ```Session``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session.
 * It is RECOMMENDED that a Session [actor](#actor) be specified.
-* If a ```Session``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
-* If a ```Session``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* If a ```Session``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
+* If a ```Session``` [startedAtTime](#startedAtTime) is specified the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
+* If a ```Session``` [endedAtTime](#endedAtTime) is specified the value MUST conform to the ISO-8601 date and time format with millisecond precision.
+* If a ```Session``` [duration](#duration) is specified the value MUST conform to the ISO-8601 duration format.
 
 ###### Example
 ```
