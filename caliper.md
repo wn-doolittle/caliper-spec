@@ -2741,7 +2741,7 @@ Same as [DigitalResource](#digitalResource).
 ```
 
 <a name="epubSubChapter" />
-#### EpubSubChapter (Deprecated)
+#### EpubSubChapter (DEPRECATED)
 A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).  EpubSubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### subClassOf 
@@ -2784,7 +2784,7 @@ Same as [DigitalResource](#digitalResource).
 ```
 
 <a name="epubVolume" />
-#### EpubVolume
+#### EpubVolume (DEPRECATED)
 A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).  EpubVolume is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### subClassOf 
