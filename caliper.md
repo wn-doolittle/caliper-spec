@@ -2341,7 +2341,7 @@ A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An BookmarkAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an BookmarkAnnotation MUST be assigned a blank node identifier. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A BookmarkAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a BookmarkAnnotation MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation. |
 
 #### Optional properties
@@ -2365,67 +2365,55 @@ In addition to properties inherited from Annotation](#annotation), BookmarkAnnot
 ```
 
 <a name="collection" />
-#### Collection
-A Caliper ```Collection``` is a generic class that represents a set of entities.  It is analogous to a [dcmitype:Collection](http://purl.org/dc/dcmitype/Collection) or a [sioc:Container](http://rdfs.org/sioc/spec/#term_Container).
+### Collection
+A Caliper Collection is a generic class that represents an ordered set of entities.  Collection inherits all the properties and requirements defined for [Entity](#entityy), its superclass.  It also includes an optional [items](#items) property for referencing the ordered list of entities that comprise the Collection.  Given that Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.  Collection is analogous to a [dcmitype:Collection](http://purl.org/dc/dcmitype/Collection) or a [sioc:Container](http://rdfs.org/sioc/spec/#term_Container).
 
-###### subClassOf
+#### subClassOf
 [Entity](#entity)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/Collection](http://purl.imsglobal.org/caliper/v1/Collection)
+#### Subclasses 
+[DigitalResourceCollection](#digitalResourceCollection)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| isPartOf | [Entity](#entity) | The parent ```Entity``` of this ```Collection```.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent). |  0..1  |
-| items | List&lt;[Entity](#entity)&gt; | The set of ```items``` that comprise this ```Collection```. | 0..1 |
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Collection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Collection MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Collection. |
 
-###### Requirements
-* Given that a ```Collection``` represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.
-* If a generic ```Collection``` is included in an [Event](#event) instead of one of its subclasses, the ```Collection``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Collection.
+#### Optional properties
+In addition to properties inherited from [Entity](#entity), Collection includes the following additional optional properties:
 
-###### Subclasses 
-[Assessment](#assessment), [Forum](#forum), [Thread](#thread)
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| isPartOf | [Entity](#entity) | The parent Entity of this Collection. |
+| items | List&lt;[Entity](#entity)&gt; | The ordered set of items that comprise this Collection. |
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/semesters/201601/courses/301/collections/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
-  "name": "Video Collection",
-  "items": [
-    {
-      "@id": "https://example.com/videos/1225",
-      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-      "mediaType": "video/ogg",
-      "name": "Video 1225",
-      "dateCreated": "2016-08-01T06:00:00.000Z",
-      "duration": "PT1H12M27S",
-      "version": "1.0"
-    },
-    {
-      "@id": "https://example.com/videos/6789",
-      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-      "mediaType": "video/ogg",
-      "name": "Video 6789",
-      "dateCreated": "2016-08-01T06:00:00.000Z",
-      "duration": "PT55M13S",
-      "version": "2.1"
-    }
-  ],
-  "isPartOf": {
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-    "subOrganizationOf": {
-      "@id": "https://example.edu/semesters/201601/courses/301",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
-    }
-  },
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+    "name": "Groups",
+    "items": [
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups/1",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Group"
+        },
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups/3",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Group"
+        },
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups/5",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Group"
+        }
+    ],
+    "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
+
 <a name="courseOffering" />
 #### CourseOffering
 A Caliper ```CourseOffering``` represents the occurrence of a course or a class in a specific term, semester, etc.  ```CourseOffering``` is composed of a subset of properties specified in the IMS LTI 2.0 specification, which in turn, draws inspiration from the IMS LIS 1.0 specification.
@@ -2527,6 +2515,69 @@ A Caliper ```DigitalResource``` is a generic class that represents a content ite
 ```
 {
   TODO
+}
+```
+
+<a name="digitalResourceCollection" />
+### DigitalResourceCollection
+A Caliper DigitalResourceCollection is a generic class that represents an ordered set of digital content.  DigitalResourceCollection inherits all the properties and requirements defined for [Collection](#collection) and [DigitalResource](#digitalResources), its superclasses.
+
+#### subClassOf
+[Collection](#collection)
+
+#### Subclasses 
+[Assessment](#assessment), [Forum](#forum), [Thread](#thread)
+
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A DigitalResourceCollection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a DigitalResourceCollection MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Collection. |
+
+#### Optional properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| isPartOf | [Entity](#entity) | The parent Entity of this Collection. |
+| items | List&lt;[DigitalResource](#digitalResource)&gt; | The ordered set of items that comprise this Collection. |
+
+#### Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/collections/3",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+    "name": "Video Collection",
+    "items": [
+        {
+            "@id": "https://example.com/videos/1225",
+            "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+            "mediaType": "video/ogg",
+            "name": "Video 1225",
+            "dateCreated": "2016-08-01T06:00:00.000Z",
+            "duration": "PT1H12M27S",
+            "version": "1.0"
+        },
+        {
+            "@id": "https://example.com/videos/5629",
+            "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+            "mediaType": "video/ogg",
+            "name": "Video 5629",
+            "dateCreated": "2016-08-01T06:00:00.000Z",
+            "duration": "PT55M13S",
+            "version": "2.1"
+        }
+    ],
+    "isPartOf": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "subOrganizationOf": {
+            "@id": "https://example.edu/semesters/201601/courses/301",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+        }
+    },
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
