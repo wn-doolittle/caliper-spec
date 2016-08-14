@@ -3264,6 +3264,30 @@ A Caliper ```Organization``` represents a group of people organized into a commu
 }
 ```
 
+<a name="page" />
+### Page
+A Caliper Page represents an item of paginated content.  Page inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
+
+#### subClassOf 
+[DigitalResource](#digitalResource)
+
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Page SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Page MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Page. |
+
+#### Optional properties
+Same as [DigitalResource](#digitalResource).
+
+#### Example
+```json
+{
+    TODO
+}
+```
+
 <a name="person" />
 #### Person
 A Caliper ```Person``` represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
