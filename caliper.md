@@ -2319,7 +2319,7 @@ A Caliper AudioObject represents an audio or sound file.  AudioObject inherits a
 #### Optional properties
 Same as [MediaObject](#mediaObject).
 
-###### Example
+#### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2622,122 +2622,143 @@ A Caliper DigitalResourceCollection is a generic class that represents an ordere
 ```
 
 <a name="epubChapter" />
-#### EpubChapter
-A Caliper ```EpubChapter``` represents a major structural division of a piece of writing.  It is analogous to an [idpf:chapter](http://www.idpf.org/epub/vocab/structure/#chapter).
+### EpubChapter (DEPRECATED)
+A Caliper EpubChapter represents a major structural division of a piece of writing.  It is analogous to an [idpf:chapter](http://www.idpf.org/epub/vocab/structure/#chapter).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
-TODO - THIS IS A COLLECTION.
-
-###### subClassOf 
+#### subClassOf 
 [DigitalResource](#digitalResource)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/EpubChapter](http://purl.imsglobal.org/caliper/v1/EpubChapter)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An EpubChapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubChapter MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/EpubChapter. |
 
-###### Example
-```
+#### Optional properties
+Same as [DigitalResource](#digitalResource).
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
-  "@type": "http://www.idpf.org/epub/vocab/structure/#chapter",
-  "name": "Chapter 1",
-  "isPartOf": {
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-    "@type": "http://www.idpf.org/epub/vocab/structure/#part",
-    "name": "Part I",
-    "isPartof": {
-      "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-      "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
-      "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
-      "version": "2nd ed."
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
+    "@type": "http://purl.imsglobal.org/caliper/v1/EpubChapter",
+    "name": "Caliper EpubChapter Deprecation",
+    "isPartOf": {
+        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+        "@type": "http://purl.imsglobal.org/caliper/v1/EpubPart",
+        "name": "Caliper Entity Deprecations",
+        "isPartof": {
+            "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+            "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
+            "name": "Caliper Deprecations",
+            "version": "1.1"
+        }
     }
-  }
 }
 ```
 
 <a name="epubPart" />
-#### EpubPart
-A Caliper ```EpubPart``` represents major structural division of a piece of writing, typically encapsulating a set of related chapters.  It is analogous to an [idpf:part](http://www.idpf.org/epub/vocab/structure/#part).
+### EpubPart (DEPRECATED)
+A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  It is analogous to an [idpf:part](http://www.idpf.org/epub/vocab/structure/#part).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
-TODO - THIS IS A COLLECTION.
-
-###### subClassOf 
+#### subClassOf 
 [DigitalResource](#digitalResource)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/EpubPart](http://purl.imsglobal.org/caliper/v1/EpubPart)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An EpubPart SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubPart MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/EpubPart. |
 
-###### Example
-```
+#### Optional properties
+Same as [DigitalResource](#digitalResource).
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-  "@type": "http://www.idpf.org/epub/vocab/structure/#part",
-  "name": "Part I",
-  "isPartof": {
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-    "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
-    "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
-    "version": "2nd ed."
-  }
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+    "@type": "http://purl.imsglobal.org/caliper/v1/EpubPart",
+    "name": "Caliper Entity Deprecations",
+    "isPartof": {
+        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+        "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
+        "name": "Caliper Deprecations",
+        "version": "1.1"
+    }
 }
 ```
 
 <a name="epubSubChapter" />
-#### EpubSubChapter
-A Caliper ```EpubSubChapter``` represents a major sub-division of a ```EpubChapter```.  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).
+#### EpubSubChapter (Deprecated)
+A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).  EpubSubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
-###### subClassOf 
+#### subClassOf 
 [DigitalResource](#digitalResource)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/EpubSubChapter](http://purl.imsglobal.org/caliper/v1/EpubSubChapter)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An EpubSubChapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubSubChapter MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/EpubSubChapter. |
 
-###### Example
-```
+#### Optional properties
+Same as [DigitalResource](#digitalResource).
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1/1)",
-  "@type": "http://www.idpf.org/epub/vocab/structure/#subchapter",
-  "name": "Section 1.1",
-  "isPartOf": {
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
-    "@type": "http://www.idpf.org/epub/vocab/structure/#chapter",
-    "name": "Chapter 1",
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1/1)",
+    "@type": "http://purl.imsglobal.org/caliper/v1/EpubSubChapter",
+    "name": "Caliper EpubSubChapter Deprecation",
     "isPartOf": {
-      "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-      "@type": "http://www.idpf.org/epub/vocab/structure/#part",
-      "name": "Part I",
-      "isPartof": {
-        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-        "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
-        "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
-        "version": "2nd ed."
-      }
+        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
+        "@type": "http://purl.imsglobal.org/caliper/v1/EpubChapter",
+        "name": "Caliper EpubChapter Deprecation",
+        "isPartOf": {
+            "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+            "@type": "http://purl.imsglobal.org/caliper/v1/EpubPart",
+            "name": "Caliper Entity Deprecations",
+            "isPartof": {
+                "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+                "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
+                "name": "Caliper Deprecations",
+                "version": "1.1"
+            }
+        }
     }
-  }
 }
 ```
 
 <a name="epubVolume" />
 #### EpubVolume
-A Caliper ```EpubVolume``` represents a component of a collection.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).
+A Caliper EpubVolume represents a component of a collection.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).  EpubVolume is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
-TODO - THIS IS A COLLECTION.  RECHECK DEFINITION
-
-###### subClassOf 
+#### subClassOf 
 [DigitalResource](#digitalResource)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/EpubVolume](http://purl.imsglobal.org/caliper/v1/EpubVolume)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An EpubVolume SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubVolume MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/EpubSubChapter. |
 
-###### Example
-```
+#### Optional properties
+Same as [DigitalResource](#digitalResource).
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-  "@type": "http://www.idpf.org/epub/vocab/structure/#volume",
-  "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
-  "version": "2nd ed."
+    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
+    "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
+    "name": "Caliper Deprecations",
+    "version": "1.1"
 }
 ```
 
