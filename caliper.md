@@ -2366,7 +2366,7 @@ In addition to properties inherited from Annotation](#annotation), BookmarkAnnot
 
 <a name="collection" />
 ### Collection
-A Caliper Collection is a generic class that represents an ordered set of entities.  Collection inherits all the properties and requirements defined for [Entity](#entityy), its superclass.  It also includes an optional [items](#items) property for referencing the ordered list of entities that comprise the Collection.  Given that Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.  Collection is analogous to a [dcmitype:Collection](http://purl.org/dc/dcmitype/Collection) or a [sioc:Container](http://rdfs.org/sioc/spec/#term_Container).
+A Caliper Collection is a generic class that represents an ordered set of entities.  Collection inherits all the properties and requirements defined for [Entity](#entity), its superclass.  It also includes an optional [items](#items) property for referencing the ordered list of entities that comprise the Collection.  Given that Collection represents a generic type it is RECOMMENDED that only subclasses of Collection be employed to represent nodes in the learning graph.  Collection is analogous to a [dcmitype:Collection](http://purl.org/dc/dcmitype/Collection) or a [sioc:Container](http://rdfs.org/sioc/spec/#term_Container).
 
 #### subClassOf
 [Entity](#entity)
@@ -2415,34 +2415,41 @@ In addition to properties inherited from [Entity](#entity), Collection includes 
 ```
 
 <a name="courseOffering" />
-#### CourseOffering
-A Caliper ```CourseOffering``` represents the occurrence of a course or a class in a specific term, semester, etc.  ```CourseOffering``` is composed of a subset of properties specified in the IMS LTI 2.0 specification, which in turn, draws inspiration from the IMS LIS 1.0 specification.
+### CourseOffering
+A Caliper CourseOffering represents the occurrence of a course or a class in a specific term, semester or period.  CourseOffering is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.  CourseOffering inherits all the properties and requirements defined for [Organization](#organization), its superclass.
 
-###### subClassOf
+#### subClassOf
 [Organization](#organization)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/CourseOffering](http://purl.imsglobal.org/caliper/v1/CourseOffering)
-
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| courseNumber | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A short-hand identifer of this ```CourseOffering```. | 0..1 |
-| academicSession | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The term or other designated period in which this ```CourseOffering``` occurs.  | 0..1 |
-
-###### Subclasses 
+#### Subclasses 
 [CourseSection](#courseSection)
 
-###### Example
-```
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A CourseOffering SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a CourseOffering MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/CourseOffering. |
+
+#### Optional properties
+In addition to properties inherited from [Organization](#organization), CourseOffering includes the following additional optional properties:
+
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| courseNumber | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A short-hand identifer of this CourseOffering. |
+| academicSession | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The designated period in which this CourseOffering occurs.  |
+
+#### Example
+```json
 {
-  "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall",
-  "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
-  "courseNumber": "POL101",
-  "name": "Political Science 101: The American Revolution",
-  "academicSession": "Fall 2016",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https: //example.edu/semesters/201601/courses/1776",
+    "@type": "http: //purl.imsglobal.org/caliper/v1/CourseOffering",
+    "courseNumber": "POL101",
+    "academicSession": "Fall-2016",
+    "name": "Political Science 101: The American Revolution",
+    "dateCreated": "2015-08-01T06:00:00.000Z",
+    "dateModified": "2015-09-02T11:30:00.000Z"
 }
 ```
 
