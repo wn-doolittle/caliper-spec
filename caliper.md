@@ -2101,8 +2101,8 @@ A Caliper Annotation is a generic class that represents a comment, explanation, 
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Annotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Annotation MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Annotation is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Annotation; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation. |
-| actor | [Person](#person) | The Person who created the Annotation. |
-| annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+| actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
+| annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
 #### Optional properties
 Inherited from [Entity](#entity).
@@ -2268,8 +2268,8 @@ A Caliper Attempt provides a count of the number of times an actor has interacte
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Attempt SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Attempt MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Attempt. |
-| actor | [Person](#person) | The Person who initiated the Attempt. |
-| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+| actor | [Person](#person) | The Person who initiated the Attempt MUST be specified. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 | count | [xsd:nonNegativeInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) | The total number of attempts inclusive of the current Attempt that have been registered against the assigned DigitalResource. |
 
 #### Optional properties
@@ -2343,6 +2343,8 @@ A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A BookmarkAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a BookmarkAnnotation MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation. |
+| actor | [Person](#person) | The Person who created the BookmarkAnnotation MUST be specified. |
+| annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
 #### Optional properties
 In addition to properties inherited from Annotation](#annotation), BookmarkAnnotation includes the following additional optional properties:
@@ -2811,41 +2813,73 @@ Inherited from [DigitalResource](#digitalResource).
 ```
 
 <a name="fillinBlankResponse" />
-#### FillinBlankResponse
-A Caliper ```FillinBlankResponse``` represents a form of response in which a respondent is asked to provide a single word or short textual response that correctly completes a statement.
+### FillinBlankResponse
+A Caliper FillinBlankResponse represents a form of response in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.  FillinBlankResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-###### subClassOf 
+TODO
+* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
+
+#### subClassOf 
 [Response](#response)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| value | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | Single word or short phrase.  | 0..1 |
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A FillinBlankResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a FillinBlankResponse MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/FillinBlankResponse. |
+| actor | [Person](#person) | The Person who initiated the Response MUST be specified. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
-###### JSON-LD Serialization
-* A ```FillinBlankResponse``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/FillinBlankResponse.
-* A ```FillinBlankResponse``` [@id](#id) property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
+#### Optional properties
+In addition to properties inherited from [Entity](#entity), Response includes the following additional optional properties:
 
-###### Example
-```
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| value | List&lt;[xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)&gt; | The ordered set of one or more words, expressions or short phrases that constitutes the response MAY be provided.  |
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
-  "actor": "https://example.edu/user/554433",
-  "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1",
-  "attempt": {
-    "@id": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-    "actor": "https://example.edu/user/554433",
-    "assignable": "https://example.edu/terms/2/courses/215/sections/3/assessments/1/items/1",
-    "count": 1,
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/1/users/554433/responses/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+    },
+    "assignable": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+        "isPartOf": {
+            "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+        }
+    },
+    "attempt": {
+        "@id": "https: //example.edu/terms/2/courses/215/sections/3/assess/1/items/1/users/554433/attempts/1",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/Attempt",
+        "actor": {
+            "@id": "https://example.edu/user/554433",
+            "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
+        },
+        "assignable": {
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+            "isPartOf": {
+                "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
+                "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
+            }
+        },
+        "count": 1,
+        "dateCreated": "2015-08-01T06:00:00.000Z",
+        "startedAtTime": "2015-09-15T10:15:00.000Z",
+        "endedAtTime": "2015-09-15T10:15:15.000Z"
+    },
     "dateCreated": "2015-08-01T06:00:00.000Z",
-    "startedAtTime": "2015-09-15T10:15:00.000Z"
-  },
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "startedAtTime": "2015-09-15T10:15:00.000Z",
-  "values": ["2 July 1776"]
+    "startedAtTime": "2015-09-15T10:15:00.000Z",
+    "endedAtTime": "2015-09-15T10:15:15.000Z",
+    "values": [ "tuple", "immutable" ]
 }
 ```
 
@@ -3357,9 +3391,9 @@ TODO
 | -------- | ----- | -------------- |
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Response SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Response MUST be assigned a blank node identifier. |
-| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic DigitalResource is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Response; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/TrueFalseResponse. |
-| actor | [Person](#person) | The Person who initiated the Response. |
-| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Response is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Response; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/TrueFalseResponse. |
+| actor | [Person](#person) | The Person who initiated the Response MUST be specified. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
 #### Optional properties
 In addition to properties inherited from [Entity](#entity), Response includes the following additional optional properties:
