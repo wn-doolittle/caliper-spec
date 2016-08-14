@@ -1646,7 +1646,8 @@ TODO add description
         "count": 1,
         "dateCreated": "2016-09-15T10:05:00.000Z",
         "startedAtTime": "2016-09-15T10:05:00.000Z",
-        "endedAtTime": "2016-09-15T10:55:00.000Z"
+        "endedAtTime": "2016-09-15T10:55:12.000Z",
+        "duration": "PT50M12S"
     },
     "eventTime": "2016-09-15T10:57:06.000Z",
     "generated": {
@@ -1729,10 +1730,10 @@ TODO add description
             "@type": "http://purl.imsglobal.org/caliper/v1/Person"
         },
         "startedAtTime": "2016-09-15T10:15:00.000Z",
-        "endedAtTime": "2016-09-15T11:05:00.000Z",
-        "duration": "PT3000S"
+        "endedAtTime": "2016-09-15T11:15:00.000Z",
+        "duration": "PT3600S"
     },
-    "eventTime": "2016-09-15T10:15:00.000Z",
+    "eventTime": "2016-09-15T11:15:00.000Z",
     "edApp": {
         "@id": "https://example.com/viewer",
         "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
@@ -1995,9 +1996,9 @@ A Caliper Entity is a generic class that is analogous to an [sdo:Thing](http://s
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ---- | ----------- |
-| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| @id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Entity SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier. |
-| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Entity is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Entity; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/Person. |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Entity SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Entity is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Entity; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/Person. |
 
 #### Optional properties
 | Property | Type | Requirements |
@@ -2057,7 +2058,7 @@ TODO: ADD OTHERS
 
 <a name="agent" />
 ### Agent
-A Caliper Agent is a generic class that represents an Entity that can initiate or perform an action.  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Agent inherits all the properties and requirements defined for Entity, its superclass.  Given that Agent represents a generic type it is RECOMMENDED that only subclasses of Agent be employed to represent nodes in the learning graph.
+A Caliper Agent is a generic class that represents an Entity that can initiate or perform an action.  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Agent inherits all the properties and requirements defined for [Entity](#entity), its superclass.  Given that Agent represents a generic type it is RECOMMENDED that only subclasses of Agent be employed to represent nodes in the learning graph.
 
 #### subClassOf
 [Entity](#entity)
@@ -2068,9 +2069,9 @@ A Caliper Agent is a generic class that represents an Entity that can initiate o
 ### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| @id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Agent SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Agent MUST be assigned a blank node identifier. |
-| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Agent is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Agent; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/Person. |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Agent SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Agent MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Agent is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Agent; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/Person. |
 
 #### Optional properties
 Same as [Entity](#entity).
@@ -2086,7 +2087,7 @@ Same as [Entity](#entity).
 
 <a name="annotation" />
 ### Annotation
-A Caliper Annotation is a generic class that represents a comment, explanation, highlight, mark, note, question or tag linked to a DigitalResource.  The act of sharing a DigitalResource with others is also considered a form of annotation.  Annotation inherits all the properties and requirements defined for Entity, its superclass.  Given that Annotation represents a generic type it is RECOMMENDED that only subclasses of Annotation be employed to represent nodes in the learning graph.
+A Caliper Annotation is a generic class that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.  Annotation inherits all the properties and requirements defined for [Entity](#entity), its superclass.  Given that Annotation represents a generic type it is RECOMMENDED that only subclasses of Annotation be employed to represent nodes in the learning graph.
 
 #### subClassOf
 [Entity](#entity)
@@ -2097,9 +2098,9 @@ A Caliper Annotation is a generic class that represents a comment, explanation, 
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| @id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Annotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Annotation MUST be assigned a blank node identifier. |
-| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Annotation is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Annotation; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation. |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Annotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Annotation MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Annotation is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Annotation; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation. |
 | actor | [Person](#person) | The Person who created the Annotation. |
 | annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
@@ -2107,7 +2108,7 @@ A Caliper Annotation is a generic class that represents a comment, explanation, 
 Same as [Entity](#entity).
 
 ###### Example
-```
+```json
 {
     TODO
 }
@@ -2115,7 +2116,7 @@ Same as [Entity](#entity).
 
 <a name="assessment" />
 ### Assessment
-A Caliper Assessment models TODO . . . .  Assessment inherits all the properties and requirements defined for both AssignableDigitalResource and Collection, its two superclasses.
+A Caliper Assessment models TODO . . . .  Assessment inherits all the properties and requirements defined for both [AssignableDigitalResource](#assignableDigitalResource) and [Collection](#collection), its two superclasses.
 
 #### subClassOf 
 [AssignableDigitalResource](#assignableDigitalResource), [Collection](#collection)
@@ -2123,19 +2124,19 @@ A Caliper Assessment models TODO . . . .  Assessment inherits all the properties
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| @id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Assessment SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Assessment MUST be assigned a blank node identifier. |
-| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment. |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Assessment SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Assessment MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Assessment. |
 
 #### Optional properties
-Same as [AssignableDigitalResource](#assignableDigitalResource) and [Collection](#collection).  Note that the Assessment [items](#items) property is an ordered list is of type AssessmentItem.
+Same as [AssignableDigitalResource](#assignableDigitalResource) and [Collection](#collection).  Note that the Assessment [items](#items) property is an ordered list of type [AssessmentItem](#assessmentItem).
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
 | items | List&lt;[AssessmentItem](#assessmentItem)&gt; | The ordered set of items that comprise this Assessment. |
 
 #### Example
-```
+```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/semesters/201601/courses/301/assessments/1",
@@ -2170,7 +2171,7 @@ Same as [AssignableDigitalResource](#assignableDigitalResource) and [Collection]
 ```
 <a name="assessmentItem" />
 ### AssessmentItem
-A Caliper AssessmentItem models TODO . . . .  Assessment inherits all the properties and requirements defined for AssignableDigitalResource, its superclass.
+A Caliper AssessmentItem models TODO . . . .  Assessment inherits all the properties and requirements defined for [AssignableDigitalResource](#assignableDigitalResource), its superclass.
 
 #### subClassOf 
 [AssignableDigitalResource](#assignableDigitalResource)
@@ -2178,15 +2179,15 @@ A Caliper AssessmentItem models TODO . . . .  Assessment inherits all the proper
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| @id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An AssessmentItem SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AssessmentItem MUST be assigned a blank node identifier. |
-| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem. |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An AssessmentItem SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AssessmentItem MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItem. |
 
 #### Optional properties
 Same as [AssignableDigitalResource](#assignableDigitalResource).
 
 #### Example
-```
+```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3",
@@ -2211,7 +2212,7 @@ Same as [AssignableDigitalResource](#assignableDigitalResource).
 
 <a name="assignableDigitalResource" />
 #### AssignableDigitalResource
-A Caliper AssignableDigitalResource is a generic class that represents digital content associated with a graded or ungraded assignment.  AssignableDigitalResource inherits all the properties and requirements defined for DigitalResource, its superclass.  Given that AssignableDigitalResource represents a generic type it is RECOMMENDED that only subclasses of AssignableDigitalResource be employed to represent nodes in the learning graph.
+A Caliper AssignableDigitalResource is a generic class that represents digital content associated with a graded or ungraded assignment.  AssignableDigitalResource inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  Given that AssignableDigitalResource represents a generic type it is RECOMMENDED that only subclasses of AssignableDigitalResource be employed to represent nodes in the learning graph.
 
 #### subClassOf
 [DigitalResource](#digitalResource)
@@ -2222,12 +2223,12 @@ A Caliper AssignableDigitalResource is a generic class that represents digital c
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| @context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| @id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An AssignableDigitalResource SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AssignableDigitalResource MUST be assigned a blank node identifier. |
-| @type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource. |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An AssignableDigitalResource SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AssignableDigitalResource MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource. |
 
 #### Optional properties
-In addition to the properties inherited from [DigitalResource](#digitalResource), AssignableDigitalResource includes the following additional optional  properties:
+In addition to properties inherited from [DigitalResource](#digitalResource), AssignableDigitalResource includes the following additional optional  properties:
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
@@ -2239,7 +2240,7 @@ In addition to the properties inherited from [DigitalResource](#digitalResource)
 | maxScore | [nonNegativeInteger](#nonNegativeInteger)  | Non-negative integer representing the maximum score permitted. |
 
 ###### Example
-```
+```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/semesters/201601/courses/301/assign/2",
@@ -2255,41 +2256,49 @@ In addition to the properties inherited from [DigitalResource](#digitalResource)
 ```
 
 <a name="attempt" />
-#### Attempt
-A Caliper ```Attempt``` provides a count of the number of times an [Agent](#agent) interacts with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An ```Attempt``` is generated as the result of an action such as starting an [Assessment](#assessment). In the case of an [OutcomeEvent](#outcomeevent) graded action, the ```Attempt``` constitutes the object of the interaction. 
+### Attempt
+A Caliper Attempt provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An Attempt is generated as the result of an action such as starting an [Assessment](#assessment).  Attempt inherits all the properties and requirements defined for [Entity](#entity), its superclass. 
 
-###### subClassOf 
+#### subClassOf 
 [Entity](#entity)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/Attempt](http://purl.imsglobal.org/caliper/v1/Attempt)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Attempt SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Attempt MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Attempt. |
+| actor | [Person](#person) | The Person who initiated the Attempt. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+| count | [xsd:nonNegativeInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) | The total number of attempts inclusive of the current Attempt that have been registered against the assigned DigitalResource. |
 
-####### Properties
-| Property | Type | Description | Conformance |
-| -------- | ---- | ----------- | ----------- |
-| assignable | [DigitalResource](#digitalResource) | The ```DigitalResource``` that is the target of this ```Attempt```. | 1 |
-| actor | [Agent](#agent) | The ```Agent``` who initiates the ```Attempt```.| 1 |
-| count | [xsd:nonNegativeInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) | The total number of attempts inclusive of the current ```Attempt``` that have been registered against the assigned ```DigitalResource```. | 1 |
-| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
-| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when this ```Attempt``` ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
-| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete this ```Attempt```. | 0..1 |
+#### Optional properties
+In addition to properties inherited from [Entity](#entity), Attempt includes the following additional optional  properties:
 
-###### Requirements
-* An ```Attempt``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Attempt.
-* The ```assignable``` associated with this ```Attempt``` MUST be specified.
-* The ```actor``` initiating the ```Attempt``` MUST be specified.
-* An ```Attempt``` [startedAtTime](#startedAtTime) SHOULD be provided. 
-* If an ```Attempt``` [startedAtTime](#startedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision. 
-* If an ```Attempt``` [endedAtTime](#endedAtTime) is specified, the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* If an ```Attempt``` [duration](#duration) is specified, the value MUST conform to the ISO-8601 duration format.
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Attempt commenced.  A start time SHOULD be provided.  If start time is specified, the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Attempt ended or was terminated.  If an end time is specified, the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |Represents the total interval of time required to complete this Attempt.  If a duration is specified, the value MUST conform to the ISO-8601 duration format. |
 
-
-###### Example
-```
+#### Example
+```json
 {
-
- TODO
- 
+    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/users/554433/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "assignable": {
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+    },
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "count": 1,
+    "dateCreated": "2016-09-15T10:05:00.000Z",
+    "startedAtTime": "2016-09-15T10:05:00.000Z",
+    "endedAtTime": "2016-09-15T10:55:30.000Z",
+    "duration": "PT50M30S"
 }
 ```
 
@@ -2838,7 +2847,7 @@ TODO
       "dateCreated": "2016-08-01T06:00:00.000Z"
     }
   ],
-  "duration": 1420,
+  "duration": "PT50M30S",
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "dateModified": "2016-09-02T11:30:00.000Z",
   "version": "1.0"
@@ -3482,7 +3491,7 @@ A Caliper ```VideoObject``` represents a visual recording stored in digital form
   "@id": "https://example.com/super-media-tool/videos/1225",
   "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
   "name": "American Revolution - Key Figures Video",
-  "duration": 1420,
+  "duration": "PT58M37S",
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "dateModified": "2016-09-02T11:30:00.000Z",
   "version": "1.0"
