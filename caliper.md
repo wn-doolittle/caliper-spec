@@ -3289,25 +3289,29 @@ Same as [DigitalResource](#digitalResource).
 ```
 
 <a name="person" />
-#### Person
-A Caliper ```Person``` represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
+### Person
+A Caliper ```Person``` represents a human being, alive or deceased, real or imaginary.  Person inherits all the properties and requirements defined for [Agent](#agent), its superclass.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
-###### subClassOf
+#### subClassOf
 [Agent](#agent)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/Person](http://purl.imsglobal.org/caliper/v1/Person)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Person SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Person MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person. |
 
-###### Requirements
-* A ```Person``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Person.
+#### Optional properties
+Inherits from [Agent](#agent).
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/users/554433",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Person",
-  "dateCreated": "2016-08-01T06:00:00.000Z"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
