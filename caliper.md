@@ -2416,7 +2416,7 @@ In addition to properties inherited from [Entity](#entity), Collection includes 
 
 <a name="courseOffering" />
 ### CourseOffering
-A Caliper CourseOffering represents the occurrence of a course or a class in a specific term, semester or period.  CourseOffering is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.  CourseOffering inherits all the properties and requirements defined for [Organization](#organization), its superclass.
+A Caliper CourseOffering represents the occurrence of a course or a class in a specific semester, term or period.  CourseOffering is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.  CourseOffering inherits all the properties and requirements defined for [Organization](#organization), its superclass.
 
 #### subClassOf
 [Organization](#organization)
@@ -2454,38 +2454,43 @@ In addition to properties inherited from [Organization](#organization), CourseOf
 ```
 
 <a name="courseSection" />
-#### CourseSection
-A Caliper ```CourseSection``` represents an instance of a ```CourseOffering``` in a specific term, semester, etc..  These groups may include everyone in the class or course, or may be subsets of that whole group.  A ```CourseSections``` may include sub-sections (each is created as a separate ```Group```).  Examples of a ```CourseSection``` are Lecture, Laboratory, Studio, Seminar, etc.  ```CourseSection```  is composed of a subset of properties specified in the IMS LTI 2.0 specification, which in turn, draws inspiration from the IMS LIS 1.0 specification.
+### CourseSection
+A Caliper CourseSection represents an instance of a [CourseOffering](#courseOffering) occuring during a specific semester, term or period.  A CourseSection may include sub-sections (each is created as a separate [Group](#group)).  CourseSection is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.  CourseSection inherits all the properties and requirements defined for [CourseOffering](#courseOffering), its superclass.
 
-###### subClassOf
+#### subClassOf
 [CourseOffering](#courseOffering)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/CourseSection](http://purl.imsglobal.org/caliper/v1/CourseSection)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A CourseSection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a CourseSection MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/CourseSection. |
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| category | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | TODO | 0..1 |
+#### Optional properties
+In addition to properties inherited from [CourseOffering](#courseOffering), CourseSection includes the following additional optional properties:
 
-###### Example
-```
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| category | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | Label that characterizes the purpose of the section such as lecture, lab or seminar.  |
+
+#### Example
+```json
 {
-  "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
-  "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-  "courseNumber": "POL101",
-  "name": "Political Science 101: The American Revolution, Section 101",
-  "category": "Lab",
-  "academicSession": "Fall 2016",
-  "subOrganizationOf": {
-    "@id": "https://example.edu/colleges/3/depts/12/courses/202/terms/2016fall/sections/101",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
-    "courseNumber": "POL101",
-    "name": "Political Science 101: The American Revolution",
-    "academicSession": "Fall 2016",
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z"
-  }
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https: //example.edu/semesters/201601/courses/1776/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "academicSession": "Fall-2016",
+    "courseNumber": "POL101-1",
+    "name": "American Revolution 101",
+    "category": "lecture",
+    "subOrganizationOf": {
+        "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+        "@id": "https: //example.edu/semesters/201601/courses/1776",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/CourseOffering",
+        "courseNumber": "POL101"
+    },
+    "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
