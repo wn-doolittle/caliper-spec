@@ -62,8 +62,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* 7.3 [Annotation](#annotation)
 		* 7.3.1 [BookmarkAnnotation](#bookmarkAnnotation)
 		* 7.3.2 [HighlightAnnotation](#highlightAnnotation)
-		* 7.3.3 [SharedAnnotation](#sharedAnnotation]
-		* 7.3.4 [TagAnnotation](#tagAnnotation]
+		* 7.3.3 [SharedAnnotation](#sharedAnnotation)
+		* 7.3.4 [TagAnnotation](#tagAnnotation)
 	* 7.4 [Attempt](#attempt)
 	* 7.5 [Collection](#collection)
 	* 7.6 [DigitalResource](#digitalResource)
@@ -71,7 +71,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 			* 7.6.1.1 [Assessment](#assessment)
 			* 7.6.1.2 [AssessmentItem](#assessmentItem)
 		* 7.6.2 [Chapter](#chapter)
-		* 7.6.3 [DigitalResourceCollection](#digitalResourceCollection]
+		* 7.6.3 [DigitalResourceCollection](#digitalResourceCollection)
 				* 7.6.3.1 [Forum](#forum)
 				* 7.6.3.2 [Thread](#thread)
 		* 7.6.4 [Document](#document)
@@ -85,7 +85,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 		* 7.6.9 [Message](#message)
 		* 7.6.10 [Page](#page)
 		* 7.6.11 [WebPage](#webpage)
-	* 7.7 [Membership](#membership]
+	* 7.7 [Membership](#membership)
 	* 7.8 [Response](#response)
 		* 7.8.1 [FillinBlankResponse](#fillinBlankResponse)
 		* 7.8.2 [MultipleChoiceResponse](#multipleChoiceResponse)
