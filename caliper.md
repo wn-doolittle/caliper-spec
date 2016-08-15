@@ -58,6 +58,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 10.0 [Contributors](#contributors)
 * [Appendix A: Caliper Entities](#appendixA)
 * [Appendix B: Miscellaneous Classes](#appendixB)
+* [Appendix C: Roles and Status](#appendixC)
 * [Revision History](#revisionHistory)
 * [References](#references)
 
@@ -2343,7 +2344,7 @@ A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A BookmarkAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a BookmarkAnnotation MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation. |
-| actor | [Person](#person) | The Person who created the BookmarkAnnotation MUST be specified. |
+| actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
 | annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
 #### Optional properties
@@ -2356,13 +2357,20 @@ In addition to properties inherited from Annotation](#annotation), BookmarkAnnot
 #### Example
 ```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/bookmarks/813cb2c6-75ec-410f-8dab-ef047afb92e5",
-  "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
-  "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/2)",
-  "bookmarkNotes": "The Intolerable Acts (1774)--bad idea Lord North",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.com/bookmarks/813cb2c6-75ec-410f-8dab-ef047afb92e5",
+    "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "annotated": {
+        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+    },
+    "bookmarkNotes": "The Intolerable Acts (1774)--bad idea Lord North",
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
@@ -3009,37 +3017,51 @@ Inherited from [Organization](#organization).
 
 <a name="highlightAnnotation" />
 #### HighlightAnnotation
-A Caliper ```HighlightAnnotation``` represents the act of marking a particular segment of a  ```DigitalResource``` . . . . TODO
+A Caliper HighlightAnnotation represents the act of marking a particular segment of a  DigitalResource between two known points.  HighlightAnnotation inherits all the properties and requirements defined for [Annotation](#annotation), its superclass.
 
-###### subClassOf
-Annotation](#annotation)
+### TODO
+* Add additional instructions regarding start and end properties
 
-###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/HighlightAnnotation](http://purl.imsglobal.org/caliper/v1/HighlightAnnotation)
+#### subClassOf
+[Annotation](#annotation)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| selection | [TextPositionSelector](#textPositionSelector) | The range of highlighted text based on its ```start``` and ```end``` positions.  | 0..1 |
-| selectionText | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)  | The highlighted segment or fragment of the annotated ```DigitalResource```. | 0..1 |
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A HighlightAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a HighlightAnnotation MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/HighlightAnnotation. |
+| actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
+| annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
-###### Requirements
-* A ```HighlightAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/HighlightAnnotation.
+#### Optional properties
+In addition to properties inherited from Annotation](#annotation), HighlightAnnotation includes the following additional optional properties:
 
-###### Example
-```
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| selection | [TextPositionSelector](#textPositionSelector) | The range of highlighted text based on its  [start](#start) and [end](#end) positions.  If the hightlighted selection is specified, both the [start](#start) and [end](#end) properties MUST be specified. |
+| selectionText | The highlighted segment of the annotated DigitalResource. |
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/highlights/12345",
-  "@type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
-  "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z",
-  "selection": {
-    "end": "489",
-    "start": "455"
-  },
-  "selectionText": "Life, Liberty and the pursuit of Happiness"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/highlights/12345",
+    "@type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "annotated": {
+        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+    },
+    "selection": {
+        "start": "455",
+        "end": "489"
+    },
+    "selectionText": "Life, Liberty and the pursuit of Happiness",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
@@ -3934,12 +3956,27 @@ A Caliper ```WebPage``` represents a document suitable for display in a web brow
 
 <a name="appendixB" />
 ## Appendix B.  Miscellaneous Classes
-
-TODO
+TODO Intro
 
 ### TextPositionSelector
+TODO Intro
 
-TODO
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| start | [xsd:nonNegativeInteger]( https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) | TODO The start position . . . MUST be specified. |
+| end | [xsd:nonNegativeInteger]( https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) | ODO The end position . . . MUST be specified. |
+
+```json
+{
+    "start": "455",
+    "end": "489"
+}
+```
+
+<a name="appendixC" />
+## Appendix C.  Roles and Status
+TODO Intro
 
 <a name="revisionHistory" />
 ## Revision History
