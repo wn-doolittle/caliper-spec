@@ -2108,7 +2108,7 @@ A Caliper Annotation is a generic class that represents a comment, explanation, 
 #### Optional properties
 Inherited from [Entity](#entity).
 
-###### Example
+##### Example
 ```json
 {
     TODO
@@ -2280,7 +2280,7 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 | -------- | ----- | -------------- |
 | startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Attempt commenced.  A start time SHOULD be provided.  If a start time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
 | endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Attempt ended or was terminated.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be provided.  If an end time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
-| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |Represents the total interval of time required to complete this Attempt.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | Represents the total interval of time required to complete this Attempt.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
 
 #### Example
 ```json
@@ -3066,26 +3066,29 @@ In addition to properties inherited from Annotation](#annotation), HighlightAnno
 ```
 
 <a name="imageObject" />
-#### ImageObject
+### ImageObject
+A Caliper ImageObject represents an image file.  ImageObject inherits all the properties and requirements defined for [MediaObject](#mediaObject), its superclass.  It is analogous to [sdo:ImageObject](http://schema.org/ImageObject).
 
-A Caliper ```ImageObject``` represents an image file.  It is analogous to [sdo:ImageObject](http://schema.org/ImageObject).
-
-###### subClassOf 
+#### subClassOf 
 [MediaObject](#mediaObject)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/ImageObject](http://purl.imsglobal.org/caliper/v1/ImageObject)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An ImageObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an ImageObject MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ImageObject. |
 
-###### Requirements
-* An ```ImageObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/ImageObject.
+#### Optional properties
+Inherited from [MediaObject](#mediaObject).
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Jesse_Owens3.jpg",
-  "@type": "http://purl.imsglobal.org/caliper/v1/ImageObject",
-  "name": "Jesse Owens"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Jesse_Owens3.jpg",
+    "@type": "http://purl.imsglobal.org/caliper/v1/ImageObject",
+    "name": "Jesse Owens"
 }
 ```
 
@@ -3131,38 +3134,47 @@ TODO
 
 <a name="mediaObject" />
 #### MediaObject
-A Caliper ```MediaObject``` represents a generic piece of media content analogous to [sdo:MediaObject](http://schema.org/MediaObject).
+A Caliper MediaObject represents a generic piece of media content.  MediaObject inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  Given that MediaObject represents a generic type it is RECOMMENDED that only subclasses of DigitalResource be employed to represent nodes in the learning graph.  MediaObject is analogous to [sdo:MediaObject](http://schema.org/MediaObject).
+
+### TODO
+confirm: Migrate MediaObject.duration to AudioObject and VideoObject (irrelevant property for ImageObject to inherit).
 
 ###### subClassOf 
 [DigitalResource](#digitalResource)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/MediaObject](http://purl.imsglobal.org/caliper/v1/MediaObject)
-
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| duration | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | The length of time to completion.  Analogous to [sdo:duration](http://schema.org/duration).  | 0..1 |
-
-###### Requirements
-* Given that ```MediaObject``` represents a generic type it is RECOMMENDED that only its subclasses be employed to represent nodes in the learning graph.
-* If a generic ```MediaObject``` is included in an [Event](#event) instead of one of its subclasses, the ```MediaObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject.
-* If a ```duration``` is specified the value MUST conform to the ISO-8601 duration format.
-
 ###### Subclasses
-[AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject) 
+[AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject)
+
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A MediaObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MediaObject MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic MediaObject is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/MediaObject; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/VideoObject.  |
+
+#### Optional properties
+In addition to properties inherited from [DigitalResource](#digitalResource), MediaObject includes the following additional optional properties:
+
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | Represents the total interval of time required to complete this MediaObject.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
+
+#### Example
+```json
+{
+    TODO
+}
+```
 
 <a name="membership" />
 #### Membership
 
 TODO
 
-###### Example
-```
+#### Example
+```json
 {
-
- TODO
- 
+    TODO
 }
 ```
 
@@ -3903,28 +3915,30 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 
 <a name="videoObject" />
 #### VideoObject
-A Caliper ```VideoObject``` represents a visual recording stored in digital form. It is analogous to [sdo:VideoObject](http://schema.org/VideoObject).
+A Caliper VideoObject represents a visual recording stored in digital form. VideoObject inherits all the properties and requirements defined for [MediaObject](#mediaObject), its superclass.  It is analogous to [sdo:VideoObject](http://schema.org/VideoObject).
 
-###### subClassOf 
-[MediaObject](#mediaobject)
+#### subClassOf 
+[MediaObject](#mediaObject)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/VideoObject](http://purl.imsglobal.org/caliper/v1/VideoObject)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An VideoObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an VideoObject MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject. |
 
-###### Requirements
-* A ```VideoObject``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/VideoObject.
+#### Optional properties
+Inherited from [MediaObject](#mediaObject).
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/super-media-tool/videos/1225",
-  "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-  "name": "American Revolution - Key Figures Video",
-  "duration": "PT58M37S",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z",
-  "version": "1.0"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.com/player/videos/9999",
+    "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+    "name": "IMS Caliper Overview",
+    "duration": "PT58M37S",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
