@@ -3103,7 +3103,7 @@ Inherited from [MediaObject](#mediaObject).
 ```
 
 <a name="learningObjective" />
-#### LearningObjective
+### LearningObjective
 The Caliper LearningObjective represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.  LearningObjective inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
 
 #### subClassOf 
