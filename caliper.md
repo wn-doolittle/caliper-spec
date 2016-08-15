@@ -3620,44 +3620,40 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 ```
 
 <a name="session" />
-#### Session
-A Caliper ```Session``` represents a Web application user session.
+### Session
+A Caliper Session represents a Web application user session.  Session inherits all the properties and requirements defined for [Entity](#entity), its superclass. 
 
-###### subClassOf
+#### subClassOf
 [Entity](#entity)
 
-###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/Session](http://purl.imsglobal.org/caliper/v1/Session)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ---- | ----------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Session SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Session MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session. |
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ---: |
-| actor | [Agent](#agent) | The ```Agent``` who establishes this ```Session```.| 0..1 |
-| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | ISO 8601 formatted date and time expressed with millisecond precision that represents when a ```Session``` commenced.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). | 0..1 |
-| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision that represents when a ```Session``` ended or was terminated.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). | 0..1 |
-| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | ISO 8601 formatted total interval of time required to complete this ```Session```. | 0..1 |
+#### Optional properties
+In addition to properties inherited from [Entity](#entity), Session includes the following additional optional properties:
 
-###### Requirements
-* A ```Session``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Session.
-* It is RECOMMENDED that a Session [actor](#actor) be specified.
-* If a ```Session``` [startedAtTime](#startedAtTime) is specified the value MUST conform to the ISO-8601 date and time format with millisecond precision.  
-* If a ```Session``` [endedAtTime](#endedAtTime) is specified the value MUST conform to the ISO-8601 date and time format with millisecond precision.
-* If a ```Session``` [duration](#duration) is specified the value MUST conform to the ISO-8601 duration format.
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| actor | [Agent](#agent) | The actor, typically a Person or a SoftwareApplication, who initiated the Session.  It is RECOMMENDED that the actor be specified. |
+| startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Session commenced.  A start time SHOULD be provided.  If a start time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
+| endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Session ended or was terminated.  For a [loggedOut](#loggedOut) or [timedOut](#timedOut) action an end time SHOULD be provided.  If an end time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
+| duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | Represents the total interval of time required to complete this Attempt.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/viewer/session-123456789",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-  "name": "session-123456789",
-  "actor": {
-    "@id": "https://example.edu/user/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
-  },
-  "dateCreated": "2016-09-15T10:15:00.000Z",
-  "startedAtTime": "2016-09-15T10:15:00.000Z"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.com/lms/sessions/973465e7f388940324465caf55b4f761b0f4f093",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "startedAtTime": "2016-09-17T10:00:00.000Z"
 }
 ```
 
