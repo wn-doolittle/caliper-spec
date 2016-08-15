@@ -918,8 +918,7 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent |
 | actor  | [Person](#person) | The Person who initiated or is the subject of this AssessmentItemEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Completed |
-| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [started](#started) and [skipped] actions the AssessmentItem is the REQUIRED object of the interaction; for a [completed](#completed) action it is RECOMMENDED that the learner's [Attempt](#attempt) comprise the object.  
-If the Attempt is provided it MUST reference both the actor and the assigned AssessmentItem.  A [count](#count) of the number of times the actor has interacted with the AssessmentItem MUST also be specified.  The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
+| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [started](#started) and [skipped] actions the AssessmentItem is the REQUIRED object of the interaction; for a [completed](#completed) action it is RECOMMENDED that the learner's [Attempt](#attempt) comprise the object.  If the Attempt is provided it MUST reference both the actor and the assigned AssessmentItem.  A [count](#count) of the number of times the actor has interacted with the AssessmentItem MUST also be specified.  The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
