@@ -500,6 +500,9 @@ A Caliper Event is a generic class that represents the interaction between an [a
 
 For an Event to be minimally compliant it MUST specify an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
 
+### TODO
+* should we recommend that the id be in the form of a hash?
+
 ### Supported actions
 TODO List all Actions?
 
@@ -3179,60 +3182,36 @@ TODO
 ```
 
 <a name="message" />
-#### Message
-A Caliper ```Message``` is a digital form of written communication sent to a recipient. A series of ```Messages``` may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships. It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
+### Message
+A Caliper Message is a digital form of written communication sent to a recipient. A series of messages Messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.  Message inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
 
-###### subClassOf 
+### TODO
+* confirm if content property is to be excluded.
+* confirm if attachments property is to be excluded.
+
+#### subClassOf 
 [DigitalResource](#digitalResource)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/Message](http://purl.imsglobal.org/caliper/v1/Message)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Message SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Message MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Message.  |
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ---: |
-| creator | [Agent](#agent) | The author or originator of this ```Message```, typically a [Person](#person).  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator) or [sdo:creator](http://schema.org/creator). | 0..1|
-| replyTo | [Message](#message) | The prior ```Message```, if any, that prompted the posting of this ```Message``` in the form of a reply or response.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). | 0..1 |
-| isPartOf | [Thread](#thread) | The ```Thread``` of which this Message forms a part.  Analogous to [sioc:has_creator](http://rdfs.org/sioc/spec/#term_has_creator). | 0..1 |
-| ~~content~~ | ~~[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)~~ | ~~Plain-text rendering of the content of the ```Message```.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). ~~ | ~~ 0..1 ~~ |
-| attachments | List&lt;[DigitalResource](#digitalResource)&gt; | A set of one or more items attached to this ```Message```.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). | 0..1 |
+#### Optional properties
+In addition to properties inherited from [DigitalResource](#digitalResource), MediaObject includes the following additional optional properties:
 
-###### Requirements
-* A ```Message``` SHOULD specify a [creator](#creator).
-* A ```Message``` SHOULD specify a [replyTo](#replyTo) if the ```Message``` represents a response to a previously posted ```Message```.
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| replyTo | [Message](#message) | If this Message represents a reply or a response to a previous Message, the Message prompting the reply SHOULD be referenced.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). |
+| ~~content~~ | ~~[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)~~ | ~~Plain-text rendering of the content of the Message.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). ~~ |
+| ~~attachments~~ | ~~List&lt;[DigitalResource](#digitalResource)&gt;~~ | ~~A ordered set of one or more items attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment).~~ |
 
-###### JSON-LD Serialization
-* A ```Message``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Message.
-* A ```Message``` @id property SHOULD be assigned an IRI; otherwise a [blank node](#blankNode) identifier.
-
-##### Example: MessageEvent.object posted
+#### Example
 ```
 {
-     "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/2",
-     "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-     "creators": [
-         {
-             "@id": "https://example.edu/users/554433",
-             "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-         }
-     ],
-     "isPartOf": {
-         "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1",
-         "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-         "name": "Caliper Adoption",
-         "isPartOf": {
-             "@id": "https://example.edu/semesters/201601/courses/301/forums/2",
-             "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
-             "name": "Caliper Forum"
-         }
-     },
-     "dateCreated": "2016-09-15T10:15:00.000Z"
- }
- ```
-##### Example: Message Reply
-```
-{
-    "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/3",
+    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/3",
     "@type": "http://purl.imsglobal.org/caliper/v1/Message",
     "creators": [
         {
@@ -3241,20 +3220,21 @@ A Caliper ```Message``` is a digital form of written communication sent to a rec
         }
      ],
      "replyTo": {
-         "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/2",
+         "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/2",
          "@type": "http://purl.imsglobal.org/caliper/v1/Message"
      },
      "isPartOf": {
-         "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1",
+         "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1",
          "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
          "isPartOf": {
-             "@id": "https://example.edu/semesters/201601/courses/301/forums/2",
+             "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2",
              "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
          }
      },
      "dateCreated": "2016-09-15T10:15:30.000Z"
  }
  ```
+ 
 <a name="multipleChoiceResponse" />
 #### MultipleChoiceResponse
 A Caliper MultipleChoiceResponse represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.  MultipleChoiceResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
