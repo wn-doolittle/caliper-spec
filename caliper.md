@@ -1878,7 +1878,7 @@ TODO add description
 }
 ```
 
-<a name="ViewEvent" />
+<a name="viewEvent" />
 ### 5.14 ViewEvent
 A Caliper ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a file.   ViewEvent inherits all the properties and requirements defined for Event, its superclass.
 
