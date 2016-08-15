@@ -3943,30 +3943,36 @@ Inherited from [MediaObject](#mediaObject).
 ```
 
 <a name="webPage" />
-#### WebPage
-A Caliper ```WebPage``` represents a document suitable for display in a web browser.  It is analogous to a [sdo:WebPage](http://schema.org/WebPage).
+### WebPage
+A Caliper WebPage represents a document containing markup that is suitable for display in a web browser.  WebPage inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to a [sdo:WebPage](http://schema.org/WebPage).
 
-###### subClassOf 
+#### subClassOf 
 [DigitalResource](#digitalResource)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/WebPage](http://purl.imsglobal.org/caliper/v1/WebPage)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A WebPage SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a WebPage MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage. |
 
-###### Requirements
-* A ```WebPage``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/WebPage.
+#### Optional properties
+Inherited from [DigitalResource](#digitalResource).
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/politicalScience/2015/american-revolution-101/index.html",
-  "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
-  "name": "American Revolution 101 Landing Page",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z",
-  "version": "1.0"
-}
-```
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https: //example.edu/semesters/201601/courses/301/sections/1/index.html",
+    "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
+    "name": "CPS101-1 Landing Page",
+    "isPartOf": {
+        "@id": "https: //example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/CourseSection",
+        "courseNumber": "CPS101-01",
+        "academicSession": "Fall-2016"
+    }
+}```
 
 <a name="appendixB" />
 ## Appendix B.  Miscellaneous Classes
