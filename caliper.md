@@ -50,15 +50,60 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* 5.13 [ThreadEvent](#ThreadEvent)
 	* 5.14 [ViewEvent](#viewEvent)
 * 6.0 [Actions](#actions)
-* 7.0 [Entities](#entities)    
+* 7.0 [Entities](#entities)
+	* 7.1 [Entity](#entity)
+	* 7.2 [Agent](#agent)
+		* 7.2.1 [Person](#person)
+		* 7.2.2 [Organization](#organization)
+			* 7.2.2.1 [CourseOffering](#courseOffering)
+			* 7.2.2.2 [CourseSection](#courseSection)
+			* 7.2.2.3 [Group](#group)
+		* 7.2.3 [SoftwareApplication](#softwareApplication)
+	* 7.3 [Annotation](#annotation)
+		* 7.3.1 [BookmarkAnnotation](#bookmarkAnnotation)
+		* 7.3.2 [HighlightAnnotation](#highlightAnnotation)
+		* 7.3.3 [SharedAnnotation](#sharedAnnotation]
+		* 7.3.4 [TagAnnotation](#tagAnnotation]
+	* 7.4 [Attempt](#attempt)
+	* 7.5 [Collection](#collection)
+	* 7.6 [DigitalResource](#digitalResource)
+		* 7.6.1 [AssignableDigitalResource](#assignableDigitalResource)
+			* 7.6.1.1 [Assessment](#assessment)
+			* 7.6.1.2 [AssessmentItem](#assessmentItem)
+		* 7.6.2 [Chapter](#chapter)
+		* 7.6.3 [DigitalResourceCollection](#digitalResourceCollection]
+				* 7.6.3.1 [Forum](#forum)
+				* 7.6.3.2 [Thread](#thread)
+		* 7.6.4 [Document](#document)
+		* 7.6.5 [Frame](#frame)
+		* 7.6.6 [LearningObjective](#learningObjective)
+		* 7.6.7 [MediaLocation](#mediaLocation)
+		* 7.6.8 [MediaObject](#mediaObject)
+			* 7.6.8.1 [AudioObject](#audioObject)
+			* 7.6.8.2 [ImageObject](#imageObject)
+			* 7.6.8.3 [VideoObject](#videoObject)
+		* 7.6.9 [Message](#message)
+		* 7.6.10 [Page](#page)
+		* 7.6.11 [WebPage](#webpage)
+	* 7.7 [Membership](#membership]
+	* 7.8 [Response](#response)
+		* 7.8.1 [FillinBlankResponse](#fillinBlankResponse)
+		* 7.8.2 [MultipleChoiceResponse](#multipleChoiceResponse)
+		* 7.8.3 [MultipleResponseResponse](#multipleResponseResponse)
+		* 7.8.4 [SelectTextResponse](#selectTextResponse)
+		* 7.8.5 [TrueFalseResponse](#trueFalseResponse)
+	* 7.9 [Result](#result)
+	* 7.10 [Session](#session)
+		* 7.10.1 [LtiSession](#ltiSession)     
 * 8.0 [Sensor API](#api)
 * 9.0 [Transport](#transport)
     * 9.1 [Envelope](#envelope)
 	* 9.2 [Endpoints](#endpoints)
 * 10.0 [Contributors](#contributors)
-* [Appendix A: Caliper Entities](#appendixA)
-* [Appendix B: Miscellaneous Classes](#appendixB)
-* [Appendix C: Roles and Status](#appendixC)
+* [Appendix A: Miscellaneous Classes](#appendixA)
+	* [Selector](#selector)
+		* [TextPositionSelector](#textPositionSelector)
+* [Appendix B: Roles and Status](#appendixC)
 * [Revision History](#revisionHistory)
 * [References](#references)
 
@@ -2023,40 +2068,6 @@ A Caliper Entity is a generic class that is analogous to an [sdo:Thing](http://s
 }
 ```
 
-<a name="api"/>
-## 8.0 Sensor API
-
-TODO: OVERVIEW
-
-<a name="transport"/>
-## 9.0 Transport
-
-TODO: OVERVIEW
-
-<a name="endpoints"/>
-### 9.1 Envelope
-
-TODO: OVERVIEW
-
-<a name="endpoints"/>
-### 9.2 Endpoint
-
-TODO: OVERVIEW
-
-<a name="contributors"/>
-## 10.0 Contributors
-The following Caliper Working Group participants contributed to the writing of this specification:
-
-| Name | Organization |
-| ------ | --------- |
-| Anthony Whyte [arwhyte](http://github.com/arwhyte) | University of Michigan |
-| Viktor Haag [ViktorHaag](https://github.com/ViktorHaag) | DTL |
-
-TODO: ADD OTHERS
-
-<a name="appendixA" />
-## Appendix A: Caliper Entities
-
 <a name="agent" />
 ### Agent
 A Caliper Agent is a generic class that represents an Entity that can initiate or perform an action.  It is analogous to a [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Agent inherits all the properties and requirements defined for [Entity](#entity), its superclass.  Given that Agent represents a generic type it is RECOMMENDED that only subclasses of Agent be employed to represent nodes in the learning graph.
@@ -3973,8 +3984,39 @@ Inherited from [DigitalResource](#digitalResource).
     }
 }```
 
+<a name="api"/>
+## 8.0 Sensor API
+
+TODO: OVERVIEW
+
+<a name="transport"/>
+## 9.0 Transport
+
+TODO: OVERVIEW
+
+<a name="endpoints"/>
+### 9.1 Envelope
+
+TODO: OVERVIEW
+
+<a name="endpoints"/>
+### 9.2 Endpoint
+
+TODO: OVERVIEW
+
+<a name="contributors"/>
+## 10.0 Contributors
+The following Caliper Working Group participants contributed to the writing of this specification:
+
+| Name | Organization |
+| ------ | --------- |
+| Anthony Whyte [arwhyte](http://github.com/arwhyte) | University of Michigan |
+| Viktor Haag [ViktorHaag](https://github.com/ViktorHaag) | DTL |
+
+TODO: ADD OTHERS
+
 <a name="appendixB" />
-## Appendix B.  Miscellaneous Classes
+## Appendix A.  Miscellaneous Classes
 TODO Intro
 
 ### TextPositionSelector
@@ -3994,7 +4036,7 @@ TODO Intro
 ```
 
 <a name="appendixC" />
-## Appendix C.  Roles and Status
+## Appendix B.  Roles and Status
 TODO Intro
 
 <a name="revisionHistory" />
