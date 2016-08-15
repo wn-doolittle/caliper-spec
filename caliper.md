@@ -2884,73 +2884,87 @@ In addition to properties inherited from [Response](#response), FillinBlankRespo
 
 <a name="frame" />
 #### Frame
+A Caliper Frame represents TODO . . . .  Frame inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
 
-TODO
+#### subClassOf 
+[DigitalResource](#digitalResource)
 
-###### Example
-```
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Frame SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Frame MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Frame. |
+| index | nonNegativeInteger | The character position TODO . . . . |
+
+#### Optional properties
+Inherited from [DigitalResource](#digitalResource).
+
+#### Example
+```json
 {
-
- TODO
- 
+    TODO
 }
 ```
 
 <a name="forum" />
 #### Forum
-A Caliper ```Forum``` is a channel or virtual space in which group discussions take place.  A ```Forum``` typically comprises one or more threaded discussions to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
+A Caliper Forum represents a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded discussions to which members can subscribe, post messages and reply to other messages.  Frame inherits all the properties and requirements defined for [DigitalResourceCollection](#digitalResourceCollection), its superclass.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
 
 ###### subClassOf 
-[Collection](#collection)
+[DigitalResourceCollection](#digitalResourceCollection)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/Forum](http://purl.imsglobal.org/caliper/v1/Forum)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Forum SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Forum MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum. |
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ----: |
-| items | List&lt;[Thread](#thread)&gt; | The set of ```items``` that comprise this ```Forum```. | 0..1 |
+#### Optional properties
+Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 
-###### Requirements
-* A ```Forum``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Forum.
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| items | List&lt;[Thread](#thread)&gt; | The ordered set of threaded discussions that comprise this Forum. |
 
 ###### Example
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/semesters/201601/courses/301/forums/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
-  "name": "Caliper Forum",
-  "items": [
-    {
-      "@id": "https://example.edu/semesters/201601/courses/301/forums/1/topics/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-      "name": "Caliper Information Model",
-      "dateCreated": "2016-09-01T09:30:00.000Z"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+    "name": "Caliper Forum",
+    "items": [
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1/topics/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+            "name": "Caliper Information Model",
+            "dateCreated": "2016-09-01T09:30:00.000Z"
+        },
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1/topics/2",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+            "name": "Caliper Sensor API",
+            "dateCreated": "2016-09-01T09:30:00.000Z"
+        },
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1/topics/3",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+            "name": "Caliper Certification",
+            "dateCreated": "2016-09-01T09:30:00.000Z"
+        }
+    ],
+    "isPartOf": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "subOrganizationOf": {
+            "@id": "https://example.edu/semesters/201601/courses/301",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+        }
     },
-    {
-      "@id": "https://example.edu/semesters/201601/courses/301/forums/1/topics/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-      "name": "Caliper Sensor API",
-      "dateCreated": "2016-09-01T09:30:00.000Z"
-    },
-    {
-      "@id": "https://example.edu/semesters/201601/courses/301/forums/1/topics/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-      "name": "Caliper Certification",
-      "dateCreated": "2016-09-01T09:30:00.000Z"
-    }
-  ],
-  "isPartOf": {
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-    "subOrganizationOf": {
-      "@id": "https://example.edu/semesters/201601/courses/301",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
-    }
-  },
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
@@ -3324,38 +3338,40 @@ In addition to properties inherited from [Response](#response), MultipleResponse
 
 <a name="organization" />
 #### Organization
-A Caliper ```Organization``` represents a group of people organized into a community or other social, commercial, educational or political structure.  The group has a common purpose or reason for existence that spans beyond the set of people belonging to it and can act as an [Agent](#agent). An ```Organization``` can often be decomposed into a hierarchical structure.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
+A Caliper Organization represents a group of people who come together for a common purpose, typically  one that is educational, social or administrative in nature.  The Organization can act as an [Agent] and can often be decomposed into sub-organizations.  Organization inherits all the properties and requirements defined for [Agent](#agent), its superclass.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
-###### subClassOf
+#### subClassOf
 [Agent](#agent)
 
-###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/Organization](http://purl.imsglobal.org/caliper/v1/Organization)
+#### Subclasses 
+[CourseOffering](#CourseOffering), [CourseSection](#CourseSection), [Group](#group)
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- |---: |
-| subOrganizationOf | [Organization](#organization) | The parent ```Organization``` of this ```Organization```. | 0..1 |
+### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Organization SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an  Organization MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Organization. |
 
-###### Requirements
-* An ```Organization``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Organization.
+#### Optional properties
+In addition to properties inherited from [Agent](#agent), Organization includes the following additional optional properties:
 
-###### Subclasses
-[Group](#group)
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| subOrganizationOf| [Organization](#organization) | The parent Organization of this Organization MAY be specified if it provides additional useful contextual information. |
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/colleges/1/departments/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
-  "name": "Department of History",
-  "subOrganizationOf": {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/colleges/1",
+    "@id": "https://example.edu/colleges/1/depts/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
-    "name": "College of Social Science"
-  }
+    "name": "Department of History",
+    "subOrganizationOf": {
+        "@id": "https://example.edu/colleges/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
+        "name": "College of Arts and Letters"
+    }
 }
 ```
 
@@ -3698,71 +3714,73 @@ Annotation](#annotation)
 ```
 
 <a name="thread" />
-#### Thread
-A Caliper ```Thread``` represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships. It is analogous to a [sioc:Thread](http://rfds.org/sioc/spec/#term_Thread).
+### Thread
+A Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.  Thread inherits all the properties and requirements defined for [DigitalResourceCollection](#digitalResourceCollection), its superclass.  It is analogous to a [sioc:Thread](http://rfds.org/sioc/spec/#term_Thread).
 
 ###### subClassOf 
-[Collection](#collection)
+[DigitalResourceCollection](#digitalResourceCollection)
 
-###### &#64;type 
-[http://purl.imsglobal.org/caliper/v1/Thread](http://purl.imsglobal.org/caliper/v1/Thread)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Thread SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Thread MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread. |
 
-###### Properties
-| Property | Type | Description ||
-| -------- | ---- | ----------- | ---: |
-| isChildOf | [Forum](#forum) | The parent ```Forum``` of this ```Thread```.  Analogous to [sioc:has_parent](http://rdfs.org/sioc/spec/#term_has_parent). | 0..1 |
-| items | List&lt;[Message](#message)&gt; | The set of ```items``` that comprise this ```Thread```. | 0.1 |
+#### Optional properties
+Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 
-###### Requirements
-* A ```Thread``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Thread.
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| items | List&lt;[Message](#message)&gt; | The ordered set of posts that comprise this Thread. |
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/semesters/201601/courses/301/forums/1/topics/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-  "name": "Caliper Information Model",
-  "items": [
-    {
-      "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message"
-    },
-    {
-      "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-      "replyTo": {
-        "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
-      }
-    },
-    {
-      "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-      "replyTo": {
-        "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/2",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
-      }
-    }
-  ],
-  "isPartOf": {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/forums/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
-    "name": "Caliper Forum",
+    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1/topics/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+    "name": "Caliper Information Model",
+    "items": [
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+        },
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/2",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+            "replyTo": {
+                "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/1",
+                "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+            }
+        },
+        {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/3",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+            "replyTo": {
+                "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/2",
+                "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+            }
+        }
+    ],
     "isPartOf": {
-      "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-      "subOrganizationOf": {
-        "@id": "https://example.edu/semesters/201601/courses/301",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
-      }
+        "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+        "name": "Caliper Forum",
+        "isPartOf": {
+            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+            "subOrganizationOf": {
+                "@id": "https://example.edu/semesters/201601/courses/301",
+                "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+            }
+        },
+        "dateCreated": "2016-08-01T06:00:00.000Z",
+        "dateModified": "2016-09-02T11:30:00.000Z"
     },
     "dateCreated": "2016-08-01T06:00:00.000Z",
     "dateModified": "2016-09-02T11:30:00.000Z"
-  },
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
