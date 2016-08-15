@@ -2970,15 +2970,40 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 
 <a name="group" />
 #### Group
+A Caliper Group represents a sub-section of a [CourseSection](#courseSection) organized for some educational or social purpose.  The Group can act as an [Agent] and can often be decomposed into sub-groupings.  Group inherits all the properties and requirements defined for [Organization](#organization), its superclass.  It is analogous to an IMS LIS Group.
 
-TODO
+### TODO
+Should we rename Group to LisGroup or CourseSectionGroup (and save Group for a more generic role)?
 
-###### Example
-```
+#### subClassOf
+[Organization](#organization)
+
+### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Group SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Group MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Group. |
+
+#### Optional properties
+Inherited from [Organization](#organization).
+
+#### Example
+```json
 {
-
- TODO
- 
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups/2",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Group",
+    "name": "Discussion Group 2",
+    "subOrganizationOf": {
+        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+        "subOrganizationOf": {
+            "@id": "https://example.edu/semesters/201601/courses/301",
+            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+        }
+    },
+    "dateCreated": "2016-09-01T06:00:00.000Z"
 }
 ```
 
@@ -3337,7 +3362,7 @@ In addition to properties inherited from [Response](#response), MultipleResponse
 ```
 
 <a name="organization" />
-#### Organization
+### Organization
 A Caliper Organization represents a group of people who come together for a common purpose, typically  one that is educational, social or administrative in nature.  The Organization can act as an [Agent] and can often be decomposed into sub-organizations.  Organization inherits all the properties and requirements defined for [Agent](#agent), its superclass.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
 #### subClassOf
@@ -3350,7 +3375,7 @@ A Caliper Organization represents a group of people who come together for a comm
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Organization SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an  Organization MUST be assigned a blank node identifier. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Organization SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Organization MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Organization. |
 
 #### Optional properties
