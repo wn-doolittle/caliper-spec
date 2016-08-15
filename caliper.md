@@ -72,8 +72,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 			* 7.6.1.2 [AssessmentItem](#assessmentItem)
 		* 7.6.2 [Chapter](#chapter)
 		* 7.6.3 [DigitalResourceCollection](#digitalResourceCollection)
-				* 7.6.3.1 [Forum](#forum)
-				* 7.6.3.2 [Thread](#thread)
+			* 7.6.3.1 [Forum](#forum)
+			* 7.6.3.2 [Thread](#thread)
 		* 7.6.4 [Document](#document)
 		* 7.6.5 [Frame](#frame)
 		* 7.6.6 [LearningObjective](#learningObjective)
@@ -3104,27 +3104,30 @@ Inherited from [MediaObject](#mediaObject).
 
 <a name="learningObjective" />
 #### LearningObjective
+The Caliper LearningObjective represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.  LearningObjective inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
 
-TODO
+#### subClassOf 
+[DigitalResource](#digitalResource)
 
-###### Example
-```
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A LearningObjective SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a LearningObjective MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/LearningObjective. |
+
+#### Optional properties
+Inherited from [DigitalResource](#digitalResource).
+
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/super-media-tool/videos/1225",
-  "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-  "name": "American Revolution - Key Figures Video",
-  "alignedLearningObjective": [
-    {
-      "@id": "https://example.edu/courses/5678/assignments/1/learningobjectives/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
-      "dateCreated": "2016-08-01T06:00:00.000Z"
-    }
-  ],
-  "duration": "PT50M30S",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z",
-  "version": "1.0"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/objectives/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
+    "name": "Research techniques",
+    "description": "Demonstrate ability to discover, evaluate and analyze available library resources both print and online.",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
@@ -3849,7 +3852,7 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 ```
 
 <a name="trueFalseResponse" />
-#### TrueFalseResponse
+### TrueFalseResponse
 A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided: true or false.   TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
 #### TODO
