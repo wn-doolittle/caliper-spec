@@ -3743,32 +3743,45 @@ A Caliper ```SoftwareApplication``` represents a computer program, application, 
 
 <a name="tagAnnotation" />
 #### TagAnnotation
-A Caliper ```TagAnnotation``` represents the act of tagging a ```DigitalResource``` with . . . . TODO
+A Caliper TagAnnotation represents the act of tagging a DigitalResource with tags or labels.  TagAnnotation inherits all the properties and requirements defined for [Annotation](#annotation), its superclass.
 
-###### subClassOf
-Annotation](#annotation)
+#### subClassOf
+[Annotation](#annotation)
 
-###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/TagAnnotation](http://purl.imsglobal.org/caliper/v1/TagAnnotation)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A TagAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a TagAnnotation MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/TagAnnotationAnnotation. |
+| actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
+| annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
-###### Properties
+#### Optional properties
+In addition to properties inherited from Annotation](#annotation), HighlightAnnotation includes the following additional optional properties:
+
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
 | Property | Type | Description ||
 | -------- | ---- | ----------- | ----: |
-| tags | List&lt;[xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)&gt; | The set of one or more tags associated with the annotated ```DigitalResource```. | 0..1 |
+| tags | List&lt;[xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)&gt; | The ordered set of one or more tags associated with the annotated DigitalResource. |
 
-###### Requirements
-* A ```TagAnnotation``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/TagAnnotation.
-
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/tags/7654",
-  "@type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
-  "annotated": "https://example.com/viewer/book/34843#epubcfi(/4/3/4)",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z",
-  "tags": ["to read", "1765", "shared with project team"]
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.edu/highlights/12345",
+    "@type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
+    "actor": {
+        "@id": "https://example.edu/user/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "annotated": {
+        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/4)",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+    },
+    "tags": [ "to read", "1765", "Stamp Act" ],
+    "dateCreated": "2016-08-01T09:00:00.000Z"
 }
 ```
 
