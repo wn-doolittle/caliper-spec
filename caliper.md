@@ -73,10 +73,7 @@ The Caliper information model references a number of terms derived from other on
 
 | Prefix | Namespace | Description |
 | ------ | --------- | ----------- |
-| clpr | http://purl.imsglobal.org/caliper/v1/ | Caliper |
-| clpract | http://purl.imsglobal.org/vocab/caliper/v1/action# | Caliper actions |
-| clprlis | http://purl.imsglobal.org/caliper/v1/ | Caliper LIS |
-| clprw3c | http://purl.imsglobal.org/caliper/v1/w3c/ | Caliper W3C |
+| caliper | http://purl.imsglobal.org/caliper/v1/ | Caliper |
 | dc | http://purl.org/dc/elements/1.1/	| Dublin Core Elements |
 | dcterms |	http://purl.org/dc/terms/	| Dublin Core Terms |
 | dcmitype |	http://purl.org/dc/dcmitype/	| Dublin Core Type Vocabulary |
