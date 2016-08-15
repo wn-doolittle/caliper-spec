@@ -3727,24 +3727,28 @@ In addition to properties inherited from Annotation](#annotation), SharedAnnotat
 
 <a name="softwareapplication" />
 #### SoftwareApplication
-A Caliper ```SoftwareApplication``` represents a computer program, application, module, platform or system.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
+A Caliper SoftwareApplication represents a computer program, application, module, platform or system.  SoftwareApplication inherits all the properties and requirements defined for [Agent](#agent), its superclass.  It is analogous to a [sdo:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
-###### subClassOf
+#### subClassOf
 [Agent](#agent)
 
-###### &#64;type
-[http://purl.imsglobal.org/caliper/v1/SoftwareApplication](http://purl.imsglobal.org/caliper/v1/SoftwareApplication)
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A SoftwareApplication SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a SoftwareApplication MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication. |
 
-###### Requirements
-* A ```SoftwareApplication``` [@type](#type) property MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/SoftwareApplication.
+#### Optional properties
+Inherited from [Agent](#agent).
 
-###### Example
-```
+#### Example
+```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/reader",
-  "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-  "name": "ePub reader"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://example.com/reader",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "version": "11.0"
 }
 ```
 
