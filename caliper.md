@@ -72,8 +72,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 			* 7.6.1.2 [AssessmentItem](#assessmentItem)
 		* 7.6.2 [Chapter](#chapter)
 		* 7.6.3 [DigitalResourceCollection](#digitalResourceCollection)
-				* 7.6.3.1 [Forum](#forum)
-				* 7.6.3.2 [Thread](#thread)
+			* 7.6.3.1 [Forum](#forum)
+			* 7.6.3.2 [Thread](#thread)
 		* 7.6.4 [Document](#document)
 		* 7.6.5 [Frame](#frame)
 		* 7.6.6 [LearningObjective](#learningObjective)
@@ -3849,7 +3849,7 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 ```
 
 <a name="trueFalseResponse" />
-#### TrueFalseResponse
+### TrueFalseResponse
 A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided: true or false.   TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
 #### TODO
