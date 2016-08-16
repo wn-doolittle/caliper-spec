@@ -339,7 +339,7 @@ The Assignable Profile provides coverage for all activity types that can be assi
 * Decide whether Attempt should be the object of the interaction
 * Do we need to add a submitted action?
 
-<a name="#contentMgmtProfile" />
+<a name="contentMgmtProfile" />
 ### 4.5 Content Management Profile
 The Content Management Profile models activities associated with the creation and management of digital content.
 
