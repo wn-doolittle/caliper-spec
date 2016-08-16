@@ -40,7 +40,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* 5.3 [AssessmentEvent](#assessmentEvent)
 	* 5.4 [AssessmentItemEvent](#assessmentItemEvent)
     * 5.5 [AssignableEvent](#assignableEvent)
-	* 5.6 [DigitalResourceMgmtEvent](#digitalResourceMgmtEvent)
+	* 5.6 [ContentMgmtEvent](#contentMgmtEvent)
 	* 5.7 [ForumEvent](#ForumEvent)
 	* 5.8 [MediaEvent](#mediaEvent)
 	* 5.9 [MessageEvent](#messageEvent)
@@ -1139,7 +1139,7 @@ TODO add additional intro text
 ```
 
 <a name="contentMgmtEvent" />
-### 5.6 ContentMgmtEvent / EntityMgmtEvent
+### 5.6 ContentMgmtEvent
 
 The ContentMgmtEvent models activities associated with the creation and management of digital content.  ContentMgmtEvent inherits all the properties and requirements defined for Event, its superclass.  
 
