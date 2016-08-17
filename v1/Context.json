@@ -117,7 +117,10 @@
     "selection": "caliper:selection",
     "session": "caliper:session",
     "subOrganizationOf": "caliper:subOrganizationOf",
-    "status": "caliper:status",
+    "status": {
+      "@id": "caliper:status",
+      "@type": "@id"
+    },
     "tags": {
       "@id": "caliper:tags",
       "@container": "@list"
