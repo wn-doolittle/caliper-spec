@@ -769,7 +769,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
     },
     "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
     "object": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assessments/1",
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
         "name": "Quiz One",
         "dateToStartOn": "2016-09-16T05:00:00.000Z",
@@ -844,7 +844,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
         "@id": "https://example.edu/semesters/201601/courses/301/assess/1/users/554433/attempts/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
         "assignable": {
-            "@id": "https://example.edu/semesters/201601/courses/301/assessments/1",
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
             "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
             "name": "Quiz One",
             "dateToStartOn": "2016-09-16T05:00:00.000Z",
@@ -1092,7 +1092,7 @@ TODO add additional intro text
     },
     "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Activated",
     "object": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assessments/1",
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
         "name": "Quiz One",
         "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -1700,7 +1700,7 @@ TODO add description
         "@id": "https://example.edu/semesters/201601/courses/301/assess/1/users/554433/results/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/Result",
         "assignable": {
-            "@id": "https://example.edu/semesters/201601/courses/301/assessments/1",
+            "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
             "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
         },
         "actor": {
@@ -2151,7 +2151,7 @@ Inherited from [AssignableDigitalResource](#assignableDigitalResource) and [Coll
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/assessments/1",
+    "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
     "name": "Quiz One",
     "items": [
@@ -2205,7 +2205,7 @@ Inherited from [AssignableDigitalResource](#assignableDigitalResource).
     "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3",
     "@type": "http: //purl.imsglobal.org/caliper/v1/AssessmentItem",
     "isPartOf": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assessments/1",
+        "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
     },
     "dateCreated": "2016-08-01T06:00:00.000Z",
