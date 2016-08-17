@@ -2210,6 +2210,7 @@ Inherited from [AssignableDigitalResource](#assignableDigitalResource).
     },
     "dateCreated": "2016-08-01T06:00:00.000Z",
     "datePublished": "2016-08-15T09:30:00.000Z",
+    "isTimeDependent": false,
     "maxAttempts": 2,
     "maxScore": 5,
     "maxSubmits": 2,
