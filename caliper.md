@@ -2335,11 +2335,11 @@ Inherited from [MediaObject](#mediaObject).
 #### Example
 ```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "http://www.fdrlibrary.marist.edu/archives/collections/utterances_audio/direct_download.php?file=afdr067.mp3",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AudioObject",
-  "name": "Franklin D. Roosevelt. Madison Square Garden Speech (31 October 1936)",
-  "duration": "PT36M55S"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+    "@id": "https://fdrlibrary.org/documents/356632/405112/afdr067.mp3",
+    "@type": "http://purl.imsglobal.org/caliper/v1/AudioObject",
+    "name": "Franklin D. Roosevelt. Madison Square Garden Speech (31 October 1936)",
+    "duration": "PT36M55S"
 }
 ```
 
