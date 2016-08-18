@@ -2763,7 +2763,7 @@ Inherited from [DigitalResource](#digitalResource).
 ```
 
 <a name="epubSubChapter" />
-#### EpubSubChapter (DEPRECATED)
+### EpubSubChapter (DEPRECATED)
 A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).  EpubSubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### subClassOf 
@@ -3169,7 +3169,7 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
 ```
 
 <a name="membership" />
-#### Membership
+### Membership
 A Caliper Membership describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  Membership inherits all the properties and requirements defined for [Entity](#entity), its superclass.
 
 #### subClassOf 
