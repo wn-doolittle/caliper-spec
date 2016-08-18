@@ -2902,31 +2902,6 @@ In addition to properties inherited from [Response](#response), FillinBlankRespo
 }
 ```
 
-<a name="frame" />
-### Frame
-A Caliper Frame represents TODO . . . .  Frame inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
-
-#### subClassOf 
-[DigitalResource](#digitalResource)
-
-#### Required properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
-| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Frame SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Frame MUST be assigned a blank node identifier. |
-| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Frame. |
-| index | nonNegativeInteger | The character position TODO . . . . |
-
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
-
-#### Example
-```json
-{
-    TODO
-}
-```
-
 <a name="forum" />
 ### Forum
 A Caliper Forum represents a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded discussions to which members can subscribe, post messages and reply to other messages.  Frame inherits all the properties and requirements defined for [DigitalResourceCollection](#digitalResourceCollection), its superclass.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
@@ -2985,6 +2960,31 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
     },
     "dateCreated": "2016-08-01T06:00:00.000Z",
     "dateModified": "2016-09-02T11:30:00.000Z"
+}
+```
+
+<a name="frame" />
+### Frame
+A Caliper Frame represents TODO . . . .  Frame inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
+
+#### subClassOf 
+[DigitalResource](#digitalResource)
+
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Frame SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Frame MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Frame. |
+| index | nonNegativeInteger | The character position TODO . . . . |
+
+#### Optional properties
+Inherited from [DigitalResource](#digitalResource).
+
+#### Example
+```json
+{
+    TODO
 }
 ```
 
