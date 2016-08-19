@@ -2571,7 +2571,7 @@ In addition to properties inherited from [Entity](#entity), DigitalResource incl
 | creators | List&lt;[Agent](#agent)&gt; | An ordered list of agents, typically of type Person, responsible for bringing this DigitalResource into being.  Analogous to [sdo:Creator](http://schema.org/Creator) or [dcterms:creator](http://purl.org/dc/terms/creator). |
 | mediaType | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | TODO |
 | keywords | List&lt;[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)&gt; | A set of one or more words or expressions that are used to identify this DigitalResource.  Analogous to [sdo:keywords](http://schema.org/keywords) |
-| alignedLearningObjective | List&lt;[LearningObjective](#learningobjective)&gt; | One or more [LearningObjectives](#learningobject) that describe what the actor is expected to accomplish after engaging with this DigitalResource. |
+| learningObjectives | List&lt;[LearningObjective](#learningobjective)&gt; | One or more [LearningObjectives](#learningobject) that describe what the actor is expected to accomplish after engaging with this DigitalResource. |
 | isPartOf | [DigitalResource](#digitalResource) | A related DigitalResource that includes or incorporates this DigitalResource as a part of its whole.  Analogous to [sdo:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf). |
 | datePublished | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents the publication date of this DigitalResource.  If a publication date is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [sdo:datePublished](http://schema.org/datePublished) |
 | version | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | An identifier that designates the current form of this DigitalResource.  Analogous to [sdo:version](http://schema.org/version) |
@@ -3138,7 +3138,7 @@ TODO
 ### MediaObject
 A Caliper MediaObject represents a generic piece of media content.  MediaObject inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  Given that MediaObject represents a generic type it is RECOMMENDED that only subclasses of DigitalResource be employed to represent nodes in the learning graph.  MediaObject is analogous to [sdo:MediaObject](http://schema.org/MediaObject).
 
-### TODO
+#### TODO
 confirm: Migrate MediaObject.duration to AudioObject and VideoObject (irrelevant property for ImageObject to inherit).
 
 #### subClassOf 
@@ -3181,9 +3181,16 @@ A Caliper Membership describes the relationship between an [Organization](#organ
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Membership SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Membership MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Membership. |
+| organization | [Organization](#organization) | The Organization associated with this Membership MUST be specified. |
+| member | [Person](#person) ] | The Person who is the member of the associated Organization MUST be specified. |
 
 #### Optional properties
-Inherited from [Entity](#entity).
+In addition to properties inherited from [Entity](#entity), Membership includes the following additional optional properties:
+
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| roles | List&lt;[Role](#role)&gt; | The organizational roles assigned to a member SHOULD be specified.  If a role is specified, the value MUST be chosen from the defined set of [roles](#roles]. |
+| status | string | The member's current status SHOULD be specified.  If a status is specified, the value MUST be set to the one of the following defined states:  [active](#active], [deleted](#deleted) or [inactive](#inactive). |
 
 #### Example
 ```json
@@ -4001,8 +4008,16 @@ TODO Intro
 ```
 
 <a name="appendixC" />
-## Appendix B.  Roles and Status
-TODO Intro
+## Appendix B.  Roles
+
+### Status
+The status of a [member](#member) within an organization can be set to one of the following states: active, deleted or inactive.  The value MUST be set to the appropriate IRI:
+
+| Status | IRI |
+| ------  | --- | 
+| active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
+| deleted | http://purl.imsglobal.org/vocab/lis/v2/status#Deleted |
+| inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
 <a name="revisionHistory" />
 ## Revision History
