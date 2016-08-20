@@ -758,63 +758,134 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 | federatedSession | [LtiSession](#ltiSession) |If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example: Assessment started
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
+  "object": {
+    "@id": "https://example.edu/terms/201601/courses/7/assess/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+    "name": "Quiz One",
+    "dateToStartOn": "2016-09-16T05:00:00.000Z",
+    "dateToSubmit": "2016-09-18T11:59:59.000Z",
+    "maxAttempts": 2,
+    "maxSubmits": 2,
+    "maxScore": 25,
+    "version": "1.0"
+  },
+  "generated": {
+    "@id": "https://example.edu/terms/201601/courses/7/assess/1/users/554433/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "assignable": {
+      "@id": "https://example.edu/terms/201601/courses/7/assess/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+    },
+    "actor": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "count": 1,
+    "dateCreated": "2016-09-17T10:15:00.000Z",
+    "startedAtTime": "2016-09-17T10:15:00.000Z"
+  },
+  "eventTime": "2016-09-17T10:15:00.000Z",
+  "edApp": {
+    "@id": "https://example.edu/",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "version": "v2"
+  },
+  "group": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "courseNumber": "CPS101-01",
+    "academicSession": "Fall-2016"
+  },
+  "membership": {
+    "@id": "https://example.edu/terms/201601/courses/7/rosters/20",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "member": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "organization": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+    },
+    "roles": [
+      "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
+    ],
+    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "@id": "https://example.com/lms/sessions/973465e7f388940324465caf55b4f761b0f4f093",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "startedAtTime": "2016-09-17T10:00:00.000Z"
+  }
+}
+```
+
+#### Example: Assessment submitted
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
     "actor": {
-        "@id": "https://example.edu/user/554433",
+        "@id": "https://example.edu/users/554433",
         "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
+    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted",
     "object": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
-        "name": "Quiz One",
-        "dateToStartOn": "2016-09-16T05:00:00.000Z",
-        "dateToSubmit": "2016-09-18T11:59:59.000Z",
-        "maxAttempts": 2,
-        "maxSubmits": 2,
-        "maxScore": 25,
-        "version": "1.0"
-    },
-    "generated": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/users/554433/attempts/1",
+        "@id": "https://example.edu/terms/201601/courses/7/assess/1/users/554433/attempts/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-        "assignable": {
-            "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
-        },
         "actor": {
-            "@id": "https://example.edu/user/554433",
+            "@id": "https://example.edu/users/554433",
             "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "assignable": {
+            "@id": "https://example.edu/terms/201601/courses/7/assess/1",
+            "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+            "name": "Quiz One",
+            "dateToStartOn": "2016-09-16T05:00:00.000Z",
+            "dateToSubmit": "2016-09-18T11:59:59.000Z",
+            "maxAttempts": 2,
+            "maxSubmits": 2,
+            "maxScore": 25,
+            "version": "1.0"
         },
         "count": 1,
         "dateCreated": "2016-09-17T10:15:00.000Z",
-        "startedAtTime": "2016-09-17T10:15:00.000Z"
+        "startedAtTime": "2016-09-17T10:15:00.000Z",
+        "endedAtTime": "2016-09-17T10:25:30.000Z",
+        "duration": "PT10M30S"
     },
-    "eventTime": "2016-09-17T10:15:00.000Z",
+    "eventTime": "2016-09-17T10:25:30.000Z",
     "edApp": {
         "@id": "https://example.edu/",
         "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
         "version": "v2"
     },
     "group": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
         "courseNumber": "CPS101-01",
         "academicSession": "Fall-2016"
     },
     "membership": {
-        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
+        "@id": "https://example.edu/terms/201601/courses/7/rosters/20",
         "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
         "member": {
-            "@id": "https://example.edu/people/554433",
+            "@id": "https://example.edu/users/554433",
             "@type": "http://purl.imsglobal.org/caliper/v1/Person"
         },
         "organization": {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
+            "@id": "https://example.edu/terms/201601/courses/7/sections/1",
             "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
         },
         "roles": [
@@ -830,6 +901,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
     }
 }
 ```
+
 #### OR
 ```json
 {
