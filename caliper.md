@@ -4030,6 +4030,7 @@ The status of a [member](#member) within an organization can be set to one of th
 | inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
 ### Roles
+One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate IRI:
 
 | Role | IRI |
 | ----  | --- | 
@@ -4050,8 +4051,8 @@ The status of a [member](#member) within an organization can be set to one of th
 
 | Role | IRI |
 | ----  | --- | 
-|  administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
-|  administrator_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
+| administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
+| administrator_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
 | administrator_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer |
 | administrator_support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support |
 | administrator_system_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator |
