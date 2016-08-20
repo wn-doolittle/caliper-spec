@@ -4103,7 +4103,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | teaching_assistant_teaching_assistant | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistant |
 | teaching_assistant_grader | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#Grader |
 | teaching_assistant_teaching_assistant_section | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSection |
-| teaching_assistant_teaching_assistant_section_association | http://purl.imsglobal.org/vocab/lis/v2/membership/Teaching_assistant_teachingAssistant#TeachingAssistantSectionAssociation |
+| teaching_assistant_teaching_assistant_section_association | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSectionAssociation |
 | teaching_assistant_teaching_assistant_offering | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantOffering |
 | teaching_assistant_teaching_assistant_template | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantTemplate |
 | teaching_assistant_teaching_assistant_group | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
