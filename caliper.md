@@ -716,7 +716,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentEvent |
 | actor  | [Person](#person) | The Person who initiated or is the subject of this AssessmentEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Started |
-| object | [Assessment](#assessment) | &nbsp; | 
+| object |  [Assessment](#assessment) , [Attempt](#attempt) | For [started](#started), [paused](#paused) and [restarted](#restarted) actions the Assessment is the REQUIRED object of the interaction; for a [submitted](#submitted) action the learner's [Attempt](#attempt) of the Assessment is the REQUIRED object.  When the Attempt is the object it MUST reference both the actor and the assigned Assessment.  A [count](#count) of the number of times the actor has interacted with the Assessment MUST also be specified.  The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
@@ -991,7 +991,7 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent |
 | actor  | [Person](#person) | The Person who initiated or is the subject of this AssessmentItemEvent. |
 | action | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value range is limited to the supported actions listed above.  The value assigned MUST be the appropriate IRI, e.g., http://purl.imsglobal.org/vocab/caliper/v1/action#Completed |
-| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [started](#started) and [skipped] actions the AssessmentItem is the REQUIRED object of the interaction; for a [completed](#completed) action it is RECOMMENDED that the learner's [Attempt](#attempt) comprise the object.  If the Attempt is provided it MUST reference both the actor and the assigned AssessmentItem.  A [count](#count) of the number of times the actor has interacted with the AssessmentItem MUST also be specified.  The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property. | 
+| object |   [AssessmentItem](#assessmentItem) , [Attempt](#attempt) | For [started](#started) and [skipped](#skipped) actions the AssessmentItem is the REQUIRED object of the interaction; for a [completed](#completed) action the learner's [Attempt](#attempt) of the AssessmentItem is the REQUIRED object.  When the Attempt is the object it MUST reference both the actor and the assigned AssessmentItem.  A [count](#count) of the number of times the actor has interacted with the AssessmentItem MUST also be specified.  The Attempt MAY also reference a parent Assessment Attempt via the [isPartOf](#isPartOf) property. |
 | eventTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | ISO 8601 formatted date and time expressed with millisecond precision.  |
 
 #### Optional properties
@@ -2362,6 +2362,7 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
+| isPartOf | [Attempt](#attempt) | The parent Attempt of this Attempt MAY be specified. |
 | startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Attempt commenced.  A start time SHOULD be provided.  If a start time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
 | endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Attempt ended or was terminated.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be provided.  If an end time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
 | duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | Represents the total interval of time required to complete this Attempt.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
