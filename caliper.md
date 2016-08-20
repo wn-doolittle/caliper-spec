@@ -637,7 +637,7 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@type": "http://purl.imsglobal.org/caliper/v1/AnnotationEvent",
     "actor": {
-        "@id": "https://example.edu/user/554433",
+        "@id": "https://example.edu/users/554433",
         "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged",
@@ -657,7 +657,7 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
             "@id": "https://example.edu/semesters/201601/courses/301/sections/1/resources/1/book011.html",
             "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
         },
-        "tags": [ "csev", "python" "tuple", "dictionaries" ],
+        "tags": [ "csev", "python", "tuple", "dictionaries" ],
         "dateCreated": "2016-09-17T10:15:12.000Z"
     },
     "eventTime": "2016-09-17T10:15:12.000Z",
@@ -3241,7 +3241,7 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
 | -------- | ----- | -------------- |
 | replyTo | [Message](#message) | If this Message represents a reply or a response to a previous Message, the Message prompting the reply SHOULD be referenced.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). |
 | content | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | Plain-text rendering of the content of the Message.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). |
-| attachments | List&lt;[DigitalResource](#digitalResource)&gt; | A ordered set of one or more items attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). |
+| attachments | List&lt;[DigitalResource](#digitalResource)&gt; | An ordered set of one or more items attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). |
 
 #### Example
 ```
@@ -3517,15 +3517,13 @@ TODO
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | A Response SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Response MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | If a generic Response is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Response; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/v1/TrueFalseResponse. |
-| actor | [Person](#person) | The Person who initiated the Response MUST be specified. |
-| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+| attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
 #### Optional properties
 In addition to properties inherited from [Entity](#entity), Response includes the following additional optional properties:
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| attempt| [Attempt](#attempt) | The Attempt associated with this Response SHOULD BE referenced. |
 | startedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime)  | Represents when this Response commenced.  A start time SHOULD be provided.  If a start time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime). |
 | endedAtTime | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents when this Response was completed or ended.  An end time SHOULD be provided.  If an end time is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime). |
 | duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) |Represents the total interval of time required to complete this Response.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
@@ -3545,9 +3543,21 @@ TODO
 #### Example
 ```
 {
-
- TODO
- 
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Result",
+  "actor": "https://example.edu/users/554433",
+  "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+  "comment": "Well done.",
+  "normalScore": 3.0,
+  "penaltyScore": 0.0,
+  "totalScore": 3.0,
+  "scoredBy": {
+    "@id": "https://example.com/quizengine",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "dateCreated": "2015-08-01T06:00:00.000Z"
+  },
+  "dateCreated": "2015-08-01T06:00:00.000Z"
 }
 ```
 
@@ -4018,6 +4028,86 @@ The status of a [member](#member) within an organization can be set to one of th
 | active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
 | deleted | http://purl.imsglobal.org/vocab/lis/v2/status#Deleted |
 | inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
+
+### Roles
+
+| Role | IRI |
+| ----  | --- | 
+| learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner |
+| external_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner |
+| guest_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner |
+| learner_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor |
+|  learner_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner |
+| noncredit_learner  | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
+
+| Role | IRI |
+| ----  | --- | 
+| instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
+| external_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor |
+| guest_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor |
+| lecturer | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer |
+| primary_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor |
+
+| Role | IRI |
+| ----  | --- | 
+|  administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
+|  administrator_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
+| administrator_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer |
+| administrator_support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support |
+| administrator_system_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator |
+| administrator_external_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport |
+| administrator_external_support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper |
+| administrator_external_system_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator |
+
+| Role | IRI |
+| ----  | --- | 
+| content_developer | "http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
+| content_developer_content_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper |
+| content_developer_ librarian | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian |
+| content_developer_ content_expert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert |
+| content_developer_external_context_expert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert |
+
+| Role | IRI |
+| ----  | --- | 
+| manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
+| manager_area_manager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
+| manager_course_coordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
+| manager_observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
+| manager_external_observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
+
+| Role | IRI |
+| ----  | --- | 
+| member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
+| member_member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
+
+| Role | IRI |
+| ----  | --- | 
+| mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
+| mentor_mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor |
+| mentor_external_mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor |
+| mentor_advisor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor |
+| mentor_external_ advisor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAdvisor |
+| mentor_auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor |
+| mentor_external_auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAuditor |
+| mentor_reviewer |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Reviewer |
+| mentor_external_reviewer | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer |
+| mentor_tutor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor |
+| mentor_external_tutor | "http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor |
+| mentor_learning_facilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#LearningFacilitator |
+| mentor_external_learning_facilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor/ExternalLearningFacilitator |
+
+| Role | IRI |
+| ----  | --- | 
+| teaching_assistant | http://purl.imsglobal.org/vocab/lis/v2/membership#TeachingAssistant |
+| teaching_assistant_teaching_assistant | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistant |
+| teaching_assistant_grader | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#Grader |
+| teaching_assistant_teaching_assistant_section | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSection |
+|  teaching_assistant_teaching_assistant_section_association | http://purl.imsglobal.org/vocab/lis/v2/membership/T teaching_assistant_eachingAssistant#TeachingAssistantSectionAssociation |
+| teaching_assistant_teaching_assistant_offering | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantOffering |
+| teaching_assistant_teaching_assistant_template | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantTemplate |
+|  teaching_assistant_teaching_assistant_group | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
+
+
 
 <a name="revisionHistory" />
 ## Revision History
