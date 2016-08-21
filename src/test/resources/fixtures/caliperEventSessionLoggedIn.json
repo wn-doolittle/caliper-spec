@@ -3,54 +3,40 @@
   "id": "15128c13-ca75-4952-8cce-72a513ec337d",
   "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
   "actor": {
-    "@id": "https://example.edu/user/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z"
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
   "object": {
-    "@id": "https://example.com/viewer",
+    "@id": "https://example.edu/viewer",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "name": "ePub",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z",
     "version": "1.2.3"
   },
   "target": {
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Frame",
-    "name": "Key Figures: George Washington",
-    "isPartOf": {
-      "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Document",
-      "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
-      "dateCreated": "2015-08-01T06:00:00.000Z",
-      "dateModified": "2015-09-02T11:30:00.000Z",
-      "version": "2nd ed."
+    "@id": "https://example.edu/viewer/session-123456789",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "name": "session-123456789",
+    "actor": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z",
-    "version": "2nd ed.",
-    "index": 1
+    "startedAtTime": "2015-09-15T10:15:00.000Z"
   },
   "generated": {
-    "@id": "https://example.com/viewer/session-123456789",
+    "@id": "https://example.edu/viewer/session-123456789",
     "@type": "http://purl.imsglobal.org/caliper/v1/Session",
     "name": "session-123456789",
     "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z",
     "actor": {
-      "@id": "https://example.edu/user/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person",
-      "dateCreated": "2015-08-01T06:00:00.000Z",
-      "dateModified": "2015-09-02T11:30:00.000Z"
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "startedAtTime": "2015-09-15T10:15:00.000Z"
   },
   "eventTime": "2015-09-15T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.com/viewer",
+    "@id": "https://example.edu/viewer",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "name": "ePub",
     "dateCreated": "2015-08-01T06:00:00.000Z",
@@ -58,38 +44,38 @@
     "version": "1.2.3"
   },
   "group": {
-    "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001",
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Group",
-    "name": "Discussion Group 001",
+    "name": "Discussion Group 1",
     "subOrganizationOf": {
-      "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
       "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-      "courseNumber": "POL101",
-      "name": "American Revolution 101",
-      "academicSession": "Fall-2015",
+      "academicSession": "Fall-2016",
+      "courseNumber": "CPS101-01",
+      "name": "Python for Informatics",
+      "category": "self-paced",
       "subOrganizationOf": {
-        "@id": "https://example.edu/politicalScience/2015/american-revolution-101",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
-        "courseNumber": "POL101",
-        "name": "Political Science 101: The American Revolution",
-        "academicSession": "Fall-2015",
-        "dateCreated": "2015-08-01T06:00:00.000Z",
-        "dateModified": "2015-09-02T11:30:00.000Z"
-      },
-      "dateCreated": "2015-08-01T06:00:00.000Z",
-      "dateModified": "2015-09-02T11:30:00.000Z"
+        "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+        "@id": "https://example.edu/terms/201601/courses/7",
+        "@type": "http: //purl.imsglobal.org/caliper/v1/CourseOffering",
+        "courseNumber": "CPS101"
+      }
     },
     "dateCreated": "2015-08-01T06:00:00.000Z"
   },
   "membership": {
-    "@id": "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433",
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
-    "name": "American Revolution 101",
-    "description": "Roster entry",
-    "member": "https://example.edu/user/554433",
-    "organization": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-    "roles": ["http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"],
+    "member": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "organization": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+    },
+    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
-    "dateCreated": "2015-08-01T06:00:00.000Z"
+    "dateCreated": "2016-08-01T06:00:00.000Z"
   }
 }

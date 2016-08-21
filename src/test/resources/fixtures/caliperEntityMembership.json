@@ -1,12 +1,20 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
   "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "description": "Roster entry",
-  "member": "https://example.edu/user/554433",
-  "name": "American Revolution 101",
-  "organization": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
-  "roles": ["http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"],
-  "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active"
+  "member": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "organization": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "subOrganizationOf": {
+      "@id": "https://example.edu/terms/201601/courses/7",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+    }
+  },
+  "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
+  "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+  "dateCreated": "2016-09-01T06:00:00.000Z"
 }

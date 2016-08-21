@@ -1,0 +1,6 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Jesse_Owens3.jpg",
+  "@type": "http://purl.imsglobal.org/caliper/v1/ImageObject",
+  "name": "Jesse Owens"
+}

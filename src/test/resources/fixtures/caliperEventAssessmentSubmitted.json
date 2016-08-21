@@ -1,24 +1,38 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/ForumEvent",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
   "actor": {
     "@id": "https://example.edu/users/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed",
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
-    "name": "Caliper Forum",
-    "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "dateCreated": "2016-09-14T11:00:00.000Z"
+    "assignable": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+      "name": "Quiz One",
+      "dateToStartOn": "2016-09-16T05:00:00.000Z",
+      "dateToSubmit": "2016-09-18T11:59:59.000Z",
+      "maxAttempts": 2,
+      "maxSubmits": 2,
+      "maxScore": 25,
+      "version": "1.0"
+    },
+    "count": 1,
+    "dateCreated": "2016-09-17T10:15:00.000Z",
+    "startedAtTime": "2016-09-17T10:15:00.000Z",
+    "endedAtTime": "2016-09-17T10:25:30.000Z",
+    "duration": "PT10M30S"
   },
-  "eventTime": "2016-09-15T10:16:00.000Z",
+  "eventTime": "2016-09-17T10:25:30.000Z",
   "edApp": {
-    "@id": "https://example.edu/lms/forums",
+    "@id": "https://example.edu/",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
@@ -44,8 +58,8 @@
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/lms/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
+    "@id": "https://example.edu/lms/sessions/973465e7f388940324465caf55b4f761b0f4f093",
     "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-    "startedAtTime": "2016-09-15T10:12:00.000Z"
+    "startedAtTime": "2016-09-17T10:00:00.000Z"
   }
 }

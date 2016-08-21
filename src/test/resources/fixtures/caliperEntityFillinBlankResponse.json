@@ -1,19 +1,28 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001/item/001/response/001",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
   "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
-  "actor": "https://example.edu/user/554433",
-  "assignable": "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001",
   "attempt": {
-    "@id": "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001/item/001/attempt/789",
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-    "actor": "https://example.edu/user/554433",
-    "assignable": "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001",
+    "actor": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "assignable": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "isPartOf": {
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+      }
+    },
     "count": 1,
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "startedAtTime": "2015-09-15T10:15:00.000Z"
+    "startedAtTime": "2016-09-15T10:15:02.000Z",
+    "endedAtTime": "2016-09-15T10:15:12.000Z"
   },
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "startedAtTime": "2015-09-15T10:15:00.000Z",
-  "values": ["2 July 1776"]
+  "dateCreated": "2016-09-15T10:15:12.000Z",
+  "startedAtTime": "2016-09-15T10:15:02.000Z",
+  "endedAtTime": "2016-09-15T10:15:12.000Z",
+  "values": [ "tuple", "immutable" ]
 }

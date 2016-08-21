@@ -1,0 +1,6 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/buildings/55/rooms/3027",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Entity",
+  "name": "Rm 3027 Computer lab"
+}
