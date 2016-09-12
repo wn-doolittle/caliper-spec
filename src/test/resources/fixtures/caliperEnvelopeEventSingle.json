@@ -1,31 +1,46 @@
 {
-  "sensor": "https://example.edu/sensor/001",
+  "sensor": "https://example.edu/sensors/1",
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
+      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
       "actor": {
         "@id": "https://example.edu/users/554433",
         "@type": "http://purl.imsglobal.org/caliper/v1/Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
+      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
       "object": {
-        "@id": "http://do1.dr-chuck.com/pythonlearn/EN_us/pythonlearn.pdf",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Document",
-        "name": "Python for Everybody.  Exploring Data using Python 3",
-        "version": "2016-Jul-05 First Complete Python 3.0 version"
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+        "name": "Quiz One",
+        "dateToStartOn": "2016-11-14T05:00:00.000Z",
+        "dateToSubmit": "2016-11-18T11:59:59.000Z",
+        "maxAttempts": 2,
+        "maxSubmits": 2,
+        "maxScore": 25,
+        "version": "1.0"
+      },
+      "generated": {
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+        "assignable": {
+          "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+          "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        },
+        "actor": {
+          "@id": "https://example.edu/users/554433",
+          "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "count": 1,
+        "dateCreated": "2016-11-15T10:15:00.000Z",
+        "startedAtTime": "2016-11-15T10:15:00.000Z"
       },
       "eventTime": "2016-11-15T10:15:00.000Z",
-      "referrer": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/3",
-        "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
-        "name": "Python for Everybody",
-        "description": "Python for Everybody landing page."
-      },
       "edApp": {
-        "@id": "https://example.edu",
-        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+        "@id": "https://example.edu/",
+        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+        "version": "v2"
       },
       "group": {
         "@id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -44,16 +59,14 @@
           "@id": "https://example.edu/terms/201601/courses/7/sections/1",
           "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
         },
-        "roles": [
-          "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
-        ],
+        "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
         "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
-        "@id": "https://example.edu/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
+        "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-        "startedAtTime": "2016-11-15T10:12:00.000Z"
+        "startedAtTime": "2016-11-15T10:00:00.000Z"
       }
     }
   ]

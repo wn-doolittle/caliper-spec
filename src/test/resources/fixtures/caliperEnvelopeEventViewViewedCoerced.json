@@ -1,5 +1,5 @@
 {
-  "sensor": "https://example.edu/sensor/001",
+  "sensor": "https://example.edu/sensors/1",
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {
@@ -41,18 +41,22 @@
       "membership": {
         "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
-        "member": "https://example.edu/users/554433",
-        "organization": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "roles": [
-          "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
-        ],
+        "member": {
+          "@id": "https://example.edu/users/554433",
+          "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        },
+        "organization": {
+          "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+          "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+        },
+        "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
         "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
-        "@id": "https://example.edu/sessions/973465e7f388940324465caf55b4f761b0f4f093",
+        "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-        "startedAtTime": "2016-09-17T10:00:00.000Z"
+        "startedAtTime": "2016-11-15T10:00:00.000Z"
       }
     }
   ]

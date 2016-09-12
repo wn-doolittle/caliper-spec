@@ -1,5 +1,5 @@
 {
-  "sensor": "https://example.edu/sensor/001",
+  "sensor": "https://example.edu/sensors/1",
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {

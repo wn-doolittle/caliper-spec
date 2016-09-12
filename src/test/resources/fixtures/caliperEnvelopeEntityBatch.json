@@ -1,5 +1,5 @@
 {
-  "sensor": "https://example.edu/sensor/001",
+  "sensor": "https://example.edu/sensors/1",
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {
@@ -37,7 +37,7 @@
           "@id": "https://example.edu/videos/1225",
           "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
           "mediaType": "video/ogg",
-          "name": "Video 1225",
+          "name": "Introduction to IMS Caliper",
           "dateCreated": "2016-08-01T06:00:00.000Z",
           "duration": "PT1H12M27S",
           "version": "1.0"
@@ -46,7 +46,7 @@
           "@id": "https://example.edu/videos/5629",
           "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
           "mediaType": "video/ogg",
-          "name": "Video 5629",
+          "name": "IMS Caliper Activity Profiles",
           "dateCreated": "2016-08-01T06:00:00.000Z",
           "duration": "PT55M13S",
           "version": "2.1"
