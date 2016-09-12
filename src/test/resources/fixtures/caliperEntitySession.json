@@ -1,10 +1,10 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/lms/sessions/973465e7f388940324465caf55b4f761b0f4f093",
+  "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
   "@type": "http://purl.imsglobal.org/caliper/v1/Session",
   "actor": {
     "@id": "https://example.edu/users/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
-  "startedAtTime": "2016-09-17T10:00:00.000Z"
+  "startedAtTime": "2016-09-15T10:00:00.000Z"
 }

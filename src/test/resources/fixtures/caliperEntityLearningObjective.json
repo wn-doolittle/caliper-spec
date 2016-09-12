@@ -1,20 +1,21 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/super-media-tool/video/1225",
-  "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
+  "@type": "http: //purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
+  "name": "Caliper Profile Design",
+  "description": "Choose a learning activity and describe the actions, entities and events that comprise it.",
   "learningObjective": [
     {
       "@id": "https://example.edu/terms/201601/courses/7/sections/1/objectives/1",
       "@type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
       "name": "Research techniques",
-      "description": "Demonstrate ability to discover, evaluate and analyze library resources both print and online.",
+      "description": "Demonstrate ability to model a learning activity as a Caliper profile.",
       "dateCreated": "2016-08-01T06:00:00.000Z"
     }
   ],
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
-  "duration": "PT1H12M27S",
-  "mediaType": "video/ogg",
-  "name": "Using the Library",
-  "version": "1.0"
+  "dateCreated": "2016-11-01T06:00:00.000Z",
+  "dateToStartOn": "2016-11-15T11:59:59.000Z",
+  "maxAttempts": 2,
+  "maxSubmits": 2,
+  "maxScore": 50
 }

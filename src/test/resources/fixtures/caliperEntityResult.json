@@ -5,13 +5,13 @@
   "actor": "https://example.edu/users/554433",
   "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
   "comment": "Well done.",
-  "normalScore": 3.0,
+  "normalScore": 15.0,
   "penaltyScore": 0.0,
-  "totalScore": 3.0,
+  "totalScore": 15.0,
   "scoredBy": {
     "@id": "https://example.edu/quizengine",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-    "dateCreated": "2015-08-01T06:00:00.000Z"
+    "dateCreated": "2016-08-01T06:00:00.000Z"
   },
-  "dateCreated": "2015-08-01T06:00:00.000Z"
+  "dateCreated": "2016-08-01T06:00:00.000Z"
 }

@@ -1,26 +1,32 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent",
   "actor": {
     "@id": "https://example.edu/users/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/2/pages/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
-    "name": "Learning Analytics Specifications",
-    "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
-    "dateCreated": "2016-08-01T09:00:00.000Z"
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+    "@type": "http: //purl.imsglobal.org/caliper/v1/AssessmentItem",
+    "name": "Assessment Item 2",
+    "isPartOf": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+    },
+    "dateToStartOn": "2016-11-14T05:00:00.000Z",
+    "dateToSubmit": "2016-11-18T11:59:59.000Z",
+    "maxAttempts": 2,
+    "maxSubmits": 2,
+    "maxScore": 1,
+    "isTimeDependent": false,
+    "version": "1.0"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
-  "referrer": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/3",
-    "@type": "http://purl.imsglobal.org/caliper/v1/WebPage"
-  },
+  "eventTime": "2016-11-15T10:14:30.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "@id": "https://example.edu/",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "version": "v2"
   },
   "group": {
     "@id": "https://example.edu/terms/201601/courses/7/sections/1",

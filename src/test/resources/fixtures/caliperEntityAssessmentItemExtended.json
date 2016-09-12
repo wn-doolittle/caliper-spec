@@ -14,7 +14,7 @@
   "maxSubmits": 2,
   "extensions": {
     "itemType": "true/false",
-    "itemText": "Is a Python tuple mutable?",
+    "itemText": "In Caliper event actors are limited to people only.",
     "itemCorrectResponse": "false",
     "itemIncorrectResponse": "true"
   }

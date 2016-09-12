@@ -1,6 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "id": "15128c13-ca75-4952-8cce-72a513ec337d",
+  "id": "341db3d9-71cc-4081-9423-cbed73cb0179",
   "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
   "actor": {
     "@id": "https://example.edu/users/554433",
@@ -8,74 +8,19 @@
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
   "object": {
-    "@id": "https://example.edu/viewer",
+    "@id": "https://example.edu",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-    "name": "ePub",
-    "version": "1.2.3"
+    "version": "v2"
   },
-  "target": {
-    "@id": "https://example.edu/viewer/session-123456789",
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "session": {
+    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-    "name": "session-123456789",
     "actor": {
       "@id": "https://example.edu/users/554433",
       "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "startedAtTime": "2015-09-15T10:15:00.000Z"
-  },
-  "generated": {
-    "@id": "https://example.edu/viewer/session-123456789",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-    "name": "session-123456789",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "startedAtTime": "2015-09-15T10:15:00.000Z"
-  },
-  "eventTime": "2015-09-15T10:15:00.000Z",
-  "edApp": {
-    "@id": "https://example.edu/viewer",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-    "name": "ePub",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z",
-    "version": "1.2.3"
-  },
-  "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Group",
-    "name": "Discussion Group 1",
-    "subOrganizationOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-      "academicSession": "Fall-2016",
-      "courseNumber": "CPS101-01",
-      "name": "Python for Informatics",
-      "category": "self-paced",
-      "subOrganizationOf": {
-        "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-        "@id": "https://example.edu/terms/201601/courses/7",
-        "@type": "http: //purl.imsglobal.org/caliper/v1/CourseOffering",
-        "courseNumber": "CPS101"
-      }
-    },
-    "dateCreated": "2015-08-01T06:00:00.000Z"
-  },
-  "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
-    "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
-    },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2016-11-15T10:00:00.000Z",
+    "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }

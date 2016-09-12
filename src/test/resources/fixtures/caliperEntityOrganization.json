@@ -2,10 +2,10 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/colleges/1/depts/1",
   "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
-  "name": "Department of History",
+  "name": "Computer Science Department",
   "subOrganizationOf": {
     "@id": "https://example.edu/colleges/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
-    "name": "College of Arts and Letters"
+    "name": "College of Engineering"
   }
 }

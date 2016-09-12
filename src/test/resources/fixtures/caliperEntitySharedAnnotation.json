@@ -1,14 +1,14 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/highlights/12345",
+  "@id": "https://example.edu/users/554433/etexts/201/shares/1",
   "@type": "http://purl.imsglobal.org/caliper/v1/SharedAnnotation",
   "actor": {
     "@id": "https://example.edu/users/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "annotated": {
-    "@id": "https://example.edu/viewer/book/34843#epubcfi(/4/3/4)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+    "@id": "https://example.edu/etexts/201.epub",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Document"
   },
   "withAgents": [
     {

@@ -10,8 +10,8 @@
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "count": 1,
-  "dateCreated": "2016-09-15T10:05:00.000Z",
-  "startedAtTime": "2016-09-15T10:05:00.000Z",
-  "endedAtTime": "2016-09-15T10:55:30.000Z",
+  "dateCreated": "2016-11-15T10:05:00.000Z",
+  "startedAtTime": "2016-11-15T10:05:00.000Z",
+  "endedAtTime": "2016-11-15T10:55:30.000Z",
   "duration": "PT50M30S"
 }

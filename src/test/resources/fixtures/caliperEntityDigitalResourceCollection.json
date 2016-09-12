@@ -1,14 +1,14 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+  "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
   "name": "Video Collection",
   "items": [
     {
       "@id": "https://example.edu/videos/1225",
       "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
       "mediaType": "video/ogg",
-      "name": "Video 1225",
+      "name": "Introduction to IMS Caliper",
       "dateCreated": "2016-08-01T06:00:00.000Z",
       "duration": "PT1H12M27S",
       "version": "1.0"
@@ -17,7 +17,7 @@
       "@id": "https://example.edu/videos/5629",
       "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
       "mediaType": "video/ogg",
-      "name": "Video 5629",
+      "name": "IMS Caliper Activity Profiles",
       "dateCreated": "2016-08-01T06:00:00.000Z",
       "duration": "PT55M13S",
       "version": "2.1"

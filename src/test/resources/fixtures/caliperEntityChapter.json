@@ -1,14 +1,13 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/viewer/book/34843#epubcfi(/4/3/1)",
+  "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!)",
   "@type": "http://purl.imsglobal.org/caliper/v1/Chapter",
-  "name": "The Stamp Act Crisis",
+  "name": "The Caliper Information Model",
   "isPartOf": {
-    "@id": "https://example.edu/viewer/book/34843#epubcfi(/4/3)",
+    "@id": "https://example.edu/etexts/201.epub",
     "@type": "http://purl.imsglobal.org/caliper/v1/Document",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z",
-    "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
-    "version": "2nd ed."
+    "dateCreated": "2016-10-01T06:00:00.000Z",
+    "name": "IMS Caliper Implementation Guide",
+    "version": "1.1"
   }
 }

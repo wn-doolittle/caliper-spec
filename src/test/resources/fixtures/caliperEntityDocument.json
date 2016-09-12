@@ -1,14 +1,19 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/viewer/book/34843#epubcfi(/4/3)",
+  "@id": "https://example.edu/etexts/201.epub",
   "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+  "name": "IMS Caliper Implementation Guide",
   "creators": [
-    {"@id": "http://history.berkeley.edu/people/robert-l-middlekauff",
-     "@type": "http://purl.imsglobal.org/caliper/v1/Person",
-     "name": "Robert Middlekauff"}
+    {
+      "@id": "https://example.edu/people/12345",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    {
+      "@id": "https://example.com/staff/56789",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    }
   ],
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
-  "name": "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)",
-  "version": "2nd ed."
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "datePublished": "2016-10-01T06:00:00.000Z",
+  "version": "1.1"
 }

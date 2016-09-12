@@ -7,8 +7,8 @@
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
   "object": {
-    "@id": "https://example.edu/super-media-tool/video/6779",
+    "@id": "https://example.edu/videos/6779",
     "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject"
   },
-  "eventTime": "2015-09-15T10:15:00.000Z"
+  "eventTime": "2016-11-15T10:15:00.000Z"
 }
