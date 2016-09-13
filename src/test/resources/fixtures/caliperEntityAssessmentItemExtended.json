@@ -13,6 +13,9 @@
   "maxScore": 5,
   "maxSubmits": 2,
   "extensions": {
+    "@context": {
+      "@vocab": "http://example.edu/ctx/edu.jsonld"
+    },
     "itemType": "true/false",
     "itemText": "In Caliper event actors are limited to people only.",
     "itemCorrectResponse": "false",

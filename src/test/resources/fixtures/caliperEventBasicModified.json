@@ -5,7 +5,7 @@
     "@id": "https://example.edu/users/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Updated",
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Modified",
   "object": {
     "@id": "https://example.edu/videos/6779",
     "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject"
