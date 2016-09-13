@@ -22,8 +22,8 @@
     "launch_presentation_return_url": "https://example.edu/terms/201601/courses/7/sections/1/pages/5",
     "launch_presentation_width": 320,
     "resource_link_id": "88391-e1919-bb3456",
-    "resource_link_title": "My Blog",
-    "resource_link_description": "Blog tool",
+    "resource_link_title": "LTI tool",
+    "resource_link_description": "A loosely-coupled, external tool for getting stuff done.",
     "roles": "urn:lti:role:ims/lis/Learner,urn:lti:instrole:ims/lis/Student",
     "role_scope_mentor": "f5b2cc6c-8c5c-24e8-75cc-fac5,dc19e42c-b0fe-68b8-167e-4b1a",
     "tool_consumer_instance_guid": "example.edu/",
@@ -32,15 +32,17 @@
     "custom_caliper_session_id": "https://example.edu/federatedSession/123456789",
     "ext_vnd_instructor": {
       "@context": {
-        "@vocab": "http://schema.org/",
-        "csev": "http://dr-chuck.com/"
+        "@vocab": "http://example.edu/ctx/edu.jsonld",
+        "sdo": "http://schema.org/"
       },
       "@type": "Person",
-      "csev:debug": "42",
-      "jobTitle": "Professor",
-      "name": "Jane Doe",
-      "telephone": "(425) 123-4567",
-      "url": "http://www.janedoe.com"
+      "sdo:jobTitle": "Professor",
+      "sdo:givenName": "Mira",
+      "sdo:familyName": "Haversine",
+      "sdo:email": "mirahaversine@example.edu",
+      "sdo:url": "https://example.edu/faculty/mirahaversine",
+      "isTenured": true,
+      "isOnSabbatical": false
     },
     "dateCreated": "2016-11-15T10:15:00.000Z",
     "startedAtTime": "2016-11-15T10:15:00.000Z",

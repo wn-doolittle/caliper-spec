@@ -27,19 +27,21 @@
     "custom_caliper_session_id": "https://example.edu/federatedSession/123456789",
     "custom_context_title": "CPS 435 Learning Analytics",
     "custom_context_label": "CPS 435",
-    "custom_resource_link_title": "My Blog",
+    "custom_resource_link_title": "LTI tool",
     "custom_user_image": "https://example.edu/users/554433/profile/avatar.jpg",
     "ext_vnd_instructor": {
       "@context": {
-        "@vocab": "http://schema.org/",
-        "csev": "http://dr-chuck.com/"
+        "@vocab": "http://example.edu/ctx/edu.jsonld",
+        "sdo": "http://schema.org/"
       },
       "@type": "Person",
-      "csev:debug": "42",
-      "jobTitle": "Professor",
-      "name": "Jane Doe",
-      "telephone": "(425) 123-4567",
-      "url": "http://www.JaneDoe.com"
+      "sdo:jobTitle": "Professor",
+      "sdo:givenName": "Mira",
+      "sdo:familyName": "Haversine",
+      "sdo:email": "mirahaversine@example.edu",
+      "sdo:url": "https://example.edu/faculty/mirahaversine",
+      "isTenured": true,
+      "isOnSabbatical": false
     },
     "dateCreated": "2016-11-15T10:15:00.000Z",
     "startedAtTime": "2016-11-15T10:15:00.000Z",
