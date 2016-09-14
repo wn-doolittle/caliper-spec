@@ -28,13 +28,9 @@
   "generated": {
     "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Result",
-    "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
-    },
-    "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "attempt": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Attempt"
     },
     "normalScore": 15,
     "totalScore": 15,
