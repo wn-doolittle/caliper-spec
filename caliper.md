@@ -1582,7 +1582,7 @@ TODO
     },
     "target": {
         "@id": "https://youtu.be/UQVK-dsU7-Y?t=321",
-        "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation"
+        "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
         "currentTime": "PT05M21S"
     },
     "eventTime": "2016-09-15T10:15:00.000Z",
@@ -2140,6 +2140,7 @@ TODO DESCRIPTION
 | ------ | --- | ------------- |
 | <a name="abandoned" />abandoned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned](http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned) |  |
 | <a name="activated" />activated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Activated](http://purl.imsglobal.org/vocab/caliper/v1/action#Activated) |  |
+| <a name="added" />added | [http://purl.imsglobal.org/vocab/caliper/v1/action#Added](http://purl.imsglobal.org/vocab/caliper/v1/action#Added) | [make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v) |
 | <a name="attached" />attached | [http://purl.imsglobal.org/vocab/caliper/v1/action#Attached](http://purl.imsglobal.org/vocab/caliper/v1/action#Attached) |  |
 | <a name="bookmarked" />bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) |  |
 | <a name="changedResolution" />changed resolution | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution) | |
