@@ -22,7 +22,6 @@
   },
   "attachments": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
       "@id": "https://example.edu/etexts/201.epub",
       "@type": "http://purl.imsglobal.org/caliper/v1/Document",
       "name": "IMS Caliper Implementation Guide",
