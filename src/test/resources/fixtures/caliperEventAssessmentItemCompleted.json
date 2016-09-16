@@ -15,7 +15,7 @@
     },
     "assignable": {
       "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "@type": "http: //purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
       "name": "Assessment Item 3",
       "isPartOf": {
         "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
@@ -45,7 +45,7 @@
   },
   "eventTime": "2016-11-15T10:15:12.000Z",
   "edApp": {
-    "@id": "https://example.edu/",
+    "@id": "https://example.edu",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
