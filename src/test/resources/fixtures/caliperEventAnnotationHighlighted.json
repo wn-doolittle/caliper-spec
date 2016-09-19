@@ -3,9 +3,7 @@
   "@type": "http://purl.imsglobal.org/caliper/v1/AnnotationEvent",
   "actor": {
     "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person",
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z"
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted",
   "object": {
@@ -27,8 +25,8 @@
       "@type": "http://purl.imsglobal.org/caliper/v1/Document"
     },
     "selection": {
-      "start": "2300",
-      "end": "2370"
+      "start": 2300,
+      "end": 2370
     },
     "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
     "dateCreated": "2016-11-15T10:15:00.000Z"
