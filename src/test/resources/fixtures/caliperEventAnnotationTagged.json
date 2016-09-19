@@ -28,7 +28,7 @@
   },
   "eventTime": "2016-09-15T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu/",
+    "@id": "https://example.edu",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
