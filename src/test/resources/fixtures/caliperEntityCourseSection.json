@@ -7,9 +7,8 @@
   "name": "CPS 435 Learning Analytics, Section 01",
   "category": "seminar",
   "subOrganizationOf": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
     "@id": "https://example.edu/terms/201601/courses/7",
-    "@type": "http: //purl.imsglobal.org/caliper/v1/CourseOffering",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
     "courseNumber": "CPS 435"
   },
   "dateCreated": "2016-08-01T06:00:00.000Z"
