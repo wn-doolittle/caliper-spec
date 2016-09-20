@@ -39,7 +39,6 @@
   "edApp": {
     "@id": "https://example.edu",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-    "name": "ePub",
     "version": "1.2.3"
   },
   "group": {
