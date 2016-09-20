@@ -44,10 +44,10 @@
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
   "extensions": {
-    "cronJob": {
-      "@context": {
-        "@vocab": "http://example.edu/ctx/edu.jsonld"
-      },
+    "@context": {
+      "@vocab": "http://example.edu/ctx/edu.jsonld"
+    },
+    "job": {
       "@id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
       "@type": "ChronJob",
       "jobTag": "caliper",
