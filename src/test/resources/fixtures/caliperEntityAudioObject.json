@@ -1,6 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/webinars/765",
+  "@id": "https://example.edu/audio/765",
   "@type": "http://purl.imsglobal.org/caliper/v1/AudioObject",
   "name": "Audio Recording: IMS Caliper Sensor API Q&A.",
   "datePublished": "2016-12-01T06:00:00.000Z",
