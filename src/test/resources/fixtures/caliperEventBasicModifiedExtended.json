@@ -5,13 +5,23 @@
     "@id": "https://example.edu/users/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Modified",
   "object": {
     "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
     "@type": "http://purl.imsglobal.org/caliper/v1/Document",
     "name": "Course Syllabus",
     "dateCreated": "2016-11-12T07:15:00.000Z",
-    "version": "1"
+    "dateModified": "2016-11-15T10:15:00.000Z",
+    "version": "2"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z"
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "extensions": {
+    "@context": {
+      "@vocab": "http://example.edu/ctx/edu.jsonld"
+    },
+    "previousVersion": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Document"
+    }
+  }
 }
