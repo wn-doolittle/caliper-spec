@@ -18,7 +18,6 @@
     },
     "itemType": "true/false",
     "itemText": "In Caliper event actors are limited to people only.",
-    "itemCorrectResponse": "false",
-    "itemIncorrectResponse": "true"
+    "itemCorrectResponse": false
   }
 }
