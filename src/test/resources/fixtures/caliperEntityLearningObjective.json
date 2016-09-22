@@ -1,7 +1,7 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
-  "@type": "http: //purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
   "name": "Caliper Profile Design",
   "description": "Choose a learning activity and describe the actions, entities and events that comprise it.",
   "learningObjective": [
