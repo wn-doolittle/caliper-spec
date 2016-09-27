@@ -1,0 +1,13 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!)",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Chapter",
+  "name": "The Caliper Information Model",
+  "isPartOf": {
+    "@id": "https://example.edu/etexts/201.epub",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "dateCreated": "2016-10-01T06:00:00.000Z",
+    "name": "IMS Caliper Implementation Guide",
+    "version": "1.1"
+  }
+}

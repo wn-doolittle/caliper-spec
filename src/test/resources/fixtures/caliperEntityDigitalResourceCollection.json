@@ -1,47 +1,37 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/semesters/201601/courses/25/resources/1",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
   "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
-  "name": "Course resources",
-  "creators": [
-    {
-      "@id": "https://example.edu/user/112233",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    {
-      "@id": "https://example.edu/user/223344",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    }
-  ],
-  "keywords": ["collections", "documents", "images", "videos"],
+  "name": "Video Collection",
+  "keywords": ["collection", "videos"],
   "items": [
     {
-      "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
-      "name": "Document Collection",
-      "dateCreated": "2016-08-01T06:01:00.000Z",
-      "datePublished": "2016-08-15T09:30:00.000Z"
+      "@id": "https://example.edu/videos/1225",
+      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Introduction to IMS Caliper",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "duration": "PT1H12M27S",
+      "version": "1.1"
     },
     {
-      "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
-      "name": "Image Collection",
-      "dateCreated": "2016-08-01T06:02:00.000Z",
-      "datePublished": "2016-08-15T09:30:00.000Z"
-    },
-    {
-      "@id": "https://example.edu/semesters/201601/courses/25/resources/1/collections/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
-      "name": "Video Collection",
-      "dateCreated": "2016-08-01T06:03:00.000Z",
-      "datePublished": "2016-08-15T09:30:00.000Z"
+      "@id": "https://example.edu/videos/5629",
+      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+      "mediaType": "video/ogg",
+      "name": "IMS Caliper Activity Profiles",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "duration": "PT55M13S",
+      "version": "1.1.1"
     }
   ],
   "isPartOf": {
-    "@id": "https://example.edu/semesters/201601/courses/25/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "subOrganizationOf": {
+      "@id": "https://example.edu/terms/201601/courses/7",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+    }
   },
   "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-08-01T06:03:00.000Z",
-  "datePublished": "2016-08-15T09:30:00.000Z"
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }

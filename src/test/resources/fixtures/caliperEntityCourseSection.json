@@ -1,19 +1,15 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/politicalScience/2015/american-revolution-101/section/001",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1",
   "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-  "academicSession": "Fall-2015",
-  "courseNumber": "POL101",
-  "dateCreated": "2015-08-01T06:00:00.000Z",
-  "dateModified": "2015-09-02T11:30:00.000Z",
-  "name": "American Revolution 101",
+  "academicSession": "Fall 2016",
+  "courseNumber": "CPS 435-01",
+  "name": "CPS 435 Learning Analytics, Section 01",
+  "category": "seminar",
   "subOrganizationOf": {
-    "@id": "https://example.edu/politicalScience/2015/american-revolution-101",
+    "@id": "https://example.edu/terms/201601/courses/7",
     "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
-    "academicSession": "Fall-2015",
-    "courseNumber": "POL101",
-    "dateCreated": "2015-08-01T06:00:00.000Z",
-    "dateModified": "2015-09-02T11:30:00.000Z",
-    "name": "Political Science 101: The American Revolution"
-  }
+    "courseNumber": "CPS 435"
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z"
 }
