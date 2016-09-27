@@ -9,7 +9,7 @@
         "@id": "https://example.edu/users/554433",
         "@type": "http://purl.imsglobal.org/caliper/v1/Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
       "object": {
         "@id": "https://example.edu/etexts/201.epub",
         "@type": "http://purl.imsglobal.org/caliper/v1/Document"
