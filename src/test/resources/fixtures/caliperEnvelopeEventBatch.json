@@ -79,9 +79,9 @@
           "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
         },
         "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that enable learning.",
-        "dateCreated": "2016-11-15T10:15:00.000Z"
+        "dateCreated": "2016-11-15T10:20:00.000Z"
       },
-      "eventTime": "2016-11-15T10:15:00.000Z",
+      "eventTime": "2016-11-15T10:20:00.000Z",
       "edApp": {
         "@id": "https://example.edu",
         "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
@@ -131,7 +131,7 @@
         "datePublished": "2016-10-01T06:00:00.000Z",
         "version": "1.1"
       },
-      "eventTime": "2016-11-15T10:15:00.000Z",
+      "eventTime": "2016-11-15T10:21:00.000Z",
       "edApp": {
         "@id": "https://example.edu",
         "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
