@@ -36,51 +36,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* 4.10 [Session Profile](#sessionProfile)
 * 5.0 [Events](#events)
 * 6.0 [Actions](#actions)
-* 7.0 [Entities](#entities)
-	* 7.1 [Entity](#entity)
-	* 7.2 [Agent](#agent)
-		* 7.2.1 [Person](#person)
-		* 7.2.2 [Organization](#organization)
-			* 7.2.2.1 [CourseOffering](#courseOffering)
-			* 7.2.2.2 [CourseSection](#courseSection)
-			* 7.2.2.3 [Group](#group)
-		* 7.2.3 [SoftwareApplication](#softwareApplication)
-	* 7.3 [Annotation](#annotation)
-		* 7.3.1 [BookmarkAnnotation](#bookmarkAnnotation)
-		* 7.3.2 [HighlightAnnotation](#highlightAnnotation)
-		* 7.3.3 [SharedAnnotation](#sharedAnnotation)
-		* 7.3.4 [TagAnnotation](#tagAnnotation)
-	* 7.4 [Attempt](#attempt)
-	* 7.5 [Collection](#collection)
-	* 7.6 [DigitalResource](#digitalResource)
-		* 7.6.1 [AssignableDigitalResource](#assignableDigitalResource)
-			* 7.6.1.1 [Assessment](#assessment)
-			* 7.6.1.2 [AssessmentItem](#assessmentItem)
-		* 7.6.2 [Chapter](#chapter)
-		* 7.6.3 [DigitalResourceCollection](#digitalResourceCollection)
-			* 7.6.3.1 [Forum](#forum)
-			* 7.6.3.2 [Thread](#thread)
-		* 7.6.4 [Document](#document)
-		* 7.6.5 [Frame](#frame)
-		* 7.6.6 [LearningObjective](#learningObjective)
-		* 7.6.7 [MediaLocation](#mediaLocation)
-		* 7.6.8 [MediaObject](#mediaObject)
-			* 7.6.8.1 [AudioObject](#audioObject)
-			* 7.6.8.2 [ImageObject](#imageObject)
-			* 7.6.8.3 [VideoObject](#videoObject)
-		* 7.6.9 [Message](#message)
-		* 7.6.10 [Page](#page)
-		* 7.6.11 [WebPage](#webpage)
-	* 7.7 [Membership](#membership)
-	* 7.8 [Response](#response)
-		* 7.8.1 [FillinBlankResponse](#fillinBlankResponse)
-		* 7.8.2 [MultipleChoiceResponse](#multipleChoiceResponse)
-		* 7.8.3 [MultipleResponseResponse](#multipleResponseResponse)
-		* 7.8.4 [SelectTextResponse](#selectTextResponse)
-		* 7.8.5 [TrueFalseResponse](#trueFalseResponse)
-	* 7.9 [Result](#result)
-	* 7.10 [Session](#session)
-		* 7.10.1 [LtiSession](#ltiSession)     
+* 7.0 [Entities](#entities)   
 * 8.0 [Sensor API](#api)
 * 9.0 [Transport](#transport)
     * 9.1 [Envelope](#envelope)
@@ -102,6 +58,49 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* [ViewEvent](#viewEvent)
 * [Appendix B: Caliper Actions](#appendixActions)
 * [Appendix C: Caliper Entities](#appendixEntities)
+	* [Agent](#agent)
+	* [Annotation](#annotation)
+	* [Assessment](#assessment)
+    * [AssessmentItem](#assessmentItem)
+	* [AssignableDigitalResource](#assignableDigitalResource)
+	* [Attempt](#attempt)
+	* [AudioObject](#audioObject)
+	* [BookmarkAnnotation](#bookmarkAnnotation)
+	* [Chapter](#chapter)
+	* [Collection](#collection)
+	* [CourseOffering](#courseOffering)
+    * [CourseSection](#courseSection)
+    * [DigitalResource](#digitalResource)
+    * [DigitalResourceCollection](#digitalResourceCollection)
+    * [Document](#document)
+    * [FillinBlankResponse](#fillinBlankResponse)
+    * [Forum](#forum)
+    * [Frame](#frame)
+    * [Group](#group)
+    * [HighlightAnnotation](#highlightAnnotation)
+    * [ImageObject](#imageObject)
+    * [LearningObjective](#learningObjective)
+    * [LtiSession](#ltiSession) 
+    * [MediaLocation](#mediaLocation)
+    * [MediaObject](#mediaObject)
+    * [Membership](#membership)
+    * [Message](#message)
+    * [MultipleChoiceResponse](#multipleChoiceResponse)
+    * [MultipleResponseResponse](#multipleResponseResponse)
+	* [Organization](#organization)
+	* [Page](#page)
+	* [Person](#person)
+	* [Response](#response)
+	* [Result](#result)
+	* [Session](#session)
+	* [SharedAnnotation](#sharedAnnotation)
+	* [SelectTextResponse](#selectTextResponse)
+	* [SoftwareApplication](#softwareApplication)
+    * [TagAnnotation](#tagAnnotation)
+    * [TrueFalseResponse](#trueFalseResponse)
+	* [Thread](#thread)
+	* [VideoObject](#videoObject)
+    * [WebPage](#webpage)
 * [Appendix D: Caliper Person Roles and Statuses](#appendixRoles)
 * [Appendix Z: Miscellaneous Classes](#appendixZ)
 	* [Selector](#selector)
@@ -743,7 +742,7 @@ The following Caliper Working Group participants contributed to the writing of t
 ## Appendix A. Caliper Events
 
 <a name="annotationEvent" />
-### 5.2 AnnotationEvent
+### AnnotationEvent
 The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### TODO
@@ -844,7 +843,7 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
 ```
 	
 <a name="assessmentEvent" />
-### 5.3 AssessmentEvent
+### AssessmentEvent
 The AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.  AssessmentEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### TODO
@@ -1118,7 +1117,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 ```
 
 <a name="assessmentItemEvent" />
-### 5.4 AssessmentItemEvent
+### AssessmentItemEvent
 The AssessmentItemEvent models a learner's interaction with an individual assessment item.  AssessmentItemEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### TODO
@@ -1366,7 +1365,7 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 ```
 
 <a name="assignableEvent" />
-### 5.5 AssignableEvent
+### AssignableEvent
 The AssignableEvent models . . . .  AssignableEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 TODO add additional intro text
@@ -1456,7 +1455,7 @@ TODO add additional intro text
 ```
 
 <a name="contentMgmtEvent" />
-### 5.6 ContentMgmtEvent
+### ContentMgmtEvent
 
 The ContentMgmtEvent models activities associated with the creation and management of digital content.  ContentMgmtEvent inherits all the properties and requirements defined for Event, its superclass.  
 
@@ -1583,7 +1582,7 @@ TODO add additional intro text
 ```
 
 <a name="forumEvent" />
-### 5.7 ForumEvent
+### ForumEvent
 
 The ForumEvent models . . . .  ForumEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -1674,7 +1673,7 @@ TODO add description
 ```
 
 <a name="mediaEvent" />
-### 5.8 MediaEvent
+### MediaEvent
 A Caliper MediaEvent models . . . .  MediaEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO 
@@ -1768,7 +1767,7 @@ TODO
 ```
 
 <a name="messageEvent" />
-### 5.9 MessageEvent
+### MessageEvent
 A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a [Message](#message) or marking a post as either read or unread.  MessageEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -1862,7 +1861,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 }
 ```
 <a name="navigationEvent" />
-### 5.10 NavigationEvent
+### NavigationEvent
 The NavigationEvent models an actor traversing a network of digital resources.  NavigationEvent inherits all the properties and requirements defined for Event, its superclass. 
 
 TODO note referrer property
@@ -1952,7 +1951,7 @@ TODO note referrer property
 ```
 
 <a name="outcomeEvent" />
-### 5.11 OutcomeEvent
+### OutcomeEvent
 The OutcomeEvent models . . . .  OutcomeEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO add description
@@ -2042,7 +2041,7 @@ TODO add description
 ```
 
 <a name="sessionEvent" />
-### 5.12 SessionEvent
+### SessionEvent
 A SessionEvent models . . . .  SessionEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO add description
@@ -2105,7 +2104,7 @@ TODO add description
 ```
 
 <a name="threadEvent" />
-### 5.13 ThreadEvent
+### ThreadEvent
 A Caliper ThreadEvent models an actor marking a forum thread as either read or unread.  ThreadEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO add description
@@ -2197,7 +2196,7 @@ TODO add description
 ```
 
 <a name="viewEvent" />
-### 5.14 ViewEvent
+### ViewEvent
 A Caliper ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a file.   ViewEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
