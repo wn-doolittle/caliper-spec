@@ -536,10 +536,7 @@ The Caliper Session Profile models activities associated with a user session est
 
 <a name="events" />
 ## 5.0 Events
-TODO: OVERVIEW
 
-<a name="event"/>
-### 5.1 Event
 A Caliper Event is a generic class that represents the interaction between an [actor](#actor) and an [object](#object) at a specific moment in time and within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of Event rather than instantiating instances of the Event class itself.
 
 For an Event to be minimally compliant it MUST specify an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
@@ -672,11 +669,9 @@ TODO DESCRIPTION
 <a name="entities" />
 ## 7.0 Entities
 
-TODO: OVERVIEW
-
-<a name="entity" />
-### 7.1 Entity
 A Caliper Entity is a generic class that is analogous to an [sdo:Thing](http://schema.org/Thing).  Entity is a generic type that is subclassed for greater type specificity.  Given that Entity represents a generic type it is RECOMMENDED that only subclasses of Entity be employed to represent nodes in the learning graph.
+
+TODO: ADD ADDITIONAL INFO
 
 #### Required properties
 | Property | Type | Requirements |
