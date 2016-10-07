@@ -29,7 +29,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* 4.3 [Assignable Profile](#assignableProfile)
 	* 4.4 [Assessment Profile](#assessmentProfile)
 	* 4.5 [Content Management Profile](#contentMgmtProfile)
-	* 4.6 [Discussion Forum Profile](#discussionForumProfile)
+	* 4.6 [Forum Profile](#forumProfile)
 	* 4.7 [Media Profile](#mediaProfile)
 	* 4.8 [Outcome Profile](#outcomeProfile)
 	* 4.9 [Reading Profile](#readingProfile)
@@ -181,7 +181,7 @@ The Caliper Information Model is comprised of a number of activity profiles, eac
 
 TODO: ADDITIONAL INTRO TEXT
 
-[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Content Management](#contentMgmtProfile), [Discussion Forum](#discussionForumProfile), [Media](#mediaProfile), [Outcome](#outcomeProfile), [Reading](#readingProfile), [Session](#sessionProfile)
+[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Content Management](#contentMgmtProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Outcome](#outcomeProfile), [Reading](#readingProfile), [Session](#sessionProfile)
 
 <a name="basicProfile" />
 ### 4.1 Basic Profile
@@ -375,9 +375,9 @@ The Content Management Profile models activities associated with the creation an
 #### TODO
 * consider renaming to "Entity Management Profile" and widening object scope from [DigitalResource](#digitalResource) to [Entity](#entity).
 
-<a name="discussionForumProfile" />
-### 4.6 Discussion Forum Profile
-The online discussion forum is a core capability of many learning management systems.  Forums typically encompass one or more topics to which actors can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  The profile leverages a number of Caliper [Event](#event) types to describe users participating in online forum communities.
+<a name="forumProfile" />
+### 4.6 Forum Profile
+The online forum is a core capability of many learning management systems.  Forums typically encompass one or more topics to which actors can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  The profile leverages a number of Caliper [Event](#event) types to describe users participating in online forum communities.
 
 #### Supported Events
 [ForumEvent](#forumEvent),  [MessageEvent](#messageEvent),  [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#ViewEvent)
@@ -1960,7 +1960,7 @@ TODO add description
 
 <a name="threadEvent" />
 ### 5.13 ThreadEvent
-A Caliper ThreadEvent models an actor marking a discussion forum thread as either read or unread.  ThreadEvent inherits all the properties and requirements defined for Event, its superclass.
+A Caliper ThreadEvent models an actor marking a forum thread as either read or unread.  ThreadEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO add description
 
@@ -2165,8 +2165,8 @@ TODO DESCRIPTION
 | <a name="graded" />graded | [http://purl.imsglobal.org/vocab/caliper/v1/action#Graded](http://purl.imsglobal.org/vocab/caliper/v1/action#Graded) | |
 | <a name="hid" />hid | [http://purl.imsglobal.org/vocab/caliper/v1/action#Hid](http://purl.imsglobal.org/vocab/caliper/v1/action#Hid) | |
 | <a name="highlighted" />highlighted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted](http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted) | |
-| <a name="jumpedTo" />jumped to | [http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo) | |
 | <a name="identified" />identified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Identified](http://purl.imsglobal.org/vocab/caliper/v1/action#Identified) | |
+| <a name="jumpedTo" />jumped to | [http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo) | |
 | <a name="liked" />liked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Liked](http://purl.imsglobal.org/vocab/caliper/v1/action#Liked) | |
 | <a name="linked" />linked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Linked](http://purl.imsglobal.org/vocab/caliper/v1/action#Linked) | |
 | <a name="loggedIn" />logged in | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn) | [enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v) |
@@ -3757,7 +3757,7 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| value | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The selected text that constitutes the response MAY be provided.  |
+| values | List&lt;[xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string)&gt; | The ordered set of one or more selected text options that constitutes the response MAY be provided.  |
 
 #### Example
 ```json
@@ -4022,7 +4022,7 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 
 <a name="trueFalseResponse" />
 ### TrueFalseResponse
-A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided: true or false.   TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
+A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided (true/false, yes/no).   TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
 #### TODO
 * confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
