@@ -137,31 +137,33 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 <a name="definitions"/>  
 ### 1.3 Definitions
-__actor__: TODO
+__actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
 
-__action__: TODO
+__action__: something done to accomplish a purpose
 
 __blank node__: A locally-scoped identifier that is used to refer to a resource when a globally scoped identifier is either inappropriate, as in the case of transient data, or not provided.  A blank node is prefixed with an underscore (_) and is scoped to the document in which it is used (e.g., _:a1).
 
-__context__: TODO
+__context__: A  JSON-LD concept to map terms to IRI.  JSON-LD contexts may be embedded in a document or referenced. 
 
-__endpoint__: TODO
+__endpoint__: A specified set of operations and messages bound to a specific network protocol.  
 
-__entity__: TODO
+__entity__:  An instance of a specified entity type.  An entity may represent a tangible object (school, building, ...) or concept (course, department,...).
 
-__event__: TODO
+__event__: A notable occurrence at a point in time.
 
-__JSON-LD__: TODO
+__JSON-LD__: (JavaScript Object Notation for Linked Data) is a lightweight specification for using JSON to represent Linked Data.
 
-__LTI__: TODO
+__Linked Data__: A set of best practices for connecting structure data over the Web.  The term was coined by Tim Berners-Lee. 
+
+__LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS Global standard for integration of rich learning applications within educational environments.
 
 __IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  The IRI is a globally scoped identifier used in linked data to refer to most nodes and properties.  An IRI reference may be absolute or relative to that of another absolute IRI.  In JSON-LD relative IRIs are resolved relative to the base IRI.
 
 __ISO 8601__: Caliper time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is in UTC. 
 
-__profile__: TODO
+__profile__: metric profiles define the information model for caliper.  The caliper metric profiles are organized by activity. 
 
-__sensor__: TODO
+__sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
 
 <a name="interoperability">
 ## 2.0 Data and Semantic Interoperability
