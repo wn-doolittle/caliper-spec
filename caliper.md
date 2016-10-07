@@ -143,11 +143,11 @@ __action__: something done to accomplish a purpose
 
 __blank node__: A locally-scoped identifier that is used to refer to a resource when a globally scoped identifier is either inappropriate, as in the case of transient data, or not provided.  A blank node is prefixed with an underscore (_) and is scoped to the document in which it is used (e.g., _:a1).
 
-__context__: A  JSON-LD concept to map terms to IRI.  JSON-LD contexts may be embedded in a document or referenced. 
+__context__: A  JSON-LD concept to map terms to an IRI.  JSON-LD contexts may be embedded in a document or referenced. 
 
 __endpoint__: A specified set of operations and messages bound to a specific network protocol.  
 
-__entity__:  An instance of a specified entity type.  An entity may represent a tangible object (school, building, ...) or concept (course, department,...).
+__entity__:  An instance of a specified entity type.  An entity may represent a tangible object (person, school, building, ...) or concept (course, department,...).
 
 __event__: A notable occurrence at a point in time.
 
@@ -4167,10 +4167,9 @@ The following Caliper Working Group participants contributed to the writing of t
 
 | Name | Organization |
 | ------ | --------- |
-| Anthony Whyte [arwhyte](http://github.com/arwhyte) | University of Michigan |
-| Viktor Haag [ViktorHaag](https://github.com/ViktorHaag) | DTL |
-
-TODO: ADD OTHERS
+| Anthony Whyte | University of Michigan |
+| Viktor Haag | D2L |
+| Wes LaMarche | ACT |
 
 <a name="appendixB" />
 ## Appendix A.  Miscellaneous Classes
