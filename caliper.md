@@ -742,7 +742,7 @@ The following Caliper Working Group participants contributed to the writing of t
 ## Appendix A. Caliper Events
 
 <a name="annotationEvent" />
-### 5.2 AnnotationEvent
+### AnnotationEvent
 The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### TODO
@@ -843,7 +843,7 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
 ```
 	
 <a name="assessmentEvent" />
-### 5.3 AssessmentEvent
+### AssessmentEvent
 The AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.  AssessmentEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### TODO
@@ -1117,7 +1117,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 ```
 
 <a name="assessmentItemEvent" />
-### 5.4 AssessmentItemEvent
+### AssessmentItemEvent
 The AssessmentItemEvent models a learner's interaction with an individual assessment item.  AssessmentItemEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### TODO
@@ -1365,7 +1365,7 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 ```
 
 <a name="assignableEvent" />
-### 5.5 AssignableEvent
+### AssignableEvent
 The AssignableEvent models . . . .  AssignableEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 TODO add additional intro text
@@ -1455,7 +1455,7 @@ TODO add additional intro text
 ```
 
 <a name="contentMgmtEvent" />
-### 5.6 ContentMgmtEvent
+### ContentMgmtEvent
 
 The ContentMgmtEvent models activities associated with the creation and management of digital content.  ContentMgmtEvent inherits all the properties and requirements defined for Event, its superclass.  
 
@@ -1582,7 +1582,7 @@ TODO add additional intro text
 ```
 
 <a name="forumEvent" />
-### 5.7 ForumEvent
+### ForumEvent
 
 The ForumEvent models . . . .  ForumEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -1673,7 +1673,7 @@ TODO add description
 ```
 
 <a name="mediaEvent" />
-### 5.8 MediaEvent
+### MediaEvent
 A Caliper MediaEvent models . . . .  MediaEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO 
@@ -1767,7 +1767,7 @@ TODO
 ```
 
 <a name="messageEvent" />
-### 5.9 MessageEvent
+### MessageEvent
 A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a [Message](#message) or marking a post as either read or unread.  MessageEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -1861,7 +1861,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 }
 ```
 <a name="navigationEvent" />
-### 5.10 NavigationEvent
+### NavigationEvent
 The NavigationEvent models an actor traversing a network of digital resources.  NavigationEvent inherits all the properties and requirements defined for Event, its superclass. 
 
 TODO note referrer property
@@ -1951,7 +1951,7 @@ TODO note referrer property
 ```
 
 <a name="outcomeEvent" />
-### 5.11 OutcomeEvent
+### OutcomeEvent
 The OutcomeEvent models . . . .  OutcomeEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO add description
@@ -2041,7 +2041,7 @@ TODO add description
 ```
 
 <a name="sessionEvent" />
-### 5.12 SessionEvent
+### SessionEvent
 A SessionEvent models . . . .  SessionEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO add description
@@ -2104,7 +2104,7 @@ TODO add description
 ```
 
 <a name="threadEvent" />
-### 5.13 ThreadEvent
+### ThreadEvent
 A Caliper ThreadEvent models an actor marking a forum thread as either read or unread.  ThreadEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO add description
@@ -2196,7 +2196,7 @@ TODO add description
 ```
 
 <a name="viewEvent" />
-### 5.14 ViewEvent
+### ViewEvent
 A Caliper ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a file.   ViewEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
