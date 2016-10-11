@@ -3449,7 +3449,7 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
 | replyTo | [Message](#message) | If this Message represents a reply or a response to a previous Message, the Message prompting the reply SHOULD be referenced.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). |
-| content | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | Plain-text rendering of the content of the Message.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). |
+| body | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | Plain-text rendering of the body content of the Message.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). |
 | attachments | List&lt;[DigitalResource](#digitalResource)&gt; | An ordered set of one or more items attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). |
 
 #### Example
