@@ -1763,57 +1763,53 @@ TODO add description
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@type": "http://purl.imsglobal.org/caliper/v1/OutcomeEvent",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@type": "http://purl.imsglobal.org/caliper/v1/OutcomeEvent",
+  "actor": {
+    "@id": "https://example.edu/autograder",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "version": "v2"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded",
+  "object": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "assignable": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+    },
     "actor": {
-        "@id": "https://example.com/autograder",
-        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-        "version": "v2"
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded",
-    "object": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/users/554433/attempts/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-        "assignable": {
-            "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
-        },
-        "actor": {
-            "@id": "https://example.edu/user/554433",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-        },
-        "count": 1,
-        "dateCreated": "2016-09-15T10:05:00.000Z",
-        "startedAtTime": "2016-09-15T10:05:00.000Z",
-        "endedAtTime": "2016-09-15T10:55:12.000Z",
-        "duration": "PT50M12S"
+    "count": 1,
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:12.000Z",
+    "duration": "PT50M12S"
+  },
+  "eventTime": "2016-11-15T10:57:06.000Z",
+  "generated": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Result",
+    "attempt": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Attempt"
     },
-    "eventTime": "2016-09-15T10:57:06.000Z",
-    "generated": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assess/1/users/554433/results/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Result",
-        "assignable": {
-            "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
-        },
-        "actor": {
-            "@id": "https://example.edu/user/554433",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-        },
-        "normalScore": 3,
-        "totalScore": 3,
-        "scoredBy": {
-            "@id": "https://example.com/autograder",
-            "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
-        },
-        "dateCreated": "2016-09-15T10:55:05.000Z"
+    "normalScore": 15,
+    "totalScore": 15,
+    "scoredBy": {
+      "@id": "https://example.edu/autograder",
+      "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
     },
-    "group": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "courseNumber": "CPS101-01",
-        "academicSession": "Fall-2016"
-    }
+    "dateCreated": "2016-11-15T10:55:05.000Z"
+  },
+  "group": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  }
 }
 ```
 
