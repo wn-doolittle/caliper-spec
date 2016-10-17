@@ -1506,69 +1506,141 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
+#### Example: MessageEvent posted
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
+  "object": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+    "creators": [
+      {
+        "@id": "https://example.edu/users/554433",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      }
+    ],
+    "body": "Are the Caliper Sensor reference implementations production-ready?",
+    "isPartOf": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "name": "Caliper Adoption",
+      "isPartOf": {
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+        "name": "Caliper Forum"
+      }
+    },
+    "dateCreated": "2016-11-15T10:15:00.000Z"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "edApp": {
+    "@id": "https://example.edu/forums",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "version": "v2"
+  },
+  "group": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  },
+  "membership": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "member": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "organization": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+    },
+    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
+    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "startedAtTime": "2016-11-15T10:00:00.000Z"
+  }
+}
+```
+
 #### Example: MessageEvent posted (reply)
 ```
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
-    "actor": {
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
+  "actor": {
+    "@id": "https://example.edu/users/778899",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
+  "object": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+    "creators": [
+      {
         "@id": "https://example.edu/users/778899",
         "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      }
+    ],
+    "replyTo": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Message"
     },
-    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
-    "object": {
-        "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/3",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-        "creators": [
-            {
-                "@id": "https://example.edu/users/778899",
-                "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-            }
-        ],
-        "replyTo": {
-            "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1/messages/2",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Message"
-        },
-        "isPartOf": {
-            "@id": "https://example.edu/semesters/201601/courses/301/forums/2/topics/1",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-            "isPartOf": {
-                "@id": "https://example.edu/semesters/201601/courses/301/forums/2",
-                "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
-            }
-        },
-        "dateCreated": "2016-09-15T10:15:30.000Z"
+    "isPartOf": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "isPartOf": {
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
+      }
     },
-    "eventTime": "2016-09-15T10:15:30.000Z",
-    "edApp": {
-        "@id": "https://example.com/lms/forums",
-        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-        "version": "v2"
+    "dateCreated": "2016-11-15T10:15:30.000Z"
+  },
+  "eventTime": "2016-11-15T10:15:30.000Z",
+  "edApp": {
+    "@id": "https://example.edu/forums",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "version": "v2"
+  },
+  "group": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  },
+  "membership": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "member": {
+      "@id": "https://example.edu/users/778899",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "group": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "courseNumber": "CPS101-01",
-        "academicSession": "Fall-2016"
+    "organization": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
-    "membership": {
-        "@id": "https://example.edu/semesters/201601/courses/301/rosters/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
-        "member": "https://example.edu/users/778899",
-        "organization": "https://example.edu/semesters/201601/courses/301/sections/1",
-        "roles": [
-            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
-        ],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
-        "dateCreated": "2016-08-01T06:00:00.000Z"
-    },
-    "session": {
-        "@id": "https://example.com/lms/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-        "startedAtTime": "2016-09-15T10:12:00.000Z"
-    }
+    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
+    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "@id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "startedAtTime": "2016-11-15T10:12:00.000Z"
+  }
 }
 ```
+
 <a name="navigationEvent" />
 ### NavigationEvent
 The NavigationEvent models an actor traversing a network of digital resources.  NavigationEvent inherits all the properties and requirements defined for Event, its superclass. 
