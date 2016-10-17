@@ -1846,33 +1846,96 @@ TODO add description
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example SessionEvent (login)
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "id": "15128c13-ca75-4952-8cce-72a513ec337d",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "id": "341db3d9-71cc-4081-9423-cbed73cb0179",
+  "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
+  "object": {
+    "@id": "https://example.edu",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "version": "v2"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "session": {
+    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
     "actor": {
-        "@id": "https://example.com/viewer",
-        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
-    "object": {
-        "@id": "https://example.com/viewer/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-        "actor": {
-            "@id": "https://example.edu/user/554433",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-        },
-        "startedAtTime": "2016-09-15T10:15:00.000Z",
-        "endedAtTime": "2016-09-15T11:15:00.000Z",
-        "duration": "PT3600S"
+    "dateCreated": "2016-11-15T10:00:00.000Z",
+    "startedAtTime": "2016-11-15T10:00:00.000Z"
+  }
+}
+```
+
+#### Example SessionEvent (logout)
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "id": "5fac90a9-531a-41f6-9b8d-7a26e61dcc27",
+  "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut",
+  "object": {
+    "@id": "https://example.edu",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "version": "v2"
+  },
+  "eventTime": "2016-11-15T11:05:00.000Z",
+  "session": {
+    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "actor": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "eventTime": "2016-09-15T11:15:00.000Z",
-    "edApp": {
-        "@id": "https://example.com/viewer",
-        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
-    }
+    "dateCreated": "2016-11-15T10:00:00.000Z",
+    "startedAtTime": "2016-11-15T10:00:00.000Z",
+    "endedAtTime": "2016-11-15T11:05:00.000Z",
+    "duration": "PT3000S"
+  }
+}
+```
+
+#### Example SessionEvent (timeout)
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "id": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
+  "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "actor": {
+    "@id": "https://example.edu",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
+  "object": {
+    "@id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "actor": {
+      "@id": "https://example.edu/users/112233",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "dateCreated": "2016-11-15T10:15:00.000Z",
+    "startedAtTime": "2016-11-15T10:15:00.000Z",
+    "endedAtTime": "2016-11-15T11:15:00.000Z",
+    "duration": "PT3600S"
+  },
+  "eventTime": "2016-11-15T11:15:00.000Z",
+  "edApp": {
+    "@id": "https://example.edu",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+  }
 }
 ```
 
