@@ -771,7 +771,7 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example: AnnotationEvent bookmarked
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -868,7 +868,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event.  | 
 
-#### Example: Assessment started
+#### Example: AssessmentEvent started
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -939,7 +939,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 }
 ```
 
-#### Example: Assessment submitted
+#### Example: AssessmentEvent submitted
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1234,7 +1234,7 @@ TODO add additional intro text
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example: AssignableEvent activated
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1328,7 +1328,7 @@ TODO add description
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example: ForumEvent subscribed
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1419,7 +1419,7 @@ TODO
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example: MediaEvent paused
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1672,7 +1672,7 @@ The NavigationEvent models an actor traversing a network of digital resources.  
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example: NavigationEvent navigated to
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1760,7 +1760,7 @@ TODO add description
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example: OutcomeEvent graded
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1846,7 +1846,7 @@ TODO add description
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example SessionEvent (login)
+#### Example: SessionEvent logged in
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1876,7 +1876,7 @@ TODO add description
 }
 ```
 
-#### Example SessionEvent (logout)
+#### Example: SessionEvent logged out
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1908,7 +1908,7 @@ TODO add description
 }
 ```
 
-#### Example SessionEvent (timeout)
+#### Example: SessionEvent timed out
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -1972,7 +1972,7 @@ TODO add description
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example
+#### Example: ThreadEvent marked as read
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
@@ -2060,7 +2060,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session SHOULD be referenced. | 
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
-#### Example ViewEvent (with extensions)
+#### Example ViewEvent viewed (with extensions)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
