@@ -178,6 +178,35 @@ structure, flow, pointers
 
 TODO: OVERVIEW 
 
+### Overview 
+
+This section describes the concepts, relationships and constraints that specify the Caliper information model.  The Caliper information model applies semantic web concepts to events that occur in and around learning activities.  Caliper 1.1 is focused on a defined set of commonly occurring learning activities. These learning activities are organized by type and described by metric profiles.  
+
+A list of metric profiles specified by Caliper 1.1
+
+* Session
+* Reading
+* Annotation
+* Assignable
+* Assessment
+* Assessment Item
+* Outcome
+* Media
+
+A metric profile contains description of:
+ * the entities that participate in a learning activity
+ * the possible actions that may be performed as part of the learning activity.
+ * the events that may occur during an learning activity
+
+Actors in caliper are Persons or software systems (EdApps).   Actors optionally may be assigned to roles. Actors optionally may be members of groups.  The vocabulary used in Caliper is taken from the W3C vCard Ontology - for describing people and organizations.
+
+Entities provide information about of the objects, actors or resources that participate in an event.  Entities are further specified by contexts. The vocabularies for entities are drawn from a variety of sources.
+
+Actions specify the set of potential interactions within the metric profile.
+
+Conceptually, Caliper events in plan english are described as  _"ACTOR invokes an ACTION on an ENTITY at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light weight linked data format that builds upon wide-spread adoption of JSON.  
+
+
 <a name="profiles" />
 ## 4.0 Profiles
 The Caliper Information Model is comprised of a number of activity profiles, each of which models a particular learning or supporting activity.  Each profile provides a common/structured vocabularly / concepts and terms for describing events such as annotating a document, starting an assessment or grading an outcome.  Extending the model involves adding a new profile or enhancing an existing one.
