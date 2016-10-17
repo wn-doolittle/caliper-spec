@@ -1422,58 +1422,56 @@ TODO
 #### Example
 ```
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@type": "http://purl.imsglobal.org/caliper/v1/MediaEvent",
-    "actor": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@type": "http://purl.imsglobal.org/caliper/v1/MediaEvent",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused",
+  "object": {
+    "@id": "https://example.edu/UQVK-dsU7-Y",
+    "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+    "name": "Information and Welcome",
+    "mediaType": "video/ogg",
+    "duration": "PT20M20S"
+  },
+  "target": {
+    "@id": "https://example.edu/UQVK-dsU7-Y?t=321",
+    "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
+    "currentTime": "PT05M21S"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "edApp": {
+    "@id": "https://example.edu/player",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+  },
+  "group": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  },
+  "membership": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "member": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused",
-    "object": {
-        "@id": "https://youtu.be/UQVK-dsU7-Y",
-        "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-        "name": "Python for Informatics: Information and Welcome",
-        "mediaType": "video/ogg",
-        "duration": "PT20M20S"
+    "organization": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
-    "target": {
-        "@id": "https://youtu.be/UQVK-dsU7-Y?t=321",
-        "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
-        "currentTime": "PT05M21S"
-    },
-    "eventTime": "2016-09-15T10:15:00.000Z",
-    "edApp": {
-        "@id": "http://www.pythonlearn.com/",
-        "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
-    },
-    "group": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "courseNumber": "CPS101-01",
-        "academicSession": "Fall-2016"
-    },
-    "membership": {
-        "@id": "https://example.edu/semesters/201601/courses/301/rosters/20",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
-        "member": {
-            "@id": "https://example.edu/people/554433",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-        },
-        "organization": {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
-        },
-        "roles": [
-            "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"
-        ],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
-        "dateCreated": "2016-08-01T06:00:00.000Z"
-    },
-    "session": {
-        "@id": "https://example.com/lms/sessions/41102ee0870b0be0bb3259166a9947952a3c5425",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-        "startedAtTime": "2016-09-15T10:12:00.000Z"
-    }
+    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
+    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "startedAtTime": "2016-11-15T10:00:00.000Z"
+  }
 }
 ```
 
