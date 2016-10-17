@@ -28,7 +28,6 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* 4.2 [Annotation Profile](#annotationProfile)
 	* 4.3 [Assignable Profile](#assignableProfile)
 	* 4.4 [Assessment Profile](#assessmentProfile)
-	* 4.5 [Content Management Profile](#contentMgmtProfile)
 	* 4.6 [Forum Profile](#forumProfile)
 	* 4.7 [Media Profile](#mediaProfile)
 	* 4.8 [Outcome Profile](#outcomeProfile)
@@ -47,7 +46,6 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 	* [AssessmentEvent](#assessmentEvent)
 	* [AssessmentItemEvent](#assessmentItemEvent)
     * [AssignableEvent](#assignableEvent)
-	* [ContentMgmtEvent](#contentMgmtEvent)
 	* [ForumEvent](#ForumEvent)
 	* [MediaEvent](#mediaEvent)
 	* [MessageEvent](#messageEvent)
@@ -184,7 +182,7 @@ The Caliper Information Model is comprised of a number of activity profiles, eac
 
 TODO: ADDITIONAL INTRO TEXT
 
-[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Content Management](#contentMgmtProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Outcome](#outcomeProfile), [Reading](#readingProfile), [Session](#sessionProfile)
+[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Outcome](#outcomeProfile), [Reading](#readingProfile), [Session](#sessionProfile)
 
 <a name="basicProfile" />
 ### 4.1 Basic Profile
@@ -341,42 +339,6 @@ The Assignable Profile provides coverage for all activity types that can be assi
 #### TODO
 * Decide whether Attempt should be the object of the interaction
 * Do we need to add a submitted action?
-
-<a name="contentMgmtProfile" />
-### 4.5 Content Management Profile
-The Content Management Profile models activities associated with the creation and management of digital content.
-
-#### Supported Events
-[ContentMgmtEvent](#contentMgmtEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#ViewEvent)
-
-#### Supported Actions
-| Event | action(s) |
-| -----  | --------- |
-| [ContentMgmtEvent](#contentMgmtEvent) | [created](#created), [modified](#modified), [published](#published), [retrieved](#retrieved), [removed](#removed), [deleted](#deleted) |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
-
-#### Supported object, generated, target and referrer entities
-| Event | object | generated | target | referrer |
-| ----- | ------ | ----------- | ------ | ------- |
-| [ContentMgmtEvent](#contentMgmtEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
-
-#### Example Sequence
- Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
- 
-| Event | actor | action | object | eventTime |
-| -----  | ----- | ------ | ------ | ----------- |
-| [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [created](#created) | [Document](#document) D1 | [dateTime](#dateTime) T1 |
-| [ContentMgmtEvent](#digitalResourceMgmtEvent) | [Person](#person) P2 | [retrieved](#retrieved) | [Document](#document) D1 | [dateTime](#dateTime) T2 |
-| [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P2 | [modified](#modified)| [Document](#document) D1 | [dateTime](#dateTime) T3 |
-| [ContentMgmtEvent](#digitalResourceMgmtEvent)  | [Person](#person) P1 | [published](#published) | [Document](#document) D1 | [dateTime](#dateTime) T4 |
-| [NavigationEvent](#navigationEvent) | [Person](#person) P3 | [navigatedTo](#navigatedTo) | [Document](#document) D1 | [dateTime](#dateTime) T5 |
-| [ViewEvent](#viewEvent)| [Person](#person) P3 | [viewed](#viewed) | [Document](#document) D1 | [dateTime](#dateTime) T6 |
-
-#### TODO
-* consider renaming to "Entity Management Profile" and widening object scope from [DigitalResource](#digitalResource) to [Entity](#entity).
 
 <a name="forumProfile" />
 ### 4.6 Forum Profile
@@ -574,7 +536,7 @@ TODO List all Actions?
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
 #### Subclasses
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ContentMgmtEvent](#contentMgmtEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Example
 ```json
