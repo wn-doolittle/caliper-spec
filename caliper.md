@@ -579,20 +579,21 @@ TODO List all Actions?
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",
-    "actor": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
-    "object": {
-        "@id": "http://do1.dr-chuck.com/pythonlearn/EN_us/pythonlearn.pdf",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Document",
-        "name": "Python for Everybody.  Exploring Data using Python 3",
-        "version": "2016-Jul-05 First Complete Python 3.0 version"
-    },
-    "eventTime": "2016-09-15T10:15:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Event",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
+  "object": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "name": "Course Syllabus",
+    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "version": "1"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z"
 }
 ```
 
