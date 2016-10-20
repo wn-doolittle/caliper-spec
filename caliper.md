@@ -3261,24 +3261,24 @@ In addition to properties inherited from [Entity](#entity), Membership includes 
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/rosters/1/members/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
-    "member": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "organization": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "subOrganizationOf": {
-            "@id": "https://example.edu/semesters/201601/courses/301",
-            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
-        }
-    },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
-    "dateCreated": "2016-09-01T06:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+  "member": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "organization": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "subOrganizationOf": {
+      "@id": "https://example.edu/terms/201601/courses/7",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+    }
+  },
+  "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
+  "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+  "dateCreated": "2016-11-01T06:00:00.000Z"
 }
 ```
 
