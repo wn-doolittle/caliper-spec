@@ -2107,15 +2107,6 @@ A Caliper Agent is a generic class that represents an Entity that can initiate o
 #### Optional properties
 Inherited from [Entity](#entity).
 
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/tokens/bu435gy9z2Np41sV",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Agent"
-}
-```
-
 <a name="annotation" />
 ### Annotation
 A Caliper Annotation is a generic class that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.  Annotation inherits all the properties and requirements defined for [Entity](#entity), its superclass.  Given that Annotation represents a generic type it is RECOMMENDED that only subclasses of Annotation be employed to represent nodes in the learning graph.
@@ -2137,13 +2128,6 @@ A Caliper Annotation is a generic class that represents a comment, explanation, 
 
 #### Optional properties
 Inherited from [Entity](#entity).
-
-#### Example
-```json
-{
-    TODO
-}
-```
 
 <a name="assessment" />
 ### Assessment
