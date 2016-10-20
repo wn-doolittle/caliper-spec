@@ -653,7 +653,7 @@ TODO: ADD ADDITIONAL INFO
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Entity. |
 
 #### Subclasses
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 #### Example
 ```json
@@ -3119,6 +3119,78 @@ Inherited from [DigitalResource](#digitalResource).
 }
 ```
 
+<a name="ltiSession" />
+### LtiSession
+A Caliper LtiSession represents an LTI Tool Consumer Web application user session.  LtiSession inherits all the properties and requirements defined for [Session](#session), its superclass. 
+
+#### subClassOf
+[Session](#session)
+
+#### Required properties
+| Property | Type | Requirements |
+| -------- | ---- | ----------- |
+| context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
+| id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An LtiSession SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an LtiSession MUST be assigned a blank node identifier. |
+| type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/LtiSession. |
+
+#### Optional properties
+In addition to properties inherited from [Session](#session), LtiSession includes the following additional optional properties:
+
+| Property | Type | Requirements |
+| -------- | ----- | -------------- |
+| launchParameters | Object | LTI-specified launch parameters that provide Tool Consumer-related contextual information.  LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced.  |
+
+#### Example
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+  "@type": "http://purl.imsglobal.org/caliper/v1/LtiSession",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "launchParameters": {
+    "lti_message_type": "basic-lti-launch-request",
+    "lti_version": "LTI-2p0",
+    "resource_link_id": "88391-e1919-bb3456",
+    "context_id": "8213060-006f-27b2066ac545",
+    "launch_presentation_document_target": "iframe",
+    "launch_presentation_height": 240,
+    "launch_presentation_return_url": "https://example.edu/terms/201601/courses/7/sections/1/pages/5",
+    "launch_presentation_width": 320,
+    "roles": "Learner,Student",
+    "tool_consumer_instance_guid": "example.edu",
+    "user_id": "0ae836b9-7fc9-4060-006f-27b2066ac545",
+    "context_type": "CourseSection",
+    "launch_presentation_locale": "en-US",
+    "launch_presentation_css_url": "https://example.edu/css/tool.css",
+    "role_scope_mentor": "f5b2cc6c-8c5c-24e8-75cc-fac5,dc19e42c-b0fe-68b8-167e-4b1a",
+    "custom_caliper_session_id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "custom_context_title": "CPS 435 Learning Analytics",
+    "custom_context_label": "CPS 435",
+    "custom_resource_link_title": "LTI tool",
+    "custom_user_image": "https://example.edu/users/554433/profile/avatar.jpg",
+    "ext_vnd_instructor": {
+      "@context": {
+        "@vocab": "http://example.edu/ctx/edu.jsonld",
+        "sdo": "http://schema.org/"
+      },
+      "@type": "Faculty",
+      "sdo:jobTitle": "Professor",
+      "sdo:givenName": "Trig",
+      "sdo:familyName": "Haversine",
+      "sdo:email": "trighaversine@example.edu",
+      "sdo:url": "https://example.edu/faculty/trighaversine",
+      "isTenured": true,
+      "isOnSabbatical": false
+    }
+  },
+  "dateCreated": "2016-11-15T10:15:00.000Z",
+  "startedAtTime": "2016-11-15T10:15:00.000Z"
+}
+```
+
 <a name="mediaLocation" />
 #### MediaLocation
 
@@ -3625,6 +3697,9 @@ A Caliper Session represents a Web application user session.  Session inherits a
 
 #### subClassOf
 [Entity](#entity)
+
+#### subclasses
+[LtiSession](#ltiSession)
 
 #### Required properties
 | Property | Type | Requirements |
