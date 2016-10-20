@@ -2979,19 +2979,19 @@ Inherited from [Organization](#organization).
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups/2",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Group",
-    "name": "Discussion Group 2",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/2",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Group",
+  "name": "Discussion Group 2",
+  "subOrganizationOf": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "subOrganizationOf": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "subOrganizationOf": {
-            "@id": "https://example.edu/semesters/201601/courses/301",
-            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
-        }
-    },
-    "dateCreated": "2016-09-01T06:00:00.000Z"
+      "@id": "https://example.edu/terms/201601/courses/7",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+    }
+  },
+  "dateCreated": "2016-11-01T06:00:00.000Z"
 }
 ```
 
