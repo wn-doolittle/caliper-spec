@@ -3639,18 +3639,33 @@ TODO
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
   "@type": "http://purl.imsglobal.org/caliper/v1/Result",
-  "actor": "https://example.edu/users/554433",
-  "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-  "comment": "Well done.",
-  "normalScore": 3.0,
-  "penaltyScore": 0.0,
-  "totalScore": 3.0,
-  "scoredBy": {
-    "@id": "https://example.com/quizengine",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-    "dateCreated": "2015-08-01T06:00:00.000Z"
+  "attempt": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    },
+    "assignable": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+    },
+    "count": 1,
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:30.000Z",
+    "duration": "PT50M30S"
   },
-  "dateCreated": "2015-08-01T06:00:00.000Z"
+  "comment": "Well done.",
+  "normalScore": 15.0,
+  "penaltyScore": 0.0,
+  "totalScore": 15.0,
+  "scoredBy": {
+    "@id": "https://example.edu/autograder",
+    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "dateCreated": "2016-11-15T10:55:58.000Z"
+  },
+  "dateCreated": "2016-11-15T10:56:00.000Z"
 }
 ```
 
