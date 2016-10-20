@@ -2656,40 +2656,41 @@ A Caliper DigitalResourceCollection is a generic class that represents an ordere
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/collections/3",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
-    "name": "Video Collection",
-    "items": [
-        {
-            "@id": "https://example.com/videos/1225",
-            "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-            "mediaType": "video/ogg",
-            "name": "Video 1225",
-            "dateCreated": "2016-08-01T06:00:00.000Z",
-            "duration": "PT1H12M27S",
-            "version": "1.0"
-        },
-        {
-            "@id": "https://example.com/videos/5629",
-            "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-            "mediaType": "video/ogg",
-            "name": "Video 5629",
-            "dateCreated": "2016-08-01T06:00:00.000Z",
-            "duration": "PT55M13S",
-            "version": "2.1"
-        }
-    ],
-    "isPartOf": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "subOrganizationOf": {
-            "@id": "https://example.edu/semesters/201601/courses/301",
-            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
-        }
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+  "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+  "name": "Video Collection",
+  "keywords": ["collection", "videos"],
+  "items": [
+    {
+      "@id": "https://example.edu/videos/1225",
+      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Introduction to IMS Caliper",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "duration": "PT1H12M27S",
+      "version": "1.1"
     },
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z"
+    {
+      "@id": "https://example.edu/videos/5629",
+      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+      "mediaType": "video/ogg",
+      "name": "IMS Caliper Activity Profiles",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "duration": "PT55M13S",
+      "version": "1.1.1"
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "subOrganizationOf": {
+      "@id": "https://example.edu/terms/201601/courses/7",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+    }
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
