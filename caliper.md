@@ -2884,40 +2884,40 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 #### Example
 ```
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
-    "name": "Caliper Forum",
-    "items": [
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1/topics/1",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-            "name": "Caliper Information Model",
-            "dateCreated": "2016-09-01T09:30:00.000Z"
-        },
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1/topics/2",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-            "name": "Caliper Sensor API",
-            "dateCreated": "2016-09-01T09:30:00.000Z"
-        },
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1/topics/3",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-            "name": "Caliper Certification",
-            "dateCreated": "2016-09-01T09:30:00.000Z"
-        }
-    ],
-    "isPartOf": {
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-        "subOrganizationOf": {
-            "@id": "https://example.edu/semesters/201601/courses/301",
-            "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
-        }
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+  "name": "Caliper Forum",
+  "items": [
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "name": "Caliper Information Model",
+      "dateCreated": "2016-11-01T09:30:00.000Z"
     },
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z"
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "name": "Caliper Sensor API",
+      "dateCreated": "2016-11-01T09:30:00.000Z"
+    },
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/3",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "name": "Caliper Certification",
+      "dateCreated": "2016-11-01T09:30:00.000Z"
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "subOrganizationOf": {
+      "@id": "https://example.edu/terms/201601/courses/7",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+    }
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
