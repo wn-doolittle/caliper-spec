@@ -2752,27 +2752,6 @@ A Caliper EpubChapter represents a major structural division of a piece of writi
 #### Optional properties
 Inherited from [DigitalResource](#digitalResource).
 
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/EpubChapter",
-    "name": "Caliper EpubChapter Deprecation",
-    "isPartOf": {
-        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-        "@type": "http://purl.imsglobal.org/caliper/v1/EpubPart",
-        "name": "Caliper Entity Deprecations",
-        "isPartof": {
-            "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-            "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
-            "name": "Caliper Deprecations",
-            "version": "1.1"
-        }
-    }
-}
-```
-
 <a name="epubPart" />
 ### EpubPart (DEPRECATED)
 A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  EpubPart inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:part](http://www.idpf.org/epub/vocab/structure/#part).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
@@ -2789,22 +2768,6 @@ A Caliper EpubPart represents a major structural division of a piece of writing,
 
 #### Optional properties
 Inherited from [DigitalResource](#digitalResource).
-
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/EpubPart",
-    "name": "Caliper Entity Deprecations",
-    "isPartof": {
-        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-        "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
-        "name": "Caliper Deprecations",
-        "version": "1.1"
-    }
-}
-```
 
 <a name="epubSubChapter" />
 ### EpubSubChapter (DEPRECATED)
@@ -2823,32 +2786,6 @@ A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#Ep
 #### Optional properties
 Inherited from [DigitalResource](#digitalResource).
 
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1/1)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/EpubSubChapter",
-    "name": "Caliper EpubSubChapter Deprecation",
-    "isPartOf": {
-        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1/1)",
-        "@type": "http://purl.imsglobal.org/caliper/v1/EpubChapter",
-        "name": "Caliper EpubChapter Deprecation",
-        "isPartOf": {
-            "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-            "@type": "http://purl.imsglobal.org/caliper/v1/EpubPart",
-            "name": "Caliper Entity Deprecations",
-            "isPartof": {
-                "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-                "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
-                "name": "Caliper Deprecations",
-                "version": "1.1"
-            }
-        }
-    }
-}
-```
-
 <a name="epubVolume" />
 ### EpubVolume (DEPRECATED)
 A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).  EpubVolume is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
@@ -2865,16 +2802,6 @@ A Caliper EpubVolume represents a component of a collection.  EpubVolume inherit
 
 #### Optional properties
 Inherited from [DigitalResource](#digitalResource).
-
-#### Example
-```json
-{
-    "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/EpubVolume",
-    "name": "Caliper Deprecations",
-    "version": "1.1"
-}
-```
 
 <a name="fillinBlankResponse" />
 ### FillinBlankResponse
