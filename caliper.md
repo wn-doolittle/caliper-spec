@@ -3065,10 +3065,12 @@ Inherited from [MediaObject](#mediaObject).
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Jesse_Owens3.jpg",
-    "@type": "http://purl.imsglobal.org/caliper/v1/ImageObject",
-    "name": "Jesse Owens"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/images/caliper_lti.jpg",
+  "@type": "http://purl.imsglobal.org/caliper/v1/ImageObject",
+  "name": "IMS Caliper/LTI Integration Work Flow",
+  "mediaType": "image/jpeg",
+  "dateCreated": "2016-09-01T06:00:00.000Z"
 }
 ```
 
