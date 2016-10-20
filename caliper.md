@@ -2606,21 +2606,27 @@ The following properties have been deprecated and will be removed in a future ve
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https: //example.edu/semesters/201601/courses/1776/sections/3/resources/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResource",
-    "name": "Course Syllabus",
-    "creators": [
-        {
-            "@id": "https://example.edu/users/223344",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-        }
-    ],
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+  "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResource",
+  "name": "Course Syllabus",
+  "mediaType": "application/pdf",
+  "creators": [
+    {
+      "@id": "https://example.edu/users/223344",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+    "name": "Course Assets",
     "isPartOf": {
-        "@id": "https: //example.edu/semesters/201601/courses/1776/sections/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
-    },
-    "dateCreated": "2016-08-02T11:32:00.000Z"
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+    }
+  },
+  "dateCreated": "2016-08-02T11:32:00.000Z"
 }
 ```
 
