@@ -3025,23 +3025,23 @@ In addition to properties inherited from Annotation](#annotation), HighlightAnno
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/highlights/12345",
-    "@type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
-    "actor": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "annotated": {
-        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
-    },
-    "selection": {
-        "start": "455",
-        "end": "489"
-    },
-    "selectionText": "Life, Liberty and the pursuit of Happiness",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/users/554433/etexts/201/highlights/20",
+  "@type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "annotated": {
+    "@id": "https://example.edu/etexts/201",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Document"
+  },
+  "selection": {
+    "start": 2300,
+    "end": 2370
+  },
+  "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
+  "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
