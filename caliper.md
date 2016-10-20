@@ -2544,20 +2544,19 @@ In addition to properties inherited from [CourseOffering](#courseOffering), Cour
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https: //example.edu/semesters/201601/courses/1776/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-    "academicSession": "Fall-2016",
-    "courseNumber": "POL101-1",
-    "name": "American Revolution 101",
-    "category": "lecture",
-    "subOrganizationOf": {
-        "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-        "@id": "https: //example.edu/semesters/201601/courses/1776",
-        "@type": "http: //purl.imsglobal.org/caliper/v1/CourseOffering",
-        "courseNumber": "POL101"
-    },
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+  "academicSession": "Fall 2016",
+  "courseNumber": "CPS 435-01",
+  "name": "CPS 435 Learning Analytics, Section 01",
+  "category": "seminar",
+  "subOrganizationOf": {
+    "@id": "https://example.edu/terms/201601/courses/7",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
+    "courseNumber": "CPS 435"
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
