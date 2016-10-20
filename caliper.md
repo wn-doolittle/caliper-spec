@@ -2220,25 +2220,27 @@ Inherited from [AssignableDigitalResource](#assignableDigitalResource).
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3",
-    "@type": "http: //purl.imsglobal.org/caliper/v1/AssessmentItem",
-    "isPartOf": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+  "isPartOf": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "datePublished": "2016-08-15T09:30:00.000Z",
+  "isTimeDependent": false,
+  "maxAttempts": 2,
+  "maxScore": 5,
+  "maxSubmits": 2,
+  "extensions": {
+    "@context": {
+      "@vocab": "http://example.edu/ctx/edu.jsonld"
     },
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "datePublished": "2016-08-15T09:30:00.000Z",
-    "isTimeDependent": false,
-    "maxAttempts": 2,
-    "maxScore": 5,
-    "maxSubmits": 2,
-    "extensions": {
-        "itemType": "true/false",
-        "itemText": "Is a Python tuple mutable?",
-        "itemCorrectResponse": "false",
-        "itemIncorrectResponse": "true"
-    }
+    "itemType": "true/false",
+    "itemText": "In Caliper event actors are limited to people only.",
+    "itemCorrectResponse": false
+  }
 }
 ```
 
