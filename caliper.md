@@ -3463,7 +3463,7 @@ In addition to properties inherited from [Response](#response), MultipleResponse
 
 <a name="organization" />
 ### Organization
-A Caliper Organization represents a group of people who come together for a common purpose, typically  one that is educational, social or administrative in nature.  The Organization can act as an [Agent] and can often be decomposed into sub-organizations.  Organization inherits all the properties and requirements defined for [Agent](#agent), its superclass.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
+A Caliper Organization represents a group of people who come together for a common purpose, typically one that is educational, social or administrative in nature.  The Organization can act as an [Agent] and can often be decomposed into sub-organizations.  Organization inherits all the properties and requirements defined for [Agent](#agent), its superclass.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
 #### subClassOf
 [Agent](#agent)
@@ -3488,15 +3488,15 @@ In addition to properties inherited from [Agent](#agent), Organization includes 
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/colleges/1/depts/1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/colleges/1/depts/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
+  "name": "Computer Science Department",
+  "subOrganizationOf": {
+    "@id": "https://example.edu/colleges/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
-    "name": "Department of History",
-    "subOrganizationOf": {
-        "@id": "https://example.edu/colleges/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
-        "name": "College of Arts and Letters"
-    }
+    "name": "College of Engineering"
+  }
 }
 ```
 
