@@ -2322,21 +2322,22 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 #### Example
 ```json
 {
-    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
-    "assignable": {
-        "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
-    },
-    "actor": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "count": 1,
-    "dateCreated": "2016-09-15T10:05:00.000Z",
-    "startedAtTime": "2016-09-15T10:05:00.000Z",
-    "endedAtTime": "2016-09-15T10:55:30.000Z",
-    "duration": "PT50M30S"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+  "assignable": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+  },
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "count": 1,
+  "dateCreated": "2016-11-15T10:05:00.000Z",
+  "startedAtTime": "2016-11-15T10:05:00.000Z",
+  "endedAtTime": "2016-11-15T10:55:30.000Z",
+  "duration": "PT50M30S"
 }
 ```
 
