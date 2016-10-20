@@ -2459,25 +2459,25 @@ In addition to properties inherited from [Entity](#entity), Collection includes 
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
-    "name": "Groups",
-    "items": [
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups/1",
-            "@type": "http: //purl.imsglobal.org/caliper/v1/Group"
-        },
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups/3",
-            "@type": "http: //purl.imsglobal.org/caliper/v1/Group"
-        },
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/groups/5",
-            "@type": "http: //purl.imsglobal.org/caliper/v1/Group"
-        }
-    ],
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+  "name": "Groups",
+  "items": [
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Group"
+    },
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/3",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Group"
+    },
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/5",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Group"
+    }
+  ],
+  "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
