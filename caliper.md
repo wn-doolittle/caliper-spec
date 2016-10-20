@@ -2169,35 +2169,35 @@ Inherited from [AssignableDigitalResource](#assignableDigitalResource) and [Coll
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/assess/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
-    "name": "Quiz One",
-    "items": [
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/1",
-            "@type": "http: //purl.imsglobal.org/caliper/v1/AssessmentItem"
-        },
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/2",
-            "@type": "http: //purl.imsglobal.org/caliper/v1/AssessmentItem"
-        },
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/3",
-            "@type": "http: //purl.imsglobal.org/caliper/v1/AssessmentItem"
-        }
-    ],
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z",
-    "datePublished": "2016-08-15T09:30:00.000Z",
-    "dateToActivate": "2016-08-16T05:00:00.000Z",
-    "dateToShow": "2016-08-16T05:00:00.000Z",
-    "dateToStartOn": "2016-08-16T05:00:00.000Z",
-    "dateToSubmit": "2016-09-28T11:59:59.000Z",
-    "maxAttempts": 2,
-    "maxScore": 15,
-    "maxSubmits": 2,
-    "version": "1.0"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+  "name": "Quiz One",
+  "items": [
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
+    },
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
+    },
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
+    }
+  ],
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
+  "datePublished": "2016-08-15T09:30:00.000Z",
+  "dateToActivate": "2016-08-16T05:00:00.000Z",
+  "dateToShow": "2016-08-16T05:00:00.000Z",
+  "dateToStartOn": "2016-08-16T05:00:00.000Z",
+  "dateToSubmit": "2016-09-28T11:59:59.000Z",
+  "maxAttempts": 2,
+  "maxScore": 15,
+  "maxSubmits": 2,
+  "version": "1.0"
 }
 ```
 <a name="assessmentItem" />
