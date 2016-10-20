@@ -2381,20 +2381,19 @@ In addition to properties inherited from Annotation](#annotation), BookmarkAnnot
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.com/bookmarks/813cb2c6-75ec-410f-8dab-ef047afb92e5",
-    "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
-    "actor": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "annotated": {
-        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/1)",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
-    },
-    "bookmarkNotes": "The Intolerable Acts (1774)--bad idea Lord North",
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "annotated": {
+    "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+  },
+  "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
+  "dateCreated": "2016-08-01T06:00:00.000Z"
 }
 ```
 
