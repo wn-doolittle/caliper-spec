@@ -2509,14 +2509,14 @@ In addition to properties inherited from [Organization](#organization), CourseOf
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https: //example.edu/semesters/201601/courses/1776",
-    "@type": "http: //purl.imsglobal.org/caliper/v1/CourseOffering",
-    "courseNumber": "POL101",
-    "academicSession": "Fall-2016",
-    "name": "Political Science 101: The American Revolution",
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7",
+  "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
+  "courseNumber": "CPS 435",
+  "academicSession": "Fall 2016",
+  "name": "CPS 435 Learning Analytics",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
