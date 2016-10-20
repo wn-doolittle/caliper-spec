@@ -3234,13 +3234,6 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
 | -------- | ----- | -------------- |
 | duration | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | Represents the total interval of time required to complete this MediaObject.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
 
-#### Example
-```json
-{
-    TODO
-}
-```
-
 <a name="membership" />
 ### Membership
 A Caliper Membership describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  Membership inherits all the properties and requirements defined for [Entity](#entity), its superclass.
