@@ -2276,16 +2276,19 @@ In addition to properties inherited from [DigitalResource](#digitalResource), As
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/assign/2",
-    "@type": "http: //purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
-    "name": "Week 2 Reflection",
-    "description": "3-5 page reflection on week's assigned readings.",
-    "dateCreated": "2016-09-01T06:00:00.000Z",
-    "dateToStartOn": "2016-09-15T11:59:59.000Z",
-    "maxAttempts": 2,
-    "maxSubmits": 2,
-    "maxScore": 50
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
+  "name": "Week 9 Reflection",
+  "description": "3-5 page reflection on this week's assigned readings.",
+  "dateCreated": "2016-11-01T06:00:00.000Z",
+  "dateToActivate": "2016-11-10T11:59:59.000Z",
+  "dateToShow": "2016-11-10T11:59:59.000Z",
+  "dateToStartOn": "2016-11-10T11:59:59.000Z",
+  "dateToSubmit": "2016-11-14T11:59:59.000Z",
+  "maxAttempts": 2,
+  "maxSubmits": 2,
+  "maxScore": 50
 }
 ```
 
