@@ -3584,13 +3584,6 @@ A Caliper Reading represents an item of paginated content.  Reading inherits all
 #### Optional properties
 Inherited from [DigitalResource](#digitalResource).
 
-#### Example
-```json
-{
-    TODO
-}
-```
-
 <a name="response" />
 ### Response
 A Caliper Response is a generic class that represents the selected option provided by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).  Given that Response represents a generic type it is RECOMMENDED that only subclasses of Response be employed to represent nodes in the learning graph. 
