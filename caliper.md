@@ -3312,28 +3312,39 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
 #### Example
 ```
 {
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/3",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-    "creators": [
-        {
-             "@id": "https://example.edu/users/778899",
-             "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-        }
-     ],
-     "replyTo": {
-         "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/2",
-         "@type": "http://purl.imsglobal.org/caliper/v1/Message"
-     },
-     "isPartOf": {
-         "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1",
-         "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-         "isPartOf": {
-             "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2",
-             "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
-         }
-     },
-     "dateCreated": "2016-09-15T10:15:30.000Z"
- }
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+  "creators": [
+    {
+      "@id": "https://example.edu/users/778899",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    }
+  ],
+  "body": "The Caliper working group provides a set of Caliper Sensor reference implementations for the purposes of education and experimentation.  They have not been tested for use in a production environment.  See the Caliper Implementation Guide for more details.",
+  "replyTo": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+  },
+  "isPartOf": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+    "isPartOf": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
+    }
+  },
+  "attachments": [
+    {
+      "@id": "https://example.edu/etexts/201.epub",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+      "name": "IMS Caliper Implementation Guide",
+      "dateCreated": "2016-10-01T06:00:00.000Z",
+      "version": "1.1"
+    }
+  ],
+  "dateCreated": "2016-11-15T10:15:30.000Z"
+}
  ```
  
 <a name="multipleChoiceResponse" />
