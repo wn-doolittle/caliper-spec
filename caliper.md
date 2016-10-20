@@ -2942,8 +2942,18 @@ Inherited from [DigitalResource](#digitalResource).
 #### Example
 ```json
 {
-    TODO
-}
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/etexts/201?index=2502",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Frame",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "index": 2502,
+  "isPartOf": {
+    "@id": "https://example.edu/etexts/201",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "name": "IMS Caliper Implementation Guide",
+    "version": "1.1"
+  }
+} 
 ```
 
 <a name="group" />
