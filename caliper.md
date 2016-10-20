@@ -2345,11 +2345,13 @@ Inherited from [MediaObject](#mediaObject).
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://fdrlibrary.org/documents/356632/405112/afdr067.mp3",
-    "@type": "http://purl.imsglobal.org/caliper/v1/AudioObject",
-    "name": "Franklin D. Roosevelt. Madison Square Garden Speech (31 October 1936)",
-    "duration": "PT36M55S"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/audio/765",
+  "@type": "http://purl.imsglobal.org/caliper/v1/AudioObject",
+  "name": "Audio Recording: IMS Caliper Sensor API Q&A.",
+  "mediaType": "audio/ogg",
+  "datePublished": "2016-12-01T06:00:00.000Z",
+  "duration": "PT55M13S"
 }
 ```
 
