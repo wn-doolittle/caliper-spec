@@ -3821,10 +3821,12 @@ Inherited from [Agent](#agent).
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.com/reader",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
-    "version": "11.0"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/autograder",
+  "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+  "name": "Auto Grader",
+  "description": "Automates assignment scoring.",
+  "version": "2.5.2"
 }
 ```
 
