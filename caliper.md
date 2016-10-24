@@ -3659,9 +3659,6 @@ TODO
 ### SelectTextResponse
 A Caliper SelectTextResponse represents a response that identifies text or a mapping from a presented paragraph or list.  SelectTextResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-#### TODO
-* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
-
 #### subClassOf 
 [Response](#response)
 
@@ -3683,32 +3680,32 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/4/users/554433/responses/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse",
-    "attempt": {
-        "@id": "https: //example.edu/terms/2/courses/215/sections/3/assess/1/items/4/users/554433/attempts/1",
-        "@type": "http: //purl.imsglobal.org/caliper/v1/Attempt",
-        "actor": {
-            "@id": "https://example.edu/user/554433",
-            "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
-        },
-        "assignable": {
-            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/4",
-            "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
-            "isPartOf": {
-                "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
-                "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
-            }
-        },
-        "count": 1,
-        "startedAtTime": "2016-09-15T10:15:32.000Z",
-        "endedAtTime": "2016-09-15T10:15:38.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/SelectTextResponse",
+  "attempt": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "dateCreated": "2016-09-15T10:15:32.000Z",
-    "startedAtTime": "2016-09-15T10:15:32.000Z",
-    "endedAtTime": "2016-09-15T10:15:38.000Z",
-    "value": "Caliper Sensor API"
+    "assignable": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4",
+      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "isPartOf": {
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+      }
+    },
+    "count": 1,
+    "startedAtTime": "2016-11-15T10:15:32.000Z",
+    "endedAtTime": "2016-11-15T10:15:38.000Z"
+  },
+  "dateCreated": "2016-11-15T10:15:32.000Z",
+  "startedAtTime": "2016-11-15T10:15:32.000Z",
+  "endedAtTime": "2016-11-15T10:15:38.000Z",
+  "values": [ "Information Model", "Sensor API", "Profiles" ]
 }
 ```
 
@@ -3742,14 +3739,14 @@ In addition to properties inherited from [Entity](#entity), Session includes the
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.com/lms/sessions/973465e7f388940324465caf55b4f761b0f4f093",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
-    "actor": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "startedAtTime": "2016-09-17T10:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "startedAtTime": "2016-09-15T10:00:00.000Z"
 }
 ```
 
