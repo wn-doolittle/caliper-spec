@@ -3856,19 +3856,19 @@ In addition to properties inherited from Annotation](#annotation), TagAnnotation
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/highlights/12345",
-    "@type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
-    "actor": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-    },
-    "annotated": {
-        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/4)",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
-    },
-    "tags": [ "to read", "1765", "Stamp Act" ],
-    "dateCreated": "2016-08-01T09:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/users/554433/etexts/201/tags/3",
+  "@type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "annotated": {
+    "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/12[para06]/1:97)",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+  },
+  "tags": [ "profile", "event", "entity" ],
+  "dateCreated": "2016-08-01T09:00:00.000Z"
 }
 ```
 
