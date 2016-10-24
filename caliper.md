@@ -302,16 +302,6 @@ The Assignable Profile provides coverage for all activity types that can be assi
 | [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
 | [ViewEvent](#ViewEvent) | [viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
 
-#### OR
-
-#### Supported object, generated, target and referrer entities
-| Event | action | object | generated | target | referrer |
-| ----- | -------| ------ | ----------- | ------ | ------- |
-|  [AssignableEvent](#assignableEvent)  | [started](#started), [completed](#completed) | [Attempt](#attempt) | &nbsp; | &nbsp; | &nbsp; |
-|  [AssignableEvent](#assignableEvent)  | [activated](#activated), [deactivated](#deactivated) | [DigitalResource](#digitalResource) | &nbsp;  | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
-
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
  
@@ -324,7 +314,6 @@ The Assignable Profile provides coverage for all activity types that can be assi
 | [AssignableEvent](#assignableEvent) | [Person](#person) P1 | [deactivated](#deactivated) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T5 | &nbsp; |
 
 #### TODO
-* Decide whether Attempt should be the object of the interaction
 * Do we need to add a submitted action?
 
 <a name="forumProfile" />
