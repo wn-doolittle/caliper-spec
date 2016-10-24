@@ -3896,50 +3896,47 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1/topics/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
-    "name": "Caliper Information Model",
-    "items": [
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/1",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Message"
-        },
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/2",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-            "replyTo": {
-                "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/1",
-                "@type": "http://purl.imsglobal.org/caliper/v1/Message"
-            }
-        },
-        {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/3",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Message",
-            "replyTo": {
-                "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/2/topics/1/messages/2",
-                "@type": "http://purl.imsglobal.org/caliper/v1/Message"
-            }
-        }
-    ],
-    "isPartOf": {
-        "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-        "@id": "https://example.edu/semesters/201601/courses/301/sections/1/forums/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
-        "name": "Caliper Forum",
-        "isPartOf": {
-            "@id": "https://example.edu/semesters/201601/courses/301/sections/1",
-            "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
-            "subOrganizationOf": {
-                "@id": "https://example.edu/semesters/201601/courses/301",
-                "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
-            }
-        },
-        "dateCreated": "2016-08-01T06:00:00.000Z",
-        "dateModified": "2016-09-02T11:30:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+  "name": "Caliper Information Model",
+  "items": [
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Message"
     },
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z"
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+      "replyTo": {
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+      }
+    },
+    {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/3",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+      "replyTo": {
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+    "name": "Caliper Forum",
+    "isPartOf": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+      "subOrganizationOf": {
+        "@id": "https://example.edu/terms/201601/courses/7",
+        "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+      }
+    }
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
