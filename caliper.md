@@ -3776,28 +3776,28 @@ In addition to properties inherited from Annotation](#annotation), SharedAnnotat
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/highlights/12345",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SharedAnnotation",
-    "actor": {
-        "@id": "https://example.edu/user/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/users/554433/etexts/201/shares/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/SharedAnnotation",
+  "actor": {
+    "@id": "https://example.edu/users/554433",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+  },
+  "annotated": {
+    "@id": "https://example.edu/etexts/201.epub",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Document"
+  },
+  "withAgents": [
+    {
+      "@id": "https://example.edu/users/657585",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "annotated": {
-        "@id": "https://example.com/viewer/book/34843#epubcfi(/4/3/4)",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
-    },
-    "withAgents": [
-        {
-            "@id": "https://example.edu/user/657585",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-        },
-        {
-            "@id": "https://example.edu/user/667788",
-            "@type": "http://purl.imsglobal.org/caliper/v1/Person"
-        }
-    ],
-    "dateCreated": "2016-08-01T09:00:00.000Z"
+    {
+      "@id": "https://example.edu/users/667788",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    }
+  ],
+  "dateCreated": "2016-08-01T09:00:00.000Z"
 }
 ```
 
