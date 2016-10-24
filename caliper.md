@@ -3408,9 +3408,6 @@ In addition to properties inherited from [Response](#response), MultipleChoiceRe
 ### MultipleResponseResponse
 A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.  MultipleResponseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-#### TODO
-* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
-
 #### subClassOf 
 [Response](#response)
 
