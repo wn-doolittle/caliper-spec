@@ -4046,16 +4046,17 @@ Inherited from [DigitalResource](#digitalResource).
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https: //example.edu/semesters/201601/courses/301/sections/1/index.html",
-    "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
-    "name": "CPS101-1 Landing Page",
-    "isPartOf": {
-        "@id": "https: //example.edu/semesters/201601/courses/301/sections/1",
-        "@type": "http: //purl.imsglobal.org/caliper/v1/CourseSection",
-        "courseNumber": "CPS101-01",
-        "academicSession": "Fall-2016"
-    }
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/index.html",
+  "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
+  "name": "CPS 435-01 Landing Page",
+  "mediaType": "text/html",
+  "isPartOf": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  }
 }
 ```
 
