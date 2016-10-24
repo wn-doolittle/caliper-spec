@@ -1383,7 +1383,7 @@ TODO
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
 #### Example: MediaEvent paused
-```
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@type": "http://purl.imsglobal.org/caliper/v1/MediaEvent",
@@ -1470,7 +1470,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 | extensions | object | Additional properties not defined by the model MAY be specified for a more concise representation of the Event. | 
 
 #### Example: MessageEvent posted
-```
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
@@ -1537,7 +1537,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 ```
 
 #### Example: MessageEvent posted (reply)
-```
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
@@ -2882,7 +2882,7 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 | items | List&lt;[Thread](#thread)&gt; | The ordered set of threaded discussions that comprise this Forum. |
 
 #### Example
-```
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
@@ -3197,7 +3197,7 @@ In addition to properties inherited from [Session](#session), LtiSession include
 TODO
 
 #### Example
-```
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/videos/1225",
@@ -3310,7 +3310,7 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
 | attachments | List&lt;[DigitalResource](#digitalResource)&gt; | An ordered set of one or more items attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). |
 
 #### Example
-```
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
@@ -3617,7 +3617,7 @@ In addition to properties inherited from [Entity](#entity), Response includes th
 TODO
 
 #### Example
-```
+```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
