@@ -3944,9 +3944,6 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 ### TrueFalseResponse
 A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided (true/false, yes/no).   TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
 
-#### TODO
-* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
-
 #### subClassOf 
 [Response](#response)
 
@@ -3968,32 +3965,32 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/5/users/554433/responses/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse",
-    "attempt": {
-        "@id": "https: //example.edu/terms/2/courses/215/sections/3/assess/1/items/5/users/554433/attempts/1",
-        "@type": "http: //purl.imsglobal.org/caliper/v1/Attempt",
-        "actor": {
-            "@id": "https://example.edu/user/554433",
-            "@type": "http: //purl.imsglobal.org/caliper/v1/Person"
-        },
-        "assignable": {
-            "@id": "https://example.edu/semesters/201601/courses/301/assess/1/items/5",
-            "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
-            "isPartOf": {
-                "@id": "https: //example.edu/semesters/201601/courses/301/assess/1",
-                "@type": "http: //purl.imsglobal.org/caliper/v1/Assessment"
-            }
-        },
-        "count": 1,
-        "startedAtTime": "2016-09-15T10:15:40.000Z",
-        "endedAtTime": "2016-09-15T10:15:45.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "@type": "http://purl.imsglobal.org/caliper/v1/TrueFalseResponse",
+  "attempt": {
+    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "actor": {
+      "@id": "https://example.edu/users/554433",
+      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
-    "dateCreated": "2016-09-15T10:15:45.000Z",
-    "startedAtTime": "2016-09-15T10:15:40.000Z",
-    "endedAtTime": "2016-09-15T10:15:45.000Z",
-    "value": "true"
+    "assignable": {
+      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
+      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "isPartOf": {
+        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+      }
+    },
+    "count": 1,
+    "startedAtTime": "2016-11-15T10:15:40.000Z",
+    "endedAtTime": "2016-11-15T10:15:45.000Z"
+  },
+  "dateCreated": "2016-11-15T10:15:45.000Z",
+  "startedAtTime": "2016-11-15T10:15:40.000Z",
+  "endedAtTime": "2016-11-15T10:15:45.000Z",
+  "value": "true"
 }
 ```
 
@@ -4017,12 +4014,15 @@ Inherited from [MediaObject](#mediaObject).
 #### Example
 ```json
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.com/player/videos/9999",
-    "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
-    "name": "IMS Caliper Overview",
-    "duration": "PT58M37S",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/videos/1225",
+  "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+  "mediaType": "video/ogg",
+  "name": "Introduction to IMS Caliper",
+  "version": "1.1",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
+  "duration": "PT1H12M27S"
 }
 ```
 
