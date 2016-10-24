@@ -265,16 +265,6 @@ The Caliper Assessment Profile models assessment-related activities including in
 | [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
 | [ViewEvent](#ViewEvent) | [viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; | &nbsp; 
 
-### OR  
-
-#### Supported object, generated, target and referrer entities
-| Event | action | object | generated | target | referrer |
-| ----- | -------| ------ | ----------- | ------ | ------- |
-|  [AssessmentEvent](#assessmentEvent) | [started](#started), [paused](#paused), [restarted](#restarted), [submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; | &nbsp; |
-|  [AssessmentItemEvent](#assessmentItemEvent) | [started](#started), [skipped](#skipped),  [completed](#completed) | [Attempt](#attempt) | &nbsp;  | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; | &nbsp; 
-
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
  
@@ -288,9 +278,6 @@ The Caliper Assessment Profile models assessment-related activities including in
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) P1 | [started](#started) | [AssessmentItem](#assessmentItem) I3 | [dateTime](#dateTime) T6 | [Attempt](#attempt) I3A1 | 
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) P1 | [completed](#completed) |  [Attempt](#attempt) I3A1  | [dateTime](#dateTime) T7 | [Response](#response) R2 |
 | [AssessmentEvent](#assessmentEvent)  | [Person](#person) P1 | [submitted](#submitted) | [Attempt](#attempt) A1A1 | [dateTime](#dateTime) T8 | &nbsp; |
-
-#### TODO
-* Decide if [Attempt](#attempt) should always be the object.
 
 <a name="assignableProfile" />
 ### 4.3 Assignable Profile
@@ -315,16 +302,6 @@ The Assignable Profile provides coverage for all activity types that can be assi
 | [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
 | [ViewEvent](#ViewEvent) | [viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
 
-#### OR
-
-#### Supported object, generated, target and referrer entities
-| Event | action | object | generated | target | referrer |
-| ----- | -------| ------ | ----------- | ------ | ------- |
-|  [AssignableEvent](#assignableEvent)  | [started](#started), [completed](#completed) | [Attempt](#attempt) | &nbsp; | &nbsp; | &nbsp; |
-|  [AssignableEvent](#assignableEvent)  | [activated](#activated), [deactivated](#deactivated) | [DigitalResource](#digitalResource) | &nbsp;  | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
-
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
  
@@ -337,7 +314,6 @@ The Assignable Profile provides coverage for all activity types that can be assi
 | [AssignableEvent](#assignableEvent) | [Person](#person) P1 | [deactivated](#deactivated) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T5 | &nbsp; |
 
 #### TODO
-* Decide whether Attempt should be the object of the interaction
 * Do we need to add a submitted action?
 
 <a name="forumProfile" />
