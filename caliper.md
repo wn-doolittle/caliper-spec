@@ -174,36 +174,32 @@ structure, flow, pointers
 <a name="infoModel">
 ## 3.0 Information Model
 
-TODO: OVERVIEW 
-
 ### Overview 
 
-This section describes the concepts, relationships and constraints that specify the Caliper information model.  The Caliper information model applies semantic web concepts to events that occur in and around learning activities.  Caliper 1.1 is focused on a defined set of commonly occurring learning activities. These learning activities are organized by type and described by metric profiles.  
+This section describes the concepts, relationships and constraints that specify the Caliper information model.  The Caliper information model applies semantic web concepts to events that occur in and around learning activities as well as activities that help facilitate learning.   These activities are organized by type and described by the following metric profiles:  
 
-A list of metric profiles specified by Caliper 1.1
-
-* Session
-* Reading
+* Basic
 * Annotation
-* Assignable
 * Assessment
-* Assessment Item
-* Outcome
+* Assignable
+* Forum
 * Media
+* Outcome
+* Reading
+* Session
 
-A metric profile contains description of:
+A metric profile contains a description of:
  * the entities that participate in a learning activity
  * the possible actions that may be performed as part of the learning activity.
  * the events that may occur during an learning activity
 
-Actors in caliper are Persons or software systems (EdApps).   Actors optionally may be assigned to roles. Actors optionally may be members of groups.  The vocabulary used in Caliper is taken from the W3C vCard Ontology - for describing people and organizations.
+Actors are capable of initiating an action such as a person, group, organization or software application.   Actors optionally may be assigned roles. Actors optionally may be members of groups or organizations.
 
-Entities provide information about of the objects, actors or resources that participate in an event.  Entities are further specified by contexts. The vocabularies for entities are drawn from a variety of sources.
+Entities provide information about the objects, actors or resources that participate in an event.  Entities are further specified by contexts. The vocabularies for entities are drawn from a variety of sources.
 
 Actions specify the set of potential interactions within the metric profile.
 
-Conceptually, Caliper events in plan english are described as  _"ACTOR invokes an ACTION on an ENTITY at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light weight linked data format that builds upon wide-spread adoption of JSON.  
-
+Conceptually, Caliper events in plan english are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.  
 
 <a name="profiles" />
 ## 4.0 Profiles
@@ -2298,8 +2294,8 @@ A Caliper Attempt provides a count of the number of times an actor has interacte
 | context | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/ctx/caliper/v1/Context.  The context MAY be omitted if it duplicates the enclosing Event context. |
 | id | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | An Attempt SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Attempt MUST be assigned a blank node identifier. |
 | type | [xsd:string]( https://www.w3.org/TR/xmlschema11-2/#string) | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/v1/Attempt. |
-| actor | [Person](#person) | The Person who initiated the Attempt MUST be specified. |
-| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+| actor | [Person](#person) | The Person who initiated the Attempt SHOULD be specified. |
+| assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 | count | [xsd:nonNegativeInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) | The total number of attempts inclusive of the current Attempt that have been registered against the assigned DigitalResource. |
 
 #### Optional properties
