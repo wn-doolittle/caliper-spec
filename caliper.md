@@ -2597,7 +2597,7 @@ In addition to properties inherited from [Entity](#entity), DigitalResource incl
 | mediaType | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | TODO |
 | keywords | List&lt;[xsd:string](https://www.w3.org/TR/xmlschema11-2/#string)&gt; | A set of one or more words or expressions that are used to identify this DigitalResource.  Analogous to [sdo:keywords](http://schema.org/keywords) |
 | learningObjectives | List&lt;[LearningObjective](#learningobjective)&gt; | One or more [LearningObjectives](#learningobject) that describe what the actor is expected to accomplish after engaging with this DigitalResource. |
-| isPartOf | [DigitalResource](#digitalResource) | A related DigitalResource that includes or incorporates this DigitalResource as a part of its whole.  Analogous to [sdo:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf). |
+| isPartOf | [Entity](#entity) | A related Entity, typically a DigitalResource, that includes or incorporates this DigitalResource as a part of its whole.  Analogous to [sdo:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf). |
 | datePublished | [xsd:dateTime]( https://www.w3.org/TR/xmlschema11-2/#dateTime) | Represents the publication date of this DigitalResource.  If a publication date is specified the value MUST conform to the ISO-8601 format for date and time with millisecond precision.  Analogous to [sdo:datePublished](http://schema.org/datePublished) |
 | version | [xsd:string](https://www.w3.org/TR/xmlschema11-2/#string) | An identifier that designates the current form of this DigitalResource.  Analogous to [sdo:version](http://schema.org/version) |
 
