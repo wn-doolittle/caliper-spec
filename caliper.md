@@ -23,7 +23,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 1.3 [Terminology](#terminology)
 * 2.0 [Data and Semantic Interoperability](#interoperability)
 * 3.0 [Information Model](#infomodel)
-* 4.0 [Profiles](#profiles)
+* 4.0 [Profiles](#caliperProfiles)
 	* 4.1 [Basic Profile](#basicProfile)
 	* 4.2 [Annotation Profile](#annotationProfile)
 	* 4.3 [Assignable Profile](#assignableProfile)
@@ -201,7 +201,7 @@ Actions specify the set of potential interactions within the metric profile.
 
 Conceptually, Caliper events in plan english are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.  
 
-<a name="profiles" />
+<a name="caliperProfiles" />
 ## 4.0 Profiles
 The Caliper Information Model is comprised of a number of activity profiles, each of which models a particular learning or supporting activity.  Each profile provides a common/structured vocabularly / concepts and terms for describing events such as annotating a document, starting an assessment or grading an outcome.  Extending the model involves adding a new profile or enhancing an existing one.
 
