@@ -20,5 +20,5 @@
   "dateToSubmit": "2016-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,
-  "maxScore": 50
+  "maxScore": 50.0
 }
