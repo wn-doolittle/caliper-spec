@@ -32,8 +32,8 @@
       "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
       "@type": "http://purl.imsglobal.org/caliper/v1/Attempt"
     },
-    "normalScore": 15,
-    "totalScore": 15,
+    "normalScore": 15.0,
+    "totalScore": 15.0,
     "scoredBy": {
       "@id": "https://example.edu/autograder",
       "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"

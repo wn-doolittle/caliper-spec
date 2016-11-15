@@ -10,7 +10,7 @@
   "datePublished": "2016-08-15T09:30:00.000Z",
   "isTimeDependent": false,
   "maxAttempts": 2,
-  "maxScore": 5,
+  "maxScore": 5.0,
   "maxSubmits": 2,
   "extensions": {
     "@context": {
