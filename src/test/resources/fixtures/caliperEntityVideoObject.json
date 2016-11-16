@@ -1,6 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/videos/1225",
+  "id": "https://example.edu/videos/1225",
   "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
   "mediaType": "video/ogg",
   "name": "Introduction to IMS Caliper",

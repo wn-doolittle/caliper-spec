@@ -1,12 +1,12 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
   "@type": "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
   "name": "Caliper Profile Design",
   "description": "Choose a learning activity and describe the actions, entities and events that comprise it.",
   "learningObjectives": [
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/objectives/1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/objectives/1",
       "@type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
       "name": "Research techniques",
       "description": "Demonstrate ability to model a learning activity as a Caliper profile.",

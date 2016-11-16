@@ -1,9 +1,9 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+  "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
   "@type": "http://purl.imsglobal.org/caliper/v1/LtiSession",
   "actor": {
-    "@id": "https://example.edu/users/554433",
+    "id": "https://example.edu/users/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "launchParameters": {

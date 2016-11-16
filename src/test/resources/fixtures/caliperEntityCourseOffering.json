@@ -1,6 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7",
+  "id": "https://example.edu/terms/201601/courses/7",
   "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
   "courseNumber": "CPS 435",
   "academicSession": "Fall 2016",

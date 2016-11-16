@@ -1,19 +1,19 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/groups",
   "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
   "name": "Groups",
   "items": [
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/1",
       "@type": "http://purl.imsglobal.org/caliper/v1/Group"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/3",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/3",
       "@type": "http://purl.imsglobal.org/caliper/v1/Group"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/5",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/5",
       "@type": "http://purl.imsglobal.org/caliper/v1/Group"
     }
   ],

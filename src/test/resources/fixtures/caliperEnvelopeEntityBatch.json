@@ -4,23 +4,23 @@
   "data": [
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@id": "https://example.edu/users/554433",
+      "id": "https://example.edu/users/554433",
       "@type": "http://purl.imsglobal.org/caliper/v1/Person",
       "dateCreated": "2016-08-01T06:00:00.000Z",
       "dateModified": "2016-09-02T11:30:00.000Z"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@id": "https://example.edu/etexts/201.epub",
+      "id": "https://example.edu/etexts/201.epub",
       "@type": "http://purl.imsglobal.org/caliper/v1/Document",
       "name": "IMS Caliper Implementation Guide",
       "creators": [
         {
-          "@id": "https://example.edu/people/12345",
+          "id": "https://example.edu/people/12345",
           "@type": "http://purl.imsglobal.org/caliper/v1/Person"
         },
         {
-          "@id": "https://example.com/staff/56789",
+          "id": "https://example.com/staff/56789",
           "@type": "http://purl.imsglobal.org/caliper/v1/Person"
         }
       ],
@@ -29,12 +29,12 @@
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
       "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
       "name": "Video Collection",
       "items": [
         {
-          "@id": "https://example.edu/videos/1225",
+          "id": "https://example.edu/videos/1225",
           "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
           "mediaType": "video/ogg",
           "name": "Introduction to IMS Caliper",
@@ -43,7 +43,7 @@
           "version": "1.1"
         },
         {
-          "@id": "https://example.edu/videos/5629",
+          "id": "https://example.edu/videos/5629",
           "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
           "mediaType": "video/ogg",
           "name": "IMS Caliper Activity Profiles",
@@ -53,10 +53,10 @@
         }
       ],
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+        "id": "https://example.edu/terms/201601/courses/7/sections/1",
         "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
         "subOrganizationOf": {
-          "@id": "https://example.edu/terms/201601/courses/7",
+          "id": "https://example.edu/terms/201601/courses/7",
           "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
         }
       },

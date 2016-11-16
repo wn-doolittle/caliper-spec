@@ -2,12 +2,12 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
+    "id": "https://example.edu/users/554433",
     "@type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
     "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
     "name": "Learning Analytics Specifications",
     "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
@@ -15,28 +15,28 @@
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "referrer": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/WebPage"
   },
   "edApp": {
-    "@id": "https://example.edu",
+    "id": "https://example.edu",
     "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
     "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
+      "id": "https://example.edu/users/554433",
       "@type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
@@ -44,7 +44,7 @@
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "@type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
