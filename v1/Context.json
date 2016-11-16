@@ -1,5 +1,8 @@
 {
   "@context": {
+    "id": "@id",
+    "type": "@type",
+
     "caliper": "http://purl.imsglobal.org/caliper/v1/",
     "xsd": "https://www.w3.org/TR/xmlschema11-2/#",
     
