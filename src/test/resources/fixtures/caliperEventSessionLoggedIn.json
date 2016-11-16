@@ -1,24 +1,24 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "341db3d9-71cc-4081-9423-cbed73cb0179",
-  "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
   "object": {
     "id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "dateCreated": "2016-11-15T10:00:00.000Z",
     "startedAtTime": "2016-11-15T10:00:00.000Z"

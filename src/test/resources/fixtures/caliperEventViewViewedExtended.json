@@ -1,38 +1,38 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
   "object": {
     "id": "https://example.edu/etexts/200.epub",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "type": "http://purl.imsglobal.org/caliper/v1/Document",
     "name": "IMS Caliper Specification",
     "version": "1.1"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -40,7 +40,7 @@
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
   "extensions": {
@@ -49,7 +49,7 @@
     },
     "job": {
       "id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
-      "@type": "ChronJob",
+      "type": "ChronJob",
       "jobTag": "caliper",
       "jobDate": "2016-11-16T01:01:00.000Z"
     }

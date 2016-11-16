@@ -1,20 +1,20 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+  "type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
       }
     },
     "count": 1,
