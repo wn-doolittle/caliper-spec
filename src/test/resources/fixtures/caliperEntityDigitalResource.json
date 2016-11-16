@@ -1,22 +1,22 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
-  "type": "http://purl.imsglobal.org/caliper/v1/DigitalResource",
+  "type": "DigitalResource",
   "name": "Course Syllabus",
   "mediaType": "application/pdf",
   "creators": [
     {
       "id": "https://example.edu/users/223344",
-      "type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "Person"
     }
   ],
   "isPartOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
-    "type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+    "type": "DigitalResourceCollection",
     "name": "Course Assets",
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "type": "CourseSection"
     }
   },
   "dateCreated": "2016-08-02T11:32:00.000Z"

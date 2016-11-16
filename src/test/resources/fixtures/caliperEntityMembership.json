@@ -1,17 +1,17 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
-  "type": "http://purl.imsglobal.org/caliper/v1/Membership",
+  "type": "Membership",
   "member": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "type": "Person"
   },
   "organization": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "type": "CourseSection",
     "subOrganizationOf": {
       "id": "https://example.edu/terms/201601/courses/7",
-      "type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+      "type": "CourseOffering"
     }
   },
   "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],

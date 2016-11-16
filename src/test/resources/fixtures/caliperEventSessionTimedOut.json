@@ -1,18 +1,18 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
-  "type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "type": "SoftwareApplication"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
   "object": {
     "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
-    "type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "type": "Session",
     "actor": {
       "id": "https://example.edu/users/112233",
-      "type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "Person"
     },
     "dateCreated": "2016-11-15T10:15:00.000Z",
     "startedAtTime": "2016-11-15T10:15:00.000Z",
@@ -22,6 +22,6 @@
   "eventTime": "2016-11-15T11:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "type": "SoftwareApplication"
   }
 }

@@ -1,30 +1,30 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
+  "type": "MessageEvent",
   "actor": {
     "id": "https://example.edu/users/778899",
-    "type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
-    "type": "http://purl.imsglobal.org/caliper/v1/Message",
+    "type": "Message",
     "creators": [
       {
         "id": "https://example.edu/users/778899",
-        "type": "http://purl.imsglobal.org/caliper/v1/Person"
+        "type": "Person"
       }
     ],
     "replyTo": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
-      "type": "http://purl.imsglobal.org/caliper/v1/Message"
+      "type": "Message"
     },
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
-      "type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "type": "Thread",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
-        "type": "http://purl.imsglobal.org/caliper/v1/Forum"
+        "type": "Forum"
       }
     },
     "dateCreated": "2016-11-15T10:15:30.000Z"
@@ -32,25 +32,25 @@
   "eventTime": "2016-11-15T10:15:30.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
-    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/778899",
-      "type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -58,7 +58,7 @@
   },
   "session": {
     "id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
-    "type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:12:00.000Z"
   }
 }

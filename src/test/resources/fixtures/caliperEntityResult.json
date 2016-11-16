@@ -1,17 +1,17 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
-  "type": "http://purl.imsglobal.org/caliper/v1/Result",
+  "type": "Result",
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+      "type": "Assessment"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -25,7 +25,7 @@
   "totalScore": 15.0,
   "scoredBy": {
     "id": "https://example.edu/autograder",
-    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "type": "SoftwareApplication",
     "dateCreated": "2016-11-15T10:55:58.000Z"
   },
   "dateCreated": "2016-11-15T10:56:00.000Z"

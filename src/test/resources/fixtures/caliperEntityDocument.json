@@ -1,17 +1,17 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "https://example.edu/etexts/201.epub",
-  "type": "http://purl.imsglobal.org/caliper/v1/Document",
+  "type": "Document",
   "name": "IMS Caliper Implementation Guide",
   "mediaType": "application/epub+zip",
   "creators": [
     {
       "id": "https://example.edu/people/12345",
-      "type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "Person"
     },
     {
       "id": "https://example.com/staff/56789",
-      "type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "type": "Person"
     }
   ],
   "dateCreated": "2016-08-01T06:00:00.000Z",
