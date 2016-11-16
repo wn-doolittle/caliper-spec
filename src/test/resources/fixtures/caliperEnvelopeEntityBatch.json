@@ -3,14 +3,14 @@
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
       "id": "https://example.edu/users/554433",
       "type": "Person",
       "dateCreated": "2016-08-01T06:00:00.000Z",
       "dateModified": "2016-09-02T11:30:00.000Z"
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
       "id": "https://example.edu/etexts/201.epub",
       "type": "Document",
       "name": "IMS Caliper Implementation Guide",
@@ -28,7 +28,7 @@
       "version": "1.1"
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
       "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
       "type": "DigitalResourceCollection",
       "name": "Video Collection",

@@ -4,7 +4,7 @@
   "data": [
     {
       "@context": [
-        "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+        "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
         {
           "actor": {
             "id": "Person",

@@ -1,5 +1,5 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
   "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!)",
   "type": "Chapter",
   "name": "The Caliper Information Model",
