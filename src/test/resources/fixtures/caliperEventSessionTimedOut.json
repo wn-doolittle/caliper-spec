@@ -1,6 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
-  "id": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
+  "uuid": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu",
