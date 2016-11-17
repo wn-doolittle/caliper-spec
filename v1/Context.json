@@ -3,7 +3,7 @@
     "id": "@id",
     "type": "@type",
 
-    "caliper": "http://purl.imsglobal.org/caliper/v1/",
+    "caliper": "http://purl.imsglobal.org/caliper/",
     "xsd": "https://www.w3.org/TR/xmlschema11-2/#",
     
     "Event": "caliper:Event",
