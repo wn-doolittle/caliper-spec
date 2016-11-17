@@ -1,20 +1,20 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
+  "type": "MultipleChoiceResponse",
   "attempt": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
+    "type": "Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+      "type": "AssessmentItem",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "type": "Assessment"
       }
     },
     "count": 1,

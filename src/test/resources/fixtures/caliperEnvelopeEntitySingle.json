@@ -3,24 +3,24 @@
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
-      "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResource",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
       "name": "Course Syllabus",
       "mediaType": "application/pdf",
       "creators": [
         {
-          "@id": "https://example.edu/users/223344",
-          "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+          "id": "https://example.edu/users/223344",
+          "type": "Person"
         }
       ],
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
         "name": "Course Assets",
         "isPartOf": {
-          "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+          "id": "https://example.edu/terms/201601/courses/7/sections/1",
+          "type": "CourseSection"
         }
       },
       "dateCreated": "2016-08-02T11:32:00.000Z"

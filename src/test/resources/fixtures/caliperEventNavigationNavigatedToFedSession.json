@@ -1,59 +1,59 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "type": "NavigationEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
   "object": {
-    "@id": "https://example.com/lti/reader/202.epub",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "id": "https://example.com/lti/reader/202.epub",
+    "type": "Document",
     "name": "Caliper Case Studies",
     "mediaType": "application/epub+zip",
     "dateCreated": "2016-08-01T09:00:00.000Z"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "referrer": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/4",
-    "@type": "http://purl.imsglobal.org/caliper/v1/WebPage"
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/4",
+    "type": "WebPage"
   },
   "edApp": {
-    "@id": "https://example.com",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "id": "https://example.com",
+    "type": "SoftwareApplication"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
   "federatedSession": {
-    "@id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
-    "@type": "http://purl.imsglobal.org/caliper/v1/LtiSession",
+    "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+    "type": "LtiSession",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
     },
     "launchParameters": {
       "lti_message_type": "basic-lti-launch-request",
@@ -81,7 +81,7 @@
           "@vocab": "http://example.edu/ctx/edu.jsonld",
           "sdo": "http://schema.org/"
         },
-        "@type": "Faculty",
+        "type": "Faculty",
         "sdo:jobTitle": "Professor",
         "sdo:givenName": "Trig",
         "sdo:familyName": "Haversine",

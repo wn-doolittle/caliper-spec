@@ -1,10 +1,10 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
-  "@type": "http://purl.imsglobal.org/caliper/v1/LtiSession",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+  "type": "LtiSession",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
   },
   "launchParameters": {
     "lti_message_type": "basic-lti-launch-request",
@@ -32,7 +32,7 @@
         "@vocab": "http://example.edu/ctx/edu.jsonld",
         "sdo": "http://schema.org/"
       },
-      "@type": "Faculty",
+      "type": "Faculty",
       "sdo:jobTitle": "Professor",
       "sdo:givenName": "Trig",
       "sdo:familyName": "Haversine",

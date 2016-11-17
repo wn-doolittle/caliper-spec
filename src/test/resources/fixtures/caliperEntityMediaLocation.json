@@ -1,7 +1,7 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/videos/1225",
-  "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "id": "https://example.edu/videos/1225",
+  "type": "MediaLocation",
   "currentTime": "PT30M54S",
   "dateCreated": "2016-08-01T06:00:00.000Z"
 }

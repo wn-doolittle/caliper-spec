@@ -1,40 +1,40 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+  "type": "Thread",
   "name": "Caliper Information Model",
   "items": [
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+      "type": "Message"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+      "type": "Message",
       "replyTo": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+        "type": "Message"
       }
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/3",
+      "type": "Message",
       "replyTo": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+        "type": "Message"
       }
     }
   ],
   "isPartOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "type": "Forum",
     "name": "Caliper Forum",
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "CourseSection",
       "subOrganizationOf": {
-        "@id": "https://example.edu/terms/201601/courses/7",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+        "id": "https://example.edu/terms/201601/courses/7",
+        "type": "CourseOffering"
       }
     }
   },

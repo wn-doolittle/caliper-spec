@@ -1,14 +1,14 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/users/554433/etexts/201/highlights/20",
-  "@type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "id": "https://example.edu/users/554433/etexts/201/highlights/20",
+  "type": "HighlightAnnotation",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
   },
   "annotated": {
-    "@id": "https://example.edu/etexts/201",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document"
+    "id": "https://example.edu/etexts/201",
+    "type": "Document"
   },
   "selection": {
     "start": 2300,

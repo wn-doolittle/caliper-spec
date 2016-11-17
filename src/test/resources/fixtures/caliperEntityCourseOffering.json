@@ -1,7 +1,7 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7",
-  "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "id": "https://example.edu/terms/201601/courses/7",
+  "type": "CourseOffering",
   "courseNumber": "CPS 435",
   "academicSession": "Fall 2016",
   "name": "CPS 435 Learning Analytics",

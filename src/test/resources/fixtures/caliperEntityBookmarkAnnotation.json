@@ -1,14 +1,14 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
+  "type": "BookmarkAnnotation",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
   },
   "annotated": {
-    "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+    "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
+    "type": "Chapter"
   },
   "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
   "dateCreated": "2016-08-01T06:00:00.000Z"

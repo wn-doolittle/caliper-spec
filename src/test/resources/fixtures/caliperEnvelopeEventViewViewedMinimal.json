@@ -3,16 +3,16 @@
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Event",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "type": "Event",
       "actor": {
-        "@id": "https://example.edu/users/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
       },
       "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
       "object": {
-        "@id": "https://example.edu/etexts/201.epub",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Document"
+        "id": "https://example.edu/etexts/201.epub",
+        "type": "Document"
       },
       "eventTime": "2016-11-15T10:15:00.000Z"
     }
