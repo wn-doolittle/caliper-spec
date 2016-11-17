@@ -304,6 +304,10 @@
     "volumeMin": {
       "@id": "caliper:volumeMin",
       "@type": "xsd:string"
+    },
+    "uuid": {
+      "@id": "caliper:uuid",
+      "@type": "xsd:string"
     }
   }
 }
