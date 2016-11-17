@@ -12,14 +12,14 @@
           }
         },
         {
-          "object": {
-            "id": "Document",
+          "edApp": {
+            "id": "SoftwareApplication",
             "type": "id"
           }
         },
         {
-          "edApp": {
-            "id": "SoftwareApplication",
+          "object": {
+            "id": "Document",
             "type": "id"
           }
         }
