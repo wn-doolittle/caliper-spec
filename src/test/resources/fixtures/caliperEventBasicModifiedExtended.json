@@ -17,7 +17,7 @@
   "eventTime": "2016-11-15T10:15:00.000Z",
   "extensions": {
     "@context": {
-      "@vocab": "http://example.edu/ctx/edu.jsonld"
+      "previousVersion": "http://example.edu/ctx/edu/previousVersion"
     },
     "previousVersion": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1",
