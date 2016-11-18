@@ -45,7 +45,12 @@
   },
   "extensions": {
     "@context": {
-      "@vocab": "http://example.edu/ctx/edu.jsonld"
+      "example": "http://example.edu/ctx/edu",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "ChronJob": "example:ChronJob",
+      "job": "example:job",
+      "jobTag": { "id": "example:jobTag", "type": "xsd:string" },
+      "jobDate": { "id": "example:jobDate", "type": "xsd:dateTime" }
     },
     "job": {
       "id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
