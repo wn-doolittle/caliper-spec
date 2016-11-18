@@ -86,6 +86,7 @@
           "email": { "id": "sdo:email", "type": "xsd:string" },
           "url": { "id": "sdo:url", "type": "xsd:string" }
         },
+        "id": "https://example.edu/faculty/trighaversine",
         "type": "Person",
         "jobTitle": "Professor",
         "givenName": "Trig",
