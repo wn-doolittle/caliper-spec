@@ -12,8 +12,10 @@
   "maxAttempts": 2,
   "maxScore": 5.0,
   "maxSubmits": 2,
-  "extensions": {
+  "extensions": [{
     "@context": {
+      "id": "@id",
+      "type": "@type",
       "example": "http://example.edu/ctx/edu",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "itemType": { "id": "example:itemType", "type": "xsd:string" },
@@ -23,5 +25,5 @@
     "itemType": "true/false",
     "itemText": "In Caliper event actors are limited to people only.",
     "itemCorrectResponse": false
-  }
+  }]
 }
