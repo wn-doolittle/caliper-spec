@@ -43,8 +43,10 @@
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
-  "extensions": {
+  "extensions": [{
     "@context": {
+      "id": "@id",
+      "type": "@type",
       "example": "http://example.edu/ctx/edu",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "ChronJob": "example:ChronJob",
@@ -58,5 +60,5 @@
       "jobTag": "caliper",
       "jobDate": "2016-11-16T01:01:00.000Z"
     }
-  }
+  }]
 }
