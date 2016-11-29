@@ -31,7 +31,6 @@
     "AudioObject": "caliper:AudioObject",
     "BookmarkAnnotation": "caliper:BookmarkAnnotation",
     "Chapter": "caliper:Chapter",
-    "Collection": "caliper:Collection",
     "CourseOffering": "caliper:CourseOffering",
     "CourseSection": "caliper:CourseSection",
     "DigitalResource": "caliper:DigitalResource",
@@ -111,6 +110,10 @@
       "@container": "@list"
     },
     "member": "caliper:member",
+    "members": {
+      "@id": "caliper:members",
+      "@container": "@list"
+    },
     "object": "caliper:object",
     "organization": "caliper:organization",
     "referrer": "caliper:referrer",
