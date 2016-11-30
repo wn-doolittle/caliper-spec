@@ -19,6 +19,7 @@
     "ReadingEvent": "caliper:ReadingEvent",
     "SessionEvent": "caliper:SessionEvent",
     "ThreadEvent": "caliper:ThreadEvent",
+    "ToolUseEvent": "caliper:ToolUseEvent",
     "ViewEvent": "caliper:ViewEvent",
 
     "Entity": "caliper:Entity",
