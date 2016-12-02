@@ -94,6 +94,7 @@
     "learningObjectives": {"@id": "caliper:learningObjectives", "@container": "@list"},
     "member": "caliper:member",
     "members": {"@id": "caliper:members", "@container": "@list"},
+    "membership": "caliper:membership",
     "object": "caliper:object",
     "organization": "caliper:organization",
     "referrer": "caliper:referrer",
