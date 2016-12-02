@@ -315,6 +315,9 @@
       "@type": "xsd:string"
     },
 
+    "Active": "lisstatus:Active",
+    "Inactive": "lisstatus:Inactive",
+
     "Abandoned": "verb:Abandoned",
     "Activated": "verb:Activated",
     "Added": "verb:Added",
@@ -378,10 +381,6 @@
     "Unmuted": "verb:Unmuted",
     "Unsubscribed": "verb:Unsubscribed",
     "Used": "verb:Used",
-    "Viewed": "verb:Viewed",
-
-    "Active": "lisstatus:Active",
-    "Deleted": "lisstatus:Deleted",
-    "Inactive": "lisstatus:Inactive"
+    "Viewed": "verb:Viewed"
   }
 }
