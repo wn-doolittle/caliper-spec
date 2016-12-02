@@ -4,6 +4,7 @@
     "type": "@type",
 
     "caliper": "http://purl.imsglobal.org/caliper/",
+    "verb": "http://purl.imsglobal.org/vocab/caliper/action#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     
     "Event": "caliper:Event",
@@ -86,7 +87,7 @@
     "attempt": "caliper:attempt",
     "action": {
       "@id": "caliper:action",
-      "@type": "@id"
+      "@type": "@vocab"
     },
     "creators": {
       "@id": "caliper:creators",
