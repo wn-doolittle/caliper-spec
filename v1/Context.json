@@ -96,7 +96,7 @@
     "edApp": "caliper:edApp",
     "extensions": {
       "@id": "caliper:extensions",
-      "@container": "@set"
+      "@container": "@list"
     },
     "federatedSession": "caliper:federatedSession",
     "generated": "caliper:generated",
