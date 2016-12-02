@@ -70,6 +70,7 @@
     "SharedAnnotation": "caliper:SharedAnnotation",
     "SoftwareApplication": "caliper:SoftwareApplication",
     "TagAnnotation": "caliper:TagAnnotation",
+    "TextPositionSelector": "caliper:TextPositionSelector",
     "Thread": "caliper:Thread",
     "TrueFalseResponse": "caliper:TrueFalseResponse",
     "VideoObject": "caliper:VideoObject",
