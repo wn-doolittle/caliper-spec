@@ -4,7 +4,7 @@
     "type": "@type",
 
     "caliper": "http://purl.imsglobal.org/caliper/",
-    "xsd": "https://www.w3.org/TR/xmlschema11-2/#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
     
     "Event": "caliper:Event",
     "AnnotationEvent": "caliper:AnnotationEvent",
