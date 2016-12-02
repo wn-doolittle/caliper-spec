@@ -5,6 +5,7 @@
 
     "caliper": "http://purl.imsglobal.org/caliper/",
     "verb": "http://purl.imsglobal.org/vocab/caliper/action#",
+    "lisstatus": "http://purl.imsglobal.org/vocab/lis/v2/status#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     
     "Event": "caliper:Event",
@@ -71,10 +72,6 @@
     "Session": "caliper:Session",
     "SharedAnnotation": "caliper:SharedAnnotation",
     "SoftwareApplication": "caliper:SoftwareApplication",
-    "Status": {
-      "@id": "caliper:Status",
-      "@type": "@id"
-    },
     "TagAnnotation": "caliper:TagAnnotation",
     "Thread": "caliper:Thread",
     "TrueFalseResponse": "caliper:TrueFalseResponse",
@@ -133,7 +130,7 @@
     "subOrganizationOf": "caliper:subOrganizationOf",
     "status": {
       "@id": "caliper:status",
-      "@type": "@id"
+      "@type": "@vocab"
     },
     "tags": {
       "@id": "caliper:tags",
@@ -381,6 +378,10 @@
     "Unmuted": "verb:Unmuted",
     "Unsubscribed": "verb:Unsubscribed",
     "Used": "verb:Used",
-    "Viewed": "verb:Viewed"
+    "Viewed": "verb:Viewed",
+
+    "Active": "lisstatus:Active",
+    "Deleted": "lisstatus:Deleted",
+    "Inactive": "lisstatus:Inactive"
   }
 }
