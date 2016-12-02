@@ -99,7 +99,7 @@
     "organization": "caliper:organization",
     "referrer": "caliper:referrer",
     "replyTo": "caliper:replyTo",
-    "roles": {"@id": "caliper:roles", "@container": "@list"},
+    "roles": {"@id": "caliper:roles", "@type": "@vocab", "@container": "@list"},
     "scoredBy": "caliper:scoredBy",
     "selection": "caliper:selection",
     "session": "caliper:session",
