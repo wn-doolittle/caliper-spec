@@ -80,6 +80,7 @@
     "actor": "caliper:actor",
     "annotated": "caliper:annotated",
     "assignable": "caliper:assignable",
+    "attachments": {"@id": "caliper:attachments", "@container": "@list"},
     "attempt": "caliper:attempt",
     "action": {"@id": "caliper:action", "@type": "@vocab"},
     "creators": {"@id": "caliper:creators", "@container": "@list"},
@@ -111,6 +112,7 @@
     "withAgents": {"@id": "caliper:withAgents", "@container": "@list"},
 
     "academicSession": {"@id": "caliper:academicSession", "@type": "xsd:string"},
+    "body": {"@id": "caliper:body", "@type": "xsd:string"},
     "bookmarkNotes": {"@id": "caliper:bookmarkNotes", "@type": "xsd:string"},
     "category": {"@id": "caliper:category", "@type": "xsd:string"},
     "comment": {"@id": "caliper:comment", "@type": "xsd:string"},
