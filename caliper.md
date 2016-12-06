@@ -731,6 +731,12 @@ Entities. The Caliper Envelope MUST have these three properties:
   Sensor's SHOULD use a combined date and time representation of the form
   `2016-0405T14:30:00Z` or `2016-0405T14:30:00.062Z` (to include milliseconds).
 
+* `dataVersion`: A version string indicating the version of the IMS Caliper
+  specification that governs the form of the Caliper Entities and Events found
+  in the `data` payload. By convention, this string value will be URI of
+  Caliper context document that can be used to resolve the meanings of the
+  terms and values found in the payload's Entities and Events.
+
 * `data`: A JSON array that MUST contain a list of one or more Caliper Entity
   or Event structures. The Sensor MAY mix Entity and Event structures in the
   same envelope.
@@ -740,6 +746,7 @@ Entities. The Caliper Envelope MUST have these three properties:
 {
    "sensor": "https://example.edu/sensors/1",
    "sendTime": "2016-11-15T11:05:01.000Z",
+   "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
    "data": [
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
@@ -805,7 +812,16 @@ success. The Endpoint SHOULD use the `200 OK` response, but it MAY instead
 choose to send a `201 Created` response (to indicate successful receipt and
 persistence of the Sensor message's contained data payload) or a `202 Accepted`
 response (to indicate successful acceptance of the Caliper Envelope and
-queueing for further processing).
+queueing for further processing). The body of a successful response MAY be
+empty, or it MAY contain a list of event identifiers (see next paragraph).
+
+If the Endpoint receives Caliper Events from a Sensor that lack the `uuid`
+Event property, the Endpoint SHOULD create a value for that property for each
+Event lacking one and SHOULD send it back in the `2xx` success response. In
+doing so, the Endpoint SHOULD send back a post body containing a list of one or
+more strings, each one a `uuid` for an accepted Caliper Event. When forming
+this list, the Endpoint SHOULD arrange it in the same order as the associated
+Caliper Events appeared in the Sensor's original data payload.
 
 If the Sensor sends a malformed Caliper Envelope (it does not contain
 `sensor`, `sendTime`, and `data` properties, of the required form), the
