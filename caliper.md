@@ -676,6 +676,7 @@ TODO: ADD ADDITIONAL INFO
 ```
 
 <a name="api"/>
+<a name="sensors"/>
 ## 8.0 Sensor API
 
 TODO: OVERVIEW
@@ -683,17 +684,161 @@ TODO: OVERVIEW
 <a name="transport"/>
 ## 9.0 Transport
 
-TODO: OVERVIEW
+Caliper Sensors MUST at least be capable of communicating
+with [Caliper Endpoints](#endpoints) using conventional HTTP POST requests; the
+certification tests for Caliper Sensors require the Sensor to send data to the
+certification service using this transport. Caliper Sensors MAY use other
+methods to communicate with an Endpoint.
+
+For transport security and authentication, Caliper Sensors SHOULD:
+
+* Use HTTPS to secure the transport between Sensor and retrieving Endpoint.
+
+* Support message authentication using the Authorization Request Header Field
+  (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2);
+  in this case, the `b64token` credential sent by the Sensor MUST be one the
+  Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
+
+Caliper Sensors MAY support additional modes of transport security and
+authentication; the certification tests for Caliper Sensors require the Sensor
+to send data to the certification service using HTTPS and a bearer token
+credential consistent with RFC 6750.
+
+When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that
+the payload of the message has the `application/json` IANA media-type, and MAY
+indicate instead that the message has the `application\ld+json` IANA media-type.
+
 
 <a name="endpoints"/>
 ### 9.1 Envelope
 
-TODO: OVERVIEW
+Every message sent by a Caliper Sensor MUST consist of a single Caliper
+Envelope json structure, enveloping a payload of Caliper Events and
+Entities. The Caliper Envelope MUST have these three properties:
+
+* `sensor`: A unique identifier for the Caliper Sensor sending the message
+  (this MAY instead by a unique identifier for the application or service
+  sending the message, which MAY be shared amongst all the Sensors that
+  application or service uses to send Caliper data).
+
+  This identifier SHOULD be an IRI.
+
+* `sendTime`: A date-time string indicating the time at which the Caliper
+  Sensor sent the message, which MUST use the
+  [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm)
+  date and time format, and MUST be expressed in UTC.
+
+  Sensor's SHOULD use a combined date and time representation of the form
+  `2016-0405T14:30:00Z` or `2016-0405T14:30:00.062Z` (to include milliseconds).
+
+* `dataVersion`: A version string indicating the version of the IMS Caliper
+  specification that governs the form of the Caliper Entities and Events found
+  in the `data` payload. By convention, this string value will be URI of
+  Caliper context document that can be used to resolve the meanings of the
+  terms and values found in the payload's Entities and Events.
+
+* `data`: A JSON array that MUST contain a list of one or more Caliper Entity
+  or Event structures. The Sensor MAY mix Entity and Event structures in the
+  same envelope.
+
+### Example
+``` json
+{
+   "sensor": "https://example.edu/sensors/1",
+   "sendTime": "2016-11-15T11:05:01.000Z",
+   "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+   "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "creators": [
+        {
+          "id": "https://example.edu/users/223344",
+          "type": "Person"
+        }
+      ],
+      "isPartOf": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201601/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2016-08-02T11:32:00.000Z"
+    }
+   ]
+}
+```
 
 <a name="endpoints"/>
 ### 9.2 Endpoint
 
-TODO: OVERVIEW
+Caliper Endpoints MUST at least be capable of communicating
+with [Caliper Sensors](#sensors) by supporting conventional HTTP POST requests;
+the certification tests for Caliper Endpoints require the Endpoint to receive
+data from the certification service using this transport. Caliper Endpoints MAY
+use other methods to receive data from Sensors.
+
+For transport and security and authentication, Caliper Sensors SHOULD:
+
+* Use HTTPS to secure the transport between itself and Sensors, and if so, MUST
+  provide a valid HTTP Certificate.
+
+* Support message authentication using the Authorization Request Header Field
+  (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2);
+  in this case, the `b64token` credential sent by the Sensor MUST be one the
+  Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
+
+Caliper Endpoints MAY support additional modes of transport security and
+authentication; the certification tests for Caliper Endpoints require the
+Endpoint receive data from the certification service using HTTPS and a bearer
+token credential consistent with RFC 6750.
+
+#### 9.2.1 Endpoint HTTPS responses
+
+When using HTTPS as the transport, the Caliper Endpoint MUST conform to these
+points of response behaviour. Caliper Endpoint implementers should bear in mind
+that the Caliper Sensors sending them messages may not be in a position to
+perform sophisticated error handling.
+
+To signal to the Sensor that it has received the Sensor's message, and no error
+state pertains (see following), the Endpoint MUST reply with a `2xx` series
+success. The Endpoint SHOULD use the `200 OK` response, but it MAY instead
+choose to send a `201 Created` response (to indicate successful receipt and
+persistence of the Sensor message's contained data payload) or a `202 Accepted`
+response (to indicate successful acceptance of the Caliper Envelope and
+queueing for further processing). The body of a successful response SHOULD be
+empty.
+
+If the Sensor sends a malformed Caliper Envelope (it does not contain `sensor`,
+`sendTime`, and `dataVersion`, and `data` properties, of the required form),
+the Endpoint SHOULD reply with a `400 Bad Request` response. (Note that the
+Endpoint SHOULD NOT send this response if the envelope contains a `dataVersion`
+value, but it's one that the endpoint cannot support: in this case, the
+Endpoint SHOULD send a `422 Unprocessable Entity` response instead.)
+
+If the Sensor sends a message with a content-type other than `application/json`
+or `application/ld+json`, the Endpoint SHOULD reply with a `415 Unsupported
+Media Type` response.
+
+If the Sensor sends a message without an Authorization Request Header Field of
+the suggested form, or if the Sensor sends a token credential that the Endpoint
+is unable to validate or determine has sufficient privilege to submit Caliper
+data, the Endpoint SHOULD reply with a `401 Unauthorized` response.
+
+The Endpoint MAY respond to Sensor messages with other standard HTTP status
+codes to indicate result disposition of varying kinds.
+
+If the Endpoint implementer wants the Endpoint to communicate more detailed
+information about problem states when receiving messages, the Endpoint SHOULD
+use the standard method for reporting problem details described in
+[RFC 7807, Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807).
+
 
 <a name="contributors"/>
 ## 10.0 Contributors
