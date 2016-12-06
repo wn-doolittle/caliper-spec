@@ -823,9 +823,12 @@ more strings, each one a `uuid` for an accepted Caliper Event. When forming
 this list, the Endpoint SHOULD arrange it in the same order as the associated
 Caliper Events appeared in the Sensor's original data payload.
 
-If the Sensor sends a malformed Caliper Envelope (it does not contain
-`sensor`, `sendTime`, and `data` properties, of the required form), the
-Endpoint SHOULD reply with a `400 Bad Request` response.
+If the Sensor sends a malformed Caliper Envelope (it does not contain `sensor`,
+`sendTime`, and `dataVersion`, and `data` properties, of the required form),
+the Endpoint SHOULD reply with a `400 Bad Request` response. (Note that the
+Endpoint SHOULD NOT send this response if the envelope contains a `dataVersion`
+value, but it's one that the endpoint cannot support: in this case, the
+Endpoint SHOULD send a `422 Unprocessable Entity` response instead.)
 
 If the Sensor sends a message with a content-type other than `application/json`
 or `application/ld+json`, the Endpoint SHOULD reply with a `415 Unsupported
