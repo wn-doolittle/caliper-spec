@@ -547,15 +547,15 @@ TODO List all Actions?
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Event",
+  "type": "http://purl.imsglobal.org/caliper/v1/Event",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "type": "http://purl.imsglobal.org/caliper/v1/Document",
     "name": "Course Syllabus",
     "dateCreated": "2016-11-12T07:15:00.000Z",
     "version": "1"
@@ -669,8 +669,8 @@ TODO: ADD ADDITIONAL INFO
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-    "@id": "https://example.edu/buildings/55/rooms/3027",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Entity",
+    "id": "https://example.edu/buildings/55/rooms/3027",
+    "type": "http://purl.imsglobal.org/caliper/v1/Entity",
     "name": "Rm 3027 Computer lab"
 }
 ```
@@ -893,63 +893,63 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AnnotationEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/AnnotationEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked",
   "object": {
-    "@id": "https://example.edu/etexts/201.epub",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "id": "https://example.edu/etexts/201.epub",
+    "type": "http://purl.imsglobal.org/caliper/v1/Document",
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
   },
   "generated": {
-    "@id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
+    "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "annotated": {
-      "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+      "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
+      "type": "http://purl.imsglobal.org/caliper/v1/Chapter"
     },
     "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that enable learning.",
     "dateCreated": "2016-11-15T10:15:00.000Z"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "name": "ePub Reader",
     "version": "1.2.3"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -990,15 +990,15 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Assessment",
     "name": "Quiz One",
     "dateToStartOn": "2016-11-14T05:00:00.000Z",
     "dateToSubmit": "2016-11-18T11:59:59.000Z",
@@ -1008,15 +1008,15 @@ The AssessmentEvent models learner interactions with assessments instruments suc
     "version": "1.0"
   },
   "generated": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
     },
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:15:00.000Z",
@@ -1024,34 +1024,34 @@ The AssessmentEvent models learner interactions with assessments instruments suc
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1061,22 +1061,22 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/AssessmentEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Assessment",
       "name": "Quiz One",
       "dateToStartOn": "2016-11-14T05:00:00.000Z",
       "dateToSubmit": "2016-11-18T11:59:59.000Z",
@@ -1093,34 +1093,34 @@ The AssessmentEvent models learner interactions with assessments instruments suc
   },
   "eventTime": "2016-11-15T10:25:30.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1161,19 +1161,19 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-    "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+    "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
     "name": "Assessment Item 3",
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
     },
     "dateToStartOn": "2016-11-14T05:00:00.000Z",
     "dateToSubmit": "2016-11-18T11:59:59.000Z",
@@ -1184,19 +1184,19 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
     "version": "1.0"
     },
   "generated": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
     },
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Attempt"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Attempt"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:15:00.000Z",
@@ -1204,34 +1204,34 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1241,31 +1241,31 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
       "name": "Assessment Item 3",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
       }
     },
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Attempt"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Attempt"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:15:02.000Z",
@@ -1273,11 +1273,11 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
     "endedAtTime": "2016-11-15T10:15:12.000Z"
   },
   "generated": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
     "attempt": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Attempt"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Attempt"
     },
     "dateCreated": "2016-11-15T10:15:12.000Z",
     "startedAtTime": "2016-11-15T10:15:02.000Z",
@@ -1286,34 +1286,34 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
   },
   "eventTime": "2016-11-15T10:15:12.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1356,15 +1356,15 @@ TODO add additional intro text
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AssignableEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/AssignableEvent",
   "actor": {
-    "@id": "https://example.edu/users/112233",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/112233",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Activated",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Assessment",
     "name": "Quiz One",
     "dateCreated": "2016-08-01T06:00:00.000Z",
     "dateModified": "2016-09-02T11:30:00.000Z",
@@ -1379,34 +1379,34 @@ TODO add additional intro text
   },
   "eventTime": "2016-11-12T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/112233",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/112233",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-12T10:00:00.000Z"
   }
 }
@@ -1450,52 +1450,52 @@ TODO add description
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/ForumEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/ForumEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Forum",
     "name": "Caliper Forum",
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "dateCreated": "2016-09-14T11:00:00.000Z"
   },
   "eventTime": "2016-11-15T10:16:00.000Z",
   "edApp": {
-    "@id": "https://example.edu/forums",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu/forums",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1541,53 +1541,53 @@ TODO
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/MediaEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/MediaEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused",
   "object": {
-    "@id": "https://example.edu/UQVK-dsU7-Y",
-    "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+    "id": "https://example.edu/UQVK-dsU7-Y",
+    "type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
     "name": "Information and Welcome",
     "mediaType": "video/ogg",
     "duration": "PT20M20S"
   },
   "target": {
-    "@id": "https://example.edu/UQVK-dsU7-Y?t=321",
-    "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
+    "id": "https://example.edu/UQVK-dsU7-Y?t=321",
+    "type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
     "currentTime": "PT05M21S"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu/player",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "id": "https://example.edu/player",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1628,29 +1628,29 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "type": "http://purl.imsglobal.org/caliper/v1/Message",
     "creators": [
       {
-        "@id": "https://example.edu/users/554433",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        "id": "https://example.edu/users/554433",
+        "type": "http://purl.imsglobal.org/caliper/v1/Person"
       }
     ],
     "body": "Are the Caliper Sensor reference implementations production-ready?",
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Thread",
       "name": "Caliper Adoption",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+        "type": "http://purl.imsglobal.org/caliper/v1/Forum",
         "name": "Caliper Forum"
       }
     },
@@ -1658,34 +1658,34 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu/forums",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu/forums",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1695,65 +1695,65 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/MessageEvent",
   "actor": {
-    "@id": "https://example.edu/users/778899",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/778899",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
+    "type": "http://purl.imsglobal.org/caliper/v1/Message",
     "creators": [
       {
-        "@id": "https://example.edu/users/778899",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+        "id": "https://example.edu/users/778899",
+        "type": "http://purl.imsglobal.org/caliper/v1/Person"
       }
     ],
     "replyTo": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+      "type": "http://purl.imsglobal.org/caliper/v1/Message"
     },
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Thread",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+        "type": "http://purl.imsglobal.org/caliper/v1/Forum"
       }
     },
     "dateCreated": "2016-11-15T10:15:30.000Z"
   },
   "eventTime": "2016-11-15T10:15:30.000Z",
   "edApp": {
-    "@id": "https://example.edu/forums",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu/forums",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/778899",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/778899",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:12:00.000Z"
   }
 }
@@ -1794,52 +1794,52 @@ The NavigationEvent models an actor traversing a network of digital resources.  
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/NavigationEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
-    "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
+    "type": "http://purl.imsglobal.org/caliper/v1/WebPage",
     "name": "Learning Analytics Specifications",
     "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
     "dateCreated": "2016-08-01T09:00:00.000Z"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "referrer": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/WebPage"
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/WebPage"
   },
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1882,23 +1882,23 @@ TODO add description
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/OutcomeEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/OutcomeEvent",
   "actor": {
-    "@id": "https://example.edu/autograder",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu/autograder",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
     },
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -1908,23 +1908,23 @@ TODO add description
   },
   "eventTime": "2016-11-15T10:57:06.000Z",
   "generated": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Result",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Result",
     "attempt": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Attempt"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Attempt"
     },
     "normalScore": 15,
     "totalScore": 15,
     "scoredBy": {
-      "@id": "https://example.edu/autograder",
-      "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+      "id": "https://example.edu/autograder",
+      "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
     },
     "dateCreated": "2016-11-15T10:55:05.000Z"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   }
@@ -1969,24 +1969,24 @@ TODO add description
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "341db3d9-71cc-4081-9423-cbed73cb0179",
-  "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
   "object": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "dateCreated": "2016-11-15T10:00:00.000Z",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
@@ -1999,24 +1999,24 @@ TODO add description
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "5fac90a9-531a-41f6-9b8d-7a26e61dcc27",
-  "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut",
   "object": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "eventTime": "2016-11-15T11:05:00.000Z",
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "dateCreated": "2016-11-15T10:00:00.000Z",
     "startedAtTime": "2016-11-15T10:00:00.000Z",
@@ -2031,18 +2031,18 @@ TODO add description
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
   "id": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
-  "@type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/SessionEvent",
   "actor": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
   "object": {
-    "@id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "actor": {
-      "@id": "https://example.edu/users/112233",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/112233",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "dateCreated": "2016-11-15T10:15:00.000Z",
     "startedAtTime": "2016-11-15T10:15:00.000Z",
@@ -2051,8 +2051,8 @@ TODO add description
   },
   "eventTime": "2016-11-15T11:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
   }
 }
 ```
@@ -2094,19 +2094,19 @@ TODO add description
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/ThreadEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/ThreadEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead",
   "object": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Thread",
     "name": "Caliper Information Model",
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Forum",
       "name": "Caliper Forum",
       "dateCreated": "2016-11-15T10:15:00.000Z"
     },
@@ -2114,34 +2114,34 @@ TODO add description
   },
   "eventTime": "2016-11-15T10:16:00.000Z",
   "edApp": {
-    "@id": "https://example.edu/forums",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu/forums",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -2262,47 +2262,47 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",
+  "type": "http://purl.imsglobal.org/caliper/v1/ViewEvent",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
   "object": {
-    "@id": "https://example.edu/etexts/200.epub",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "id": "https://example.edu/etexts/200.epub",
+    "type": "http://purl.imsglobal.org/caliper/v1/Document",
     "name": "IMS Caliper Specification",
     "version": "1.1"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
-    "@id": "https://example.edu",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+    "id": "https://example.edu",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
   },
   "group": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Membership",
     "member": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "organization": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "http://purl.imsglobal.org/caliper/v1/Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
   "extensions": {
@@ -2310,8 +2310,8 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
       "@vocab": "http://example.edu/ctx/edu.jsonld"
     },
     "job": {
-      "@id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
-      "@type": "ChronJob",
+      "id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
+      "type": "ChronJob",
       "jobTag": "caliper",
       "jobDate": "2016-11-16T01:01:00.000Z"
     }
@@ -2389,21 +2389,21 @@ Inherited from [AssignableDigitalResource](#assignableDigitalResource) and [Coll
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/Assessment",
   "name": "Quiz One",
   "items": [
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
     }
   ],
   "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2440,11 +2440,11 @@ Inherited from [AssignableDigitalResource](#assignableDigitalResource).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+  "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
   "isPartOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
   },
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "datePublished": "2016-08-15T09:30:00.000Z",
@@ -2496,8 +2496,8 @@ In addition to properties inherited from [DigitalResource](#digitalResource), As
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
+  "type": "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
   "name": "Week 9 Reflection",
   "description": "3-5 page reflection on this week's assigned readings.",
   "dateCreated": "2016-11-01T06:00:00.000Z",
@@ -2542,15 +2542,15 @@ In addition to properties inherited from [Entity](#entity), Attempt includes the
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
   "assignable": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
   },
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "count": 1,
   "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -2581,8 +2581,8 @@ Inherited from [MediaObject](#mediaObject).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/audio/765",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AudioObject",
+  "id": "https://example.edu/audio/765",
+  "type": "http://purl.imsglobal.org/caliper/v1/AudioObject",
   "name": "Audio Recording: IMS Caliper Sensor API Q&A.",
   "mediaType": "audio/ogg",
   "datePublished": "2016-12-01T06:00:00.000Z",
@@ -2617,15 +2617,15 @@ In addition to properties inherited from Annotation](#annotation), BookmarkAnnot
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
+  "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "annotated": {
-    "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+    "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
+    "type": "http://purl.imsglobal.org/caliper/v1/Chapter"
   },
   "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
   "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -2653,12 +2653,12 @@ Inherited from [DigitalResource](#digitalResource).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!)",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Chapter",
+  "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!)",
+  "type": "http://purl.imsglobal.org/caliper/v1/Chapter",
   "name": "The Caliper Information Model",
   "isPartOf": {
-    "@id": "https://example.edu/etexts/201.epub",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "id": "https://example.edu/etexts/201.epub",
+    "type": "http://purl.imsglobal.org/caliper/v1/Document",
     "dateCreated": "2016-10-01T06:00:00.000Z",
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
@@ -2695,21 +2695,21 @@ In addition to properties inherited from [Entity](#entity), Collection includes 
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Collection",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/groups",
+  "type": "http://purl.imsglobal.org/caliper/v1/Collection",
   "name": "Groups",
   "items": [
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Group"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Group"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Group"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/3",
+      "type": "http://purl.imsglobal.org/caliper/v1/Group"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/5",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Group"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/5",
+      "type": "http://purl.imsglobal.org/caliper/v1/Group"
     }
   ],
   "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -2745,8 +2745,8 @@ In addition to properties inherited from [Organization](#organization), CourseOf
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7",
-  "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
+  "id": "https://example.edu/terms/201601/courses/7",
+  "type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
   "courseNumber": "CPS 435",
   "academicSession": "Fall 2016",
   "name": "CPS 435 Learning Analytics",
@@ -2780,15 +2780,15 @@ In addition to properties inherited from [CourseOffering](#courseOffering), Cour
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
   "academicSession": "Fall 2016",
   "courseNumber": "CPS 435-01",
   "name": "CPS 435 Learning Analytics, Section 01",
   "category": "seminar",
   "subOrganizationOf": {
-    "@id": "https://example.edu/terms/201601/courses/7",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
+    "id": "https://example.edu/terms/201601/courses/7",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseOffering",
     "courseNumber": "CPS 435"
   },
   "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -2842,23 +2842,23 @@ The following properties have been deprecated and will be removed in a future ve
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
-  "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResource",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+  "type": "http://purl.imsglobal.org/caliper/v1/DigitalResource",
   "name": "Course Syllabus",
   "mediaType": "application/pdf",
   "creators": [
     {
-      "@id": "https://example.edu/users/223344",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/223344",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     }
   ],
   "isPartOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
     "name": "Course Assets",
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection"
     }
   },
   "dateCreated": "2016-08-02T11:32:00.000Z"
@@ -2892,14 +2892,14 @@ A Caliper DigitalResourceCollection is a generic class that represents an ordere
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+  "type": "http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection",
   "name": "Video Collection",
   "keywords": ["collection", "videos"],
   "items": [
     {
-      "@id": "https://example.edu/videos/1225",
-      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+      "id": "https://example.edu/videos/1225",
+      "type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
       "mediaType": "video/ogg",
       "name": "Introduction to IMS Caliper",
       "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2907,8 +2907,8 @@ A Caliper DigitalResourceCollection is a generic class that represents an ordere
       "version": "1.1"
     },
     {
-      "@id": "https://example.edu/videos/5629",
-      "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+      "id": "https://example.edu/videos/5629",
+      "type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
       "mediaType": "video/ogg",
       "name": "IMS Caliper Activity Profiles",
       "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2917,11 +2917,11 @@ A Caliper DigitalResourceCollection is a generic class that represents an ordere
     }
   ],
   "isPartOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "subOrganizationOf": {
-      "@id": "https://example.edu/terms/201601/courses/7",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+      "id": "https://example.edu/terms/201601/courses/7",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
     }
   },
   "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2950,18 +2950,18 @@ Inherited from [DigitalResource](#digitalResource).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/etexts/201.epub",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+  "id": "https://example.edu/etexts/201.epub",
+  "type": "http://purl.imsglobal.org/caliper/v1/Document",
   "name": "IMS Caliper Implementation Guide",
   "mediaType": "application/epub+zip",
   "creators": [
     {
-      "@id": "https://example.edu/people/12345",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/people/12345",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     {
-      "@id": "https://example.com/staff/56789",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.com/staff/56789",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     }
   ],
   "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -3067,21 +3067,21 @@ In addition to properties inherited from [Response](#response), FillinBlankRespo
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/FillinBlankResponse",
   "attempt": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
       }
     },
     "count": 1,
@@ -3120,35 +3120,35 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/Forum",
   "name": "Caliper Forum",
   "items": [
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Thread",
       "name": "Caliper Information Model",
       "dateCreated": "2016-11-01T09:30:00.000Z"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/2",
+      "type": "http://purl.imsglobal.org/caliper/v1/Thread",
       "name": "Caliper Sensor API",
       "dateCreated": "2016-11-01T09:30:00.000Z"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/3",
+      "type": "http://purl.imsglobal.org/caliper/v1/Thread",
       "name": "Caliper Certification",
       "dateCreated": "2016-11-01T09:30:00.000Z"
     }
   ],
   "isPartOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "subOrganizationOf": {
-      "@id": "https://example.edu/terms/201601/courses/7",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+      "id": "https://example.edu/terms/201601/courses/7",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
     }
   },
   "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -3178,13 +3178,13 @@ Inherited from [DigitalResource](#digitalResource).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/etexts/201?index=2502",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Frame",
+  "id": "https://example.edu/etexts/201?index=2502",
+  "type": "http://purl.imsglobal.org/caliper/v1/Frame",
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "index": 2502,
   "isPartOf": {
-    "@id": "https://example.edu/etexts/201",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+    "id": "https://example.edu/etexts/201",
+    "type": "http://purl.imsglobal.org/caliper/v1/Document",
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
   }
@@ -3215,15 +3215,15 @@ Inherited from [Organization](#organization).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/groups/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Group",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/2",
+  "type": "http://purl.imsglobal.org/caliper/v1/Group",
   "name": "Discussion Group 2",
   "subOrganizationOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "subOrganizationOf": {
-      "@id": "https://example.edu/terms/201601/courses/7",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+      "id": "https://example.edu/terms/201601/courses/7",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
     }
   },
   "dateCreated": "2016-11-01T06:00:00.000Z"
@@ -3261,15 +3261,15 @@ In addition to properties inherited from Annotation](#annotation), HighlightAnno
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/users/554433/etexts/201/highlights/20",
-  "@type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
+  "id": "https://example.edu/users/554433/etexts/201/highlights/20",
+  "type": "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "annotated": {
-    "@id": "https://example.edu/etexts/201",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document"
+    "id": "https://example.edu/etexts/201",
+    "type": "http://purl.imsglobal.org/caliper/v1/Document"
   },
   "selection": {
     "start": 2300,
@@ -3301,8 +3301,8 @@ Inherited from [MediaObject](#mediaObject).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/images/caliper_lti.jpg",
-  "@type": "http://purl.imsglobal.org/caliper/v1/ImageObject",
+  "id": "https://example.edu/images/caliper_lti.jpg",
+  "type": "http://purl.imsglobal.org/caliper/v1/ImageObject",
   "name": "IMS Caliper/LTI Integration Work Flow",
   "mediaType": "image/jpeg",
   "dateCreated": "2016-09-01T06:00:00.000Z"
@@ -3330,14 +3330,14 @@ Inherited from [DigitalResource](#digitalResource).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
-  "@type": "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
+  "type": "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource",
   "name": "Caliper Profile Design",
   "description": "Choose a learning activity and describe the actions, entities and events that comprise it.",
   "learningObjectives": [
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/objectives/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/objectives/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/LearningObjective",
       "name": "Research techniques",
       "description": "Demonstrate ability to model a learning activity as a Caliper profile.",
       "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -3379,11 +3379,11 @@ In addition to properties inherited from [Session](#session), LtiSession include
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
-  "@type": "http://purl.imsglobal.org/caliper/v1/LtiSession",
+  "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+  "type": "http://purl.imsglobal.org/caliper/v1/LtiSession",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "launchParameters": {
     "lti_message_type": "basic-lti-launch-request",
@@ -3411,7 +3411,7 @@ In addition to properties inherited from [Session](#session), LtiSession include
         "@vocab": "http://example.edu/ctx/edu.jsonld",
         "sdo": "http://schema.org/"
       },
-      "@type": "Faculty",
+      "type": "Faculty",
       "sdo:jobTitle": "Professor",
       "sdo:givenName": "Trig",
       "sdo:familyName": "Haversine",
@@ -3435,8 +3435,8 @@ TODO
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/videos/1225",
-  "@type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
+  "id": "https://example.edu/videos/1225",
+  "type": "http://purl.imsglobal.org/caliper/v1/MediaLocation",
   "currentTime": "PT30M54S",
   "dateCreated": "2016-08-01T06:00:00.000Z"
 }
@@ -3497,18 +3497,18 @@ In addition to properties inherited from [Entity](#entity), Membership includes 
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Membership",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
+  "type": "http://purl.imsglobal.org/caliper/v1/Membership",
   "member": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "organization": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "subOrganizationOf": {
-      "@id": "https://example.edu/terms/201601/courses/7",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+      "id": "https://example.edu/terms/201601/courses/7",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
     }
   },
   "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
@@ -3548,31 +3548,31 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
+  "type": "http://purl.imsglobal.org/caliper/v1/Message",
   "creators": [
     {
-      "@id": "https://example.edu/users/778899",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/778899",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     }
   ],
   "body": "The Caliper working group provides a set of Caliper Sensor reference implementations for the purposes of education and experimentation.  They have not been tested for use in a production environment.  See the Caliper Implementation Guide for more details.",
   "replyTo": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "type": "http://purl.imsglobal.org/caliper/v1/Message"
   },
   "isPartOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Thread",
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Forum"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+      "type": "http://purl.imsglobal.org/caliper/v1/Forum"
     }
   },
   "attachments": [
     {
-      "@id": "https://example.edu/etexts/201.epub",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+      "id": "https://example.edu/etexts/201.epub",
+      "type": "http://purl.imsglobal.org/caliper/v1/Document",
       "name": "IMS Caliper Implementation Guide",
       "dateCreated": "2016-10-01T06:00:00.000Z",
       "version": "1.1"
@@ -3611,21 +3611,21 @@ In addition to properties inherited from [Response](#response), MultipleChoiceRe
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse",
   "attempt": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
       }
     },
     "count": 1,
@@ -3665,21 +3665,21 @@ In addition to properties inherited from [Response](#response), MultipleResponse
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse",
   "attempt": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
       }
     },
     "count": 1,
@@ -3721,12 +3721,12 @@ In addition to properties inherited from [Agent](#agent), Organization includes 
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/colleges/1/depts/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
+  "id": "https://example.edu/colleges/1/depts/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/Organization",
   "name": "Computer Science Department",
   "subOrganizationOf": {
-    "@id": "https://example.edu/colleges/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Organization",
+    "id": "https://example.edu/colleges/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Organization",
     "name": "College of Engineering"
   }
 }
@@ -3753,16 +3753,16 @@ Inherited from [DigitalResource](#digitalResource).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/etexts/201/chs/2/pp/23",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Page",
+  "id": "https://example.edu/etexts/201/chs/2/pp/23",
+  "type": "http://purl.imsglobal.org/caliper/v1/Page",
   "name": "Page 23",
   "isPartOf": {
-    "@id": "https://example.edu/etexts/201/chs/2",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Chapter",
+    "id": "https://example.edu/etexts/201/chs/2",
+    "type": "http://purl.imsglobal.org/caliper/v1/Chapter",
     "name": "Chapter 2",
     "isPartOf": {
-      "@id": "https://example.edu/etexts/201",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Document",
+      "id": "https://example.edu/etexts/201",
+      "type": "http://purl.imsglobal.org/caliper/v1/Document",
       "name": "IMS Caliper Implementation Guide",
       "dateCreated": "2016-10-01T06:00:00.000Z",
       "version": "1.1"
@@ -3792,8 +3792,8 @@ Inherited from [Agent](#agent).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/users/554433",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Person",
+  "id": "https://example.edu/users/554433",
+  "type": "http://purl.imsglobal.org/caliper/v1/Person",
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "dateModified": "2016-09-02T11:30:00.000Z"
 }
@@ -3855,18 +3855,18 @@ TODO
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Result",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/Result",
   "attempt": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -3879,8 +3879,8 @@ TODO
   "penaltyScore": 0.0,
   "totalScore": 15.0,
   "scoredBy": {
-    "@id": "https://example.edu/autograder",
-    "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+    "id": "https://example.edu/autograder",
+    "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
     "dateCreated": "2016-11-15T10:55:58.000Z"
   },
   "dateCreated": "2016-11-15T10:56:00.000Z"
@@ -3913,21 +3913,21 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/SelectTextResponse",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/SelectTextResponse",
   "attempt": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
       }
     },
     "count": 1,
@@ -3972,11 +3972,11 @@ In addition to properties inherited from [Entity](#entity), Session includes the
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Session",
+  "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+  "type": "http://purl.imsglobal.org/caliper/v1/Session",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "startedAtTime": "2016-09-15T10:00:00.000Z"
 }
@@ -4009,24 +4009,24 @@ In addition to properties inherited from Annotation](#annotation), SharedAnnotat
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/users/554433/etexts/201/shares/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/SharedAnnotation",
+  "id": "https://example.edu/users/554433/etexts/201/shares/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/SharedAnnotation",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "annotated": {
-    "@id": "https://example.edu/etexts/201.epub",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Document"
+    "id": "https://example.edu/etexts/201.epub",
+    "type": "http://purl.imsglobal.org/caliper/v1/Document"
   },
   "withAgents": [
     {
-      "@id": "https://example.edu/users/657585",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/657585",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     {
-      "@id": "https://example.edu/users/667788",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/667788",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     }
   ],
   "dateCreated": "2016-08-01T09:00:00.000Z"
@@ -4054,8 +4054,8 @@ Inherited from [Agent](#agent).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/autograder",
-  "@type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
+  "id": "https://example.edu/autograder",
+  "type": "http://purl.imsglobal.org/caliper/v1/SoftwareApplication",
   "name": "Auto Grader",
   "description": "Automates assignment scoring.",
   "version": "2.5.2"
@@ -4089,15 +4089,15 @@ In addition to properties inherited from Annotation](#annotation), TagAnnotation
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/users/554433/etexts/201/tags/3",
-  "@type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
+  "id": "https://example.edu/users/554433/etexts/201/tags/3",
+  "type": "http://purl.imsglobal.org/caliper/v1/TagAnnotation",
   "actor": {
-    "@id": "https://example.edu/users/554433",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+    "id": "https://example.edu/users/554433",
+    "type": "http://purl.imsglobal.org/caliper/v1/Person"
   },
   "annotated": {
-    "@id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/12[para06]/1:97)",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Chapter"
+    "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/12[para06]/1:97)",
+    "type": "http://purl.imsglobal.org/caliper/v1/Chapter"
   },
   "tags": [ "profile", "event", "entity" ],
   "dateCreated": "2016-08-01T09:00:00.000Z"
@@ -4129,41 +4129,41 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/Thread",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/Thread",
   "name": "Caliper Information Model",
   "items": [
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/Message"
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+      "type": "http://purl.imsglobal.org/caliper/v1/Message",
       "replyTo": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+        "type": "http://purl.imsglobal.org/caliper/v1/Message"
       }
     },
     {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/3",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Message",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/3",
+      "type": "http://purl.imsglobal.org/caliper/v1/Message",
       "replyTo": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Message"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+        "type": "http://purl.imsglobal.org/caliper/v1/Message"
       }
     }
   ],
   "isPartOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Forum",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Forum",
     "name": "Caliper Forum",
     "isPartOf": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
       "subOrganizationOf": {
-        "@id": "https://example.edu/terms/201601/courses/7",
-        "@type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
+        "id": "https://example.edu/terms/201601/courses/7",
+        "type": "http://purl.imsglobal.org/caliper/v1/CourseOffering"
       }
     }
   },
@@ -4198,21 +4198,21 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
-  "@type": "http://purl.imsglobal.org/caliper/v1/TrueFalseResponse",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "type": "http://purl.imsglobal.org/caliper/v1/TrueFalseResponse",
   "attempt": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/Attempt",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/Attempt",
     "actor": {
-      "@id": "https://example.edu/users/554433",
-      "@type": "http://purl.imsglobal.org/caliper/v1/Person"
+      "id": "https://example.edu/users/554433",
+      "type": "http://purl.imsglobal.org/caliper/v1/Person"
     },
     "assignable": {
-      "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
-      "@type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
+      "type": "http://purl.imsglobal.org/caliper/v1/AssessmentItem",
       "isPartOf": {
-        "@id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "@type": "http://purl.imsglobal.org/caliper/v1/Assessment"
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "type": "http://purl.imsglobal.org/caliper/v1/Assessment"
       }
     },
     "count": 1,
@@ -4247,8 +4247,8 @@ Inherited from [MediaObject](#mediaObject).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/videos/1225",
-  "@type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
+  "id": "https://example.edu/videos/1225",
+  "type": "http://purl.imsglobal.org/caliper/v1/VideoObject",
   "mediaType": "video/ogg",
   "name": "Introduction to IMS Caliper",
   "version": "1.1",
@@ -4279,13 +4279,13 @@ Inherited from [DigitalResource](#digitalResource).
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
-  "@id": "https://example.edu/terms/201601/courses/7/sections/1/pages/index.html",
-  "@type": "http://purl.imsglobal.org/caliper/v1/WebPage",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/index.html",
+  "type": "http://purl.imsglobal.org/caliper/v1/WebPage",
   "name": "CPS 435-01 Landing Page",
   "mediaType": "text/html",
   "isPartOf": {
-    "@id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "@type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "http://purl.imsglobal.org/caliper/v1/CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   }
