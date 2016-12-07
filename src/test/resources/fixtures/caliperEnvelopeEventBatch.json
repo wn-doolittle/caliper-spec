@@ -3,7 +3,7 @@
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "type": "NavigationEvent",
       "actor": {
         "id": "https://example.edu/users/554433",
@@ -54,7 +54,7 @@
       }
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "type": "AnnotationEvent",
       "actor": {
         "id": "https://example.edu/users/554433",
@@ -116,7 +116,7 @@
       }
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "type": "ViewEvent",
       "actor": {
         "id": "https://example.edu/users/554433",
