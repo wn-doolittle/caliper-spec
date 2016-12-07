@@ -14,7 +14,7 @@
       "type": "CourseOffering"
     }
   },
-  "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
+  "roles": [ "Learner" ],
   "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
   "dateCreated": "2016-11-01T06:00:00.000Z"
 }

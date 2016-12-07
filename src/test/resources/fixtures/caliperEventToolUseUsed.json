@@ -32,7 +32,7 @@
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
+    "roles": [ "Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
