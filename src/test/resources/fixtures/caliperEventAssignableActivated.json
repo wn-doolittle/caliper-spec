@@ -45,7 +45,7 @@
       "type": "CourseSection"
     },
     "roles": [ "Instructor" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
