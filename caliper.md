@@ -41,23 +41,23 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 9.0 [Transport](#transport)
     * 9.1 [Envelope](#envelope)
 	* 9.2 [Endpoints](#endpoints)
-* 10.0 [Contributors](#contributors)
-* [Appendix A: Caliper Events](#appendixEvents)
-	* [AnnotationEvent](#annotationEvent)
-	* [AssessmentEvent](#assessmentEvent)
-	* [AssessmentItemEvent](#assessmentItemEvent)
-    * [AssignableEvent](#assignableEvent)
-	* [ForumEvent](#ForumEvent)
-	* [MediaEvent](#mediaEvent)
-	* [MessageEvent](#messageEvent)
-	* [NavigationEvent](#navigationEvent)
-	* [OutcomeEvent](#outcomeEvent)
-	* [SessionEvent](#sessionEvent)
-	* [ThreadEvent](#ThreadEvent)
-    * [ToolUseEvent](#toolUseEvent)
-	* [ViewEvent](#viewEvent)
+* 10.0 [Vocabulary](#vocab)
+    * 10.1 [Classes](#vocabClasses)
+        * [AnnotationEvent](#annotationEvent)
+        * [AssessmentEvent](#assessmentEvent)
+        * [AssessmentItemEvent](#assessmentItemEvent)
+        * [AssignableEvent](#assignableEvent)
+        * [ForumEvent](#ForumEvent)
+        * [MediaEvent](#mediaEvent)
+        * [MessageEvent](#messageEvent)
+        * [NavigationEvent](#navigationEvent)
+        * [OutcomeEvent](#outcomeEvent)
+        * [SessionEvent](#sessionEvent)
+        * [ThreadEvent](#ThreadEvent)
+        * [ToolUseEvent](#toolUseEvent)
+        * [ViewEvent](#viewEvent)
 * [Appendix B: Caliper Actions](#appendixActions)
-* [Appendix C: Caliper Entities](#appendixEntities)
+* [Entities](#vocabEntities)
 	* [Agent](#agent)
 	* [Annotation](#annotation)
 	* [Assessment](#assessment)
@@ -105,6 +105,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [Appendix Z: Miscellaneous Classes](#appendixZ)
 	* [Selector](#selector)
 		* [TextPositionSelector](#textPositionSelector)
+* 10.0 [Contributors](#contributors)
 * [Revision History](#revisionHistory)
 * [References](#references)
 
@@ -649,7 +650,7 @@ TODO: ADD ADDITIONAL INFO
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ---- | ----------- |
-| id | string | An Entity SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier. |
+| id | IRI | An Entity SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier. |
 | type | string | If a generic Entity is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Entity; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/Person. |
 
 #### Optional properties
@@ -2321,7 +2322,7 @@ A Caliper Agent is a generic class that represents an Entity that can initiate o
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An Agent SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Agent MUST be assigned a blank node identifier. |
+| id | IRI | An Agent SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Agent MUST be assigned a blank node identifier. |
 | type | string | If a generic Agent is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Agent; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/Person. |
 
 #### Optional properties
@@ -2340,7 +2341,7 @@ A Caliper Annotation is a generic class that represents a comment, explanation, 
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An Annotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Annotation MUST be assigned a blank node identifier. |
+| id | IRI | An Annotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Annotation MUST be assigned a blank node identifier. |
 | type | string | If a generic Annotation is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Annotation; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/BookmarkAnnotation. |
 | actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
 | annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
@@ -2358,7 +2359,7 @@ A Caliper Assessment represents TODO . . . .  Assessment inherits all the proper
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An Assessment SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Assessment MUST be assigned a blank node identifier. |
+| id | IRI | An Assessment SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Assessment MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Assessment. |
 
 #### Optional properties
@@ -2412,7 +2413,7 @@ A Caliper AssessmentItem represents TODO . . . .  Assessment inherits all the pr
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An AssessmentItem SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AssessmentItem MUST be assigned a blank node identifier. |
+| id | IRI | An AssessmentItem SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AssessmentItem MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/AssessmentItem. |
 
 #### Optional properties
@@ -2458,7 +2459,7 @@ A Caliper AssignableDigitalResource is a generic class that represents digital c
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An AssignableDigitalResource SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AssignableDigitalResource MUST be assigned a blank node identifier. |
+| id | IRI | An AssignableDigitalResource SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AssignableDigitalResource MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/AssignableDigitalResource. |
 
 #### Optional properties
@@ -2502,7 +2503,7 @@ A Caliper Attempt provides a count of the number of times an actor has interacte
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An Attempt SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Attempt MUST be assigned a blank node identifier. |
+| id | IRI | An Attempt SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Attempt MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Attempt. |
 | actor | [Person](#person) | The Person who initiated the Attempt SHOULD be specified. |
 | assignable | [DigitalResource](#digitalResource) | The DigitalResource that constitutes the object of the assignment SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
@@ -2550,7 +2551,7 @@ A Caliper AudioObject represents an audio or sound file.  AudioObject inherits a
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An AudioObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AudioObject MUST be assigned a blank node identifier. |
+| id | IRI | An AudioObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an AudioObject MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/AudioObject. |
 
 #### Optional properties
@@ -2579,7 +2580,7 @@ A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A BookmarkAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a BookmarkAnnotation MUST be assigned a blank node identifier. |
+| id | IRI | A BookmarkAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a BookmarkAnnotation MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/BookmarkAnnotation. |
 | actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
 | annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
@@ -2620,7 +2621,7 @@ A Caliper Chapter represents a major sub-division of a piece of digital content.
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Chapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Chapter MUST be assigned a blank node identifier. |
+| id | IRI | A Chapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Chapter MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Chapter. |
 
 #### Optional properties
@@ -2656,7 +2657,7 @@ A Caliper Collection is a generic class that represents an ordered set of entiti
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Collection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Collection MUST be assigned a blank node identifier. |
+| id | IRI | A Collection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Collection MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Collection. |
 
 #### Optional properties
@@ -2705,7 +2706,7 @@ A Caliper CourseOffering represents the occurrence of a course or a class in a s
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A CourseOffering SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a CourseOffering MUST be assigned a blank node identifier. |
+| id | IRI | A CourseOffering SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a CourseOffering MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/CourseOffering. |
 
 #### Optional properties
@@ -2740,7 +2741,7 @@ A Caliper CourseSection represents an instance of a [CourseOffering](#courseOffe
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A CourseSection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a CourseSection MUST be assigned a blank node identifier. |
+| id | IRI | A CourseSection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a CourseSection MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/CourseSection. |
 
 #### Optional properties
@@ -2788,7 +2789,7 @@ TODO
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A DigitalResource SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a DigitalResource MUST be assigned a blank node identifier. |
+| id | IRI | A DigitalResource SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a DigitalResource MUST be assigned a blank node identifier. |
 | type | string |  If a generic DigitalResource is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/DigitalResource; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/Message.  |
 
 #### Optional properties
@@ -2851,7 +2852,7 @@ A Caliper DigitalResourceCollection is a generic class that represents an ordere
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A DigitalResourceCollection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a DigitalResourceCollection MUST be assigned a blank node identifier. |
+| id | IRI | A DigitalResourceCollection SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a DigitalResourceCollection MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Collection. |
 
 #### Optional properties
@@ -2911,7 +2912,7 @@ A Caliper Document represents a piece of digital content.  Document inherits all
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Document SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Document MUST be assigned a blank node identifier. |
+| id | IRI | A Document SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Document MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Document. |
 
 #### Optional properties
@@ -2951,7 +2952,7 @@ A Caliper EpubChapter represents a major structural division of a piece of writi
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An EpubChapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubChapter MUST be assigned a blank node identifier. |
+| id | IRI | An EpubChapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubChapter MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/EpubChapter. |
 
 #### Optional properties
@@ -2967,7 +2968,7 @@ A Caliper EpubPart represents a major structural division of a piece of writing,
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An EpubPart SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubPart MUST be assigned a blank node identifier. |
+| id | IRI | An EpubPart SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubPart MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/EpubPart. |
 
 #### Optional properties
@@ -2983,7 +2984,7 @@ A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#Ep
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An EpubSubChapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubSubChapter MUST be assigned a blank node identifier. |
+| id | IRI | An EpubSubChapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubSubChapter MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/EpubSubChapter. |
 
 #### Optional properties
@@ -2999,7 +3000,7 @@ A Caliper EpubVolume represents a component of a collection.  EpubVolume inherit
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An EpubVolume SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubVolume MUST be assigned a blank node identifier. |
+| id | IRI | An EpubVolume SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubVolume MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/EpubSubChapter. |
 
 #### Optional properties
@@ -3018,7 +3019,7 @@ A Caliper FillinBlankResponse represents a form of response in which a responden
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A FillinBlankResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a FillinBlankResponse MUST be assigned a blank node identifier. |
+| id | IRI | A FillinBlankResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a FillinBlankResponse MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/FillinBlankResponse. |
 | attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
@@ -3071,7 +3072,7 @@ A Caliper Forum represents a channel or virtual space in which group discussions
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Forum SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Forum MUST be assigned a blank node identifier. |
+| id | IRI | A Forum SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Forum MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Forum. |
 
 #### Optional properties
@@ -3131,7 +3132,7 @@ A Caliper Frame represents TODO . . . .  Frame inherits all the properties and r
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Frame SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Frame MUST be assigned a blank node identifier. |
+| id | IRI | A Frame SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Frame MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Frame. |
 | index | nonNegativeInteger | The character position TODO . . . . |
 
@@ -3168,7 +3169,7 @@ Should we rename Group to LisGroup or CourseSectionGroup (and save Group for a m
 ### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Group SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Group MUST be assigned a blank node identifier. |
+| id | IRI | A Group SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Group MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Group. |
 
 #### Optional properties
@@ -3206,7 +3207,7 @@ A Caliper HighlightAnnotation represents the act of marking a particular segment
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A HighlightAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a HighlightAnnotation MUST be assigned a blank node identifier. |
+| id | IRI | A HighlightAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a HighlightAnnotation MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/HighlightAnnotation. |
 | actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
 | annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
@@ -3252,7 +3253,7 @@ A Caliper ImageObject represents an image file.  ImageObject inherits all the pr
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An ImageObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an ImageObject MUST be assigned a blank node identifier. |
+| id | IRI | An ImageObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an ImageObject MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/ImageObject. |
 
 #### Optional properties
@@ -3280,7 +3281,7 @@ The Caliper LearningObjective represents a summary statement that outlines the l
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A LearningObjective SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a LearningObjective MUST be assigned a blank node identifier. |
+| id | IRI | A LearningObjective SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a LearningObjective MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/LearningObjective. |
 
 #### Optional properties
@@ -3324,7 +3325,7 @@ A Caliper LtiSession represents an LTI Tool Consumer Web application user sessio
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ---- | ----------- |
-| id | string | An LtiSession SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an LtiSession MUST be assigned a blank node identifier. |
+| id | IRI | An LtiSession SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an LtiSession MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/LtiSession. |
 
 #### Optional properties
@@ -3417,7 +3418,7 @@ confirm: Migrate MediaObject.duration to AudioObject and VideoObject (irrelevant
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A MediaObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MediaObject MUST be assigned a blank node identifier. |
+| id | IRI | A MediaObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MediaObject MUST be assigned a blank node identifier. |
 | type | string | If a generic MediaObject is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/MediaObject; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/VideoObject.  |
 
 #### Optional properties
@@ -3437,7 +3438,7 @@ A Caliper Membership describes the relationship between an [Organization](#organ
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Membership SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Membership MUST be assigned a blank node identifier. |
+| id | IRI | A Membership SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Membership MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Membership. |
 | organization | [Organization](#organization) | The Organization associated with this Membership MUST be specified. |
 | member | [Person](#person) ] | The Person who is the member of the associated Organization MUST be specified. |
@@ -3488,7 +3489,7 @@ A Caliper Message is a digital form of written communication sent to a recipient
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Message SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Message MUST be assigned a blank node identifier. |
+| id | IRI | A Message SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Message MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Message.  |
 
 #### Optional properties
@@ -3551,7 +3552,7 @@ A Caliper MultipleChoiceResponse represents a form of response in which a respon
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A MultipleChoiceResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MultipleChoiceResponse MUST be assigned a blank node identifier. |
+| id | IRI | A MultipleChoiceResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MultipleChoiceResponse MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/MultipleChoiceResponse. |
 | attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
@@ -3604,7 +3605,7 @@ A Caliper MultipleResponseResponse represents a form of response in which a resp
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A MultipleResponseResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MultipleResponseResponse MUST be assigned a blank node identifier. |
+| id | IRI | A MultipleResponseResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MultipleResponseResponse MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/MultipleResponseResponse. |
 | attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
@@ -3660,7 +3661,7 @@ A Caliper Organization represents a group of people who come together for a comm
 ### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An Organization SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Organization MUST be assigned a blank node identifier. |
+| id | IRI | An Organization SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Organization MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Organization. |
 
 #### Optional properties
@@ -3695,7 +3696,7 @@ A Caliper Page represents an item of paginated content.  Page inherits all the p
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Page SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Page MUST be assigned a blank node identifier. |
+| id | IRI | A Page SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Page MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Page. |
 
 #### Optional properties
@@ -3733,7 +3734,7 @@ A Caliper Person represents a human being, alive or deceased, real or imaginary.
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Person SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Person MUST be assigned a blank node identifier. |
+| id | IRI | A Person SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Person MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Person. |
 
 #### Optional properties
@@ -3760,7 +3761,7 @@ A Caliper Reading represents an item of paginated content.  Reading inherits all
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Reading SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Reading MUST be assigned a blank node identifier. |
+| id | IRI | A Reading SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Reading MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Reading. |
 
 #### Optional properties
@@ -3782,7 +3783,7 @@ TODO
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Response SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Response MUST be assigned a blank node identifier. |
+| id | IRI | A Response SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Response MUST be assigned a blank node identifier. |
 | type | string | If a generic Response is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Response; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/TrueFalseResponse. |
 | attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
@@ -3846,7 +3847,7 @@ A Caliper SelectTextResponse represents a response that identifies text or a map
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A SelectTextResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a SelectTextResponse MUST be assigned a blank node identifier. |
+| id | IRI | A SelectTextResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a SelectTextResponse MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/SelectTextResponse. |
 | attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
@@ -3902,7 +3903,7 @@ A Caliper Session represents a Web application user session.  Session inherits a
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ---- | ----------- |
-| id | string | A Session SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Session MUST be assigned a blank node identifier. |
+| id | IRI | A Session SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Session MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Session. |
 
 #### Optional properties
@@ -3939,7 +3940,7 @@ A Caliper SharedAnnotation represents the act of sharing a reference to a Digita
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A SharedAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a SharedAnnotation MUST be assigned a blank node identifier. |
+| id | IRI | A SharedAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a SharedAnnotation MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/SharedAnnotation. |
 | actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
 | annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
@@ -3989,7 +3990,7 @@ A Caliper SoftwareApplication represents a computer program, application, module
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A SoftwareApplication SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a SoftwareApplication MUST be assigned a blank node identifier. |
+| id | IRI | A SoftwareApplication SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a SoftwareApplication MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/SoftwareApplication. |
 
 #### Optional properties
@@ -4017,7 +4018,7 @@ A Caliper TagAnnotation represents the act of tagging a DigitalResource with tag
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A TagAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a TagAnnotation MUST be assigned a blank node identifier. |
+| id | IRI | A TagAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a TagAnnotation MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/TagAnnotation. |
 | actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
 | annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
@@ -4058,7 +4059,7 @@ A Caliper Thread represents a series of one or more messages that share a common
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A Thread SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Thread MUST be assigned a blank node identifier. |
+| id | IRI | A Thread SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Thread MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Thread. |
 
 #### Optional properties
@@ -4125,7 +4126,7 @@ A Caliper TrueFalseResponse represents a response to a question in which only tw
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A  TrueFalseResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a  TrueFalseResponse MUST be assigned a blank node identifier. |
+| id | IRI | A  TrueFalseResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a  TrueFalseResponse MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/ TrueFalseResponse. |
 | attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
 
@@ -4178,7 +4179,7 @@ A Caliper VideoObject represents a visual recording stored in digital form. Vide
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | An VideoObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an VideoObject MUST be assigned a blank node identifier. |
+| id | IRI | An VideoObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an VideoObject MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/VideoObject. |
 
 #### Optional properties
@@ -4209,7 +4210,7 @@ A Caliper WebPage represents a document containing markup that is suitable for d
 #### Required properties
 | Property | Type | Requirements |
 | -------- | ----- | -------------- |
-| id | string | A WebPage SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a WebPage MUST be assigned a blank node identifier. |
+| id | IRI | A WebPage SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a WebPage MUST be assigned a blank node identifier. |
 | type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/WebPage. |
 
 #### Optional properties
