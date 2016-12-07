@@ -9,7 +9,7 @@
         "id": "https://example.edu/users/554433",
         "type": "Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
+      "action": "NavigatedTo",
       "object": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
         "type": "WebPage",
@@ -60,7 +60,7 @@
         "id": "https://example.edu/users/554433",
         "type": "Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked",
+      "action": "Bookmarked",
       "object": {
         "id": "https://example.edu/etexts/201.epub",
         "type": "Document",
@@ -122,7 +122,7 @@
         "id": "https://example.edu/users/554433",
         "type": "Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+      "action": "Viewed",
       "object": {
         "id": "https://example.edu/etexts/201.epub",
         "type": "Document",

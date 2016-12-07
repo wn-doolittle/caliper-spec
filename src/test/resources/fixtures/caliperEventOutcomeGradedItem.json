@@ -6,7 +6,7 @@
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded",
+  "action": "Graded",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",

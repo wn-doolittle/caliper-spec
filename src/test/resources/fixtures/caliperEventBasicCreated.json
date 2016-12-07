@@ -5,7 +5,7 @@
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
+  "action": "Created",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
     "type": "Document",

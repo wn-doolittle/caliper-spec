@@ -26,7 +26,7 @@
       ],
       "type": "ViewEvent",
       "actor": "https://example.edu/users/554433",
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+      "action": "Viewed",
       "object": "https://example.edu/etexts/201.epub",
       "eventTime": "2016-11-15T10:15:00.000Z",
       "edApp": "https://example.edu",

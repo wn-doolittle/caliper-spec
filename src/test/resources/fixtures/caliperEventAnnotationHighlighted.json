@@ -5,7 +5,7 @@
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted",
+  "action": "Highlighted",
   "object": {
     "id": "https://example.edu/etexts/201",
     "type": "Document",

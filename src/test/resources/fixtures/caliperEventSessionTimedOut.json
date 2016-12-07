@@ -6,7 +6,7 @@
     "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
+  "action": "TimedOut",
   "object": {
     "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
     "type": "Session",
