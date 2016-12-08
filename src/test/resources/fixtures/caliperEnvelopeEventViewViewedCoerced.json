@@ -60,7 +60,8 @@
         "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session",
         "startedAtTime": "2016-11-15T10:00:00.000Z"
-      }
+      },
+      "uuid": "e6f54458-19e3-47e3-bc18-43f231c74a45"
     }
   ]
 }
