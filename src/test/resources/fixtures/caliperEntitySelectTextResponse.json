@@ -1,5 +1,5 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
   "type": "SelectTextResponse",
   "attempt": {

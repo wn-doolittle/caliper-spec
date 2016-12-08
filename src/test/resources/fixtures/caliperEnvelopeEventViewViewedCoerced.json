@@ -4,7 +4,7 @@
   "data": [
     {
       "@context": [
-        "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+        "http://purl.imsglobal.org/ctx/caliper/v1p1",
         {
           "actor": {
             "id": "Person",
@@ -26,7 +26,7 @@
       ],
       "type": "ViewEvent",
       "actor": "https://example.edu/users/554433",
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+      "action": "Viewed",
       "object": "https://example.edu/etexts/201.epub",
       "eventTime": "2016-11-15T10:15:00.000Z",
       "edApp": "https://example.edu",
@@ -52,8 +52,8 @@
           "id": "https://example.edu/terms/201601/courses/7/sections/1",
           "type": "CourseSection"
         },
-        "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": [ "Learner" ],
+        "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {

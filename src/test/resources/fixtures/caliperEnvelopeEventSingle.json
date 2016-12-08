@@ -3,13 +3,13 @@
   "sendTime": "2016-11-15T11:05:01.000Z",
   "data": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "type": "AssessmentEvent",
       "actor": {
         "id": "https://example.edu/users/554433",
         "type": "Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
+      "action": "Started",
       "object": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
         "type": "Assessment",
@@ -59,8 +59,8 @@
           "id": "https://example.edu/terms/201601/courses/7/sections/1",
           "type": "CourseSection"
         },
-        "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": [ "Learner" ],
+        "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {

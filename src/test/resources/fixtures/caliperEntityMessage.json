@@ -1,5 +1,5 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
   "type": "Message",
   "creators": [
