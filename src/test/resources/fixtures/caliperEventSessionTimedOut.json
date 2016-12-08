@@ -1,12 +1,12 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "uuid": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
+  "action": "TimedOut",
   "object": {
     "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
     "type": "Session",

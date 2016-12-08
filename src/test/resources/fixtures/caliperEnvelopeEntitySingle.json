@@ -4,7 +4,7 @@
   "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
   "data": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
       "type": "DigitalResource",
       "name": "Course Syllabus",

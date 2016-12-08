@@ -4,13 +4,13 @@
   "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
   "data": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "type": "NavigationEvent",
       "actor": {
         "id": "https://example.edu/users/554433",
         "type": "Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
+      "action": "NavigatedTo",
       "object": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
         "type": "WebPage",
@@ -44,8 +44,8 @@
           "id": "https://example.edu/terms/201601/courses/7/sections/1",
           "type": "CourseSection"
         },
-        "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": [ "Learner" ],
+        "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
@@ -55,13 +55,13 @@
       }
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "type": "AnnotationEvent",
       "actor": {
         "id": "https://example.edu/users/554433",
         "type": "Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked",
+      "action": "Bookmarked",
       "object": {
         "id": "https://example.edu/etexts/201.epub",
         "type": "Document",
@@ -106,8 +106,8 @@
           "id": "https://example.edu/terms/201601/courses/7/sections/1",
           "type": "CourseSection"
         },
-        "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": [ "Learner" ],
+        "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
@@ -117,13 +117,13 @@
       }
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "type": "ViewEvent",
       "actor": {
         "id": "https://example.edu/users/554433",
         "type": "Person"
       },
-      "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+      "action": "Viewed",
       "object": {
         "id": "https://example.edu/etexts/201.epub",
         "type": "Document",
@@ -154,8 +154,8 @@
           "id": "https://example.edu/terms/201601/courses/7/sections/1",
           "type": "CourseSection"
         },
-        "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-        "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+        "roles": [ "Learner" ],
+        "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {

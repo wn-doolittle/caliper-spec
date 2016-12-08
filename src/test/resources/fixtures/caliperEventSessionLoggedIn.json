@@ -1,12 +1,12 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "uuid": "341db3d9-71cc-4081-9423-cbed73cb0179",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
+  "action": "LoggedIn",
   "object": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",

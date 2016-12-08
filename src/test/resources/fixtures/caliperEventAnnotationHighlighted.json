@@ -1,11 +1,11 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "type": "AnnotationEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted",
+  "action": "Highlighted",
   "object": {
     "id": "https://example.edu/etexts/201",
     "type": "Document",
@@ -25,6 +25,7 @@
       "type": "Document"
     },
     "selection": {
+      "type": "TextPositionSelector",
       "start": 2300,
       "end": 2370
     },
@@ -54,8 +55,8 @@
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
