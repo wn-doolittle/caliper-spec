@@ -43,6 +43,7 @@
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
+  "uuid": "3a9bd869-addc-48b1-80f6-a14b2ff591ed",
   "extensions": [{
     "@context": {
       "id": "@id",

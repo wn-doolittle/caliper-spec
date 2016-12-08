@@ -52,5 +52,6 @@
     "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
     "type": "Session",
     "startedAtTime": "2016-11-12T10:00:00.000Z"
-  }
+  },
+  "uuid": "2635b9dd-0061-4059-ac61-2718ab366f75"
 }

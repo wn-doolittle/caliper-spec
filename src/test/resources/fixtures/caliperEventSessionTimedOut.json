@@ -23,5 +23,6 @@
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
-  }
+  },
+  "uuid": "4e61cf6c-ffbe-45bc-893f-afe7ad4079dc"
 }
