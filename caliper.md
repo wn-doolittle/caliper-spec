@@ -545,15 +545,15 @@ TODO List all Actions?
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/Event",
+  "type": "Event",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
-    "type": "http://purl.imsglobal.org/caliper/Document",
+    "type": "Document",
     "name": "Course Syllabus",
     "dateCreated": "2016-11-12T07:15:00.000Z",
     "version": "1"
@@ -603,28 +603,28 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/AnnotationEvent",
+  "type": "AnnotationEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked",
   "object": {
     "id": "https://example.edu/etexts/201.epub",
-    "type": "http://purl.imsglobal.org/caliper/Document",
+    "type": "Document",
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
   },
   "generated": {
     "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
-    "type": "http://purl.imsglobal.org/caliper/BookmarkAnnotation",
+    "type": "BookmarkAnnotation",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "annotated": {
       "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
-      "type": "http://purl.imsglobal.org/caliper/Chapter"
+      "type": "Chapter"
     },
     "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that enable learning.",
     "dateCreated": "2016-11-15T10:15:00.000Z"
@@ -632,26 +632,26 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "name": "ePub Reader",
     "version": "1.2.3"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -659,7 +659,7 @@ The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties 
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -699,15 +699,15 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/AssessmentEvent",
+  "type": "AssessmentEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-    "type": "http://purl.imsglobal.org/caliper/Assessment",
+    "type": "Assessment",
     "name": "Quiz One",
     "dateToStartOn": "2016-11-14T05:00:00.000Z",
     "dateToSubmit": "2016-11-18T11:59:59.000Z",
@@ -718,14 +718,14 @@ The AssessmentEvent models learner interactions with assessments instruments suc
   },
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "http://purl.imsglobal.org/caliper/Assessment"
+      "type": "Assessment"
     },
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:15:00.000Z",
@@ -734,25 +734,25 @@ The AssessmentEvent models learner interactions with assessments instruments suc
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -760,7 +760,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -770,22 +770,22 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/AssessmentEvent",
+  "type": "AssessmentEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "http://purl.imsglobal.org/caliper/Assessment",
+      "type": "Assessment",
       "name": "Quiz One",
       "dateToStartOn": "2016-11-14T05:00:00.000Z",
       "dateToSubmit": "2016-11-18T11:59:59.000Z",
@@ -803,25 +803,25 @@ The AssessmentEvent models learner interactions with assessments instruments suc
   "eventTime": "2016-11-15T10:25:30.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -829,7 +829,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -869,19 +869,19 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/AssessmentItemEvent",
+  "type": "AssessmentItemEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-    "type": "http://purl.imsglobal.org/caliper/AssessmentItem",
+    "type": "AssessmentItem",
     "name": "Assessment Item 3",
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "http://purl.imsglobal.org/caliper/Assessment"
+      "type": "Assessment"
     },
     "dateToStartOn": "2016-11-14T05:00:00.000Z",
     "dateToSubmit": "2016-11-18T11:59:59.000Z",
@@ -893,18 +893,18 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
     },
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem"
+      "type": "AssessmentItem"
     },
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "type": "http://purl.imsglobal.org/caliper/Attempt"
+      "type": "Attempt"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:15:00.000Z",
@@ -913,25 +913,25 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -939,7 +939,7 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -949,31 +949,31 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/AssessmentItemEvent",
+  "type": "AssessmentItemEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem",
+      "type": "AssessmentItem",
       "name": "Assessment Item 3",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "http://purl.imsglobal.org/caliper/Assessment"
+        "type": "Assessment"
       }
     },
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "type": "http://purl.imsglobal.org/caliper/Attempt"
+      "type": "Attempt"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:15:02.000Z",
@@ -982,10 +982,10 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
   },
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
-    "type": "http://purl.imsglobal.org/caliper/FillinBlankResponse",
+    "type": "FillinBlankResponse",
     "attempt": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-      "type": "http://purl.imsglobal.org/caliper/Attempt"
+      "type": "Attempt"
     },
     "dateCreated": "2016-11-15T10:15:12.000Z",
     "startedAtTime": "2016-11-15T10:15:02.000Z",
@@ -995,25 +995,25 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
   "eventTime": "2016-11-15T10:15:12.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -1021,7 +1021,7 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1063,15 +1063,15 @@ TODO add additional intro text
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/AssignableEvent",
+  "type": "AssignableEvent",
   "actor": {
     "id": "https://example.edu/users/112233",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Activated",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-    "type": "http://purl.imsglobal.org/caliper/Assessment",
+    "type": "Assessment",
     "name": "Quiz One",
     "dateCreated": "2016-08-01T06:00:00.000Z",
     "dateModified": "2016-09-02T11:30:00.000Z",
@@ -1087,25 +1087,25 @@ TODO add additional intro text
   "eventTime": "2016-11-12T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/112233",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -1113,7 +1113,7 @@ TODO add additional intro text
   },
   "session": {
     "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-12T10:00:00.000Z"
   }
 }
@@ -1156,44 +1156,44 @@ TODO add description
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/ForumEvent",
+  "type": "ForumEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-    "type": "http://purl.imsglobal.org/caliper/Forum",
+    "type": "Forum",
     "name": "Caliper Forum",
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "dateCreated": "2016-09-14T11:00:00.000Z"
   },
   "eventTime": "2016-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -1201,7 +1201,7 @@ TODO add description
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1246,45 +1246,45 @@ TODO
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/MediaEvent",
+  "type": "MediaEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused",
   "object": {
     "id": "https://example.edu/UQVK-dsU7-Y",
-    "type": "http://purl.imsglobal.org/caliper/VideoObject",
+    "type": "VideoObject",
     "name": "Information and Welcome",
     "mediaType": "video/ogg",
     "duration": "PT20M20S"
   },
   "target": {
     "id": "https://example.edu/UQVK-dsU7-Y?t=321",
-    "type": "http://purl.imsglobal.org/caliper/MediaLocation",
+    "type": "MediaLocation",
     "currentTime": "PT05M21S"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu/player",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication"
+    "type": "SoftwareApplication"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -1292,7 +1292,7 @@ TODO
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1332,29 +1332,29 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/MessageEvent",
+  "type": "MessageEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
-    "type": "http://purl.imsglobal.org/caliper/Message",
+    "type": "Message",
     "creators": [
       {
         "id": "https://example.edu/users/554433",
-        "type": "http://purl.imsglobal.org/caliper/Person"
+        "type": "Person"
       }
     ],
     "body": "Are the Caliper Sensor reference implementations production-ready?",
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
-      "type": "http://purl.imsglobal.org/caliper/Thread",
+      "type": "Thread",
       "name": "Caliper Adoption",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
-        "type": "http://purl.imsglobal.org/caliper/Forum",
+        "type": "Forum",
         "name": "Caliper Forum"
       }
     },
@@ -1363,25 +1363,25 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -1389,7 +1389,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1399,31 +1399,31 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/MessageEvent",
+  "type": "MessageEvent",
   "actor": {
     "id": "https://example.edu/users/778899",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
-    "type": "http://purl.imsglobal.org/caliper/Message",
+    "type": "Message",
     "creators": [
       {
         "id": "https://example.edu/users/778899",
-        "type": "http://purl.imsglobal.org/caliper/Person"
+        "type": "Person"
       }
     ],
     "replyTo": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
-      "type": "http://purl.imsglobal.org/caliper/Message"
+      "type": "Message"
     },
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
-      "type": "http://purl.imsglobal.org/caliper/Thread",
+      "type": "Thread",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
-        "type": "http://purl.imsglobal.org/caliper/Forum"
+        "type": "Forum"
       }
     },
     "dateCreated": "2016-11-15T10:15:30.000Z"
@@ -1431,25 +1431,25 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
   "eventTime": "2016-11-15T10:15:30.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/778899",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -1457,7 +1457,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
   },
   "session": {
     "id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:12:00.000Z"
   }
 }
@@ -1497,15 +1497,15 @@ The NavigationEvent models an actor traversing a network of digital resources.  
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/NavigationEvent",
+  "type": "NavigationEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
-    "type": "http://purl.imsglobal.org/caliper/WebPage",
+    "type": "WebPage",
     "name": "Learning Analytics Specifications",
     "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
     "dateCreated": "2016-08-01T09:00:00.000Z"
@@ -1513,28 +1513,28 @@ The NavigationEvent models an actor traversing a network of digital resources.  
   "eventTime": "2016-11-15T10:15:00.000Z",
   "referrer": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
-    "type": "http://purl.imsglobal.org/caliper/WebPage"
+    "type": "WebPage"
   },
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication"
+    "type": "SoftwareApplication"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -1542,7 +1542,7 @@ The NavigationEvent models an actor traversing a network of digital resources.  
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1584,23 +1584,23 @@ TODO add description
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/OutcomeEvent",
+  "type": "OutcomeEvent",
   "actor": {
     "id": "https://example.edu/autograder",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "http://purl.imsglobal.org/caliper/Assessment"
+      "type": "Assessment"
     },
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -1611,22 +1611,22 @@ TODO add description
   "eventTime": "2016-11-15T10:57:06.000Z",
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
-    "type": "http://purl.imsglobal.org/caliper/Result",
+    "type": "Result",
     "attempt": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "type": "http://purl.imsglobal.org/caliper/Attempt"
+      "type": "Attempt"
     },
     "normalScore": 15,
     "totalScore": 15,
     "scoredBy": {
       "id": "https://example.edu/autograder",
-      "type": "http://purl.imsglobal.org/caliper/SoftwareApplication"
+      "type": "SoftwareApplication"
     },
     "dateCreated": "2016-11-15T10:55:05.000Z"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   }
@@ -1670,24 +1670,24 @@ TODO add description
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "341db3d9-71cc-4081-9423-cbed73cb0179",
-  "type": "http://purl.imsglobal.org/caliper/SessionEvent",
+  "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
   "object": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "dateCreated": "2016-11-15T10:00:00.000Z",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
@@ -1700,24 +1700,24 @@ TODO add description
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "5fac90a9-531a-41f6-9b8d-7a26e61dcc27",
-  "type": "http://purl.imsglobal.org/caliper/SessionEvent",
+  "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut",
   "object": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "eventTime": "2016-11-15T11:05:00.000Z",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "dateCreated": "2016-11-15T10:00:00.000Z",
     "startedAtTime": "2016-11-15T10:00:00.000Z",
@@ -1732,18 +1732,18 @@ TODO add description
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
-  "type": "http://purl.imsglobal.org/caliper/SessionEvent",
+  "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication"
+    "type": "SoftwareApplication"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
   "object": {
     "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "actor": {
       "id": "https://example.edu/users/112233",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "dateCreated": "2016-11-15T10:15:00.000Z",
     "startedAtTime": "2016-11-15T10:15:00.000Z",
@@ -1753,7 +1753,7 @@ TODO add description
   "eventTime": "2016-11-15T11:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication"
+    "type": "SoftwareApplication"
   }
 }
 ```
@@ -1794,19 +1794,19 @@ TODO add description
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/ThreadEvent",
+  "type": "ThreadEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
-    "type": "http://purl.imsglobal.org/caliper/Thread",
+    "type": "Thread",
     "name": "Caliper Information Model",
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-      "type": "http://purl.imsglobal.org/caliper/Forum",
+      "type": "Forum",
       "name": "Caliper Forum",
       "dateCreated": "2016-11-15T10:15:00.000Z"
     },
@@ -1815,25 +1815,25 @@ TODO add description
   "eventTime": "2016-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -1841,7 +1841,7 @@ TODO add description
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
@@ -1960,39 +1960,39 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "http://purl.imsglobal.org/caliper/ViewEvent",
+  "type": "ViewEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
   "object": {
     "id": "https://example.edu/etexts/200.epub",
-    "type": "http://purl.imsglobal.org/caliper/Document",
+    "type": "Document",
     "name": "IMS Caliper Specification",
     "version": "1.1"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication"
+    "type": "SoftwareApplication"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
     "member": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "organization": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     },
     "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
     "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
@@ -2000,7 +2000,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "http://purl.imsglobal.org/caliper/Session",
+    "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
   "extensions": {
@@ -2036,9 +2036,9 @@ A Caliper Entity is a generic class analogous to a [schema:Thing](http://schema.
 
 * `description`: an optional string value comprising a short, human readable representation of the Entity in written form MAY be specified.  Analogous to [schema:description](http://schema.org/description).
 
-* `dateCreated`: an optional date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.    Analogous to [schema:dateCreated](http://schema.org/dateCreated).  The value MUST be expressed as an ISO-8601 formatted date/time string.
+* `dateCreated`: an optional date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.    The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [schema:dateCreated](http://schema.org/dateCreated).  
 
-* `dateModified`: an optional date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  Analogous to [schema:dateModified](http://schema.org/dateModified).  The value MUST be expressed as an ISO-8601 formatted date/time string.
+* `dateModified`: an optional date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [schema:dateModified](http://schema.org/dateModified).
 
 * `extensions`:  an optional ordered array of objects or string values not defined by the model MAY be specified for a more concise representation of the Entity.
 
@@ -2060,13 +2060,13 @@ A Caliper Agent is a generic class that represents an Entity that can initiate o
 #### Superclass
 [Entity](#entity)
 
-#### Subclasses 
-[Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
-
 #### Properties
 Agent inherits all properties defined by its superclass [Entity](#entity).  Additional requirements are described below:
 
 * `type`: the string value `Agent` MUST be specified.
+
+#### Subclasses 
+[Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
 #### Example
 ```json
@@ -2121,20 +2121,20 @@ Assessment inherits all the properties and requirements defined by its superclas
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-  "type": "http://purl.imsglobal.org/caliper/Assessment",
+  "type": "Assessment",
   "name": "Quiz One",
   "items": [
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem"
+      "type": "AssessmentItem"
     },
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem"
+      "type": "AssessmentItem"
     },
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem"
+      "type": "AssessmentItem"
     }
   ],
   "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2169,10 +2169,10 @@ AssessmentItem inherits all the properties and requirements defined by its super
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-  "type": "http://purl.imsglobal.org/caliper/AssessmentItem",
+  "type": "AssessmentItem",
   "isPartOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-    "type": "http://purl.imsglobal.org/caliper/Assessment"
+    "type": "Assessment"
   },
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "datePublished": "2016-08-15T09:30:00.000Z",
@@ -2198,9 +2198,6 @@ A Caliper AssignableDigitalResource is a generic class that represents digital c
 #### Superclass
 [DigitalResource](#digitalResource)
 
-#### Subclasses 
-[Assessment](#assessment), [AssessmentItem](#assessmentItem)
-
 #### Properties
 AssignableDigitalResource inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
 
@@ -2218,12 +2215,15 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 
 * `maxScore`: an optional non-negative integer representing the maximum score permitted MAY be specified.
 
+#### Subclasses 
+[Assessment](#assessment), [AssessmentItem](#assessmentItem)
+
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
-  "type": "http://purl.imsglobal.org/caliper/AssignableDigitalResource",
+  "type": "AssignableDigitalResource",
   "name": "Week 9 Reflection",
   "description": "3-5 page reflection on this week's assigned readings.",
   "dateCreated": "2016-11-01T06:00:00.000Z",
@@ -2268,14 +2268,14 @@ Attempt inherits all the properties and requirements defined for its superclass 
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-  "type": "http://purl.imsglobal.org/caliper/Attempt",
+  "type": "Attempt",
   "assignable": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-    "type": "http://purl.imsglobal.org/caliper/Assessment"
+    "type": "Assessment"
   },
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "count": 1,
   "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -2302,7 +2302,7 @@ AudioObject inherits all the properties and requirements defined for its supercl
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/audio/765",
-  "type": "http://purl.imsglobal.org/caliper/AudioObject",
+  "type": "AudioObject",
   "name": "Audio Recording: IMS Caliper Sensor API Q&A.",
   "mediaType": "audio/ogg",
   "datePublished": "2016-12-01T06:00:00.000Z",
@@ -2329,14 +2329,14 @@ BookmarkAnnotation inherits all the properties and requirements defined for its 
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
-  "type": "http://purl.imsglobal.org/caliper/BookmarkAnnotation",
+  "type": "BookmarkAnnotation",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "annotated": {
     "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
-    "type": "http://purl.imsglobal.org/caliper/Chapter"
+    "type": "Chapter"
   },
   "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
   "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -2360,11 +2360,11 @@ Chapter inherits all the properties and requirements defined for its superclass 
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!)",
-  "type": "http://purl.imsglobal.org/caliper/Chapter",
+  "type": "Chapter",
   "name": "The Caliper Information Model",
   "isPartOf": {
     "id": "https://example.edu/etexts/201.epub",
-    "type": "http://purl.imsglobal.org/caliper/Document",
+    "type": "Document",
     "dateCreated": "2016-10-01T06:00:00.000Z",
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
@@ -2396,7 +2396,7 @@ CourseOffering inherits all the properties and requirements defined for its supe
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7",
-  "type": "http://purl.imsglobal.org/caliper/CourseOffering",
+  "type": "CourseOffering",
   "courseNumber": "CPS 435",
   "academicSession": "Fall 2016",
   "name": "CPS 435 Learning Analytics",
@@ -2424,14 +2424,14 @@ CourseSection inherits all the properties and requirements defined for its super
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1",
-  "type": "http://purl.imsglobal.org/caliper/CourseSection",
+  "type": "CourseSection",
   "academicSession": "Fall 2016",
   "courseNumber": "CPS 435-01",
   "name": "CPS 435 Learning Analytics, Section 01",
   "category": "seminar",
   "subOrganizationOf": {
     "id": "https://example.edu/terms/201601/courses/7",
-    "type": "http://purl.imsglobal.org/caliper/CourseOffering",
+    "type": "CourseOffering",
     "courseNumber": "CPS 435"
   },
   "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -2480,22 +2480,22 @@ The following properties have been deprecated and will be removed in a future ve
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
-  "type": "http://purl.imsglobal.org/caliper/DigitalResource",
+  "type": "DigitalResource",
   "name": "Course Syllabus",
   "mediaType": "application/pdf",
   "creators": [
     {
       "id": "https://example.edu/users/223344",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     }
   ],
   "isPartOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
-    "type": "http://purl.imsglobal.org/caliper/DigitalResourceCollection",
+    "type": "DigitalResourceCollection",
     "name": "Course Assets",
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection"
+      "type": "CourseSection"
     }
   },
   "dateCreated": "2016-08-02T11:32:00.000Z"
@@ -2524,13 +2524,13 @@ DigitalResourceCollection inherits all the properties and requirements defined f
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
-  "type": "http://purl.imsglobal.org/caliper/DigitalResourceCollection",
+  "type": "DigitalResourceCollection",
   "name": "Video Collection",
   "keywords": ["collection", "videos"],
   "items": [
     {
       "id": "https://example.edu/videos/1225",
-      "type": "http://purl.imsglobal.org/caliper/VideoObject",
+      "type": "VideoObject",
       "mediaType": "video/ogg",
       "name": "Introduction to IMS Caliper",
       "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2539,7 +2539,7 @@ DigitalResourceCollection inherits all the properties and requirements defined f
     },
     {
       "id": "https://example.edu/videos/5629",
-      "type": "http://purl.imsglobal.org/caliper/VideoObject",
+      "type": "VideoObject",
       "mediaType": "video/ogg",
       "name": "IMS Caliper Activity Profiles",
       "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2549,10 +2549,10 @@ DigitalResourceCollection inherits all the properties and requirements defined f
   ],
   "isPartOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "subOrganizationOf": {
       "id": "https://example.edu/terms/201601/courses/7",
-      "type": "http://purl.imsglobal.org/caliper/CourseOffering"
+      "type": "CourseOffering"
     }
   },
   "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2568,7 +2568,7 @@ A Caliper Document represents a piece of digital content.
 [DigitalResource](#digitalResource)
 
 #### Properties
-Document inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).Additional properties and requirements are described below:
+Document inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
                                                                                                                      
 * `type`: the string value `Document` MUST be specified. 
 
@@ -2577,17 +2577,17 @@ Document inherits all the properties and requirements defined for its superclass
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/etexts/201.epub",
-  "type": "http://purl.imsglobal.org/caliper/Document",
+  "type": "Document",
   "name": "IMS Caliper Implementation Guide",
   "mediaType": "application/epub+zip",
   "creators": [
     {
       "id": "https://example.edu/people/12345",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     {
       "id": "https://example.com/staff/56789",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     }
   ],
   "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2598,111 +2598,85 @@ Document inherits all the properties and requirements defined for its superclass
  
 <a name="epubChapter" />
 ### EpubChapter (DEPRECATED)
-A Caliper EpubChapter represents a major structural division of a piece of writing.  EpubChapter inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:chapter](http://www.idpf.org/epub/vocab/structure/#chapter).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubChapter represents a major structural division of a piece of writing.  EpubChapter is a DEPRECATED entity that has been superceded by [Chapter](#chapter) and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | An EpubChapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubChapter MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/EpubChapter. |
+EpubChapter inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
 
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
+* `type`: the string value `EpubChapter` MUST be specified.
 
 <a name="epubPart" />
 ### EpubPart (DEPRECATED)
-A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  EpubPart inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:part](http://www.idpf.org/epub/vocab/structure/#part).  EpubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  EpubPart is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | An EpubPart SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubPart MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/EpubPart. |
-
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
+EpubPart inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
+                                                                                                                     
+* `type`: the string value `EpubPart` MUST be specified. 
 
 <a name="epubSubChapter" />
 ### EpubSubChapter (DEPRECATED)
-A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:subchapter](http://www.idpf.org/epub/vocab/structure/#subchapter).  EpubSubChapter is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | An EpubSubChapter SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubSubChapter MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/EpubSubChapter. |
+EpubSubChapter inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
 
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
+* `type`: the string value `EpubSubChapter` MUST be specified.
 
 <a name="epubVolume" />
 ### EpubVolume (DEPRECATED)
-A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [idpf:volume](http://www.idpf.org/epub/vocab/structure/#volume).  EpubVolume is a deprecated entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  EpubVolume is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | An EpubVolume SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an EpubVolume MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/EpubSubChapter. |
+EpubVolume inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below: 
 
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
+* `type`: the string value `EpubVolume` MUST be specified.
 
 <a name="fillinBlankResponse" />
 ### FillinBlankResponse
-A Caliper FillinBlankResponse represents a form of response in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.  FillinBlankResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
-
-#### TODO
-* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
+A Caliper FillinBlankResponse represents a form of response in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
 #### Superclass 
 [Response](#response)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A FillinBlankResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a FillinBlankResponse MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/FillinBlankResponse. |
-| attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+FillinBlankResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below: 
 
-#### Optional properties
-In addition to properties inherited from [Response](#response), FillinBlankResponse includes the following additional optional properties:
+* `type`: the string value `FillinBlankResponse` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| value | List&lt;string&gt; | The ordered set of one or more words, expressions or short phrases that constitutes the response MAY be provided.  |
+* `values`: an optional ordered array of one or more string values representing words, expressions or short phrases that constitutes the FillinBlankResponse MAY be specified.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
-  "type": "http://purl.imsglobal.org/caliper/FillinBlankResponse",
+  "type": "FillinBlankResponse",
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem",
+      "type": "AssessmentItem",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "http://purl.imsglobal.org/caliper/Assessment"
+        "type": "Assessment"
       }
     },
     "count": 1,
@@ -2718,57 +2692,51 @@ In addition to properties inherited from [Response](#response), FillinBlankRespo
 
 <a name="forum" />
 ### Forum
-A Caliper Forum represents a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded discussions to which members can subscribe, post messages and reply to other messages.  Frame inherits all the properties and requirements defined for [DigitalResourceCollection](#digitalResourceCollection), its superclass.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
+A Caliper Forum represents a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
 
 #### Superclass 
 [DigitalResourceCollection](#digitalResourceCollection)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A Forum SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Forum MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Forum. |
-
-#### Optional properties
-Inherited from [DigitalResourceCollection](#digitalResourceCollection).
-
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| items | List&lt;[Thread](#thread)&gt; | The ordered set of threaded discussions that comprise this Forum. |
+Frame inherits all the properties and requirements defined for its superclass [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below: 
+  
+ * `type`: the string value `Forum` MUST be specified. 
+ 
+ * `items`: an optional ordered array of [Thread](#thread) entities that comprise this Forum MAY be specified.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-  "type": "http://purl.imsglobal.org/caliper/Forum",
+  "type": "Forum",
   "name": "Caliper Forum",
   "items": [
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
-      "type": "http://purl.imsglobal.org/caliper/Thread",
+      "type": "Thread",
       "name": "Caliper Information Model",
       "dateCreated": "2016-11-01T09:30:00.000Z"
     },
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/2",
-      "type": "http://purl.imsglobal.org/caliper/Thread",
+      "type": "Thread",
       "name": "Caliper Sensor API",
       "dateCreated": "2016-11-01T09:30:00.000Z"
     },
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/3",
-      "type": "http://purl.imsglobal.org/caliper/Thread",
+      "type": "Thread",
       "name": "Caliper Certification",
       "dateCreated": "2016-11-01T09:30:00.000Z"
     }
   ],
   "isPartOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "subOrganizationOf": {
       "id": "https://example.edu/terms/201601/courses/7",
-      "type": "http://purl.imsglobal.org/caliper/CourseOffering"
+      "type": "CourseOffering"
     }
   },
   "dateCreated": "2016-08-01T06:00:00.000Z",
@@ -2778,32 +2746,29 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 
 <a name="frame" />
 ### Frame
-A Caliper Frame represents TODO . . . .  Frame inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
-
+A Caliper Frame represents a part, portion or segmant of a [DigitalResource](#digitalResource).
+ 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A Frame SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Frame MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Frame. |
-| index | nonNegativeInteger | The character position TODO . . . . |
+Frame inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
+* `type`: the string value `Frame` MUST be specified.
+
+* `index`: an optional non-negative integer that representes the character position TODO . . . . SHOULD be specified.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/etexts/201?index=2502",
-  "type": "http://purl.imsglobal.org/caliper/Frame",
+  "type": "Frame",
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "index": 2502,
   "isPartOf": {
     "id": "https://example.edu/etexts/201",
-    "type": "http://purl.imsglobal.org/caliper/Document",
+    "type": "Document",
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
   }
@@ -2812,36 +2777,29 @@ Inherited from [DigitalResource](#digitalResource).
 
 <a name="group" />
 ### Group
-A Caliper Group represents a sub-section of a [CourseSection](#courseSection) organized for some educational or social purpose.  The Group can act as an [Agent] and can often be decomposed into sub-groupings.  Group inherits all the properties and requirements defined for [Organization](#organization), its superclass.  It is analogous to an IMS LIS Group.
-
-### TODO
-Should we rename Group to LisGroup or CourseSectionGroup (and save Group for a more generic role)?
+A Caliper Group represents a ad-hoc, informal or short-lived collection of people organized for some educational or social purpose.  The Group can act as an [Agent](#agent) and can be decomposed into sub-groups.
 
 #### Superclass
 [Organization](#organization)
 
 ### Required properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A Group SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Group MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Group. |
+Group inherits all the properties and requirements defined for its superclass [Organization](#organization).  Additional requirements are described below: 
 
-#### Optional properties
-Inherited from [Organization](#organization).
+* `type`: the string value `Group` MUST be specified.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/2",
-  "type": "http://purl.imsglobal.org/caliper/Group",
+  "type": "Group",
   "name": "Discussion Group 2",
   "subOrganizationOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "subOrganizationOf": {
       "id": "https://example.edu/terms/201601/courses/7",
-      "type": "http://purl.imsglobal.org/caliper/CourseOffering"
+      "type": "CourseOffering"
     }
   },
   "dateCreated": "2016-11-01T06:00:00.000Z"
@@ -2850,7 +2808,7 @@ Inherited from [Organization](#organization).
 
 <a name="highlightAnnotation" />
 ### HighlightAnnotation
-A Caliper HighlightAnnotation represents the act of marking a particular segment of a  DigitalResource between two known points.  HighlightAnnotation inherits all the properties and requirements defined for [Annotation](#annotation), its superclass.
+A Caliper HighlightAnnotation represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
 
 ### TODO
 * Add additional instructions regarding start and end properties
@@ -2859,36 +2817,30 @@ A Caliper HighlightAnnotation represents the act of marking a particular segment
 [Annotation](#annotation)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A HighlightAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a HighlightAnnotation MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/HighlightAnnotation. |
-| actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
-| annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+HighlightAnnotation inherits all the properties and requirements defined for its superclass [Annotation](#annotation).  Additional properties and requirements are described below: 
 
-#### Optional properties
-In addition to properties inherited from Annotation](#annotation), HighlightAnnotation includes the following additional optional properties:
+* `type`: the string value `HighlightAnnotation` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| selection | [TextPositionSelector](#textPositionSelector) | The range of highlighted text based on its  [start](#start) and [end](#end) positions.  If the hightlighted selection is specified, both the [start](#start) and [end](#end) properties MUST be specified. |
-| selectionText | The highlighted segment of the annotated DigitalResource. |
+* `selection`: an optional [TextPositionSelector](#textPositionSelector) MAY be specified.  If a TextPositionSelector is defined both its [start](#start) and [end](#end) positions MUST be specified.
+
+* `selectionText`: an optional string value representing the highlighted segment of the annotated DigitalResource MAY be specified.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/highlights/20",
-  "type": "http://purl.imsglobal.org/caliper/HighlightAnnotation",
+  "type": "HighlightAnnotation",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "annotated": {
     "id": "https://example.edu/etexts/201",
-    "type": "http://purl.imsglobal.org/caliper/Document"
+    "type": "Document"
   },
   "selection": {
+    "type": "TextPositionSelector",
     "start": 2300,
     "end": 2370
   },
@@ -2899,26 +2851,22 @@ In addition to properties inherited from Annotation](#annotation), HighlightAnno
 
 <a name="imageObject" />
 ### ImageObject
-A Caliper ImageObject represents an image file.  ImageObject inherits all the properties and requirements defined for [MediaObject](#mediaObject), its superclass.  It is analogous to [schema:ImageObject](http://schema.org/ImageObject).
+A Caliper ImageObject represents an image file.  It is analogous to [schema:ImageObject](http://schema.org/ImageObject).
 
 #### Superclass 
 [MediaObject](#mediaObject)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | An ImageObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an ImageObject MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/ImageObject. |
+ImageObject inherits all the properties and requirements defined for its superclass [MediaObject](#mediaObject).  Additional requirements are described below:
 
-#### Optional properties
-Inherited from [MediaObject](#mediaObject).
+* `type`: the string value `ImageObject` MUST be specified.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/images/caliper_lti.jpg",
-  "type": "http://purl.imsglobal.org/caliper/ImageObject",
+  "type": "ImageObject",
   "name": "IMS Caliper/LTI Integration Work Flow",
   "mediaType": "image/jpeg",
   "dateCreated": "2016-09-01T06:00:00.000Z"
@@ -2927,32 +2875,28 @@ Inherited from [MediaObject](#mediaObject).
 
 <a name="learningObjective" />
 ### LearningObjective
-The Caliper LearningObjective represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.  LearningObjective inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
+The Caliper LearningObjective represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
 #### Superclass 
-[DigitalResource](#digitalResource)
+[Entity](#entity)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A LearningObjective SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a LearningObjective MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/LearningObjective. |
+LearningObjective inherits all the properties and requirements defined for its superclass [Entity](#entity).  Additional requirements are described below:
 
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
+* `type`: the string value `LearningObjective` MUST be specified.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
-  "type": "http://purl.imsglobal.org/caliper/AssignableDigitalResource",
+  "type": "AssignableDigitalResource",
   "name": "Caliper Profile Design",
   "description": "Choose a learning activity and describe the actions, entities and events that comprise it.",
   "learningObjectives": [
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/objectives/1",
-      "type": "http://purl.imsglobal.org/caliper/LearningObjective",
+      "type": "LearningObjective",
       "name": "Research techniques",
       "description": "Demonstrate ability to model a learning activity as a Caliper profile.",
       "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -2971,33 +2915,27 @@ Inherited from [DigitalResource](#digitalResource).
 
 <a name="ltiSession" />
 ### LtiSession
-A Caliper LtiSession represents an LTI Tool Consumer Web application user session.  LtiSession inherits all the properties and requirements defined for [Session](#session), its superclass. 
+A Caliper LtiSession represents an LTI Tool Consumer user session.
 
 #### Superclass
 [Session](#session)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ---- | ----------- |
-| id | IRI | An LtiSession SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an LtiSession MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/LtiSession. |
+LtiSession inherits all the properties and requirements defined for its superclass [Session](#session).  Additional properties and requirements are described below:
 
-#### Optional properties
-In addition to properties inherited from [Session](#session), LtiSession includes the following additional optional properties:
+* `type`: the string value `LtiSession` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| launchParameters | Object | LTI-specified launch parameters that provide Tool Consumer-related contextual information.  LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced.  |
+* `launchParameters`: an optional object comprising LTI-specified launch parameters that provide Tool Consumer-related contextual information MAY be specfied.  LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
-  "type": "http://purl.imsglobal.org/caliper/LtiSession",
+  "type": "LtiSession",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "launchParameters": {
     "lti_message_type": "basic-lti-launch-request",
@@ -3043,14 +2981,24 @@ In addition to properties inherited from [Session](#session), LtiSession include
 <a name="mediaLocation" />
 #### MediaLocation
 
-TODO
+A Caliper MediaLocation provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
+ 
+#### Superclass 
+[DigitalResource](#digitalResource)
+
+#### Properties
+Frame inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
+
+* `type`: the string value `MediaLocation` MUST be specified.
+
+* `currentTime`: an optional time interval that represents the current playback position measured from the beginning of an [AudioObject](#audioObject) or [VideoObject](#videoObject) MAY be specified.  If a currentTime is specified the value MUST conform to the ISO-8601 duration format.
 
 #### Example
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/videos/1225",
-  "type": "http://purl.imsglobal.org/caliper/MediaLocation",
+  "type": "MediaLocation",
   "currentTime": "PT30M54S",
   "dateCreated": "2016-08-01T06:00:00.000Z"
 }
@@ -3058,29 +3006,27 @@ TODO
 
 <a name="mediaObject" />
 ### MediaObject
-A Caliper MediaObject represents a generic piece of media content.  MediaObject inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  Given that MediaObject represents a generic type it is RECOMMENDED that only subclasses of DigitalResource be employed to represent nodes in the learning graph.  MediaObject is analogous to [schema:MediaObject](http://schema.org/MediaObject).
-
-#### TODO
-confirm: Migrate MediaObject.duration to AudioObject and VideoObject (irrelevant property for ImageObject to inherit).
+A Caliper MediaObject represents a generic piece of media content.  Given that MediaObject represents a generic type it is RECOMMENDED that only subclasses of MediaObject be employed to represent nodes in the learning graph.  MediaObject is analogous to [schema:MediaObject](http://schema.org/MediaObject).
 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
+#### Properties
+MediaObject inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).
+
+* `type`: the string value `MediaObject` MUST be specified.
+
+* `duration`: an optional time interval that represents the total time required to view and/or listen to this MediaObject at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format.
+
 #### Subclasses
 [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject)
 
-#### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A MediaObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MediaObject MUST be assigned a blank node identifier. |
-| type | string | If a generic MediaObject is created instead of one of its subclasses, the value MUST be assigned the IRI http://purl.imsglobal.org/caliper/MediaObject; otherwise the value MUST be assigned the IRI appropriate for the subclass, e.g., http://purl.imsglobal.org/caliper/VideoObject.  |
-
-#### Optional properties
-In addition to properties inherited from [DigitalResource](#digitalResource), MediaObject includes the following additional optional properties:
-
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| duration | string | Represents the total interval of time required to complete this MediaObject.  If a duration is specified the value MUST conform to the ISO-8601 duration format. |
+#### Example
+```json
+{
+  TODO
+}
+```
 
 <a name="membership" />
 ### Membership
@@ -3110,17 +3056,17 @@ In addition to properties inherited from [Entity](#entity), Membership includes 
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
-  "type": "http://purl.imsglobal.org/caliper/Membership",
+  "type": "Membership",
   "member": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "organization": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "subOrganizationOf": {
       "id": "https://example.edu/terms/201601/courses/7",
-      "type": "http://purl.imsglobal.org/caliper/CourseOffering"
+      "type": "CourseOffering"
     }
   },
   "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
@@ -3160,30 +3106,30 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
-  "type": "http://purl.imsglobal.org/caliper/Message",
+  "type": "Message",
   "creators": [
     {
       "id": "https://example.edu/users/778899",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     }
   ],
   "body": "The Caliper working group provides a set of Caliper Sensor reference implementations for the purposes of education and experimentation.  They have not been tested for use in a production environment.  See the Caliper Implementation Guide for more details.",
   "replyTo": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
-    "type": "http://purl.imsglobal.org/caliper/Message"
+    "type": "Message"
   },
   "isPartOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
-    "type": "http://purl.imsglobal.org/caliper/Thread",
+    "type": "Thread",
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
-      "type": "http://purl.imsglobal.org/caliper/Forum"
+      "type": "Forum"
     }
   },
   "attachments": [
     {
       "id": "https://example.edu/etexts/201.epub",
-      "type": "http://purl.imsglobal.org/caliper/Document",
+      "type": "Document",
       "name": "IMS Caliper Implementation Guide",
       "dateCreated": "2016-10-01T06:00:00.000Z",
       "version": "1.1"
@@ -3222,20 +3168,20 @@ In addition to properties inherited from [Response](#response), MultipleChoiceRe
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
-  "type": "http://purl.imsglobal.org/caliper/MultipleChoiceResponse",
+  "type": "MultipleChoiceResponse",
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem",
+      "type": "AssessmentItem",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "http://purl.imsglobal.org/caliper/Assessment"
+        "type": "Assessment"
       }
     },
     "count": 1,
@@ -3275,20 +3221,20 @@ In addition to properties inherited from [Response](#response), MultipleResponse
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
-  "type": "http://purl.imsglobal.org/caliper/MultipleResponseResponse",
+  "type": "MultipleResponseResponse",
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem",
+      "type": "AssessmentItem",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "http://purl.imsglobal.org/caliper/Assessment"
+        "type": "Assessment"
       }
     },
     "count": 1,
@@ -3330,11 +3276,11 @@ In addition to properties inherited from [Agent](#agent), Organization includes 
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/colleges/1/depts/1",
-  "type": "http://purl.imsglobal.org/caliper/Organization",
+  "type": "Organization",
   "name": "Computer Science Department",
   "subOrganizationOf": {
     "id": "https://example.edu/colleges/1",
-    "type": "http://purl.imsglobal.org/caliper/Organization",
+    "type": "Organization",
     "name": "College of Engineering"
   }
 }
@@ -3361,15 +3307,15 @@ Inherited from [DigitalResource](#digitalResource).
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/etexts/201/chs/2/pp/23",
-  "type": "http://purl.imsglobal.org/caliper/Page",
+  "type": "Page",
   "name": "Page 23",
   "isPartOf": {
     "id": "https://example.edu/etexts/201/chs/2",
-    "type": "http://purl.imsglobal.org/caliper/Chapter",
+    "type": "Chapter",
     "name": "Chapter 2",
     "isPartOf": {
       "id": "https://example.edu/etexts/201",
-      "type": "http://purl.imsglobal.org/caliper/Document",
+      "type": "Document",
       "name": "IMS Caliper Implementation Guide",
       "dateCreated": "2016-10-01T06:00:00.000Z",
       "version": "1.1"
@@ -3399,7 +3345,7 @@ Inherited from [Agent](#agent).
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433",
-  "type": "http://purl.imsglobal.org/caliper/Person",
+  "type": "Person",
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "dateModified": "2016-09-02T11:30:00.000Z"
 }
@@ -3427,6 +3373,9 @@ A Caliper Response is a generic class that represents the selected option provid
 
 TODO
 * confirm deprecating actor and assignable in favor of Attempt to eliminate redundancy.  Make Attempt required.
+
+#### TODO
+* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
 
 #### Superclass 
 [Entity](#entity)
@@ -3460,17 +3409,17 @@ TODO
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
-  "type": "http://purl.imsglobal.org/caliper/Result",
+  "type": "Result",
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "http://purl.imsglobal.org/caliper/Assessment"
+      "type": "Assessment"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -3484,7 +3433,7 @@ TODO
   "totalScore": 15.0,
   "scoredBy": {
     "id": "https://example.edu/autograder",
-    "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+    "type": "SoftwareApplication",
     "dateCreated": "2016-11-15T10:55:58.000Z"
   },
   "dateCreated": "2016-11-15T10:56:00.000Z"
@@ -3517,20 +3466,20 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
-  "type": "http://purl.imsglobal.org/caliper/SelectTextResponse",
+  "type": "SelectTextResponse",
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem",
+      "type": "AssessmentItem",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "http://purl.imsglobal.org/caliper/Assessment"
+        "type": "Assessment"
       }
     },
     "count": 1,
@@ -3575,10 +3524,10 @@ In addition to properties inherited from [Entity](#entity), Session includes the
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-  "type": "http://purl.imsglobal.org/caliper/Session",
+  "type": "Session",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "startedAtTime": "2016-09-15T10:00:00.000Z"
 }
@@ -3611,23 +3560,23 @@ In addition to properties inherited from Annotation](#annotation), SharedAnnotat
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/shares/1",
-  "type": "http://purl.imsglobal.org/caliper/SharedAnnotation",
+  "type": "SharedAnnotation",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "annotated": {
     "id": "https://example.edu/etexts/201.epub",
-    "type": "http://purl.imsglobal.org/caliper/Document"
+    "type": "Document"
   },
   "withAgents": [
     {
       "id": "https://example.edu/users/657585",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     {
       "id": "https://example.edu/users/667788",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     }
   ],
   "dateCreated": "2016-08-01T09:00:00.000Z"
@@ -3655,7 +3604,7 @@ Inherited from [Agent](#agent).
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/autograder",
-  "type": "http://purl.imsglobal.org/caliper/SoftwareApplication",
+  "type": "SoftwareApplication",
   "name": "Auto Grader",
   "description": "Automates assignment scoring.",
   "version": "2.5.2"
@@ -3689,14 +3638,14 @@ In addition to properties inherited from Annotation](#annotation), TagAnnotation
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/tags/3",
-  "type": "http://purl.imsglobal.org/caliper/TagAnnotation",
+  "type": "TagAnnotation",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "http://purl.imsglobal.org/caliper/Person"
+    "type": "Person"
   },
   "annotated": {
     "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/12[para06]/1:97)",
-    "type": "http://purl.imsglobal.org/caliper/Chapter"
+    "type": "Chapter"
   },
   "tags": [ "profile", "event", "entity" ],
   "dateCreated": "2016-08-01T09:00:00.000Z"
@@ -3728,40 +3677,40 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
-  "type": "http://purl.imsglobal.org/caliper/Thread",
+  "type": "Thread",
   "name": "Caliper Information Model",
   "items": [
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
-      "type": "http://purl.imsglobal.org/caliper/Message"
+      "type": "Message"
     },
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
-      "type": "http://purl.imsglobal.org/caliper/Message",
+      "type": "Message",
       "replyTo": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
-        "type": "http://purl.imsglobal.org/caliper/Message"
+        "type": "Message"
       }
     },
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/3",
-      "type": "http://purl.imsglobal.org/caliper/Message",
+      "type": "Message",
       "replyTo": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
-        "type": "http://purl.imsglobal.org/caliper/Message"
+        "type": "Message"
       }
     }
   ],
   "isPartOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-    "type": "http://purl.imsglobal.org/caliper/Forum",
+    "type": "Forum",
     "name": "Caliper Forum",
     "isPartOf": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "http://purl.imsglobal.org/caliper/CourseSection",
+      "type": "CourseSection",
       "subOrganizationOf": {
         "id": "https://example.edu/terms/201601/courses/7",
-        "type": "http://purl.imsglobal.org/caliper/CourseOffering"
+        "type": "CourseOffering"
       }
     }
   },
@@ -3796,20 +3745,20 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
-  "type": "http://purl.imsglobal.org/caliper/TrueFalseResponse",
+  "type": "TrueFalseResponse",
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
-    "type": "http://purl.imsglobal.org/caliper/Attempt",
+    "type": "Attempt",
     "actor": {
       "id": "https://example.edu/users/554433",
-      "type": "http://purl.imsglobal.org/caliper/Person"
+      "type": "Person"
     },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
-      "type": "http://purl.imsglobal.org/caliper/AssessmentItem",
+      "type": "AssessmentItem",
       "isPartOf": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "http://purl.imsglobal.org/caliper/Assessment"
+        "type": "Assessment"
       }
     },
     "count": 1,
@@ -3844,7 +3793,7 @@ Inherited from [MediaObject](#mediaObject).
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/videos/1225",
-  "type": "http://purl.imsglobal.org/caliper/VideoObject",
+  "type": "VideoObject",
   "mediaType": "video/ogg",
   "name": "Introduction to IMS Caliper",
   "version": "1.1",
@@ -3875,12 +3824,12 @@ Inherited from [DigitalResource](#digitalResource).
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/index.html",
-  "type": "http://purl.imsglobal.org/caliper/WebPage",
+  "type": "WebPage",
   "name": "CPS 435-01 Landing Page",
   "mediaType": "text/html",
   "isPartOf": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
   }
