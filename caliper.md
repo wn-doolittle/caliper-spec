@@ -2322,7 +2322,7 @@ BookmarkAnnotation inherits all the properties and requirements defined for its 
 
 * `type`: the string value `BookmarkAnnotation` MUST be specified.
 
-* `bookmarkNotes`: an optional string value comprising a comment or note that accompanies the bookmark MAY be specified.    
+* `bookmarkNotes`: an optional string value comprising a plain-text rendering of the note that accompanies the bookmark MAY be specified.    
 
 #### Example
 ```json
@@ -2746,7 +2746,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 
 <a name="frame" />
 ### Frame
-A Caliper Frame represents a part, portion or segmant of a [DigitalResource](#digitalResource).
+A Caliper Frame represents a part, portion or segment of a [DigitalResource](#digitalResource).
  
 #### Superclass 
 [DigitalResource](#digitalResource)
@@ -2777,12 +2777,12 @@ Frame inherits all the properties and requirements defined for its superclass [D
 
 <a name="group" />
 ### Group
-A Caliper Group represents a ad-hoc, informal or short-lived collection of people organized for some educational or social purpose.  The Group can act as an [Agent](#agent) and can be decomposed into sub-groups.
+A Caliper Group represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  The Group can act as an [Agent](#agent) and can be decomposed into sub-groups.
 
 #### Superclass
 [Organization](#organization)
 
-### Required properties
+#### Properties
 Group inherits all the properties and requirements defined for its superclass [Organization](#organization).  Additional requirements are described below: 
 
 * `type`: the string value `Group` MUST be specified.
@@ -2823,7 +2823,7 @@ HighlightAnnotation inherits all the properties and requirements defined for its
 
 * `selection`: an optional [TextPositionSelector](#textPositionSelector) MAY be specified.  If a TextPositionSelector is defined both its [start](#start) and [end](#end) positions MUST be specified.
 
-* `selectionText`: an optional string value representing the highlighted segment of the annotated DigitalResource MAY be specified.
+* `selectionText`: an optional string value representing a plain-text rendering of the highlighted segment of the annotated DigitalResource MAY be specified.
 
 #### Example
 ```json
@@ -2979,7 +2979,7 @@ LtiSession inherits all the properties and requirements defined for its supercla
 ```
 
 <a name="mediaLocation" />
-#### MediaLocation
+### MediaLocation
 
 A Caliper MediaLocation provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
  
@@ -2987,7 +2987,7 @@ A Caliper MediaLocation provides the current playback position in an [AudioObjec
 [DigitalResource](#digitalResource)
 
 #### Properties
-Frame inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
+MediaLocation inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
 * `type`: the string value `MediaLocation` MUST be specified.
 
@@ -3012,7 +3012,7 @@ A Caliper MediaObject represents a generic piece of media content.  Given that M
 [DigitalResource](#digitalResource)
 
 #### Properties
-MediaObject inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).
+MediaObject inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
 * `type`: the string value `MediaObject` MUST be specified.
 
@@ -3030,26 +3030,23 @@ MediaObject inherits all the properties and requirements defined for its supercl
 
 <a name="membership" />
 ### Membership
-A Caliper Membership describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  Membership inherits all the properties and requirements defined for [Entity](#entity), its superclass.
+A Caliper Membership describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
 
 #### Superclass 
 [Entity](#entity)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A Membership SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Membership MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Membership. |
-| organization | [Organization](#organization) | The Organization associated with this Membership MUST be specified. |
-| member | [Person](#person) ] | The Person who is the member of the associated Organization MUST be specified. |
+Membership inherits all the properties and requirements defined for its superclass [Entity](#entity).  Additional properties and requirements are described below: 
 
-#### Optional properties
-In addition to properties inherited from [Entity](#entity), Membership includes the following additional optional properties:
+* `type`: the string value `Membership` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| roles | List&lt;[Role](#role)&gt; | The organizational roles assigned to a member SHOULD be specified.  If a role is specified, the value MUST be chosen from the defined set of [roles](#roles]. |
-| status | string | The member's current status SHOULD be specified.  If a status is specified, the value MUST be set to the one of the following defined states:  [active](#active], [deleted](#deleted) or [inactive](#inactive). |
+* `organization`: the [Organization](#organization) associated with this Membership SHOULD be specified.
+
+* `member`: the [Person](#person) associated with this Membership SHOULD be specified.
+
+* `roles`: an optional ordered array of organizational roles assigned to the member SHOULD be specified.  If one or more rols are specified the value(s) MUST be chosen from the list of Caliper defined [roles](#roles].
+
+* `status`: an optional string value that indicates the member's current status SHOULD be specified.  If a status is specified, the value MUST be set to the one of the following defined states:  [Active](#active) or [Inactive](#inactive).
 
 #### Example
 ```json
@@ -3077,29 +3074,21 @@ In addition to properties inherited from [Entity](#entity), Membership includes 
 
 <a name="message" />
 ### Message
-A Caliper Message is a digital form of written communication sent to a recipient. A series of messages Messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.  Message inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
-
-### TODO
-* confirm if content property is to be excluded.
-* confirm if attachments property is to be excluded.
+A Caliper Message is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.  It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A Message SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Message MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Message.  |
+Message inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
-#### Optional properties
-In addition to properties inherited from [DigitalResource](#digitalResource), MediaObject includes the following additional optional properties:
+* `type`: the string value `Message` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| replyTo | [Message](#message) | If this Message represents a reply or a response to a previous Message, the Message prompting the reply SHOULD be referenced.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of). |
-| body | string | Plain-text rendering of the body content of the Message.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). |
-| attachments | List&lt;[DigitalResource](#digitalResource)&gt; | An ordered set of one or more items attached to this Message.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment). |
+* `replyTo`: a [Message](#message) that represents the post to which this Message is directed in reply SHOULD be referenced.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of).
+
+* `body`: an optional string value comprising a plain-text rendering of the body content of the Message MAY be specified.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). |
+
+* `attachments`: | an optional ordered array of one or more [DigitalResource](#digitalResource) entities attached to this Message MAY be specified.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment).
 
 #### Example
 ```json
@@ -3141,27 +3130,17 @@ In addition to properties inherited from [DigitalResource](#digitalResource), Me
  
 <a name="multipleChoiceResponse" />
 ### MultipleChoiceResponse
-A Caliper MultipleChoiceResponse represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.  MultipleChoiceResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
-
-#### TODO
-* confirm: eliminate actor and assignable in favor of attempt in order to eliminate unnecessary redundancy.
+A Caliper MultipleChoiceResponse represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.
 
 #### Superclass 
 [Response](#response)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A MultipleChoiceResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MultipleChoiceResponse MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/MultipleChoiceResponse. |
-| attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+MultipleChoiceResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below:
 
-#### Optional properties
-In addition to properties inherited from [Response](#response), MultipleChoiceResponse includes the following additional optional properties:
+* `type`: the string value `MultipleChoiceResponse` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| value | string | The selected option that constitutes the response MAY be provided.  |
+* 'value': an optional string value that represents the selected option SHOULD be specified.
 
 #### Example
 ```json
@@ -3197,24 +3176,17 @@ In addition to properties inherited from [Response](#response), MultipleChoiceRe
 
 <a name="multipleResponseResponse" />
 ### MultipleResponseResponse
-A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.  MultipleResponseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
+A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
 #### Superclass 
 [Response](#response)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A MultipleResponseResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a MultipleResponseResponse MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/MultipleResponseResponse. |
-| attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+MultipleResponseResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below:
 
-#### Optional properties
-In addition to properties inherited from [Response](#response), MultipleResponseResponse includes the following additional optional properties:
+* `type`: the string value `MultipleResponseResponse` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| values | List&lt;string&gt; | The ordered set of one or more selected options that constitutes the response MAY be provided.  |
+* `values`: an optional ordered array of one or more selected options MAY be specified.
 
 #### Example
 ```json
@@ -3250,26 +3222,20 @@ In addition to properties inherited from [Response](#response), MultipleResponse
 
 <a name="organization" />
 ### Organization
-A Caliper Organization represents a group of people who come together for a common purpose, typically one that is educational, social or administrative in nature.  The Organization can act as an [Agent] and can often be decomposed into sub-organizations.  Organization inherits all the properties and requirements defined for [Agent](#agent), its superclass.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
+A Caliper Organization represents a formal collection of people organized for some common educational, social or administrative purpose.  The Organization can act as an [Agent] and can be decomposed into sub-organizations.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
 #### Superclass
 [Agent](#agent)
 
+### Required properties
+Organization inherits all the properties and requirements defined for [Agent](#agent), its superclass.  Additional properties and requirements are described below:
+
+* `type`: the string value `Organization` MUST be specified.
+
+* `subOrganizationOf`: the parent [Organization](#organization) of this Organization MAY be specified.
+
 #### Subclasses 
 [CourseOffering](#CourseOffering), [CourseSection](#CourseSection), [Group](#group)
-
-### Required properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | An Organization SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an Organization MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Organization. |
-
-#### Optional properties
-In addition to properties inherited from [Agent](#agent), Organization includes the following additional optional properties:
-
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| subOrganizationOf| [Organization](#organization) | The parent Organization of this Organization MAY be specified if it provides additional useful contextual information. |
 
 #### Example
 ```json
@@ -3288,19 +3254,15 @@ In addition to properties inherited from [Agent](#agent), Organization includes 
 
 <a name="page" />
 ### Page
-A Caliper Page represents an item of paginated content.  Page inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.
+A Caliper Page represents an item of paginated content.
 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A Page SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Page MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Page. |
+Page inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
 
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
+* `type`: the string value `Page` MUST be specified.
 
 #### Example
 ```json
@@ -3326,19 +3288,15 @@ Inherited from [DigitalResource](#digitalResource).
 
 <a name="person" />
 ### Person
-A Caliper Person represents a human being, alive or deceased, real or imaginary.  Person inherits all the properties and requirements defined for [Agent](#agent), its superclass.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
+A Caliper Person represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
 #### Superclass
 [Agent](#agent)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A Person SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Person MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Person. |
+Person inherits all the properties and requirements defined for its superclass [Agent](#agent).  Additional requirements are described below:
 
-#### Optional properties
-Inherited from [Agent](#agent).
+* `type`: the string value `Person` MUST be specified.
 
 #### Example
 ```json
