@@ -2606,7 +2606,7 @@ A Caliper EpubChapter represents a major structural division of a piece of writi
 #### Properties
 EpubChapter inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
 
-* `type`: the string value `EpubChapter` MUST be specified.
+* `type`: the string value `EpubChapter`.
 
 <a name="epubPart" />
 ### EpubPart (DEPRECATED)
@@ -2618,7 +2618,7 @@ A Caliper EpubPart represents a major structural division of a piece of writing,
 #### Properties
 EpubPart inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
                                                                                                                      
-* `type`: the string value `EpubPart` MUST be specified. 
+* `type`: the string value `EpubPart`. 
 
 <a name="epubSubChapter" />
 ### EpubSubChapter (DEPRECATED)
@@ -2630,7 +2630,7 @@ A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#Ep
 #### Properties
 EpubSubChapter inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
 
-* `type`: the string value `EpubSubChapter` MUST be specified.
+* `type`: the string value `EpubSubChapter`.
 
 <a name="epubVolume" />
 ### EpubVolume (DEPRECATED)
@@ -2642,7 +2642,7 @@ A Caliper EpubVolume represents a component of a collection.  EpubVolume inherit
 #### Properties
 EpubVolume inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below: 
 
-* `type`: the string value `EpubVolume` MUST be specified.
+* `type`: the string value `EpubVolume`.
 
 <a name="fillinBlankResponse" />
 ### FillinBlankResponse
@@ -3365,21 +3365,21 @@ Result inherits all the properties and requirements defined for its superclass [
 
 * `attempt`: the associated [Attempt](#attempt) SHOULD be specified.  The Attempt SHOULD reference both the [Agent](#agent) who graded the Result and the relevant [DigitalResource](#digitalResource).
 
-* `normalScore`:
+* `normalScore`: TODO
 
-* `penaltyScore`:
+* `penaltyScore`: TODO
 
-* `extraCreditScore`:
+* `extraCreditScore`: TODO
 
-* `totalScore`:
+* `totalScore`: TODO
 
-* `curvedTotalScore`:
+* `curvedTotalScore`:  TODO
 
-* `curveFactor`:
+* `curveFactor`: TODO
 
-* `comment`:
+* `comment`: TODO
 
-* `scoredBy`:
+* `scoredBy`: TODO
 
 #### Example
 ```json
@@ -3570,25 +3570,17 @@ SoftwareApplication inherits all the properties and requirements defined for its
 
 <a name="tagAnnotation" />
 ### TagAnnotation
-A Caliper TagAnnotation represents the act of tagging a DigitalResource with tags or labels.  TagAnnotation inherits all the properties and requirements defined for [Annotation](#annotation), its superclass.
+A Caliper TagAnnotation represents the act of tagging a DigitalResource with tags or labels.
 
 #### Superclass
 [Annotation](#annotation)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A TagAnnotation SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a TagAnnotation MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/TagAnnotation. |
-| actor | [Person](#person) | The Person who created the Annotation MUST be specified. |
-| annotated | [DigitalResource](#digitalResource) | The DigitalResource that was annotated MUST be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+TagAnnotation inherits all the properties and requirements defined for its superclass [Annotation](#annotation).  Additional properties and requirements are described below:
 
-#### Optional properties
-In addition to properties inherited from Annotation](#annotation), TagAnnotation includes the following additional optional properties:
+* `type`: the string value `TagAnnotation` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| tags | List&lt;string&gt; | The ordered set of one or more tags associated with the annotated DigitalResource. |
+* `tags`: an optional ordered array of one or more string values that represent the tags associated with the annotated [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -3611,23 +3603,17 @@ In addition to properties inherited from Annotation](#annotation), TagAnnotation
 
 <a name="thread" />
 ### Thread
-A Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.  Thread inherits all the properties and requirements defined for [DigitalResourceCollection](#digitalResourceCollection), its superclass.  It is analogous to a [sioc:Thread](http://rfds.org/sioc/spec/#term_Thread).
+A Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
 #### Superclass 
 [DigitalResourceCollection](#digitalResourceCollection)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A Thread SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a Thread MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/Thread. |
+Thread inherits all the properties and requirements defined for its superclass [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below:
 
-#### Optional properties
-Inherited from [DigitalResourceCollection](#digitalResourceCollection).
+* `type`: the string value `Thread` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| items | List&lt;[Message](#message)&gt; | The ordered set of posts that comprise this Thread. |
+* `items`: an optional ordered array of [Message](#message) entities that comprise this Forum MAY be specified.
 
 #### Example
 ```json
@@ -3678,24 +3664,17 @@ Inherited from [DigitalResourceCollection](#digitalResourceCollection).
 
 <a name="trueFalseResponse" />
 ### TrueFalseResponse
-A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided (true/false, yes/no).   TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.
+A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided (true/false, yes/no).
 
 #### Superclass 
 [Response](#response)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A  TrueFalseResponse SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a  TrueFalseResponse MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/ TrueFalseResponse. |
-| attempt | [Attempt](#attempt) | The associated Attempt MUST be specified.  The Attempt MUST reference both the Person who initiated the Response and the DigitalResource that constitutes the object of the assignment.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. |
+TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.  Additional properties and requirements are described below:
 
-#### Optional properties
-In addition to properties inherited from [Response](#response), SelectTextResponse includes the following additional optional properties:
+* `type`: the string value `TrueFalseResponse` MUST be specified.
 
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| value | string | The true/false, yes/no binary selection that constitutes the response MAY be provided.  |
+* `value`: an optional string value that provides the true/false, yes/no binary selection SHOULD be provided.
 
 #### Example
 ```json
@@ -3731,19 +3710,15 @@ In addition to properties inherited from [Response](#response), SelectTextRespon
 
 <a name="videoObject" />
 ### VideoObject
-A Caliper VideoObject represents a visual recording stored in digital form. VideoObject inherits all the properties and requirements defined for [MediaObject](#mediaObject), its superclass.  It is analogous to [schema:VideoObject](http://schema.org/VideoObject).
+A Caliper VideoObject represents a visual recording stored in digital form.  It is analogous to [schema:VideoObject](http://schema.org/VideoObject).
 
 #### Superclass 
 [MediaObject](#mediaObject)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | An VideoObject SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, an VideoObject MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/VideoObject. |
+VideoObject inherits all the properties and requirements defined for its superclass [MediaObject](#mediaObject).  Additional requirements are described below:
 
-#### Optional properties
-Inherited from [MediaObject](#mediaObject).
+* `type`: the string value `VideoObject` MUST be specified.
 
 #### Example
 ```json
@@ -3762,19 +3737,15 @@ Inherited from [MediaObject](#mediaObject).
 
 <a name="webPage" />
 ### WebPage
-A Caliper WebPage represents a document containing markup that is suitable for display in a web browser.  WebPage inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  It is analogous to a [schema:WebPage](http://schema.org/WebPage).
+A Caliper WebPage represents a document containing markup that is suitable for display in a web browser.  It is analogous to a [schema:WebPage](http://schema.org/WebPage).
 
 #### Superclass 
 [DigitalResource](#digitalResource)
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| id | IRI | A WebPage SHOULD be provisioned with a globally-scoped, dereferenceable IRI in order to ensure that Entity data can be linked and shared.  In cases where an IRI is inappropriate, a WebPage MUST be assigned a blank node identifier. |
-| type | string | The value MUST be assigned the IRI http://purl.imsglobal.org/caliper/WebPage. |
+WebPage inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
 
-#### Optional properties
-Inherited from [DigitalResource](#digitalResource).
+* `type`: the string value `WebPage` MUST be specified.
 
 #### Example
 ```json
