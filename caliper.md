@@ -94,11 +94,9 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
     * 4.3 [Miscellaneous Classes](#vocabMisc)
         * [Selector](#selector)
         * [TextPositionSelector](#textPositionSelector)
-    * 4.4 [Properties](#vocabProperties)
-        * TODO add properties
-    * 4.5 [Actions](#vocabActions)
-    * 4.6 [Roles](#vocabRoles)
-    * 4.7 [Status](#vocabStatus)
+    * 4.4 [Actions](#vocabActions)
+    * 4.5 [Roles](#vocabRoles)
+    * 4.6 [Status](#vocabStatus)
 * 5.0 [Sensor API](#api)
 * 6.0 [Transport](#transport)
     * 6.1 [Envelope](#envelope)
@@ -3783,15 +3781,9 @@ TODO Intro
 }
 ```
 
-<a name="vocabProperties"/>   
-### 4.4 Properties
-TODO DESCRIPTION
-
-TODO list properties
-
 
 <a name="vocabActions"/>   
-### 4.5 Actions
+### 4.4 Actions
 TODO DESCRIPTION
 
 natural language challenges
@@ -3866,7 +3858,7 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 | <a name="viewed" />viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) |[look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
 
 <a name="vocabRoles" />
-## 4.6 Roles
+## 4.5 Roles
 
 ### Roles
 One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate IRI:
@@ -3948,7 +3940,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | teaching_assistant_teaching_assistant_group | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
 
 
-### 4.7 Status
+### 4.6 Status
 The status of a [member](#member) within an organization can be set to one of the following states: active, deleted or inactive.  The value MUST be set to the appropriate IRI:
 
 | Status | IRI |
