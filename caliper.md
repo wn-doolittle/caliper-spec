@@ -2018,9 +2018,6 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 <a name="entities" />
 ### 4.2 Entities
 
-<a name="appendixEntities"/>
-## Appendix B. Caliper Entities
-
 <a name="entity" />
 ### Entity
 A Caliper Entity is a generic class analogous to a [schema:Thing](http://schema.org/Thing) that is subclassed for greater type specificity.  Given that Entity represents a generic type it is RECOMMENDED that only subclasses of Entity be employed to represent nodes in the learning graph.
@@ -2072,7 +2069,6 @@ Agent inherits all properties defined by its superclass [Entity](#entity).  Addi
     TODO
 }
 ```
-
 
 <a name="annotation" />
 ### Annotation
@@ -3854,7 +3850,7 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 | <a name="timedOut" />timed out | [http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
 | <a name="unmuted" />unmuted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted](http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted) | inverse of muted |
 | <a name="unsubscribed" />unsubscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
-| <a name="used" />used | [http://purl.imsglobal.org/vocab/caliper/v1/action#&Used](http://purl.imsglobal.org/vocab/caliper/v1/action#&Used) | interact with a tool in a manner the tool creator intends as a learning activity |
+| <a name="used" />used | [http://purl.imsglobal.org/vocab/caliper/v1/action#Used](http://purl.imsglobal.org/vocab/caliper/v1/action#Used) | interact with a tool in a manner the tool creator intends as a learning activity |
 | <a name="viewed" />viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) |[look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
 
 <a name="vocabRoles" />
