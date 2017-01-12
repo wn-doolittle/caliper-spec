@@ -213,22 +213,10 @@ Any action included in the Caliper [actions](#actions) vocabulary can be employe
 The Caliper Annotation Profile models activities related to the annotation of digital content.
 
 #### Supported Events
-[AnnotationEvent](#annotationEvent), [ViewEvent](#ViewEvent)
-
-#### Supported Actions
-| Event | action(s) |
-| -----  | --------- |
-|[AnnotationEvent](#assignableEvent)  | [bookmarked](#bookmarked), [highlighted](#highlighted), [shared](#shared), [tagged](#tagged) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
-
-#### Supported object and generated  entities
-| Event | action | object | generated |
-| -------  | -------- | -------- |  ----------- |
-| [AnnotationEvent](#annotationEvent) | [bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | [BookmarkAnnotation](#bookmarkAnnotation) |
-| [AnnotationEvent](#annotationEvent) | [highlighted](#highlighted) | [DigitalResource](#digitalResource) | [HighlightAnnotation](#highlightAnnotation) |
-| [AnnotationEvent](#annotationEvent) | [shared](#shared) | [DigitalResource](#digitalResource) | [SharedAnnotation](#sharedAnnotation) |
-| [AnnotationEvent](#annotationEvent) | [tagged](#tagged) | [DigitalResource](#digitalResource) | [TagAnnotation](#tagAnnotation) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) | [Annotation](#annotation) | &nbsp; |
+* [AnnotationEvent](#annotationEvent)
+  * actions: [bookmarked](#bookmarked), [highlighted](#highlighted), [shared](#shared), [tagged](#tagged)
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed)
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
@@ -239,36 +227,22 @@ The Caliper Annotation Profile models activities related to the annotation of di
 | [AnnotationEvent](#annotationEvent) | [Person](#person) P1 | [tagged](#tagged) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T2 | [TagAnnotation](#tagAnnotation) |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) P1 | [bookmarked](#bookmarked) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T3 | [BookmarkAnnotation](#bookmarkAnnotation) |
 
-#### TODO
-* Remove following actions from profile (not annotation actions): [attached](#attached), [classified](#classified), [described](#described), [identified](#identified), [linked](#linked), [questioned](#questioned), [subscribed](#subscribed).
-* Q: is sharing a reference a form of annotation?
-* Remove following actions from profile; migrate to future Evaluation profile: [disliked](#disliked), [liked](#liked), [ranked](#ranked), [recommended](#recommended)?
-* Need a CommentAnnotation/MessageAnnotation entity for [commented](#commented) action OR use [Message](#message); consider deprecating [replied](#replied) action (redundant given [replyTo](#replyTo).
-
 <a name="assessmentProfile" />
 ### Assessment Profile
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items.  
 
 #### Supported Events
-[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent) , [NavigationEvent](#navigationEvent),  [ViewEvent](#ViewEvent)
+* [AssessmentEvent](#assessmentEvent)
+  * actions: [started](#started), [paused](#paused), [restarted](#restarted), [submitted](#submitted)
 
-#### Supported Actions
-| Event | action(s) |
-| -----  | --------- |
-| [AssessmentEvent](#assessmentEvent) | [started](#started), [paused](#paused), [restarted](#restarted), [submitted](#submitted) |
-|  [AssessmentItemEvent](#assessmentItemEvent) | [started](#started), [skipped](#skipped), [completed](#completed)  |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
+* [AssessmentItemEvent](#assessmentItemEvent)
+  * actions: [started](#started), [skipped](#skipped), [completed](#completed) 
 
-#### Supported object, generated, target and referrer entities
-| Event | action | object | generated | target | referrer |
-| ----- | ------ | ------ | ----------- | ------ | ------- |
-|  [AssessmentEvent](#assessmentEvent) | [started](#started), [paused](#paused), [restarted](#restarted) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-|  [AssessmentEvent](#assessmentEvent) | [submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; | &nbsp; |
-|  [AssessmentItemEvent](#assessmentItemEvent) | [started](#started), [skipped](#skipped) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; | [AssessmentItem](#assessmentItem) |
-|  [AssessmentItemEvent](#assessmentItemEvent) | [completed](#completed) | [Attempt](#attempt) | &nbsp; | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; | &nbsp; 
+* [NavigationEvent](#navigationEvent)
+  * actions: [navigatedTo](#navigatedTo) 
+
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed)
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
@@ -289,23 +263,14 @@ The Caliper Assessment Profile models assessment-related activities including in
 The Assignable Profile provides coverage for all activity types that can be assigned to a learner for completion according to specific criteria.  ~~Assignable is an interface that is implemented by the AssignableDigitalResource.  Any Entity can implement AssignableDigitalResource and become “assignable”.~~
 
 #### Supported Events
-[AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#ViewEvent)
+* [AssignableEvent](#assignableEvent)
+  * actions: [activated](#activated), [deactivated](#deactivated), [started](#started), [completed](#completed), [reviewed](#reviewed)
 
-#### Supported Actions
-| Event | action(s) |
-| -----  | --------- |
-|[AssignableEvent](#assignableEvent)  | [activated](#activated), [deactivated](#deactivated), [started](#started), [completed](#completed) |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
+* [NavigationEvent](#navigationEvent)
+  * actions: [navigatedTo](#navigatedTo) 
 
-#### Supported object, generated, target and referrer entities
-| Event | action | object | generated | target | referrer |
-| ----- | -------| ------ | ----------- | ------ | ------- |
-|  [AssignableEvent](#assignableEvent)  | [activated](#activated), [deactivated](#deactivated) | [DigitalResource](#digitalResource) | &nbsp;  | &nbsp; | &nbsp; |
-|  [AssignableEvent](#assignableEvent)  | [started](#started)| [DigitalResource](#digitalResource) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-|  [AssignableEvent](#assignableEvent)  | [completed](#completed) | [Attempt](#attempt)| &nbsp; | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed)
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
@@ -319,32 +284,27 @@ The Assignable Profile provides coverage for all activity types that can be assi
 | [AssignableEvent](#assignableEvent) | [Person](#person) P1 | [deactivated](#deactivated) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T5 | &nbsp; |
 
 #### TODO
-* Do we need to add a submitted action?
+* Do we need to add a submitted action?  Align with AssessmentProfile submitted actions.
 
 <a name="forumProfile" />
 ### Forum Profile
 The online forum is a core capability of many learning management systems.  Forums typically encompass one or more topics to which actors can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  The profile leverages a number of Caliper [Event](#event) types to describe users participating in online forum communities.
 
 #### Supported Events
-[ForumEvent](#forumEvent),  [MessageEvent](#messageEvent),  [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#ViewEvent)
+* [ForumEvent](#forumEvent) 
+  * actions: [subscribed](#subscribed), [unsubscribed](#unsubscribed)
 
-#### Supported Actions
-| Event | action(s) |
-| -----  | --------- |
-| [ForumEvent](#forumEvent) | [subscribed](#subscribed), [unsubscribed](#unsubscribed) |
-| [MessageEvent](#messageEvent) | [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)|
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
-| [ThreadEvent](#threadEvent)|[markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
+* [MessageEvent](#messageEvent) 
+  * actions: [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
 
-#### Supported object, generated, target and referrer entities
-| Event | object | generated | target | referrer |
-| ----- | ------ | ----------- | ------ | ------- |
-| [ForumEvent](#forumEvent) | [Forum](#forum) | &nbsp; | &nbsp; | &nbsp; |
-| [MessageEvent](#messageEvent) | [Message](#message) | &nbsp; | &nbsp; | &nbsp; |
-| [ThreadEvent](#threadEvent) | [Thread](#thread) | &nbsp; | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#viewEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
+* [NavigationEvent](#navigationEvent)
+  * actions: [navigatedTo](#navigatedTo) 
+  
+* [ThreadEvent](#threadEvent)
+  * actions: [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
+
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed) 
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information are assumed in example sequence*.
@@ -363,21 +323,17 @@ The online forum is a core capability of many learning management systems.  Foru
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  The profile is provisioned with a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject), and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject).  The [MediaLocation](#mediaLocation) entity provides an [index](#index) property . . .  [TODO]
 
 #### Supported Events
-[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#ViewEvent)
+* [MediaEvent](#mediaEvent)
+  * actions: [started](#started), [paused](#paused), [resumed](#resumed), [forwardedTo](#forwardedTo), [jumpedTo](#jumpedTo), [rewound](#rewound), [ended](#ended), [changedResolution](#changedResolution), [changedSize](#changedSize), [changedSpeed](#changedSpeed), [changedVolume](#changedVolume), [enabledClosedCaptioning](#enabledClosedCaptioning), [disabledClosedCaptioning](#disabledClosedCaptioning), [enteredFullScreen](#enteredFullScreen), [exitedFullScreen](#exitedFullScreen), [muted](#muted), [unmuted](#unmuted), [openedPopout](#openedPopout), [closedPopout](#closedPopout)
 
-#### Supported actions
-| Event | action | 
-| -----  | ------ |
-| [MediaEvent](#mediaEvent) | [started](#started), [paused](#paused), [resumed](#resumed), [forwardedTo](#forwardedTo), [jumpedTo](#jumpedTo), [rewound](#rewound), [ended](#ended), [changedResolution](#changedResolution), [changedSize](#changedSize), [changedSpeed](#changedSpeed), [changedVolume](#changedVolume), [enabledClosedCaptioning](#enabledClosedCaptioning), [disabledClosedCaptioning](#disabledClosedCaptioning), [enteredFullScreen](#enteredFullScreen), [exitedFullScreen](#exitedFullScreen), [muted](#muted), [unmuted](#unmuted), [openedPopout](#openedPopout), [closedPopout](#closedPopout) |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
+* [NavigationEvent](#navigationEvent)
+  * actions: [navigatedTo](#navigatedTo) 
+  
+* [ThreadEvent](#threadEvent)
+  * actions: [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
 
-#### Supported object, generated, target and referrer entities
-| Event | object | generated | target | referrer |
-| ----- | ------ | ----------- | ------ | ------- |
-| [MediaEvent](#mediaEvent) | [MediaObject](#mediaObject), [AudioObject](#audioObject), [ImageObject](#audioObject), [VideoObject](#videoObject), [MediaLocation](#mediaLocation) | &nbsp; |~~[MediaLocation](#mediaLocation)~~ | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed)
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information are assumed in example sequence*.
@@ -399,19 +355,11 @@ The Caliper Media Profile models interactions between learners and rich content 
 The Caliper Outcome Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  The object of a grading action is an [Attempt](#attempt) from which a [Result](#result) is generated.  A [Result](#result) can then be viewed.
 
 #### Supported Events
-[OutcomeEvent](#outcomeEvent), [ViewEvent](#ViewEvent)
+* [OutcomeEvent](#outcomeEvent)
+  * actions: [graded](#graded)
 
-#### Supported actions
-| Event | action(s) |
-| -----  | --------- |
-| [OutcomeEvent](#outcomeEvent) | [graded](#graded) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
-
-#### Supported object, generated, target and referrer entities
-| Event | object | generated | target | referrer |
-| ----- | ------ | ----------- | ------ | ------- |
-| [OutcomeEvent](#mediaEvent) | [Attempt](#attempt) | [Result](#result) | &nbsp; | &nbsp; |
-| [ViewEvent](#ViewEvent) | [Result](#result) | &nbsp; | &nbsp; | &nbsp; 
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed)
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
@@ -426,53 +374,38 @@ The Caliper Outcome Profile models grading activities performed by an [Agent](#a
 The Caliper Reading Profile models activities associated with reading textual content.  The profile is provisioned with a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subclassed from [DigitalResource](#digitalResource).
 
 #### Supported Events
-[NavigationEvent](#navigationEvent), [ViewEvent](#ViewEvent)
+* [NavigationEvent](#navigationEvent)
+  * actions: [navigatedTo](#navigatedTo) 
+  
+* [ThreadEvent](#threadEvent)
+  * actions: [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
 
-#### Supported actions
-| Event | action(s) |
-| -----  | --------- |
-| [NavigationEvent](#navigationEvent) | [navigatedTo](#navigatedTo) |
-| [ViewEvent](#ViewEvent) | [viewed](#viewed) |
-
-#### Supported object, generated, target and referrer entities
-| Event | object | generated | target | referrer |
-| ----- | ------ | ----------- | ------ | ------- |
-| [NavigationEvent](#navigationEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | [DigitalResource](#digitalResource) |
-| [ViewEvent](#ViewEvent) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; | &nbsp; 
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed)
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
  
 | Event | actor | action | object | eventTime | referrer |
 | -----  | ----- | ------ | ------ | ----------- | ---------- |
-| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) D2 | [dateTime](#dateTime) T1 | [DigitalResource](#digitalResource) D1 |
-| [ViewEvent](#viewEvent) | [Person](#person) P1 | [viewed](#viewed) | [DigitalResource](#digitalResource) D2 | [dateTime](#dateTime) T2 | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) P1 | [navigatedTo](#navigatedTo) | [Chapter](#chapter) C1 | [dateTime](#dateTime) T1 | [Document](#document) D1 |
+| [ViewEvent](#viewEvent) | [Person](#person) P1 | [viewed](#viewed) | [Chapter](#digitalResource) C1 | [dateTime](#dateTime) T2 | [Document](#document) D1 |
 
 <a name="sessionProfile" />
 ### Session Profile
 The Caliper Session Profile models activities associated with a user session established by a [Person](#person), interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is modeled along with a small set of supported actions.
 
 #### Supported Events
-[SessionEvent](#sessionEvent) 
-
-#### Supported actions
-| Event | action(s) |
-| -----  | --------- |
-|  [SessionEvent](#sessionEvent) | [loggedIn](#loggedIn), [loggedOut](#loggedIn), [timedOut](#timedOut)  |
-
-#### Supported object, session and federatedSession entities
-| Event | action | object | session | federatedSession |
-| ----- | ------ | ------ | -------- | ------------------ |
-| [SessionEvent](#sessionEvent) | [loggedIn](#loggedIn), [loggedOut](#loggedIn) | [SoftwareApplication](#softwareApplication)  | [Session]([#session) | [LtiSession]([#ltiSession)  |
-| [SessionEvent](#sessionEvent) | [timedOut](#timedOut) | [Session]([#session)  | &nbsp; | [LtiSession]([#ltiSession) |
+* [SessionEvent](#sessionEvent) 
+  * actions: [loggedIn](#loggedIn), [loggedOut](#loggedIn), [timedOut](#timedOut)
 
 #### Example Sequence
  Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
  
 | Event | actor | action | object | eventTime | session |
 | -----  | ----- | ------ | ------ | ----------- | ---------- |
-| [SessionEvent](#sessionEvent) | [Person](#person) P1 | [loggedIn](#loggedIn) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T1 |  [Session](#session) |
-| [SessionEvent](#sessionEvent) | [Person](#person) P1 | [loggedOut](#loggedIn) | [DigitalResource](#digitalResource) D1 | [dateTime](#dateTime) T2 | [Session](#session) |
+| [SessionEvent](#sessionEvent) | [Person](#person) P1 | [loggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) S1 | [dateTime](#dateTime) T1 |  [Session](#session) |
+| [SessionEvent](#sessionEvent) | [Person](#person) P1 | [loggedOut](#loggedIn) | [SoftwareApplication](#softwareApplication) S1 | [dateTime](#dateTime) T2 | [Session](#session) |
 
 #### TODO
 * Discuss [LtiSession](#ltiSession)
@@ -482,17 +415,15 @@ The Caliper Session Profile models activities associated with a user session est
 The Tool Use Profile models basic user-interaction with a tool; when a [Person](#person) uses a [SoftwareApplication](#softwareApplication) in a manner that the creator/publisher of the application determines to be its "intended use for learning", the application can send a [ToolUseEvent](#toolUseEvent) to indicate this usage.
 
 #### Supported Events
-[ToolUseEvents](#toolUseEvents)
-
-### Supported actions
-| Event | action(s) |
-| -----  | --------- |
-|  [ToolUseEvent](#toolUseEvent) | [used](#used)  |
-
-#### Supported actor and object
-| Event | actor | object |
-| ----- | ----- | ------ |
-| [ToolUseEvent](#toolUseEvent) | [Person](#person) | [SoftwareApplication](#softwareApplication)  |
+* [ToolUseEvent](#toolUseEvent)
+  * actions: [used](#used)
+  
+#### Example Sequence
+ Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
+ 
+| Event | actor | action | object | eventTime |
+| -----  | ----- | ------ | ------ | ----------- |
+| [ToolUseEvent](#toolUseEvent) | [Person](#person) P1 | [used](#used) | [SoftwareApplication](#softwareApplication) S1 | [dateTime](#dateTime) T1 |
 
 <a name="vocab" />
 ### 4.0 Vocabulary
