@@ -3849,7 +3849,7 @@ The following Caliper Working Group participants contributed to the writing of t
 #### Profiles
 | Profile | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
-| [AssessmentItem Profile](#assessmentItemProfile)  | 1.1 | 1.1 | [AssessmentItemEvent] moved to [AssessmentProfile](#assessmentProfile) rendering the AssessmentItem Profile redundant. |
+| [AssessmentItem Profile](#assessmentItemProfile)  | 1.1 | 1.1 | [AssessmentItemEvent](#assessmentItemEvent) moved to [AssessmentProfile](#assessmentProfile) rendering the AssessmentItem Profile redundant. |
 
 #### Events
 | Event | Deprecated | Removed | Notes |
@@ -3868,10 +3868,11 @@ The following Caliper Working Group participants contributed to the writing of t
 #### Actions
 | Event | actions | Deprecated | Removed | Notes |
 | -----  | ------- | ------------ | --------- | ------ |
-| [AssignableEvent](#assignableEvent) | [abandoned](#abandoned), [reviewed](#reviewed), [hid](#hid),  [showed](#showed] | 1.1 | &nbsp; | &nbsp; |
+| [AnnotationEvent](#annotationEvent) | [attached](#attached), [classified](#classified),  [commented](#commented], [described](#described), [disliked](#disliked), [identified](#identified), [liked](#liked), [linked](#linked), [questioned](#questioned), [ranked](#ranked), [recommended](#recommended), [replied](#replied), [subscribed](#subscribed) | 1.1 | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [abandoned](#abandoned), [hid](#hid), [showed](#showed] | 1.1 | &nbsp; | &nbsp; |
 
 #### Data Properties
-| Event | Deprecated | Removed | Notes |
+| Property | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
 | [objectType](#objectType)  | 1.1 | &nbsp; | &nbsp; |
 
