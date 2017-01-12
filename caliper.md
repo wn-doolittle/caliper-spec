@@ -21,7 +21,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 1.1 [Definitions](#definitions)
   * 1.2 [Terminology](#terminology)
 * 2.0 [Data and Semantic Interoperability](#interoperability)
-* 3.0 [Information Model](#infomodel)
+* 3.0 [Information Model](#infoModel)
     * 3.1 [Profiles](#profiles)
         * [Basic Profile](#basicProfile)
         * [Annotation Profile](#annotationProfile)
@@ -105,7 +105,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [Revision History](#revisionHistory)
 * [References](#references)
 
-<a name="introduction"/>  
+<a name="introduction" />  
 ## 1.0. Introduction
 
 TODO
@@ -113,7 +113,7 @@ TODO
 ### 1.1 Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
-<a name="definitions"/>  
+<a name="definitions" />  
 ### 1.2 Definitions
 __actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
 
@@ -143,7 +143,7 @@ __profile__: metric profiles define the information model for caliper.  The cali
 
 __sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
 
-<a name="interoperability">
+<a name="interoperability" />
 ## 2.0 Data and Semantic Interoperability
 
 TODO
@@ -3549,7 +3549,6 @@ TODO Intro
 }
 ```
 
-
 <a name="vocabActions"/>   
 ### 4.4 Actions
 TODO DESCRIPTION
@@ -3718,13 +3717,13 @@ The status of a [member](#member) within an organization can be set to one of th
 | inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
 
-<a name="api"/>
-<a name="sensors"/>
+<a name="api" />
+<a name="sensors" />
 ## 5.0 Sensor API
 
 TODO: OVERVIEW
 
-<a name="transport"/>
+<a name="transport" />
 ## 6.0 Transport
 
 Caliper Sensors MUST at least be capable of communicating
@@ -3752,7 +3751,7 @@ the payload of the message has the `application/json` IANA media-type, and MAY
 indicate instead that the message has the `application\ld+json` IANA media-type.
 
 
-<a name="endpoints"/>
+<a name="endpoints" />
 ### 6.1 Envelope
 
 Every message sent by a Caliper Sensor MUST consist of a single Caliper
@@ -3802,7 +3801,7 @@ Entities. The Caliper Envelope MUST have these three properties:
 }
 ```
 
-<a name="endpoints"/>
+<a name="endpoints" />
 ### 6.2 Endpoint
 
 Caliper Endpoints MUST at least be capable of communicating with [Caliper Sensors](#sensors) by supporting conventional HTTP POST requests; the certification tests for Caliper Endpoints require the Endpoint to receive data from the certification service using this transport. Caliper Endpoints MAY use other methods to receive data from Sensors.
@@ -3831,7 +3830,7 @@ The Endpoint MAY respond to Sensor messages with other standard HTTP status code
 
 If the Endpoint implementer wants the Endpoint to communicate more detailed information about problem states when receiving messages, the Endpoint SHOULD use the standard method for reporting problem details described in [RFC 7807, Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807).
 
-<a name="contributors"/>
+<a name="contributors" />
 ## 7.0 Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
@@ -3878,13 +3877,13 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="reference" />
 ### References
-<a name="json-ld">
+<a name="json-ld" />
 __JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler, N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
 
-<a name="lti">
+<a name="lti" />
 __LTI__  TODO
 
-<a name="rfc2119">
+<a name="rfc2119" />
 __RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels". March 1997. URL: https://tools.ietf.org/html/rfc2119.
 
 TODO Add other RFC references.
