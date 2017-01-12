@@ -28,8 +28,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
         * [Assignable Profile](#assignableProfile)
         * [Assessment Profile](#assessmentProfile)
         * [Forum Profile](#forumProfile)
+        * [Grading Profile](#gradingProfile)
         * [Media Profile](#mediaProfile)
-        * [Outcome Profile](#outcomeProfile)
         * [Reading Profile](#readingProfile)
         * [Session Profile](#sessionProfile)
         * [Tool Use Profile](#toolUseProfile)
@@ -162,8 +162,8 @@ This section describes the concepts, relationships and constraints that specify 
 * Assessment
 * Assignable
 * Forum
+* Grading
 * Media
-* Outcome
 * Reading
 * Session
 * Tool Use
@@ -183,11 +183,11 @@ Conceptually, Caliper events in plain english are described as  _"ACTOR invokes 
 
 <a name="metricProfiles" />
 ## 3.1 Profiles
-The Caliper Information Model is comprised of a number of activity profiles, each of which models a particular learning or supporting activity.  Each profile provides a common/structured vocabularly / concepts and terms for describing events such as annotating a document, starting an assessment or grading an outcome.  Extending the model involves adding a new profile or enhancing an existing one.
+The Caliper Information Model is comprised of a number of activity profiles, each of which models a particular learning or supporting activity.  Each profile provides a common/structured vocabularly / concepts and terms for describing events such as annotating a document, starting an assessment or grading a submission.  Extending the model involves adding a new profile or enhancing an existing one.
 
 TODO: ADDITIONAL INTRO TEXT
 
-[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Outcome](#outcomeProfile), [Reading](#readingProfile), [Session](#sessionProfile)
+[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Grading](#gradingProfile), [Reading](#readingProfile), [Session](#sessionProfile)
 
 <a name="basicProfile" />
 ### Basic Profile
@@ -318,6 +318,25 @@ The online forum is a core capability of many learning management systems.  Foru
 | [MessageEvent](#messageEvent) | [Person](#person) P1 | [posted](#posted) | [Message](#message) M2 replyTo M1 | [dateTime](#dateTime) T5 |
 | [ThreadEvent](#threadEvent)| [Person](#person) P1 | [markedAsRead](#markedAsRead) | [Thread](#thread) Th1 isPartOf F1 | [dateTime](#dateTime) T6 |
 
+<a name="gradingProfile" />
+### Grading Profile
+The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  The object of a grading action is an [Attempt](#attempt) from which a [Result](#result) is generated.  A [Result](#result) can then be viewed.
+
+#### Supported Events
+* [OutcomeEvent](#outcomeEvent)
+  * actions: [graded](#graded)
+
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed)
+
+#### Example Sequence
+ Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
+ 
+| Event | actor | action | object | eventTime | generated |
+| -----  | ----- | ------ | ------ | ----------- | ---------- |
+|  [OutcomeEvent](#outcomeEvent) | [Person](#person) P1 | [graded](#graded) | [Attempt](#attempt) A1 | [dateTime](#dateTime) T1 | [Result](#result) R1 |
+| [ViewEvent](#viewEvent)| [Person](#person) P2 | [viewed](#viewed) | [Result](#result) R1 | [dateTime](#dateTime) T2 | &nbsp; |
+
 <a name="mediaProfile" />
 ### Media Profile
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  The profile is provisioned with a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject), and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject).  The [MediaLocation](#mediaLocation) entity provides an [index](#index) property . . .  [TODO]
@@ -349,25 +368,6 @@ The Caliper Media Profile models interactions between learners and rich content 
 
 #### TODO
 * Confirm that MediaLocation should be utilized as the object of the interaction rather than the target.
-
-<a name="outcomeProfile" />
-### Outcome Profile
-The Caliper Outcome Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  The object of a grading action is an [Attempt](#attempt) from which a [Result](#result) is generated.  A [Result](#result) can then be viewed.
-
-#### Supported Events
-* [OutcomeEvent](#outcomeEvent)
-  * actions: [graded](#graded)
-
-* [ViewEvent](#ViewEvent)
-  * actions: [viewed](#viewed)
-
-#### Example Sequence
- Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
- 
-| Event | actor | action | object | eventTime | generated |
-| -----  | ----- | ------ | ------ | ----------- | ---------- |
-|  [OutcomeEvent](#outcomeEvent) | [Person](#person) P1 | [graded](#graded) | [Attempt](#attempt) A1 | [dateTime](#dateTime) T1 | [Result](#result) R1 |
-| [ViewEvent](#viewEvent)| [Person](#person) P2 | [viewed](#viewed) | [Result](#result) R1 | [dateTime](#dateTime) T2 | &nbsp; |
 
 <a name="readingProfile" />
 ### Reading Profile
@@ -3119,7 +3119,7 @@ The following properties have been deprecated and will be removed in a future ve
 
 <a name="result" />
 ### Result
-A Caliper Response represents a graded outcome.
+A Caliper Result represents a grade applied to an assignment submission.
 
 #### Superclass 
 [Entity](#entity)
