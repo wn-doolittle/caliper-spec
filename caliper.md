@@ -572,7 +572,7 @@ TODO . . . The AnnotationEvent models . . . .  AnnotationEvent inherits all the 
 #### Properties
 AnnotationEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `AnnotationEvent' MUST be specified.
+* `type`: the string value term `AnnotationEvent` MUST be specified.
 
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the supported action terms listed above.
 
@@ -656,7 +656,7 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 #### Properties
 AssessmentEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `AssessmentEvent' MUST be specified.
+* `type`: the string value term `AssessmentEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this AssessmentEvent MUST be specified.
 
@@ -816,7 +816,7 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 #### Properties
 AssessmentItemEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `AssessmentItemEvent' MUST be specified.
+* `type`: the string value term `AssessmentItemEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this AssessmentItemEvent MUST be specified.
 
@@ -1000,7 +1000,7 @@ TODO The AssignableEvent models . . . .  AssignableEvent inherits all the proper
 #### Properties
 AssignableEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `AssignableEvent' MUST be specified.
+* `type`: the string value term `AssignableEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this AssignableEvent MUST be specified.
 
@@ -1080,7 +1080,7 @@ TODO The ForumEvent models . . . .  ForumEvent inherits all the properties and r
 #### Properties
 ForumEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `ForumEvent' MUST be specified.
+* `type`: the string value term `ForumEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this ForumEvent MUST be specified.
 
@@ -1158,7 +1158,7 @@ TODO
 #### Properties
 MediaEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `MediaEvent' MUST be specified.
+* `type`: the string value term `MediaEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this MediaEvent MUST be specified.
 
@@ -1234,7 +1234,7 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 #### Properties
 MessageEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `MessageEvent' MUST be specified.
+* `type`: the string value term `MessageEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this MessageEvent MUST be specified.
 
@@ -1387,7 +1387,7 @@ The NavigationEvent models an actor traversing a network of digital resources.  
 #### Properties
 NavigationEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `NavigationEvent' MUST be specified.
+* `type`: the string value term `NavigationEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this NavigationEvent MUST be specified.
 
@@ -1462,7 +1462,7 @@ TODO The OutcomeEvent models . . . .  OutcomeEvent inherits all the properties a
 #### Properties
 OutcomeEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `OutcomeEvent' MUST be specified.
+* `type`: the string value term `OutcomeEvent` MUST be specified.
 
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
 
@@ -1533,7 +1533,7 @@ TODO . . . A SessionEvent models . . . .  SessionEvent inherits all the properti
 #### Properties
 SessionEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `SessionEvent' MUST be specified.
+* `type`: the string value term `SessionEvent` MUST be specified.
 
 * `actor`: the [Agent](#agent) who initiated or is the subject of this SessionEvent.  For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the actor.  For a [timedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the actor.  Note that Agent is a generic type that is subclassed for greater type specificity.  Utilize Agent only if no suitable subclass exists to represent the actor.
 
@@ -1721,7 +1721,7 @@ A Caliper ToolUseEvent models a Person (actor) using a learning tool in a way th
 #### Properties
 ToolUseEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `ToolUseEvent' MUST be specified.
+* `type`: the string value term `ToolUseEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this ThreadEvent MUST be specified.
 
@@ -1787,7 +1787,7 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 #### Properties
 ViewEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `ViewEvent' MUST be specified.
+* `type`: the string value term `ViewEvent` MUST be specified.
 
 * `actor`: the [Person](#person) who initiated this ViewEvent MUST be specified.
 
