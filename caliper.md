@@ -21,15 +21,15 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 1.1 [Definitions](#definitions)
   * 1.2 [Terminology](#terminology)
 * 2.0 [Data and Semantic Interoperability](#interoperability)
-* 3.0 [Information Model](#infomodel)
-    * 3.1 [Profiles](#profiles)
+* 3.0 [Information Model](#infoModel)
+    * 3.1 [Profiles](#metricProfiles)
         * [Basic Profile](#basicProfile)
         * [Annotation Profile](#annotationProfile)
         * [Assignable Profile](#assignableProfile)
         * [Assessment Profile](#assessmentProfile)
         * [Forum Profile](#forumProfile)
+        * [Grading Profile](#gradingProfile)
         * [Media Profile](#mediaProfile)
-        * [Outcome Profile](#outcomeProfile)
         * [Reading Profile](#readingProfile)
         * [Session Profile](#sessionProfile)
         * [Tool Use Profile](#toolUseProfile)
@@ -105,7 +105,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [Revision History](#revisionHistory)
 * [References](#references)
 
-<a name="introduction"/>  
+<a name="introduction" />  
 ## 1.0. Introduction
 
 TODO
@@ -113,7 +113,7 @@ TODO
 ### 1.1 Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
-<a name="definitions"/>  
+<a name="definitions" />  
 ### 1.2 Definitions
 __actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
 
@@ -143,14 +143,14 @@ __profile__: metric profiles define the information model for caliper.  The cali
 
 __sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
 
-<a name="interoperability">
+<a name="interoperability" />
 ## 2.0 Data and Semantic Interoperability
 
 TODO
 
 structure, flow, pointers
 
-<a name="infoModel">
+<a name="infoModel" />
 ## 3.0 Information Model
 
 ### Overview 
@@ -162,8 +162,8 @@ This section describes the concepts, relationships and constraints that specify 
 * Assessment
 * Assignable
 * Forum
+* Grading
 * Media
-* Outcome
 * Reading
 * Session
 * Tool Use
@@ -181,13 +181,13 @@ Actions specify the set of potential interactions within the metric profile.
 
 Conceptually, Caliper events in plain english are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.  
 
-<a name="caliperProfiles" />
+<a name="metricProfiles" />
 ## 3.1 Profiles
-The Caliper Information Model is comprised of a number of activity profiles, each of which models a particular learning or supporting activity.  Each profile provides a common/structured vocabularly / concepts and terms for describing events such as annotating a document, starting an assessment or grading an outcome.  Extending the model involves adding a new profile or enhancing an existing one.
+The Caliper Information Model is comprised of a number of activity profiles, each of which models a particular learning or supporting activity.  Each profile provides a common/structured vocabularly / concepts and terms for describing events such as annotating a document, starting an assessment or grading a submission.  Extending the model involves adding a new profile or enhancing an existing one.
 
 TODO: ADDITIONAL INTRO TEXT
 
-[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Outcome](#outcomeProfile), [Reading](#readingProfile), [Session](#sessionProfile)
+[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Grading](#gradingProfile), [Reading](#readingProfile), [Session](#sessionProfile)
 
 <a name="basicProfile" />
 ### Basic Profile
@@ -318,6 +318,25 @@ The online forum is a core capability of many learning management systems.  Foru
 | [MessageEvent](#messageEvent) | [Person](#person) P1 | [posted](#posted) | [Message](#message) M2 replyTo M1 | [dateTime](#dateTime) T5 |
 | [ThreadEvent](#threadEvent)| [Person](#person) P1 | [markedAsRead](#markedAsRead) | [Thread](#thread) Th1 isPartOf F1 | [dateTime](#dateTime) T6 |
 
+<a name="gradingProfile" />
+### Grading Profile
+The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  The object of a grading action is an [Attempt](#attempt) from which a [Result](#result) is generated.  A [Result](#result) can then be viewed.
+
+#### Supported Events
+* [OutcomeEvent](#outcomeEvent)
+  * actions: [graded](#graded)
+
+* [ViewEvent](#ViewEvent)
+  * actions: [viewed](#viewed)
+
+#### Example Sequence
+ Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
+ 
+| Event | actor | action | object | eventTime | generated |
+| -----  | ----- | ------ | ------ | ----------- | ---------- |
+|  [OutcomeEvent](#outcomeEvent) | [Person](#person) P1 | [graded](#graded) | [Attempt](#attempt) A1 | [dateTime](#dateTime) T1 | [Result](#result) R1 |
+| [ViewEvent](#viewEvent)| [Person](#person) P2 | [viewed](#viewed) | [Result](#result) R1 | [dateTime](#dateTime) T2 | &nbsp; |
+
 <a name="mediaProfile" />
 ### Media Profile
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  The profile is provisioned with a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject), and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject).  The [MediaLocation](#mediaLocation) entity provides an [index](#index) property . . .  [TODO]
@@ -349,25 +368,6 @@ The Caliper Media Profile models interactions between learners and rich content 
 
 #### TODO
 * Confirm that MediaLocation should be utilized as the object of the interaction rather than the target.
-
-<a name="outcomeProfile" />
-### Outcome Profile
-The Caliper Outcome Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  The object of a grading action is an [Attempt](#attempt) from which a [Result](#result) is generated.  A [Result](#result) can then be viewed.
-
-#### Supported Events
-* [OutcomeEvent](#outcomeEvent)
-  * actions: [graded](#graded)
-
-* [ViewEvent](#ViewEvent)
-  * actions: [viewed](#viewed)
-
-#### Example Sequence
- Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
- 
-| Event | actor | action | object | eventTime | generated |
-| -----  | ----- | ------ | ------ | ----------- | ---------- |
-|  [OutcomeEvent](#outcomeEvent) | [Person](#person) P1 | [graded](#graded) | [Attempt](#attempt) A1 | [dateTime](#dateTime) T1 | [Result](#result) R1 |
-| [ViewEvent](#viewEvent)| [Person](#person) P2 | [viewed](#viewed) | [Result](#result) R1 | [dateTime](#dateTime) T2 | &nbsp; |
 
 <a name="readingProfile" />
 ### Reading Profile
@@ -3119,7 +3119,7 @@ The following properties have been deprecated and will be removed in a future ve
 
 <a name="result" />
 ### Result
-A Caliper Response represents a graded outcome.
+A Caliper Result represents a grade applied to an assignment submission.
 
 #### Superclass 
 [Entity](#entity)
@@ -3549,7 +3549,6 @@ TODO Intro
 }
 ```
 
-
 <a name="vocabActions"/>   
 ### 4.4 Actions
 TODO DESCRIPTION
@@ -3718,13 +3717,13 @@ The status of a [member](#member) within an organization can be set to one of th
 | inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
 
-<a name="api"/>
-<a name="sensors"/>
+<a name="api" />
+<a name="sensors" />
 ## 5.0 Sensor API
 
 TODO: OVERVIEW
 
-<a name="transport"/>
+<a name="transport" />
 ## 6.0 Transport
 
 Caliper Sensors MUST at least be capable of communicating
@@ -3752,7 +3751,7 @@ the payload of the message has the `application/json` IANA media-type, and MAY
 indicate instead that the message has the `application\ld+json` IANA media-type.
 
 
-<a name="endpoints"/>
+<a name="endpoints" />
 ### 6.1 Envelope
 
 Every message sent by a Caliper Sensor MUST consist of a single Caliper
@@ -3802,7 +3801,7 @@ Entities. The Caliper Envelope MUST have these three properties:
 }
 ```
 
-<a name="endpoints"/>
+<a name="endpoints" />
 ### 6.2 Endpoint
 
 Caliper Endpoints MUST at least be capable of communicating with [Caliper Sensors](#sensors) by supporting conventional HTTP POST requests; the certification tests for Caliper Endpoints require the Endpoint to receive data from the certification service using this transport. Caliper Endpoints MAY use other methods to receive data from Sensors.
@@ -3831,7 +3830,7 @@ The Endpoint MAY respond to Sensor messages with other standard HTTP status code
 
 If the Endpoint implementer wants the Endpoint to communicate more detailed information about problem states when receiving messages, the Endpoint SHOULD use the standard method for reporting problem details described in [RFC 7807, Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807).
 
-<a name="contributors"/>
+<a name="contributors" />
 ## 7.0 Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
@@ -3849,7 +3848,7 @@ The following Caliper Working Group participants contributed to the writing of t
 #### Profiles
 | Profile | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
-| [AssessmentItem Profile](#assessmentItemProfile)  | 1.1 | 1.1 | [AssessmentItemEvent] moved to [AssessmentProfile](#assessmentProfile) rendering the AssessmentItem Profile redundant. |
+| [AssessmentItem Profile](#assessmentItemProfile)  | 1.1 | 1.1 | [AssessmentItemEvent](#assessmentItemEvent) moved to [AssessmentProfile](#assessmentProfile) rendering the AssessmentItem Profile redundant. |
 
 #### Events
 | Event | Deprecated | Removed | Notes |
@@ -3857,7 +3856,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | [ReadingEvent](#readingEvent)  | 1.1 | &nbsp; | &nbsp; |
 
 #### Entities
-| Event | Deprecated | Removed | Notes |
+| Entity | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
 | [EpubChapter](#epubChapter) | 1.1 | &nbsp; | Deprecated in favor of [Chapter](#chapter) |
 | [EpubPart](#epubPart) | 1.1 | &nbsp; | &nbsp; |
@@ -3868,22 +3867,23 @@ The following Caliper Working Group participants contributed to the writing of t
 #### Actions
 | Event | actions | Deprecated | Removed | Notes |
 | -----  | ------- | ------------ | --------- | ------ |
-| [AssignableEvent](#assignableEvent) | [abandoned](#abandoned), [reviewed](#reviewed), [hid](#hid),  [showed](#showed] | 1.1 | &nbsp; | &nbsp; |
+| [AnnotationEvent](#annotationEvent) | [attached](#attached), [classified](#classified),  [commented](#commented], [described](#described), [disliked](#disliked), [identified](#identified), [liked](#liked), [linked](#linked), [questioned](#questioned), [ranked](#ranked), [recommended](#recommended), [replied](#replied), [subscribed](#subscribed) | 1.1 | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [abandoned](#abandoned), [hid](#hid), [showed](#showed] | 1.1 | &nbsp; | &nbsp; |
 
 #### Data Properties
-| Event | Deprecated | Removed | Notes |
+| Property | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
 | [objectType](#objectType)  | 1.1 | &nbsp; | &nbsp; |
 
 <a name="reference" />
 ### References
-<a name="json-ld">
+<a name="json-ld" />
 __JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler, N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
 
-<a name="lti">
+<a name="lti" />
 __LTI__  TODO
 
-<a name="rfc2119">
+<a name="rfc2119" />
 __RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels". March 1997. URL: https://tools.ietf.org/html/rfc2119.
 
 TODO Add other RFC references.
