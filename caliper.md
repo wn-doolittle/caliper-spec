@@ -150,7 +150,7 @@ TODO
 
 structure, flow, pointers
 
-<a name="infoModel">
+<a name="infoModel" />
 ## 3.0 Information Model
 
 ### Overview 
@@ -181,7 +181,7 @@ Actions specify the set of potential interactions within the metric profile.
 
 Conceptually, Caliper events in plain english are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.  
 
-<a name="caliperProfiles" />
+<a name="profiles" />
 ## 3.1 Profiles
 The Caliper Information Model is comprised of a number of activity profiles, each of which models a particular learning or supporting activity.  Each profile provides a common/structured vocabularly / concepts and terms for describing events such as annotating a document, starting an assessment or grading an outcome.  Extending the model involves adding a new profile or enhancing an existing one.
 
@@ -3857,7 +3857,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | [ReadingEvent](#readingEvent)  | 1.1 | &nbsp; | &nbsp; |
 
 #### Entities
-| Event | Deprecated | Removed | Notes |
+| Entity | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
 | [EpubChapter](#epubChapter) | 1.1 | &nbsp; | Deprecated in favor of [Chapter](#chapter) |
 | [EpubPart](#epubPart) | 1.1 | &nbsp; | &nbsp; |
