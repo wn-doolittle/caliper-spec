@@ -2063,6 +2063,14 @@ AudioObject inherits all the properties and requirements defined for its supercl
 
 * `type`: the string value `AudioObject` MUST be specified.
 
+* `volumeMin`: an optional string value indicating the minimum volume level MAY be specified.
+
+* `volumeMax`: an optional string value indicating the maximum volume level MAY be specified.
+
+* `volumeLevel`: an optional string value indicating the current volume level MAY be specified.
+
+* `muted`: an optional boolean value indicating whether or not the AudioObject has been muted MAY be specified.
+
 #### Example
 ```json
 {
