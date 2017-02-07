@@ -9,7 +9,7 @@
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },

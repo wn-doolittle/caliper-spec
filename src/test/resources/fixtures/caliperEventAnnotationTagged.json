@@ -15,7 +15,7 @@
   "generated": {
     "id": "https://example.edu/users/554433/etexts/201/tags/3",
     "type": "TagAnnotation",
-    "actor": {
+    "annotator": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },

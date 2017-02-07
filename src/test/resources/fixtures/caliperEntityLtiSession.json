@@ -2,7 +2,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
   "type": "LtiSession",
-  "actor": {
+  "user": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },

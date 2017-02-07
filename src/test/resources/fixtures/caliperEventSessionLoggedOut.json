@@ -16,7 +16,7 @@
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "actor": {
+    "user": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },

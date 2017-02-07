@@ -15,7 +15,7 @@
   "generated": {
     "id": "https://example.edu/users/554433/etexts/201/shares/1",
     "type": "SharedAnnotation",
-    "actor": {
+    "annotator": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
