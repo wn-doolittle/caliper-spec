@@ -74,7 +74,9 @@
 
     "actor": "caliper:actor",
     "annotated": "caliper:annotated",
+    "annotator": "caliper:annotator",
     "assignable": "caliper:assignable",
+    "assignee": "caliper:assignee",
     "attachments": {"@id": "caliper:attachments", "@container": "@list"},
     "attempt": "caliper:attempt",
     "action": {"@id": "caliper:action", "@type": "@vocab"},
@@ -103,6 +105,7 @@
     "status": {"@id": "caliper:status", "@type": "@vocab"},
     "tags": {"@id": "caliper:tags", "@container": "@list"},
     "target": "caliper:target",
+    "user": "caliper:user",
     "values": {"@id": "caliper:values", "@container": "@list"},
     "withAgents": {"@id": "caliper:withAgents", "@container": "@list"},
 
