@@ -477,7 +477,7 @@ For an Event to be minimally compliant it MUST specify an [actor](#actor), [acti
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "type": "Event",
-  "user": {
+  "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
