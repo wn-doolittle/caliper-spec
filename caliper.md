@@ -530,7 +530,7 @@ AnnotationEvent inherits all properties defined by its superclass [Event](#event
   "generated": {
     "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
     "type": "BookmarkAnnotation",
-    "actor": {
+    "annotator": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -625,7 +625,7 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -681,7 +681,7 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -788,7 +788,7 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -852,7 +852,7 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -1494,7 +1494,7 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "actor": {
+    "user": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -1524,7 +1524,7 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "actor": {
+    "user": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -1550,7 +1550,7 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
   "object": {
     "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
     "type": "Session",
-    "actor": {
+    "user": {
       "id": "https://example.edu/users/112233",
       "type": "Person"
     },
@@ -1854,7 +1854,7 @@ Annotation inherits all properties defined by its superclass [Entity](#entity). 
 
 * `type`: the string value `Annotation` MUST be specified.
 
-* `actor`: the [Person](#person) who created the Annotation SHOULD be specified.
+* `annotator`: the [Agent](#agent), typically a [Person](#person) who created the Annotation SHOULD be specified.
 
 * `annotated`: the [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for more precise type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the annotated resource.
 
@@ -1873,10 +1873,10 @@ Annotation inherits all properties defined by its superclass [Entity](#entity). 
 A Caliper Assessment represents an assessment instrument such as a test or quiz.
 
 #### Superclass
-[DigitalResourceCollection](#digitalResourceCollection), [AssignableDigitalResourceCollection](#assignableDigitalResourceCollection)
+[DigitalResourceCollection](#digitalResourceCollection), [AssignableDigitalResource](#assignableDigitalResource)
 
 #### Properties
-Assessment inherits all the properties and requirements defined by its superclasses [DigitalResourceCollection](#digitalResourceCollection) and [AssignableDigitalResourceCollection](#assignableDigitalResourceCollection).  Additional requirements are described below:
+Assessment inherits all the properties and requirements defined by its superclasses [DigitalResourceCollection](#digitalResourceCollection) and [AssignableDigitalResource](#assignableDigitalResource).  Additional requirements are described below:
 
 * `type`: the string value `Assessment` MUST be specified.
 
@@ -2015,7 +2015,9 @@ Attempt inherits all the properties and requirements defined for its superclass 
 
 * `type`: the string value `Attempt` MUST be specified.
 
-* `actor`: the [Person](#person) who initiated the Attempt SHOULD be specified.
+* ~~`actor`: the [Person](#person) who initiated the Attempt SHOULD be specified.~~ Deprecated.
+
+* `assignee`: the [Agent](#agent), typically a [Person](#person) who initiated the Attempt SHOULD be specified.
 
 * `assignable`: the [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for more precise type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the annotated resource.
 
@@ -2039,7 +2041,7 @@ Attempt inherits all the properties and requirements defined for its superclass 
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "type": "Assessment"
   },
-  "actor": {
+  "assignee": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -2104,7 +2106,7 @@ BookmarkAnnotation inherits all the properties and requirements defined for its 
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
   "type": "BookmarkAnnotation",
-  "actor": {
+  "assignee": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -2441,7 +2443,7 @@ FillinBlankResponse inherits all the properties and requirements defined for its
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -2605,7 +2607,7 @@ HighlightAnnotation inherits all the properties and requirements defined for its
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/highlights/20",
   "type": "HighlightAnnotation",
-  "actor": {
+  "assignee": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -2707,7 +2709,7 @@ LtiSession inherits all the properties and requirements defined for its supercla
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
   "type": "LtiSession",
-  "actor": {
+  "user": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -2925,7 +2927,7 @@ MultipleChoiceResponse inherits all the properties and requirements defined for 
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -2971,7 +2973,7 @@ MultipleResponseResponse inherits all the properties and requirements defined fo
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -3164,7 +3166,7 @@ Result inherits all the properties and requirements defined for its superclass [
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -3214,7 +3216,7 @@ SelectTextResponse inherits all the properties and requirements defined for its 
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
@@ -3249,7 +3251,9 @@ Session inherits all the properties and requirements defined for [Entity](#entit
 
 * `type`: the string value `Session` MUST be specified.
 
-* `actor`: the [Person](#person) who initiated the Session SHOULD be specified.
+* ~~`actor`: the [Person](#person) who initiated the Session SHOULD be specified.~~  Deprecated.
+
+* `user`: the [Agent](#agent), typically a [Person](#person), who initiated the Session SHOULD be specified.
 
 * `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Session was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
 
@@ -3266,7 +3270,7 @@ Session inherits all the properties and requirements defined for [Entity](#entit
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
   "type": "Session",
-  "actor": {
+  "user": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -3294,7 +3298,7 @@ SharedAnnotation inherits all the properties and requirements defined for its su
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/shares/1",
   "type": "SharedAnnotation",
-  "actor": {
+  "assignee": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -3362,7 +3366,7 @@ TagAnnotation inherits all the properties and requirements defined for its super
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/tags/3",
   "type": "TagAnnotation",
-  "actor": {
+  "assignee": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -3459,7 +3463,7 @@ TrueFalseResponse inherits all the properties and requirements defined for [Resp
   "attempt": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
     "type": "Attempt",
-    "actor": {
+    "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
