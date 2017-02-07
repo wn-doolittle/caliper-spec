@@ -2,7 +2,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/shares/1",
   "type": "SharedAnnotation",
-  "actor": {
+  "annotator": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
