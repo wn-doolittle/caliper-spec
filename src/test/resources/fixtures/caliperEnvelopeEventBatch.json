@@ -72,7 +72,7 @@
       "generated": {
         "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
         "type": "BookmarkAnnotation",
-        "actor": {
+        "annotator": {
           "id": "https://example.edu/users/554433",
           "type": "Person"
         },
