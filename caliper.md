@@ -445,8 +445,6 @@ For an Event to be minimally compliant it MUST specify an [actor](#actor), [acti
 
 * `actor`: the [Agent](#agent) who initiated or is the subject of this Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication] MUST be specified.
 
-* `user`: the [Agent](#agent) who initiated or is the subject of this Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication] MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to action terms defined in this specification (see [actions](#actions) below).
 
 * `object`: the [Entity](#entity) that comprises the object of the Event MUST be specified.
