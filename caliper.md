@@ -198,13 +198,13 @@ For example, the Basic Profile could be used to describe an instructor or a lear
 
 #### Requirements
 * A generic Caliper [Event](#event) MUST be specified.
-* The `actor`, `action`, `object`, `eventTime` and `uuid` properties of the [Event](#event) MUST be specified. All other [Event](#event) properties are considered optional. 
+* The [Event](#event) `actor`, `action`, `object`, `eventTime` and `uuid` properties MUST be specified. All other [Event](#event) properties are considered optional. 
 * The `actor` MUST be represented as a generic Caliper [Agent](#agent) or one of its subclasses.
-* The choice of `action` or predicate specified is limited solely to those [actions](#actions) described in this specification and no other.
+* The choice of `action` or predicate is limited solely to those [actions](#actions) described in this specification and no other.
 * The `object` MUST be represented as a generic Caliper [Entity](#entity) or one of its subclasses.
-* The `eventTime` is a date and time value expressed with millisecond precision that describes when the [Event](#event) occurred.  The value MUST be expressed as an ISO-8601 formatted date/time string.
+* The `eventTime` value MUST be formatted as an ISO-8601 date/time string expressed with millisecond precision.
 * The `uuid` string value MUST conform to [RFC 4122](#rfc4122).
-* When representing the [Event](#event) as JSON-LD, a `@context` key must be included that references the external IMS Global Caliper context [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* When representing the [Event](#event) as JSON-LD, a `@context` key must be included with a value that references the external IMS Global Caliper context [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
 #### Example
 ```json
@@ -431,19 +431,38 @@ The Caliper Session Profile models activities associated with a user session est
 * Discuss [LtiSession](#ltiSession)
 
 <a name="toolUseProfile" />
-### Tool Use Profile
-The Tool Use Profile models basic user-interaction with a tool; when a [Person](#person) uses a [SoftwareApplication](#softwareApplication) in a manner that the creator/publisher of the application determines to be its "intended use for learning", the application can send a [ToolUseEvent](#toolUseEvent) to indicate this usage.
 
-#### Supported Events
-* [ToolUseEvent](#toolUseEvent)
-  * actions: [used](#used)
-  
-#### Example Sequence
- Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
- 
-| Event | actor | action | object | eventTime |
-| -----  | ----- | ------ | ------ | ----------- |
-| [ToolUseEvent](#toolUseEvent) | [Person](#person) P1 | [used](#used) | [SoftwareApplication](#softwareApplication) S1 | [dateTime](#dateTime) T1 |
+### Tool Use Profile
+The Tool Use Profile models an intended interaction between a user and a tool.  When a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application's creator/publisher determines to be its "intended use for learning", the application can send a [ToolUseEvent](#toolUseEvent) to indicate such usage.
+
+#### Requirements
+* A Caliper [ToolUseEvent](#toolUseEvent) MUST be specified.
+* The [ToolUseEvent](#toolUseEvent) `actor`, `action`, `object`, `eventTime` and `uuid` properties MUST be specified. All other [ToolUseEvent](#toolUseEvent) properties are considered optional. 
+* The `actor` MUST be represented as a generic Caliper [Agent](#agent) or one of its subclasses.
+* The choice of `action` or predicate is limited to the set of actions supported by the [ToolUseEvent](#toolUseEvent).
+* The `object` MUST be represented as a generic Caliper [Entity](#entity) or one of its subclasses.
+* The `eventTime` value MUST be formatted as an ISO-8601 date/time string expressed with millisecond precision.
+* The `uuid` string value MUST conform to [RFC 4122](#rfc4122).
+* When representing the [ToolUseEvent](#toolUseEvent) as JSON-LD, a `@context` key must be included with a value that references the external IMS Global Caliper context [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+
+#### Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "type": "ToolUseEvent",
+    "actor": {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+    },
+    "action": "Used",
+    "object": {
+        "id": "https://example.edu",
+        "type": "SoftwareApplication"
+    },
+    "eventTime": "2016-11-15T10:15:00.000Z",
+    "uuid": "7e10e4f3-a0d8-4430-95bd-783ffae4d916"
+}
+```
 
 <a name="vocab" />
 ### 4.0 Vocabulary
