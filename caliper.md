@@ -196,6 +196,11 @@ The Caliper Basic Profile models a minimally compliant Caliper [Event](#event) c
 
 For example, the Basic Profile could be used to describe an instructor or a learner creating, modifying and/or deleting a [DigitalResource](#digitalResource).
 
+#### Supported Events and Actions
+| Event           | Actions                                   |
+| --------------- | ------------------------------------------|
+| [Event](#event) | All Caliper [actions](#actions) supported |
+
 #### Requirements
 * A generic Caliper [Event](#event) MUST be specified.
 * The [Event](#event) `actor`, `action`, `object`, `eventTime` and `uuid` properties MUST be specified. All other [Event](#event) properties are considered optional. 
@@ -412,34 +417,64 @@ The Caliper Reading Profile models activities associated with reading textual co
 | [ViewEvent](#viewEvent) | [Person](#person) P1 | [viewed](#viewed) | [Chapter](#digitalResource) C1 | [dateTime](#dateTime) T2 | [Document](#document) D1 |
 
 <a name="sessionProfile" />
+
 ### Session Profile
-The Caliper Session Profile models activities associated with a user session established by a [Person](#person), interacting with a [SoftwareApplication](#softwareApplication).  A single [SessionEvent](#sessionEvent) is modeled along with a small set of supported actions.
+The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
-#### Supported Events
-* [SessionEvent](#sessionEvent) 
-  * actions: [loggedIn](#loggedIn), [loggedOut](#loggedIn), [timedOut](#timedOut)
+#### Supported Events and Actions
+| Event | Actions |
+| ----- | ------- |
+| [SessionEvent](#sessionEvent) | [loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut) |
 
-#### Example Sequence
- Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
- 
-| Event | actor | action | object | eventTime | session |
-| -----  | ----- | ------ | ------ | ----------- | ---------- |
-| [SessionEvent](#sessionEvent) | [Person](#person) P1 | [loggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) S1 | [dateTime](#dateTime) T1 |  [Session](#session) |
-| [SessionEvent](#sessionEvent) | [Person](#person) P1 | [loggedOut](#loggedIn) | [SoftwareApplication](#softwareApplication) S1 | [dateTime](#dateTime) T2 | [Session](#session) |
+#### Requirements
+* A Caliper [SessionEvent](#sessionEvent) MUST be specified.
+* The [SessionEvent](#sessionEvent) `actor`, `action`, `object`, `eventTime` and `uuid` identifier MUST be specified. The relevant `session` object SHOULD also be specified.  All other [SessionEvent](#sessionEvent) properties are considered optional. 
+* The choice of `actor` depends on the action initiated.  For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [timedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
+* The choice of `action` is limited to the set of actions supported by the [SessionEvent](#sessionEvent).
+* The `object` MUST be represented as a generic Caliper [Entity](#entity) or one of its subclasses.
+* The `eventTime` value MUST be formatted as an ISO-8601 date/time string expressed with millisecond precision.
+* If referenced, the `session` MUST be represented as a Caliper [Session](#session).
+* The `uuid` string value MUST conform to [RFC 4122](#rfc4122).
+* When representing the [SessionEvent](#sessionEvent) as JSON-LD, a `@context` key must be included with a value that references the external IMS Global Caliper context [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
-#### TODO
-* Discuss [LtiSession](#ltiSession)
+#### Example
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "type": "SessionEvent",
+    "actor": {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+    },
+    "action": "LoggedIn",
+    "object": {
+        "id": "https://example.edu",
+        "type": "SoftwareApplication"
+    },
+    "eventTime": "2016-11-15T10:15:00.000Z",
+    "session": {
+        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+        "type": "Session"
+    },
+    "uuid": "fcd495d0-3740-4298-9bec-1154571dc211"
+}
+```
 
 <a name="toolUseProfile" />
 
 ### Tool Use Profile
-The Tool Use Profile models an intended interaction between a user and a tool.  When a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application's creator/publisher determines to be its "intended use for learning", the application can send a [ToolUseEvent](#toolUseEvent) to indicate such usage.
+The Caliper Tool Use Profile models an intended interaction between a user and a tool.  When a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application's creator/publisher determines to be its "intended use for learning", the application can send a [ToolUseEvent](#toolUseEvent) to indicate such usage.
+
+#### Supported Events and Actions
+| Event | Actions |
+| ----- | ------- |
+| [ToolUseEvent](#toolUseEvent) | [Used](#used) |
 
 #### Requirements
 * A Caliper [ToolUseEvent](#toolUseEvent) MUST be specified.
 * The [ToolUseEvent](#toolUseEvent) `actor`, `action`, `object`, `eventTime` and `uuid` properties MUST be specified. All other [ToolUseEvent](#toolUseEvent) properties are considered optional. 
 * The `actor` MUST be represented as a generic Caliper [Agent](#agent) or one of its subclasses.
-* The choice of `action` or predicate is limited to the set of actions supported by the [ToolUseEvent](#toolUseEvent).
+* The choice of `action` is limited to the set of actions supported by the [ToolUseEvent](#toolUseEvent).
 * The `object` MUST be represented as a generic Caliper [Entity](#entity) or one of its subclasses.
 * The `eventTime` value MUST be formatted as an ISO-8601 date/time string expressed with millisecond precision.
 * The `uuid` string value MUST conform to [RFC 4122](#rfc4122).
