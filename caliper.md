@@ -187,26 +187,46 @@ The Caliper Information Model is comprised of a number of activity profiles, eac
 
 TODO: ADDITIONAL INTRO TEXT
 
-[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Grading](#gradingProfile), [Reading](#readingProfile), [Session](#sessionProfile)
+[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Grading](#gradingProfile), [Reading](#readingProfile), [Session](#sessionProfile), [ToolUse](#toolUseProfile)
 
 <a name="basicProfile" />
+
 ### Basic Profile
-The Caliper Basic Profile models a minimally compliant [Event](#event) composed of an [actor](#actor), [action](#action), [object](#object) and [eventTime](#eventTime).  Any Caliper [action](#action) can be employed as the predicate.  All other [Event](#event) properties are considered optional. 
+The Caliper Basic Profile models a minimally compliant Caliper [Event](#event) comprising an [actor](#actor), [action](#action), [object](#object), [eventTime](#eventTime) and [UUID](#uuid) identifier.  The profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.
 
-#### Supported Events
-[Event](#Event)
+For example, the Basic Profile could be used to describe an instructor or a learner creating, modifying and/or deleting a [DigitalResource](#digitalResource).
 
-#### Supported Actions
-Any action included in the Caliper [actions](#actions) vocabulary can be employed to describe an actor's interaction with an object. 
+#### Requirements
+* A generic Caliper [Event](#event) MUST be specified.
+* The `actor`, `action`, `object`, `eventTime` and `uuid` properties of the [Event](#event) MUST be specified. All other [Event](#event) properties are considered optional. 
+* The `actor` MUST be represented as a generic Caliper [Agent](#agent) or one of its subclasses.
+* The choice of `action` or predicate specified is limited solely to those [actions](#actions) described in this specification and no other.
+* The `object` MUST be represented as a generic Caliper [Entity](#entity) or one of its subclasses.
+* The `eventTime` is a date and time value expressed with millisecond precision that describes when the [Event](#event) occurred.  The value MUST be expressed as an ISO-8601 formatted date/time string.
+* The `uuid` string value MUST conform to [RFC 4122](#rfc4122).
+* When representing the [Event](#event) as JSON-LD, a `@context` key must be included that references the external IMS Global Caliper context [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
-#### Example Sequence
- Note: *setting optional [Event](#event) properties that provide additional contextual information is assumed in example sequence*.
- 
-| Event | actor | action | object | eventTime |
-| -----  | ----- | ------ | ------ | ----------- |
-| [Event](#assignableEvent) | [Person](#person) P1 | [created](#created) | [Group](#group) G1 | [dateTime](#dateTime) T1 |
-| [Event](#assignableEvent) | [Person](#person) P1 | [modified](#created) | [Group](#group) G1 | [dateTime](#dateTime) T2 |
-| [Event](#assignableEvent) | [Person](#person) P1 | [deleted](#deleted) | [Group](#group) G1 | [dateTime](#dateTime) T3 |
+#### Example
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "type": "Event",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Created",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "type": "Document",
+    "name": "Course Syllabus",
+    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "version": "1"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "uuid": "3a648e68-f00d-4c08-aa59-8738e1884f2c"
+}
+```
 
 <a name="annotationProfile" />
 ### Annotation Profile
