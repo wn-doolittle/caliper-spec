@@ -3808,7 +3808,7 @@ natural language challenges
 past-tense form utilized
 action can involve the change of a particular characteristic (e.g., resolution, size, speed, volume)
 
-| Label | IRI | WordNet Gloss |
+| Term | IRI | WordNet Gloss |
 | ------ | --- | ------------- |
 | <a name="abandoned" />Abandoned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned](http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned) | [forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v) |
 | <a name="activated" />Activated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Activated](http://purl.imsglobal.org/vocab/caliper/v1/action#Activated) | [make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v) |
