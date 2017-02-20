@@ -179,35 +179,122 @@ Entities provide information about the objects, actors or resources that partici
 
 Actions specify the set of potential interactions within the metric profile.
 
-Conceptually, Caliper events in plain english are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.  
+Conceptually, Caliper events in plain English are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.
+
+
+
+
+
+
+
+<a name="vocabEvents" />
+### X.x Events
+
+A Caliper [Event](#event) is a generic class that describes the interaction between an [actor](#actor) and an [object](#object) at a specific moment in time and within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) described below rather than instantiating instances of the Event class itself.
+
+For an Event to be minimally compliant it MUST specify an [actor](#actor), [action](#action), [object](#object), [eventTime](#eventTime) and a `uuid` identifier.
+
+#### Properties
+* `uuid`: a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated.
+
+* `type`: the string value term `Event` MUST be assigned.  If a subclass of `Event` is created, set the type to the string term appropriate for the subclass utilized, e.g., `NavigationEvent`.
+
+* `actor`: the [Agent](#agent) who initiated or is the subject of this Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication] MUST be specified.
+
+* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to action terms defined in this specification (see [actions](#actions) below).
+
+* `object`: the [Entity](#entity) that comprises the object of the Event MUST be specified.
+
+* `eventTime`: a date and time value expressed with millisecond precision that describes when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
+
+* `target`: TODO
+
+* `generated`: TODO
+
+* `referrer`: an [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.
+
+* `edApp`: the [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.
+
+* `group`: the [Organization](#organization) that represents the group context MAY be specified.
+
+* `membership`: TODO . . . the [Membership](#membership). . . TODO . . . MAY be specified.
+
+* `session`: the current user [Session](#session) MAY be specified. 
+
+* `federatedSession`: TODO . . . [LtiSession](#ltiSession).  If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session MAY be referenced.
+ 
+* `extensions`: TODO . . . an optional ordered array of object properties not defined by the model MAY be specified for a more concise representation of the Event.
+
+When representing the [Event](#event) as JSON-LD, a `@context` key MUST be specified with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+
+#### Example
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "type": "Event",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "type": "Document",
+    "name": "Course Syllabus",
+    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "version": "1"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z"
+}
+```
+
+#### Subclasses
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 <a name="metricProfiles" />
-## 3.1 Profiles
-The Caliper Information Model is comprised of a number of activity profiles, each of which models a particular learning or supporting activity.  Each profile provides a common/structured vocabularly / concepts and terms for describing events such as annotating a document, starting an assessment or grading a submission.  Extending the model involves adding a new profile or enhancing an existing one.
 
-Implementors are free to implement as many or as few Caliper profiles as are necessary to adequately model your learning domain.
+## 3.1 Metric Profiles
+The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
+    
+Think of each metric profile as a stand-alone, logical container or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  The [Forum Profile](#forumProfile), for example, is composed of the [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  In the case of the [Forum Profile](#forumProfile) the following sequence of events involving a learner can be represented:
 
-TODO: ADDITIONAL INTRO TEXT
+* navigating to a [Forum](#forum)
+* subscribing to a [Forum](#forum)
+* navigating to a [Thread](#thread) or topic
+* viewing a [Message](#message) in the thread
+* posting a [Message](#message) reply
+* marking the viewed [Message](#message) as read
+     
+Extending Caliper's information model involves designing a new metric profile or enhancing an existing one.  Implementors are free to implement only those Caliper metric profiles as are necessary to model a target learning domain.  A video platform provider may decide that only the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile) and [Session Profile](#sessionProfile) are relevant to it's needs while developers instrumenting an assessment engine would most likely implement the [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile) and [Session Profile](#sessionProfile).
 
-[Basic](#basicProfile), [Annotation](#annotationProfile), [Assessment](#annotationProfile), [Assignable](#assignableProfile), [Forum](#forumProfile), [Media](#mediaProfile), [Grading](#gradingProfile), [Reading](#readingProfile), [Session](#sessionProfile), [ToolUse](#toolUseProfile)
+The following metric profiles are currently available and are summarized individually below:
+
+[Basic Profile](#basicProfile), [Annotation Profile](#annotationProfile), [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Forum Profile](#forumProfile), [Media Profile](#mediaProfile), [Grading Profile](#gradingProfile), [Reading Profile](#readingProfile), [Session Profile](#sessionProfile), [ToolUse Profile](#toolUseProfile)
 
 <a name="basicProfile" />
 
 ### Basic Profile
-The Caliper Basic Profile models a minimally compliant Caliper [Event](#event) comprising an [actor](#actor), [action](#action), [object](#object), [eventTime](#eventTime) and [UUID](#uuid) identifier.  The profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.
+The Caliper Basic Profile models a minimally compliant Caliper [Event](#event) comprising an [actor](#actor), [action](#action), [object](#object), [eventTime](#eventTime) and [UUID](#uuid) identifier.  The profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled explicitly by Caliper.
 
-For example, the Basic Profile could be used to describe an instructor or a learner creating, modifying and/or deleting a [DigitalResource](#digitalResource).
+#### Supported events
+[Event](#event)
 
-#### Supported Events and Actions
-| Events          | Actions                                   |
-| --------------- | ------------------------------------------|
-| [Event](#event) | All Caliper [actions](#actions) supported |
+#### Supported actors
+[Agent](#agent)
+
+#### Supported actions
+All Caliper [actions](#actions) are supported.
+
+### Supported objects
+[Entity](#entity)
 
 #### Requirements
-* Create and send a generic Caliper [Event](#event) to a target endpoint.
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  See the [Event](#event) model for complete requirements.
-* The specified `action` value MUST originate from the set of [actions](#actions) described in this specification and no other.
-* When representing the [Event](#event) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* Create and send a generic Caliper [Event](#event) to a target endpoint.  At least one Caliper described action MUST be implemented.
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST represent the `actor`.
+* A generic [Entity](#entity) or one of its subclasses MUST represent the `object` of the interaction.  
+* The `action` value range is limited to the set of [actions](#actions) described in this specification and no other.
+* When navigating to an [Entity](#entity) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Example
 ```json
@@ -234,21 +321,35 @@ For example, the Basic Profile could be used to describe an instructor or a lear
 <a name="annotationProfile" />
 
 ### Annotation Profile
-The Caliper Annotation Profile models activities related to the annotation of digital content. Creating a bookmark, highlighting selected text, sharing a resource, tagging a document and viewing an annotation are described.
+The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document and viewing an annotation are modeled.  The generated [Annotation](#annotation) should also be described and is subclassed for greater type specificity.
 
-#### Supported Events and Actions
-| Events                              | Actions                                                  |
-| ----------------------------------- | -------------------------------------------------------- |
-| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged) |
-| [ViewEvent](#viewEvent)             | [Viewed](#viewed) |
+#### Supported events
+[AnnotationEvent](#annotationEvent), [ViewEvent](#viewEvent)
 
+#### Supported actors
+[Person](#person)
+
+#### Supported actions
+| Event | Required | Optional |
+| ----- | -------- | -------- |
+| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged) |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
+
+#### Supported objects
+[DigitalResource](#digitalResource), [Annotation](#annotation)
+
+#### Generated entities
+[Annotation](#annotation) subclassed as [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation) and [TaggedAnnotation](#taggedAnnotation)
 
 #### Requirements
-* Create and send the following Caliper events to a target endpoint: [AnnotationEvent](#annotationEvent) and [ViewEvent](#viewEvent).
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* Although the [AnnotationEvent](#annotationEvent) `generated` property is optional, the generated [Annotation](#annotation) SHOULD be specified.
-* When representing an [AnnotationEvent](#annotationEvent) or [ViewEvent](#viewEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* Create and send an [AnnotationEvent](#annotationEvent) to a target endpoint.  The required [bookmarked](#bookmarked) action MUST be implemented.  All other supported events are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of an [AnnotationEvent](#annotationEvent).
+* For an [AnnotationEvent](#annotationEvent) the `generated` [Annotation](#annotation) SHOULD be specified.
+* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [Annotation](#annotation) or one of its subclasses.
 
+#### Example
 ```json
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -294,21 +395,36 @@ The Caliper Annotation Profile models activities related to the annotation of di
 ### Assessment Profile
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Each [Assessment](#assessment) or individual [AssessmentItem](#assessmentItem) [Attempt](#attempt) initiated by a learner can be represented.  Five [Response](#response) types are also provided for capturing individual item responses.
 
-#### Supported Events and Actions
-| Events                              | Actions                                                  |
-| ----------------------------------- | -------------------------------------------------------- |
-| [AssessmentEvent](#assessmentEvent) | [Started](#started), [Paused](#paused), [Restarted](#restarted), [Submitted](#submitted) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started), [Skipped](#skipped), [Completed](#completed) |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) |
-| [ViewEvent](#viewEvent)             | [Viewed](#viewed) |
+#### Supported events
+[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
+
+#### Supported actors
+[Person](#person)
+
+#### Supported actions
+| Events | Required | Optional |
+| ------ | -------- | -------- |
+| [AssessmentEvent](#assessmentEvent) | [Started](#started), [Submitted](#submitted) | [Paused](#paused), [Restarted](#restarted) |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started), [Completed](#completed) | [Skipped](#skipped) |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
+
+#### Supported objects
+[Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) and its subclasses
+
+#### Generated entities
+[Attempt](#attempt), [Response](#response) subclassed as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Requirements
-* Create and send the following Caliper events to a target endpoint: [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted] actions the learner's [Attempt](#attempt) MUST be specified as the `object`; otherwise the [Attempt](#attempt) SHOULD be specified as the 'generated' value.
-* For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) actions, the learner's [Response](#response) MAY be specified as the 'generated' value.
-* Although the [NavigationEvent](#navigationEvent) `referrer` property is optional, a [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the referring context SHOULD be specified when navigating to an [AssignableDigitalResource](#assignableDigitalResource).
-* When representing an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* Create and send an [AssessmentEvent](#assessmentEvent) to a target endpoint.  The required [Started](#started) and [Submitted](#submitted) actions MUST be implemented.  All other supported events are considered optional. 
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.
+* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
+* For an [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.
+* For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
+* When navigating to an [Assessment](#assessment) or [AssessmentItem](#assessmentItem) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subclasses.
 
 #### Example
 ```json
@@ -347,22 +463,36 @@ The Caliper Assessment Profile models assessment-related activities including in
 <a name="assignableProfile" />
 
 ### Assignable Profile
-The Assignable Profile provides coverage for all activity types that can be assigned to a learner for completion according to specific criteria.
+The Assignable Profile models activities associated with digital content assigned to a learner for completion according to specific criteria.  An [AssignableDigitalResource](#assignableDigitalResource) is provided for representing assigned resources and an individual [Attempt](#attempt) initiated by a learner can also be represented. 
 
-TODO: Do we need to add a submitted action that aligns with the AssessmentEvent submitted action.
+#### Supported events
+[AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Supported Events and Actions
-| Events                              | Actions                                                  |
-| ----------------------------------- | -------------------------------------------------------- |
-| [AssignableEvent](#assignableEvent) | [Activated](#activated), [Deactivated](#deactivated), [started](#started), [completed](#completed), [Reviewed](#reviewed) |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) |
-| [ViewEvent](#viewEvent)             | [Viewed](#viewed) |
+#### Supported actors
+[Person](#person)
+
+#### Supported actions
+| Event | Required | Optional |
+| -------| ------- | -------- |
+| [AssignableEvent](#assignableEvent) | [Started](#started), [Completed](#completed) | [Activated](#activated), [Deactivated](#deactivated), [Reviewed](#reviewed) |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
+
+**TODO: Do we need to add a submitted action or replace "completed" with "submitted" so that aligns with the AssessmentEvent submitted action?**
+
+#### Supported objects
+[AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt)
+
+#### Generated entities
+[Attempt](#attempt)
 
 #### Requirements
-* Create and send the following Caliper events to a target endpoint: [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* Although the [NavigationEvent](#navigationEvent) `referrer` property is optional, a [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the referring context SHOULD be specified when navigating to an [AssignableDigitalResource](#assignableDigitalResource).
-* When representing an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* Create and send an [AssignableEvent](#assignableEvent) to a target endpoint. The required [Started](#started) and [Completed](#completed) actions MUST be implemented.  All other supported events are considered optional.  
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.
+* When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subclasses, or [Attempt](#attempt).
 
 ```json
 {
@@ -394,21 +524,33 @@ TODO: Do we need to add a submitted action that aligns with the AssessmentEvent 
 ### Forum Profile
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
-#### Supported Events and Actions
-| Events                              | Actions                                                  |
-| ----------------------------------- | -------------------------------------------------------- |
-| [ForumEvent](#forumEvent)           | [Subscribed](#subscribed), [Unsubscribed](#unsubscribed) |
-| [MessageEvent](#messageEvent)       | [Posted](#posted), [MarkedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) |
-| [ThreadEvent](#threadEvent)         | [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead) |
-| [ViewEvent](#viewEvent)             | [Viewed](#viewed) |
+#### Supported events
+[ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+
+#### Supported actors
+[Person](#person)
+
+#### Supported actions
+| Events | Required | Optional |
+| -------| -------- | -------- |
+| [ForumEvent](#forumEvent) | [Subscribed](#subscribed), [Unsubscribed](#unsubscribed) | &nbsp; |
+| [MessageEvent](#messageEvent) | [Posted](#posted) | [MarkedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
+| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead) | &nbsp; |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
+
+#### Supported objects
+[Forum](#forum), [Message](#message), [Thread](#thread)
 
 #### Requirements
-* Create and send the following Caliper events to a target endpoint: [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* Although the [NavigationEvent](#navigationEvent) `referrer` property is optional, a [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the referring context SHOULD be specified when navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message).
-* When representing a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
-  
+* Create and send a [MessageEvent](#messageEvent) to a target endpoint. The required [Posted](#posted) action MUST be implemented.  All other supported events are considered optional. 
+* Certain [Event](#event) properties are required and MUST be specified when creating a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* When a [MessageEvent](#messageEvent) represents a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
+* Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by judicious use of the inherited [DigitalResource](#digitalResource) `isPartOf` property.
+* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).
+
 #### Example
 ```json
 {
@@ -442,20 +584,34 @@ The Caliper Forum Profile models learners and others participating in online for
 <a name="gradingProfile" />
 
 ### Grading Profile
-The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  A learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) comprises the object of the grading activity from which a [Result](#result) can be generated. The Grading Profile replaces the Caliper 1.0 Outcomes Profile.
+The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. The Grading Profile replaces the Caliper 1.0 Outcomes Profile.
 
-#### Supported Events and Actions
-| Events                        | Actions           |
-| ----------------------------- | ----------------- |
-| [OutcomeEvent](#outcomeEvent) | [Graded](#graded) |
+#### Supported events
+[OutcomeEvent](#outcomeEvent)
 
-TODO: ADD ViewEvent?
+#### Supported actors
+[Agent](#agent)
+
+#### Supported actions
+| Event | Required | Optional |
+| ----- | -------- | -------- |
+| [OutcomeEvent](#outcomeEvent) | [Graded](#graded) | &nbsp; |
+
+**TODO: ADD ViewEvent, as in view the Result?**
+
+#### Supported objects
+[Attempt](#attempt)
+
+#### Generated entities
+[Result](#result)
 
 #### Requirements
-* Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* Although the [OutcomeEvent](#outcomeEvent) `generated` property is optional, the graded [Result](#result) SHOULD be specified.
-* When representing the [OutcomeEvent](#outcomeEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  The required [Graded](#graded) action MUST be implemented.
+* Certain [Event](#event) properties are required and MUST be specified when creating an [OutcomeEvent](#outcomeEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST represent the `actor`.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* For a [Graded](#graded) action the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction.
+* The `generated` [Result](#result) SHOULD also be specified.
 
 #### Example
 ```json
@@ -507,22 +663,34 @@ TODO: ADD ViewEvent?
 <a name="mediaProfile" />
 
 ### Media Profile
-The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject), and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject).
+The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
+#### Supported events
+[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
+ 
+#### Supported actors
+[Person](#person)
 
-#### Supported Events and Actions
-| Events                              | Actions                                                    |
-| ----------------------------------- | ---------------------------------------------------------- |
-| [MediaEvent](#mediaEvent)           | [Started](#started), [Paused](#paused), [Resumed](#resumed), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [Rewound](#rewound), [Ended](#ended), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout) |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) |
-| [ViewEvent](#viewEvent)             | [Viewed](#viewed) |
+#### Supported actions
+| Event | Required | Optional |
+| ----- | -------- | -------- |
+| [MediaEvent](#mediaEvent) | [Started](#started), [Paused](#paused), [Resumed](#resumed), [Ended](#ended) | [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [Rewound](#rewound), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout) |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
+
+#### Supported objects
+[MediaObject](#mediaObject), [AudioObject](#audioObject), [ImageObject](#audioObject), [VideoObject](#videoObject)
+
+#### Target entities
+[MediaLocation](#mediaLocation)
 
 #### Requirements
-* Create and send the following Caliper events to a target endpoint: [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* Utilize [MediaLocation](#mediaLocation) to indicate the current location in an audio or video stream.
-* Although the [NavigationEvent](#navigationEvent) `referrer` property is optional, a [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the referring context SHOULD be specified when navigating to a [MediaObject](#mediaObject).
-* When representing a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The required [Started](#started) and [Ended](#ended) actions MUST be implemented.  All other supported events are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* Utilize [MediaLocation](#mediaLocation) as the `target` in order to indicate the current location in an audio or video stream.
+* When navigating to a [MediaObject](#mediaObject) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
 
 #### Example
 ```json
@@ -555,17 +723,31 @@ The Caliper Media Profile models interactions between learners and rich content 
 ### Reading Profile
 The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subclassed from [DigitalResource](#digitalResource).
 
-#### Supported Events and Actions
-| Events                              | Actions |
-| ----------------------------------- | --------------------------- |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) |
-| [ViewEvent](#viewEvent)             | [Viewed](#viewed) |
+#### Supported events
+[NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
+
+#### Supported actors
+[Person](#person)
+
+#### Supported actions
+| Event | Required | Optional |
+| ------| -------- | -------- |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
+
+### Supported objects
+[DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage)
+
+### Target entities
+[Frame](#frame)
 
 #### Requirements
-* Create and send the following Caliper events to a target endpoint: [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* Although the [NavigationEvent](#navigationEvent) `referrer` property is optional, a [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the referring context SHOULD be specified when navigating to a [DigitalResource](#digitalResource).
-* When representing a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* Create and send the following Caliper events to a target endpoint: [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).  The required [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions MUST be implemented.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* Utilize [Frame](#frame) as the `target` in order to indicate an indexed segment or location.
+* When navigating to a [DigitalResource](#digitalResource) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
 
 #### Example
 ```json
@@ -595,17 +777,31 @@ The Caliper Reading Profile models activities associated with navigating to and 
 ### Session Profile
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
-#### Supported Events and Actions
-| Events                        | Actions |
-| ----------------------------- | --------------------------------------------------------------------- |
-| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut) |
+#### Supported events
+[SessionEvent](#sessionEvent)
+
+#### Supported actors
+[Person](#person), [SoftwareApplication](#softwareApplication)
+
+#### Supported actions
+| Event | Required | Optional |
+| ----- | -------- | -------- |
+| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [LoggedOut](#loggedOut), [TimedOut](#timedOut) |
+
+#### Supported objects
+[SoftwareApplication](#softwareApplication), [Session](#session)
+
+#### Target entities
+[DigitalResource](#digitalResource)
 
 #### Requirements
-* Create and send a Caliper [SessionEvent](#sessionEvent) to a target endpoint.
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* Although the [SessionEvent](#sessionEvent) `session` property is optional, the relevant [Session](#session) SHOULD also be specified.
+* Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The required [LoggedIn](#loggedIn) action MUST be implemented.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
 * The choice of `actor` depends on the action initiated.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
-* When representing a [SessionEvent](#sessionEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.
+* When logging in to a [SoftwareApplication](#softwareApplication), the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* Although the [SessionEvent](#sessionEvent) `session` property is optional, the a representation of the relevant user [Session](#session) SHOULD be specified.
 
 #### Example
 ```json
@@ -633,17 +829,26 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 <a name="toolUseProfile" />
 
 ### Tool Use Profile
-The Caliper Tool Use Profile models an intended interaction between a user and a tool.  When a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application's creator/publisher determines to be its "intended use for learning", the application can send a [ToolUseEvent](#toolUseEvent) to indicate such usage.
+The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
-#### Supported Events and Actions
-| Events                         | Actions       |
-| ----------------------------- | ------------- |
-| [ToolUseEvent](#toolUseEvent) | [Used](#used) |
+#### Supported events
+[ToolUseEvent](#toolUseEvent)
+
+#### Supported actors
+[Person](#person)
+
+#### Supported actions
+| Event | Required | Optional |
+| ----- | -------- | -------- |
+| [ToolUseEvent](#toolUseEvent) | [Used](#used) | &nbsp; |
+
+#### Supported objects
+[SoftwareApplication](#softwareApplication)
 
 #### Requirements
-* Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.
-* Note that certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.
-* When representing a [ToolUseEvent](#toolUseEvent) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+* Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  The required [Used](#used) action MUST be implemented.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
 
 #### Example
 ```json
@@ -676,6 +881,7 @@ A Caliper Event is a generic class that represents the interaction between an [a
 
 For an Event to be minimally compliant it MUST specify an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
 
+When representing the [Event](#event) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
 #### Properties
 * `uuid`: a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated.
