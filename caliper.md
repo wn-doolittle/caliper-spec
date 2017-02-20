@@ -285,7 +285,7 @@ The Caliper Basic Profile models a minimally compliant Caliper [Event](#event) c
 #### Supported actions
 All Caliper [actions](#actions) are supported.
 
-### Supported objects
+#### Supported objects
 [Entity](#entity)
 
 #### Requirements
@@ -339,15 +339,14 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 [DigitalResource](#digitalResource), [Annotation](#annotation)
 
 #### Generated entities
-[Annotation](#annotation) subclassed as [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation) and [TaggedAnnotation](#taggedAnnotation)
+[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation) and [TaggedAnnotation](#taggedAnnotation)
 
 #### Requirements
 * Create and send an [AnnotationEvent](#annotationEvent) to a target endpoint.  The required [bookmarked](#bookmarked) action MUST be implemented.  All other supported events are considered optional.
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of an [AnnotationEvent](#annotationEvent).
+* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of an [AnnotationEvent](#annotationEvent).  For a [ViewEvent](#viewEvent) the `object` range is limited to [Annotation](#annotation) or one of its subclasses.
 * For an [AnnotationEvent](#annotationEvent) the `generated` [Annotation](#annotation) SHOULD be specified.
-* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [Annotation](#annotation) or one of its subclasses.
 
 #### Example
 ```json
@@ -419,12 +418,10 @@ The Caliper Assessment Profile models assessment-related activities including in
 * Create and send an [AssessmentEvent](#assessmentEvent) to a target endpoint.  The required [Started](#started) and [Submitted](#submitted) actions MUST be implemented.  All other supported events are considered optional. 
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.
+* The choice of `object` depends on the action initiated.  For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object`.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subclasses.
+* For a [Started](#started) action the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For an [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For an [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.
-* For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
-* When navigating to an [Assessment](#assessment) or [AssessmentItem](#assessmentItem) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subclasses.
+* When navigating to an [Assessment](#assessment) or [AssessmentItem](#assessmentItem) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
 #### Example
 ```json
@@ -490,9 +487,8 @@ The Assignable Profile models activities associated with digital content assigne
 * Create and send an [AssignableEvent](#assignableEvent) to a target endpoint. The required [Started](#started) and [Completed](#completed) actions MUST be implemented.  All other supported events are considered optional.  
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.
+* For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subclasses, or [Attempt](#attempt).
 * When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subclasses, or [Attempt](#attempt).
 
 ```json
 {
@@ -546,10 +542,10 @@ The Caliper Forum Profile models learners and others participating in online for
 * Create and send a [MessageEvent](#messageEvent) to a target endpoint. The required [Posted](#posted) action MUST be implemented.  All other supported events are considered optional. 
 * Certain [Event](#event) properties are required and MUST be specified when creating a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
+* For a [ForumEvent](#forumEvent) the `object` range is limited to [Forum](#forum); for a [ThreadEvent](#threadEvent) the `object` range is limited to [Thread](#thread); for a [MessageEvent](#messageEvent) the `object` range is limited to [Message](#message); for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).
 * When a [MessageEvent](#messageEvent) represents a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
 * Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by judicious use of the inherited [DigitalResource](#digitalResource) `isPartOf` property.
 * When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).
 
 #### Example
 ```json
@@ -690,7 +686,7 @@ The Caliper Media Profile models interactions between learners and rich content 
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * Utilize [MediaLocation](#mediaLocation) as the `target` in order to indicate the current location in an audio or video stream.
 * When navigating to a [MediaObject](#mediaObject) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
+* For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subclasses; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
 
 #### Example
 ```json
@@ -745,9 +741,9 @@ The Caliper Reading Profile models activities associated with navigating to and 
 * Create and send the following Caliper events to a target endpoint: [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).  The required [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions MUST be implemented.
 * Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
+* For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
 * Utilize [Frame](#frame) as the `target` in order to indicate an indexed segment or location.
 * When navigating to a [DigitalResource](#digitalResource) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* For a [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
 
 #### Example
 ```json
@@ -849,6 +845,7 @@ The Caliper Tool Use Profile models an intended interaction between a user and a
 * Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  The required [Used](#used) action MUST be implemented.
 * Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
+* The `object` range is limited to [SoftwareApplication](#softwareApplication) only.
 
 #### Example
 ```json
