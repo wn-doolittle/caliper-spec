@@ -113,8 +113,10 @@ TODO
 ### 1.1 Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
-<a name="definitions" />  
+<a name="definitions" />
+
 ### 1.2 Definitions
+
 __actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
 
 __action__: something done to accomplish a purpose
@@ -144,6 +146,7 @@ __profile__: metric profiles define the information model for caliper.  The cali
 __sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
 
 <a name="interoperability" />
+
 ## 2.0 Data and Semantic Interoperability
 
 TODO
@@ -151,11 +154,12 @@ TODO
 structure, flow, pointers
 
 <a name="infoModel" />
+
 ## 3.0 Information Model
 
 ### Overview 
 
-This section describes the concepts, relationships and constraints that specify the Caliper information model.  The Caliper information model applies semantic web concepts to events that occur in and around learning activities as well as activities that help facilitate learning.   These activities are organized by type and described by the following metric profiles:  
+This section describes the concepts, relationships and constraints that specify the Caliper information model.  Caliper is composed of entities and events and metric profiles.   applies semantic web concepts to events that occur in and around learning activities as well as activities that help facilitate learning.   These activities are organized by type and described by the following metric profiles:  
 
 * Basic
 * Annotation
@@ -181,18 +185,31 @@ Actions specify the set of potential interactions within the metric profile.
 
 Conceptually, Caliper events in plain English are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.
 
+<a name="infoModelEntity" />
 
+### 3.1 The Caliper Entity
 
+A Caliper Entity is a generic class   Given that Entity represents a generic type it is RECOMMENDED that only subclasses of Entity be employed to represent nodes in the learning graph.
 
+#### Properties
+* `id`: the Entity IRI MUST be specified.  The identifier MUST be unique and SHOULD be dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
+* `type`: the string value `Entity` MUST be specified.  If a subclass of `Entity` is created, set the type to the string term appropriate for the subclass utilized, e.g., `Person`.
+* `name`: an optional string value comprising a word or phrase by which the Entity is known MAY be specified.
+* `description`: an optional string value comprising a short, human readable representation of the Entity in written form MAY be specified.
+* `dateCreated`: an optional date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
+* `dateModified`: an optional date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
+* `extensions`:  an optional ordered array of objects not defined by the model MAY be specified for a more concise representation of the Entity.
 
+#### Subclasses
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
+<a name="infoModelEvent" />
 
-<a name="vocabEvents" />
-### X.x Events
+### 3.2 The Caliper Event
 
-A Caliper [Event](#event) is a generic class that describes the interaction between an [actor](#actor) and an [object](#object) at a specific moment in time and within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) described below rather than instantiating instances of the Event class itself.
+A Caliper [Event](#event) is a generic class that describes the interaction between an actor and an object at a specific moment in time and bounded by a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) described below in preference to instantiating instances of the Event class itself.
 
-For an Event to be minimally compliant it MUST specify an [actor](#actor), [action](#action), [object](#object), [eventTime](#eventTime) and a `uuid` identifier.
+For an Event](#event) to be minimally compliant it MUST specify an `actor`, `action`, `object`, `eventTime` and a `uuid` identifier.
 
 #### Properties
 * `uuid`: a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated.
@@ -207,9 +224,9 @@ For an Event to be minimally compliant it MUST specify an [actor](#actor), [acti
 
 * `eventTime`: a date and time value expressed with millisecond precision that describes when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
 
-* `target`: TODO
+* `target`: an [Entity](#entity) that represents a targeted 
 
-* `generated`: TODO
+* `generated`: an [Entity](#entity) created or generated as a result of the interaction.
 
 * `referrer`: an [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.
 
@@ -217,13 +234,13 @@ For an Event to be minimally compliant it MUST specify an [actor](#actor), [acti
 
 * `group`: the [Organization](#organization) that represents the group context MAY be specified.
 
-* `membership`: TODO . . . the [Membership](#membership). . . TODO . . . MAY be specified.
+* `membership`: the relationship of the `actor` to the `group` in terms of roles assigned and current status MAY be specified.
 
 * `session`: the current user [Session](#session) MAY be specified. 
 
-* `federatedSession`: TODO . . . [LtiSession](#ltiSession).  If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session MAY be referenced.
+* `federatedSession`: if this [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.
  
-* `extensions`: TODO . . . an optional ordered array of object properties not defined by the model MAY be specified for a more concise representation of the Event.
+* `extensions`: an optional ordered array of object properties not defined by the Caliper MAY be specified for a more concise representation of this [Event](#event).
 
 When representing the [Event](#event) as JSON-LD, a `@context` key MUST be specified with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
@@ -253,17 +270,12 @@ When representing the [Event](#event) as JSON-LD, a `@context` key MUST be speci
 
 <a name="metricProfiles" />
 
-## 3.1 Metric Profiles
+### 3.3 Metric Profiles
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
-Think of each metric profile as a stand-alone, logical container or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  The [Forum Profile](#forumProfile), for example, is composed of the [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  In the case of the [Forum Profile](#forumProfile) the following sequence of events involving a learner can be represented:
+Think of each metric profile as a stand-alone, logical container or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
 
-* navigating to a [Forum](#forum)
-* subscribing to a [Forum](#forum)
-* navigating to a [Thread](#thread) or topic
-* viewing a [Message](#message) in the thread
-* posting a [Message](#message) reply
-* marking the viewed [Message](#message) as read
+As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  Each of these events describes a relationship formed between two entities, an actor and an object, resulting from some purposeful action undertaken by the actor in relation to the object at a particular moment in time and (optionally) within a given learning context. The [Event](#event) properties `actor`, `action` and object form a data triple that echoes an [RDF](#rdf) triple linking a subject to an object via a predicate.   An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
      
 Extending Caliper's information model involves designing a new metric profile or enhancing an existing one.  Implementors are free to implement only those Caliper metric profiles as are necessary to model a target learning domain.  A video platform provider may decide that only the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile) and [Session Profile](#sessionProfile) are relevant to it's needs while developers instrumenting an assessment engine would most likely implement the [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile) and [Session Profile](#sessionProfile).
 
