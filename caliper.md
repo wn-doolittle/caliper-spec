@@ -3998,8 +3998,10 @@ to send data to the certification service using HTTPS and a bearer token
 credential consistent with RFC 6750.
 
 When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that
-the payload of the message has the `application/json` IANA media-type, and MAY
-indicate instead that the message has the `application\ld+json` IANA media-type.
+the payload of the message has the `application/ld+json` IANA media-type, and MAY
+indicate instead that the message has the `application/json` IANA media-type
+(in the case, for example, that a Caliper Endpoint reports that it cannot
+process the `application/ld+json` media type).
 
 
 <a name="endpoints" />
