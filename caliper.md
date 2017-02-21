@@ -6,7 +6,7 @@ Recipients of this document are requested to submit, with their comments, notifi
 
 IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
 
-Copyright © 2016 IMS Global Learning Consortium. All Rights Reserved.
+Copyright © 2017 IMS Global Learning Consortium. All Rights Reserved.
 
 Use of this specification to develop products or services is governed by the license with IMS found on the IMS website: [http://www.imsglobal.org/license.html](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
 
@@ -14,7 +14,7 @@ Permission is granted to all parties to use excerpts from this document as neede
 
 The limited permissions granted above are perpetual and will not be revoked by IMS or its successors or assigns.
 
-THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICATION SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.
+THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NON INFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICATION SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.
 
 ## Table of Contents
 * 1.0 [Introduction](#introduction)
@@ -22,19 +22,25 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 1.2 [Terminology](#terminology)
 * 2.0 [Data and Semantic Interoperability](#interoperability)
 * 3.0 [Information Model](#infoModel)
-    * 3.1 [Profiles](#metricProfiles)
-        * [Basic Profile](#basicProfile)
-        * [Annotation Profile](#annotationProfile)
-        * [Assignable Profile](#assignableProfile)
-        * [Assessment Profile](#assessmentProfile)
-        * [Forum Profile](#forumProfile)
-        * [Grading Profile](#gradingProfile)
-        * [Media Profile](#mediaProfile)
-        * [Reading Profile](#readingProfile)
-        * [Session Profile](#sessionProfile)
-        * [Tool Use Profile](#toolUseProfile)
-* 4.0 [Vocabulary](#vocab)
-    * 4.1 [Events](#vocabEvents)
+  * 3.1 [Entity](#infoModelEntity)
+  * 3.2 [Event](#infoModelEvent)
+  * 3.3 [Metric Profiles](#infoModelProfiles)
+      * 3.3.1 [Basic Profile](#basicProfile)
+      * 3.3.2 [Annotation Profile](#annotationProfile)
+      * 3.3.3 [Assignable Profile](#assignableProfile)
+      * 3.3.4 [Assessment Profile](#assessmentProfile)
+      * 3.3.5 [Forum Profile](#forumProfile)
+      * 3.3.6 [Grading Profile](#gradingProfile)
+      * 3.3.7 [Media Profile](#mediaProfile)
+      * 3.3.8 [Reading Profile](#readingProfile)
+      * 3.3.9 [Session Profile](#sessionProfile)
+      * 3.3.10 [Tool Use Profile](#toolUseProfile)
+* 4.0 [Sensor API](#api)
+* 5.0 [Transport](#transport)
+  * 5.1 [Envelope](#envelope)
+	* 5.2 [Endpoints](#endpoints)
+* 6.0 [Terms](#terms)
+    * 6.1 [Events](#vocabEvents)
         * [AnnotationEvent](#annotationEvent)
         * [AssessmentEvent](#assessmentEvent)
         * [AssessmentItemEvent](#assessmentItemEvent)
@@ -48,7 +54,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
         * [ThreadEvent](#threadEvent)
         * [ToolUseEvent](#toolUseEvent)
         * [ViewEvent](#viewEvent)
-    * 4.2 [Entities](#vocabEntities)
+    * 6.2 [Entities](#vocabEntities)
         * [Agent](#agent)
         * [Annotation](#annotation)
         * [Assessment](#assessment)
@@ -91,16 +97,12 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
         * [Thread](#thread)
         * [VideoObject](#videoObject)
         * [WebPage](#webpage)
-    * 4.3 [Miscellaneous Classes](#vocabMisc)
+    * 6.3 [Miscellaneous Classes](#vocabMisc)
         * [Selector](#selector)
         * [TextPositionSelector](#textPositionSelector)
-    * 4.4 [Actions](#vocabActions)
-    * 4.5 [Roles](#vocabRoles)
-    * 4.6 [Status](#vocabStatus)
-* 5.0 [Sensor API](#api)
-* 6.0 [Transport](#transport)
-    * 6.1 [Envelope](#envelope)
-	* 6.2 [Endpoints](#endpoints)
+    * 6.4 [Actions](#vocabActions)
+    * 6.5 [Roles](#vocabRoles)
+    * 6.6 [Status](#vocabStatus)
 * 7.0 [Contributors](#contributors)
 * [Revision History](#revisionHistory)
 * [References](#references)
@@ -155,11 +157,11 @@ structure, flow, pointers
 
 <a name="infoModel" />
 
-## 3.0 Information Model
+## 3.0 Information Model 
 
-### Overview 
+This section describes the concepts, relationships and constraints that specify the Caliper information model.  Caliper is composed of entities and events and metric profiles.   
 
-This section describes the concepts, relationships and constraints that specify the Caliper information model.  Caliper is composed of entities and events and metric profiles.   applies semantic web concepts to events that occur in and around learning activities as well as activities that help facilitate learning.   These activities are organized by type and described by the following metric profiles:  
+applies semantic web concepts to events that occur in and around learning activities as well as activities that help facilitate learning.   These activities are organized by type and described by the following metric profiles:  
 
 * Basic
 * Annotation
@@ -188,11 +190,10 @@ Conceptually, Caliper events in plain English are described as  _"ACTOR invokes 
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-
-A Caliper Entity is a generic class   Given that Entity represents a generic type it is RECOMMENDED that only subclasses of Entity be employed to represent nodes in the learning graph.
+A Caliper Entity is a generic class that represents objects or things that participate in a learning activity.  For a Caliper [Entity](#event) to be minimally compliant it MUST specify an `id` and a `type`.  [Entity](#event) is subclassed for enhanced type specificity.  Implementors SHOULD utilize the several subclasses of [Entity](#event) described below in preference to instantiating instances of the Event class itself.  [Entity](#event) properties are described below:
 
 #### Properties
-* `id`: the Entity IRI MUST be specified.  The identifier MUST be unique and SHOULD be dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
+* `id`: the Entity IRI MUST be specified per [RFC XXXXX](#rfcIRI).  The identifier MUST be unique and SHOULD be dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
 * `type`: the string value `Entity` MUST be specified.  If a subclass of `Entity` is created, set the type to the string term appropriate for the subclass utilized, e.g., `Person`.
 * `name`: an optional string value comprising a word or phrase by which the Entity is known MAY be specified.
 * `description`: an optional string value comprising a short, human readable representation of the Entity in written form MAY be specified.
@@ -206,40 +207,25 @@ A Caliper Entity is a generic class   Given that Entity represents a generic typ
 <a name="infoModelEvent" />
 
 ### 3.2 The Caliper Event
+A Caliper [Event](#event) describes a relationship formed between two entities, an actor and an object, resulting from some purposeful action undertaken by the actor in relation to the object at a particular moment in time and (optionally) within a given learning context. The [Event](#event) properties `actor`, `action` and `object` form a data triple that echoes an [RDF](#rdf) triple linking a subject to an object via a predicate.  The [Event](#event) is provisioned with additional properties that describe relevant elements of the enclosing learning context.
 
-A Caliper [Event](#event) is a generic class that describes the interaction between an actor and an object at a specific moment in time and bounded by a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of [Event](#event) described below in preference to instantiating instances of the Event class itself.
-
-For an Event](#event) to be minimally compliant it MUST specify an `actor`, `action`, `object`, `eventTime` and a `uuid` identifier.
+For a Caliper [Event](#event) to be minimally compliant it MUST specify a `type`, `actor`, `action`, `object`, `eventTime` and a `uuid` identifier.  [Event](#event) is subclassed for enhanced type specificity.  Implementors SHOULD utilize the several subclasses of [Event](#event) described below in preference to instantiating instances of the Event class itself.  [Event](#event) properties are described below:
 
 #### Properties
 * `uuid`: a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated.
-
 * `type`: the string value term `Event` MUST be assigned.  If a subclass of `Event` is created, set the type to the string term appropriate for the subclass utilized, e.g., `NavigationEvent`.
-
 * `actor`: the [Agent](#agent) who initiated or is the subject of this Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication] MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to action terms defined in this specification (see [actions](#actions) below).
-
 * `object`: the [Entity](#entity) that comprises the object of the Event MUST be specified.
-
 * `eventTime`: a date and time value expressed with millisecond precision that describes when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-
 * `target`: an [Entity](#entity) that represents a targeted 
-
 * `generated`: an [Entity](#entity) created or generated as a result of the interaction.
-
 * `referrer`: an [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.
-
 * `edApp`: the [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.
-
 * `group`: the [Organization](#organization) that represents the group context MAY be specified.
-
 * `membership`: the relationship of the `actor` to the `group` in terms of roles assigned and current status MAY be specified.
-
 * `session`: the current user [Session](#session) MAY be specified. 
-
 * `federatedSession`: if this [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.
- 
 * `extensions`: an optional ordered array of object properties not defined by the Caliper MAY be specified for a more concise representation of this [Event](#event).
 
 When representing the [Event](#event) as JSON-LD, a `@context` key MUST be specified with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
@@ -268,14 +254,14 @@ When representing the [Event](#event) as JSON-LD, a `@context` key MUST be speci
 #### Subclasses
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
-<a name="metricProfiles" />
+<a name="infoModelProfiles" />
 
 ### 3.3 Metric Profiles
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
 Think of each metric profile as a stand-alone, logical container or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
 
-As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  Each of these events describes a relationship formed between two entities, an actor and an object, resulting from some purposeful action undertaken by the actor in relation to the object at a particular moment in time and (optionally) within a given learning context. The [Event](#event) properties `actor`, `action` and object form a data triple that echoes an [RDF](#rdf) triple linking a subject to an object via a predicate.   An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
+As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
      
 Extending Caliper's information model involves designing a new metric profile or enhancing an existing one.  Implementors are free to implement only those Caliper metric profiles as are necessary to model a target learning domain.  A video platform provider may decide that only the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile) and [Session Profile](#sessionProfile) are relevant to it's needs while developers instrumenting an assessment engine would most likely implement the [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile) and [Session Profile](#sessionProfile).
 
@@ -285,7 +271,7 @@ The following metric profiles are currently available and are summarized individ
 
 <a name="basicProfile" />
 
-### Basic Profile
+### 3.3.1 Basic Profile
 The Caliper Basic Profile models a minimally compliant Caliper [Event](#event) comprising an [actor](#actor), [action](#action), [object](#object), [eventTime](#eventTime) and [UUID](#uuid) identifier.  The profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled explicitly by Caliper.
 
 #### Supported events
@@ -332,7 +318,7 @@ All Caliper [actions](#actions) are supported.
 
 <a name="annotationProfile" />
 
-### Annotation Profile
+### 3.3.2 Annotation Profile
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document and viewing an annotation are modeled.  The generated [Annotation](#annotation) should also be described and is subclassed for greater type specificity.
 
 #### Supported events
@@ -403,7 +389,7 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 
 <a name="assessmentProfile" />
 
-### Assessment Profile
+### 3.3.3 Assessment Profile
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Each [Assessment](#assessment) or individual [AssessmentItem](#assessmentItem) [Attempt](#attempt) initiated by a learner can be represented.  Five [Response](#response) types are also provided for capturing individual item responses.
 
 #### Supported events
@@ -471,7 +457,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 
 <a name="assignableProfile" />
 
-### Assignable Profile
+### 3.3.4 Assignable Profile
 The Assignable Profile models activities associated with digital content assigned to a learner for completion according to specific criteria.  An [AssignableDigitalResource](#assignableDigitalResource) is provided for representing assigned resources and an individual [Attempt](#attempt) initiated by a learner can also be represented. 
 
 #### Supported events
@@ -529,7 +515,7 @@ The Assignable Profile models activities associated with digital content assigne
 
 <a name="forumProfile" />
 
-### Forum Profile
+### 3.3.5 Forum Profile
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
 #### Supported events
@@ -591,7 +577,7 @@ The Caliper Forum Profile models learners and others participating in online for
 
 <a name="gradingProfile" />
 
-### Grading Profile
+### 3.3.6 Grading Profile
 The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. The Grading Profile replaces the Caliper 1.0 Outcomes Profile.
 
 #### Supported events
@@ -670,7 +656,7 @@ The Caliper Grading Profile models grading activities performed by an [Agent](#a
 
 <a name="mediaProfile" />
 
-### Media Profile
+### 3.3.7 Media Profile
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
 #### Supported events
@@ -728,7 +714,7 @@ The Caliper Media Profile models interactions between learners and rich content 
 
 <a name="readingProfile" />
 
-### Reading Profile
+### 3.3.8 Reading Profile
 The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subclassed from [DigitalResource](#digitalResource).
 
 #### Supported events
@@ -782,7 +768,7 @@ The Caliper Reading Profile models activities associated with navigating to and 
 
 <a name="sessionProfile" />
 
-### Session Profile
+### 3.3.9 Session Profile
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
 #### Supported events
@@ -836,7 +822,7 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 
 <a name="toolUseProfile" />
 
-### Tool Use Profile
+### 3.3.10 Tool Use Profile
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
 #### Supported events
@@ -878,76 +864,113 @@ The Caliper Tool Use Profile models an intended interaction between a user and a
 }
 ```
 
-<a name="vocab" />
-### 4.0 Vocabulary
+<a name="sensorAPI" />
+
+### 4.0 Sensor API
+
+TODO
+
+<a name="transport" />
+
+## 5.0 Transport
+
+Caliper Sensors MUST at least be capable of communicating with [Caliper Endpoints](#endpoints) using conventional HTTP POST requests; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using this transport. Caliper Sensors MAY use other methods to communicate with an Endpoint.
+
+For transport security and authentication, Caliper Sensors SHOULD:
+
+* Use HTTPS to secure the transport between Sensor and retrieving Endpoint.
+
+* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the endpoint can validate, but the credential MAY be opaque to the Sensor itself.
+
+Caliper Sensors MAY support additional modes of transport security and authentication; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
+
+When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that the payload of the message has the `application/json` IANA media-type, and MAY indicate instead that the message has the `application\ld+json` IANA media-type.
+
+<a name="envelope" />
+
+### 5.1 Envelope
+
+Every message sent by a Caliper Sensor MUST consist of a single Caliper Envelope json structure, enveloping a payload of Caliper Events and Entities. The Caliper Envelope MUST have these three properties:
+
+* `sensor`: A unique identifier for the Caliper Sensor sending the message (this MAY instead by a unique identifier for the application or service sending the message, which MAY be shared amongst all the Sensors that application or service uses to send Caliper data).  This identifier SHOULD be an IRI.
+
+* `sendTime`: A date-time string indicating the time at which the Caliper Sensor sent the message, which MUST use the [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date and time format, and MUST be expressed in UTC.  Sensor's SHOULD use a combined date and time representation of the form `2016-0405T14:30:00Z` or `2016-0405T14:30:00.062Z` (to include milliseconds).
+
+* `dataVersion`: A version string indicating the version of the IMS Caliper specification that governs the form of the Caliper Entities and Events found in the `data` payload. By convention, this string value will be URI of Caliper context document that can be used to resolve the meanings of the
+  terms and values found in the payload's Entities and Events.
+
+* `data`: A JSON array that MUST contain a list of one or more Caliper Entity or Event structures. The Sensor MAY mix Entity and Event structures in the same envelope.
+
+### Example
+``` json
+{
+   "sensor": "https://example.edu/sensors/1",
+   "sendTime": "2016-11-15T11:05:01.000Z",
+   "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+   "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "creators": [
+        {
+          "id": "https://example.edu/users/223344",
+          "type": "Person"
+        }
+      ],
+      "isPartOf": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201601/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2016-08-02T11:32:00.000Z"
+    }
+   ]
+}
+```
+<a name="envelope" />
+
+#### 5.2 Endpoint
+
+Caliper Endpoints MUST at least be capable of communicating with [Caliper Sensors](#sensors) by supporting conventional HTTP POST requests; the certification tests for Caliper Endpoints require the Endpoint to receive data from the certification service using this transport. Caliper Endpoints MAY use other methods to receive data from Sensors.
+
+For transport and security and authentication, Caliper Sensors SHOULD:
+
+* Use HTTPS to secure the transport between itself and Sensors, and if so, MUST provide a valid HTTP Certificate.
+
+* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
+
+Caliper Endpoints MAY support additional modes of transport security and authentication; the certification tests for Caliper Endpoints require the Endpoint receive data from the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
+
+#### 5.2.1 Endpoint HTTPS responses
+
+When using HTTPS as the transport, the Caliper Endpoint MUST conform to these points of response behaviour. Caliper Endpoint implementers should bear in mind that the Caliper Sensors sending them messages may not be in a position to perform sophisticated error handling.
+
+To signal to the Sensor that it has received the Sensor's message, and no error state pertains (see following), the Endpoint MUST reply with a `2xx` series success. The Endpoint SHOULD use the `200 OK` response, but it MAY instead choose to send a `201 Created` response (to indicate successful receipt and persistence of the Sensor message's contained data payload) or a `202 Accepted` response (to indicate successful acceptance of the Caliper Envelope and queueing for further processing). The body of a successful response SHOULD be empty.
+
+If the Sensor sends a malformed Caliper Envelope (it does not contain `sensor`, `sendTime`, and `dataVersion`, and `data` properties, of the required form), the Endpoint SHOULD reply with a `400 Bad Request` response. (Note that the Endpoint SHOULD NOT send this response if the envelope contains a `dataVersion` value, but it's one that the endpoint cannot support: in this case, the Endpoint SHOULD send a `422 Unprocessable Entity` response instead.)
+
+If the Sensor sends a message with a content-type other than `application/json` or `application/ld+json`, the Endpoint SHOULD reply with a `415 Unsupported Media Type` response.
+
+If the Sensor sends a message without an Authorization Request Header Field of the suggested form, or if the Sensor sends a token credential that the Endpoint is unable to validate or determine has sufficient privilege to submit Caliper data, the Endpoint SHOULD reply with a `401 Unauthorized` response.
+
+The Endpoint MAY respond to Sensor messages with other standard HTTP status codes to indicate result disposition of varying kinds.
+
+If the Endpoint implementer wants the Endpoint to communicate more detailed information about problem states when receiving messages, the Endpoint SHOULD use the standard method for reporting problem details described in [RFC 7807, Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807).
+
+<a name="terms" />
+### 6.0 Terms
 
 TODO Intro
 
-<a name="vocabEvents" />
-### 4.1 Events
-
-A Caliper Event is a generic class that represents the interaction between an [actor](#actor) and an [object](#object) at a specific moment in time and within the bounds of a specified context. For enhanced specificity implementors SHOULD utilize the several subclasses of Event rather than instantiating instances of the Event class itself.
-
-For an Event to be minimally compliant it MUST specify an [actor](#actor), [action](#action), [object](#object) and an [eventTime](#eventTime).
-
-When representing the [Event](#event) as JSON-LD, a `@context` key MUST be included with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
-
-#### Properties
-* `uuid`: a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated.
-
-* `type`: the string value term `Event` MUST be assigned.  If a subclass of `Event` is created, set the type to the string term appropriate for the subclass utilized, e.g., `NavigationEvent`.
-
-* `actor`: the [Agent](#agent) who initiated or is the subject of this Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication] MUST be specified.
-
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to action terms defined in this specification (see [actions](#actions) below).
-
-* `object`: the [Entity](#entity) that comprises the object of the Event MUST be specified.
-
-* `eventTime`: a date and time value expressed with millisecond precision that describes when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-
-* `target`: TODO
-
-* `generated`: TODO
-
-* `referrer`: an [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.
-
-* `edApp`: the [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.
-
-* `group`: the [Organization](#organization) that represents the group context MAY be specified.
-
-* `membership`: TODO . . . the [Membership](#membership). . . TODO . . . MAY be specified.
-
-* `session`: the current user [Session](#session) MAY be specified. 
-
-* `federatedSession`: TODO . . . [LtiSession](#ltiSession).  If the Event occurs within the context of an LTI(#lti) tool launch, the tool consumer Session MAY be referenced.
- 
-* `extensions`: TODO . . . an optional ordered array of object properties not defined by the model MAY be specified for a more concise representation of the Event.
-
-#### Subclasses
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
-
-#### Example
-```json
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "Event",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
-  "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
-    "type": "Document",
-    "name": "Course Syllabus",
-    "dateCreated": "2016-11-12T07:15:00.000Z",
-    "version": "1"
-  },
-  "eventTime": "2016-11-15T10:15:00.000Z"
-}
-```
-
 <a name="annotationEvent" />
+
 ### AnnotationEvent
 TODO . . . The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties and requirements defined for Event, its superclass.  
 
@@ -2242,37 +2265,7 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
 ```
 
 <a name="entities" />
-### 4.2 Entities
-
-<a name="entity" />
-### Entity
-A Caliper Entity is a generic class analogous to a [schema:Thing](http://schema.org/Thing) that is subclassed for greater type specificity.  Given that Entity represents a generic type it is RECOMMENDED that only subclasses of Entity be employed to represent nodes in the learning graph.
-
-#### Properties
-* `id`: the Entity IRI MUST be specified.  The identifier SHOULD be unique, long-lived and dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
-
-* `type`: the string value `Entity` MUST be specified.
-
-* `name`: an optional string value comprising a word or phrase by which the Entity is known MAY be specified.  Analogous to [schema:name](http://schema.org/name).
-
-* `description`: an optional string value comprising a short, human readable representation of the Entity in written form MAY be specified.  Analogous to [schema:description](http://schema.org/description).
-
-* `dateCreated`: an optional date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.    The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [schema:dateCreated](http://schema.org/dateCreated).  
-
-* `dateModified`: an optional date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [schema:dateModified](http://schema.org/dateModified).
-
-* `extensions`:  an optional ordered array of objects or string values not defined by the model MAY be specified for a more concise representation of the Entity.
-
-#### Subclasses
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
-
-#### Example
-```json
-{
-    TODO
-}
-```
-
+### 6.2 Entities
 
 <a name="agent" />
 ### Agent
@@ -3997,7 +3990,8 @@ WebPage inherits all the properties and requirements defined for its superclass 
 ```
 
 <a name="#vocabMisc" />
-### 4.3 Miscellaneous Classes
+
+### 6.3 Miscellaneous Classes
 TODO Intro
 
 ### TextPositionSelector
@@ -4016,7 +4010,7 @@ TODO Intro
 ```
 
 <a name="vocabActions"/>   
-### 4.4 Actions
+### 6.4 Actions
 TODO DESCRIPTION
 
 natural language challenges
@@ -4091,7 +4085,7 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 | <a name="viewed" />Viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) |[look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
 
 <a name="vocabRoles" />
-## 4.5 Roles
+## 6.5 Roles
 
 ### Roles
 One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate IRI:
@@ -4173,130 +4167,16 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | teaching_assistant_teaching_assistant_group | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
 
 
-### 4.6 Status
+### 6.6 Status
 The status of a [member](#member) within an organization can be set to one of the following states: active, deleted or inactive.  The value MUST be set to the appropriate IRI:
 
 | Status | IRI |
 | ------  | --- | 
 | active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
-| deleted | http://purl.imsglobal.org/vocab/lis/v2/status#Deleted |
 | inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
-
-<a name="api" />
-<a name="sensors" />
-## 5.0 Sensor API
-
-TODO: OVERVIEW
-
-<a name="transport" />
-## 6.0 Transport
-
-Caliper Sensors MUST at least be capable of communicating
-with [Caliper Endpoints](#endpoints) using conventional HTTP POST requests; the
-certification tests for Caliper Sensors require the Sensor to send data to the
-certification service using this transport. Caliper Sensors MAY use other
-methods to communicate with an Endpoint.
-
-For transport security and authentication, Caliper Sensors SHOULD:
-
-* Use HTTPS to secure the transport between Sensor and retrieving Endpoint.
-
-* Support message authentication using the Authorization Request Header Field
-  (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2);
-  in this case, the `b64token` credential sent by the Sensor MUST be one the
-  Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
-
-Caliper Sensors MAY support additional modes of transport security and
-authentication; the certification tests for Caliper Sensors require the Sensor
-to send data to the certification service using HTTPS and a bearer token
-credential consistent with RFC 6750.
-
-When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that
-the payload of the message has the `application/json` IANA media-type, and MAY
-indicate instead that the message has the `application\ld+json` IANA media-type.
-
-
-<a name="endpoints" />
-### 6.1 Envelope
-
-Every message sent by a Caliper Sensor MUST consist of a single Caliper
-Envelope json structure, enveloping a payload of Caliper Events and
-Entities. The Caliper Envelope MUST have these three properties:
-
-* `sensor`: A unique identifier for the Caliper Sensor sending the message (this MAY instead by a unique identifier for the application or service sending the message, which MAY be shared amongst all the Sensors that application or service uses to send Caliper data).  This identifier SHOULD be an IRI.
-
-* `sendTime`: A date-time string indicating the time at which the Caliper Sensor sent the message, which MUST use the [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date and time format, and MUST be expressed in UTC.  Sensor's SHOULD use a combined date and time representation of the form `2016-0405T14:30:00Z` or `2016-0405T14:30:00.062Z` (to include milliseconds).
-
-* `dataVersion`: A version string indicating the version of the IMS Caliper specification that governs the form of the Caliper Entities and Events found in the `data` payload. By convention, this string value will be URI of Caliper context document that can be used to resolve the meanings of the
-  terms and values found in the payload's Entities and Events.
-
-* `data`: A JSON array that MUST contain a list of one or more Caliper Entity or Event structures. The Sensor MAY mix Entity and Event structures in the same envelope.
-
-### Example
-``` json
-{
-   "sensor": "https://example.edu/sensors/1",
-   "sendTime": "2016-11-15T11:05:01.000Z",
-   "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
-   "data": [
-    {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
-      "type": "DigitalResource",
-      "name": "Course Syllabus",
-      "mediaType": "application/pdf",
-      "creators": [
-        {
-          "id": "https://example.edu/users/223344",
-          "type": "Person"
-        }
-      ],
-      "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
-        "type": "DigitalResourceCollection",
-        "name": "Course Assets",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "type": "CourseSection"
-        }
-      },
-      "dateCreated": "2016-08-02T11:32:00.000Z"
-    }
-   ]
-}
-```
-
-<a name="endpoints" />
-### 6.2 Endpoint
-
-Caliper Endpoints MUST at least be capable of communicating with [Caliper Sensors](#sensors) by supporting conventional HTTP POST requests; the certification tests for Caliper Endpoints require the Endpoint to receive data from the certification service using this transport. Caliper Endpoints MAY use other methods to receive data from Sensors.
-
-For transport and security and authentication, Caliper Sensors SHOULD:
-
-* Use HTTPS to secure the transport between itself and Sensors, and if so, MUST provide a valid HTTP Certificate.
-
-* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
-
-Caliper Endpoints MAY support additional modes of transport security and authentication; the certification tests for Caliper Endpoints require the Endpoint receive data from the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
-
-#### 6.2.1 Endpoint HTTPS responses
-
-When using HTTPS as the transport, the Caliper Endpoint MUST conform to these points of response behaviour. Caliper Endpoint implementers should bear in mind that the Caliper Sensors sending them messages may not be in a position to perform sophisticated error handling.
-
-To signal to the Sensor that it has received the Sensor's message, and no error state pertains (see following), the Endpoint MUST reply with a `2xx` series success. The Endpoint SHOULD use the `200 OK` response, but it MAY instead choose to send a `201 Created` response (to indicate successful receipt and persistence of the Sensor message's contained data payload) or a `202 Accepted` response (to indicate successful acceptance of the Caliper Envelope and queueing for further processing). The body of a successful response SHOULD be empty.
-
-If the Sensor sends a malformed Caliper Envelope (it does not contain `sensor`, `sendTime`, and `dataVersion`, and `data` properties, of the required form), the Endpoint SHOULD reply with a `400 Bad Request` response. (Note that the Endpoint SHOULD NOT send this response if the envelope contains a `dataVersion` value, but it's one that the endpoint cannot support: in this case, the Endpoint SHOULD send a `422 Unprocessable Entity` response instead.)
-
-If the Sensor sends a message with a content-type other than `application/json` or `application/ld+json`, the Endpoint SHOULD reply with a `415 Unsupported Media Type` response.
-
-If the Sensor sends a message without an Authorization Request Header Field of the suggested form, or if the Sensor sends a token credential that the Endpoint is unable to validate or determine has sufficient privilege to submit Caliper data, the Endpoint SHOULD reply with a `401 Unauthorized` response.
-
-The Endpoint MAY respond to Sensor messages with other standard HTTP status codes to indicate result disposition of varying kinds.
-
-If the Endpoint implementer wants the Endpoint to communicate more detailed information about problem states when receiving messages, the Endpoint SHOULD use the standard method for reporting problem details described in [RFC 7807, Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807).
-
 <a name="contributors" />
+
 ## 7.0 Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
