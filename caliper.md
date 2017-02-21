@@ -880,11 +880,11 @@ For transport security and authentication, Caliper Sensors SHOULD:
 
 * Use HTTPS to secure the transport between Sensor and retrieving Endpoint.
 
-* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the endpoint can validate, but the credential MAY be opaque to the Sensor itself.
+* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
 
 Caliper Sensors MAY support additional modes of transport security and authentication; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
 
-When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that the payload of the message has the `application/json` IANA media-type, and MAY indicate instead that the message has the `application\ld+json` IANA media-type.
+When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that the payload of the message has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper Endpoint reports that it cannot process the `application/ld+json` media type).
 
 <a name="envelope" />
 
@@ -934,7 +934,8 @@ Every message sent by a Caliper Sensor MUST consist of a single Caliper Envelope
    ]
 }
 ```
-<a name="envelope" />
+
+<a name="endpoint" />
 
 #### 5.2 Endpoint
 
@@ -965,6 +966,7 @@ The Endpoint MAY respond to Sensor messages with other standard HTTP status code
 If the Endpoint implementer wants the Endpoint to communicate more detailed information about problem states when receiving messages, the Endpoint SHOULD use the standard method for reporting problem details described in [RFC 7807, Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807).
 
 <a name="terms" />
+
 ### 6.0 Terms
 
 TODO Intro
@@ -4009,7 +4011,8 @@ TODO Intro
 }
 ```
 
-<a name="vocabActions"/>   
+<a name="vocabActions"/>
+   
 ### 6.4 Actions
 TODO DESCRIPTION
 
@@ -4085,6 +4088,7 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 | <a name="viewed" />Viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) |[look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
 
 <a name="vocabRoles" />
+
 ## 6.5 Roles
 
 ### Roles
@@ -4166,6 +4170,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | teaching_assistant_teaching_assistant_template | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantTemplate |
 | teaching_assistant_teaching_assistant_group | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
 
+<a name="status" />
 
 ### 6.6 Status
 The status of a [member](#member) within an organization can be set to one of the following states: active, deleted or inactive.  The value MUST be set to the appropriate IRI:
@@ -4187,6 +4192,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | Wes LaMarche | ACT |
 
 <a name="revisionHistory" />
+
 ## Revision History
 
 ### Deprecations and Removals
