@@ -340,6 +340,7 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | [BookmarkAnnotation](#bookmarkAnnotation) | Required |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | [HighlightAnnotation](#highlightAnnotation) | Optional |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | [SharedAnnotation](#sharedAnnotation) | Optional |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) | [TagAnnotation](#tagAnnotation) | Optional |
 
 #### Requirements
 * Conformance: create and send an [AnnotationEvent](#annotationEvent) to a target endpoint.  The required [Bookmarked](#bookmarked) action MUST be implemented.  All other supported events are considered optional.
