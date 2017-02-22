@@ -207,7 +207,7 @@ A Caliper Entity is a generic class that represents objects or things that parti
 <a name="infoModelEvent" />
 
 ### 3.2 The Caliper Event
-A Caliper [Event](#event) describes a relationship formed between two entities, an actor and an object, resulting from some purposeful action undertaken by the actor in relation to the object at a particular moment in time and (optionally) within a given learning context. The [Event](#event) properties `actor`, `action` and `object` form a data triple that echoes an [RDF](#rdf) triple linking a subject to an object via a predicate.  The [Event](#event) is provisioned with additional properties that describe relevant elements of the enclosing learning context.
+A Caliper [Event](#event) describes a relationship formed between two entities, an actor and an object, resulting from some purposeful action undertaken by the actor in relation to the object at a particular moment in time and within a given learning context. The [Event](#event) properties `actor`, `action` and `object` form a data triple that echoes an [RDF](#rdf) triple linking a subject to an object via a predicate.  The [Event](#event) is provisioned with additional properties that describe relevant elements of the enclosing learning context.
 
 For a Caliper [Event](#event) to be minimally compliant it MUST specify a `type`, `actor`, `action`, `object`, `eventTime` and a `uuid` identifier.  [Event](#event) is subclassed for enhanced type specificity.  Implementors SHOULD utilize the several subclasses of [Event](#event) described below in preference to instantiating instances of the Event class itself.  [Event](#event) properties are described below:
 
@@ -263,7 +263,7 @@ Think of each metric profile as a stand-alone, logical container or collection o
 
 As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
      
-Extending Caliper's information model involves designing a new metric profile or enhancing an existing one.  Implementors are free to implement only those Caliper metric profiles as are necessary to model a target learning domain.  A video platform provider may decide that only the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile) and [Session Profile](#sessionProfile) are relevant to it's needs while developers instrumenting an assessment engine would most likely implement the [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile) and [Session Profile](#sessionProfile).
+Extending Caliper's information model involves designing a new metric profile or enhancing an existing one.  Implementors are free to implement only those Caliper metric profiles as are necessary to model a learning domain.  A video platform provider may decide that only the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile) and [Session Profile](#sessionProfile) are relevant to its needs while developers instrumenting an assessment engine would most likely implement the [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile) and [Session Profile](#sessionProfile).
 
 The following metric profiles are currently available and are summarized individually below:
 
@@ -293,6 +293,13 @@ All Caliper [actions](#actions) are supported.
 * A generic [Entity](#entity) or one of its subclasses MUST represent the `object` of the interaction.  
 * The `action` value range is limited to the set of [actions](#actions) described in this specification and no other.
 * When navigating to an [Entity](#entity) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | Conformance |
+| ----- | ------  | -------- | -------- | ----------- |
+| [Event](#event) | [Agent](#agent) | [action](#actions)<sup>1</sup> | [Entity](#entity) | Required |
+
+<sup>1</sup>As noted above, any Caliper [action](#actions) may be utilized.
 
 #### Example
 ```json
@@ -331,6 +338,7 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 | Event | Required | Optional |
 | ----- | -------- | -------- |
 | [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged) |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
 
 #### Supported objects
@@ -343,9 +351,20 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 * Create and send an [AnnotationEvent](#annotationEvent) to a target endpoint.  The required [bookmarked](#bookmarked) action MUST be implemented.  All other supported events are considered optional.
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of an [AnnotationEvent](#annotationEvent).  For a [ViewEvent](#viewEvent) the `object` range is limited to [Annotation](#annotation) or one of its subclasses.
+* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of an [AnnotationEvent](#annotationEvent).  For a [NavigationEvent](#navigationEvent) the `object` range is limited to [DigitalResource](#digitalResource) or one of its subclasses.  For a [ViewEvent](#viewEvent) the `object` range is limited to [DigitalResource](#digitalResource) or [Annotation](#annotation) or one of its subclasses.
 * For an [AnnotationEvent](#annotationEvent) the `generated` [Annotation](#annotation) SHOULD be specified.
 
+#### Actions, entities matrix
+| Event | `actor` | `action` | `object` | `generated`<sup>1</sup> | Conformance |
+| ----- | ------- | -------- | -------- | ----------------------- | ----------- |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | [BookmarkAnnotation](#bookmarkAnnotation) | Required |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | [HighlightAnnotation](#highlightAnnotation) | Optional |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | [SharedAnnotation](#sharedAnnotation) | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [[NavigatedTo](#navigatedTo)  | [DigitalResource](#digitalResource) | &nbsp; | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [DigitalResource](#digitalResource), [Annotation](#annotation) | &nbsp; | Optional |
+
+<sup>1</sup>As noted above, the `generated` [Annotation](#annotation) SHOULD be specified.
+ 
 #### Example
 ```json
 {
@@ -407,7 +426,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
 
 #### Supported objects
-[Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) and its subclasses
+[Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt)
 
 #### Generated entities
 [Attempt](#attempt), [Response](#response) subclassed as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
@@ -420,6 +439,21 @@ The Caliper Assessment Profile models assessment-related activities including in
 * For a [Started](#started) action the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For an [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * When navigating to an [Assessment](#assessment) or [AssessmentItem](#assessmentItem) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | `generated`<sup>1</sup> | Conformance |
+| ----- | ------- | -------- | -------- | ----------------------- | ----------- |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | [Attempt](#attempt) | Required |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Assessment](#assessment) | [Attempt](#attempt) | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | [Attempt](#attempt) | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp;| Required |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | [Attempt](#attempt) | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Skipped](#skipped)  | [AssessmentItemEvent](#assessmentItemEvent) | &nsbp; | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | [Response](#response) | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment) | &nsbp; | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment) | &nsbp; | Optional |
+
+<sup>1</sup>As noted above, the `generated` [Attempt](#attempt) SHOULD be specified.
 
 #### Example
 ```json
@@ -458,7 +492,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 <a name="assignableProfile" />
 
 ### 3.3.4 Assignable Profile
-The Assignable Profile models activities associated with digital content assigned to a learner for completion according to specific criteria.  An [AssignableDigitalResource](#assignableDigitalResource) is provided for representing assigned resources and an individual [Attempt](#attempt) initiated by a learner can also be represented. 
+The Assignable Profile models activities associated with digital content assigned to a learner for completion according to specific criteria.  An [AssignableDigitalResource](#assignableDigitalResource) is modeled for representing assigned resources and an individual [Attempt](#attempt) initiated by a learner can also be represented. 
 
 #### Supported events
 [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
@@ -487,6 +521,19 @@ The Assignable Profile models activities associated with digital content assigne
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subclasses, or [Attempt](#attempt).
 * When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | `generated`<sup>1</sup> | Conformance |
+| ----- | ------- | -------- | -------- | ----------------------- | ----------- |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | Required |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | &nbsp; | Required |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) |  &nbsp; | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | &nsbp; | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | &nsbp; | Optional |
+
+<sup>1</sup>As noted above, the `generated` [Attempt](#attempt) SHOULD be specified. 
 
 ```json
 {
@@ -544,6 +591,20 @@ The Caliper Forum Profile models learners and others participating in online for
 * When a [MessageEvent](#messageEvent) represents a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
 * Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by judicious use of the inherited [DigitalResource](#digitalResource) `isPartOf` property.
 * When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | Conformance |
+| ----- | ------- | -------- | -------- | ----------- |
+| [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum)  Optional |
+| [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | Optional |
+| [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | Required |
+| [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | Optional |
+| [MessageEvent](#messageEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Message](#message) | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Forum](#forum), [Message](#message), [Thread](#thread) | Optional |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | Optional |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | Optional |
+
 
 #### Example
 ```json
@@ -606,6 +667,13 @@ The Caliper Grading Profile models grading activities performed by an [Agent](#a
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For a [Graded](#graded) action the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction.
 * The `generated` [Result](#result) SHOULD also be specified.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | `generated`<sup>1</sup> | Conformance |
+| ----- | ------- | -------- | -------- | ----------------------- | ----------- |
+| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) | Required |
+
+<sup>1</sup>As noted above, the `generated` [Result](#result) SHOULD be specified.
 
 #### Example
 ```json
@@ -679,12 +747,39 @@ The Caliper Media Profile models interactions between learners and rich content 
 [MediaLocation](#mediaLocation)
 
 #### Requirements
-* Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The required [Started](#started) and [Ended](#ended) actions MUST be implemented.  All other supported events are considered optional.
+* Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The required [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions MUST be implemented.  All other supported events are considered optional.
 * Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * Utilize [MediaLocation](#mediaLocation) as the `target` in order to indicate the current location in an audio or video stream.
 * When navigating to a [MediaObject](#mediaObject) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 * For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subclasses; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | `target`<sup>1</sup> | Conformance |
+| ----- | ------- | -------- | -------- | -------------------- | ----------- |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Required |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Required |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Required |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Required |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Rewound](#rewound) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSize](#changedSize) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSpeed](#changedSpeed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedVolume](#changedVolume) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [EnteredFullScreen](#enteredFullScreen) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ExitedFullScreen](#exitedFullScreen) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Muted](#muted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | &nbsp; | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | &nbsp; | Optional |
+
+<sup>1</sup>As noted above, the `target` [MediaLocation](#mediaLocation) MAY be specified if providing the current location in an audio or video stream is relevant.
 
 #### Example
 ```json
@@ -740,8 +835,16 @@ The Caliper Reading Profile models activities associated with navigating to and 
 * Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
-* Utilize [Frame](#frame) as the `target` in order to indicate an indexed segment or location.
+* If relevant, utilize [Frame](#frame) as the `target` in order to indicate an indexed segment or location.
 * When navigating to a [DigitalResource](#digitalResource) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | `target`<sup>1</sup> | Conformance |
+| ----- | ------- | -------- | -------- | -------------------- | ----------- |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | [Frame](#frame) | Required |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | [Frame](#frame) | Required |
+
+<sup>1</sup>As noted above, the `target` [Frame](#frame) MAY be specified if providing and indexed location is relevant.
 
 #### Example
 ```json
@@ -795,7 +898,19 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 * The choice of `actor` depends on the action initiated.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.
 * When logging in to a [SoftwareApplication](#softwareApplication), the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* Although the [SessionEvent](#sessionEvent) `session` property is optional, the a representation of the relevant user [Session](#session) SHOULD be specified.
+* Although the [SessionEvent](#sessionEvent) `session` property is optional, the relevant user [Session](#session) SHOULD be specified.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | `target`<sup>1</sup> | `session`<sup>2</sup> | Conformance |
+| ----- | ------- | -------- | -------- | -------------------- | --------------------- | ----------- |
+| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | [DigitalResource](#digitalResource) | [Session](#session) | Required |
+| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | &nbsp; | [Session](#session) | Optional |
+| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | &nbsp; | &nbsp; | Optional |
+
+<sup>1</sup>As noted above, if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.
+
+<sup>2</sup>As noted above, the relevant user [Session](#session) SHOULD be specified.
+
 
 #### Example
 ```json
@@ -844,6 +959,11 @@ The Caliper Tool Use Profile models an intended interaction between a user and a
 * Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * The `object` range is limited to [SoftwareApplication](#softwareApplication) only.
+
+#### Conformance matrix
+| Event | `actor` | `action` | `object` | Conformance |
+| ----- | ------- | -------- | -------- | ----------- |
+| [ToolUseEvent](#toolUseEvent) | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | Required |
 
 #### Example
 ```json
