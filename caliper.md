@@ -332,25 +332,22 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 [AnnotationEvent](#annotationEvent), [ViewEvent](#viewEvent)
 
 #### Supported annotations
-[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation) and [TaggedAnnotation](#taggedAnnotation)
+[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `generated`<sup>1</sup> | Conformance |
-| ----- | ------- | -------- | -------- | ----------------------- | ----------- |
+| Event | `actor` | `action` | `object` | `generated` | Conformance |
+| ----- | ------- | -------- | -------- | ----------- | ----------- |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | [BookmarkAnnotation](#bookmarkAnnotation) | Required |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | [HighlightAnnotation](#highlightAnnotation) | Optional |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | [SharedAnnotation](#sharedAnnotation) | Optional |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo)  | [DigitalResource](#digitalResource) | &nbsp; | Optional |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [DigitalResource](#digitalResource), [Annotation](#annotation) | &nbsp; | Optional |
-
-<sup>1</sup>As noted above, the `generated` [Annotation](#annotation) SHOULD be specified.
 
 #### Requirements
 * Conformance: create and send an [AnnotationEvent](#annotationEvent) to a target endpoint.  The required [Bookmarked](#bookmarked) action MUST be implemented.  All other supported events are considered optional.
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `actor` value range is limited to [Person](#person).
 * The `action` value range is scoped by event and limited to the supported actions described below.
-* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of an [AnnotationEvent](#annotationEvent).  For a [NavigationEvent](#navigationEvent) the `object` range is limited to [DigitalResource](#digitalResource) or one of its subclasses.  For a [ViewEvent](#viewEvent) the `object` range is limited to [DigitalResource](#digitalResource) or [Annotation](#annotation) or one of its subclasses.
-* For an [AnnotationEvent](#annotationEvent) the `generated` [Annotation](#annotation) SHOULD be specified.
+* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of an [AnnotationEvent](#annotationEvent).
+* Although optional, the `generated` [Annotation](#annotation) SHOULD be specified.
  
 #### Example
 ```json
