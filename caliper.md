@@ -776,11 +776,11 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 [SessionEvent](#sessionEvent)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `target` | `session` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | -------- | --------- | ------ |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [DigitalResource](#digitalResource) | [Session](#session) | UUID |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | DateTime | &nbsp; | [Session](#session) | UUID |
-| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | DateTime | &nbsp; | &nbsp; | UUID |
+| Event | `actor` | `action` | `object` | `dateTime` | `session` | `uuid` |
+| ----- | ------- | -------- | -------- | ---------- | --------- | ------ |
+| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) | UUID |
+| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) | UUID |
+| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | DateTime | &nbsp; | UUID |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
