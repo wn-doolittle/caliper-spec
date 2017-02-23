@@ -190,9 +190,9 @@ Conceptually, Caliper events in plain English are described as  _"ACTOR invokes 
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-A Caliper [Entity](#entity) is a generic class that represents objects or things that participate in learning-related activities.  [Entity](#event) is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments and software applications.  Each [Entity] is provisioned with a modest set of attributes or properties that add in the process of identification, discovery and description.    
- 
-For a Caliper [Entity](#event) to be minimally compliant it MUST specify an `id` and a `type`.  [Entity](#event) is subclassed for enhanced type specificity.  Implementors SHOULD utilize the several subclasses of [Entity](#event) described below in preference to instantiating instances of the Event class itself.  [Entity](#event) properties are described below:
+A Caliper Entity is a generic class that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other things that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes or properties that support discovery and description. 
+
+Caliper entities are largely self-describing via a required `type` property.  Each Entity MUST also be provided with a unique `id`.  The identifier SHOULD be in the form of a dereferenceable [IRI](#rfc3987); i.e., one capable of returning a representation of the resource over HTTP.  Other properties are descriptive in nature or link the Entity to other related entities.  An `extensions` property is also provided so that implementors can add custom properties not described by the model.  Certain classes that extend Entity like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties that help capture further details that may be relevant when describing a learning activity.
 
 **TODO should we state that IRIs/URIs should not employ the URN syntax**
 
@@ -207,6 +207,11 @@ For a Caliper [Entity](#event) to be minimally compliant it MUST specify an `id`
 
 #### Subclasses
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+
+### Example
+```json
+
+```
 
 <a name="infoModelEvent" />
 
