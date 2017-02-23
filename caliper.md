@@ -253,7 +253,7 @@ For a Caliper [Event](#event) to be minimally compliant it MUST specify a `type`
 | eventTime | DateTime | a date and time value expressed with millisecond precision that describes when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a targeted resource. | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
-| referrer | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
 | edApp | [SoftwareApplication](#softwareApplication) | The [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional |
 | group | [Organization](#organization) | The [Organization](#organization) that represents the group context MAY be specified. | Optional |
 | membership | [Membership](#membership) | The relationship of the `actor` to the `group` in terms of roles assigned and current status MAY be specified. | Optional |
