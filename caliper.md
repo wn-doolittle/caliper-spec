@@ -4202,7 +4202,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="json-ld" />
 
-__JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler, N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
+__JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
 
 <a name="lti" />
 
@@ -4214,6 +4214,11 @@ __RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requireme
 
 <a name="rfc3987" />
 
-__RFC 3987__ IETF. M. Duerst.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: "https://www.ietf.org/rfc/rfc3987.txt
+__RFC 3987__ IETF. M. Duerst and M. Suignard.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: "https://www.ietf.org/rfc/rfc3987.txt
+
+<a name="rfc4122" />
+
+__RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
+
 
 TODO Add other RFC references.
