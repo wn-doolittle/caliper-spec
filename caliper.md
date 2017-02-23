@@ -405,7 +405,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | UUID |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; | UUID |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | DateTime | [Attempt](#attempt) | UUID |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Skipped](#skipped)  | [AssessmentItemEvent](#assessmentItemEvent) | DateTime | &nbsp; | UUID |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Skipped](#skipped)  | [AssessmentItem](#assessmentItem) | DateTime | &nbsp; | UUID |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | [Response](#response) | UUID |
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment) | DateTime | &nbsp; | UUID |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment) | DateTime | &nbsp; | UUID |
@@ -775,7 +775,7 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 #### Supported events
 [SessionEvent](#sessionEvent)
 
-#### Actions, entities matrix
+#### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `target` | `session` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | -------- | --------- | ------ |
 | [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [DigitalResource](#digitalResource) | [Session](#session) | UUID |
