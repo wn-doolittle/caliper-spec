@@ -686,6 +686,7 @@ The Caliper Media Profile models interactions between learners and rich content 
 * Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
+* A [MediaObject](#mediaObject) or one of its subclasses MUST be specified as the `object` of the interaction.
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
 * When navigating to a [MediaObject](#mediaObject) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 * For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subclasses; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
@@ -738,7 +739,7 @@ The Caliper Reading Profile models activities associated with navigating to and 
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
-* If relevant, a [Frame](#frame) MAY be specifed as the `target` in order to indicate an indexed segment or location.
+* If relevant, a [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
 * When navigating to a [DigitalResource](#digitalResource) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Minimum conformance
