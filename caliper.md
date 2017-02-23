@@ -97,8 +97,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
         * [Thread](#thread)
         * [VideoObject](#videoObject)
         * [WebPage](#webpage)
-    * 6.3 [Miscellaneous Classes](#vocabMisc)
-        * [Selector](#selector)
+    * 6.3 [Selector](#vocabSelector)
         * [TextPositionSelector](#textPositionSelector)
     * 6.4 [Actions](#vocabActions)
     * 6.5 [Roles](#vocabRoles)
@@ -107,7 +106,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [Revision History](#revisionHistory)
 * [References](#references)
 
-<a name="introduction" />  
+<a name="introduction" />
+  
 ## 1.0. Introduction
 
 TODO
@@ -272,34 +272,23 @@ The following metric profiles are currently available and are summarized individ
 <a name="basicProfile" />
 
 ### 3.3.1 Basic Profile
-The Caliper Basic Profile models a minimally compliant Caliper [Event](#event) comprising an [actor](#actor), [action](#action), [object](#object), [eventTime](#eventTime) and [UUID](#uuid) identifier.  The profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled explicitly by Caliper.
+The Caliper Basic Profile models a minimally compliant Caliper [Event](#event) comprising an `actor`, `action`, `object`, `eventTime` and `uuid` identifier.  The profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled explicitly by Caliper.
 
 #### Supported events
 [Event](#event)
 
-#### Supported actors
-[Agent](#agent)
-
 #### Supported actions
-All Caliper [actions](#actions) are supported.
-
-#### Supported objects
-[Entity](#entity)
-
-#### Requirements
-* Create and send a generic Caliper [Event](#event) to a target endpoint.  At least one Caliper described action MUST be implemented.
-* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST represent the `actor`.
-* A generic [Entity](#entity) or one of its subclasses MUST represent the `object` of the interaction.  
-* The `action` value range is limited to the set of [actions](#actions) described in this specification and no other.
-* When navigating to an [Entity](#entity) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-
-#### Actions, entities matrix
 | Event | `actor` | `action` | `object` | Conformance |
 | ----- | ------  | -------- | -------- | ----------- |
 | [Event](#event) | [Agent](#agent) | [action](#actions)<sup>1</sup> | [Entity](#entity) | Required |
 
-<sup>1</sup>As noted above, any Caliper [action](#actions) may be utilized.
+#### Requirements
+* Conformance: create and send a generic Caliper [Event](#event) to a target endpoint.  At least one Caliper [action](#actions) MUST be implemented.
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
+* The `action` value range is limited to the set of [actions](#actions) described in this specification and no other.
+* A generic [Entity](#entity) or one of its subclasses MUST be specified as the `object` of the interaction.  
+* When navigating to an [Entity](#entity) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Example
 ```json
@@ -329,10 +318,10 @@ All Caliper [actions](#actions) are supported.
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subclassed for greater type specificity.
 
 #### Supported events
-[AnnotationEvent](#annotationEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent)
 
 #### Supported annotations
-[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
+[Annotation](#annotation) subclassed as [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `generated` | Conformance |
@@ -345,10 +334,10 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 #### Requirements
 * Conformance: create and send an [AnnotationEvent](#annotationEvent) to a target endpoint.  The required [Bookmarked](#bookmarked) action MUST be implemented.  All other supported events are considered optional.
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* The `actor` value range is limited to [Person](#person).
+* A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described below.
-* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of an [AnnotationEvent](#annotationEvent).
-* Although optional, the `generated` [Annotation](#annotation) SHOULD be specified.
+* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of the interaction.
+* Although optional the `generated` [Annotation](#annotation) SHOULD be specified.
  
 #### Example
 ```json
@@ -394,40 +383,17 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 <a name="assessmentProfile" />
 
 ### 3.3.3 Assessment Profile
-The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Each [Assessment](#assessment) or individual [AssessmentItem](#assessmentItem) [Attempt](#attempt) initiated by a learner can be represented.  Five [Response](#response) types are also provided for capturing individual item responses.
+The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.
 
 #### Supported events
 [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Supported actors
-[Person](#person)
+#### Supported responses
+[Response](#response) subclassed as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Supported actions
-| Events | Required | Optional |
-| ------ | -------- | -------- |
-| [AssessmentEvent](#assessmentEvent) | [Started](#started), [Submitted](#submitted) | [Paused](#paused), [Restarted](#restarted) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started), [Completed](#completed) | [Skipped](#skipped) |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
-
-#### Supported objects
-[Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt)
-
-#### Generated entities
-[Attempt](#attempt), [Response](#response) subclassed as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
-
-#### Requirements
-* Create and send an [AssessmentEvent](#assessmentEvent) to a target endpoint.  The required [Started](#started) and [Submitted](#submitted) actions MUST be implemented.  All other supported events are considered optional. 
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* The choice of `object` depends on the action initiated.  For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object`.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subclasses.
-* For a [Started](#started) action the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For an [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.
-* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* When navigating to an [Assessment](#assessment) or [AssessmentItem](#assessmentItem) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
-
-#### Actions, entities matrix
-| Event | `actor` | `action` | `object` | `generated`<sup>1</sup> | Conformance |
-| ----- | ------- | -------- | -------- | ----------------------- | ----------- |
+| Event | `actor` | `action` | `object` | `generated` | Conformance |
+| ----- | ------- | -------- | -------- | ----------- | ----------- |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | [Attempt](#attempt) | Required |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Assessment](#assessment) | [Attempt](#attempt) | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | [Attempt](#attempt) | Optional |
@@ -438,7 +404,15 @@ The Caliper Assessment Profile models assessment-related activities including in
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment) | &nsbp; | Optional |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment) | &nsbp; | Optional |
 
-<sup>1</sup>As noted above, the `generated` [Attempt](#attempt) SHOULD be specified.
+#### Requirements
+* Conformance: create and send an [AssessmentEvent](#assessmentEvent) to a target endpoint.  The required [Started](#started) and [Submitted](#submitted) actions MUST be implemented.  All other supported events are considered optional. 
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A [Person](#person) MUST be specified as the `actor`.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* The choice of `object` depends on the action initiated.  For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object`.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subclasses.
+* For a [Started](#started) action the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For an [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.
+* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
+* When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
 #### Example
 ```json
@@ -477,39 +451,14 @@ The Caliper Assessment Profile models assessment-related activities including in
 <a name="assignableProfile" />
 
 ### 3.3.4 Assignable Profile
-The Assignable Profile models activities associated with digital content assigned to a learner for completion according to specific criteria.  An [AssignableDigitalResource](#assignableDigitalResource) is modeled for representing assigned resources and an individual [Attempt](#attempt) initiated by a learner can also be represented. 
+The Assignable Profile models activities associated with digital content assigned to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted. 
 
 #### Supported events
 [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Supported actors
-[Person](#person)
-
 #### Supported actions
-| Event | Required | Optional |
-| -------| ------- | -------- |
-| [AssignableEvent](#assignableEvent) | [Started](#started), [Completed](#completed) | [Activated](#activated), [Deactivated](#deactivated), [Reviewed](#reviewed) |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
-
-**TODO: Do we need to add a submitted action or replace "completed" with "submitted" so that aligns with the AssessmentEvent submitted action?**
-
-#### Supported objects
-[AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt)
-
-#### Generated entities
-[Attempt](#attempt)
-
-#### Requirements
-* Create and send an [AssignableEvent](#assignableEvent) to a target endpoint. The required [Started](#started) and [Completed](#completed) actions MUST be implemented.  All other supported events are considered optional.  
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subclasses, or [Attempt](#attempt).
-* When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-
-#### Actions, entities matrix
-| Event | `actor` | `action` | `object` | `generated`<sup>1</sup> | Conformance |
-| ----- | ------- | -------- | -------- | ----------------------- | ----------- |
+| Event | `actor` | `action` | `object` | `generated` | Conformance |
+| ----- | ------- | -------- | -------- | ----------- | ----------- |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | Required |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | &nbsp; | Required |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | Optional |
@@ -518,7 +467,15 @@ The Assignable Profile models activities associated with digital content assigne
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | &nsbp; | Optional |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | &nsbp; | Optional |
 
-<sup>1</sup>As noted above, the `generated` [Attempt](#attempt) SHOULD be specified. 
+**TODO: Do we need to add a submitted action or replace "completed" with "submitted" so that we align this set of actions with the AssessmentEvent submitted actions?**
+
+#### Requirements
+* Conformance: create and send an [AssignableEvent](#assignableEvent) to a target endpoint. The required [Started](#started) and [Completed](#completed) actions MUST be implemented.  All other supported events are considered optional.  
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A [Person](#person) MUST be specified as the `actor`.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subclasses, or a learner's [Attempt](#attempt).
+* When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 ```json
 {
@@ -553,31 +510,7 @@ The Caliper Forum Profile models learners and others participating in online for
 #### Supported events
 [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
-#### Supported actors
-[Person](#person)
-
 #### Supported actions
-| Events | Required | Optional |
-| -------| -------- | -------- |
-| [ForumEvent](#forumEvent) | [Subscribed](#subscribed), [Unsubscribed](#unsubscribed) | &nbsp; |
-| [MessageEvent](#messageEvent) | [Posted](#posted) | [MarkedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead) |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
-| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead) | &nbsp; |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
-
-#### Supported objects
-[Forum](#forum), [Message](#message), [Thread](#thread)
-
-#### Requirements
-* Create and send a [MessageEvent](#messageEvent) to a target endpoint. The required [Posted](#posted) action MUST be implemented.  All other supported events are considered optional. 
-* Certain [Event](#event) properties are required and MUST be specified when creating a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* For a [ForumEvent](#forumEvent) the `object` range is limited to [Forum](#forum); for a [ThreadEvent](#threadEvent) the `object` range is limited to [Thread](#thread); for a [MessageEvent](#messageEvent) the `object` range is limited to [Message](#message); for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).
-* When a [MessageEvent](#messageEvent) represents a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
-* Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by judicious use of the inherited [DigitalResource](#digitalResource) `isPartOf` property.
-* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-
-#### Actions, entities matrix
 | Event | `actor` | `action` | `object` | Conformance |
 | ----- | ------- | -------- | -------- | ----------- |
 | [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum)  Optional |
@@ -590,6 +523,15 @@ The Caliper Forum Profile models learners and others participating in online for
 | [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | Optional |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | Optional |
 
+#### Requirements
+* Conformance: create and send a [MessageEvent](#messageEvent) to a target endpoint. The required [Posted](#posted) action MUST be implemented.  All other supported events are considered optional. 
+* Certain [Event](#event) properties are required and MUST be specified when creating a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A [Person](#person) MUST be specified as the `actor`.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* For a [ForumEvent](#forumEvent) the `object` range is limited to [Forum](#forum); for a [ThreadEvent](#threadEvent) the `object` range is limited to [Thread](#thread); for a [MessageEvent](#messageEvent) the `object` range is limited to [Message](#message); for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).
+* When a [MessageEvent](#messageEvent) represents a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
+* Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by judicious use of the inherited [DigitalResource](#digitalResource) `isPartOf` property.
+* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Example
 ```json
@@ -629,36 +571,20 @@ The Caliper Grading Profile models grading activities performed by an [Agent](#a
 #### Supported events
 [OutcomeEvent](#outcomeEvent)
 
-#### Supported actors
-[Agent](#agent)
-
 #### Supported actions
-| Event | Required | Optional |
-| ----- | -------- | -------- |
-| [OutcomeEvent](#outcomeEvent) | [Graded](#graded) | &nbsp; |
+| Event | `actor` | `action` | `object` | `generated` | Conformance |
+| ----- | ------- | -------- | -------- | ----------- | ----------- |
+| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) | Required |
 
 **TODO: ADD ViewEvent, as in view the Result?**
 
-#### Supported objects
-[Attempt](#attempt)
-
-#### Generated entities
-[Result](#result)
-
 #### Requirements
-* Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  The required [Graded](#graded) action MUST be implemented.
+* Conformance: create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  The required [Graded](#graded) action MUST be implemented.
 * Certain [Event](#event) properties are required and MUST be specified when creating an [OutcomeEvent](#outcomeEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST represent the `actor`.
+* A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For a [Graded](#graded) action the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction.
 * The `generated` [Result](#result) SHOULD also be specified.
-
-#### Actions, entities matrix
-| Event | `actor` | `action` | `object` | `generated`<sup>1</sup> | Conformance |
-| ----- | ------- | -------- | -------- | ----------------------- | ----------- |
-| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) | Required |
-
-<sup>1</sup>As noted above, the `generated` [Result](#result) SHOULD be specified.
 
 #### Example
 ```json
@@ -715,33 +641,9 @@ The Caliper Media Profile models interactions between learners and rich content 
 #### Supported events
 [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
  
-#### Supported actors
-[Person](#person)
-
 #### Supported actions
-| Event | Required | Optional |
-| ----- | -------- | -------- |
-| [MediaEvent](#mediaEvent) | [Started](#started), [Paused](#paused), [Resumed](#resumed), [Ended](#ended) | [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [Rewound](#rewound), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout) |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
-
-#### Supported objects
-[MediaObject](#mediaObject), [AudioObject](#audioObject), [ImageObject](#audioObject), [VideoObject](#videoObject)
-
-#### Target entities
-[MediaLocation](#mediaLocation)
-
-#### Requirements
-* Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The required [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions MUST be implemented.  All other supported events are considered optional.
-* Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* Utilize [MediaLocation](#mediaLocation) as the `target` in order to indicate the current location in an audio or video stream.
-* When navigating to a [MediaObject](#mediaObject) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subclasses; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
-
-#### Actions, entities matrix
-| Event | `actor` | `action` | `object` | `target`<sup>1</sup> | Conformance |
-| ----- | ------- | -------- | -------- | -------------------- | ----------- |
+| Event | `actor` | `action` | `object` | `target` | Conformance |
+| ----- | ------- | -------- | -------- | -------- | ----------- |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Required |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Required |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | Required |
@@ -764,7 +666,13 @@ The Caliper Media Profile models interactions between learners and rich content 
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | &nbsp; | Optional |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | &nbsp; | Optional |
 
-<sup>1</sup>As noted above, the `target` [MediaLocation](#mediaLocation) MAY be specified if providing the current location in an audio or video stream is relevant.
+#### Requirements
+* Conformance: create and send a [MediaEvent](#mediaEvent) to a target endpoint. The required [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions MUST be implemented.  All other supported events are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
+* When navigating to a [MediaObject](#mediaObject) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subclasses; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
 
 #### Example
 ```json
@@ -800,36 +708,20 @@ The Caliper Reading Profile models activities associated with navigating to and 
 #### Supported events
 [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
 
-#### Supported actors
-[Person](#person)
-
 #### Supported actions
-| Event | Required | Optional |
-| ------| -------- | -------- |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | &nbsp; |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) | &nbsp; |
-
-### Supported objects
-[DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage)
-
-### Target entities
-[Frame](#frame)
-
-#### Requirements
-* Create and send the following Caliper events to a target endpoint: [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent).  The required [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions MUST be implemented.
-* Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
-* If relevant, utilize [Frame](#frame) as the `target` in order to indicate an indexed segment or location.
-* When navigating to a [DigitalResource](#digitalResource) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-
-#### Actions, entities matrix
 | Event | `actor` | `action` | `object` | `target`<sup>1</sup> | Conformance |
 | ----- | ------- | -------- | -------- | -------------------- | ----------- |
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | [Frame](#frame) | Required |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | [Frame](#frame) | Required |
 
-<sup>1</sup>As noted above, the `target` [Frame](#frame) MAY be specified if providing and indexed location is relevant.
+#### Requirements
+* Conformance: create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target endpoint.  The required [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions MUST be implemented.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A [Person](#person) MUST be specified as the `actor`.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
+* If relevant, utilize [Frame](#frame) as the `target` in order to indicate an indexed segment or location.
+* When navigating to a [DigitalResource](#digitalResource) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Example
 ```json
@@ -862,29 +754,6 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 #### Supported events
 [SessionEvent](#sessionEvent)
 
-#### Supported actors
-[Person](#person), [SoftwareApplication](#softwareApplication)
-
-#### Supported actions
-| Event | Required | Optional |
-| ----- | -------- | -------- |
-| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [LoggedOut](#loggedOut), [TimedOut](#timedOut) |
-
-#### Supported objects
-[SoftwareApplication](#softwareApplication), [Session](#session)
-
-#### Target entities
-[DigitalResource](#digitalResource)
-
-#### Requirements
-* Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The required [LoggedIn](#loggedIn) action MUST be implemented.
-* Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* The choice of `actor` depends on the action initiated.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
-* When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.
-* When logging in to a [SoftwareApplication](#softwareApplication), the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* Although the [SessionEvent](#sessionEvent) `session` property is optional, the relevant user [Session](#session) SHOULD be specified.
-
 #### Actions, entities matrix
 | Event | `actor` | `action` | `object` | `target`<sup>1</sup> | `session`<sup>2</sup> | Conformance |
 | ----- | ------- | -------- | -------- | -------------------- | --------------------- | ----------- |
@@ -892,10 +761,14 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 | [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | &nbsp; | [Session](#session) | Optional |
 | [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | &nbsp; | &nbsp; | Optional |
 
-<sup>1</sup>As noted above, if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.
-
-<sup>2</sup>As noted above, the relevant user [Session](#session) SHOULD be specified.
-
+#### Requirements
+* Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The required [LoggedIn](#loggedIn) action MUST be implemented.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* The choice of `actor` depends on the action initiated.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
+* The `action` value range is scoped by event and limited to the supported actions described above.
+* When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.
+* When logging in or out of a [SoftwareApplication](#softwareApplication), the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* Although the [SessionEvent](#sessionEvent) `session` property is optional, the relevant user [Session](#session) SHOULD be specified.
 
 #### Example
 ```json
@@ -928,27 +801,17 @@ The Caliper Tool Use Profile models an intended interaction between a user and a
 #### Supported events
 [ToolUseEvent](#toolUseEvent)
 
-#### Supported actors
-[Person](#person)
-
 #### Supported actions
-| Event | Required | Optional |
-| ----- | -------- | -------- |
-| [ToolUseEvent](#toolUseEvent) | [Used](#used) | &nbsp; |
-
-#### Supported objects
-[SoftwareApplication](#softwareApplication)
+| Event | `actor` | `action` | `object` | Conformance |
+| ----- | ------- | -------- | -------- | ----------- |
+| [ToolUseEvent](#toolUseEvent) | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | Required |
 
 #### Requirements
 * Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  The required [Used](#used) action MUST be implemented.
 * Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* The `object` range is limited to [SoftwareApplication](#softwareApplication) only.
-
-#### Actions, entities matrix
-| Event | `actor` | `action` | `object` | Conformance |
-| ----- | ------- | -------- | -------- | ----------- |
-| [ToolUseEvent](#toolUseEvent) | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | Required |
+* A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
 
 #### Example
 ```json
@@ -979,12 +842,11 @@ TODO
 
 ## 5.0 Transport
 
-Caliper Sensors MUST at least be capable of communicating with [Caliper Endpoints](#endpoints) using conventional HTTP POST requests; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using this transport. Caliper Sensors MAY use other methods to communicate with an Endpoint.
+Caliper Sensors MUST at a minimum be capable of communicating with [Caliper Endpoints](#endpoints) using conventional HTTP POST requests; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using this transport. Caliper Sensors MAY use other methods to communicate with an Endpoint.
 
 For transport security and authentication, Caliper Sensors SHOULD:
 
 * Use HTTPS to secure the transport between Sensor and retrieving Endpoint.
-
 * Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
 
 Caliper Sensors MAY support additional modes of transport security and authentication; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
@@ -998,12 +860,9 @@ When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that t
 Every message sent by a Caliper Sensor MUST consist of a single Caliper Envelope json structure, enveloping a payload of Caliper Events and Entities. The Caliper Envelope MUST have these three properties:
 
 * `sensor`: A unique identifier for the Caliper Sensor sending the message (this MAY instead by a unique identifier for the application or service sending the message, which MAY be shared amongst all the Sensors that application or service uses to send Caliper data).  This identifier SHOULD be an IRI.
-
 * `sendTime`: A date-time string indicating the time at which the Caliper Sensor sent the message, which MUST use the [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date and time format, and MUST be expressed in UTC.  Sensor's SHOULD use a combined date and time representation of the form `2016-0405T14:30:00Z` or `2016-0405T14:30:00.062Z` (to include milliseconds).
-
 * `dataVersion`: A version string indicating the version of the IMS Caliper specification that governs the form of the Caliper Entities and Events found in the `data` payload. By convention, this string value will be URI of Caliper context document that can be used to resolve the meanings of the
   terms and values found in the payload's Entities and Events.
-
 * `data`: A JSON array that MUST contain a list of one or more Caliper Entity or Event structures. The Sensor MAY mix Entity and Event structures in the same envelope.
 
 ### Example
@@ -1049,7 +908,6 @@ Caliper Endpoints MUST at least be capable of communicating with [Caliper Sensor
 For transport and security and authentication, Caliper Sensors SHOULD:
 
 * Use HTTPS to secure the transport between itself and Sensors, and if so, MUST provide a valid HTTP Certificate.
-
 * Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
 
 Caliper Endpoints MAY support additional modes of transport security and authentication; the certification tests for Caliper Endpoints require the Endpoint receive data from the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
@@ -1088,11 +946,8 @@ TODO . . . The AnnotationEvent models . . . .  AnnotationEvent inherits all the 
 AnnotationEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `AnnotationEvent` MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the supported action terms listed above.
-
 * `object`: the annotated [DigitalResource](#digitalResource) that comprises the object of this AnnotationEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
-
 * `generated`: the generated [Annotation](#annotation) SHOULD be specified.  Note that Annotation is a generic type that is subclassed for greater type specificity.  Utilize Annotation only if no suitable subclass exists to represent the object.
 
 #### Example: AnnotationEvent bookmarked
@@ -1162,6 +1017,7 @@ AnnotationEvent inherits all properties defined by its superclass [Event](#event
 ```
 	
 <a name="assessmentEvent" />
+
 ### AssessmentEvent
 The AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.  AssessmentEvent inherits all the properties and requirements defined for Event, its superclass.  
 
@@ -1172,13 +1028,9 @@ The AssessmentEvent models learner interactions with assessments instruments suc
 AssessmentEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `AssessmentEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this AssessmentEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the supported action terms listed above.
-
 * `object`: for [started](#started), [paused](#paused) and [restarted](#restarted) actions the [Assessment](#assessment) that comprises the object of this AssessmentEvent MUST be specified; for a [submitted](#submitted) action the actor's [Attempt](#attempt) MUST be specified.  When the Attempt is the object it MUST reference both the actor and the assigned Assessment along with a [count](#count) of the number of times the actor has interacted with the Assessment.
-
 * `generated`: for [started](#started), [paused](#paused) and [restarted](#restarted) actions the actor's [Attempt](#attempt) SHOULD be specified in order to provide a [count](#count) of the number of times the actor has interacted with the Assessment.  If an Attempt is referenced, both the actor and the assigned Assessment SHOULD be referenced.
 
 #### Example: AssessmentEvent started
@@ -1322,6 +1174,7 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
 ```
 
 <a name="assessmentItemEvent" />
+
 ### AssessmentItemEvent
 The AssessmentItemEvent models a learner's interaction with an individual assessment item.  AssessmentItemEvent inherits all the properties and requirements defined for Event, its superclass.  
 
@@ -1332,15 +1185,10 @@ The AssessmentItemEvent models a learner's interaction with an individual assess
 AssessmentItemEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `AssessmentItemEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this AssessmentItemEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: for [started](#started) and [skipped](#skipped) actions the [AssessmentItem](#assessmentItem) that comprises the object of this AssessmentItemEvent MUST be specified; for a [completed](#completed) action the actor's [Attempt](#attempt) MUST be specified.  When the Attempt is the object it MUST reference both the actor and the assigned AssessmentItem along with a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  The Attempt MAY also reference a parent [Assessment](#assessment) Attempt via the [isPartOf](#isPartOf) property.
-
 * `generated`: for [started](#started) and [skipped] actions, the actor's [Attempt](#attempt) SHOULD be specified in order to provide a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  If the Attempt is provided it MUST reference both the actor and the assigned AssessmentItem. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property.  For a [completed](#completed) action a generated [Response](#response) MAY be referenced.  Note that Response is a generic type that is subclassed for greater type specificity.  Utilize Response only if no suitable subclass exists to represent the learner's response to the item.
-
 * `referrer`: the previous [AssessmentItem](#assessmentItem) attempted MAY be referenced as the referring context.
 
 #### Example: AssessmentItem started
@@ -1506,6 +1354,7 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
 ```
 
 <a name="assignableEvent" />
+
 ### AssignableEvent
 TODO The AssignableEvent models . . . .  AssignableEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -1516,11 +1365,8 @@ TODO The AssignableEvent models . . . .  AssignableEvent inherits all the proper
 AssignableEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `AssignableEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this AssignableEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the [DigitalResource](#digitalResource) that comprises the object of this AssignableEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
 
 
@@ -1585,6 +1431,7 @@ AssignableEvent inherits all properties defined by its superclass [Event](#event
 ```
 
 <a name="forumEvent" />
+
 ### ForumEvent
 
 TODO The ForumEvent models . . . .  ForumEvent inherits all the properties and requirements defined for Event, its superclass.
@@ -1596,11 +1443,8 @@ TODO The ForumEvent models . . . .  ForumEvent inherits all the properties and r
 ForumEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `ForumEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this ForumEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the [Forum](#forum) that comprises the object of this ForumEvent MUST be specified.
 
 #### Example: ForumEvent subscribed
@@ -1659,6 +1503,7 @@ ForumEvent inherits all properties defined by its superclass [Event](#event). Ad
 ```
 
 <a name="mediaEvent" />
+
 ### MediaEvent
 TODO . . . A Caliper MediaEvent models . . . .  MediaEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -1674,13 +1519,9 @@ TODO
 MediaEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `MediaEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this MediaEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the [MediaObject](#mediaObject) that comprises the object of this MediaEvent MUST be specified.  MediaObject is a generic type that is subclassed for greater type specificity.  Utilize MediaObject only if no suitable subclass exists to represent the object. | 
-
 * `target`: if the object of the interaction is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide a precise position or [currentTime](#currentTime) in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S".
 
 #### Example: MediaEvent paused
@@ -1740,6 +1581,7 @@ MediaEvent inherits all properties defined by its superclass [Event](#event). Ad
 ```
 
 <a name="messageEvent" />
+
 ### MessageEvent
 A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a [Message](#message) or marking a post as either read or unread.  MessageEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -1750,11 +1592,8 @@ A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a
 MessageEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `MessageEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this MessageEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the [Message](#Message) that comprises the object of this MessageEvent MUST be specified.  If the object represents a Message posted in reply to a previous message, the prior message  prompting the post SHOULD be referenced utilizing the Message [replyTo](#replyTo) property.
 
 #### Example: MessageEvent posted
@@ -1893,6 +1732,7 @@ MessageEvent inherits all properties defined by its superclass [Event](#event). 
 ```
 
 <a name="navigationEvent" />
+
 ### NavigationEvent
 The NavigationEvent models an actor traversing a network of digital resources.  NavigationEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -1903,13 +1743,9 @@ The NavigationEvent models an actor traversing a network of digital resources.  
 NavigationEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `NavigationEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this NavigationEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the object of this NavigationEvent MUST be specified. Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. 
-
 * `referrer`: the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the referring context SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referrer.
 
 #### Example: NavigationEvent navigated to
@@ -1968,6 +1804,7 @@ NavigationEvent inherits all properties defined by its superclass [Event](#event
 ```
 
 <a name="outcomeEvent" />
+
 ### OutcomeEvent
 TODO The OutcomeEvent models . . . .  OutcomeEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -1978,11 +1815,8 @@ TODO The OutcomeEvent models . . . .  OutcomeEvent inherits all the properties a
 OutcomeEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `OutcomeEvent` MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the graded item's [Attempt](#attempt) MUST be specified.
-
 * `generated`: the generated [Result](#result) SHOULD be provided.
 
 #### Example: OutcomeEvent graded
@@ -2039,6 +1873,7 @@ OutcomeEvent inherits all properties defined by its superclass [Event](#event). 
 ```
 
 <a name="sessionEvent" />
+
 ### SessionEvent
 TODO . . . A SessionEvent models . . . .  SessionEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -2049,13 +1884,9 @@ TODO . . . A SessionEvent models . . . .  SessionEvent inherits all the properti
 SessionEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `SessionEvent` MUST be specified.
-
 * `actor`: the [Agent](#agent) who initiated or is the subject of this SessionEvent.  For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the actor.  For a [timedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the actor.  Note that Agent is a generic type that is subclassed for greater type specificity.  Utilize Agent only if no suitable subclass exists to represent the actor.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) SHOULD be specified as the object.  For a [timedOut](#timedOut) action the [Session](#session) MUST be specified as the object.
-
 * `target`: the target [DigitalResource](#digitalResource) MAY be specified.
 
 #### Example: SessionEvent logged in
@@ -2152,6 +1983,7 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
 ```
 
 <a name="threadEvent" />
+
 ### ThreadEvent
 TODO . . . A Caliper ThreadEvent models an actor marking a forum thread as either read or unread.  ThreadEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -2162,11 +1994,8 @@ TODO . . . A Caliper ThreadEvent models an actor marking a forum thread as eithe
 ThreadEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `ThreadEvent' MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this ThreadEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the [Thread](#thread) that comprises the object of this ThreadEvent MUST be specified.
 
 #### Example: ThreadEvent marked as read
@@ -2227,8 +2056,9 @@ ThreadEvent inherits all properties defined by its superclass [Event](#event). A
 ```
 
 <a name="toolUseEvent" />
+
 ### ToolUseEvent
-A Caliper ToolUseEvent models a Person (actor) using a learning tool in a way that the tool's creators have determined is an indication of a "learning interaction". It's meant to be a fundamental event that tool creators can implement to demonstrate in the Caliper event stream that "users are using the tool in the way in which it's intended to be used".
+A Caliper ToolUseEvent models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a "learning interaction". It's meant to be a fundamental event that tool creators can implement to demonstrate in the Caliper event stream that "users are using the tool in the way in which it's intended to be used."
 
 #### Supported actions
 [used](#used)
@@ -2237,11 +2067,8 @@ A Caliper ToolUseEvent models a Person (actor) using a learning tool in a way th
 ToolUseEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `ToolUseEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this ThreadEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the [SoftwareApplication](#softwareApplication) that comprises the object of this ToolUseEvent MUST be specified.
 
 #### Example: ToolUseEvent marked as read
@@ -2293,6 +2120,7 @@ ToolUseEvent inherits all properties defined by its superclass [Event](#event). 
 ```
 
 <a name="viewEvent" />
+
 ### ViewEvent
 A Caliper ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a file.   ViewEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -2303,11 +2131,8 @@ A Caliper ViewEvent models an actor's examination of digital content whenever th
 ViewEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 * `type`: the string value term `ViewEvent` MUST be specified.
-
 * `actor`: the [Person](#person) who initiated this ViewEvent MUST be specified.
-
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-
 * `object`: the [DigitalResource](#digitalResource) that comprises the object of this ViewEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
 
 #### Example ViewEvent viewed (with extensions)
@@ -2372,9 +2197,11 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
 ```
 
 <a name="entities" />
+
 ### 6.2 Entities
 
 <a name="agent" />
+
 ### Agent
 A Caliper Agent is a generic class that represents an Entity that can initiate or perform an action.  It is analogous to an [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that Agent represents a generic type it is RECOMMENDED that only subclasses of Agent be employed to represent nodes in the learning graph.
 
@@ -2397,6 +2224,7 @@ Agent inherits all properties defined by its superclass [Entity](#entity).  Addi
 ```
 
 <a name="annotation" />
+
 ### Annotation
 A Caliper Annotation is a generic class that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.  Given that Annotation represents a generic type it is RECOMMENDED that only subclasses of Annotation be employed to represent nodes in the learning graph.
 
@@ -2407,9 +2235,7 @@ A Caliper Annotation is a generic class that represents a comment, explanation, 
 Annotation inherits all properties defined by its superclass [Entity](#entity).  Additional properties and requirements are described below:
 
 * `type`: the string value `Annotation` MUST be specified.
-
 * `annotator`: the [Agent](#agent), typically a [Person](#person) who created the Annotation SHOULD be specified.
-
 * `annotated`: the [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for more precise type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the annotated resource.
 
 #### Subclasses 
@@ -2423,6 +2249,7 @@ Annotation inherits all properties defined by its superclass [Entity](#entity). 
 ```
 
 <a name="assessment" />
+
 ### Assessment
 A Caliper Assessment represents an assessment instrument such as a test or quiz.
 
@@ -2433,7 +2260,6 @@ A Caliper Assessment represents an assessment instrument such as a test or quiz.
 Assessment inherits all the properties and requirements defined by its superclasses [DigitalResourceCollection](#digitalResourceCollection) and [AssignableDigitalResource](#assignableDigitalResource).  Additional requirements are described below:
 
 * `type`: the string value `Assessment` MUST be specified.
-
 * `items`: an optional ordered array of [AssessmentItem](#assessmentItem) entities contained in the Assessment MAY be specified.
 
 #### Example
@@ -2471,6 +2297,7 @@ Assessment inherits all the properties and requirements defined by its superclas
 }
 ```
 <a name="assessmentItem" />
+
 ### AssessmentItem
 A Caliper AssessmentItem represents a single test question.
 
@@ -2481,7 +2308,6 @@ A Caliper AssessmentItem represents a single test question.
 AssessmentItem inherits all the properties and requirements defined by its superclass [AssignableDigitalResource](#assignableDigitalResource).  Additional requirements are described below:
 
 * `type`: the string value `AssessmentItem` MUST be specified.
-
 * `isTimeDependent`: an optional boolean value indicating whether or not interacting with the item is time dependent MAY be specified.
 
 #### Example
@@ -2512,6 +2338,7 @@ AssessmentItem inherits all the properties and requirements defined by its super
 ```
 
 <a name="assignableDigitalResource" />
+
 ### AssignableDigitalResource
 A Caliper AssignableDigitalResource is a generic class that represents digital content associated with a graded or ungraded assignment.  Given that AssignableDigitalResource represents a generic type it is RECOMMENDED that only subclasses of AssignableDigitalResource be employed to represent nodes in the learning graph.
 
@@ -2522,17 +2349,11 @@ A Caliper AssignableDigitalResource is a generic class that represents digital c
 AssignableDigitalResource inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
 
 * `type`: the string value `AssignableDigitalResource` MUST be specified.
-
 * `dateToActivate`: an optional date and time value expressed with millisecond precision that describes when the assigned resource was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-
 * `dateToShow`: an optional date and time value expressed with millisecond precision that describes when the assigned resource should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-
 * `dateToStartOn`: an optional date and time value expressed with millisecond precision that describes when the assigned resource can be started MAY be specified..  The value MUST be expressed as an ISO-8601 formatted date/time string.
-
 * `maxAttempts`: an optional non-negative integer representing the number of permitted attempts MAY be specified.
-
 * `maxSubmits`: an optional non-negative integer representing the number of permitted submissions MAY be specified.
-
 * `maxScore`: an optional non-negative integer representing the maximum score permitted MAY be specified.
 
 #### Subclasses 
@@ -2558,6 +2379,7 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 ```
 
 <a name="attempt" />
+
 ### Attempt
 A Caliper Attempt provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An Attempt is generated as the result of an action such as starting an [Assessment](#assessment).
 
@@ -2568,21 +2390,13 @@ A Caliper Attempt provides a count of the number of times an actor has interacte
 Attempt inherits all the properties and requirements defined for its superclass [Entity](#entity).  Additional properties and requirements are described below:
 
 * `type`: the string value `Attempt` MUST be specified.
-
-* ~~`actor`: the [Person](#person) who initiated the Attempt SHOULD be specified.~~ Deprecated.
-
+* ~~`actor`: the [Person](#person) who initiated the Attempt SHOULD be specified.~~ Deprecated in favor of `assignee`.
 * `assignee`: the [Agent](#agent), typically a [Person](#person) who initiated the Attempt SHOULD be specified.
-
 * `assignable`: the [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for more precise type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the annotated resource.
-
 * `isPartOf`: the parent Attempt of this Attempt MAY be specified.
-
 * `count`: the total number of attempts inclusive of the current Attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified.
-
 * `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Attempt was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
-
 * `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Attempt was terminated.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
-
 * `duration`: an optional time interval that represents the time taken to complete this Attempt MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format.
 
 #### Example
@@ -2608,6 +2422,7 @@ Attempt inherits all the properties and requirements defined for its superclass 
 ```
 
 <a name="audioObject" />
+
 ### AudioObject
 A Caliper AudioObject represents an audio or sound file.  It is analogous to a [schema:AudioObject](http://schema.org/AudioObject).
 
@@ -2618,13 +2433,9 @@ A Caliper AudioObject represents an audio or sound file.  It is analogous to a [
 AudioObject inherits all the properties and requirements defined for its superclass [MediaObject](#mediaObject).  Additional properties are described below:
 
 * `type`: the string value `AudioObject` MUST be specified.
-
 * `volumeMin`: an optional string value indicating the minimum volume level MAY be specified.
-
 * `volumeMax`: an optional string value indicating the maximum volume level MAY be specified.
-
 * `volumeLevel`: an optional string value indicating the current volume level MAY be specified.
-
 * `muted`: an optional boolean value indicating whether or not the AudioObject has been muted MAY be specified.
 
 #### Example
@@ -2641,6 +2452,7 @@ AudioObject inherits all the properties and requirements defined for its supercl
 ```
 
 <a name="bookmarkAnnotation" />
+
 ### BookmarkAnnotation
 A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#digitalResource) at a particular location.
 
@@ -2651,7 +2463,6 @@ A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#
 BookmarkAnnotation inherits all the properties and requirements defined for its superclass [Annotation](#annotation).  Additional properties and requirements are described below:
 
 * `type`: the string value `BookmarkAnnotation` MUST be specified.
-
 * `bookmarkNotes`: an optional string value comprising a plain-text rendering of the note that accompanies the bookmark MAY be specified.    
 
 #### Example
@@ -2674,6 +2485,7 @@ BookmarkAnnotation inherits all the properties and requirements defined for its 
 ```
 
 <a name="chapter" />
+
 ### Chapter
 A Caliper Chapter represents a major sub-division of a piece of digital content.
 
@@ -2703,6 +2515,7 @@ Chapter inherits all the properties and requirements defined for its superclass 
 ```
 
 <a name="courseOffering" />
+
 ### CourseOffering
 A Caliper CourseOffering represents the occurrence of a course or a class during a specified time period.  CourseOffering is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
@@ -2713,9 +2526,7 @@ A Caliper CourseOffering represents the occurrence of a course or a class during
 CourseOffering inherits all the properties and requirements defined for its superclass [Organization](#organization).  Additional properties and requirements are described below:
 
 * `type`: the string value `CourseOffering` MUST be specified. 
- 
 * `courseNumber`: an optional string value that constitutes a human-readable identifier for this CourseOffering SHOULD be specified.
-
 * `academicSession`: an optional string value that constitutes a human-readable identifier for the designated period in which this CourseOffering occurs MAY be specified.
 
 #### Subclasses 
@@ -2736,6 +2547,7 @@ CourseOffering inherits all the properties and requirements defined for its supe
 ```
 
 <a name="courseSection" />
+
 ### CourseSection
 A Caliper CourseSection represents a specific instance of a [CourseOffering](#courseOffering) occuring during a specific semester, term or period.  CourseSection is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
@@ -2746,7 +2558,6 @@ A Caliper CourseSection represents a specific instance of a [CourseOffering](#co
 CourseSection inherits all the properties and requirements defined for its superclass [CourseOffering](#courseOffering).  Additional properties and requirements are described below:
 
 * `type`: the string value `CourseSection` MUST be specified. 
-
 * `category`: an optional string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified.
 
 #### Example
@@ -2769,6 +2580,7 @@ CourseSection inherits all the properties and requirements defined for its super
 ```
 
 <a name="digitalResource" />
+
 ### DigitalResource
 A Caliper DigitalResource is a generic class that represents a content item.  Given that DigitalResource represents a generic type it is RECOMMENDED that only subclasses of DigitalResource be employed to represent nodes in the learning graph.  DigitalResource is analogous to a [schema:CreativeWork](https://schema.org/CreativeWork).
 
@@ -2779,25 +2591,15 @@ A Caliper DigitalResource is a generic class that represents a content item.  Gi
 DigitalResource inherits all the properties and requirements defined for its superclass [Entity](#entity).  Additional properties and requirements are described below:
 
 * `type`: the string value `DigitalResource` MUST be specified. 
-
 * `creators`: an optional ordered list of [Agent](#agent) entities typically of type [Person](#person), that are responsible for bringing this DigitalResource into being MAY be specified.
-
 * `mediaType`: an optional string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this DigitalResource MAY be specified.
-
+* ~~`objectType`: an optional string value that designates the type of this DigitalResource.~~ DEPRECATED and SHOULD NOT be referenced.
 * `keywords`: an optional ordered array of one or more string values that represent tags or labels that are used to identify this DigitalResource MAY be specified.  Analogous to [schema:keywords](http://schema.org/keywords).
-
 * `learningObjectives`: an optional ordered array of one or more [LearningObjectives](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this DigitalResource MAY be specified.
-
+* ~~`alignedlearningObjective`: an optional ordered array of one or more [LearningObjectives](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this DigitalResource MAY be specified.~~  DEPRECATED in favor of `learningObjectives`.
 * `isPartOf`: a related [Entity](#entity), typically a DigitalResource, that includes or incorporates this DigitalResource as a part of its whole MAY be specified.  Analogous to [schema:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf).
-
 * `datePublished`: an optional date and time value expressed with millisecond precision that provides the publication date of this DigitalResource.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [schema:datePublished](http://schema.org/datePublished).
-
 * `version`: an optional string value that designates the current form or version of this DigitalResource.  Analogous to [schema:version](http://schema.org/version).
-
-#### Deprecated properties
-The following properties have been deprecated and will be removed in a future version of the specification.  Deprecated properties SHOULD NOT be referenced.
-
-* `objectType`: an optional string value that designates the type of this DigitalResource is DEPRECATED and SHOULD NOT be referenced.
 
 #### Subclasses
 [AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Forum](#forum), [Frame](#frame), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Page](#page), [Thread](#thread), [WebPage](#webpage)
@@ -2833,6 +2635,7 @@ The following properties have been deprecated and will be removed in a future ve
 ```
 
 <a name="digitalResourceCollection" />
+
 ### DigitalResourceCollection
 A Caliper DigitalResourceCollection represents an ordered array of [DigitalResource](#digitalResources) entities.
 
@@ -2843,7 +2646,6 @@ A Caliper DigitalResourceCollection represents an ordered array of [DigitalResou
 DigitalResourceCollection inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResources).  Additional properties and requirements are described below:
 
 * `type`: the string value `DigitalResourceCollection` MUST be specified. 
-
 * `items`: an optional ordered array of [DigitalResource](#digitalResources) entities that comprise this collection MAY be specified.
 
 #### Subclasses 
@@ -2891,6 +2693,7 @@ DigitalResourceCollection inherits all the properties and requirements defined f
 ```
 
 <a name="document" />
+
 ### Document
 A Caliper Document represents a piece of digital content.
 
@@ -2899,7 +2702,7 @@ A Caliper Document represents a piece of digital content.
 
 #### Properties
 Document inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
-                                                                                                                     
+
 * `type`: the string value `Document` MUST be specified. 
 
 #### Example
@@ -2927,8 +2730,9 @@ Document inherits all the properties and requirements defined for its superclass
 ```
  
 <a name="epubChapter" />
+
 ### EpubChapter (DEPRECATED)
-A Caliper EpubChapter represents a major structural division of a piece of writing.  EpubChapter is a DEPRECATED entity that has been superceded by [Chapter](#chapter) and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper EpubChapter represents a major structural division of a piece of writing.  EpubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
 [DigitalResource](#digitalResource)
@@ -2939,6 +2743,7 @@ EpubChapter inherits all the properties and requirements defined for its supercl
 * `type`: the string value `EpubChapter`.
 
 <a name="epubPart" />
+
 ### EpubPart (DEPRECATED)
 A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  EpubPart is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -2947,10 +2752,11 @@ A Caliper EpubPart represents a major structural division of a piece of writing,
 
 #### Properties
 EpubPart inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional requirements are described below:
-                                                                                                                     
+
 * `type`: the string value `EpubPart`. 
 
 <a name="epubSubChapter" />
+
 ### EpubSubChapter (DEPRECATED)
 A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -2963,6 +2769,7 @@ EpubSubChapter inherits all the properties and requirements defined for its supe
 * `type`: the string value `EpubSubChapter`.
 
 <a name="epubVolume" />
+
 ### EpubVolume (DEPRECATED)
 A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  EpubVolume is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -2975,6 +2782,7 @@ EpubVolume inherits all the properties and requirements defined for its supercla
 * `type`: the string value `EpubVolume`.
 
 <a name="fillinBlankResponse" />
+
 ### FillinBlankResponse
 A Caliper FillinBlankResponse represents a form of response in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
@@ -2985,7 +2793,6 @@ A Caliper FillinBlankResponse represents a form of response in which a responden
 FillinBlankResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below: 
 
 * `type`: the string value `FillinBlankResponse` MUST be specified.
-
 * `values`: an optional ordered array of one or more string values representing words, expressions or short phrases that constitutes the FillinBlankResponse MAY be specified.
 
 #### Example
@@ -3021,6 +2828,7 @@ FillinBlankResponse inherits all the properties and requirements defined for its
 ```
 
 <a name="forum" />
+
 ### Forum
 A Caliper Forum represents a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
 
@@ -3031,7 +2839,6 @@ A Caliper Forum represents a channel or virtual space in which group discussions
 Frame inherits all the properties and requirements defined for its superclass [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below: 
   
  * `type`: the string value `Forum` MUST be specified. 
- 
  * `items`: an optional ordered array of [Thread](#thread) entities that comprise this Forum MAY be specified.
 
 #### Example
@@ -3075,6 +2882,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 ```
 
 <a name="frame" />
+
 ### Frame
 A Caliper Frame represents a part, portion or segment of a [DigitalResource](#digitalResource).
  
@@ -3085,7 +2893,6 @@ A Caliper Frame represents a part, portion or segment of a [DigitalResource](#di
 Frame inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
 * `type`: the string value `Frame` MUST be specified.
-
 * `index`: an optional non-negative integer that representes the character position TODO . . . . SHOULD be specified.
 
 #### Example
@@ -3106,6 +2913,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 ```
 
 <a name="group" />
+
 ### Group
 A Caliper Group represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  The Group can act as an [Agent](#agent) and can be decomposed into sub-groups.
 
@@ -3137,6 +2945,7 @@ Group inherits all the properties and requirements defined for its superclass [O
 ```
 
 <a name="highlightAnnotation" />
+
 ### HighlightAnnotation
 A Caliper HighlightAnnotation represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
 
@@ -3150,9 +2959,7 @@ A Caliper HighlightAnnotation represents the act of marking a particular segment
 HighlightAnnotation inherits all the properties and requirements defined for its superclass [Annotation](#annotation).  Additional properties and requirements are described below: 
 
 * `type`: the string value `HighlightAnnotation` MUST be specified.
-
 * `selection`: an optional [TextPositionSelector](#textPositionSelector) MAY be specified.  If a TextPositionSelector is defined both its [start](#start) and [end](#end) positions MUST be specified.
-
 * `selectionText`: an optional string value representing a plain-text rendering of the highlighted segment of the annotated DigitalResource MAY be specified.
 
 #### Example
@@ -3180,6 +2987,7 @@ HighlightAnnotation inherits all the properties and requirements defined for its
 ```
 
 <a name="imageObject" />
+
 ### ImageObject
 A Caliper ImageObject represents an image file.  It is analogous to [schema:ImageObject](http://schema.org/ImageObject).
 
@@ -3204,6 +3012,7 @@ ImageObject inherits all the properties and requirements defined for its supercl
 ```
 
 <a name="learningObjective" />
+
 ### LearningObjective
 The Caliper LearningObjective represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
@@ -3244,6 +3053,7 @@ LearningObjective inherits all the properties and requirements defined for its s
 ```
 
 <a name="ltiSession" />
+
 ### LtiSession
 A Caliper LtiSession represents an LTI Tool Consumer user session.
 
@@ -3254,7 +3064,6 @@ A Caliper LtiSession represents an LTI Tool Consumer user session.
 LtiSession inherits all the properties and requirements defined for its superclass [Session](#session).  Additional properties and requirements are described below:
 
 * `type`: the string value `LtiSession` MUST be specified.
-
 * `launchParameters`: an optional object comprising LTI-specified launch parameters that provide Tool Consumer-related contextual information MAY be specfied.  LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced.
 
 #### Example
@@ -3309,6 +3118,7 @@ LtiSession inherits all the properties and requirements defined for its supercla
 ```
 
 <a name="mediaLocation" />
+
 ### MediaLocation
 
 A Caliper MediaLocation provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
@@ -3320,7 +3130,6 @@ A Caliper MediaLocation provides the current playback position in an [AudioObjec
 MediaLocation inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
 * `type`: the string value `MediaLocation` MUST be specified.
-
 * `currentTime`: an optional time interval that represents the current playback position measured from the beginning of an [AudioObject](#audioObject) or [VideoObject](#videoObject) MAY be specified.  If a currentTime is specified the value MUST conform to the ISO-8601 duration format.
 
 #### Example
@@ -3335,6 +3144,7 @@ MediaLocation inherits all the properties and requirements defined for its super
 ```
 
 <a name="mediaObject" />
+
 ### MediaObject
 A Caliper MediaObject represents a generic piece of media content.  Given that MediaObject represents a generic type it is RECOMMENDED that only subclasses of MediaObject be employed to represent nodes in the learning graph.  MediaObject is analogous to [schema:MediaObject](http://schema.org/MediaObject).
 
@@ -3345,7 +3155,6 @@ A Caliper MediaObject represents a generic piece of media content.  Given that M
 MediaObject inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
 * `type`: the string value `MediaObject` MUST be specified.
-
 * `duration`: an optional time interval that represents the total time required to view and/or listen to this MediaObject at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format.
 
 #### Subclasses
@@ -3359,6 +3168,7 @@ MediaObject inherits all the properties and requirements defined for its supercl
 ```
 
 <a name="membership" />
+
 ### Membership
 A Caliper Membership describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
 
@@ -3369,13 +3179,9 @@ A Caliper Membership describes the relationship between an [Organization](#organ
 Membership inherits all the properties and requirements defined for its superclass [Entity](#entity).  Additional properties and requirements are described below: 
 
 * `type`: the string value `Membership` MUST be specified.
-
 * `organization`: the [Organization](#organization) associated with this Membership SHOULD be specified.
-
 * `member`: the [Person](#person) associated with this Membership SHOULD be specified.
-
 * `roles`: an optional ordered array of organizational roles assigned to the member SHOULD be specified.  If one or more rols are specified the value(s) MUST be chosen from the list of Caliper defined [roles](#roles].
-
 * `status`: an optional string value that indicates the member's current status SHOULD be specified.  If a status is specified, the value MUST be set to the one of the following defined states:  [Active](#active) or [Inactive](#inactive).
 
 #### Example
@@ -3403,6 +3209,7 @@ Membership inherits all the properties and requirements defined for its supercla
 ```
 
 <a name="message" />
+
 ### Message
 A Caliper Message is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.  It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
 
@@ -3413,11 +3220,8 @@ A Caliper Message is a digital form of written communication sent to a recipient
 Message inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
 * `type`: the string value `Message` MUST be specified.
-
 * `replyTo`: a [Message](#message) that represents the post to which this Message is directed in reply SHOULD be referenced.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of).
-
 * `body`: an optional string value comprising a plain-text rendering of the body content of the Message MAY be specified.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). |
-
 * `attachments`: | an optional ordered array of one or more [DigitalResource](#digitalResource) entities attached to this Message MAY be specified.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment).
 
 #### Example
@@ -3459,6 +3263,7 @@ Message inherits all the properties and requirements defined for its superclass 
  ```
  
 <a name="multipleChoiceResponse" />
+
 ### MultipleChoiceResponse
 A Caliper MultipleChoiceResponse represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.
 
@@ -3469,7 +3274,6 @@ A Caliper MultipleChoiceResponse represents a form of response in which a respon
 MultipleChoiceResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below:
 
 * `type`: the string value `MultipleChoiceResponse` MUST be specified.
-
 * `value`: an optional string value that represents the selected option SHOULD be specified.
 
 #### Example
@@ -3505,6 +3309,7 @@ MultipleChoiceResponse inherits all the properties and requirements defined for 
 ```
 
 <a name="multipleResponseResponse" />
+
 ### MultipleResponseResponse
 A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
@@ -3515,7 +3320,6 @@ A Caliper MultipleResponseResponse represents a form of response in which a resp
 MultipleResponseResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below:
 
 * `type`: the string value `MultipleResponseResponse` MUST be specified.
-
 * `values`: an optional ordered array of one or more selected options MAY be specified.
 
 #### Example
@@ -3551,6 +3355,7 @@ MultipleResponseResponse inherits all the properties and requirements defined fo
 ```
 
 <a name="organization" />
+
 ### Organization
 A Caliper Organization represents a formal collection of people organized for some common educational, social or administrative purpose.  The Organization can act as an [Agent] and can be decomposed into sub-organizations.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
@@ -3561,7 +3366,6 @@ A Caliper Organization represents a formal collection of people organized for so
 Organization inherits all the properties and requirements defined for [Agent](#agent), its superclass.  Additional properties and requirements are described below:
 
 * `type`: the string value `Organization` MUST be specified.
-
 * `subOrganizationOf`: the parent [Organization](#organization) of this Organization MAY be specified.
 
 #### Subclasses 
@@ -3583,6 +3387,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 ```
 
 <a name="page" />
+
 ### Page
 A Caliper Page represents an item of paginated content.
 
@@ -3617,6 +3422,7 @@ Page inherits all the properties and requirements defined for its superclass [Di
 ```
 
 <a name="person" />
+
 ### Person
 A Caliper Person represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
@@ -3640,6 +3446,7 @@ Person inherits all the properties and requirements defined for its superclass [
 ```
 
 <a name="reading" />
+
 ### Reading (DEPRECATED)
 A Caliper Reading represents an item of paginated content.  Reading is a DEPRECATED entity superceded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -3652,6 +3459,7 @@ Reading inherits all the properties and requirements defined for its superclass 
 * `type`: the string value `Reading` MUST be specified.
 
 <a name="response" />
+
 ### Response
 A Caliper Response is a generic class that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).  Given that Response represents a generic type it is RECOMMENDED that only subclasses of Response be employed to represent nodes in the learning graph. 
 
@@ -3662,26 +3470,18 @@ A Caliper Response is a generic class that represents the selected option genera
 Response inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
 
 * `type`: the string value `Response` MUST be specified.
-
 * `attempt`: the associated [Attempt](#attempt) SHOULD be specified.  The Attempt SHOULD reference both the [Person](#person) who initiated the Response and the relevant [AssessmentItem](#assessmentItem).
-
+* ~~`actor`: the [Person](#person) who initiated the Response.~~ DEPRECATED in favor of `attempt`.
+* ~~`assignable`: the [DigitalResource](#digitalResource) that constitutes the `object` of the Response.~~ DEPRECATED in favor of `attempt`.
 * `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Response was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
-
 * `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Response was submitted.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
-
 * `duration`: an optional time interval that represents the time taken to complete this Response MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format.
 
 #### Subclasses
 [FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
-#### Deprecated properties
-The following properties have been deprecated and will be removed in a future version of the specification as they are can be derived from the referenced [Attempt](#attempt).  Deprecated properties SHOULD NOT be referenced.
-
-* `actor`: the [Person](#person) who initiated the Response is DEPRECATED and SHOULD NOT be referenced..
-
-* `assignable`: the [DigitalResource](#digitalResource) that constitutes the object of the Response is DEPRECATED and SHOULD NOT be referenced..
-
 <a name="result" />
+
 ### Result
 A Caliper Result represents a grade applied to an assignment submission.
 
@@ -3692,23 +3492,14 @@ A Caliper Result represents a grade applied to an assignment submission.
 Result inherits all the properties and requirements defined for its superclass [Entity](#entity).  Additional properties and requirements are described below:
 
 * `type`: the string value `Result` MUST be specified.
-
 * `attempt`: the associated [Attempt](#attempt) SHOULD be specified.  The Attempt SHOULD reference both the [Agent](#agent) who graded the Result and the relevant [DigitalResource](#digitalResource).
-
 * `normalScore`: TODO
-
 * `penaltyScore`: TODO
-
 * `extraCreditScore`: TODO
-
 * `totalScore`: TODO
-
 * `curvedTotalScore`:  TODO
-
 * `curveFactor`: TODO
-
 * `comment`: TODO
-
 * `scoredBy`: TODO
 
 #### Example
@@ -3748,6 +3539,7 @@ Result inherits all the properties and requirements defined for its superclass [
 ```
 
 <a name="selectTextResponse" />
+
 ### SelectTextResponse
 A Caliper SelectTextResponse represents a response that identifies text or a mapping from a presented paragraph or list.
 
@@ -3758,7 +3550,6 @@ A Caliper SelectTextResponse represents a response that identifies text or a map
 SelectTextResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below:
 
 * `type`: the string value `SelectTextResponse` MUST be specified.
-
 * `values`: an optional ordered array of one or more selected options MAY be specified.
 
 #### Example
@@ -3794,6 +3585,7 @@ SelectTextResponse inherits all the properties and requirements defined for its 
 ```
 
 <a name="session" />
+
 ### Session
 A Caliper Session represents a web application user session.
 
@@ -3804,15 +3596,10 @@ A Caliper Session represents a web application user session.
 Session inherits all the properties and requirements defined for [Entity](#entity), its superclass.  Additional properties and requirements are described below:
 
 * `type`: the string value `Session` MUST be specified.
-
-* ~~`actor`: the [Person](#person) who initiated the Session SHOULD be specified.~~  Deprecated.
-
-* `user`: the [Agent](#agent), typically a [Person](#person), who initiated the Session SHOULD be specified.
-
+* ~~`actor`: the [Person](#person) who initiated the Session SHOULD be specified.~~  DEPRECATED in favor of `user`.
+* `user`: the [Person](#person), who initiated the Session SHOULD be specified.
 * `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Session was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
-
 * `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Session was terminated.  For a [loggedOut](#loggedOut) or [timedOut](#timedOut) action an end time SHOULD be provided.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
-
 * `duration`: an optional time interval that represents the Session duration MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format.
 
 #### subclasses
@@ -3833,6 +3620,7 @@ Session inherits all the properties and requirements defined for [Entity](#entit
 ```
 
 <a name="sharedAnnotation" />
+
 ### SharedAnnotation
 A Caliper SharedAnnotation represents the act of sharing a reference to a DigitalResource with other agents.
 
@@ -3843,7 +3631,6 @@ A Caliper SharedAnnotation represents the act of sharing a reference to a Digita
 SharedAnnotation inherits all the properties and requirements defined for its superclass [Annotation](#annotation).  Additional properties and requirements are described below:
 
 * `type`: the string value `SharedAnnotation` MUST be specified.
-
 * `withAgents`: an optional ordered array of one or more [Agent](#agent) entities, typically of type [Person](#person), with whom the annotated DigitalResource has been shared.
 
 #### Example
@@ -3875,6 +3662,7 @@ SharedAnnotation inherits all the properties and requirements defined for its su
 ```
 
 <a name="softwareApplication" />
+
 #### SoftwareApplication
 A Caliper SoftwareApplication represents a computer program, application, module, platform or system.  It is analogous to a [schema:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
@@ -3885,7 +3673,6 @@ A Caliper SoftwareApplication represents a computer program, application, module
 SoftwareApplication inherits all the properties and requirements defined for its superclass [Agent](#agent).  Additional properties and requirements are described below:
 
 * `type`: the string value `SoftwareApplication` MUST be specified.
-
 * `version`: an optional string value that designates the current form or version of this SoftwareApplication.  Analogous to [schema:version](http://schema.org/version).
 
 #### Example
@@ -3901,6 +3688,7 @@ SoftwareApplication inherits all the properties and requirements defined for its
 ```
 
 <a name="tagAnnotation" />
+
 ### TagAnnotation
 A Caliper TagAnnotation represents the act of tagging a DigitalResource with tags or labels.
 
@@ -3911,7 +3699,6 @@ A Caliper TagAnnotation represents the act of tagging a DigitalResource with tag
 TagAnnotation inherits all the properties and requirements defined for its superclass [Annotation](#annotation).  Additional properties and requirements are described below:
 
 * `type`: the string value `TagAnnotation` MUST be specified.
-
 * `tags`: an optional ordered array of one or more string values that represent the tags associated with the annotated [DigitalResource](#digitalResource).
 
 #### Example
@@ -3934,6 +3721,7 @@ TagAnnotation inherits all the properties and requirements defined for its super
 ```
 
 <a name="thread" />
+
 ### Thread
 A Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
@@ -3944,7 +3732,6 @@ A Caliper Thread represents a series of one or more messages that share a common
 Thread inherits all the properties and requirements defined for its superclass [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below:
 
 * `type`: the string value `Thread` MUST be specified.
-
 * `items`: an optional ordered array of [Message](#message) entities that comprise this Forum MAY be specified.
 
 #### Example
@@ -3995,6 +3782,7 @@ Thread inherits all the properties and requirements defined for its superclass [
 ```
 
 <a name="trueFalseResponse" />
+
 ### TrueFalseResponse
 A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided (true/false, yes/no).
 
@@ -4005,7 +3793,6 @@ A Caliper TrueFalseResponse represents a response to a question in which only tw
 TrueFalseResponse inherits all the properties and requirements defined for [Response](#response), its superclass.  Additional properties and requirements are described below:
 
 * `type`: the string value `TrueFalseResponse` MUST be specified.
-
 * `value`: an optional string value that provides the true/false, yes/no binary selection SHOULD be provided.
 
 #### Example
@@ -4041,6 +3828,7 @@ TrueFalseResponse inherits all the properties and requirements defined for [Resp
 ```
 
 <a name="videoObject" />
+
 ### VideoObject
 A Caliper VideoObject represents a visual recording stored in digital form.  It is analogous to [schema:VideoObject](http://schema.org/VideoObject).
 
@@ -4068,6 +3856,7 @@ VideoObject inherits all the properties and requirements defined for its supercl
 ```
 
 <a name="webPage" />
+
 ### WebPage
 A Caliper WebPage represents a document containing markup that is suitable for display in a web browser.  It is analogous to a [schema:WebPage](http://schema.org/WebPage).
 
@@ -4096,23 +3885,39 @@ WebPage inherits all the properties and requirements defined for its superclass 
 }
 ```
 
-<a name="#vocabMisc" />
+<a name="#vocabSelector" />
 
-### 6.3 Miscellaneous Classes
+### 6.3 Selectors
 TODO Intro
 
 ### TextPositionSelector
 TODO Intro
 
 #### Properties
-| Property | Type | Requirements |
-| -------- | ----- | -------------- |
-| start | integer | TODO The start position . . . MUST be specified. |
-| end | integer | ODO The end position . . . MUST be specified. |
+
+* `type`: the string value `TextPositionSelector` MUST be specified.
+* `start`: TODO The start position . . . MUST be specified.
+* `end`: TODO The end position . . . MUST be specified.
 
 ```json
 {
-    TODO
+    "id": "https://example.edu/users/554433/etexts/201/highlights?start=2300&end=2370",
+    "type": "HighlightAnnotation",
+    "annotator": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "annotated": {
+      "id": "https://example.edu/etexts/201",
+      "type": "Document"
+    },
+    "selection": {
+      "type": "TextPositionSelector",
+      "start": 2300,
+      "end": 2370
+    },
+    "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
+    "dateCreated": "2016-11-15T10:15:00.000Z"
 }
 ```
 
@@ -4315,6 +4120,7 @@ The following Caliper Working Group participants contributed to the writing of t
 #### Entities
 | Entity | Deprecated | Removed | Notes |
 | -------  | --------------- | ------------- | -------- |
+| [AlignedLearningObjective](#alignedLearningObjective) | 1.1 | &nbsp; | Replaced by [LearningObjectives](#learningObjectives) |
 | [EpubChapter](#epubChapter) | 1.1 | &nbsp; | Deprecated in favor of [Chapter](#chapter) |
 | [EpubPart](#epubPart) | 1.1 | &nbsp; | &nbsp; |
 | [EpubSubchapter](#epubSubchapter) | 1.1 | &nbsp; | &nbsp; |
