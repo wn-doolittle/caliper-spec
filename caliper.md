@@ -190,10 +190,14 @@ Conceptually, Caliper events in plain English are described as  _"ACTOR invokes 
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-A Caliper Entity is a generic class that represents objects or things that participate in a learning activity.  For a Caliper [Entity](#event) to be minimally compliant it MUST specify an `id` and a `type`.  [Entity](#event) is subclassed for enhanced type specificity.  Implementors SHOULD utilize the several subclasses of [Entity](#event) described below in preference to instantiating instances of the Event class itself.  [Entity](#event) properties are described below:
+A Caliper [Entity](#entity) is a generic class that represents objects or things that participate in learning-related activities.  [Entity](#event) is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments and software applications.  Each [Entity] is provisioned with a modest set of attributes or properties that add in the process of identification, discovery and description.    
+ 
+For a Caliper [Entity](#event) to be minimally compliant it MUST specify an `id` and a `type`.  [Entity](#event) is subclassed for enhanced type specificity.  Implementors SHOULD utilize the several subclasses of [Entity](#event) described below in preference to instantiating instances of the Event class itself.  [Entity](#event) properties are described below:
+
+**TODO should we state that IRIs/URIs should not employ the URN syntax**
 
 #### Properties
-* `id`: the Entity IRI MUST be specified per [RFC XXXXX](#rfcIRI).  The identifier MUST be unique and SHOULD be dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
+* `id`: the Entity IRI MUST be specified per [RFC 3987](#rfc3987).  The identifier MUST be unique and SHOULD be dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
 * `type`: the string value `Entity` MUST be specified.  If a subclass of `Entity` is created, set the type to the string term appropriate for the subclass utilized, e.g., `Person`.
 * `name`: an optional string value comprising a word or phrase by which the Entity is known MAY be specified.
 * `description`: an optional string value comprising a short, human readable representation of the Entity in written form MAY be specified.
@@ -4166,13 +4170,21 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="reference" />
 ### References
+
 <a name="json-ld" />
+
 __JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler, N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
 
 <a name="lti" />
+
 __LTI__  TODO
 
 <a name="rfc2119" />
-__RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels". March 1997. URL: https://tools.ietf.org/html/rfc2119.
+
+__RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels." March 1997. URL: https://tools.ietf.org/html/rfc2119.
+
+<a name="rfc3987" />
+
+__RFC 3987__ IETF. M. Duerst.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: "https://www.ietf.org/rfc/rfc3987.txt
 
 TODO Add other RFC references.
