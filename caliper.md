@@ -197,13 +197,16 @@ Caliper entities are largely self-describing via a required `type` property.  Ea
 **TODO should we state that IRIs/URIs should not employ the URN syntax**
 
 #### Properties
-* `id`: the Entity IRI MUST be specified per [RFC 3987](#rfc3987).  The identifier MUST be unique and SHOULD be dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.
-* `type`: the string value `Entity` MUST be specified.  If a subclass of `Entity` is created, set the type to the string term appropriate for the subclass utilized, e.g., `Person`.
-* `name`: an optional string value comprising a word or phrase by which the Entity is known MAY be specified.
-* `description`: an optional string value comprising a short, human readable representation of the Entity in written form MAY be specified.
-* `dateCreated`: an optional date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-* `dateModified`: an optional date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-* `extensions`:  an optional ordered array of objects not defined by the model MAY be specified for a more concise representation of the Entity.
+
+| Property | Type | Description | Conformance |
+| -------- | ---- | ----------- | ----------- |
+| id | IRI | The Entity IRI MUST be specified per [RFC 3987](#rfc3987).  The identifier MUST be unique and SHOULD be dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier. | Required |
+| type | String | The string value `Entity` MUST be specified.  If a subclass of `Entity` is created, set the type to the string term appropriate for the subclass utilized, e.g., `Person`. | Required |
+| name | String | An string value comprising a word or short expression by which the Entity is known MAY be specified. | Optional |
+| description | String |  An string value comprising a short, human readable representation of the Entity in written form MAY be specified. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Optional |
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the Entity. | Optional |
 
 #### Subclasses
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
@@ -240,21 +243,23 @@ A Caliper [Event](#event) describes a relationship formed between two entities, 
 For a Caliper [Event](#event) to be minimally compliant it MUST specify a `type`, `actor`, `action`, `object`, `eventTime` and a `uuid` identifier.  [Event](#event) is subclassed for enhanced type specificity.  Implementors SHOULD utilize the several subclasses of [Event](#event) described below in preference to instantiating instances of the Event class itself.  [Event](#event) properties are described below:
 
 #### Properties
-* `uuid`: a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated.
-* `type`: the string value term `Event` MUST be assigned.  If a subclass of `Event` is created, set the type to the string term appropriate for the subclass utilized, e.g., `NavigationEvent`.
-* `actor`: the [Agent](#agent) who initiated or is the subject of this Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication] MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to action terms defined in this specification (see [actions](#actions) below).
-* `object`: the [Entity](#entity) that comprises the object of the Event MUST be specified.
-* `eventTime`: a date and time value expressed with millisecond precision that describes when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-* `target`: an [Entity](#entity) that represents a targeted 
-* `generated`: an [Entity](#entity) created or generated as a result of the interaction.
-* `referrer`: an [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.
-* `edApp`: the [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.
-* `group`: the [Organization](#organization) that represents the group context MAY be specified.
-* `membership`: the relationship of the `actor` to the `group` in terms of roles assigned and current status MAY be specified.
-* `session`: the current user [Session](#session) MAY be specified. 
-* `federatedSession`: if this [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.
-* `extensions`: an optional ordered array of object properties not defined by the Caliper MAY be specified for a more concise representation of this [Event](#event).
+| Property | Type | Description | Conformance |
+| -------- | ---- | ----------- | -------- |
+| uuid | UUID | a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required |
+| type | String | the string value term `Event` MUST be assigned.  If a subclass of `Event` is created, set the type to the string term appropriate for the subclass utilized, e.g., `NavigationEvent`. | Required |
+| actor | String | the [Agent](#agent) who initiated or is the subject of this Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication] MUST be specified. | Required |
+| action | String | the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to action terms defined in this specification (see [actions](#actions) below) | Required |
+| object | [Entity](#entity) | the [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
+| eventTime | DateTime | a date and time value expressed with millisecond precision that describes when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a targeted resource. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | The [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional |
+| group | [Organization](#organization) | The [Organization](#organization) that represents the group context MAY be specified. | Optional |
+| membership | [Membership](#membership) | The relationship of the `actor` to the `group` in terms of roles assigned and current status MAY be specified. | Optional |
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | if this [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
+| extensions | Array | An ordered array of objects not defined by Caliper MAY be specified for a more concise representation of the [Event](#event) | Optional |
 
 When representing the [Event](#event) as JSON-LD, a `@context` key MUST be specified with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
@@ -4197,7 +4202,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="json-ld" />
 
-__JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler, N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
+__JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
 
 <a name="lti" />
 
@@ -4209,6 +4214,11 @@ __RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requireme
 
 <a name="rfc3987" />
 
-__RFC 3987__ IETF. M. Duerst.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: "https://www.ietf.org/rfc/rfc3987.txt
+__RFC 3987__ IETF. M. Duerst and M. Suignard.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: "https://www.ietf.org/rfc/rfc3987.txt
+
+<a name="rfc4122" />
+
+__RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
+
 
 TODO Add other RFC references.
