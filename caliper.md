@@ -282,7 +282,7 @@ The Caliper Basic Profile provides a generic [Event](#event) for describing lear
 | ----- | ------  | -------- | -------- | ---------- | ------ |
 | [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) | DateTime | UUID |
 
-**TODO SHOULD restrict the list of actions to those not associated with other typed Events?**
+**TODO Should we restrict the list of supported actions to those not associated with other typed Events?**
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
@@ -343,7 +343,7 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 * Although optional the `generated` [Annotation](#annotation) SHOULD be specified.
 
 #### Minimum conformance
-Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#endpoint).  The required [Bookmarked](#bookmarked) action MUST be implemented.  All other supported events are considered optional.
+Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported events are considered optional.
  
 #### Example
 ```json
@@ -403,7 +403,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | UUID |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | UUID |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | UUID |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | DateTime | UUID |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; | UUID |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | DateTime | [Attempt](#attempt) | UUID |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Skipped](#skipped)  | [AssessmentItemEvent](#assessmentItemEvent) | DateTime | &nbsp; | UUID |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | [Response](#response) | UUID |
@@ -420,7 +420,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
 #### Minimum conformance
-Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#endpoint).  The required [Started](#started) and [Submitted](#submitted) actions MUST be implemented.  All other supported events are considered optional. 
+Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events are considered optional. 
 
 #### Example
 ```json
@@ -468,12 +468,12 @@ The Assignable Profile models activities associated with digital content assigne
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | [Attempt](#attempt) | UUID |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | DateTime | [Attempt](#attempt) | &nbsp; | Required |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | &nbsp; | UUID |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | UUID |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | UUID |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | DateTime | [Attempt](#attempt) |  &nbsp; | UUID |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nsbp; | UUID |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nsbp; | UUID |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | DateTime | &nbsp; | UUID |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | UUID |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | UUID |
 
 **TODO: Do we need to add a submitted action or replace "completed" with "submitted" so that we align this set of actions with the AssessmentEvent submitted actions?**
 
@@ -485,7 +485,9 @@ The Assignable Profile models activities associated with digital content assigne
 * When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Minimum conformance
-Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#endpoint). The required [Started](#started) and [Completed](#completed) actions MUST be implemented.  All other supported events are considered optional. 
+Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#endpoint). The [Started](#started) and [Completed](#completed) actions are required and MUST be implemented.  All other supported events are considered optional. 
+
+#### Example
 
 ```json
 {
@@ -528,7 +530,7 @@ The Caliper Forum Profile models learners and others participating in online for
 | [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | DateTime | UUID |
 | [MessageEvent](#messageEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Message](#message) | DateTime | UUID |
 | [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | DateTime | UUID |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | UUID |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | UUID |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | DateTime | UUID |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | DateTime | UUID |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | UUID |
@@ -543,7 +545,7 @@ The Caliper Forum Profile models learners and others participating in online for
 * When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Minimum conformance
-Create and send a [MessageEvent](#messageEvent) to a target endpoint. The required [Posted](#posted) action MUST be implemented.  All other supported events are considered optional.
+Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Posted](#posted) action is required and MUST be implemented.  All other supported events are considered optional.
 
 #### Example
 ```json
@@ -594,11 +596,11 @@ The Caliper Grading Profile models grading activities performed by an [Agent](#a
 * Certain [Event](#event) properties are required and MUST be specified when creating an [OutcomeEvent](#outcomeEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* For a [Graded](#graded) action the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction.
+* The learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction.
 * The `generated` [Result](#result) SHOULD also be specified.
 
 #### Minimum conformance
-Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  The required [Graded](#graded) action MUST be implemented.
+Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  The [Graded](#graded) action is required and MUST be implemented.
 
 #### Example
 ```json
@@ -682,13 +684,14 @@ The Caliper Media Profile models interactions between learners and rich content 
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
 * When navigating to a [MediaObject](#mediaObject) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 * For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subclasses; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
 
 #### Minimum conformance
-Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The required [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions MUST be implemented.  All other supported events are considered optional.
+Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions are required and MUST be implemented.  All other supported events are considered optional.
 
 #### Example
 ```json
@@ -735,11 +738,11 @@ The Caliper Reading Profile models activities associated with navigating to and 
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
-* If relevant, utilize [Frame](#frame) as the `target` in order to indicate an indexed segment or location.
+* If relevant, a [Frame](#frame) MAY be specifed as the `target` in order to indicate an indexed segment or location.
 * When navigating to a [DigitalResource](#digitalResource) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Minimum conformance
-Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target endpoint.  The required [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions MUST be implemented.
+Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target endpoint.  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
 
 #### Example
 ```json
@@ -773,8 +776,8 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 [SessionEvent](#sessionEvent)
 
 #### Actions, entities matrix
-| Event | `actor` | `action` | `object` | `dateTime` | target` | `session` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | ------- | --------- | ---- |
+| Event | `actor` | `action` | `object` | `dateTime` | `target` | `session` | `uuid` |
+| ----- | ------- | -------- | -------- | ---------- | -------- | --------- | ------ |
 | [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [DigitalResource](#digitalResource) | [Session](#session) | UUID |
 | [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | DateTime | &nbsp; | [Session](#session) | UUID |
 | [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | DateTime | &nbsp; | &nbsp; | UUID |
@@ -788,7 +791,7 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 * Although the [SessionEvent](#sessionEvent) `session` property is optional, the relevant user [Session](#session) SHOULD be specified.
 
 #### Minimum conformance
-Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The required [LoggedIn](#loggedIn) action MUST be implemented.
+Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The [LoggedIn](#loggedIn) action is required and MUST be implemented.
 
 #### Example
 ```json
@@ -833,7 +836,7 @@ The Caliper Tool Use Profile models an intended interaction between a user and a
 * A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
 
 #### Minimum conformance
-Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  The required [Used](#used) action MUST be implemented.
+Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  The [Used](#used) action is required and MUST be implemented.
 
 #### Example
 ```json
