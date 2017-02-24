@@ -139,7 +139,7 @@ __Linked Data__: A set of best practices for connecting structure data over the 
 
 __LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS Global standard for integration of rich learning applications within educational environments.
 
-__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  The IRI is a globally scoped identifier used in linked data to refer to most nodes and properties.  An IRI reference may be absolute or relative to that of another absolute IRI.  In JSON-LD relative IRIs are resolved relative to the base IRI.
+__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  The IRI is a globally scoped identifier used in linked data to refer to most nodes and properties.  An IRI reference may be absolute or relative to that of another absolute IRI.  In [JSON-LD](#json-ld) relative IRIs are resolved relative to the base IRI.
 
 __ISO 8601__: Caliper time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is in UTC. 
 
@@ -190,20 +190,23 @@ Conceptually, Caliper events in plain English are described as  _"ACTOR invokes 
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-A Caliper Entity is a generic class that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other things that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes or properties that support discovery and description. 
+A Caliper Entity is a generic class that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes that support discovery and description.  As a data structure an Entity constitutes an unordered set of key:value pairs or properties. 
 
-Caliper entities are largely self-describing via a required `type` property.  Each Entity MUST also be provided with a unique `id`.  The identifier SHOULD be in the form of a dereferenceable [IRI](#rfc3987); i.e., one capable of returning a representation of the resource over HTTP.  Other properties are descriptive in nature or link the Entity to other related entities.  An `extensions` property is also provided so that implementors can add custom properties not described by the model.  Certain classes that extend Entity like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties that help capture further details that may be relevant when describing a learning activity.
+Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](#rfc3987) MUST also be provided.  Entity IRI values MUST be unique as well as valid.  The IRI SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the Entity over HTTP once authorization to access the resource is granted.
 
-**TODO should we state that IRIs/URIs should not employ the URN syntax**
+**TODO should we state that IRIs/URIs should not employ the URN syntax (implied by dereferenceable which URNs by nature are not)**
+
+Other Entity properties are descriptive in nature or link the Entity to other related entities.  An `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain classes that extend Entity like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
 
 #### Properties
+The base set of Entity properties is listed below.  Each property MUST be referenced only once.  The `id` and `type` properties are required; all other properties are optional. Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.    
 
 | Property | Type | Description | Conformance |
 | -------- | ---- | ----------- | ----------- |
-| id | IRI | The Entity IRI MUST be specified per [RFC 3987](#rfc3987).  The identifier MUST be unique and SHOULD be dereferenceable, returning a representation of the Entity once authorization to access the resource is granted.  In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier. | Required |
-| type | String | The string value `Entity` MUST be specified.  If a subclass of `Entity` is created, set the type to the string term appropriate for the subclass utilized, e.g., `Person`. | Required |
-| name | String | An string value comprising a word or short expression by which the Entity is known MAY be specified. | Optional |
-| description | String |  An string value comprising a short, human readable representation of the Entity in written form MAY be specified. | Optional |
+| id | IRI | A unique identifier assigned to the Entity in the form of a valid IRI as defined by [RFC 3987](#rfc3987) MUST be specified.  The IRI SHOULD be persistent as well as dereferenceable.  ~~In cases where an IRI is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
+| type | String | A string value corresponding to the short-hand term associated with the Entity as defined in the Caliper external [context](http://purl.imsglobal.org/ctx/caliper/v1p1) MUST be specified..  For a generic Entity set the `type` value to the term "Entity".  If a subclass of `Entity` is created, set the type to the term corresponding to the subclass utilized, e.g., "Person". | Required |
+| name | String | A string value comprising a word or phrase by which the Entity is known MAY be specified. | Optional |
+| description | String |  A string value comprising a brief, written representation of the Entity MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Optional |
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the Entity. | Optional |
@@ -211,27 +214,36 @@ Caliper entities are largely self-describing via a required `type` property.  Ea
 #### Subclasses
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
+When representing an Entity as [JSON-LD](#json-ld), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
+
 ### Example
 ```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/etexts/201.epub",
-  "type": "Document",
-  "name": "Example Guide",
-  "mediaType": "application/epub+zip",
-  "creators": [
-    {
-      "id": "https://example.edu/people/12345",
-      "type": "Person"
-    },
-    {
-      "id": "https://example.com/staff/56789",
-      "type": "Person"
-    }
-  ],
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "datePublished": "2016-10-01T06:00:00.000Z",
-  "version": "1.1"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "https://example.edu/etexts/201.epub",
+    "type": "Document",
+    "name": "Example Guide",
+    "mediaType": "application/epub+zip",
+    "creators": [
+        {
+            "id": "https://example.edu/people/12345",
+            "type": "Person"
+        },
+        {
+            "id": "https://example.com/staff/56789",
+            "type": "Person"
+        }
+    ],
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "datePublished": "2016-10-01T06:00:00.000Z",
+    "version": "1.1",
+    "extensions": [
+        {
+            "hostname": "example.docker",
+            "request_id": "f72863c5-d541-40b3-8183-e9e3e877e3bc",
+            "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+        }
+    ]
 }
 ```
 
@@ -261,7 +273,7 @@ For a Caliper [Event](#event) to be minimally compliant it MUST specify a `type`
 | federatedSession | [LtiSession](#ltiSession) | if this [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
 | extensions | Array | An ordered array of objects not defined by Caliper MAY be specified for a more concise representation of the [Event](#event) | Optional |
 
-When representing the [Event](#event) as JSON-LD, a `@context` key MUST be specified with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
 #### Example
 ```json
@@ -896,6 +908,13 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 ### 4.0 Sensor API
 
 TODO
+
+
+#### 4.x Representing Events and Entities as JSON-LD
+
+When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+
+When representing an Entity as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
 <a name="transport" />
 
