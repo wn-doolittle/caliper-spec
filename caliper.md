@@ -160,35 +160,8 @@ structure, flow, pointers
 <a name="infoModel" />
 
 ## 3.0 Information Model 
-This section describes the concepts, relationships and constraints that specify the Caliper information model.  Caliper is composed of entities and events and metric profiles.  
- 
- mediated by a metric profile.
 
-applies semantic web concepts to events that occur in and around learning activities as well as activities that help facilitate learning.   These activities are organized by type and described by the following metric profiles:  
-
-* Basic
-* Annotation
-* Assessment
-* Assignable
-* Forum
-* Grading
-* Media
-* Reading
-* Session
-* Tool Use
-
-A metric profile contains a description of:
- * the entities that participate in a learning activity
- * the possible actions that may be performed as part of the learning activity.
- * the events that may occur during an learning activity
-
-Actors are capable of initiating an action such as a person, group, organization or software application.   Actors optionally may be assigned roles. Actors optionally may be members of groups or organizations.
-
-Entities provide information about the objects, actors or resources that participate in an event.  Entities are further specified by contexts. The vocabularies for entities are drawn from a variety of sources.
-
-Actions specify the set of potential interactions within the metric profile.
-
-Conceptually, Caliper events in plain English are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.
+The Caliper information model defines a set of concepts, rules and relationships for describing learning activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles).  Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a limited set of [actions](#actions) undertaken by learners, instructors and others that are scoped to the learning domain.  Various [Entity](#entity) types representing people, groups and resources are provided in order to better describe both the relationships established between participating entities and the contextual elements relevant to the interaction.
 
 <a name="infoModelEntity" />
 
