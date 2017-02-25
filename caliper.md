@@ -161,7 +161,7 @@ structure, flow, pointers
 
 ## 3.0 Information Model 
 
-The Caliper information model defines a set of concepts, rules and relationships for describing learning activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles).  Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a limited set of [actions](#actions) undertaken by learners, instructors and others that are scoped to the learning domain.  Various [Entity](#entity) types representing people, groups and resources are provided in order to better describe both the relationships established between participating entities and the contextual elements relevant to the interaction.
+The Caliper information model defines a set of concepts, rules and relationships for describing learning activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles).  Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a controlled vocabulary of [actions](#actions) undertaken by learners, instructors and others that are scoped to the event.  Various [Entity](#entity) types representing people, groups and resources are provided in order to better describe both the relationships established between participating entities and the contextual elements relevant to the interaction.
 
 <a name="infoModelEntity" />
 
