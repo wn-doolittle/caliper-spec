@@ -192,19 +192,19 @@ Conceptually, Caliper events in plain English are described as  _"ACTOR invokes 
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-A Caliper Entity is a generic class that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes that support discovery and description.  As a data structure an Entity constitutes an unordered set of key:value pairs or properties. 
+A Caliper Entity is a generic type or concept that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes that support discovery and description.  As a data structure an Entity constitutes an unordered set of key:value pairs or properties. 
 
-Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](#rfc3987) MUST also be provided.  Entity [IRI](#rfc3987)  values MUST be unique as well as valid.  The [IRI](#rfc3987)  SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the Entity over HTTP once authorization to access the resource is granted.
+Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](#rfc3987) MUST also be provided.  Entity [IRI](#rfc3987) values MUST be unique as well as valid.  The [IRI](#rfc3987) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the Entity over HTTP once authorization to access the resource is granted.
 
 **TODO should we state that IRIs/URIs should not employ the URN syntax (implied by dereferenceable which URNs by nature are not)**
 
-Other Entity properties are descriptive in nature or link the Entity to other related entities.  An `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain classes that extend Entity like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
+Other Entity properties are descriptive in nature or link the Entity to other related entities.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain classes that extend Entity like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
 
 #### Properties
-The base set of Entity properties is listed below.  Each property MUST be referenced only once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.    
+The base set of Entity properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.    
 
 | Property | Type | Description | Conformance |
-| -------- | ---- | ----------- | ----------- |
+| :------- | :--- | ----------- | :---------: |
 | id | IRI | A unique identifier assigned to the Entity in the form of a valid [IRI](#rfc3987) MUST be specified.  The [IRI](#rfc3987)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](#rfc3987) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
 | type | String | A string value corresponding to the short-hand term defined for the Entity in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Entity set the `type` value to the term "Entity".  If a subclass of `Entity` is created, set the type to the term corresponding to the subclass utilized, e.g., "Person". | Required |
 | name | String | A string value comprising a word or phrase by which the Entity is known MAY be specified. | Optional |
@@ -252,17 +252,19 @@ When representing an Entity as [JSON-LD](#json-ld), a `@context` key MUST be emb
 <a name="infoModelEvent" />
 
 ### 3.2 The Caliper Event
-A Caliper Event is a generic class that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The Event properties `actor`, `action` and `object` form a data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models individually as an Event.
+A Caliper Event is a generic type or concept that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The Event properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as Events.
 
-Event is subclassed in order to provide controlled vocabularies of entities and actions that are scoped to a particular activity domain.  Each Event is also provisioned with a set of optional properties that encourage implementers to capture details of the learning context in which an activity takes place.
+Caliper defines a number of Event types, each employing terms that are scoped to a particular activity domain.  The Event model also seeks to describe the environment or context in which a learning activity is situated.  Group affiliation, membership roles and status, recent navigation history, supporting technology and session information can all be represented.  Entities generated as a result of the interaction between an `actor` and an `object` can also be described (annotating a piece of digital content and producing an [Annotation](#annotation) is one such example).
+  
+Like an [Entity](#entity), a Caliper Event is largely self-describing via a required `type` property.  A unique identifier in the form of a [UUID](#rfc4122) MUST also be provided.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.      
 
 #### Properties
-The base set of Event properties is listed below.  For an Event to be minimally compliant it MUST specify a `type`, `actor`, `action`, `object`, `eventTime` and a `uuid` identifier.  [Event](#event) is subclassed for enhanced type specificity.  Implementors SHOULD utilize the several subclasses of [Event](#event) described below in preference to instantiating instances of the Event class itself.  [Event](#event) properties are described below:
+The base set of Event properties is listed below.  Each property MUST only be referenced once.  The `uuid`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
 
 **TODO WHAT VALUE DOES `target` ADD TO AN EVENT THAT CAN'T BE REPRESENTED BY `object`?  DEPRECATE?**
 
 | Property | Type | Description | Conformance |
-| -------- | ---- | ----------- | -------- |
+| :------- | :--- | ----------- | :---------: |
 | uuid | UUID | a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required |
 | type | String | A string value corresponding to the short-hand term defined for the Event in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Event set the `type` value to the term "Event".  If a subclass of `Entity` is created, set the type to the term corresponding to the subclass utilized, e.g., "NavigationEvent". | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
@@ -270,11 +272,11 @@ The base set of Event properties is listed below.  For an Event to be minimally 
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location of the `object`. | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) considered a by-product of the interaction or created as a result of the interaction. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
 | edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional |
 | group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional |
-| membership | [Membership](#membership) | The relationship of the `actor` to the `group` in terms of roles assigned and current status MAY be specified. | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional | 
 | federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the Event.  | Optional |
