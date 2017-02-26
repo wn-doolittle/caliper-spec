@@ -36,88 +36,99 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
       * 3.3.9 [Session Profile](#sessionProfile)
       * 3.3.10 [Tool Use Profile](#toolUseProfile)
 * 4.0 [Sensor API](#api)
-* 5.0 [Transport](#transport)
-  * 5.1 [Envelope](#envelope)
-	* 5.2 [Endpoints](#endpoints)
-* 6.0 [Terms](#terms)
-    * 6.1 [Events](#vocabEvents)
-        * [AnnotationEvent](#annotationEvent)
-        * [AssessmentEvent](#assessmentEvent)
-        * [AssessmentItemEvent](#assessmentItemEvent)
-        * [AssignableEvent](#assignableEvent)
-        * [ForumEvent](#forumEvent)
-        * [MediaEvent](#mediaEvent)
-        * [MessageEvent](#messageEvent)
-        * [NavigationEvent](#navigationEvent)
-        * [OutcomeEvent](#outcomeEvent)
-        * [SessionEvent](#sessionEvent)
-        * [ThreadEvent](#threadEvent)
-        * [ToolUseEvent](#toolUseEvent)
-        * [ViewEvent](#viewEvent)
-    * 6.2 [Entities](#vocabEntities)
-        * [Agent](#agent)
-        * [Annotation](#annotation)
-        * [Assessment](#assessment)
-        * [AssessmentItem](#assessmentItem)
-        * [AssignableDigitalResource](#assignableDigitalResource)
-        * [Attempt](#attempt)
-        * [AudioObject](#audioObject)
-        * [BookmarkAnnotation](#bookmarkAnnotation)
-        * [Chapter](#chapter)
-        * [CourseOffering](#courseOffering)
-        * [CourseSection](#courseSection)
-        * [DigitalResource](#digitalResource)
-        * [DigitalResourceCollection](#digitalResourceCollection)
-        * [Document](#document)
-        * [FillinBlankResponse](#fillinBlankResponse)
-        * [Forum](#forum)
-        * [Frame](#frame)
-        * [Group](#group)
-        * [HighlightAnnotation](#highlightAnnotation)
-        * [ImageObject](#imageObject)
-        * [LearningObjective](#learningObjective)
-        * [LtiSession](#ltiSession) 
-        * [MediaLocation](#mediaLocation)
-        * [MediaObject](#mediaObject)
-        * [Membership](#membership)
-        * [Message](#message)
-        * [MultipleChoiceResponse](#multipleChoiceResponse)
-        * [MultipleResponseResponse](#multipleResponseResponse)
-        * [Organization](#organization)
-        * [Page](#page)
-        * [Person](#person)
-        * [Response](#response)
-        * [Result](#result)
-        * [Session](#session)
-        * [SharedAnnotation](#sharedAnnotation)
-        * [SelectTextResponse](#selectTextResponse)
-        * [SoftwareApplication](#softwareApplication)
-        * [TagAnnotation](#tagAnnotation)
-        * [TrueFalseResponse](#trueFalseResponse)
-        * [Thread](#thread)
-        * [VideoObject](#videoObject)
-        * [WebPage](#webpage)
-    * 6.3 [Selector](#vocabSelector)
-        * [TextPositionSelector](#textPositionSelector)
-    * 6.4 [Actions](#vocabActions)
-    * 6.5 [Roles](#vocabRoles)
-    * 6.6 [Status](#vocabStatus)
-* 7.0 [Contributors](#contributors)
-* [Revision History](#revisionHistory)
-* [References](#references)
+  * 4.1 [Behavior](#behavior)
+  * 4.2 [Transport](#transport)
+  * 4.3 [Envelope](#envelope)
+  * 4.4 [Representing Entities and Events as JSON-LD](#representingJsonld)
+  * 4.5 [Endpoint](#endpoint)
+  * 4.6 [Endpoint Responses](#endpointResponses)
+* 5.0 [Appendix A. Actions](#actions)
+* 6.0 [Appendix B. Event Types](#events)
+  * 6.1 [Event](#event)
+  * 6.2 [AnnotationEvent](#annotationEvent)
+  * 6.3 [AssessmentEvent](#assessmentEvent)
+  * 6.4 [AssessmentItemEvent](#assessmentItemEvent)
+  * 6.5 [AssignableEvent](#assignableEvent)
+  * 6.6 [ForumEvent](#forumEvent)
+  * 6.7 [MediaEvent](#mediaEvent)
+  * 6.8 [MessageEvent](#messageEvent)
+  * 6.9 [NavigationEvent](#navigationEvent)
+  * 6.10 [OutcomeEvent](#outcomeEvent)
+  * 6.11 [ReadingEvent](#readingEvent) (Deprecated)
+  * 6.12 [SessionEvent](#sessionEvent)
+  * 6.13 [ThreadEvent](#threadEvent)
+  * 6.14 [ToolUseEvent](#toolUseEvent)
+  * 6.15 [ViewEvent](#viewEvent)
+* 7.0 [Appendix C. Entity Types](#entities)
+  * 7.1 [Entity](#appendixEntities)
+  * 7.2 [Agent](#agent)
+  * 7.3 [Annotation](#annotation)
+  * 7.4 [Assessment](#assessment)
+  * 7.5 [AssessmentItem](#assessmentItem)
+  * 7.6 [AssignableDigitalResource](#assignableDigitalResource)
+  * 7.7 [Attempt](#attempt)
+  * 7.8 [AudioObject](#audioObject)
+  * 7.9 [BookmarkAnnotation](#bookmarkAnnotation)
+  * 7.10 [Chapter](#chapter)
+  * 7.11 [CourseOffering](#courseOffering)
+  * 7.12 [CourseSection](#courseSection)
+  * 7.13 [DigitalResource](#digitalResource)
+  * 7.14 [DigitalResourceCollection](#digitalResourceCollection)
+  * 7.15 [Document](#document)
+  * 7.16 [EpubChapter](#epubChapter) (Deprecated)
+  * 7.17 [EpubPart](#epubPart) (Deprecated)
+  * 7.18 [EpubSubChapter](#epubSubChapter) (Deprecated)
+  * 7.19 [EpubVolume](#epubVolume) (Deprecated)
+  * 7.20 [FillinBlankResponse](#fillinBlankResponse)
+  * 7.21 [Forum](#forum)
+  * 7.22 [Frame](#frame)
+  * 7.23 [Group](#group)
+  * 7.24 [HighlightAnnotation](#highlightAnnotation)
+  * 7.25 [ImageObject](#imageObject)
+  * 7.26 [LearningObjective](#learningObjective)
+  * 7.27 [LtiSession](#ltiSession) 
+  * 7.28 [MediaLocation](#mediaLocation)
+  * 7.29 [MediaObject](#mediaObject)
+  * 7.30 [Membership](#membership)
+  * 7.31 [Message](#message)
+  * 7.32 [MultipleChoiceResponse](#multipleChoiceResponse)
+  * 7.33 [MultipleResponseResponse](#multipleResponseResponse)
+  * 7.34 [Organization](#organization)
+  * 7.35 [Page](#page)
+  * 7.36 [Person](#person)
+  * 7.37 [Reading](#reading) (Deprecated)
+  * 7.38 [Response](#response)
+  * 7.39 [Result](#result)
+  * 7.40 [Session](#session)
+  * 7.41 [SharedAnnotation](#sharedAnnotation)
+  * 7.42 [SelectTextResponse](#selectTextResponse)
+  * 7.43 [SoftwareApplication](#softwareApplication)
+  * 7.44 [TagAnnotation](#tagAnnotation)
+  * 7.45 [TrueFalseResponse](#trueFalseResponse)
+  * 7.46 [Thread](#thread)
+  * 7.47 [VideoObject](#videoObject)
+  * 7.48 [WebPage](#webpage)
+* 8.0 [Appendix D. Selectors](#selectors)
+  * 8.1 [TextPositionSelector](#textPositionSelector)
+* 9.0 [Appendix E. Roles](#roles)
+* 10.0 [Appendix F. Status](#status)
+* 11.0 [Contributors](#contributors)
+* 12.0 [References](#references)
 
 <a name="introduction" />
   
 ## 1.0. Introduction
 
-TODO
+The drive to deliver education at scale coupled with a demand for measurable accountability | "accountability backed by measurability" has spurred interest in the application of “big data” principles to the business of education.  Opportunities to tap new data sources, ask new questions and pursue new insights have grown as both the learning technology ecosystem has expanded and the definition of what constitutes learning has evolved beyond the formal classroom experience to include informal, social and experiential modes of acquiring knowledge and skills. The challenges inherent in describing, collecting and exchanging learning activity data originating from such diverse learning sources and context are now formidable.
 
-### 1.1 Terminology
+The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities.  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage and analysis.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
+
+#### 1.1 Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
 <a name="definitions" />
 
-### 1.2 Definitions
+#### 1.2 Definitions
 
 __actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
 
@@ -159,46 +170,18 @@ structure, flow, pointers
 
 ## 3.0 Information Model 
 
-This section describes the concepts, relationships and constraints that specify the Caliper information model.  Caliper is composed of entities and events and metric profiles.  
- 
- mediated by a metric profile.
-
-applies semantic web concepts to events that occur in and around learning activities as well as activities that help facilitate learning.   These activities are organized by type and described by the following metric profiles:  
-
-* Basic
-* Annotation
-* Assessment
-* Assignable
-* Forum
-* Grading
-* Media
-* Reading
-* Session
-* Tool Use
-
-A metric profile contains a description of:
- * the entities that participate in a learning activity
- * the possible actions that may be performed as part of the learning activity.
- * the events that may occur during an learning activity
-
-Actors are capable of initiating an action such as a person, group, organization or software application.   Actors optionally may be assigned roles. Actors optionally may be members of groups or organizations.
-
-Entities provide information about the objects, actors or resources that participate in an event.  Entities are further specified by contexts. The vocabularies for entities are drawn from a variety of sources.
-
-Actions specify the set of potential interactions within the metric profile.
-
-Conceptually, Caliper events in plain English are described as  _"ACTOR invokes an ACTION on an OBJECT at this TIME"_.  The events are recorded, along with contextual data, such as, location, date and time using JSON-LD.  JSON-LD is a light-weight linked data format that builds upon wide-spread adoption of JSON.
+The Caliper information model defines a set of concepts, rules and relationships for describing learning activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles).  Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a controlled vocabulary of [actions](#actions) undertaken by learners, instructors and others that are scoped to the event.  Various [Entity](#entity) types representing people, groups and resources are provided in order to better describe both the relationships established between participating entities and the contextual elements relevant to the interaction.
 
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-A Caliper Entity is a generic type or concept that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes that support discovery and description.  As a data structure an Entity constitutes an unordered set of key:value pairs or properties. 
+A Caliper Entity is a generic type that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes that support discovery and description.  As a data structure an Entity constitutes an unordered set of key:value pairs or properties. 
 
 Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](#rfc3987) MUST also be provided.  Entity [IRI](#rfc3987) values MUST be unique as well as valid.  The [IRI](#rfc3987) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the Entity over HTTP once authorization to access the resource is granted.
 
 **TODO should we state that IRIs/URIs should not employ the URN syntax (implied by dereferenceable which URNs by nature are not)**
 
-Other Entity properties are descriptive in nature or link the Entity to other related entities.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain classes that extend Entity like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
+Other Entity properties are descriptive in nature or link the Entity to other related entities.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain Entity types like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
 
 #### Properties
 The base set of Entity properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.    
@@ -216,7 +199,7 @@ The base set of Entity properties is listed below.  Each property MUST only be r
 #### Subclasses
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
-### Example
+#### Example
 When representing an Entity as [JSON-LD](#json-ld), a `@context` key MUST be embedded in the document with a value that references the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
 
 ```json
@@ -252,7 +235,7 @@ When representing an Entity as [JSON-LD](#json-ld), a `@context` key MUST be emb
 <a name="infoModelEvent" />
 
 ### 3.2 The Caliper Event
-A Caliper Event is a generic type or concept that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The Event properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as Events.
+A Caliper Event is a generic type that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The Event properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as Events.
 
 Caliper defines a number of Event types, each employing terms that are scoped to a particular activity domain.  The Event model also seeks to describe the environment or context in which a learning activity is situated.  Group affiliation, membership roles and status, recent navigation history, supporting technology and session information can all be represented.  Entities generated as a result of the interaction between an `actor` and an `object` can also be described (annotating a piece of digital content and producing an [Annotation](#annotation) is one such example).
   
@@ -270,7 +253,7 @@ The base set of Event properties is listed below.  Each property MUST only be re
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
 | action | [action](#actions) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen Event type. | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location of the `object`. | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
@@ -310,7 +293,7 @@ When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embed
 <a name="infoModelProfiles" />
 
 ### 3.3 Metric Profiles
-The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
+The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
 Think of each metric profile as a stand-alone, logical container or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
 
@@ -911,47 +894,55 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 }
 ```
 
-<a name="sensorAPI" />
+<a name="sensor" />
 
-### 4.0 Sensor API
+## 4.0 Sensor API™
+Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data from an instrumented platform, application or service to one or more target endpoints.  A [Sensor](#sensor) implementation must be capable of assembling and sending both [Event](#event) and [Entity](#entity) payloads.
 
-TODO
+<a name="sensorBehavior" />
 
+### 4.1 Behavior
 
-#### 4.x Representing Events and Entities as JSON-LD
+A Caliper [Sensor](#sensor) must implement the following behaviors | methods: 
 
-When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+**TODO do sensors need to implement getStatistics()?**
+**TODO Who is responsible for constructing Caliper entities and events? The above only mentions assembling/sending payloads.**
 
-When representing an Entity as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
+* `send`: emit a Caliper [Envelope](#envelope) consisting of a data payload consisting of one or more Caliper events to a target endpoint.
+* `describe`: emit a Caliper [Envelope](#envelope) consisting of a data payload consisting of one or Caliper entities to a target endpoint.
+* ~~`getStatistics`: TODO describe~~~
+
+A [Sensor](#sensor) may exhibit other behaviors including the ability to create entities and events or delegate those responsibilities to the instrumented platform, application or service. 
 
 <a name="transport" />
 
-## 5.0 Transport
+### 4.2 Transport
 
-Caliper Sensors MUST at a minimum be capable of communicating with [Caliper Endpoints](#endpoints) using conventional HTTP POST requests; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using this transport. Caliper Sensors MAY use other methods to communicate with an Endpoint.
+Caliper Sensors MUST at a minimum be capable of communicating with [Caliper endpoints](#endpoints) using conventional HTTP POST requests; the certification tests for Caliper Sensors require a Sensor to send data to the certification service using this transport. Caliper Sensors MAY use other methods to communicate with an Endpoint.
 
-For transport security and authentication, Caliper Sensors SHOULD:
+For transport security and authentication, a [Sensor](#sensor) SHOULD:
 
-* Use HTTPS to secure the transport between Sensor and retrieving Endpoint.
+* Use HTTPS to secure the transport between the Sensor and recieving endpoint.
 * Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
 
-Caliper Sensors MAY support additional modes of transport security and authentication; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
+A [Sensor](#sensor) MAY support additional modes of transport security and authentication; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
 
-When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that the payload of the message has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper Endpoint reports that it cannot process the `application/ld+json` media type).
+When sending messages to an endpoint, a Caliper [Sensor](#sensor) SHOULD indicate that the message payload has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper endpoint reports that it cannot process the `application/ld+json` media type).
 
 <a name="envelope" />
 
-### 5.1 Envelope
+### 4.3 Envelope
 
-Every message sent by a Caliper Sensor MUST consist of a single Caliper Envelope json structure, enveloping a payload of Caliper Events and Entities. The Caliper Envelope MUST have these three properties:
+Every message sent by a [Sensor](#sensor) MUST consist of a single Caliper Envelope JSON structure, enveloping a payload of Caliper events or entities. The Caliper Envelope MUST have these four properties:
 
-* `sensor`: A unique identifier for the Caliper Sensor sending the message (this MAY instead by a unique identifier for the application or service sending the message, which MAY be shared amongst all the Sensors that application or service uses to send Caliper data).  This identifier SHOULD be an IRI.
-* `sendTime`: A date-time string indicating the time at which the Caliper Sensor sent the message, which MUST use the [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date and time format, and MUST be expressed in UTC.  Sensor's SHOULD use a combined date and time representation of the form `2016-0405T14:30:00Z` or `2016-0405T14:30:00.062Z` (to include milliseconds).
-* `dataVersion`: A version string indicating the version of the IMS Caliper specification that governs the form of the Caliper Entities and Events found in the `data` payload. By convention, this string value will be URI of Caliper context document that can be used to resolve the meanings of the
-  terms and values found in the payload's Entities and Events.
-* `data`: A JSON array that MUST contain a list of one or more Caliper Entity or Event structures. The Sensor MAY mix Entity and Event structures in the same envelope.
+* `sensor`: A unique identifier for the Caliper [Sensor](#sensor) sending the message (this MAY instead by a unique identifier for the application or service sending the message, which MAY be shared amongst all the Sensors that application or service uses to send Caliper data).  This identifier SHOULD be an [IRI](#rfc3987).
+* `sendTime`: A date and time string value expressed with millisecond precision that indicates the time at which the Caliper [Sensor](#sensor) issued the message.  The value MUST be expressed as an ISO-8601 formatted date/time string in UTC.
+* `dataVersion`: A version string indicating the version of the IMS Caliper specification that governs the form of the Caliper entities and events found in the `data` payload. By convention, this string value will be URI of Caliper context document that can be used to resolve the meanings of the terms and values found in the payload's entities and events.
+* `data`: A JSON array that MUST contain a list of one or more Caliper entity or event structures. ~~The Sensor MAY mix entity and event structures in the same envelope~~.
 
-### Example
+**TODO if the Sensor can mix entities and events why do we need a Sensor.describe() method?**
+
+#### Example
 ``` json
 {
    "sensor": "https://example.edu/sensors/1",
@@ -984,21 +975,32 @@ Every message sent by a Caliper Sensor MUST consist of a single Caliper Envelope
    ]
 }
 ```
+<a name="representingJsonld" />
+
+### 4.4 Representing Events and Entities as JSON-LD
+
+TODO Elaborate and add examples
+
+When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+
+When representing an Entity as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
 <a name="endpoint" />
 
-#### 5.2 Endpoint
+### 4.5 Endpoint
 
-Caliper Endpoints MUST at least be capable of communicating with [Caliper Sensors](#sensors) by supporting conventional HTTP POST requests; the certification tests for Caliper Endpoints require the Endpoint to receive data from the certification service using this transport. Caliper Endpoints MAY use other methods to receive data from Sensors.
+A Caliper endpoint MUST at a minimum be capable of communicating with a [Sensor](#sensor) via conventional HTTP POST requests; current Caliper certification tests require that the endpoint receive data from the IMS Global certification suite using this transport. Caliper endpoints MAY use other methods to receive data from sensors.
 
-For transport and security and authentication, Caliper Sensors SHOULD:
+For transport and security and authentication, Caliper sensors SHOULD:
 
-* Use HTTPS to secure the transport between itself and Sensors, and if so, MUST provide a valid HTTP Certificate.
-* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
+* Use HTTPS to secure the transport between itself and sensors, and if so, MUST provide a valid HTTP Certificate.
+* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the sensor itself.
 
-Caliper Endpoints MAY support additional modes of transport security and authentication; the certification tests for Caliper Endpoints require the Endpoint receive data from the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
+Caliper endpoints MAY support additional modes of transport security and authentication; the certification tests for Caliper endpoints require the endpoint receive data from the certification service using HTTPS and a bearer token credential consistent with [RFC 6750](#rfc6750).
 
-#### 5.2.1 Endpoint HTTPS responses
+<a name="endpointResponses" />
+
+### 4.6 Endpoint HTTPS responses
 
 When using HTTPS as the transport, the Caliper Endpoint MUST conform to these points of response behaviour. Caliper Endpoint implementers should bear in mind that the Caliper Sensors sending them messages may not be in a position to perform sophisticated error handling.
 
@@ -1014,19 +1016,104 @@ The Endpoint MAY respond to Sensor messages with other standard HTTP status code
 
 If the Endpoint implementer wants the Endpoint to communicate more detailed information about problem states when receiving messages, the Endpoint SHOULD use the standard method for reporting problem details described in [RFC 7807, Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807).
 
-<a name="terms" />
+<a name="actions"/>
+   
+## 5.0 Appendix A. Actions
+TODO DESCRIPTION
 
-### 6.0 Terms
+natural language challenges  - WordNet
+past-tense form utilized
+action can involve the change of a particular characteristic (e.g., resolution, size, speed, volume)
+
+| Term | IRI | WordNet Gloss |
+| :--- | :-- | ------------- |
+| <a name="abandoned" />Abandoned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned](http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned) | [forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v) |
+| <a name="activated" />Activated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Activated](http://purl.imsglobal.org/vocab/caliper/v1/action#Activated) | [make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v) |
+| <a name="added" />Added | [http://purl.imsglobal.org/vocab/caliper/v1/action#Added](http://purl.imsglobal.org/vocab/caliper/v1/action#Added) | [make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v) |
+| <a name="attached" />Attached | [http://purl.imsglobal.org/vocab/caliper/v1/action#Attached](http://purl.imsglobal.org/vocab/caliper/v1/action#Attached) | [cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v) |
+| <a name="bookmarked" />Bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) | An IRI that marks a location of interest in a DigitalResource that is recorded for later retrieval.  |
+| <a name="changedResolution" />Changed resolution | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n) |
+| <a name="changedSize" />Changed size | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n) |
+| <a name="changedSpeed" />Changed speed | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n) |
+| <a name="changedVolume" />Changed volume | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedVolume](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedVolume) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n) |
+| <a name="classified" />Classified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Classified](http://purl.imsglobal.org/vocab/caliper/v1/action#Classified) | [assign to a class or kind](http://wordnet-rdf.princeton.edu/wn31/200741667-v) |
+| <a name="closedPopout" />Closed popout | [http://purl.imsglobal.org/vocab/caliper/v1/action#ClosedPopout](http://purl.imsglobal.org/vocab/caliper/v1/action#ClosedPopout) | [close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout |
+| <a name="commented" />Commented | [http://purl.imsglobal.org/vocab/caliper/v1/action#Commented](http://purl.imsglobal.org/vocab/caliper/v1/action#Commented) | [make or write a comment on](http://wordnet-rdf.princeton.edu/wn31/201060446-v) |
+| <a name="completed" />Completed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Completed](http://purl.imsglobal.org/vocab/caliper/v1/action#Completed) | [come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v) |
+| <a name="created" />Created | [http://purl.imsglobal.org/vocab/caliper/v1/action#Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v) |
+| <a name="deactivated" />Deactivated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated](http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated) | [make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v); inverse of activated |
+| <a name="deleted" />Deleted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted](http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted) | [wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v) |
+| <a name="described" />Described | [http://purl.imsglobal.org/vocab/caliper/v1/action#Described](http://purl.imsglobal.org/vocab/caliper/v1/action#Described) | [give a description of](http://wordnet-rdf.princeton.edu/wn31/200989103-v) |
+| <a name="disabledClosedCaptioning" />Disabled closed captioning | [http://purl.imsglobal.org/vocab/caliper/v1/action#DisabledClosedCaptioning](http://purl.imsglobal.org/vocab/caliper/v1/action#DisabledClosedCaptioning) | [render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a textual transcription of audio output |
+| <a name="disliked" />Disliked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Disliked](http://purl.imsglobal.org/vocab/caliper/v1/action#Disliked) | [have or feel a dislike or distaste for](http://wordnet-rdf.princeton.edu/wn31/201780648-v); inverse of liked |
+| <a name="enabledClosedCaptioning" />Enabled closed captioning | [http://purl.imsglobal.org/vocab/caliper/v1/action#EnabledClosedCaptioning](http://purl.imsglobal.org/vocab/caliper/v1/action#EnabledClosedCaptioning) | [render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a textual transcription of audio output |
+| <a name="ended" />Ended | [http://purl.imsglobal.org/vocab/caliper/v1/action#Ended](http://purl.imsglobal.org/vocab/caliper/v1/action#Ended) | [bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v) |
+| <a name="enteredFullscreen" />Entered full screen | [http://purl.imsglobal.org/vocab/caliper/v1/action#EnteredFullscreen](http://purl.imsglobal.org/vocab/caliper/v1/action#EnteredFullscreen) | [to come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen |
+| <a name="exitedFullscreen" />Exited full screen | [http://purl.imsglobal.org/vocab/caliper/v1/action#ExitedFullscreen](http://purl.imsglobal.org/vocab/caliper/v1/action#ExitedFullscreen) | [move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen |
+| <a name="forwardedTo" />Forwarded to | [http://purl.imsglobal.org/vocab/caliper/v1/action#ForwardedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#ForwardedTo) | [send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v) |
+| <a name="graded" />Graded | [http://purl.imsglobal.org/vocab/caliper/v1/action#Graded](http://purl.imsglobal.org/vocab/caliper/v1/action#Graded) | [assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v) |
+| <a name="hid" />Hid | [http://purl.imsglobal.org/vocab/caliper/v1/action#Hid](http://purl.imsglobal.org/vocab/caliper/v1/action#Hid) |[prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v) |
+| <a name="highlighted" />Highlighted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted](http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted) | [move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v) |
+| <a name="identified" />Identified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Identified](http://purl.imsglobal.org/vocab/caliper/v1/action#Identified) | [recognize as being; establish the identity of someone or something](http://wordnet-rdf.princeton.edu/wn31/200620568-v) |
+| <a name="jumpedTo" />Jumped to | [http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo) | [pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v) |
+| <a name="liked" />Liked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Liked](http://purl.imsglobal.org/vocab/caliper/v1/action#Liked) | [be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v) |
+| <a name="linked" />Linked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Linked](http://purl.imsglobal.org/vocab/caliper/v1/action#Linked) | [connect, fasten, or put together two or more pieces](http://wordnet-rdf.princeton.edu/wn31/201357376-v) |
+| <a name="loggedIn" />Logged in | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn) | [enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v) |
+| <a name="loggedIn" />Logged out | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut) | [exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v) |
+| <a name="markedAsRead" />Marked as read | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v) |
+| <a name="markedAsUnread" />Marked as unread | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
+| <a name="modified" />Modified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Modified](http://purl.imsglobal.org/vocab/caliper/v1/action#Modified) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) |
+| <a name="muted" />Muted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Muted](http://purl.imsglobal.org/vocab/caliper/v1/action#Muted) | [deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v) |
+| <a name="navigated to" />Navigated to | [http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo) | [direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v) |
+| <a name="openedPopout" />Opened popout | [http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout](http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout) | [start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout |
+| <a name="paused" />Paused | [http://purl.imsglobal.org/vocab/caliper/v1/action#Paused](http://purl.imsglobal.org/vocab/caliper/v1/action#Paused) | [cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v) |
+| <a name="posted" />Posted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [to cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v)  |
+| <a name="questioned" />questioned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned](http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned) | [pose a question](http://wordnet-rdf.princeton.edu/wn31/200786670-v) |
+| <a name="ranked" />Ranked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked](http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked) | [assign a rank or rating to](http://wordnet-rdf.princeton.edu/wn31/200659723-v) |
+| <a name="recommended" />Recommended | [http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended](http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended) | [express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v) |
+| <a name="removed" />Removed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v) |
+| <a name="reset" />reset | [http://purl.imsglobal.org/vocab/caliper/v1/action#Reset](http://purl.imsglobal.org/vocab/caliper/v1/action#Reset) | [set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) |
+| <a name="restarted" />Restarted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted](http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted) | [take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v)|
+| <a name="resumed" />Resumed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Resumed](http://purl.imsglobal.org/vocab/caliper/v1/action#Resumed) | [take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) |
+| <a name="retrieved" />Retrieved | [http://purl.imsglobal.org/vocab/caliper/v1/action#Retrieved](http://purl.imsglobal.org/vocab/caliper/v1/action#Retrieved) | [obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v) |
+| <a name="reviewed" />reviewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed) | [appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v) |
+| <a name="rewound" />Rewound | [http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound](http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound) | [wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v)|
+| <a name="searched" />Searched | [http://purl.imsglobal.org/vocab/caliper/v1/action#Searched](http://purl.imsglobal.org/vocab/caliper/v1/action#Searched) | [try to locate or discover, or try to establish the existence of](http://wordnet-rdf.princeton.edu/wn31/201318273-v) |
+| <a name="shared" />Shared | [http://purl.imsglobal.org/vocab/caliper/v1/action#Shared](http://purl.imsglobal.org/vocab/caliper/v1/action#Shared) | [communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v) |
+| <a name="showed" />Showed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Showed](http://purl.imsglobal.org/vocab/caliper/v1/action#Showed) | [make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v) |
+| <a name="skipped" />Skipped | [http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped](http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped) | [bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v) |
+| <a name="started" />Started | [http://purl.imsglobal.org/vocab/caliper/v1/action#Started](http://purl.imsglobal.org/vocab/caliper/v1/action#Started) | [set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v) |
+| <a name="submitted" />Submitted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted](http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted) | [hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v) |
+| <a name="subscribed" />Subscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [ receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v) |
+| <a name="tagged" />Tagged | [http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged](http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged) | [attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v) |
+| <a name="timedOut" />Timed out | [http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
+| <a name="unmuted" />Unmuted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted](http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted) | inverse of muted |
+| <a name="unsubscribed" />unsubscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
+| <a name="used" />Used | [http://purl.imsglobal.org/vocab/caliper/v1/action#Used](http://purl.imsglobal.org/vocab/caliper/v1/action#Used) | interact with a tool in a manner the tool creator intends as a learning activity |
+| <a name="viewed" />Viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) |[look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
+
+
+<a name="events" />
+
+## 6.0 Appendix B. Event Types
 
 TODO Intro
 
+<a name="event" />
+
+### 6.1 Event
+TODO ADD EVENT
+
 <a name="annotationEvent" />
 
-### AnnotationEvent
-TODO . . . The AnnotationEvent models . . . .  AnnotationEvent inherits all the properties and requirements defined for Event, its superclass.  
+### 6.2 AnnotationEvent
+TODO The Caliper AnnotationEvent models . . . .   AnnotationEvent inherits all the properties and requirements defined for Event, its superclass.  
 
-#### Supported actions
+##### Supported actions
  [bookmarked](#bookmarked), [highlighted](#highlighted), [shared](#shared), [tagged](#tagged)
+ 
+#### Deprecated actions
+[attached](#attached), [classified](#classified),  [commented](#commented), [described](#described), [disliked](#disliked), [identified](#identified), [liked](#liked), [linked](#linked), [questioned](#questioned), [ranked](#ranked), [recommended](#recommended), [replied](#replied), [subscribed](#subscribed)
  
 #### Properties
 AnnotationEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
@@ -1105,8 +1192,8 @@ AnnotationEvent inherits all properties defined by its superclass [Event](#event
 	
 <a name="assessmentEvent" />
 
-### AssessmentEvent
-The AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.  AssessmentEvent inherits all the properties and requirements defined for Event, its superclass.  
+### 6.3 AssessmentEvent
+The Caliper AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.  AssessmentEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### Supported actions
 [started](#started), [paused](#paused), [restarted](#restarted), [submitted](#submitted)
@@ -1262,11 +1349,11 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
 
 <a name="assessmentItemEvent" />
 
-### AssessmentItemEvent
-The AssessmentItemEvent models a learner's interaction with an individual assessment item.  AssessmentItemEvent inherits all the properties and requirements defined for Event, its superclass.  
+### 6.4 AssessmentItemEvent
+The Caliper AssessmentItemEvent models a learner's interaction with an individual assessment item.  AssessmentItemEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### Supported actions
-[started](#started), [skipped], [completed](#completed)
+[started](#started), [skipped](#skipped), [completed](#completed)
 
 #### Properties
 AssessmentItemEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
@@ -1442,11 +1529,14 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
 
 <a name="assignableEvent" />
 
-### AssignableEvent
-TODO The AssignableEvent models . . . .  AssignableEvent inherits all the properties and requirements defined for Event, its superclass.
+### 6.5 AssignableEvent
+TODO The Caliper AssignableEvent models . . . .  AssignableEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
 [activated](#activated), [deactivated](#deactivated), [started](#started), [completed](#completed), [reviewed](#reviewed)
+
+#### Deprecated actions
+[abandoned](#abandoned), [hid](#hid), [showed](#showed]
 
 #### Properties
 AssignableEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
@@ -1455,7 +1545,6 @@ AssignableEvent inherits all properties defined by its superclass [Event](#event
 * `actor`: the [Person](#person) who initiated this AssignableEvent MUST be specified.
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
 * `object`: the [DigitalResource](#digitalResource) that comprises the object of this AssignableEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
-
 
 #### Example: AssignableEvent activated
 ```json
@@ -1519,9 +1608,9 @@ AssignableEvent inherits all properties defined by its superclass [Event](#event
 
 <a name="forumEvent" />
 
-### ForumEvent
+### 6.6 ForumEvent
 
-TODO The ForumEvent models . . . .  ForumEvent inherits all the properties and requirements defined for Event, its superclass.
+TODO The Caliper ForumEvent models . . . .  ForumEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
 [subscribed](#subscribed), [unsubscribed](#unsubscribed)
@@ -1591,8 +1680,8 @@ ForumEvent inherits all properties defined by its superclass [Event](#event). Ad
 
 <a name="mediaEvent" />
 
-### MediaEvent
-TODO . . . A Caliper MediaEvent models . . . .  MediaEvent inherits all the properties and requirements defined for Event, its superclass.
+### 6.7 MediaEvent
+TODO The Caliper MediaEvent models . . . .  MediaEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO 
 * add additional description.  
@@ -1669,8 +1758,8 @@ MediaEvent inherits all properties defined by its superclass [Event](#event). Ad
 
 <a name="messageEvent" />
 
-### MessageEvent
-A Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a [Message](#message) or marking a post as either read or unread.  MessageEvent inherits all the properties and requirements defined for Event, its superclass.
+### 6.8 MessageEvent
+The Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a [Message](#message) or marking a post as either read or unread.  MessageEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
 [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
@@ -1820,8 +1909,8 @@ MessageEvent inherits all properties defined by its superclass [Event](#event). 
 
 <a name="navigationEvent" />
 
-### NavigationEvent
-The NavigationEvent models an actor traversing a network of digital resources.  NavigationEvent inherits all the properties and requirements defined for Event, its superclass.
+### 6.9 NavigationEvent
+The Caliper NavigationEvent models an actor traversing a network of digital resources.  NavigationEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
 [navigatedTo](#navigatedTo)
@@ -1892,8 +1981,8 @@ NavigationEvent inherits all properties defined by its superclass [Event](#event
 
 <a name="outcomeEvent" />
 
-### OutcomeEvent
-TODO The OutcomeEvent models . . . .  OutcomeEvent inherits all the properties and requirements defined for Event, its superclass.
+### 6.10 OutcomeEvent
+TODO The Caliper OutcomeEvent models . . . .  OutcomeEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
 [graded](#graded)
@@ -1958,10 +2047,26 @@ OutcomeEvent inherits all properties defined by its superclass [Event](#event). 
   }
 }
 ```
+<a name="readingEvent" />
+
+### 6.11 ReadingEvent DEPRECATED
+
+The Caliper ReadingEvent models an actor reading textural content.  ReadingEvent is a DEPRECATED event that will be removed in a future version of the specification.  It SHOULD NOT be utilized.
+
+#### Supported actions
+[NavigatedTo](#navigatedTo), [Searched](#searched), [Viewed](#viewed)
+
+#### Properties
+ReadingEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+
+* `type`: the string value term `ReadingEvent` MUST be specified.
+* `actor`: the [Person](#person) who initiated this ReadingEvent MUST be specified.
+* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
+* `object`: the [DigitalResource](#digitalResource) that comprises the object of this ReadingEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
 
 <a name="sessionEvent" />
 
-### SessionEvent
+### 6.12 SessionEvent
 TODO . . . A SessionEvent models . . . .  SessionEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -2071,7 +2176,7 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
 
 <a name="threadEvent" />
 
-### ThreadEvent
+### 6.13 ThreadEvent
 TODO . . . A Caliper ThreadEvent models an actor marking a forum thread as either read or unread.  ThreadEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -2144,7 +2249,7 @@ ThreadEvent inherits all properties defined by its superclass [Event](#event). A
 
 <a name="toolUseEvent" />
 
-### ToolUseEvent
+### 6.14 ToolUseEvent
 A Caliper ToolUseEvent models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a "learning interaction". It's meant to be a fundamental event that tool creators can implement to demonstrate in the Caliper event stream that "users are using the tool in the way in which it's intended to be used."
 
 #### Supported actions
@@ -2208,7 +2313,7 @@ ToolUseEvent inherits all properties defined by its superclass [Event](#event). 
 
 <a name="viewEvent" />
 
-### ViewEvent
+### 6.15 ViewEvent
 A Caliper ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a file.   ViewEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -2285,11 +2390,17 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
 
 <a name="entities" />
 
-### 6.2 Entities
+### 7.0 Appendix C. Entity Types
+
+<a name="entity" />
+
+### 7.1 Entity
+
+TODO add Entity
 
 <a name="agent" />
 
-### Agent
+### 7.2 Agent
 A Caliper Agent is a generic class that represents an Entity that can initiate or perform an action.  It is analogous to an [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that Agent represents a generic type it is RECOMMENDED that only subclasses of Agent be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2312,7 +2423,7 @@ Agent inherits all properties defined by its superclass [Entity](#entity).  Addi
 
 <a name="annotation" />
 
-### Annotation
+### 7.3 Annotation
 A Caliper Annotation is a generic class that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.  Given that Annotation represents a generic type it is RECOMMENDED that only subclasses of Annotation be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2337,7 +2448,7 @@ Annotation inherits all properties defined by its superclass [Entity](#entity). 
 
 <a name="assessment" />
 
-### Assessment
+### 7.4 Assessment
 A Caliper Assessment represents an assessment instrument such as a test or quiz.
 
 #### Superclass
@@ -2385,7 +2496,7 @@ Assessment inherits all the properties and requirements defined by its superclas
 ```
 <a name="assessmentItem" />
 
-### AssessmentItem
+### 7.5 AssessmentItem
 A Caliper AssessmentItem represents a single test question.
 
 #### Superclass
@@ -2426,7 +2537,7 @@ AssessmentItem inherits all the properties and requirements defined by its super
 
 <a name="assignableDigitalResource" />
 
-### AssignableDigitalResource
+### 7.6 AssignableDigitalResource
 A Caliper AssignableDigitalResource is a generic class that represents digital content associated with a graded or ungraded assignment.  Given that AssignableDigitalResource represents a generic type it is RECOMMENDED that only subclasses of AssignableDigitalResource be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2467,7 +2578,7 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 
 <a name="attempt" />
 
-### Attempt
+### 7.7 Attempt
 A Caliper Attempt provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An Attempt is generated as the result of an action such as starting an [Assessment](#assessment).
 
 #### Superclass
@@ -2510,7 +2621,7 @@ Attempt inherits all the properties and requirements defined for its superclass 
 
 <a name="audioObject" />
 
-### AudioObject
+### 7.8 AudioObject
 A Caliper AudioObject represents an audio or sound file.  It is analogous to a [schema:AudioObject](http://schema.org/AudioObject).
 
 #### Superclass
@@ -2540,7 +2651,7 @@ AudioObject inherits all the properties and requirements defined for its supercl
 
 <a name="bookmarkAnnotation" />
 
-### BookmarkAnnotation
+### 7.9 BookmarkAnnotation
 A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#digitalResource) at a particular location.
 
 #### Superclass
@@ -2573,7 +2684,7 @@ BookmarkAnnotation inherits all the properties and requirements defined for its 
 
 <a name="chapter" />
 
-### Chapter
+### 7.10 Chapter
 A Caliper Chapter represents a major sub-division of a piece of digital content.
 
 #### Superclass 
@@ -2603,7 +2714,7 @@ Chapter inherits all the properties and requirements defined for its superclass 
 
 <a name="courseOffering" />
 
-### CourseOffering
+### 7.11 CourseOffering
 A Caliper CourseOffering represents the occurrence of a course or a class during a specified time period.  CourseOffering is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Superclass
@@ -2635,7 +2746,7 @@ CourseOffering inherits all the properties and requirements defined for its supe
 
 <a name="courseSection" />
 
-### CourseSection
+### 7.12 CourseSection
 A Caliper CourseSection represents a specific instance of a [CourseOffering](#courseOffering) occuring during a specific semester, term or period.  CourseSection is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Superclass
@@ -2668,7 +2779,7 @@ CourseSection inherits all the properties and requirements defined for its super
 
 <a name="digitalResource" />
 
-### DigitalResource
+### 7.13 DigitalResource
 A Caliper DigitalResource is a generic class that represents a content item.  Given that DigitalResource represents a generic type it is RECOMMENDED that only subclasses of DigitalResource be employed to represent nodes in the learning graph.  DigitalResource is analogous to a [schema:CreativeWork](https://schema.org/CreativeWork).
 
 #### Superclass 
@@ -2723,7 +2834,7 @@ DigitalResource inherits all the properties and requirements defined for its sup
 
 <a name="digitalResourceCollection" />
 
-### DigitalResourceCollection
+### 7.14 DigitalResourceCollection
 A Caliper DigitalResourceCollection represents an ordered array of [DigitalResource](#digitalResources) entities.
 
 #### Superclass
@@ -2781,7 +2892,7 @@ DigitalResourceCollection inherits all the properties and requirements defined f
 
 <a name="document" />
 
-### Document
+### 7.15 Document
 A Caliper Document represents a piece of digital content.
 
 #### Superclass 
@@ -2818,7 +2929,7 @@ Document inherits all the properties and requirements defined for its superclass
  
 <a name="epubChapter" />
 
-### EpubChapter (DEPRECATED)
+### 7.16 EpubChapter (DEPRECATED)
 A Caliper EpubChapter represents a major structural division of a piece of writing.  EpubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -2831,7 +2942,7 @@ EpubChapter inherits all the properties and requirements defined for its supercl
 
 <a name="epubPart" />
 
-### EpubPart (DEPRECATED)
+### 7.17 EpubPart (DEPRECATED)
 A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  EpubPart is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -2844,7 +2955,7 @@ EpubPart inherits all the properties and requirements defined for its superclass
 
 <a name="epubSubChapter" />
 
-### EpubSubChapter (DEPRECATED)
+### 7.18 EpubSubChapter (DEPRECATED)
 A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -2857,7 +2968,7 @@ EpubSubChapter inherits all the properties and requirements defined for its supe
 
 <a name="epubVolume" />
 
-### EpubVolume (DEPRECATED)
+### 7.19 EpubVolume (DEPRECATED)
 A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  EpubVolume is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -2870,7 +2981,7 @@ EpubVolume inherits all the properties and requirements defined for its supercla
 
 <a name="fillinBlankResponse" />
 
-### FillinBlankResponse
+### 7.20 FillinBlankResponse
 A Caliper FillinBlankResponse represents a form of response in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
 #### Superclass 
@@ -2916,7 +3027,7 @@ FillinBlankResponse inherits all the properties and requirements defined for its
 
 <a name="forum" />
 
-### Forum
+### 7.21 Forum
 A Caliper Forum represents a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
 
 #### Superclass 
@@ -2970,7 +3081,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 
 <a name="frame" />
 
-### Frame
+### 7.22 Frame
 A Caliper Frame represents a part, portion or segment of a [DigitalResource](#digitalResource).
  
 #### Superclass 
@@ -3001,7 +3112,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 
 <a name="group" />
 
-### Group
+### 7.23 Group
 A Caliper Group represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  The Group can act as an [Agent](#agent) and can be decomposed into sub-groups.
 
 #### Superclass
@@ -3033,7 +3144,7 @@ Group inherits all the properties and requirements defined for its superclass [O
 
 <a name="highlightAnnotation" />
 
-### HighlightAnnotation
+### 7.24 HighlightAnnotation
 A Caliper HighlightAnnotation represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
 
 ### TODO
@@ -3075,7 +3186,7 @@ HighlightAnnotation inherits all the properties and requirements defined for its
 
 <a name="imageObject" />
 
-### ImageObject
+### 7.25 ImageObject
 A Caliper ImageObject represents an image file.  It is analogous to [schema:ImageObject](http://schema.org/ImageObject).
 
 #### Superclass 
@@ -3100,7 +3211,7 @@ ImageObject inherits all the properties and requirements defined for its supercl
 
 <a name="learningObjective" />
 
-### LearningObjective
+### 7.26 LearningObjective
 The Caliper LearningObjective represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
 #### Superclass 
@@ -3141,7 +3252,7 @@ LearningObjective inherits all the properties and requirements defined for its s
 
 <a name="ltiSession" />
 
-### LtiSession
+### 7.27 LtiSession
 A Caliper LtiSession represents an LTI Tool Consumer user session.
 
 #### Superclass
@@ -3206,7 +3317,7 @@ LtiSession inherits all the properties and requirements defined for its supercla
 
 <a name="mediaLocation" />
 
-### MediaLocation
+### 7.28 MediaLocation
 
 A Caliper MediaLocation provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
  
@@ -3232,7 +3343,7 @@ MediaLocation inherits all the properties and requirements defined for its super
 
 <a name="mediaObject" />
 
-### MediaObject
+### 7.29 MediaObject
 A Caliper MediaObject represents a generic piece of media content.  Given that MediaObject represents a generic type it is RECOMMENDED that only subclasses of MediaObject be employed to represent nodes in the learning graph.  MediaObject is analogous to [schema:MediaObject](http://schema.org/MediaObject).
 
 #### Superclass 
@@ -3256,7 +3367,7 @@ MediaObject inherits all the properties and requirements defined for its supercl
 
 <a name="membership" />
 
-### Membership
+### 7.30 Membership
 A Caliper Membership describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
 
 #### Superclass 
@@ -3297,7 +3408,7 @@ Membership inherits all the properties and requirements defined for its supercla
 
 <a name="message" />
 
-### Message
+### 7.31 Message
 A Caliper Message is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.  It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
 
 #### Superclass 
@@ -3351,7 +3462,7 @@ Message inherits all the properties and requirements defined for its superclass 
  
 <a name="multipleChoiceResponse" />
 
-### MultipleChoiceResponse
+### 7.32 MultipleChoiceResponse
 A Caliper MultipleChoiceResponse represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.
 
 #### Superclass 
@@ -3397,7 +3508,7 @@ MultipleChoiceResponse inherits all the properties and requirements defined for 
 
 <a name="multipleResponseResponse" />
 
-### MultipleResponseResponse
+### 7.33 MultipleResponseResponse
 A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
 #### Superclass 
@@ -3443,7 +3554,7 @@ MultipleResponseResponse inherits all the properties and requirements defined fo
 
 <a name="organization" />
 
-### Organization
+### 7.34 Organization
 A Caliper Organization represents a formal collection of people organized for some common educational, social or administrative purpose.  The Organization can act as an [Agent] and can be decomposed into sub-organizations.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
 #### Superclass
@@ -3475,7 +3586,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 <a name="page" />
 
-### Page
+### 7.35 Page
 A Caliper Page represents an item of paginated content.
 
 #### Superclass 
@@ -3510,7 +3621,7 @@ Page inherits all the properties and requirements defined for its superclass [Di
 
 <a name="person" />
 
-### Person
+### 7.36 Person
 A Caliper Person represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
 #### Superclass
@@ -3534,7 +3645,7 @@ Person inherits all the properties and requirements defined for its superclass [
 
 <a name="reading" />
 
-### Reading (DEPRECATED)
+### 7.37 Reading (DEPRECATED)
 A Caliper Reading represents an item of paginated content.  Reading is a DEPRECATED entity superceded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -3547,7 +3658,7 @@ Reading inherits all the properties and requirements defined for its superclass 
 
 <a name="response" />
 
-### Response
+### 7.38 Response
 A Caliper Response is a generic class that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).  Given that Response represents a generic type it is RECOMMENDED that only subclasses of Response be employed to represent nodes in the learning graph. 
 
 #### Superclass 
@@ -3569,7 +3680,7 @@ Response inherits all the properties and requirements defined for its superclass
 
 <a name="result" />
 
-### Result
+### 7.39 Result
 A Caliper Result represents a grade applied to an assignment submission.
 
 #### Superclass 
@@ -3627,7 +3738,7 @@ Result inherits all the properties and requirements defined for its superclass [
 
 <a name="selectTextResponse" />
 
-### SelectTextResponse
+### 7.40 SelectTextResponse
 A Caliper SelectTextResponse represents a response that identifies text or a mapping from a presented paragraph or list.
 
 #### Superclass 
@@ -3673,7 +3784,7 @@ SelectTextResponse inherits all the properties and requirements defined for its 
 
 <a name="session" />
 
-### Session
+### 7.41 Session
 A Caliper Session represents a web application user session.
 
 #### Superclass
@@ -3708,7 +3819,7 @@ Session inherits all the properties and requirements defined for [Entity](#entit
 
 <a name="sharedAnnotation" />
 
-### SharedAnnotation
+### 7.42 SharedAnnotation
 A Caliper SharedAnnotation represents the act of sharing a reference to a DigitalResource with other agents.
 
 #### Superclass
@@ -3750,7 +3861,7 @@ SharedAnnotation inherits all the properties and requirements defined for its su
 
 <a name="softwareApplication" />
 
-#### SoftwareApplication
+#### 7.43 SoftwareApplication
 A Caliper SoftwareApplication represents a computer program, application, module, platform or system.  It is analogous to a [schema:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
 #### Superclass
@@ -3776,7 +3887,7 @@ SoftwareApplication inherits all the properties and requirements defined for its
 
 <a name="tagAnnotation" />
 
-### TagAnnotation
+### 7.44 TagAnnotation
 A Caliper TagAnnotation represents the act of tagging a DigitalResource with tags or labels.
 
 #### Superclass
@@ -3809,7 +3920,7 @@ TagAnnotation inherits all the properties and requirements defined for its super
 
 <a name="thread" />
 
-### Thread
+### 7.45 Thread
 A Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
 #### Superclass 
@@ -3870,7 +3981,7 @@ Thread inherits all the properties and requirements defined for its superclass [
 
 <a name="trueFalseResponse" />
 
-### TrueFalseResponse
+### 7.46 TrueFalseResponse
 A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided (true/false, yes/no).
 
 #### Superclass 
@@ -3916,7 +4027,7 @@ TrueFalseResponse inherits all the properties and requirements defined for [Resp
 
 <a name="videoObject" />
 
-### VideoObject
+### 7.47 VideoObject
 A Caliper VideoObject represents a visual recording stored in digital form.  It is analogous to [schema:VideoObject](http://schema.org/VideoObject).
 
 #### Superclass 
@@ -3944,7 +4055,7 @@ VideoObject inherits all the properties and requirements defined for its supercl
 
 <a name="webPage" />
 
-### WebPage
+### 7.48 WebPage
 A Caliper WebPage represents a document containing markup that is suitable for display in a web browser.  It is analogous to a [schema:WebPage](http://schema.org/WebPage).
 
 #### Superclass 
@@ -3972,12 +4083,12 @@ WebPage inherits all the properties and requirements defined for its superclass 
 }
 ```
 
-<a name="#vocabSelector" />
+<a name="#selectors" />
 
-### 6.3 Selectors
+### 8.0 Appendix D. Selectors
 TODO Intro
 
-### TextPositionSelector
+### 8.1 TextPositionSelector
 TODO Intro
 
 #### Properties
@@ -4008,178 +4119,102 @@ TODO Intro
 }
 ```
 
-<a name="vocabActions"/>
-   
-### 6.4 Actions
-TODO DESCRIPTION
+<a name="roles" />
 
-natural language challenges
-past-tense form utilized
-action can involve the change of a particular characteristic (e.g., resolution, size, speed, volume)
-
-| Term | IRI | WordNet Gloss |
-| ------ | --- | ------------- |
-| <a name="abandoned" />Abandoned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned](http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned) | [forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v) |
-| <a name="activated" />Activated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Activated](http://purl.imsglobal.org/vocab/caliper/v1/action#Activated) | [make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v) |
-| <a name="added" />Added | [http://purl.imsglobal.org/vocab/caliper/v1/action#Added](http://purl.imsglobal.org/vocab/caliper/v1/action#Added) | [make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v) |
-| <a name="attached" />Attached | [http://purl.imsglobal.org/vocab/caliper/v1/action#Attached](http://purl.imsglobal.org/vocab/caliper/v1/action#Attached) | [cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v) |
-| <a name="bookmarked" />Bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) | An IRI that marks a location of interest in a DigitalResource that is recorded for later retrieval.  |
-| <a name="changedResolution" />Changed resolution | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n) |
-| <a name="changedSize" />Changed size | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n) |
-| <a name="changedSpeed" />Changed speed | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n) |
-| <a name="changedVolume" />Changed volume | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedVolume](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedVolume) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n) |
-| <a name="classified" />Classified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Classified](http://purl.imsglobal.org/vocab/caliper/v1/action#Classified) | [assign to a class or kind](http://wordnet-rdf.princeton.edu/wn31/200741667-v) |
-| <a name="closedPopout" />Closed popout | [http://purl.imsglobal.org/vocab/caliper/v1/action#ClosedPopout](http://purl.imsglobal.org/vocab/caliper/v1/action#ClosedPopout) | [close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout |
-| <a name="commented" />Commented | [http://purl.imsglobal.org/vocab/caliper/v1/action#Commented](http://purl.imsglobal.org/vocab/caliper/v1/action#Commented) | [make or write a comment on](http://wordnet-rdf.princeton.edu/wn31/201060446-v) |
-| <a name="completed" />Completed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Completed](http://purl.imsglobal.org/vocab/caliper/v1/action#Completed) | [come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v) |
-| <a name="created" />Created | [http://purl.imsglobal.org/vocab/caliper/v1/action#Created](http://purl.imsglobal.org/vocab/caliper/v1/action#Created) | [make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v) |
-| <a name="deactivated" />Deactivated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated](http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated) | [make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v); inverse of activated |
-| <a name="deleted" />Deleted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted](http://purl.imsglobal.org/vocab/caliper/v1/action#Deleted) | [wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v) |
-| <a name="described" />Described | [http://purl.imsglobal.org/vocab/caliper/v1/action#Described](http://purl.imsglobal.org/vocab/caliper/v1/action#Described) | [give a description of](http://wordnet-rdf.princeton.edu/wn31/200989103-v) |
-| <a name="disabledClosedCaptioning" />Disabled closed captioning | [http://purl.imsglobal.org/vocab/caliper/v1/action#DisabledClosedCaptioning](http://purl.imsglobal.org/vocab/caliper/v1/action#DisabledClosedCaptioning) | [render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a textual transcription of audio output |
-| <a name="disliked" />Disliked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Disliked](http://purl.imsglobal.org/vocab/caliper/v1/action#Disliked) | [have or feel a dislike or distaste for](http://wordnet-rdf.princeton.edu/wn31/201780648-v); inverse of liked |
-| <a name="enabledClosedCaptioning" />Enabled closed captioning | [http://purl.imsglobal.org/vocab/caliper/v1/action#EnabledClosedCaptioning](http://purl.imsglobal.org/vocab/caliper/v1/action#EnabledClosedCaptioning) | [render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a textual transcription of audio output |
-| <a name="ended" />Ended | [http://purl.imsglobal.org/vocab/caliper/v1/action#Ended](http://purl.imsglobal.org/vocab/caliper/v1/action#Ended) | [bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v) |
-| <a name="enteredFullscreen" />Entered full screen | [http://purl.imsglobal.org/vocab/caliper/v1/action#EnteredFullscreen](http://purl.imsglobal.org/vocab/caliper/v1/action#EnteredFullscreen) | [to come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen |
-| <a name="exitedFullscreen" />Exited full screen | [http://purl.imsglobal.org/vocab/caliper/v1/action#ExitedFullscreen](http://purl.imsglobal.org/vocab/caliper/v1/action#ExitedFullscreen) | [move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen |
-| <a name="forwardedTo" />Forwarded to | [http://purl.imsglobal.org/vocab/caliper/v1/action#ForwardedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#ForwardedTo) | [send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v) |
-| <a name="graded" />Graded | [http://purl.imsglobal.org/vocab/caliper/v1/action#Graded](http://purl.imsglobal.org/vocab/caliper/v1/action#Graded) | [assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v) |
-| <a name="hid" />Hid | [http://purl.imsglobal.org/vocab/caliper/v1/action#Hid](http://purl.imsglobal.org/vocab/caliper/v1/action#Hid) |[prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v) |
-| <a name="highlighted" />Highlighted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted](http://purl.imsglobal.org/vocab/caliper/v1/action#Highlighted) | [move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v) |
-| <a name="identified" />Identified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Identified](http://purl.imsglobal.org/vocab/caliper/v1/action#Identified) | [recognize as being; establish the identity of someone or something](http://wordnet-rdf.princeton.edu/wn31/200620568-v) |
-| <a name="jumpedTo" />Jumped to | [http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#JumpedTo) | [pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v) |
-| <a name="liked" />Liked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Liked](http://purl.imsglobal.org/vocab/caliper/v1/action#Liked) | [be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v) |
-| <a name="linked" />Linked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Linked](http://purl.imsglobal.org/vocab/caliper/v1/action#Linked) | [connect, fasten, or put together two or more pieces](http://wordnet-rdf.princeton.edu/wn31/201357376-v) |
-| <a name="loggedIn" />Logged in | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn) | [enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v) |
-| <a name="loggedIn" />Logged out | [http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut) | [exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v) |
-| <a name="markedAsRead" />Marked as read | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead) | [mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v) |
-| <a name="markedAsUnread" />Marked as unread | [http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread](http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread) | inverse of markedAsRead |
-| <a name="modified" />Modified | [http://purl.imsglobal.org/vocab/caliper/v1/action#Modified](http://purl.imsglobal.org/vocab/caliper/v1/action#Modified) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) |
-| <a name="muted" />Muted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Muted](http://purl.imsglobal.org/vocab/caliper/v1/action#Muted) | [deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v) |
-| <a name="navigated to" />Navigated to | [http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo](http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo) | [direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v) |
-| <a name="openedPopout" />Opened popout | [http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout](http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout) | [start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout |
-| <a name="paused" />Paused | [http://purl.imsglobal.org/vocab/caliper/v1/action#Paused](http://purl.imsglobal.org/vocab/caliper/v1/action#Paused) | [cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v) |
-| <a name="posted" />Posted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Posted](http://purl.imsglobal.org/vocab/caliper/v1/action#Posted) | [to cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v)  |
-| <a name="questioned" />questioned | [http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned](http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned) | [pose a question](http://wordnet-rdf.princeton.edu/wn31/200786670-v) |
-| <a name="ranked" />Ranked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked](http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked) | [assign a rank or rating to](http://wordnet-rdf.princeton.edu/wn31/200659723-v) |
-| <a name="recommended" />Recommended | [http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended](http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended) | [express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v) |
-| <a name="removed" />Removed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Removed](http://purl.imsglobal.org/vocab/caliper/v1/action#Removed) | [remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v) |
-| <a name="reset" />reset | [http://purl.imsglobal.org/vocab/caliper/v1/action#Reset](http://purl.imsglobal.org/vocab/caliper/v1/action#Reset) | [set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) |
-| <a name="restarted" />Restarted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted](http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted) | [take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v)|
-| <a name="resumed" />Resumed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Resumed](http://purl.imsglobal.org/vocab/caliper/v1/action#Resumed) | [take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) |
-| <a name="retrieved" />Retrieved | [http://purl.imsglobal.org/vocab/caliper/v1/action#Retrieved](http://purl.imsglobal.org/vocab/caliper/v1/action#Retrieved) | [obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v) |
-| <a name="reviewed" />reviewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed) | [appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v) |
-| <a name="rewound" />Rewound | [http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound](http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound) | [wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v)|
-| <a name="searched" />Searched | [http://purl.imsglobal.org/vocab/caliper/v1/action#Searched](http://purl.imsglobal.org/vocab/caliper/v1/action#Searched) | [try to locate or discover, or try to establish the existence of](http://wordnet-rdf.princeton.edu/wn31/201318273-v) |
-| <a name="shared" />Shared | [http://purl.imsglobal.org/vocab/caliper/v1/action#Shared](http://purl.imsglobal.org/vocab/caliper/v1/action#Shared) | [communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v) |
-| <a name="showed" />Showed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Showed](http://purl.imsglobal.org/vocab/caliper/v1/action#Showed) | [make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v) |
-| <a name="skipped" />Skipped | [http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped](http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped) | [bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v) |
-| <a name="started" />Started | [http://purl.imsglobal.org/vocab/caliper/v1/action#Started](http://purl.imsglobal.org/vocab/caliper/v1/action#Started) | [set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v) |
-| <a name="submitted" />Submitted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted](http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted) | [hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v) |
-| <a name="subscribed" />Subscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed) | [ receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v) |
-| <a name="tagged" />Tagged | [http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged](http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged) | [attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v) |
-| <a name="timedOut" />Timed out | [http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut](http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
-| <a name="unmuted" />Unmuted | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted](http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted) | inverse of muted |
-| <a name="unsubscribed" />unsubscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
-| <a name="used" />Used | [http://purl.imsglobal.org/vocab/caliper/v1/action#Used](http://purl.imsglobal.org/vocab/caliper/v1/action#Used) | interact with a tool in a manner the tool creator intends as a learning activity |
-| <a name="viewed" />Viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) |[look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
-
-<a name="vocabRoles" />
-
-## 6.5 Roles
+## 9.0 Appendix E. Roles
 
 ### Roles
-One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate IRI:
+One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate term string value:
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner |
-| external_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner |
-| guest_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner |
-| learner_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor |
-|  learner_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner |
-| noncredit_learner  | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
+| Learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner |
+| Learner#ExternalLearner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner |
+| Learner#GuestLearner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner |
+| Learner#Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor |
+| Learner#Learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner |
+| Learner#NonCreditLearner  | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
-| external_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor |
-| guest_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor |
-| lecturer | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer |
-| primary_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor |
+| Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
+| Instructor#ExternalInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor |
+| Instructor#GuestInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor |
+| Instructor#Lecturer | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer |
+| Instructor#PrimaryInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
-| administrator_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
-| administrator_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer |
-| administrator_support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support |
-| administrator_system_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator |
-| administrator_external_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport |
-| administrator_external_support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper |
-| administrator_external_system_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator |
+| Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
+| Administrator#Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
+| Administrator#Developer  | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer |
+| Administrator#Support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support |
+| Administrator#SystemAdministrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator |
+| Administrator#ExternalSupport | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport |
+| Administrator#ExternalDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper |
+| Administrator#ExternalSystemAdministrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| content_developer | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
-| content_developer_content_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper |
-| content_developer_ librarian | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian |
-| content_developer_ content_expert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert |
-| content_developer_external_context_expert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert |
+| ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
+| ContentDeveloper#ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper |
+| ContentDeveloper#Librarian | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian |
+| ContentDeveloper#ContentExpert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert |
+| ContentDeveloper#ExternalContentExpert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert |
 
-| Role | IRI |
+| Tern | IRI |
 | ----  | --- | 
-| manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
-| manager_area_manager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
-| manager_course_coordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
-| manager_observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
-| manager_external_observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
+| Manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
+| Manager#AreaManager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
+| Manager#CourseCoordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
+| Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
+| Manager#ExternalObserver | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
-| member_member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
+| Member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
+| Member#Member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
-| mentor_mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor |
-| mentor_external_mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor |
-| mentor_advisor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor |
-| mentor_external_ advisor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAdvisor |
-| mentor_auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor |
-| mentor_external_auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAuditor |
-| mentor_reviewer |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Reviewer |
-| mentor_external_reviewer | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer |
-| mentor_tutor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor |
-| mentor_external_tutor | "http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor |
-| mentor_learning_facilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#LearningFacilitator |
-| mentor_external_learning_facilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor/ExternalLearningFacilitator |
+| Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
+| Mentor#Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor |
+| Mentor#ExternalMentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor |
+| Mentor#Advisor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor |
+| Mentor#ExternalAdvisor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAdvisor |
+| Mentor#Auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor |
+| Mentor#ExternalAuditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAuditor |
+| Mentor#LearningFacilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#LearningFacilitator |
+| Mentor#ExternalLearningFacilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalLearningFacilitator |
+| Mentor#Reviewer |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Reviewer |
+| Mentor#ExternalReviewer | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer |
+| Mentor#Tutor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor |
+| Mentor#ExternalTutor | "http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| teaching_assistant | http://purl.imsglobal.org/vocab/lis/v2/membership#TeachingAssistant |
-| teaching_assistant_teaching_assistant | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistant |
-| teaching_assistant_grader | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#Grader |
-| teaching_assistant_teaching_assistant_section | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSection |
-| teaching_assistant_teaching_assistant_section_association | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSectionAssociation |
-| teaching_assistant_teaching_assistant_offering | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantOffering |
-| teaching_assistant_teaching_assistant_template | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantTemplate |
-| teaching_assistant_teaching_assistant_group | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
+| TeachingAssistant | http://purl.imsglobal.org/vocab/lis/v2/membership#TeachingAssistant |
+| TeachingAssistant#TeachingAssistant | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistant |
+| TeachingAssistant#Grader | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#Grader |
+| TeachingAssistant#TeachingAssistantSection | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSection |
+| TeachingAssistant#TeachingAssistantSectionAssociation | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSectionAssociation |
+| TeachingAssistant#TeachingAssistantOffering | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantOffering |
+| TeachingAssistant#TeachingAssistantTemplate | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantTemplate |
+| TeachingAssistant#TeachingAssistantGroup | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
 
 <a name="status" />
 
-### 6.6 Status
-The status of a [member](#member) within an organization can be set to one of the following states: active, deleted or inactive.  The value MUST be set to the appropriate IRI:
+### 10.0 Appendix F. Status
+The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate term string value:
 
-| Status | IRI |
+| Term | IRI |
 | ------  | --- | 
-| active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
-| inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
+| Active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
+| Inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
 <a name="contributors" />
 
-## 7.0 Contributors
+### 11.0 Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
 | Name | Organization |
@@ -4188,45 +4223,9 @@ The following Caliper Working Group participants contributed to the writing of t
 | Viktor Haag | D2L |
 | Wes LaMarche | ACT |
 
-<a name="revisionHistory" />
-
-## Revision History
-
-### Deprecations and Removals
-
-#### Profiles
-| Profile | Deprecated | Removed | Notes |
-| -------  | --------------- | ------------- | -------- |
-| [AssessmentItem Profile](#assessmentItemProfile)  | 1.1 | 1.1 | [AssessmentItemEvent](#assessmentItemEvent) moved to [AssessmentProfile](#assessmentProfile) rendering the AssessmentItem Profile redundant. |
-
-#### Events
-| Event | Deprecated | Removed | Notes |
-| -------  | --------------- | ------------- | -------- |
-| [ReadingEvent](#readingEvent)  | 1.1 | &nbsp; | &nbsp; |
-
-#### Entities
-| Entity | Deprecated | Removed | Notes |
-| -------  | --------------- | ------------- | -------- |
-| [AlignedLearningObjective](#alignedLearningObjective) | 1.1 | &nbsp; | Replaced by [LearningObjectives](#learningObjectives) |
-| [EpubChapter](#epubChapter) | 1.1 | &nbsp; | Deprecated in favor of [Chapter](#chapter) |
-| [EpubPart](#epubPart) | 1.1 | &nbsp; | &nbsp; |
-| [EpubSubchapter](#epubSubchapter) | 1.1 | &nbsp; | &nbsp; |
-| [EpubVolume](#epubVolume) | 1.1 | &nbsp; | &nbsp; |
-| [Reading](#reading) | 1.1 | &nbsp; | Deprecated in favor of [Document](#document) |
-
-#### Actions
-| Event | actions | Deprecated | Removed | Notes |
-| -----  | ------- | ------------ | --------- | ------ |
-| [AnnotationEvent](#annotationEvent) | [attached](#attached), [classified](#classified),  [commented](#commented], [described](#described), [disliked](#disliked), [identified](#identified), [liked](#liked), [linked](#linked), [questioned](#questioned), [ranked](#ranked), [recommended](#recommended), [replied](#replied), [subscribed](#subscribed) | 1.1 | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [abandoned](#abandoned), [hid](#hid), [showed](#showed] | 1.1 | &nbsp; | &nbsp; |
-
-#### Data Properties
-| Property | Deprecated | Removed | Notes |
-| -------  | --------------- | ------------- | -------- |
-| [objectType](#objectType)  | 1.1 | &nbsp; | &nbsp; |
-
 <a name="reference" />
-### References
+
+### 12.0 References
 
 <a name="json-ld" />
 
@@ -4248,5 +4247,10 @@ __RFC 3987__ IETF. M. Duerst and M. Suignard.  "Internationalized Resource Ident
 
 __RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
 
+<a name="rfc6750 />
 
-TODO Add other RFC references.
+__RFC 6750__ IETF.  TODO Add reference
+
+<a name="whitepaper" />
+
+__White paper__  IMS Global Learning Consortium.  "Learning Measurement for Analytics Whitepaper \[sic\]."  August 2013.  URL: https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
