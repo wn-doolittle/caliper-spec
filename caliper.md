@@ -36,81 +36,84 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
       * 3.3.9 [Session Profile](#sessionProfile)
       * 3.3.10 [Tool Use Profile](#toolUseProfile)
 * 4.0 [Sensor API](#api)
-* 5.0 [Transport](#transport)
-  * 5.1 [Envelope](#envelope)
-  * 5.2 [Endpoints](#endpoints)
-* 6.0 [Appendix A. Actions](#actions)
-* 7.0 [Appendix B. Events](#events)
-  * 7.1 [Event](#event)
-  * 7.2 [AnnotationEvent](#annotationEvent)
-  * 7.3 [AssessmentEvent](#assessmentEvent)
-  * 7.4 [AssessmentItemEvent](#assessmentItemEvent)
-  * 7.5 [AssignableEvent](#assignableEvent)
-  * 7.6 [ForumEvent](#forumEvent)
-  * 7.7 [MediaEvent](#mediaEvent)
-  * 7.8 [MessageEvent](#messageEvent)
-  * 7.9 [NavigationEvent](#navigationEvent)
-  * 7.10 [OutcomeEvent](#outcomeEvent)
-  * 7.11 [ReadingEvent](#readingEvent) (Deprecated)
-  * 7.12 [SessionEvent](#sessionEvent)
-  * 7.13 [ThreadEvent](#threadEvent)
-  * 7.14 [ToolUseEvent](#toolUseEvent)
-  * 7.15 [ViewEvent](#viewEvent)
-* 8.0 [Appendix C. Entities](#entities)
-  * 8.1 [Entity](#appendixEntities)
-  * 8.2 [Agent](#agent)
-  * 8.3 [Annotation](#annotation)
-  * 8.4 [Assessment](#assessment)
-  * 8.5 [AssessmentItem](#assessmentItem)
-  * 8.6 [AssignableDigitalResource](#assignableDigitalResource)
-  * 8.7 [Attempt](#attempt)
-  * 8.8 [AudioObject](#audioObject)
-  * 8.9 [BookmarkAnnotation](#bookmarkAnnotation)
-  * 8.10 [Chapter](#chapter)
-  * 8.11 [CourseOffering](#courseOffering)
-  * 8.12 [CourseSection](#courseSection)
-  * 8.13 [DigitalResource](#digitalResource)
-  * 8.14 [DigitalResourceCollection](#digitalResourceCollection)
-  * 8.15 [Document](#document)
-  * 8.16 [EpubChapter](#epubChapter) (Deprecated)
-  * 8.17 [EpubPart](#epubPart) (Deprecated)
-  * 8.18 [EpubSubChapter](#epubSubChapter) (Deprecated)
-  * 8.19 [EpubVolume](#epubVolume) (Deprecated)
-  * 8.20 [FillinBlankResponse](#fillinBlankResponse)
-  * 8.21 [Forum](#forum)
-  * 8.22 [Frame](#frame)
-  * 8.23 [Group](#group)
-  * 8.24 [HighlightAnnotation](#highlightAnnotation)
-  * 8.25 [ImageObject](#imageObject)
-  * 8.26 [LearningObjective](#learningObjective)
-  * 8.27 [LtiSession](#ltiSession) 
-  * 8.28 [MediaLocation](#mediaLocation)
-  * 8.29 [MediaObject](#mediaObject)
-  * 8.30 [Membership](#membership)
-  * 8.31 [Message](#message)
-  * 8.32 [MultipleChoiceResponse](#multipleChoiceResponse)
-  * 8.33 [MultipleResponseResponse](#multipleResponseResponse)
-  * 8.34 [Organization](#organization)
-  * 8.35 [Page](#page)
-  * 8.36 [Person](#person)
-  * 8.37 [Reading](#reading) (Deprecated)
-  * 8.38 [Response](#response)
-  * 8.39 [Result](#result)
-  * 8.40 [Session](#session)
-  * 8.41 [SharedAnnotation](#sharedAnnotation)
-  * 8.42 [SelectTextResponse](#selectTextResponse)
-  * 8.43 [SoftwareApplication](#softwareApplication)
-  * 8.44 [TagAnnotation](#tagAnnotation)
-  * 8.45 [TrueFalseResponse](#trueFalseResponse)
-  * 8.46 [Thread](#thread)
-  * 8.47 [VideoObject](#videoObject)
-  * 8.48 [WebPage](#webpage)
-* 9.0 [Appendix D. Selectors](#selectors)
-  * 9.1 [TextPositionSelector](#textPositionSelector)
-* 10.0 [Appendix E. Roles](#roles)
-* 11.0 [Appendix F. Status](#status)
-* 12.0 [Contributors](#contributors)
-* 13.0 [References](#references)
+  * 4.1 [Behavior](#behavior)
+  * 4.2 [Transport](#transport)
+  * 4.3 [Envelope](#envelope)
+  * 4.4 [Representing Entities and Events as JSON-LD](#representingJsonld)
+  * 4.5 [Endpoint](#endpoint)
+  * 4.6 [Endpoint Responses](#endpointResponses)
+* 5.0 [Appendix A. Actions](#actions)
+* 6.0 [Appendix B. Event Types](#events)
+  * 6.1 [Event](#event)
+  * 6.2 [AnnotationEvent](#annotationEvent)
+  * 6.3 [AssessmentEvent](#assessmentEvent)
+  * 6.4 [AssessmentItemEvent](#assessmentItemEvent)
+  * 6.5 [AssignableEvent](#assignableEvent)
+  * 6.6 [ForumEvent](#forumEvent)
+  * 6.7 [MediaEvent](#mediaEvent)
+  * 6.8 [MessageEvent](#messageEvent)
+  * 6.9 [NavigationEvent](#navigationEvent)
+  * 6.10 [OutcomeEvent](#outcomeEvent)
+  * 6.11 [ReadingEvent](#readingEvent) (Deprecated)
+  * 6.12 [SessionEvent](#sessionEvent)
+  * 6.13 [ThreadEvent](#threadEvent)
+  * 6.14 [ToolUseEvent](#toolUseEvent)
+  * 6.15 [ViewEvent](#viewEvent)
+* 7.0 [Appendix C. Entity Types](#entities)
+  * 7.1 [Entity](#appendixEntities)
+  * 7.2 [Agent](#agent)
+  * 7.3 [Annotation](#annotation)
+  * 7.4 [Assessment](#assessment)
+  * 7.5 [AssessmentItem](#assessmentItem)
+  * 7.6 [AssignableDigitalResource](#assignableDigitalResource)
+  * 7.7 [Attempt](#attempt)
+  * 7.8 [AudioObject](#audioObject)
+  * 7.9 [BookmarkAnnotation](#bookmarkAnnotation)
+  * 7.10 [Chapter](#chapter)
+  * 7.11 [CourseOffering](#courseOffering)
+  * 7.12 [CourseSection](#courseSection)
+  * 7.13 [DigitalResource](#digitalResource)
+  * 7.14 [DigitalResourceCollection](#digitalResourceCollection)
+  * 7.15 [Document](#document)
+  * 7.16 [EpubChapter](#epubChapter) (Deprecated)
+  * 7.17 [EpubPart](#epubPart) (Deprecated)
+  * 7.18 [EpubSubChapter](#epubSubChapter) (Deprecated)
+  * 7.19 [EpubVolume](#epubVolume) (Deprecated)
+  * 7.20 [FillinBlankResponse](#fillinBlankResponse)
+  * 7.21 [Forum](#forum)
+  * 7.22 [Frame](#frame)
+  * 7.23 [Group](#group)
+  * 7.24 [HighlightAnnotation](#highlightAnnotation)
+  * 7.25 [ImageObject](#imageObject)
+  * 7.26 [LearningObjective](#learningObjective)
+  * 7.27 [LtiSession](#ltiSession) 
+  * 7.28 [MediaLocation](#mediaLocation)
+  * 7.29 [MediaObject](#mediaObject)
+  * 7.30 [Membership](#membership)
+  * 7.31 [Message](#message)
+  * 7.32 [MultipleChoiceResponse](#multipleChoiceResponse)
+  * 7.33 [MultipleResponseResponse](#multipleResponseResponse)
+  * 7.34 [Organization](#organization)
+  * 7.35 [Page](#page)
+  * 7.36 [Person](#person)
+  * 7.37 [Reading](#reading) (Deprecated)
+  * 7.38 [Response](#response)
+  * 7.39 [Result](#result)
+  * 7.40 [Session](#session)
+  * 7.41 [SharedAnnotation](#sharedAnnotation)
+  * 7.42 [SelectTextResponse](#selectTextResponse)
+  * 7.43 [SoftwareApplication](#softwareApplication)
+  * 7.44 [TagAnnotation](#tagAnnotation)
+  * 7.45 [TrueFalseResponse](#trueFalseResponse)
+  * 7.46 [Thread](#thread)
+  * 7.47 [VideoObject](#videoObject)
+  * 7.48 [WebPage](#webpage)
+* 8.0 [Appendix D. Selectors](#selectors)
+  * 8.1 [TextPositionSelector](#textPositionSelector)
+* 9.0 [Appendix E. Roles](#roles)
+* 10.0 [Appendix F. Status](#status)
+* 11.0 [Contributors](#contributors)
+* 12.0 [References](#references)
 
 <a name="introduction" />
   
@@ -120,12 +123,12 @@ The drive to deliver education at scale coupled with a demand for measurable acc
 
 The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities.  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage and analysis.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
-### 1.1 Terminology
+#### 1.1 Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
 <a name="definitions" />
 
-### 1.2 Definitions
+#### 1.2 Definitions
 
 __actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
 
@@ -172,13 +175,13 @@ The Caliper information model defines a set of concepts, rules and relationships
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-A Caliper Entity is a generic type or concept that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes that support discovery and description.  As a data structure an Entity constitutes an unordered set of key:value pairs or properties. 
+A Caliper Entity is a generic type that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes that support discovery and description.  As a data structure an Entity constitutes an unordered set of key:value pairs or properties. 
 
 Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](#rfc3987) MUST also be provided.  Entity [IRI](#rfc3987) values MUST be unique as well as valid.  The [IRI](#rfc3987) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the Entity over HTTP once authorization to access the resource is granted.
 
 **TODO should we state that IRIs/URIs should not employ the URN syntax (implied by dereferenceable which URNs by nature are not)**
 
-Other Entity properties are descriptive in nature or link the Entity to other related entities.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain classes that extend Entity like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
+Other Entity properties are descriptive in nature or link the Entity to other related entities.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain Entity types like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
 
 #### Properties
 The base set of Entity properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.    
@@ -232,7 +235,7 @@ When representing an Entity as [JSON-LD](#json-ld), a `@context` key MUST be emb
 <a name="infoModelEvent" />
 
 ### 3.2 The Caliper Event
-A Caliper Event is a generic type or concept that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The Event properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as Events.
+A Caliper Event is a generic type that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The Event properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as Events.
 
 Caliper defines a number of Event types, each employing terms that are scoped to a particular activity domain.  The Event model also seeks to describe the environment or context in which a learning activity is situated.  Group affiliation, membership roles and status, recent navigation history, supporting technology and session information can all be represented.  Entities generated as a result of the interaction between an `actor` and an `object` can also be described (annotating a piece of digital content and producing an [Annotation](#annotation) is one such example).
   
@@ -250,7 +253,7 @@ The base set of Event properties is listed below.  Each property MUST only be re
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
 | action | [action](#actions) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen Event type. | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location of the `object`. | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
@@ -891,47 +894,55 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 }
 ```
 
-<a name="sensorAPI" />
+<a name="sensor" />
 
-### 4.0 Sensor API
+## 4.0 Sensor API™
+Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data from an instrumented platform, application or service to one or more target endpoints.  A [Sensor](#sensor) implementation must be capable of assembling and sending both [Event](#event) and [Entity](#entity) payloads.
 
-TODO
+<a name="sensorBehavior" />
 
+### 4.1 Behavior
 
-#### 4.x Representing Events and Entities as JSON-LD
+A Caliper [Sensor](#sensor) must implement the following behaviors | methods: 
 
-When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+**TODO do sensors need to implement getStatistics()?**
+**TODO Who is responsible for constructing Caliper entities and events? The above only mentions assembling/sending payloads.**
 
-When representing an Entity as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
+* `send`: emit a Caliper [Envelope](#envelope) consisting of a data payload consisting of one or more Caliper events to a target endpoint.
+* `describe`: emit a Caliper [Envelope](#envelope) consisting of a data payload consisting of one or Caliper entities to a target endpoint.
+* ~~`getStatistics`: TODO describe~~~
+
+A [Sensor](#sensor) may exhibit other behaviors including the ability to create entities and events or delegate those responsibilities to the instrumented platform, application or service. 
 
 <a name="transport" />
 
-## 5.0 Transport
+### 4.2 Transport
 
-Caliper Sensors MUST at a minimum be capable of communicating with [Caliper Endpoints](#endpoints) using conventional HTTP POST requests; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using this transport. Caliper Sensors MAY use other methods to communicate with an Endpoint.
+Caliper Sensors MUST at a minimum be capable of communicating with [Caliper endpoints](#endpoints) using conventional HTTP POST requests; the certification tests for Caliper Sensors require a Sensor to send data to the certification service using this transport. Caliper Sensors MAY use other methods to communicate with an Endpoint.
 
-For transport security and authentication, Caliper Sensors SHOULD:
+For transport security and authentication, a [Sensor](#sensor) SHOULD:
 
-* Use HTTPS to secure the transport between Sensor and retrieving Endpoint.
+* Use HTTPS to secure the transport between the Sensor and recieving endpoint.
 * Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
 
-Caliper Sensors MAY support additional modes of transport security and authentication; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
+A [Sensor](#sensor) MAY support additional modes of transport security and authentication; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
 
-When sending messages to the endpoint, the Caliper Sensor SHOULD indicate that the payload of the message has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper Endpoint reports that it cannot process the `application/ld+json` media type).
+When sending messages to an endpoint, a Caliper [Sensor](#sensor) SHOULD indicate that the message payload has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper endpoint reports that it cannot process the `application/ld+json` media type).
 
 <a name="envelope" />
 
-### 5.1 Envelope
+### 4.3 Envelope
 
-Every message sent by a Caliper Sensor MUST consist of a single Caliper Envelope json structure, enveloping a payload of Caliper Events and Entities. The Caliper Envelope MUST have these three properties:
+Every message sent by a [Sensor](#sensor) MUST consist of a single Caliper Envelope JSON structure, enveloping a payload of Caliper events or entities. The Caliper Envelope MUST have these four properties:
 
-* `sensor`: A unique identifier for the Caliper Sensor sending the message (this MAY instead by a unique identifier for the application or service sending the message, which MAY be shared amongst all the Sensors that application or service uses to send Caliper data).  This identifier SHOULD be an IRI.
-* `sendTime`: A date-time string indicating the time at which the Caliper Sensor sent the message, which MUST use the [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date and time format, and MUST be expressed in UTC.  Sensor's SHOULD use a combined date and time representation of the form `2016-0405T14:30:00Z` or `2016-0405T14:30:00.062Z` (to include milliseconds).
-* `dataVersion`: A version string indicating the version of the IMS Caliper specification that governs the form of the Caliper Entities and Events found in the `data` payload. By convention, this string value will be URI of Caliper context document that can be used to resolve the meanings of the
-  terms and values found in the payload's Entities and Events.
-* `data`: A JSON array that MUST contain a list of one or more Caliper Entity or Event structures. The Sensor MAY mix Entity and Event structures in the same envelope.
+* `sensor`: A unique identifier for the Caliper [Sensor](#sensor) sending the message (this MAY instead by a unique identifier for the application or service sending the message, which MAY be shared amongst all the Sensors that application or service uses to send Caliper data).  This identifier SHOULD be an [IRI](#rfc3987).
+* `sendTime`: A date and time string value expressed with millisecond precision that indicates the time at which the Caliper [Sensor](#sensor) issued the message.  The value MUST be expressed as an ISO-8601 formatted date/time string in UTC.
+* `dataVersion`: A version string indicating the version of the IMS Caliper specification that governs the form of the Caliper entities and events found in the `data` payload. By convention, this string value will be URI of Caliper context document that can be used to resolve the meanings of the terms and values found in the payload's entities and events.
+* `data`: A JSON array that MUST contain a list of one or more Caliper entity or event structures. ~~The Sensor MAY mix entity and event structures in the same envelope~~.
 
-### Example
+**TODO if the Sensor can mix entities and events why do we need a Sensor.describe() method?**
+
+#### Example
 ``` json
 {
    "sensor": "https://example.edu/sensors/1",
@@ -964,21 +975,32 @@ Every message sent by a Caliper Sensor MUST consist of a single Caliper Envelope
    ]
 }
 ```
+<a name="representingJsonld" />
+
+### 4.4 Representing Events and Entities as JSON-LD
+
+TODO Elaborate and add examples
+
+When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
+
+When representing an Entity as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
 <a name="endpoint" />
 
-#### 5.2 Endpoint
+### 4.5 Endpoint
 
-Caliper Endpoints MUST at least be capable of communicating with [Caliper Sensors](#sensors) by supporting conventional HTTP POST requests; the certification tests for Caliper Endpoints require the Endpoint to receive data from the certification service using this transport. Caliper Endpoints MAY use other methods to receive data from Sensors.
+A Caliper endpoint MUST at a minimum be capable of communicating with a [Sensor](#sensor) via conventional HTTP POST requests; current Caliper certification tests require that the endpoint receive data from the IMS Global certification suite using this transport. Caliper endpoints MAY use other methods to receive data from sensors.
 
-For transport and security and authentication, Caliper Sensors SHOULD:
+For transport and security and authentication, Caliper sensors SHOULD:
 
-* Use HTTPS to secure the transport between itself and Sensors, and if so, MUST provide a valid HTTP Certificate.
-* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
+* Use HTTPS to secure the transport between itself and sensors, and if so, MUST provide a valid HTTP Certificate.
+* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the sensor itself.
 
-Caliper Endpoints MAY support additional modes of transport security and authentication; the certification tests for Caliper Endpoints require the Endpoint receive data from the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
+Caliper endpoints MAY support additional modes of transport security and authentication; the certification tests for Caliper endpoints require the endpoint receive data from the certification service using HTTPS and a bearer token credential consistent with [RFC 6750](#rfc6750).
 
-#### 5.2.1 Endpoint HTTPS responses
+<a name="endpointResponses" />
+
+### 4.6 Endpoint HTTPS responses
 
 When using HTTPS as the transport, the Caliper Endpoint MUST conform to these points of response behaviour. Caliper Endpoint implementers should bear in mind that the Caliper Sensors sending them messages may not be in a position to perform sophisticated error handling.
 
@@ -996,7 +1018,7 @@ If the Endpoint implementer wants the Endpoint to communicate more detailed info
 
 <a name="actions"/>
    
-### 6.0 Appendix A. Actions
+## 5.0 Appendix A. Actions
 TODO DESCRIPTION
 
 natural language challenges  - WordNet
@@ -1073,21 +1095,21 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 
 <a name="events" />
 
-### 7.0 Appendix B. Events
+## 6.0 Appendix B. Event Types
 
 TODO Intro
 
 <a name="event" />
 
-### 7.1 Event
+### 6.1 Event
 TODO ADD EVENT
 
 <a name="annotationEvent" />
 
-### 7.2 AnnotationEvent
+### 6.2 AnnotationEvent
 TODO The Caliper AnnotationEvent models . . . .   AnnotationEvent inherits all the properties and requirements defined for Event, its superclass.  
 
-#### Supported actions
+##### Supported actions
  [bookmarked](#bookmarked), [highlighted](#highlighted), [shared](#shared), [tagged](#tagged)
  
 #### Deprecated actions
@@ -1170,7 +1192,7 @@ AnnotationEvent inherits all properties defined by its superclass [Event](#event
 	
 <a name="assessmentEvent" />
 
-### 7.3 AssessmentEvent
+### 6.3 AssessmentEvent
 The Caliper AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.  AssessmentEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### Supported actions
@@ -1327,7 +1349,7 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
 
 <a name="assessmentItemEvent" />
 
-### 7.4 AssessmentItemEvent
+### 6.4 AssessmentItemEvent
 The Caliper AssessmentItemEvent models a learner's interaction with an individual assessment item.  AssessmentItemEvent inherits all the properties and requirements defined for Event, its superclass.  
 
 #### Supported actions
@@ -1507,7 +1529,7 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
 
 <a name="assignableEvent" />
 
-### 7.5 AssignableEvent
+### 6.5 AssignableEvent
 TODO The Caliper AssignableEvent models . . . .  AssignableEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -1586,7 +1608,7 @@ AssignableEvent inherits all properties defined by its superclass [Event](#event
 
 <a name="forumEvent" />
 
-### 7.6 ForumEvent
+### 6.6 ForumEvent
 
 TODO The Caliper ForumEvent models . . . .  ForumEvent inherits all the properties and requirements defined for Event, its superclass.
 
@@ -1658,7 +1680,7 @@ ForumEvent inherits all properties defined by its superclass [Event](#event). Ad
 
 <a name="mediaEvent" />
 
-### 7.7 MediaEvent
+### 6.7 MediaEvent
 TODO The Caliper MediaEvent models . . . .  MediaEvent inherits all the properties and requirements defined for Event, its superclass.
 
 TODO 
@@ -1736,7 +1758,7 @@ MediaEvent inherits all properties defined by its superclass [Event](#event). Ad
 
 <a name="messageEvent" />
 
-### 7.8 MessageEvent
+### 6.8 MessageEvent
 The Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a [Message](#message) or marking a post as either read or unread.  MessageEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -1887,7 +1909,7 @@ MessageEvent inherits all properties defined by its superclass [Event](#event). 
 
 <a name="navigationEvent" />
 
-### 7.9 NavigationEvent
+### 6.9 NavigationEvent
 The Caliper NavigationEvent models an actor traversing a network of digital resources.  NavigationEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -1959,7 +1981,7 @@ NavigationEvent inherits all properties defined by its superclass [Event](#event
 
 <a name="outcomeEvent" />
 
-### 7.10 OutcomeEvent
+### 6.10 OutcomeEvent
 TODO The Caliper OutcomeEvent models . . . .  OutcomeEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -2027,7 +2049,7 @@ OutcomeEvent inherits all properties defined by its superclass [Event](#event). 
 ```
 <a name="readingEvent" />
 
-### 7.11 ReadingEvent DEPRECATED
+### 6.11 ReadingEvent DEPRECATED
 
 The Caliper ReadingEvent models an actor reading textural content.  ReadingEvent is a DEPRECATED event that will be removed in a future version of the specification.  It SHOULD NOT be utilized.
 
@@ -2044,7 +2066,7 @@ ReadingEvent inherits all properties defined by its superclass [Event](#event). 
 
 <a name="sessionEvent" />
 
-### 7.12 SessionEvent
+### 6.12 SessionEvent
 TODO . . . A SessionEvent models . . . .  SessionEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -2154,7 +2176,7 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
 
 <a name="threadEvent" />
 
-### 7.13 ThreadEvent
+### 6.13 ThreadEvent
 TODO . . . A Caliper ThreadEvent models an actor marking a forum thread as either read or unread.  ThreadEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -2227,7 +2249,7 @@ ThreadEvent inherits all properties defined by its superclass [Event](#event). A
 
 <a name="toolUseEvent" />
 
-### 7.14 ToolUseEvent
+### 6.14 ToolUseEvent
 A Caliper ToolUseEvent models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a "learning interaction". It's meant to be a fundamental event that tool creators can implement to demonstrate in the Caliper event stream that "users are using the tool in the way in which it's intended to be used."
 
 #### Supported actions
@@ -2291,7 +2313,7 @@ ToolUseEvent inherits all properties defined by its superclass [Event](#event). 
 
 <a name="viewEvent" />
 
-### 7.15 ViewEvent
+### 6.15 ViewEvent
 A Caliper ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a file.   ViewEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
@@ -2368,17 +2390,17 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
 
 <a name="entities" />
 
-### 8.0 Appendix C. Entities
+### 7.0 Appendix C. Entity Types
 
 <a name="entity" />
 
-### 8.1 Entity
+### 7.1 Entity
 
 TODO add Entity
 
 <a name="agent" />
 
-### 8.2 Agent
+### 7.2 Agent
 A Caliper Agent is a generic class that represents an Entity that can initiate or perform an action.  It is analogous to an [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that Agent represents a generic type it is RECOMMENDED that only subclasses of Agent be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2401,7 +2423,7 @@ Agent inherits all properties defined by its superclass [Entity](#entity).  Addi
 
 <a name="annotation" />
 
-### 8.3 Annotation
+### 7.3 Annotation
 A Caliper Annotation is a generic class that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.  Given that Annotation represents a generic type it is RECOMMENDED that only subclasses of Annotation be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2426,7 +2448,7 @@ Annotation inherits all properties defined by its superclass [Entity](#entity). 
 
 <a name="assessment" />
 
-### 8.4 Assessment
+### 7.4 Assessment
 A Caliper Assessment represents an assessment instrument such as a test or quiz.
 
 #### Superclass
@@ -2474,7 +2496,7 @@ Assessment inherits all the properties and requirements defined by its superclas
 ```
 <a name="assessmentItem" />
 
-### 8.5 AssessmentItem
+### 7.5 AssessmentItem
 A Caliper AssessmentItem represents a single test question.
 
 #### Superclass
@@ -2515,7 +2537,7 @@ AssessmentItem inherits all the properties and requirements defined by its super
 
 <a name="assignableDigitalResource" />
 
-### 8.6 AssignableDigitalResource
+### 7.6 AssignableDigitalResource
 A Caliper AssignableDigitalResource is a generic class that represents digital content associated with a graded or ungraded assignment.  Given that AssignableDigitalResource represents a generic type it is RECOMMENDED that only subclasses of AssignableDigitalResource be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2556,7 +2578,7 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 
 <a name="attempt" />
 
-### 8.7 Attempt
+### 7.7 Attempt
 A Caliper Attempt provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An Attempt is generated as the result of an action such as starting an [Assessment](#assessment).
 
 #### Superclass
@@ -2599,7 +2621,7 @@ Attempt inherits all the properties and requirements defined for its superclass 
 
 <a name="audioObject" />
 
-### 8.8 AudioObject
+### 7.8 AudioObject
 A Caliper AudioObject represents an audio or sound file.  It is analogous to a [schema:AudioObject](http://schema.org/AudioObject).
 
 #### Superclass
@@ -2629,7 +2651,7 @@ AudioObject inherits all the properties and requirements defined for its supercl
 
 <a name="bookmarkAnnotation" />
 
-### 8.9 BookmarkAnnotation
+### 7.9 BookmarkAnnotation
 A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#digitalResource) at a particular location.
 
 #### Superclass
@@ -2662,7 +2684,7 @@ BookmarkAnnotation inherits all the properties and requirements defined for its 
 
 <a name="chapter" />
 
-### 8.10 Chapter
+### 7.10 Chapter
 A Caliper Chapter represents a major sub-division of a piece of digital content.
 
 #### Superclass 
@@ -2692,7 +2714,7 @@ Chapter inherits all the properties and requirements defined for its superclass 
 
 <a name="courseOffering" />
 
-### 8.11 CourseOffering
+### 7.11 CourseOffering
 A Caliper CourseOffering represents the occurrence of a course or a class during a specified time period.  CourseOffering is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Superclass
@@ -2724,7 +2746,7 @@ CourseOffering inherits all the properties and requirements defined for its supe
 
 <a name="courseSection" />
 
-### 8.12 CourseSection
+### 7.12 CourseSection
 A Caliper CourseSection represents a specific instance of a [CourseOffering](#courseOffering) occuring during a specific semester, term or period.  CourseSection is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Superclass
@@ -2757,7 +2779,7 @@ CourseSection inherits all the properties and requirements defined for its super
 
 <a name="digitalResource" />
 
-### 8.13 DigitalResource
+### 7.13 DigitalResource
 A Caliper DigitalResource is a generic class that represents a content item.  Given that DigitalResource represents a generic type it is RECOMMENDED that only subclasses of DigitalResource be employed to represent nodes in the learning graph.  DigitalResource is analogous to a [schema:CreativeWork](https://schema.org/CreativeWork).
 
 #### Superclass 
@@ -2812,7 +2834,7 @@ DigitalResource inherits all the properties and requirements defined for its sup
 
 <a name="digitalResourceCollection" />
 
-### 8.14 DigitalResourceCollection
+### 7.14 DigitalResourceCollection
 A Caliper DigitalResourceCollection represents an ordered array of [DigitalResource](#digitalResources) entities.
 
 #### Superclass
@@ -2870,7 +2892,7 @@ DigitalResourceCollection inherits all the properties and requirements defined f
 
 <a name="document" />
 
-### 8.15 Document
+### 7.15 Document
 A Caliper Document represents a piece of digital content.
 
 #### Superclass 
@@ -2907,7 +2929,7 @@ Document inherits all the properties and requirements defined for its superclass
  
 <a name="epubChapter" />
 
-### 8.16 EpubChapter (DEPRECATED)
+### 7.16 EpubChapter (DEPRECATED)
 A Caliper EpubChapter represents a major structural division of a piece of writing.  EpubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -2920,7 +2942,7 @@ EpubChapter inherits all the properties and requirements defined for its supercl
 
 <a name="epubPart" />
 
-### 8.17 EpubPart (DEPRECATED)
+### 7.17 EpubPart (DEPRECATED)
 A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  EpubPart is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -2933,7 +2955,7 @@ EpubPart inherits all the properties and requirements defined for its superclass
 
 <a name="epubSubChapter" />
 
-### 8.18 EpubSubChapter (DEPRECATED)
+### 7.18 EpubSubChapter (DEPRECATED)
 A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -2946,7 +2968,7 @@ EpubSubChapter inherits all the properties and requirements defined for its supe
 
 <a name="epubVolume" />
 
-### 8.19 EpubVolume (DEPRECATED)
+### 7.19 EpubVolume (DEPRECATED)
 A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  EpubVolume is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -2959,7 +2981,7 @@ EpubVolume inherits all the properties and requirements defined for its supercla
 
 <a name="fillinBlankResponse" />
 
-### 8.20 FillinBlankResponse
+### 7.20 FillinBlankResponse
 A Caliper FillinBlankResponse represents a form of response in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
 #### Superclass 
@@ -3005,7 +3027,7 @@ FillinBlankResponse inherits all the properties and requirements defined for its
 
 <a name="forum" />
 
-### 8.21 Forum
+### 7.21 Forum
 A Caliper Forum represents a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
 
 #### Superclass 
@@ -3059,7 +3081,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 
 <a name="frame" />
 
-### 8.22 Frame
+### 7.22 Frame
 A Caliper Frame represents a part, portion or segment of a [DigitalResource](#digitalResource).
  
 #### Superclass 
@@ -3090,7 +3112,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 
 <a name="group" />
 
-### 8.23 Group
+### 7.23 Group
 A Caliper Group represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  The Group can act as an [Agent](#agent) and can be decomposed into sub-groups.
 
 #### Superclass
@@ -3122,7 +3144,7 @@ Group inherits all the properties and requirements defined for its superclass [O
 
 <a name="highlightAnnotation" />
 
-### 8.24 HighlightAnnotation
+### 7.24 HighlightAnnotation
 A Caliper HighlightAnnotation represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
 
 ### TODO
@@ -3164,7 +3186,7 @@ HighlightAnnotation inherits all the properties and requirements defined for its
 
 <a name="imageObject" />
 
-### 8.25 ImageObject
+### 7.25 ImageObject
 A Caliper ImageObject represents an image file.  It is analogous to [schema:ImageObject](http://schema.org/ImageObject).
 
 #### Superclass 
@@ -3189,7 +3211,7 @@ ImageObject inherits all the properties and requirements defined for its supercl
 
 <a name="learningObjective" />
 
-### 8.26 LearningObjective
+### 7.26 LearningObjective
 The Caliper LearningObjective represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
 #### Superclass 
@@ -3230,7 +3252,7 @@ LearningObjective inherits all the properties and requirements defined for its s
 
 <a name="ltiSession" />
 
-### 8.27 LtiSession
+### 7.27 LtiSession
 A Caliper LtiSession represents an LTI Tool Consumer user session.
 
 #### Superclass
@@ -3295,7 +3317,7 @@ LtiSession inherits all the properties and requirements defined for its supercla
 
 <a name="mediaLocation" />
 
-### 8.28 MediaLocation
+### 7.28 MediaLocation
 
 A Caliper MediaLocation provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
  
@@ -3321,7 +3343,7 @@ MediaLocation inherits all the properties and requirements defined for its super
 
 <a name="mediaObject" />
 
-### 8.29 MediaObject
+### 7.29 MediaObject
 A Caliper MediaObject represents a generic piece of media content.  Given that MediaObject represents a generic type it is RECOMMENDED that only subclasses of MediaObject be employed to represent nodes in the learning graph.  MediaObject is analogous to [schema:MediaObject](http://schema.org/MediaObject).
 
 #### Superclass 
@@ -3345,7 +3367,7 @@ MediaObject inherits all the properties and requirements defined for its supercl
 
 <a name="membership" />
 
-### 8.30 Membership
+### 7.30 Membership
 A Caliper Membership describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
 
 #### Superclass 
@@ -3386,7 +3408,7 @@ Membership inherits all the properties and requirements defined for its supercla
 
 <a name="message" />
 
-### 8.31 Message
+### 7.31 Message
 A Caliper Message is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.  It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
 
 #### Superclass 
@@ -3440,7 +3462,7 @@ Message inherits all the properties and requirements defined for its superclass 
  
 <a name="multipleChoiceResponse" />
 
-### 8.32 MultipleChoiceResponse
+### 7.32 MultipleChoiceResponse
 A Caliper MultipleChoiceResponse represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.
 
 #### Superclass 
@@ -3486,7 +3508,7 @@ MultipleChoiceResponse inherits all the properties and requirements defined for 
 
 <a name="multipleResponseResponse" />
 
-### 8.33 MultipleResponseResponse
+### 7.33 MultipleResponseResponse
 A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
 #### Superclass 
@@ -3532,7 +3554,7 @@ MultipleResponseResponse inherits all the properties and requirements defined fo
 
 <a name="organization" />
 
-### 8.34 Organization
+### 7.34 Organization
 A Caliper Organization represents a formal collection of people organized for some common educational, social or administrative purpose.  The Organization can act as an [Agent] and can be decomposed into sub-organizations.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
 #### Superclass
@@ -3564,7 +3586,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 <a name="page" />
 
-### 8.35 Page
+### 7.35 Page
 A Caliper Page represents an item of paginated content.
 
 #### Superclass 
@@ -3599,7 +3621,7 @@ Page inherits all the properties and requirements defined for its superclass [Di
 
 <a name="person" />
 
-### 8.36 Person
+### 7.36 Person
 A Caliper Person represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
 #### Superclass
@@ -3623,7 +3645,7 @@ Person inherits all the properties and requirements defined for its superclass [
 
 <a name="reading" />
 
-### 8.37 Reading (DEPRECATED)
+### 7.37 Reading (DEPRECATED)
 A Caliper Reading represents an item of paginated content.  Reading is a DEPRECATED entity superceded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -3636,7 +3658,7 @@ Reading inherits all the properties and requirements defined for its superclass 
 
 <a name="response" />
 
-### 8.38 Response
+### 7.38 Response
 A Caliper Response is a generic class that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).  Given that Response represents a generic type it is RECOMMENDED that only subclasses of Response be employed to represent nodes in the learning graph. 
 
 #### Superclass 
@@ -3658,7 +3680,7 @@ Response inherits all the properties and requirements defined for its superclass
 
 <a name="result" />
 
-### 8.39 Result
+### 7.39 Result
 A Caliper Result represents a grade applied to an assignment submission.
 
 #### Superclass 
@@ -3716,7 +3738,7 @@ Result inherits all the properties and requirements defined for its superclass [
 
 <a name="selectTextResponse" />
 
-### 8.40 SelectTextResponse
+### 7.40 SelectTextResponse
 A Caliper SelectTextResponse represents a response that identifies text or a mapping from a presented paragraph or list.
 
 #### Superclass 
@@ -3762,7 +3784,7 @@ SelectTextResponse inherits all the properties and requirements defined for its 
 
 <a name="session" />
 
-### 8.41 Session
+### 7.41 Session
 A Caliper Session represents a web application user session.
 
 #### Superclass
@@ -3797,7 +3819,7 @@ Session inherits all the properties and requirements defined for [Entity](#entit
 
 <a name="sharedAnnotation" />
 
-### 8.42 SharedAnnotation
+### 7.42 SharedAnnotation
 A Caliper SharedAnnotation represents the act of sharing a reference to a DigitalResource with other agents.
 
 #### Superclass
@@ -3839,7 +3861,7 @@ SharedAnnotation inherits all the properties and requirements defined for its su
 
 <a name="softwareApplication" />
 
-#### 8.43 SoftwareApplication
+#### 7.43 SoftwareApplication
 A Caliper SoftwareApplication represents a computer program, application, module, platform or system.  It is analogous to a [schema:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
 #### Superclass
@@ -3865,7 +3887,7 @@ SoftwareApplication inherits all the properties and requirements defined for its
 
 <a name="tagAnnotation" />
 
-### 8.44 TagAnnotation
+### 7.44 TagAnnotation
 A Caliper TagAnnotation represents the act of tagging a DigitalResource with tags or labels.
 
 #### Superclass
@@ -3898,7 +3920,7 @@ TagAnnotation inherits all the properties and requirements defined for its super
 
 <a name="thread" />
 
-### 8.45 Thread
+### 7.45 Thread
 A Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
 #### Superclass 
@@ -3959,7 +3981,7 @@ Thread inherits all the properties and requirements defined for its superclass [
 
 <a name="trueFalseResponse" />
 
-### 8.46 TrueFalseResponse
+### 7.46 TrueFalseResponse
 A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided (true/false, yes/no).
 
 #### Superclass 
@@ -4005,7 +4027,7 @@ TrueFalseResponse inherits all the properties and requirements defined for [Resp
 
 <a name="videoObject" />
 
-### 8.47 VideoObject
+### 7.47 VideoObject
 A Caliper VideoObject represents a visual recording stored in digital form.  It is analogous to [schema:VideoObject](http://schema.org/VideoObject).
 
 #### Superclass 
@@ -4033,7 +4055,7 @@ VideoObject inherits all the properties and requirements defined for its supercl
 
 <a name="webPage" />
 
-### 8.48 WebPage
+### 7.48 WebPage
 A Caliper WebPage represents a document containing markup that is suitable for display in a web browser.  It is analogous to a [schema:WebPage](http://schema.org/WebPage).
 
 #### Superclass 
@@ -4063,10 +4085,10 @@ WebPage inherits all the properties and requirements defined for its superclass 
 
 <a name="#selectors" />
 
-### 9.0 Appendix D. Selectors
+### 8.0 Appendix D. Selectors
 TODO Intro
 
-### TextPositionSelector
+### 8.1 TextPositionSelector
 TODO Intro
 
 #### Properties
@@ -4099,100 +4121,100 @@ TODO Intro
 
 <a name="roles" />
 
-## 10.0 Appendix E. Roles
+## 9.0 Appendix E. Roles
 
 ### Roles
-One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate IRI:
+One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate term string value:
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner |
-| external_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner |
-| guest_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner |
-| learner_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor |
-|  learner_learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner |
-| noncredit_learner  | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
+| Learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner |
+| Learner#ExternalLearner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner |
+| Learner#GuestLearner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner |
+| Learner#Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor |
+| Learner#Learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner |
+| Learner#NonCreditLearner  | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
-| external_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor |
-| guest_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor |
-| lecturer | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer |
-| primary_instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor |
+| Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
+| Instructor#ExternalInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor |
+| Instructor#GuestInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor |
+| Instructor#Lecturer | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer |
+| Instructor#PrimaryInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
-| administrator_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
-| administrator_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer |
-| administrator_support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support |
-| administrator_system_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator |
-| administrator_external_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport |
-| administrator_external_support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper |
-| administrator_external_system_administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator |
+| Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
+| Administrator#Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
+| Administrator#Developer  | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer |
+| Administrator#Support | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support |
+| Administrator#SystemAdministrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator |
+| Administrator#ExternalSupport | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport |
+| Administrator#ExternalDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper |
+| Administrator#ExternalSystemAdministrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| content_developer | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
-| content_developer_content_developer | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper |
-| content_developer_ librarian | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian |
-| content_developer_ content_expert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert |
-| content_developer_external_context_expert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert |
+| ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
+| ContentDeveloper#ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper |
+| ContentDeveloper#Librarian | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian |
+| ContentDeveloper#ContentExpert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert |
+| ContentDeveloper#ExternalContentExpert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert |
 
-| Role | IRI |
+| Tern | IRI |
 | ----  | --- | 
-| manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
-| manager_area_manager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
-| manager_course_coordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
-| manager_observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
-| manager_external_observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
+| Manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
+| Manager#AreaManager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
+| Manager#CourseCoordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
+| Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
+| Manager#ExternalObserver | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
-| member_member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
+| Member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
+| Member#Member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
-| mentor_mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor |
-| mentor_external_mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor |
-| mentor_advisor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor |
-| mentor_external_ advisor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAdvisor |
-| mentor_auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor |
-| mentor_external_auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAuditor |
-| mentor_reviewer |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Reviewer |
-| mentor_external_reviewer | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer |
-| mentor_tutor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor |
-| mentor_external_tutor | "http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor |
-| mentor_learning_facilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#LearningFacilitator |
-| mentor_external_learning_facilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor/ExternalLearningFacilitator |
+| Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
+| Mentor#Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor |
+| Mentor#ExternalMentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor |
+| Mentor#Advisor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor |
+| Mentor#ExternalAdvisor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAdvisor |
+| Mentor#Auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor |
+| Mentor#ExternalAuditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAuditor |
+| Mentor#LearningFacilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#LearningFacilitator |
+| Mentor#ExternalLearningFacilitator | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalLearningFacilitator |
+| Mentor#Reviewer |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Reviewer |
+| Mentor#ExternalReviewer | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer |
+| Mentor#Tutor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor |
+| Mentor#ExternalTutor | "http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor |
 
-| Role | IRI |
+| Term | IRI |
 | ----  | --- | 
-| teaching_assistant | http://purl.imsglobal.org/vocab/lis/v2/membership#TeachingAssistant |
-| teaching_assistant_teaching_assistant | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistant |
-| teaching_assistant_grader | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#Grader |
-| teaching_assistant_teaching_assistant_section | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSection |
-| teaching_assistant_teaching_assistant_section_association | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSectionAssociation |
-| teaching_assistant_teaching_assistant_offering | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantOffering |
-| teaching_assistant_teaching_assistant_template | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantTemplate |
-| teaching_assistant_teaching_assistant_group | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
+| TeachingAssistant | http://purl.imsglobal.org/vocab/lis/v2/membership#TeachingAssistant |
+| TeachingAssistant#TeachingAssistant | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistant |
+| TeachingAssistant#Grader | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#Grader |
+| TeachingAssistant#TeachingAssistantSection | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSection |
+| TeachingAssistant#TeachingAssistantSectionAssociation | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantSectionAssociation |
+| TeachingAssistant#TeachingAssistantOffering | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantOffering |
+| TeachingAssistant#TeachingAssistantTemplate | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantTemplate |
+| TeachingAssistant#TeachingAssistantGroup | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistantGroup |
 
 <a name="status" />
 
-### 11.0 Appendix F. Status
-The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate IRI:
+### 10.0 Appendix F. Status
+The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate term string value:
 
-| Status | IRI |
+| Term | IRI |
 | ------  | --- | 
-| active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
-| inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
+| Active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
+| Inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
 <a name="contributors" />
 
-### 12.0 Contributors
+### 11.0 Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
 | Name | Organization |
@@ -4203,7 +4225,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="reference" />
 
-### 13.0 References
+### 12.0 References
 
 <a name="json-ld" />
 
@@ -4224,6 +4246,10 @@ __RFC 3987__ IETF. M. Duerst and M. Suignard.  "Internationalized Resource Ident
 <a name="rfc4122" />
 
 __RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
+
+<a name="rfc6750 />
+
+__RFC 6750__ IETF.  TODO Add reference
 
 <a name="whitepaper" />
 
