@@ -1289,7 +1289,7 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
+  "action": "Started",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
     "type": "AssessmentItem",
@@ -1302,7 +1302,7 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
     "dateToSubmit": "2016-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
-    "maxScore": 1,
+    "maxScore": 1.0,
     "isTimeDependent": false,
     "version": "1.0"
     },
@@ -1348,15 +1348,16 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "1b557176-ba67-4624-b060-6bee670a3d8e"
 }
 ```
 
@@ -1369,7 +1370,7 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed",
+  "action": "Completed",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
@@ -1430,15 +1431,16 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "e5891791-3d27-4df1-a272-091806a43dfb"
 }
 ```
 
