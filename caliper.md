@@ -1129,7 +1129,7 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Started",
+  "action": "Started",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "type": "Assessment",
@@ -1138,19 +1138,19 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
     "dateToSubmit": "2016-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
-    "maxScore": 25,
+    "maxScore": 25.0,
     "version": "1.0"
   },
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
-    "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "Assessment"
-    },
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
+    },
+    "assignable": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "type": "Assessment"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:15:00.000Z",
@@ -1179,15 +1179,16 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "27734504-068d-4596-861c-2315be33a2a2"
 }
 ```
 
@@ -1200,7 +1201,7 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted",
+  "action": "Submitted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
@@ -1216,7 +1217,7 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
       "dateToSubmit": "2016-11-18T11:59:59.000Z",
       "maxAttempts": 2,
       "maxSubmits": 2,
-      "maxScore": 25,
+      "maxScore": 25.0,
       "version": "1.0"
     },
     "count": 1,
@@ -1248,15 +1249,16 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "dad88464-0c20-4a19-a1ba-ddf2f9c3ff33"
 }
 ```
 
