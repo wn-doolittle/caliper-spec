@@ -917,11 +917,11 @@ A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and 
 Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
 
 #### Properties
-Caliper [Envelope](#envelope) properties are listed below.  All properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
+Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) sending the message or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#rfc3987). | Required |
+| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#rfc3987). | Required |
 | sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC MUST be specified. | Required |
 | dataVersion | String | A string value that indicates the IMS Caliper specification version that governs the form of the Caliper entities and events found in the `data` payload MUST be specified. By convention the value MUST be set to the URL of the IMS Global external Caliper context document used to resolve the meanings of the terms and values found in the payload's entities and events. | Required |
 | data | Array | An ordered list of one or more Caliper entities or events that comprise the Envelope's payload.  ~~The Sensor MAY mix entity and event structures in the same envelope~~. | Required |
