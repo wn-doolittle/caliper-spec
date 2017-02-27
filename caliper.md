@@ -38,8 +38,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#behavior)
   * 4.2 [Envelope](#envelope)
-  * 4.3 [Transport](#transport)
-  * 4.4 [Representing Entities and Events as JSON-LD](#representingJsonld)
+  * 4.3 [Representing Events and Entities as JSON-LD](#jsonldPayload)
+  * 4.4 [Transport](#transport)
   * 4.5 [Endpoint](#endpoint)
   * 4.6 [Endpoint Responses](#endpointResponses)
 * 5.0 [Appendix A. Actions](#actions)
@@ -146,7 +146,7 @@ __Entity__:  describes an object or a thing that participates in learning-relate
 
 __Event__: describes a relationship established between an actor and an object formed as a result of a purposeful action undertaken by the actor in connection to the object at a particular moment in time.  **TODO what about the context?** 
 
-__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data.
+__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data.  The messages described in this specification are intended to be used in programming environments that support JSON-LD.
 
 __IRI__: The Internationalized Resource Identifier ([IRI](https://www.ietf.org/rfc/rfc3987.txt)) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  Linked Data rely on [IRIs](https://www.ietf.org/rfc/rfc3987.txt) to refer to most nodes and properties.
 
@@ -161,6 +161,8 @@ __Metric Profile__: metric profiles define the information model for caliper.  T
 __Object__: TODO
 
 __Sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
+
+__Type Coercion__: TODO
 
 <a name="interoperability" />
 
@@ -204,7 +206,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter) (deprecated), [EpubPart](#epubPart) (deprecated), [EpubSubChapter](#epubSubChapter) (deprecated), [EpubVolume](#epubVolume) (deprecated), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading) (deprecated), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 #### Example
-When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
+When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
 
 ```json
 {
@@ -269,7 +271,7 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event).  | Optional |
 
 #### Example
-When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.
+When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
 ```json
 {
@@ -918,7 +920,7 @@ A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and 
 <a name="envelope" />
 
 ### 4.2 Envelope
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
+Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
 
 #### Properties
 Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
@@ -931,6 +933,18 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | data | Array | An ordered list of one or more Caliper entities or events that comprise the Envelope's payload.  ~~The Sensor MAY mix entity and event structures in the same envelope~~. | Required |
 
 **TODO if the Sensor can mix entities and events why do we need a Sensor.describe() method?**
+
+<a name="jsonldPayload" />
+
+### 4.4 Representing Events and Entities as JSON-LD
+
+*TODO Further elaboration and reorganization required**
+
+The [Event](#event) types and [Entity](#entity) "describes" that constitute an envelope's `data` payload messages MUST be represented as [JSON-LD](http://json-ld.org/spec/latest/json-ld/).  
+
+When representing an [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  
+
+When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
 #### Example
 ``` json
@@ -966,6 +980,51 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 }
 ```
 
+### 4.X JSON-LD Contexts and Type Coercion
+
+A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.  
+   
+JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the coercion of values to particular data types.  Certain JSON object property values described in the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by layering an embedded context on top of the external context.  ~~This will allow users to indicate that the value of a term within the scope of the active context is an [IRI](https://www.ietf.org/rfc/rfc3987.txt) in place of the fully described JSON object.~~  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
+
+The following example demonstrates the layering of an embedded context on top of the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in order to coerce the `actor` and `object` property value to their respective string identifiers.
+
+```json
+{
+    "sensor": "https://example.edu/sensors/1",
+    "sendTime": "2016-11-15T11:05:01.000Z",
+    "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "data": [
+        {
+            "@context": [
+                "http://purl.imsglobal.org/ctx/caliper/v1p1",
+                {
+                    "actor": { "id": "Person", "type": "id" },
+                    "object": { "id": "Document", "type": "id" }
+                }
+            ],
+            "type": "Event",
+            "actor": "https://example.edu/users/554433",
+            "action": "Created",
+            "object": "https://example.edu/terms/201701/courses/7/sections/1/resources/27",
+            "eventTime": "2016-11-15T10:15:00.000Z",
+            "uuid": "7025d2f8-c76c-44b8-9d98-593d7969177f"
+        }
+    ]
+}
+```
+Any Caliper 1.1 Sensor can send a Caliper Event or Entity that uses precisely this form to indicate that an object property value is to be coerced to a string IRI, which the receiver should understand is the id property of the Entity with properties defined elsewhere (notice in the example that the actor property’s value in 2b is the same value as the actor.id property value in 2a).
+
+To perform this value substitution for an object property, the Sensor must use the precise form of the local context:
+
+A  JSON array containing an entry for each type-coerced property described as follows (the italicized names are placeholders: the term is the property being coerced (“actor” in the example), and type is the known Caliper entity type of the object the identifier should get understood as (“Person” in the example):
+
+{ “term”: {“id”: “entity type”, “type”: “id” } }
+
+This local context applies to the object in which it appears and each object “further down” in contained scope (so all instances of the field name at that level in the scope and farther down must also be a URI).
+If this local context is at the “top-most” layer of a Caliper document (the Entity or Event in question with the local context is directly contained in a Caliper Envelope), then the context should include as the first element a reference to the Caliper remote context document (in the example, “http://purl.imsglobal.org/ctx/caliper/v1p1”).
+
+The receiver of a Caliper Event or Entity with a property having a URI value that should have been a contained object, without this form indicating type coercion will not be considered as valid.
+
 <a name="transport" />
 
 ### 4.3 Transport
@@ -982,16 +1041,6 @@ For transport security and authentication, a [Sensor](#sensor) SHOULD:
 A [Sensor](#sensor) MAY support additional modes of transport security and authentication; the certification tests for Caliper sensors require the [Sensor](#sensor) to send data to the certification service using HTTPS and a bearer token credential consistent with [RFC 6750](#rfc6750).
 
 When sending messages to an [Endpoint](#endpoint), a Caliper [Sensor](#sensor) SHOULD indicate that the message payload has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper [Endpoint](#endpoint) reports that it cannot process the `application/ld+json` media type).
-
-<a name="representingJsonld" />
-
-### 4.4 Representing Events and Entities as JSON-LD
-
-TODO Elaborate and add examples
-
-When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
-
-When representing an Entity as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
 <a name="endpoint" />
 
@@ -4225,17 +4274,24 @@ The status of a [member](#member) within an organization can be set to one of th
 ### 11.0 Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
+#### Authors
 | Name | Organization |
 | ------ | --------- |
 | Anthony Whyte | University of Michigan |
 | Viktor Haag | D2L |
 | Wes LaMarche | ACT |
 
+#### Editors
+| Name | Organization |
+| ------ | --------- |
+| Anthony Whyte | University of Michigan |
+| Steven Erickson | Unicon |
+
 <a name="reference" />
 
 ### 12.0 References
 
-<a name="json-ld" />
+<a name="jsonldSpec" />
 
 __JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL: http://json-ld.org/spec/latest/json-ld/
 
@@ -4259,6 +4315,6 @@ __RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Ide
 
 __RFC 6750__ IETF.  TODO Add reference
 
-<a name="whitepaper" />
+<a name="caliperWhitepaper" />
 
 __White paper__  IMS Global Learning Consortium.  "Learning Measurement for Analytics Whitepaper \[sic\]."  August 2013.  URL: https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
