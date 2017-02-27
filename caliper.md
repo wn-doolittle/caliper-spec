@@ -166,11 +166,14 @@ __Type Coercion__: TODO
 
 <a name="interoperability" />
 
-## 2.0 Data and Semantic Interoperability
+## 2.0 Caliper and Linked Data
 
-TODO
+**TODO revise and elaborate further on the value proposition (structure, flow, pointers)**
+** TODO para 2 is mostly about JSON-LD so move.**
 
-structure, flow, pointers
+Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling “bundles of data pointing to other bundles of data” now requires thinking in terms of graphs.  Caliper event data presents us with similar structures.  A Caliper [Event](#event) may link to user or group data, institutional/organizational data, digital resources, courses and rosters, grades and credentials, application and session data and so on.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides the “representational horsepower” to describe these kind of data linkages and specify how data is to be understood when published and shared across a network.
+
+The Linked Data principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies are relatively straightforward: use URIs (more recently [IRIs](https://www.ietf.org/rfc/rfc3987.txt)) as names for things; use HTTP [IRIs](https://www.ietf.org/rfc/rfc3987.txt) so that information about things (e.g., people, organizations, resources) can be retrieved using a standard format; refer to other relevant things by way of their HTTP [IRI](https://www.ietf.org/rfc/rfc3987.txt) identifiers to encourage further discovery of new relationships between things.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) abides by these “rules”. It features a lightweight syntax and a JSON-based format for serializing linked data.  It requires that globally-scoped entities and their attributes be uniquely identifiable using IRIs/URIs.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) also provides a means of expressing relationships between entities in one or more directed graphs.  Crucially, for machine-to-machine data exchange, [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides a mechanism for rendering comprehensible the underlying semantics of a JSON Document via a mapping of its terms to one or more published vocabularies.  In a world where learners are interacting increasingly with an array of learning applications the need to blend learning data generated from multiple sources and discern its meaning across application boundaries is of vital importance.
 
 <a name="infoModel" />
 
