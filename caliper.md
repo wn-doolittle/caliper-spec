@@ -20,7 +20,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 1.0 [Introduction](#introduction)
   * 1.1 [Conventions](#conventions)
   * 1.2 [Terminology](#terminology)
-* 2.0 [Data and Semantic Interoperability](#interoperability)
+* 2.0 [Caliper, Linked Data and JSON-LD](#linkedData)
 * 3.0 [Information Model](#infoModel)
   * 3.1 [Entity](#infoModelEntity)
   * 3.2 [Event](#infoModelEvent)
@@ -164,9 +164,9 @@ __Sensor__: Software assets deployed within a learning application to facilitate
 
 __Type Coercion__: TODO
 
-<a name="interoperability" />
+<a name="linkedData" />
 
-## 2.0 Caliper and Linked Data
+## 2.0 Caliper, Linked Data and JSON-LD
 
 **TODO revise and elaborate further on the value proposition (structure, flow, pointers)**
 ** TODO para 2 is mostly about JSON-LD so move.**
