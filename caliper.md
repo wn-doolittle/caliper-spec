@@ -35,10 +35,10 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
       * 3.3.8 [Reading Profile](#readingProfile)
       * 3.3.9 [Session Profile](#sessionProfile)
       * 3.3.10 [Tool Use Profile](#toolUseProfile)
-* 4.0 [Sensor API](#api)
+* 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#behavior)
-  * 4.2 [Transport](#transport)
-  * 4.3 [Envelope](#envelope)
+  * 4.2 [Envelope](#envelope)
+  * 4.3 [Transport](#transport)
   * 4.4 [Representing Entities and Events as JSON-LD](#representingJsonld)
   * 4.5 [Endpoint](#endpoint)
   * 4.6 [Endpoint Responses](#endpointResponses)
@@ -152,7 +152,7 @@ __LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS Global standa
 
 __IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  The IRI is a globally scoped identifier used in linked data to refer to most nodes and properties.  An IRI reference may be absolute or relative to that of another absolute IRI.  In [JSON-LD](#json-ld) relative IRIs are resolved relative to the base IRI.
 
-__ISO 8601__: Caliper time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is in UTC. 
+__ISO 8601__: Caliper time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is set to UTC. 
 
 __profile__: metric profiles define the information model for caliper.  The caliper metric profiles are organized by activity. 
 
@@ -192,8 +192,8 @@ The base set of Entity properties is listed below.  Each property MUST only be r
 | type | String | A string value corresponding to the short-hand term defined for the Entity in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Entity set the `type` value to the term "Entity".  If a subclass of `Entity` is created, set the type to the term corresponding to the subclass utilized, e.g., "Person". | Required |
 | name | String | A string value comprising a word or phrase by which the Entity is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the Entity MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the Entity. | Optional |
 
 #### Subclasses
@@ -253,7 +253,7 @@ The base set of Event properties is listed below.  Each property MUST only be re
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
 | action | [action](#actions) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen Event type. | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location of the `object`. | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
@@ -897,48 +897,33 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 <a name="sensor" />
 
 ## 4.0 Sensor API™
-Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data from an instrumented platform, application or service to one or more target endpoints.  A [Sensor](#sensor) implementation must be capable of assembling and sending both [Event](#event) and [Entity](#entity) payloads.
+Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to one or more target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
 <a name="sensorBehavior" />
 
 ### 4.1 Behavior
+A Caliper [Sensor](#sensor) MUST be capable of performing the following operations: 
 
-A Caliper [Sensor](#sensor) must implement the following behaviors | methods: 
+* send events: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or more Caliper [Event](#event) types to a target endpoint.
+* describe entities: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or Caliper [Entity](#entity) types to a target endpoint.
+* ~~`getStatistics`: TODO describe~~~  **TODO do sensors need to implement getStatistics()? Propose no**
 
-**TODO do sensors need to implement getStatistics()?**
-**TODO Who is responsible for constructing Caliper entities and events? The above only mentions assembling/sending payloads.**
-
-* `send`: emit a Caliper [Envelope](#envelope) consisting of a data payload consisting of one or more Caliper events to a target endpoint.
-* `describe`: emit a Caliper [Envelope](#envelope) consisting of a data payload consisting of one or Caliper entities to a target endpoint.
-* ~~`getStatistics`: TODO describe~~~
-
-A [Sensor](#sensor) may exhibit other behaviors including the ability to create entities and events or delegate those responsibilities to the instrumented platform, application or service. 
-
-<a name="transport" />
-
-### 4.2 Transport
-
-Caliper Sensors MUST at a minimum be capable of communicating with [Caliper endpoints](#endpoints) using conventional HTTP POST requests; the certification tests for Caliper Sensors require a Sensor to send data to the certification service using this transport. Caliper Sensors MAY use other methods to communicate with an Endpoint.
-
-For transport security and authentication, a [Sensor](#sensor) SHOULD:
-
-* Use HTTPS to secure the transport between the Sensor and recieving endpoint.
-* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the Sensor itself.
-
-A [Sensor](#sensor) MAY support additional modes of transport security and authentication; the certification tests for Caliper Sensors require the Sensor to send data to the certification service using HTTPS and a bearer token credential consistent with RFC 6750.
-
-When sending messages to an endpoint, a Caliper [Sensor](#sensor) SHOULD indicate that the message payload has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper endpoint reports that it cannot process the `application/ld+json` media type).
+A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
 
 <a name="envelope" />
 
-### 4.3 Envelope
+### 4.2 Envelope
+Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
 
-Every message sent by a [Sensor](#sensor) MUST consist of a single Caliper Envelope JSON structure, enveloping a payload of Caliper events or entities. The Caliper Envelope MUST have these four properties:
+#### Properties
+Caliper [Envelope](#envelope) properties are listed below.  All properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
 
-* `sensor`: A unique identifier for the Caliper [Sensor](#sensor) sending the message (this MAY instead by a unique identifier for the application or service sending the message, which MAY be shared amongst all the Sensors that application or service uses to send Caliper data).  This identifier SHOULD be an [IRI](#rfc3987).
-* `sendTime`: A date and time string value expressed with millisecond precision that indicates the time at which the Caliper [Sensor](#sensor) issued the message.  The value MUST be expressed as an ISO-8601 formatted date/time string in UTC.
-* `dataVersion`: A version string indicating the version of the IMS Caliper specification that governs the form of the Caliper entities and events found in the `data` payload. By convention, this string value will be URI of Caliper context document that can be used to resolve the meanings of the terms and values found in the payload's entities and events.
-* `data`: A JSON array that MUST contain a list of one or more Caliper entity or event structures. ~~The Sensor MAY mix entity and event structures in the same envelope~~.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) sending the message or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#rfc3987). | Required |
+| sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC MUST be specified. | Required |
+| dataVersion | String | A string value that indicates the IMS Caliper specification version that governs the form of the Caliper entities and events found in the `data` payload MUST be specified. By convention the value MUST be set to the URL of the IMS Global external Caliper context document used to resolve the meanings of the terms and values found in the payload's entities and events. | Required |
+| data | Array | An ordered list of one or more Caliper entities or events that comprise the Envelope's payload.  ~~The Sensor MAY mix entity and event structures in the same envelope~~. | Required |
 
 **TODO if the Sensor can mix entities and events why do we need a Sensor.describe() method?**
 
@@ -975,6 +960,24 @@ Every message sent by a [Sensor](#sensor) MUST consist of a single Caliper Envel
    ]
 }
 ```
+
+<a name="transport" />
+
+### 4.3 Transport
+
+A [Sensor](#sensor) MUST be capable of communicating with a Caliper [Endpoint](#endpoint) using the conventional HTTP POST request method; the certification tests for Caliper sensors require a [Sensor](#sensor) to send data to the certification service using this form of transport. A [Sensor](#sensor) MAY employ other methods to communicate with an [Endpoint](#endpoint).
+
+Every message sent by a [Sensor](#sensor) MUST consist of a JSON representation of a single Caliper [Envelope](#envelope).
+
+For transport security and authentication, a [Sensor](#sensor) SHOULD:
+
+* Use HTTPS to secure the transport between the Sensor and receiving endpoint.
+* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the [Endpoint](#endpoint) can validate, but the credential MAY be opaque to the [Sensor](#sensor) itself.
+
+A [Sensor](#sensor) MAY support additional modes of transport security and authentication; the certification tests for Caliper sensors require the [Sensor](#sensor) to send data to the certification service using HTTPS and a bearer token credential consistent with [RFC 6750](#rfc6750).
+
+When sending messages to an [Endpoint](#endpoint), a Caliper [Sensor](#sensor) SHOULD indicate that the message payload has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper [Endpoint](#endpoint) reports that it cannot process the `application/ld+json` media type).
+
 <a name="representingJsonld" />
 
 ### 4.4 Representing Events and Entities as JSON-LD
@@ -2548,8 +2551,8 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 
 * `type`: the string value `AssignableDigitalResource` MUST be specified.
 * `dateToActivate`: an optional date and time value expressed with millisecond precision that describes when the assigned resource was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-* `dateToShow`: an optional date and time value expressed with millisecond precision that describes when the assigned resource should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.
-* `dateToStartOn`: an optional date and time value expressed with millisecond precision that describes when the assigned resource can be started MAY be specified..  The value MUST be expressed as an ISO-8601 formatted date/time string.
+* `dateToShow`: an optional date and time value expressed with millisecond precision that describes when the assigned resource should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.
+* `dateToStartOn`: an optional date and time value expressed with millisecond precision that describes when the assigned resource can be started MAY be specified..  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.
 * `maxAttempts`: an optional non-negative integer representing the number of permitted attempts MAY be specified.
 * `maxSubmits`: an optional non-negative integer representing the number of permitted submissions MAY be specified.
 * `maxScore`: an optional non-negative integer representing the maximum score permitted MAY be specified.
@@ -2593,8 +2596,8 @@ Attempt inherits all the properties and requirements defined for its superclass 
 * `assignable`: the [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for more precise type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the annotated resource.
 * `isPartOf`: the parent Attempt of this Attempt MAY be specified.
 * `count`: the total number of attempts inclusive of the current Attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified.
-* `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Attempt was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
-* `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Attempt was terminated.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
+* `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Attempt was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
+* `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Attempt was terminated.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
 * `duration`: an optional time interval that represents the time taken to complete this Attempt MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format.
 
 #### Example
@@ -2796,7 +2799,7 @@ DigitalResource inherits all the properties and requirements defined for its sup
 * `learningObjectives`: an optional ordered array of one or more [LearningObjectives](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this DigitalResource MAY be specified.
 * ~~`alignedlearningObjective`: an optional ordered array of one or more [LearningObjectives](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this DigitalResource MAY be specified.~~  DEPRECATED in favor of `learningObjectives`.
 * `isPartOf`: a related [Entity](#entity), typically a DigitalResource, that includes or incorporates this DigitalResource as a part of its whole MAY be specified.  Analogous to [schema:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf).
-* `datePublished`: an optional date and time value expressed with millisecond precision that provides the publication date of this DigitalResource.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [schema:datePublished](http://schema.org/datePublished).
+* `datePublished`: an optional date and time value expressed with millisecond precision that provides the publication date of this DigitalResource.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [schema:datePublished](http://schema.org/datePublished).
 * `version`: an optional string value that designates the current form or version of this DigitalResource.  Analogous to [schema:version](http://schema.org/version).
 
 #### Subclasses
@@ -3671,8 +3674,8 @@ Response inherits all the properties and requirements defined for its superclass
 * `attempt`: the associated [Attempt](#attempt) SHOULD be specified.  The Attempt SHOULD reference both the [Person](#person) who initiated the Response and the relevant [AssessmentItem](#assessmentItem).
 * ~~`actor`: the [Person](#person) who initiated the Response.~~ DEPRECATED in favor of `attempt`.
 * ~~`assignable`: the [DigitalResource](#digitalResource) that constitutes the `object` of the Response.~~ DEPRECATED in favor of `attempt`.
-* `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Response was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
-* `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Response was submitted.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
+* `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Response was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
+* `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Response was submitted.  For a [completed](#completed) or [submitted](#submitted) action an end time SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
 * `duration`: an optional time interval that represents the time taken to complete this Response MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format.
 
 #### Subclasses
@@ -3796,8 +3799,8 @@ Session inherits all the properties and requirements defined for [Entity](#entit
 * `type`: the string value `Session` MUST be specified.
 * ~~`actor`: the [Person](#person) who initiated the Session SHOULD be specified.~~  DEPRECATED in favor of `user`.
 * `user`: the [Person](#person), who initiated the Session SHOULD be specified.
-* `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Session was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
-* `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Session was terminated.  For a [loggedOut](#loggedOut) or [timedOut](#timedOut) action an end time SHOULD be provided.  The value MUST be expressed as an ISO-8601 formatted date/time string.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
+* `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Session was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
+* `endedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Session was terminated.  For a [loggedOut](#loggedOut) or [timedOut](#timedOut) action an end time SHOULD be provided.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [provo:endedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#endedAtTime).
 * `duration`: an optional time interval that represents the Session duration MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format.
 
 #### subclasses
