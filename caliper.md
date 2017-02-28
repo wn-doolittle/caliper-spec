@@ -1195,7 +1195,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: AnnotationEvent bookmarked
+#### Example: AnnotationEvent (bookmarked)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1294,7 +1294,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: AssessmentEvent started
+#### Example: AssessmentEvent (started)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1366,7 +1366,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 }
 ```
 
-#### Example: AssessmentEvent submitted
+#### Example: AssessmentEvent (submitted)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1465,7 +1465,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: AssessmentItem started
+#### Example: AssessmentItem (started)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1546,7 +1546,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 }
 ```
 
-#### Example: AssessmentItem completed
+#### Example: AssessmentItem (completed)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1661,7 +1661,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: AssignableEvent activated
+#### Example: AssignableEvent (activated)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1752,7 +1752,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: ForumEvent subscribed
+#### Example: ForumEvent (subscribed)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1840,7 +1840,7 @@ TODO
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: MediaEvent paused
+#### Example: MediaEvent (paused)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1925,7 +1925,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: MessageEvent posted
+#### Example: MessageEvent (posted)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1992,7 +1992,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 }
 ```
 
-#### Example: MessageEvent posted (reply)
+#### Example: MessageEvent (posted reply)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -2089,7 +2089,7 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: NavigationEvent navigated to
+#### Example: NavigationEvent (navigated to)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -2172,7 +2172,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: OutcomeEvent graded
+#### Example: OutcomeEvent (graded)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -2281,7 +2281,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: SessionEvent logged in
+#### Example: SessionEvent (logged in)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -2311,7 +2311,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 }
 ```
 
-#### Example: SessionEvent logged out
+#### Example: SessionEvent (logged out)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -2343,7 +2343,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 }
 ```
 
-#### Example: SessionEvent timed out
+#### Example: SessionEvent (timed out)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -2403,7 +2403,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: ThreadEvent marked as read
+#### Example: ThreadEvent (marked as read)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -2489,7 +2489,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: ToolUseEvent marked as read
+#### Example: ToolUseEvent (used)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
@@ -2566,7 +2566,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example ViewEvent viewed (with extensions)
+#### Example ViewEvent (viewed)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
