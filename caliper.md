@@ -368,7 +368,7 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 [AnnotationEvent](#annotationEvent)
 
 #### Generated annotations
-[Annotation](#annotation) subtyped as [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
+[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
@@ -438,7 +438,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Generated responses
-[Response](#response) subtyped as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+[Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
@@ -1268,7 +1268,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 [Started](#started), [Paused](#paused), [Restarted](#restarted), [Submitted](#submitted)
 
 #### Generated responses
-[Response](#response) subtyped as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+[Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Properties
 [AssessmentEvent](#assessmentEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
