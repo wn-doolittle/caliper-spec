@@ -1169,7 +1169,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 [Attached](#attached), [Classified](#classified),  [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended), [Replied](#replied), [Subscribed](#subscribed)
 
 #### Generated annotations
-[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation)
+[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
  
 #### Properties
 [AnnotationEvent](#annotationEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
