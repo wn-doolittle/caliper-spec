@@ -22,8 +22,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 1.2 [Terminology](#terminology)
 * 2.0 [Caliper, Linked Data and JSON-LD](#linkedData)
 * 3.0 [Information Model](#infoModel)
-  * 3.1 [Entity](#infoModelEntity)
-  * 3.2 [Event](#infoModelEvent)
+  * 3.1 [Entity](#entity)
+  * 3.2 [Event](#event)
   * 3.3 [Metric Profiles](#infoModelProfiles)
       * 3.3.1 [Basic Profile](#basicProfile)
       * 3.3.2 [Annotation Profile](#annotationProfile)
@@ -44,70 +44,68 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 4.6 [Endpoint Responses](#endpointResponses)
 * 5.0 [Appendix A. Actions](#actions)
 * 6.0 [Appendix B. Event Types](#events)
-  * 6.1 [Event](#event)
-  * 6.2 [AnnotationEvent](#annotationEvent)
-  * 6.3 [AssessmentEvent](#assessmentEvent)
-  * 6.4 [AssessmentItemEvent](#assessmentItemEvent)
-  * 6.5 [AssignableEvent](#assignableEvent)
-  * 6.6 [ForumEvent](#forumEvent)
-  * 6.7 [MediaEvent](#mediaEvent)
-  * 6.8 [MessageEvent](#messageEvent)
-  * 6.9 [NavigationEvent](#navigationEvent)
-  * 6.10 [OutcomeEvent](#outcomeEvent)
-  * 6.11 [ReadingEvent](#readingEvent) (deprecated)
-  * 6.12 [SessionEvent](#sessionEvent)
-  * 6.13 [ThreadEvent](#threadEvent)
-  * 6.14 [ToolUseEvent](#toolUseEvent)
-  * 6.15 [ViewEvent](#viewEvent)
+  * 6.1 [AnnotationEvent](#annotationEvent)
+  * 6.2 [AssessmentEvent](#assessmentEvent)
+  * 6.3 [AssessmentItemEvent](#assessmentItemEvent)
+  * 6.4 [AssignableEvent](#assignableEvent)
+  * 6.5 [ForumEvent](#forumEvent)
+  * 6.6 [MediaEvent](#mediaEvent)
+  * 6.7 [MessageEvent](#messageEvent)
+  * 6.8 [NavigationEvent](#navigationEvent)
+  * 6.9 [OutcomeEvent](#outcomeEvent)
+  * 6.10 [ReadingEvent](#readingEvent) (deprecated)
+  * 6.11 [SessionEvent](#sessionEvent)
+  * 6.12 [ThreadEvent](#threadEvent)
+  * 6.13 [ToolUseEvent](#toolUseEvent)
+  * 6.14 [ViewEvent](#viewEvent)
 * 7.0 [Appendix C. Entity Types](#entities)
-  * 7.1 [Entity](#appendixEntities)
-  * 7.2 [Agent](#agent)
-  * 7.3 [Annotation](#annotation)
-  * 7.4 [Assessment](#assessment)
-  * 7.5 [AssessmentItem](#assessmentItem)
-  * 7.6 [AssignableDigitalResource](#assignableDigitalResource)
-  * 7.7 [Attempt](#attempt)
-  * 7.8 [AudioObject](#audioObject)
-  * 7.9 [BookmarkAnnotation](#bookmarkAnnotation)
-  * 7.10 [Chapter](#chapter)
-  * 7.11 [CourseOffering](#courseOffering)
-  * 7.12 [CourseSection](#courseSection)
-  * 7.13 [DigitalResource](#digitalResource)
-  * 7.14 [DigitalResourceCollection](#digitalResourceCollection)
-  * 7.15 [Document](#document)
-  * 7.16 [EpubChapter](#epubChapter) (deprecated)
-  * 7.17 [EpubPart](#epubPart) (deprecated)
-  * 7.18 [EpubSubChapter](#epubSubChapter) (deprecated)
-  * 7.19 [EpubVolume](#epubVolume) (deprecated)
-  * 7.20 [FillinBlankResponse](#fillinBlankResponse)
-  * 7.21 [Forum](#forum)
-  * 7.22 [Frame](#frame)
-  * 7.23 [Group](#group)
-  * 7.24 [HighlightAnnotation](#highlightAnnotation)
-  * 7.25 [ImageObject](#imageObject)
-  * 7.26 [LearningObjective](#learningObjective)
-  * 7.27 [LtiSession](#ltiSession) 
-  * 7.28 [MediaLocation](#mediaLocation)
-  * 7.29 [MediaObject](#mediaObject)
-  * 7.30 [Membership](#membership)
-  * 7.31 [Message](#message)
-  * 7.32 [MultipleChoiceResponse](#multipleChoiceResponse)
-  * 7.33 [MultipleResponseResponse](#multipleResponseResponse)
-  * 7.34 [Organization](#organization)
-  * 7.35 [Page](#page)
-  * 7.36 [Person](#person)
-  * 7.37 [Reading](#reading) (deprecated)
-  * 7.38 [Response](#response)
-  * 7.39 [Result](#result)
-  * 7.40 [Session](#session)
-  * 7.41 [SharedAnnotation](#sharedAnnotation)
-  * 7.42 [SelectTextResponse](#selectTextResponse)
-  * 7.43 [SoftwareApplication](#softwareApplication)
-  * 7.44 [TagAnnotation](#tagAnnotation)
-  * 7.45 [TrueFalseResponse](#trueFalseResponse)
-  * 7.46 [Thread](#thread)
-  * 7.47 [VideoObject](#videoObject)
-  * 7.48 [WebPage](#webpage)
+  * 7.1 [Agent](#agent)
+  * 7.2 [Annotation](#annotation)
+  * 7.3 [Assessment](#assessment)
+  * 7.4 [AssessmentItem](#assessmentItem)
+  * 7.5 [AssignableDigitalResource](#assignableDigitalResource)
+  * 7.6 [Attempt](#attempt)
+  * 7.7 [AudioObject](#audioObject)
+  * 7.8 [BookmarkAnnotation](#bookmarkAnnotation)
+  * 7.9 [Chapter](#chapter)
+  * 7.10 [CourseOffering](#courseOffering)
+  * 7.11 [CourseSection](#courseSection)
+  * 7.12 [DigitalResource](#digitalResource)
+  * 7.13 [DigitalResourceCollection](#digitalResourceCollection)
+  * 7.14 [Document](#document)
+  * 7.15 [EpubChapter](#epubChapter) (deprecated)
+  * 7.16 [EpubPart](#epubPart) (deprecated)
+  * 7.17 [EpubSubChapter](#epubSubChapter) (deprecated)
+  * 7.18 [EpubVolume](#epubVolume) (deprecated)
+  * 7.19 [FillinBlankResponse](#fillinBlankResponse)
+  * 7.20 [Forum](#forum)
+  * 7.21 [Frame](#frame)
+  * 7.22 [Group](#group)
+  * 7.23 [HighlightAnnotation](#highlightAnnotation)
+  * 7.24 [ImageObject](#imageObject)
+  * 7.25 [LearningObjective](#learningObjective)
+  * 7.26 [LtiSession](#ltiSession) 
+  * 7.27 [MediaLocation](#mediaLocation)
+  * 7.28 [MediaObject](#mediaObject)
+  * 7.29 [Membership](#membership)
+  * 7.30 [Message](#message)
+  * 7.31 [MultipleChoiceResponse](#multipleChoiceResponse)
+  * 7.32 [MultipleResponseResponse](#multipleResponseResponse)
+  * 7.33 [Organization](#organization)
+  * 7.34 [Page](#page)
+  * 7.35 [Person](#person)
+  * 7.36 [Reading](#reading) (deprecated)
+  * 7.37 [Response](#response)
+  * 7.38 [Result](#result)
+  * 7.39 [Session](#session)
+  * 7.40 [SharedAnnotation](#sharedAnnotation)
+  * 7.41 [SelectTextResponse](#selectTextResponse)
+  * 7.42 [SoftwareApplication](#softwareApplication)
+  * 7.43 [TagAnnotation](#tagAnnotation)
+  * 7.44 [TrueFalseResponse](#trueFalseResponse)
+  * 7.45 [Thread](#thread)
+  * 7.46 [VideoObject](#videoObject)
+  * 7.47 [WebPage](#webpage)
 * 8.0 [Appendix D. Selectors](#selectors)
   * 8.1 [TextPositionSelector](#textPositionSelector)
 * 9.0 [Appendix E. Roles](#roles)
@@ -1161,7 +1159,7 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 
 <a name="annotationEvent" />
 
-### 6.2 AnnotationEvent
+### 6.1 AnnotationEvent
 The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 ##### Supported actions
@@ -1253,7 +1251,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 	
 <a name="assessmentEvent" />
 
-### 6.3 AssessmentEvent
+### 6.2 AssessmentEvent
 The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.  
 
 #### Supported actions
@@ -1414,7 +1412,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 
 <a name="assessmentItemEvent" />
 
-### 6.4 AssessmentItemEvent
+### 6.3 AssessmentItemEvent
 The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).  
 
 #### Supported actions
@@ -1598,7 +1596,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 <a name="assignableEvent" />
 
-### 6.5 AssignableEvent
+### 6.4 AssignableEvent
 TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 #### Supported actions
@@ -1679,7 +1677,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 <a name="forumEvent" />
 
-### 6.6 ForumEvent
+### 6.5 ForumEvent
 
 TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
@@ -1753,7 +1751,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
 <a name="mediaEvent" />
 
-### 6.7 MediaEvent
+### 6.6 MediaEvent
 TODO The Caliper [MediaEvent](#mediaEvent) models . . . .
 
 TODO   
@@ -1832,7 +1830,7 @@ TODO
 
 <a name="messageEvent" />
 
-### 6.8 MessageEvent
+### 6.7 MessageEvent
 The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
 
 #### Supported actions
@@ -1985,7 +1983,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 <a name="navigationEvent" />
 
-### 6.9 NavigationEvent
+### 6.8 NavigationEvent
 The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
 
 #### Supported actions
@@ -2059,7 +2057,7 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 
 <a name="outcomeEvent" />
 
-### 6.10 OutcomeEvent
+### 6.9 OutcomeEvent
 TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 #### Supported actions
@@ -2130,7 +2128,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 ```
 <a name="readingEvent" />
 
-### 6.11 ReadingEvent DEPRECATED
+### 6.10 ReadingEvent DEPRECATED
 
 The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be utilized.
 
@@ -2149,7 +2147,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 
 <a name="sessionEvent" />
 
-### 6.12 SessionEvent
+### 6.11 SessionEvent
 TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 #### Supported actions
@@ -2263,7 +2261,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 <a name="threadEvent" />
 
-### 6.13 ThreadEvent
+### 6.12 ThreadEvent
 TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum thread or topic as either read or unread.  
 
 #### Supported actions
@@ -2338,7 +2336,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 
 <a name="toolUseEvent" />
 
-### 6.14 ToolUseEvent
+### 6.13 ToolUseEvent
 A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction. It's meant to be a fundamental [Event](#event) that tool creators can implement to demonstrate that users are using the tool in the way in which it's intended to be used.
 
 #### Supported actions
@@ -2404,7 +2402,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 
 <a name="viewEvent" />
 
-### 6.15 ViewEvent
+### 6.14 ViewEvent
 A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.
 
 #### Supported actions
@@ -2485,15 +2483,9 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 ### 7.0 Appendix C. Entity Types
 
-<a name="entity" />
-
-### 7.1 Entity
-
-TODO add Entity
-
 <a name="agent" />
 
-### 7.2 Agent
+### 7.1 Agent
 A Caliper Agent is a generic class that represents an Entity that can initiate or perform an action.  It is analogous to an [foaf:Agent](http://xmlns.com/foaf/spec/#term_Agent).  Given that Agent represents a generic type it is RECOMMENDED that only subclasses of Agent be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2516,7 +2508,7 @@ Agent inherits all properties defined by its superclass [Entity](#entity).  Addi
 
 <a name="annotation" />
 
-### 7.3 Annotation
+### 7.2 Annotation
 A Caliper Annotation is a generic class that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.  Given that Annotation represents a generic type it is RECOMMENDED that only subclasses of Annotation be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2541,7 +2533,7 @@ Annotation inherits all properties defined by its superclass [Entity](#entity). 
 
 <a name="assessment" />
 
-### 7.4 Assessment
+### 7.3 Assessment
 A Caliper Assessment represents an assessment instrument such as a test or quiz.
 
 #### Superclass
@@ -2589,7 +2581,7 @@ Assessment inherits all the properties and requirements defined by its superclas
 ```
 <a name="assessmentItem" />
 
-### 7.5 AssessmentItem
+### 7.4 AssessmentItem
 A Caliper AssessmentItem represents a single test question.
 
 #### Superclass
@@ -2630,7 +2622,7 @@ AssessmentItem inherits all the properties and requirements defined by its super
 
 <a name="assignableDigitalResource" />
 
-### 7.6 AssignableDigitalResource
+### 7.5 AssignableDigitalResource
 A Caliper AssignableDigitalResource is a generic class that represents digital content associated with a graded or ungraded assignment.  Given that AssignableDigitalResource represents a generic type it is RECOMMENDED that only subclasses of AssignableDigitalResource be employed to represent nodes in the learning graph.
 
 #### Superclass
@@ -2671,7 +2663,7 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 
 <a name="attempt" />
 
-### 7.7 Attempt
+### 7.6 Attempt
 A Caliper Attempt provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An Attempt is generated as the result of an action such as starting an [Assessment](#assessment).
 
 #### Superclass
@@ -2714,7 +2706,7 @@ Attempt inherits all the properties and requirements defined for its superclass 
 
 <a name="audioObject" />
 
-### 7.8 AudioObject
+### 7.7 AudioObject
 A Caliper AudioObject represents an audio or sound file.  It is analogous to a [schema:AudioObject](http://schema.org/AudioObject).
 
 #### Superclass
@@ -2744,7 +2736,7 @@ AudioObject inherits all the properties and requirements defined for its supercl
 
 <a name="bookmarkAnnotation" />
 
-### 7.9 BookmarkAnnotation
+### 7.8 BookmarkAnnotation
 A Caliper BookmarkAnnotation represents the act of marking a [DigitalResource](#digitalResource) at a particular location.
 
 #### Superclass
@@ -2777,7 +2769,7 @@ BookmarkAnnotation inherits all the properties and requirements defined for its 
 
 <a name="chapter" />
 
-### 7.10 Chapter
+### 7.9 Chapter
 A Caliper Chapter represents a major sub-division of a piece of digital content.
 
 #### Superclass 
@@ -2807,7 +2799,7 @@ Chapter inherits all the properties and requirements defined for its superclass 
 
 <a name="courseOffering" />
 
-### 7.11 CourseOffering
+### 7.10 CourseOffering
 A Caliper CourseOffering represents the occurrence of a course or a class during a specified time period.  CourseOffering is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Superclass
@@ -2839,7 +2831,7 @@ CourseOffering inherits all the properties and requirements defined for its supe
 
 <a name="courseSection" />
 
-### 7.12 CourseSection
+### 7.11 CourseSection
 A Caliper CourseSection represents a specific instance of a [CourseOffering](#courseOffering) occuring during a specific semester, term or period.  CourseSection is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Superclass
@@ -2872,7 +2864,7 @@ CourseSection inherits all the properties and requirements defined for its super
 
 <a name="digitalResource" />
 
-### 7.13 DigitalResource
+### 7.12 DigitalResource
 A Caliper DigitalResource is a generic class that represents a content item.  Given that DigitalResource represents a generic type it is RECOMMENDED that only subclasses of DigitalResource be employed to represent nodes in the learning graph.  DigitalResource is analogous to a [schema:CreativeWork](https://schema.org/CreativeWork).
 
 #### Superclass 
@@ -2927,7 +2919,7 @@ DigitalResource inherits all the properties and requirements defined for its sup
 
 <a name="digitalResourceCollection" />
 
-### 7.14 DigitalResourceCollection
+### 7.13 DigitalResourceCollection
 A Caliper DigitalResourceCollection represents an ordered array of [DigitalResource](#digitalResources) entities.
 
 #### Superclass
@@ -2985,7 +2977,7 @@ DigitalResourceCollection inherits all the properties and requirements defined f
 
 <a name="document" />
 
-### 7.15 Document
+### 7.14 Document
 A Caliper Document represents a piece of digital content.
 
 #### Superclass 
@@ -3022,7 +3014,7 @@ Document inherits all the properties and requirements defined for its superclass
  
 <a name="epubChapter" />
 
-### 7.16 EpubChapter (DEPRECATED)
+### 7.15 EpubChapter (DEPRECATED)
 A Caliper EpubChapter represents a major structural division of a piece of writing.  EpubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -3035,7 +3027,7 @@ EpubChapter inherits all the properties and requirements defined for its supercl
 
 <a name="epubPart" />
 
-### 7.17 EpubPart (DEPRECATED)
+### 7.16 EpubPart (DEPRECATED)
 A Caliper EpubPart represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  EpubPart is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -3048,7 +3040,7 @@ EpubPart inherits all the properties and requirements defined for its superclass
 
 <a name="epubSubChapter" />
 
-### 7.18 EpubSubChapter (DEPRECATED)
+### 7.17 EpubSubChapter (DEPRECATED)
 A Caliper EpubSubChapter represents a major sub-division of an [EpubChapter](#EpubChapter).  EpubSubChapter is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -3061,7 +3053,7 @@ EpubSubChapter inherits all the properties and requirements defined for its supe
 
 <a name="epubVolume" />
 
-### 7.19 EpubVolume (DEPRECATED)
+### 7.18 EpubVolume (DEPRECATED)
 A Caliper EpubVolume represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its superclass.  EpubVolume is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -3074,7 +3066,7 @@ EpubVolume inherits all the properties and requirements defined for its supercla
 
 <a name="fillinBlankResponse" />
 
-### 7.20 FillinBlankResponse
+### 7.19 FillinBlankResponse
 A Caliper FillinBlankResponse represents a form of response in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
 #### Superclass 
@@ -3120,7 +3112,7 @@ FillinBlankResponse inherits all the properties and requirements defined for its
 
 <a name="forum" />
 
-### 7.21 Forum
+### 7.20 Forum
 A Caliper Forum represents a channel or virtual space in which group discussions take place.  A Forum typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.  It is analogous to a [sioc:Forum](http://rfds.org/sioc/spec/#term_Forum).
 
 #### Superclass 
@@ -3174,7 +3166,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 
 <a name="frame" />
 
-### 7.22 Frame
+### 7.21 Frame
 A Caliper Frame represents a part, portion or segment of a [DigitalResource](#digitalResource).
  
 #### Superclass 
@@ -3205,7 +3197,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
 
 <a name="group" />
 
-### 7.23 Group
+### 7.22 Group
 A Caliper Group represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  The Group can act as an [Agent](#agent) and can be decomposed into sub-groups.
 
 #### Superclass
@@ -3237,7 +3229,7 @@ Group inherits all the properties and requirements defined for its superclass [O
 
 <a name="highlightAnnotation" />
 
-### 7.24 HighlightAnnotation
+### 7.23 HighlightAnnotation
 A Caliper HighlightAnnotation represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
 
 ### TODO
@@ -3279,7 +3271,7 @@ HighlightAnnotation inherits all the properties and requirements defined for its
 
 <a name="imageObject" />
 
-### 7.25 ImageObject
+### 7.24 ImageObject
 A Caliper ImageObject represents an image file.  It is analogous to [schema:ImageObject](http://schema.org/ImageObject).
 
 #### Superclass 
@@ -3304,7 +3296,7 @@ ImageObject inherits all the properties and requirements defined for its supercl
 
 <a name="learningObjective" />
 
-### 7.26 LearningObjective
+### 7.25 LearningObjective
 The Caliper LearningObjective represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
 #### Superclass 
@@ -3345,7 +3337,7 @@ LearningObjective inherits all the properties and requirements defined for its s
 
 <a name="ltiSession" />
 
-### 7.27 LtiSession
+### 7.26 LtiSession
 A Caliper LtiSession represents an LTI Tool Consumer user session.
 
 #### Superclass
@@ -3410,7 +3402,7 @@ LtiSession inherits all the properties and requirements defined for its supercla
 
 <a name="mediaLocation" />
 
-### 7.28 MediaLocation
+### 7.27 MediaLocation
 
 A Caliper MediaLocation provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
  
@@ -3436,7 +3428,7 @@ MediaLocation inherits all the properties and requirements defined for its super
 
 <a name="mediaObject" />
 
-### 7.29 MediaObject
+### 7.28 MediaObject
 A Caliper MediaObject represents a generic piece of media content.  Given that MediaObject represents a generic type it is RECOMMENDED that only subclasses of MediaObject be employed to represent nodes in the learning graph.  MediaObject is analogous to [schema:MediaObject](http://schema.org/MediaObject).
 
 #### Superclass 
@@ -3460,7 +3452,7 @@ MediaObject inherits all the properties and requirements defined for its supercl
 
 <a name="membership" />
 
-### 7.30 Membership
+### 7.29 Membership
 A Caliper Membership describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
 
 #### Superclass 
@@ -3501,7 +3493,7 @@ Membership inherits all the properties and requirements defined for its supercla
 
 <a name="message" />
 
-### 7.31 Message
+### 7.30 Message
 A Caliper Message is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.  It is analogous to an [sioc:Post](http://rfds.org/sioc/spec/#term_Post).
 
 #### Superclass 
@@ -3555,7 +3547,7 @@ Message inherits all the properties and requirements defined for its superclass 
  
 <a name="multipleChoiceResponse" />
 
-### 7.32 MultipleChoiceResponse
+### 7.31 MultipleChoiceResponse
 A Caliper MultipleChoiceResponse represents a form of response in which a respondent is asked to provide the best possible answer from a list of choices.
 
 #### Superclass 
@@ -3601,7 +3593,7 @@ MultipleChoiceResponse inherits all the properties and requirements defined for 
 
 <a name="multipleResponseResponse" />
 
-### 7.33 MultipleResponseResponse
+### 7.32 MultipleResponseResponse
 A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
 #### Superclass 
@@ -3647,7 +3639,7 @@ MultipleResponseResponse inherits all the properties and requirements defined fo
 
 <a name="organization" />
 
-### 7.34 Organization
+### 7.33 Organization
 A Caliper Organization represents a formal collection of people organized for some common educational, social or administrative purpose.  The Organization can act as an [Agent] and can be decomposed into sub-organizations.  It is analogous to a [w3c:Organization](https://www.w3.org/TR/vocab-org/#class-organization).
 
 #### Superclass
@@ -3679,7 +3671,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 <a name="page" />
 
-### 7.35 Page
+### 7.34 Page
 A Caliper Page represents an item of paginated content.
 
 #### Superclass 
@@ -3714,7 +3706,7 @@ Page inherits all the properties and requirements defined for its superclass [Di
 
 <a name="person" />
 
-### 7.36 Person
+### 7.35 Person
 A Caliper Person represents a human being, alive or deceased, real or imaginary.  It is analogous to a [foaf:Person](http://xmlns.com/foaf/spec/#term_Person).
 
 #### Superclass
@@ -3738,7 +3730,7 @@ Person inherits all the properties and requirements defined for its superclass [
 
 <a name="reading" />
 
-### 7.37 Reading (DEPRECATED)
+### 7.36 Reading (DEPRECATED)
 A Caliper Reading represents an item of paginated content.  Reading is a DEPRECATED entity superceded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Superclass 
@@ -3751,7 +3743,7 @@ Reading inherits all the properties and requirements defined for its superclass 
 
 <a name="response" />
 
-### 7.38 Response
+### 7.37 Response
 A Caliper Response is a generic class that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).  Given that Response represents a generic type it is RECOMMENDED that only subclasses of Response be employed to represent nodes in the learning graph. 
 
 #### Superclass 
@@ -3773,7 +3765,7 @@ Response inherits all the properties and requirements defined for its superclass
 
 <a name="result" />
 
-### 7.39 Result
+### 7.38 Result
 A Caliper Result represents a grade applied to an assignment submission.
 
 #### Superclass 
@@ -3831,7 +3823,7 @@ Result inherits all the properties and requirements defined for its superclass [
 
 <a name="selectTextResponse" />
 
-### 7.40 SelectTextResponse
+### 7.39 SelectTextResponse
 A Caliper SelectTextResponse represents a response that identifies text or a mapping from a presented paragraph or list.
 
 #### Superclass 
@@ -3877,7 +3869,7 @@ SelectTextResponse inherits all the properties and requirements defined for its 
 
 <a name="session" />
 
-### 7.41 Session
+### 7.40 Session
 A Caliper Session represents a web application user session.
 
 #### Superclass
@@ -3912,7 +3904,7 @@ Session inherits all the properties and requirements defined for [Entity](#entit
 
 <a name="sharedAnnotation" />
 
-### 7.42 SharedAnnotation
+### 7.41 SharedAnnotation
 A Caliper SharedAnnotation represents the act of sharing a reference to a DigitalResource with other agents.
 
 #### Superclass
@@ -3954,7 +3946,7 @@ SharedAnnotation inherits all the properties and requirements defined for its su
 
 <a name="softwareApplication" />
 
-#### 7.43 SoftwareApplication
+#### 7.42 SoftwareApplication
 A Caliper SoftwareApplication represents a computer program, application, module, platform or system.  It is analogous to a [schema:SoftwareApplication](http://schema.org/SoftwareApplication) or [dcmitype:Software](http://purl.org/dc/dcmitype/Software).
 
 #### Superclass
@@ -3980,7 +3972,7 @@ SoftwareApplication inherits all the properties and requirements defined for its
 
 <a name="tagAnnotation" />
 
-### 7.44 TagAnnotation
+### 7.43 TagAnnotation
 A Caliper TagAnnotation represents the act of tagging a DigitalResource with tags or labels.
 
 #### Superclass
@@ -4013,7 +4005,7 @@ TagAnnotation inherits all the properties and requirements defined for its super
 
 <a name="thread" />
 
-### 7.45 Thread
+### 7.44 Thread
 A Caliper Thread represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
 #### Superclass 
@@ -4074,7 +4066,7 @@ Thread inherits all the properties and requirements defined for its superclass [
 
 <a name="trueFalseResponse" />
 
-### 7.46 TrueFalseResponse
+### 7.45 TrueFalseResponse
 A Caliper TrueFalseResponse represents a response to a question in which only two possible options are provided (true/false, yes/no).
 
 #### Superclass 
@@ -4120,7 +4112,7 @@ TrueFalseResponse inherits all the properties and requirements defined for [Resp
 
 <a name="videoObject" />
 
-### 7.47 VideoObject
+### 7.46 VideoObject
 A Caliper VideoObject represents a visual recording stored in digital form.  It is analogous to [schema:VideoObject](http://schema.org/VideoObject).
 
 #### Superclass 
@@ -4148,7 +4140,7 @@ VideoObject inherits all the properties and requirements defined for its supercl
 
 <a name="webPage" />
 
-### 7.48 WebPage
+### 7.47 WebPage
 A Caliper WebPage represents a document containing markup that is suitable for display in a web browser.  It is analogous to a [schema:WebPage](http://schema.org/WebPage).
 
 #### Superclass 
