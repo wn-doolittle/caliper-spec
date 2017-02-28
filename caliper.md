@@ -18,9 +18,9 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 
 ## Table of Contents
 * 1.0 [Introduction](#introduction)
-  * 1.1 [Definitions](#definitions)
+  * 1.1 [Conventions](#conventions)
   * 1.2 [Terminology](#terminology)
-* 2.0 [Data and Semantic Interoperability](#interoperability)
+* 2.0 [Caliper, Linked Data and JSON-LD](#linkedData)
 * 3.0 [Information Model](#infoModel)
   * 3.1 [Entity](#infoModelEntity)
   * 3.2 [Event](#infoModelEvent)
@@ -38,8 +38,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#behavior)
   * 4.2 [Envelope](#envelope)
-  * 4.3 [Transport](#transport)
-  * 4.4 [Representing Entities and Events as JSON-LD](#representingJsonld)
+  * 4.3 [Representing Events and Entities as JSON-LD](#jsonldPayload)
+  * 4.4 [Transport](#transport)
   * 4.5 [Endpoint](#endpoint)
   * 4.6 [Endpoint Responses](#endpointResponses)
 * 5.0 [Appendix A. Actions](#actions)
@@ -123,48 +123,57 @@ The drive to deliver education at scale coupled with a demand for measurable acc
 
 The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities.  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage and analysis.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
-#### 1.1 Terminology
+<a name="conventions" />
+
+#### 1.1 Conventions
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
 <a name="definitions" />
 
-#### 1.2 Definitions
+#### 1.2 Terminology
 
-__actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
+**TODO review and update these short definitions as necessary**
 
-__action__: something done to accomplish a purpose
+__Actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
 
-__blank node__: A locally-scoped identifier that is used to refer to a resource when a globally scoped identifier is either inappropriate, as in the case of transient data, or not provided.  A blank node is prefixed with an underscore (_) and is scoped to the document in which it is used (e.g., _:a1).
+__Action__: something done to accomplish a purpose
 
-__context__: A  JSON-LD concept for mapping terms to an IRI.  JSON-LD contexts may be embedded in a document or referenced. 
+__Context__: a special [JSON-LD](http://json-ld.org/spec/latest/json-ld/) keyword that maps the terms employed in a JSON document to [IRIs](https://www.ietf.org/rfc/rfc3987.txt) that link to one or more published vocabularies.  Inclusion of a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context provides an economical way of communicating document semantics to services interested in consuming Caliper event data.
 
-__endpoint__: A specified set of operations and messages bound to a specific network protocol.  
+__Endpoint__: a specified set of operations and messages bound to a specific network protocol.  
 
-__entity__:  An instance of a specified entity type.  An entity may represent a tangible object (person, school, building, ...) or concept (course, department,...).
+__Entity__:  describes an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity)types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  
 
-__event__: A notable occurrence at a point in time.
+__Event__: describes a relationship established between an actor and an object formed as a result of a purposeful action undertaken by the actor in connection to the object at a particular moment in time.  **TODO what about the context?** 
 
-__JSON-LD__: (JavaScript Object Notation for Linked Data) is a lightweight specification for using JSON to represent Linked Data.
+__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data.  The messages described in this specification are intended to be used in programming environments that support JSON-LD.
 
+__IRI__: The Internationalized Resource Identifier ([IRI](https://www.ietf.org/rfc/rfc3987.txt)) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  Linked Data rely on [IRIs](https://www.ietf.org/rfc/rfc3987.txt) to refer to most nodes and properties.
+
+__ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is set to UTC.
+ 
 __Linked Data__: A set of best practices for connecting structure data over the Web.  The term was coined by Tim Berners-Lee. 
-
+ 
 __LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS Global standard for integration of rich learning applications within educational environments.
 
-__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  The IRI is a globally scoped identifier used in linked data to refer to most nodes and properties.  An IRI reference may be absolute or relative to that of another absolute IRI.  In [JSON-LD](#json-ld) relative IRIs are resolved relative to the base IRI.
+__Metric Profile__: metric profiles define the information model for caliper.  The caliper metric profiles are organized by activity.
+ 
+__Object__: TODO
 
-__ISO 8601__: Caliper time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is set to UTC. 
+__Sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
 
-__profile__: metric profiles define the information model for caliper.  The caliper metric profiles are organized by activity. 
+__Type Coercion__: TODO
 
-__sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
+<a name="linkedData" />
 
-<a name="interoperability" />
+## 2.0 Caliper, Linked Data and JSON-LD
 
-## 2.0 Data and Semantic Interoperability
+**TODO revise and elaborate further on the value proposition (structure, flow, pointers)**
+** TODO para 2 is mostly about JSON-LD so move.**
 
-TODO
+Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling “bundles of data pointing to other bundles of data” now requires thinking in terms of graphs.  Caliper event data presents us with similar structures.  A Caliper [Event](#event) may link to user or group data, institutional/organizational data, digital resources, courses and rosters, grades and credentials, application and session data and so on.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides the “representational horsepower” to describe these kind of data linkages and specify how data is to be understood when published and shared across a network.
 
-structure, flow, pointers
+The Linked Data principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies are relatively straightforward: use URIs (more recently [IRIs](https://www.ietf.org/rfc/rfc3987.txt)) as names for things; use HTTP [IRIs](https://www.ietf.org/rfc/rfc3987.txt) so that information about things (e.g., people, organizations, resources) can be retrieved using a standard format; refer to other relevant things by way of their HTTP [IRI](https://www.ietf.org/rfc/rfc3987.txt) identifiers to encourage further discovery of new relationships between things.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) abides by these “rules”. It features a lightweight syntax and a JSON-based format for serializing linked data.  It requires that globally-scoped entities and their attributes be uniquely identifiable using IRIs/URIs.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) also provides a means of expressing relationships between entities in one or more directed graphs.  Crucially, for machine-to-machine data exchange, [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides a mechanism for rendering comprehensible the underlying semantics of a JSON Document via a mapping of its terms to one or more published vocabularies.  In a world where learners are interacting increasingly with an array of learning applications the need to blend learning data generated from multiple sources and discern its meaning across application boundaries is of vital importance.
 
 <a name="infoModel" />
 
@@ -175,32 +184,32 @@ The Caliper information model defines a set of concepts, rules and relationships
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-A Caliper Entity is a generic type that represents objects or things that participate in learning-related activities.  Entity is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each Entity is provisioned with a modest set of attributes that support discovery and description.  As a data structure an Entity constitutes an unordered set of key:value pairs or properties. 
+A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of attributes that support discovery and description.  As a data structure an [Entity](#entity) constitutes an unordered set of key:value pairs or properties. 
 
-Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](#rfc3987) MUST also be provided.  Entity [IRI](#rfc3987) values MUST be unique as well as valid.  The [IRI](#rfc3987) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the Entity over HTTP once authorization to access the resource is granted.
+Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](https://www.ietf.org/rfc/rfc3987.txt) MUST also be provided.  [Entity](#entity) [IRI](https://www.ietf.org/rfc/rfc3987.txt) values MUST be unique as well as valid.  The [IRI](https://www.ietf.org/rfc/rfc3987.txt) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the [Entity](#entity) over HTTP once authorization to access the resource is granted.
 
 **TODO should we state that IRIs/URIs should not employ the URN syntax (implied by dereferenceable which URNs by nature are not)**
 
-Other Entity properties are descriptive in nature or link the Entity to other related entities.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain Entity types like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
+Other [Entity](#entity) properties are descriptive in nature or link the [Entity](#entity) to other related entities.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain [Entity](#entity) types like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
 
 #### Properties
-The base set of Entity properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.    
+The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.    
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | IRI | A unique identifier assigned to the Entity in the form of a valid [IRI](#rfc3987) MUST be specified.  The [IRI](#rfc3987)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](#rfc3987) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
-| type | String | A string value corresponding to the short-hand term defined for the Entity in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Entity set the `type` value to the term "Entity".  If a subclass of `Entity` is created, set the type to the term corresponding to the subclass utilized, e.g., "Person". | Required |
-| name | String | A string value comprising a word or phrase by which the Entity is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the Entity MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the Entity was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the Entity. | Optional |
+| id | [IRI](https://www.ietf.org/rfc/rfc3987.txt) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](https://www.ietf.org/rfc/rfc3987.txt) MUST be specified.  The [IRI](#rfc3987)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](https://www.ietf.org/rfc/rfc3987.txt) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
+| type | String | A string value corresponding to the short-hand term defined for the [Entity](#entity) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Entity set the `type` value to the term "Entity".  If a subclass of [Entity](#entity) is created, set the type to the term corresponding to the subclass utilized, e.g., "Person". | Required |
+| name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
+| description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
-#### Subclasses
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+#### Entity Types
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter) (deprecated), [EpubPart](#epubPart) (deprecated), [EpubSubChapter](#epubSubChapter) (deprecated), [EpubVolume](#epubVolume) (deprecated), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading) (deprecated), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 #### Example
-When representing an Entity as [JSON-LD](#json-ld), a `@context` key MUST be embedded in the document with a value that references the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
+When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
 
 ```json
 {
@@ -235,25 +244,25 @@ When representing an Entity as [JSON-LD](#json-ld), a `@context` key MUST be emb
 <a name="infoModelEvent" />
 
 ### 3.2 The Caliper Event
-A Caliper Event is a generic type that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The Event properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as Events.
+A Caliper [Event](#event) is a generic type that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as events.
 
-Caliper defines a number of Event types, each employing terms that are scoped to a particular activity domain.  The Event model also seeks to describe the environment or context in which a learning activity is situated.  Group affiliation, membership roles and status, recent navigation history, supporting technology and session information can all be represented.  Entities generated as a result of the interaction between an `actor` and an `object` can also be described (annotating a piece of digital content and producing an [Annotation](#annotation) is one such example).
+Caliper defines a number of [Event](#event) types, each employing terms that are scoped to a particular activity domain.  The event model also seeks to describe the environment or context in which a learning activity is situated.  Group affiliation, membership roles and status, recent navigation history, supporting technology and session information can all be represented.  Entities generated as a result of the interaction between an `actor` and an `object` can also be described (annotating a piece of digital content and producing an [Annotation](#annotation) is one such example).
   
-Like an [Entity](#entity), a Caliper Event is largely self-describing via a required `type` property.  A unique identifier in the form of a [UUID](#rfc4122) MUST also be provided.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.      
+Like an [Entity](#entity), a Caliper [Event](#event) is largely self-describing via a required `type` property.  A unique identifier in the form of a [UUID](https://tools.ietf.org/html/rfc4122) MUST also be provided.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.      
 
 #### Properties
-The base set of Event properties is listed below.  Each property MUST only be referenced once.  The `uuid`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
+The base set of [Event](#event) properties is listed below.  Each property MUST only be referenced once.  The `uuid`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
 
 **TODO WHAT VALUE DOES `target` ADD TO AN EVENT THAT CAN'T BE REPRESENTED BY `object`?  DEPRECATE?**
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | UUID | a UUID string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required |
-| type | String | A string value corresponding to the short-hand term defined for the Event in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Event set the `type` value to the term "Event".  If a subclass of `Entity` is created, set the type to the term corresponding to the subclass utilized, e.g., "NavigationEvent". | Required |
-| actor | [Agent](#agent) | The [Agent](#agent) who initiated the Event, typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
-| action | [action](#actions) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen Event type. | Required |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required |
+| type | String | A string value corresponding to the short-hand term defined for the [Event](#event) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` value to the term "Event".  If a subclass of `Entity` is created, set the type to the term corresponding to the subclass utilized, e.g., "NavigationEvent". | Required |
+| actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
+| action | [action](#actions) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type. | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the Event occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location of the `object`. | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
@@ -261,11 +270,11 @@ The base set of Event properties is listed below.  Each property MUST only be re
 | group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional |
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional | 
-| federatedSession | [LtiSession](#ltiSession) | If the Event occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the Event.  | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event).  | Optional |
 
 #### Example
-When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.
+When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
 ```json
 {
@@ -287,8 +296,8 @@ When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embed
 }
 ```
 
-#### Subclasses
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+#### Event Types
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent) (deprecated), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 <a name="infoModelProfiles" />
 
@@ -316,7 +325,7 @@ The Caliper Basic Profile provides a generic [Event](#event) for describing lear
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `uuid` |
 | ----- | ------  | -------- | -------- | ---------- | ------ |
-| [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) | DateTime | UUID |
+| [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 **TODO Should we restrict the list of supported actions to those not associated with other typed Events?**
 
@@ -366,10 +375,10 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | DateTime | [BookmarkAnnotation](#bookmarkAnnotation) | UUID |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | DateTime | [HighlightAnnotation](#highlightAnnotation) | UUID |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | DateTime | [SharedAnnotation](#sharedAnnotation) | UUID |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) | DateTime | [TagAnnotation](#tagAnnotation) | UUID |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | DateTime | [BookmarkAnnotation](#bookmarkAnnotation) |[UUID](https://tools.ietf.org/html/rfc4122) |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | DateTime | [HighlightAnnotation](#highlightAnnotation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | DateTime | [SharedAnnotation](#sharedAnnotation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) | DateTime | [TagAnnotation](#tagAnnotation) | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
@@ -436,15 +445,15 @@ The Caliper Assessment Profile models assessment-related activities including in
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | UUID |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | UUID |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | UUID |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; | UUID |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | DateTime | [Attempt](#attempt) | UUID |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Skipped](#skipped)  | [AssessmentItem](#assessmentItem) | DateTime | &nbsp; | UUID |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | [Response](#response) | UUID |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment) | DateTime | &nbsp; | UUID |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment) | DateTime | &nbsp; | UUID |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Skipped](#skipped)  | [AssessmentItem](#assessmentItem) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | [Response](#response) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
@@ -503,13 +512,13 @@ The Assignable Profile models activities associated with digital content assigne
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | [Attempt](#attempt) | UUID |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | &nbsp; | UUID |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | UUID |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | UUID |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | DateTime | &nbsp; | UUID |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | UUID |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | UUID |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 **TODO: Do we need to add a submitted action or replace "completed" with "submitted" so that we align this set of actions with the AssessmentEvent submitted actions?**
 
@@ -561,15 +570,15 @@ The Caliper Forum Profile models learners and others participating in online for
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `uuid` |
 | ----- | ------  | -------- | -------- | ---------- | ------ |
-| [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | DateTime | UUID |
-| [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | DateTime | UUID |
-| [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | DateTime | UUID |
-| [MessageEvent](#messageEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Message](#message) | DateTime | UUID |
-| [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | DateTime | UUID |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | UUID |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | DateTime | UUID |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | DateTime | UUID |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | UUID |
+| [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MessageEvent](#messageEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Message](#message) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 #### Requirements 
 * Certain [Event](#event) properties are required and MUST be specified when creating a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
@@ -624,7 +633,7 @@ The Caliper Grading Profile models grading activities performed by an [Agent](#a
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
-| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | DateTime | [Result](#result) | UUID |
+| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | DateTime | [Result](#result) | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 **TODO: ADD ViewEvent, as in view the Result?**
 
@@ -696,27 +705,27 @@ The Caliper Media Profile models interactions between learners and rich content 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `target` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | -------- | ------ |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Rewound](#rewound) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSize](#changedSize) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSpeed](#changedSpeed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedVolume](#changedVolume) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [EnteredFullScreen](#enteredFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ExitedFullScreen](#exitedFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Muted](#muted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | UUID |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | DateTime | &nbsp; | UUID |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | DateTime | &nbsp; | UUID |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Rewound](#rewound) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSize](#changedSize) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSpeed](#changedSpeed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedVolume](#changedVolume) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [EnteredFullScreen](#enteredFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ExitedFullScreen](#exitedFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Muted](#muted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
@@ -767,8 +776,8 @@ The Caliper Reading Profile models activities associated with navigating to and 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `target` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | -------- | ------ |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) | UUID |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) | UUID |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
@@ -815,9 +824,9 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `session` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | --------- | ------ |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) | UUID |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) | UUID |
-| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | DateTime | &nbsp; | UUID |
+| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
@@ -864,7 +873,7 @@ The Caliper Tool Use Profile models an intended interaction between a user and a
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `uuid` |
 | ----- | ------- | -------- | -------- | ---------- | ------ |
-| [ToolUseEvent](#toolUseEvent) | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | DateTime | UUID |
+| [ToolUseEvent](#toolUseEvent) | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating a [ToolUseEvent](#toolUseEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
@@ -897,7 +906,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 <a name="sensor" />
 
 ## 4.0 Sensor API™
-Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to one or more target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
+Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
 <a name="sensorBehavior" />
 
@@ -906,26 +915,39 @@ A Caliper [Sensor](#sensor) MUST be capable of performing the following operatio
 
 * send events: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or more Caliper [Event](#event) types to a target endpoint.
 * describe entities: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or Caliper [Entity](#entity) types to a target endpoint.
-* ~~`getStatistics`: TODO describe~~~  **TODO do sensors need to implement getStatistics()? Propose no**
+
+**TODO getStatistics should not be a part of the API.  Agreed?**
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
 
 <a name="envelope" />
 
 ### 4.2 Envelope
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
+Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
 
 #### Properties
-Caliper [Envelope](#envelope) properties are listed below.  All properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
+Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) sending the message or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#rfc3987). | Required |
-| sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC MUST be specified. | Required |
-| dataVersion | String | A string value that indicates the IMS Caliper specification version that governs the form of the Caliper entities and events found in the `data` payload MUST be specified. By convention the value MUST be set to the URL of the IMS Global external Caliper context document used to resolve the meanings of the terms and values found in the payload's entities and events. | Required |
+| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](https://www.ietf.org/rfc/rfc3987.txt). | Required |
+| sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| dataVersion | String | A string value indicating which IMS Caliper specification version governs the form of the Caliper entities and events found in the `data` payload MUST be specified. The value MUST be set to the IMS Global external Caliper context document URL used to resolve the meanings of the `data` payload's terms and values. | Required |
 | data | Array | An ordered list of one or more Caliper entities or events that comprise the Envelope's payload.  ~~The Sensor MAY mix entity and event structures in the same envelope~~. | Required |
 
 **TODO if the Sensor can mix entities and events why do we need a Sensor.describe() method?**
+
+<a name="jsonldPayload" />
+
+### 4.4 Representing Events and Entities as JSON-LD
+
+*TODO Further elaboration and reorganization required**
+
+The [Event](#event) types and [Entity](#entity) "describes" that constitute an envelope's `data` payload messages MUST be represented as [JSON-LD](http://json-ld.org/spec/latest/json-ld/).  
+
+When representing an [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  
+
+When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
 #### Example
 ``` json
@@ -961,11 +983,56 @@ Caliper [Envelope](#envelope) properties are listed below.  All properties are r
 }
 ```
 
+### 4.X JSON-LD Contexts and Type Coercion
+
+A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.  
+   
+JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the coercion of values to particular data types.  Certain JSON object property values described in the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by layering an embedded context on top of the external context.  ~~This will allow users to indicate that the value of a term within the scope of the active context is an [IRI](https://www.ietf.org/rfc/rfc3987.txt) in place of the fully described JSON object.~~  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
+
+The following example demonstrates the layering of an embedded context on top of the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in order to coerce the `actor` and `object` property value to their respective string identifiers.
+
+```json
+{
+    "sensor": "https://example.edu/sensors/1",
+    "sendTime": "2016-11-15T11:05:01.000Z",
+    "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "data": [
+        {
+            "@context": [
+                "http://purl.imsglobal.org/ctx/caliper/v1p1",
+                {
+                    "actor": { "id": "Person", "type": "id" },
+                    "object": { "id": "Document", "type": "id" }
+                }
+            ],
+            "type": "Event",
+            "actor": "https://example.edu/users/554433",
+            "action": "Created",
+            "object": "https://example.edu/terms/201701/courses/7/sections/1/resources/27",
+            "eventTime": "2016-11-15T10:15:00.000Z",
+            "uuid": "7025d2f8-c76c-44b8-9d98-593d7969177f"
+        }
+    ]
+}
+```
+Any Caliper 1.1 Sensor can send a Caliper Event or Entity that uses precisely this form to indicate that an object property value is to be coerced to a string IRI, which the receiver should understand is the id property of the Entity with properties defined elsewhere (notice in the example that the actor property’s value in 2b is the same value as the actor.id property value in 2a).
+
+To perform this value substitution for an object property, the Sensor must use the precise form of the local context:
+
+A  JSON array containing an entry for each type-coerced property described as follows (the italicized names are placeholders: the term is the property being coerced (“actor” in the example), and type is the known Caliper entity type of the object the identifier should get understood as (“Person” in the example):
+
+{ “term”: {“id”: “entity type”, “type”: “id” } }
+
+This local context applies to the object in which it appears and each object “further down” in contained scope (so all instances of the field name at that level in the scope and farther down must also be a URI).
+If this local context is at the “top-most” layer of a Caliper document (the Entity or Event in question with the local context is directly contained in a Caliper Envelope), then the context should include as the first element a reference to the Caliper remote context document (in the example, “http://purl.imsglobal.org/ctx/caliper/v1p1”).
+
+The receiver of a Caliper Event or Entity with a property having a URI value that should have been a contained object, without this form indicating type coercion will not be considered as valid.
+
 <a name="transport" />
 
 ### 4.3 Transport
 
-A [Sensor](#sensor) MUST be capable of communicating with a Caliper [Endpoint](#endpoint) using the conventional HTTP POST request method; the certification tests for Caliper sensors require a [Sensor](#sensor) to send data to the certification service using this form of transport. A [Sensor](#sensor) MAY employ other methods to communicate with an [Endpoint](#endpoint).
+A [Sensor](#sensor) MUST be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP POST request method; note that the IMS Global Caliper certification suite requires a [Sensor](#sensor) to send data to the certification test endpoint using this form of transport. A [Sensor](#sensor) MAY employ other methods to communicate with an [Endpoint](#endpoint).
 
 Every message sent by a [Sensor](#sensor) MUST consist of a JSON representation of a single Caliper [Envelope](#envelope).
 
@@ -978,21 +1045,11 @@ A [Sensor](#sensor) MAY support additional modes of transport security and authe
 
 When sending messages to an [Endpoint](#endpoint), a Caliper [Sensor](#sensor) SHOULD indicate that the message payload has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper [Endpoint](#endpoint) reports that it cannot process the `application/ld+json` media type).
 
-<a name="representingJsonld" />
-
-### 4.4 Representing Events and Entities as JSON-LD
-
-TODO Elaborate and add examples
-
-When representing the [Event](#event) as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).
-
-When representing an Entity as JSON-LD, a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
-
 <a name="endpoint" />
 
 ### 4.5 Endpoint
 
-A Caliper endpoint MUST at a minimum be capable of communicating with a [Sensor](#sensor) via conventional HTTP POST requests; current Caliper certification tests require that the endpoint receive data from the IMS Global certification suite using this transport. Caliper endpoints MAY use other methods to receive data from sensors.
+A Caliper endpoint MUST at a minimum be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method; current Caliper certification tests require that the endpoint receive data from the IMS Global certification suite using this form of transport. Caliper endpoints MAY use other methods to receive data from sensors.
 
 For transport and security and authentication, Caliper sensors SHOULD:
 
@@ -1034,7 +1091,7 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 | <a name="activated" />Activated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Activated](http://purl.imsglobal.org/vocab/caliper/v1/action#Activated) | [make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v) |
 | <a name="added" />Added | [http://purl.imsglobal.org/vocab/caliper/v1/action#Added](http://purl.imsglobal.org/vocab/caliper/v1/action#Added) | [make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v) |
 | <a name="attached" />Attached | [http://purl.imsglobal.org/vocab/caliper/v1/action#Attached](http://purl.imsglobal.org/vocab/caliper/v1/action#Attached) | [cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v) |
-| <a name="bookmarked" />Bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) | An IRI that marks a location of interest in a DigitalResource that is recorded for later retrieval.  |
+| <a name="bookmarked" />Bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) | An [IRI](https://www.ietf.org/rfc/rfc3987.txt) that marks a location of interest in a DigitalResource that is recorded for later retrieval.  |
 | <a name="changedResolution" />Changed resolution | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n) |
 | <a name="changedSize" />Changed size | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n) |
 | <a name="changedSpeed" />Changed speed | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n) |
@@ -4224,19 +4281,26 @@ The status of a [member](#member) within an organization can be set to one of th
 ### 11.0 Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
+#### Authors
 | Name | Organization |
 | ------ | --------- |
 | Anthony Whyte | University of Michigan |
 | Viktor Haag | D2L |
 | Wes LaMarche | ACT |
 
+#### Editors
+| Name | Organization |
+| ------ | --------- |
+| Anthony Whyte | University of Michigan |
+| Steven Erickson | Unicon |
+
 <a name="reference" />
 
 ### 12.0 References
 
-<a name="json-ld" />
+<a name="jsonldSpec" />
 
-__JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL. https://www.w3.org/TR/json-ld/.
+__JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL: http://json-ld.org/spec/latest/json-ld/
 
 <a name="lti" />
 
@@ -4244,11 +4308,11 @@ __LTI__  TODO
 
 <a name="rfc2119" />
 
-__RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels." March 1997. URL: https://tools.ietf.org/html/rfc2119.
+__RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels." March 1997. URL: https://tools.ietf.org/html/rfc2119
 
 <a name="rfc3987" />
 
-__RFC 3987__ IETF. M. Duerst and M. Suignard.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: "https://www.ietf.org/rfc/rfc3987.txt
+__RFC 3987__ IETF. M. Duerst and M. Suignard.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: https://www.ietf.org/rfc/rfc3987.txt
 
 <a name="rfc4122" />
 
@@ -4258,6 +4322,6 @@ __RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Ide
 
 __RFC 6750__ IETF.  TODO Add reference
 
-<a name="whitepaper" />
+<a name="caliperWhitepaper" />
 
 __White paper__  IMS Global Learning Consortium.  "Learning Measurement for Analytics Whitepaper \[sic\]."  August 2013.  URL: https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
