@@ -1159,13 +1159,6 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 
 ## 6.0 Appendix B. Event Types
 
-TODO Intro
-
-<a name="event" />
-
-### 6.1 Event
-TODO ADD EVENT
-
 <a name="annotationEvent" />
 
 ### 6.2 AnnotationEvent
