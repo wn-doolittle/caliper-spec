@@ -2153,13 +2153,13 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "341db3d9-71cc-4081-9423-cbed73cb0179",
+  "uuid": "341db3d9-71cc-4081-9423-cbed73cb0179",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
+  "action": "LoggedIn",
   "object": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -2175,7 +2175,8 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
     },
     "dateCreated": "2016-11-15T10:00:00.000Z",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "fcd495d0-3740-4298-9bec-1154571dc211"
 }
 ```
 
@@ -2183,13 +2184,13 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "5fac90a9-531a-41f6-9b8d-7a26e61dcc27",
+  "uuid": "5fac90a9-531a-41f6-9b8d-7a26e61dcc27",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut",
+  "action": "LoggedOut",
   "object": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -2207,7 +2208,8 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
     "startedAtTime": "2016-11-15T10:00:00.000Z",
     "endedAtTime": "2016-11-15T11:05:00.000Z",
     "duration": "PT3000S"
-  }
+  },
+  "uuid": "a438f8ac-1da3-4d48-8c86-94a1b387e0f6"
 }
 ```
 
@@ -2215,13 +2217,13 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
+  "uuid": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
+  "action": "TimedOut",
   "object": {
     "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
     "type": "Session",
@@ -2238,7 +2240,8 @@ SessionEvent inherits all properties defined by its superclass [Event](#event). 
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
-  }
+  },
+  "uuid": "4e61cf6c-ffbe-45bc-893f-afe7ad4079dc"
 }
 ```
 
