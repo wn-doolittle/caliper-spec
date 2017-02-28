@@ -1,4 +1,4 @@
-<h2>Caliper Analytics<sup>TM</sup> Specification, version 1.1</h2>
+<h2>Caliper Analytics® Specification, version 1.1</h2>
 <h2>IMS Global Learning Consortium, Inc.<h2>
 
 ## IPR and Distribution Notices
@@ -54,7 +54,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 6.8 [MessageEvent](#messageEvent)
   * 6.9 [NavigationEvent](#navigationEvent)
   * 6.10 [OutcomeEvent](#outcomeEvent)
-  * 6.11 [ReadingEvent](#readingEvent) (Deprecated)
+  * 6.11 [ReadingEvent](#readingEvent) (deprecated)
   * 6.12 [SessionEvent](#sessionEvent)
   * 6.13 [ThreadEvent](#threadEvent)
   * 6.14 [ToolUseEvent](#toolUseEvent)
@@ -75,10 +75,10 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 7.13 [DigitalResource](#digitalResource)
   * 7.14 [DigitalResourceCollection](#digitalResourceCollection)
   * 7.15 [Document](#document)
-  * 7.16 [EpubChapter](#epubChapter) (Deprecated)
-  * 7.17 [EpubPart](#epubPart) (Deprecated)
-  * 7.18 [EpubSubChapter](#epubSubChapter) (Deprecated)
-  * 7.19 [EpubVolume](#epubVolume) (Deprecated)
+  * 7.16 [EpubChapter](#epubChapter) (deprecated)
+  * 7.17 [EpubPart](#epubPart) (deprecated)
+  * 7.18 [EpubSubChapter](#epubSubChapter) (deprecated)
+  * 7.19 [EpubVolume](#epubVolume) (deprecated)
   * 7.20 [FillinBlankResponse](#fillinBlankResponse)
   * 7.21 [Forum](#forum)
   * 7.22 [Frame](#frame)
@@ -96,7 +96,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 7.34 [Organization](#organization)
   * 7.35 [Page](#page)
   * 7.36 [Person](#person)
-  * 7.37 [Reading](#reading) (Deprecated)
+  * 7.37 [Reading](#reading) (deprecated)
   * 7.38 [Response](#response)
   * 7.39 [Result](#result)
   * 7.40 [Session](#session)
@@ -198,7 +198,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](https://www.ietf.org/rfc/rfc3987.txt) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](https://www.ietf.org/rfc/rfc3987.txt) MUST be specified.  The [IRI](#rfc3987)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](https://www.ietf.org/rfc/rfc3987.txt) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
-| type | String | A string value corresponding to the short-hand term defined for the [Entity](#entity) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Entity set the `type` value to the term "Entity".  If a subclass of [Entity](#entity) is created, set the type to the term corresponding to the subclass utilized, e.g., "Person". | Required |
+| type | String | A string value corresponding to the short-hand term defined for the [Entity](#entity) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Entity set the `type` value to the term *Entity*.  If a subclass of [Entity](#entity) is created, set the type to the term corresponding to the subclass utilized, e.g., *Person*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -258,7 +258,7 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required |
-| type | String | A string value corresponding to the short-hand term defined for the [Event](#event) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` value to the term "Event".  If a subclass of `Entity` is created, set the type to the term corresponding to the subclass utilized, e.g., "NavigationEvent". | Required |
+| type | String | A string value corresponding to the short-hand term defined for the [Event](#event) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` value to the term *Event*.  If a subclass of [Entity](#entity) is created, set the type to the term corresponding to the subclass utilized, e.g., *NavigationEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
 | action | [action](#actions) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type. | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
@@ -369,7 +369,7 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 #### Supported events
 [AnnotationEvent](#annotationEvent)
 
-#### Supported annotations
+#### Generated annotations
 [Annotation](#annotation) subclassed as [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Supported actions
@@ -1167,21 +1167,27 @@ TODO ADD EVENT
 <a name="annotationEvent" />
 
 ### 6.2 AnnotationEvent
-TODO The Caliper AnnotationEvent models . . . .   AnnotationEvent inherits all the properties and requirements defined for Event, its superclass.  
+The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subclassed for greater type specificity.
 
 ##### Supported actions
- [bookmarked](#bookmarked), [highlighted](#highlighted), [shared](#shared), [tagged](#tagged)
+ [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
  
 #### Deprecated actions
-[attached](#attached), [classified](#classified),  [commented](#commented), [described](#described), [disliked](#disliked), [identified](#identified), [liked](#liked), [linked](#linked), [questioned](#questioned), [ranked](#ranked), [recommended](#recommended), [replied](#replied), [subscribed](#subscribed)
+[Attached](#attached), [Classified](#classified),  [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended), [Replied](#replied), [Subscribed](#subscribed)
+
+#### Generated Annotations
+[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation)
  
 #### Properties
-AnnotationEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[AnnotationEvent](#annotationEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `AnnotationEvent` MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the supported action terms listed above.
-* `object`: the annotated [DigitalResource](#digitalResource) that comprises the object of this AnnotationEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
-* `generated`: the generated [Annotation](#annotation) SHOULD be specified.  Note that Annotation is a generic type that is subclassed for greater type specificity.  Utilize Annotation only if no suitable subclass exists to represent the object.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *AnnotationEvent*. | Required |
+| actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Deprecated actions SHOULD NOT be utilized. | Required |
+| object | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subclass exists to represent the `object`. | Required |
+| generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified.  Note that Annotation is a generic type that is subclassed for greater type specificity.  Utilize [Annotation](#annotation) only if no suitable subclass exists to represent the `generated` object. | Recommended |
 
 #### Example: AnnotationEvent bookmarked
 ```json
@@ -1253,19 +1259,21 @@ AnnotationEvent inherits all properties defined by its superclass [Event](#event
 <a name="assessmentEvent" />
 
 ### 6.3 AssessmentEvent
-The Caliper AssessmentEvent models learner interactions with assessments instruments such as online tests or quizzes.  AssessmentEvent inherits all the properties and requirements defined for Event, its superclass.  
+The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.  
 
 #### Supported actions
-[started](#started), [paused](#paused), [restarted](#restarted), [submitted](#submitted)
+[Started](#started), [Paused](#paused), [Restarted](#restarted), [Submitted](#submitted)
 
 #### Properties
-AssessmentEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[AssessmentEvent](#assessmentEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `AssessmentEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this AssessmentEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the supported action terms listed above.
-* `object`: for [started](#started), [paused](#paused) and [restarted](#restarted) actions the [Assessment](#assessment) that comprises the object of this AssessmentEvent MUST be specified; for a [submitted](#submitted) action the actor's [Attempt](#attempt) MUST be specified.  When the Attempt is the object it MUST reference both the actor and the assigned Assessment along with a [count](#count) of the number of times the actor has interacted with the Assessment.
-* `generated`: for [started](#started), [paused](#paused) and [restarted](#restarted) actions the actor's [Attempt](#attempt) SHOULD be specified in order to provide a [count](#count) of the number of times the actor has interacted with the Assessment.  If an Attempt is referenced, both the actor and the assigned Assessment SHOULD be referenced.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *AssessmentEvent*. | Required |
+| actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above. | Required |
+| object | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions the [Assessment](#assessment) constitutes the `object` of the interaction and MUST be specified.  For a [Submitted](#submitted) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required |
+| generated | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions an [Attempt](#attempt) SHOULD be specified in order to record a [count](#count) of the number of times the `actor` has interacted with the [Assessment](#assessment). | Recommended |
 
 #### Example: AssessmentEvent started
 ```json
@@ -1412,20 +1420,22 @@ AssessmentEvent inherits all properties defined by its superclass [Event](#event
 <a name="assessmentItemEvent" />
 
 ### 6.4 AssessmentItemEvent
-The Caliper AssessmentItemEvent models a learner's interaction with an individual assessment item.  AssessmentItemEvent inherits all the properties and requirements defined for Event, its superclass.  
+The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).  
 
 #### Supported actions
-[started](#started), [skipped](#skipped), [completed](#completed)
+[Started](#started), [Skipped](#skipped), [Completed](#completed)
 
 #### Properties
-AssessmentItemEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[AssessmentItemEvent](#assessmentItemEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `AssessmentItemEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this AssessmentItemEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: for [started](#started) and [skipped](#skipped) actions the [AssessmentItem](#assessmentItem) that comprises the object of this AssessmentItemEvent MUST be specified; for a [completed](#completed) action the actor's [Attempt](#attempt) MUST be specified.  When the Attempt is the object it MUST reference both the actor and the assigned AssessmentItem along with a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  The Attempt MAY also reference a parent [Assessment](#assessment) Attempt via the [isPartOf](#isPartOf) property.
-* `generated`: for [started](#started) and [skipped] actions, the actor's [Attempt](#attempt) SHOULD be specified in order to provide a [count](#count) of the number of times the actor has interacted with the AssessmentItem.  If the Attempt is provided it MUST reference both the actor and the assigned AssessmentItem. The Attempt MAY also reference a parent Attempt via the [isPartOf](#isPartOf) property.  For a [completed](#completed) action a generated [Response](#response) MAY be referenced.  Note that Response is a generic type that is subclassed for greater type specificity.  Utilize Response only if no suitable subclass exists to represent the learner's response to the item.
-* `referrer`: the previous [AssessmentItem](#assessmentItem) attempted MAY be referenced as the referring context.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *AssessmentItemEvent*. | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required | 
+| generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  Note that [Response](#response) is a generic type that is subclassed for greater type specificity.  Utilize [Response](#response) only if no suitable subclass exists to represent the `generated` object. | Recommended |
+| referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`. | Optional |
 
 #### Example: AssessmentItem started
 ```json
@@ -1594,21 +1604,23 @@ AssessmentItemEvent inherits all properties defined by its superclass [Event](#e
 <a name="assignableEvent" />
 
 ### 6.5 AssignableEvent
-TODO The Caliper AssignableEvent models . . . .  AssignableEvent inherits all the properties and requirements defined for Event, its superclass.
+TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 #### Supported actions
-[activated](#activated), [deactivated](#deactivated), [started](#started), [completed](#completed), [reviewed](#reviewed)
+[Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Reviewed](#reviewed)
 
 #### Deprecated actions
-[abandoned](#abandoned), [hid](#hid), [showed](#showed]
+[Abandoned](#abandoned), [Hid](#hid), [Showed](#showed]
 
 #### Properties
-AssignableEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[AssignableEvent](#assignableEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `AssignableEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this AssignableEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [DigitalResource](#digitalResource) that comprises the object of this AssignableEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *AssignableEvent*. | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Deprecated actions SHOULD NOT be utilized. | Required | 
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subclass exists to represent the `object`. | Required |
 
 #### Example: AssignableEvent activated
 ```json
@@ -1674,18 +1686,20 @@ AssignableEvent inherits all properties defined by its superclass [Event](#event
 
 ### 6.6 ForumEvent
 
-TODO The Caliper ForumEvent models . . . .  ForumEvent inherits all the properties and requirements defined for Event, its superclass.
+TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
 #### Supported actions
-[subscribed](#subscribed), [unsubscribed](#unsubscribed)
+[Subscribed](#subscribed), [Unsubscribed](#unsubscribed)
 
 #### Properties
-ForumEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[ForumEvent](#forumEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `ForumEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this ForumEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [Forum](#forum) that comprises the object of this ForumEvent MUST be specified.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *ForumEvent*. | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object| [Forum](#forum) | The [Forum](#forum) that comprises the object of this interaction MUST be specified. | Required |
 
 #### Example: ForumEvent subscribed
 ```json
@@ -1745,24 +1759,25 @@ ForumEvent inherits all properties defined by its superclass [Event](#event). Ad
 <a name="mediaEvent" />
 
 ### 6.7 MediaEvent
-TODO The Caliper MediaEvent models . . . .  MediaEvent inherits all the properties and requirements defined for Event, its superclass.
+TODO The Caliper [MediaEvent](#mediaEvent) models . . . .
 
-TODO 
-* add additional description.  
+TODO   
 * Should MediaLocation be the object or the target of the interaction?
 * Should ImageObject be included in this event (ViewEvent appears more appropriate)?
 
 #### Supported actions
-[started](#started), [paused](#paused), [resumed](#resumed), [forwardedTo](#forwardedTo), [jumpedTo](#jumpedTo), [rewound](#rewound), [ended](#ended), [changedResolution](#changedResolution), [changedSize](#changedSize), [changedSpeed](#changedSpeed), [changedVolume](#changedVolume), [enabledClosedCaptioning](#enabledClosedCaptioning), [disabledClosedCaptioning](#disabledClosedCaptioning), [enteredFullScreen](#enteredFullScreen), [exitedFullScreen](#exitedFullScreen), [muted](#muted), [unmuted](#unmuted), [openedPopout](#openedPopout), [closedPopout](#closedPopout)
+[Started](#started), [Paused](#paused), [Resumed](#resumed), [Ended](#ended), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [Rewound](#rewound), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
 
 #### Properties
-MediaEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[MediaEvent](#mediaEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `MediaEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this MediaEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [MediaObject](#mediaObject) that comprises the object of this MediaEvent MUST be specified.  MediaObject is a generic type that is subclassed for greater type specificity.  Utilize MediaObject only if no suitable subclass exists to represent the object. | 
-* `target`: if the object of the interaction is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide a precise position or [currentTime](#currentTime) in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S".
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *MediaEvent*. | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the object of the interaction MUST be specified.  [MediaObject](#mediaObject) is a generic type that is subclassed for greater type specificity.  Utilize [MediaObject](#mediaObject) only if no suitable subclass exists to represent the object. | Required |
+| target | [MediaLocation](#mediaLocation) | If the `object` is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide the [currentTime](#currentTime) in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". | Recommended |
 
 #### Example: MediaEvent paused
 ```json
@@ -1823,18 +1838,20 @@ MediaEvent inherits all properties defined by its superclass [Event](#event). Ad
 <a name="messageEvent" />
 
 ### 6.8 MessageEvent
-The Caliper [MessageEvent](#messageEvent) describes an [Person](#person) posting a [Message](#message) or marking a post as either read or unread.  MessageEvent inherits all the properties and requirements defined for Event, its superclass.
+The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
 
 #### Supported actions
 [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
 
 #### Properties
-MessageEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[MessageEvent](#messageEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `MessageEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this MessageEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [Message](#Message) that comprises the object of this MessageEvent MUST be specified.  If the object represents a Message posted in reply to a previous message, the prior message  prompting the post SHOULD be referenced utilizing the Message [replyTo](#replyTo) property.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *MessageEvent*. | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [Message](#Message) | The [Message](#Message) that constitutes the `object` of the interaction MUST be specified.  If the `object` represents a [Message](#Message) posted in reply to a previous post, the prior post prompting the [Message](#Message) SHOULD be referenced using the [Message](#Message) [replyTo](#replyTo) property. | Required |
 
 #### Example: MessageEvent posted
 ```json
