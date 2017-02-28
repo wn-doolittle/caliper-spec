@@ -2006,8 +2006,8 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 | type | String | The string value MUST be set to the term *NavigationEvent*. |Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [SoftwareApplication](#softwareApplication), [DigitalResource](#digitalResource) | the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `object`. | Required | 
-| referrer | [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) | The [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the referring context SHOULD be specified.  Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `referrer`. | Recommended |
+| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)| the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `object`. | Required | 
+| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [SoftwareApplication](#softwareApplication), [DigitalResource](#digitalResource) that constitutes the referring context SHOULD be specified.  Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `referrer`. | Recommended |
 
 #### Example: NavigationEvent navigated to
 ```json
@@ -2077,8 +2077,8 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| type | String | The string value MUST be set to the term *OutcomeEvent* MUST be specified. | Required |
-| actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically, [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`. | Required |
+| type | String | The string value MUST be set to the term *OutcomeEvent*. | Required |
+| actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [Attempt](#attempt) | The completed [Attempt](#attempt) MUST be specified. | Required |
 | generated | [Result](#result) | The generated [Result](#result) SHOULD be provided. | Recommended |
@@ -2149,7 +2149,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| type | String | The string value MUST be set to the term *ReadingEvent* MUST be specified. | Required |
+| type | String | The string value MUST be set to the term *ReadingEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object.
