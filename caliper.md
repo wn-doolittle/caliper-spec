@@ -1697,7 +1697,7 @@ ForumEvent inherits all properties defined by its superclass [Event](#event). Ad
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed",
+  "action": "Subscribed",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
     "type": "Forum",
@@ -1731,15 +1731,16 @@ ForumEvent inherits all properties defined by its superclass [Event](#event). Ad
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "a2f41f9c-d57d-4400-b3fe-716b9026334e"
 }
 ```
 
