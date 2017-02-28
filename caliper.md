@@ -261,15 +261,15 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | action | [action](#actions) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type. | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location of the `object`. | Optional |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
 | edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional |
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
 | group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional |
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional | 
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event).  | Optional |
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example
 When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
@@ -1176,11 +1176,21 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *AnnotationEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Deprecated actions SHOULD NOT be utilized. | Required |
 | object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the `object`. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. | Optional |
 | generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified.  Note that Annotation is a generic type that is subtyped for greater type specificity.  Utilize [Annotation](#annotation) only if no suitable subtype exists to represent the `generated` object. | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AnnotationEvent bookmarked
 ```json
@@ -1262,11 +1272,21 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *AssessmentEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above. | Required |
 | object | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions the [Assessment](#assessment) constitutes the `object` of the interaction and MUST be specified.  For a [Submitted](#submitted) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
 | generated | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions an [Attempt](#attempt) SHOULD be specified in order to record a [count](#count) of the number of times the `actor` has interacted with the [Assessment](#assessment). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentEvent started
 ```json
@@ -1423,12 +1443,21 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *AssessmentItemEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required | 
+| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
 | generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  Note that [Response](#response) is a generic type that is subtyped for greater type specificity.  Utilize [Response](#response) only if no suitable subtype exists to represent the `generated` object. | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
 | referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentItem started
 ```json
@@ -1610,10 +1639,21 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *AssignableEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Deprecated actions SHOULD NOT be utilized. | Required | 
 | object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  [AssignableDigitalResource](#assignableDigitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the `object`. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssignableEvent activated
 ```json
@@ -1689,10 +1729,22 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *ForumEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object| [Forum](#forum) | The [Forum](#forum) that comprises the `object` of this interaction MUST be specified. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ForumEvent subscribed
 ```json
@@ -1766,11 +1818,21 @@ TODO
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *MediaEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the `object` of the interaction MUST be specified.  [MediaObject](#mediaObject) is a generic type that is subtyped for greater type specificity.  Utilize [MediaObject](#mediaObject) only if no suitable subtype exists to represent the `object`. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [MediaLocation](#mediaLocation) | If the `object` is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide the [currentTime](#currentTime) in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". | Recommended |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: MediaEvent paused
 ```json
@@ -1841,10 +1903,21 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *MessageEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [Message](#Message) | The [Message](#Message) that constitutes the `object` of the interaction MUST be specified.  If the `object` represents a [Message](#Message) posted in reply to a previous post, the prior post prompting the [Message](#Message) SHOULD be referenced using the [Message](#Message) `replyTo` property. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: MessageEvent posted
 ```json
@@ -1994,11 +2067,21 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *NavigationEvent*. |Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)| The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the `object` of the interaction MUST be specified. Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `object`. | Required | 
+| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)| The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the `object` of the interaction MUST be specified. Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `object`. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
 | referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context SHOULD be specified.  Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `referrer`. | Recommended |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: NavigationEvent navigated to
 ```json
@@ -2072,7 +2155,16 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 | actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [Attempt](#attempt) | The completed [Attempt](#attempt) MUST be specified. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Not Applicable |
 | generated | [Result](#result) | The generated [Result](#result) SHOULD be provided. | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: OutcomeEvent graded
 ```json
@@ -2140,10 +2232,21 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *ReadingEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 <a name="sessionEvent" />
 
@@ -2162,9 +2265,15 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the `action` MUST be specified.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [Session](#session), [SoftwareApplication](#softwareApplication) | For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) MUST be specified as the `object`.  For a [TimedOut](#timedOut) action the [Session](#session) MUST be specified as the object. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [DigitalResource](#digitalResource) | When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
 | referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | the relevant user [Session](#session) SHOULD be specified. | Recommended |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: SessionEvent logged in
 ```json
@@ -2272,10 +2381,21 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *ThreadEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | The [Thread](#thread) that constitutes the `object` of the interaction MUST be specified. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ThreadEvent marked as read
 ```json
@@ -2347,10 +2467,21 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *ToolUseEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [SoftwareApplication](#softwareApplication) | The [SoftwareApplication](#softwareApplication) that constitutes  the `object` of the interaction MUST be specified. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that represents a particular capability or feature provided by the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ToolUseEvent marked as read
 ```json
@@ -2413,10 +2544,21 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
+| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required | 
 | type | String | The string value MUST be set to the term *ViewEvent* MUST be specified.
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
+| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example ViewEvent viewed (with extensions)
 ```json
