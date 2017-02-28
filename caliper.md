@@ -2411,11 +2411,9 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
   },
   "action": "Viewed",
   "object": {
-    "id": "https://example.edu/etexts/201.epub",
+    "id": "https://example.edu/etexts/200.epub",
     "type": "Document",
-    "name": "IMS Caliper Implementation Guide",
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "datePublished": "2016-10-01T06:00:00.000Z",
+    "name": "IMS Caliper Specification",
     "version": "1.1"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
@@ -2449,7 +2447,25 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
-  "uuid": "cd088ca7-c044-405c-bb41-0b2a8506f907"
+  "uuid": "3a9bd869-addc-48b1-80f6-a14b2ff591ed",
+  "extensions": [{
+    "@context": {
+      "id": "@id",
+      "type": "@type",
+      "example": "http://example.edu/ctx/edu",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "ChronJob": "example:ChronJob",
+      "job": "example:job",
+      "jobTag": { "id": "example:jobTag", "type": "xsd:string" },
+      "jobDate": { "id": "example:jobDate", "type": "xsd:dateTime" }
+    },
+    "job": {
+      "id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
+      "type": "ChronJob",
+      "jobTag": "caliper",
+      "jobDate": "2016-11-16T01:01:00.000Z"
+    }
+  }]
 }
 ```
 
