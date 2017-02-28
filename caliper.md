@@ -125,7 +125,7 @@ The Caliper Analytics® specification attempts to address the underlying interop
 <a name="conventions" />
 
 ### 1.1 Conventions
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
 <a name="definitions" />
 
@@ -191,7 +191,7 @@ __Sensor__: Software assets deployed within a learning application to facilitate
 
 <a name="termDef" />
 
-__Term__: a word or short expression that expands to an [IRI](https://www.ietf.org/rfc/rfc3987.txt) when mapped to JSON-LD Context. Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
+__Term__: a word or short expression that expands to an [IRI](https://www.ietf.org/rfc/rfc3987.txt) when mapped to a JSON-LD [Context](#contextDef). Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
 
 <a name="typeCoercionDef" />
 
@@ -1067,6 +1067,8 @@ The receiver of a Caliper Event or Entity with a property having a URI value tha
 
 ### 4.3 Transport
 
+**Should we define custom headers for Caliper version, payload type?**
+
 A [Sensor](#sensor) MUST be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP POST request method; note that the IMS Global Caliper certification suite requires a [Sensor](#sensor) to send data to the certification test endpoint using this form of transport. A [Sensor](#sensor) MAY employ other methods to communicate with an [Endpoint](#endpoint).
 
 Every message sent by a [Sensor](#sensor) MUST consist of a JSON representation of a single Caliper [Envelope](#envelope).
@@ -1114,31 +1116,11 @@ If the Endpoint implementer wants the Endpoint to communicate more detailed info
 <a name="actions"/>
    
 ## 5.0 Appendix A. Actions
-Caliper defines a vocabulary of actions for describing learning interactions.  Each action term is mapped to a persistent [IRI](https://www.ietf.org/rfc/rfc3987.txt) in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Each action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton University's WordNet® project as an aid to natural language processing.    
+Caliper includes a vocabulary of actions for describing learning interactions. Each action [Term](#termdef) is based on the past-tense form of an English (en-US) verb.  An action [Term](#termdef) can also indicate a change in a particular characteristic of the `object` (e.g., resolution, size, speed, volume).  Each action [Term](#termdef) is mapped to a persistent [IRI](https://www.ietf.org/rfc/rfc3987.txt) listed in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Each action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton University's WordNet® project in order to eliminate ambiguity and aid natural language processing.
  
- **TODO change value (term or IRI) requirement to MUST?**
+ Each Caliper [Event](#event) type supports one one or more of the actions listed below.  The [Event](#event) `action` property string value MUST be set to the appropriate [Term](#termDef). Only one action may be specified per [Event](#event).
  
- Each action MAY be supported by one or more Caliper [Event](#event) types.  A Caliper [Event](#event) `action` property value SHOULD be set to the action's term but MAY be set the value to the associated [IRI](https://www.ietf.org/rfc/rfc3987.txt).  Only one action may be specified per [Event](#event).
-
-```json
-{
-    "action": "Started"
-}
-
-```
-"action": "Started"
-
-```
-http://purl.imsglobal.org/vocab/caliper/v1/action#\[Term\]
-```
-
-The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above. 
-
-The `action` value range is scoped by event and limited to the supported actions described above.
-
-natural language challenges  - WordNet
-past-tense form utilized
-action can involve the change of a particular characteristic (e.g., resolution, size, speed, volume)
+ **TODO change `action` string value requirement to SHOULD for Term MAY for IRI?**
 
 | Term | IRI | WordNet Gloss |
 | :--- | :-- | ------------- |
@@ -1206,7 +1188,6 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 | <a name="unsubscribed" />Unsubscribed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed](http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed) | inverse of subscribed |
 | <a name="used" />Used | [http://purl.imsglobal.org/vocab/caliper/v1/action#Used](http://purl.imsglobal.org/vocab/caliper/v1/action#Used) | interact with a tool in a manner the tool creator intends as a learning activity |
 | <a name="viewed" />Viewed | [http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed](http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed) |[look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
-
 
 <a name="events" />
 
