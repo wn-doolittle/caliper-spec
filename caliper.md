@@ -2409,11 +2409,13 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+  "action": "Viewed",
   "object": {
-    "id": "https://example.edu/etexts/200.epub",
+    "id": "https://example.edu/etexts/201.epub",
     "type": "Document",
-    "name": "IMS Caliper Specification",
+    "name": "IMS Caliper Implementation Guide",
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "datePublished": "2016-10-01T06:00:00.000Z",
     "version": "1.1"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
@@ -2438,8 +2440,8 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
@@ -2447,17 +2449,7 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
-  "extensions": {
-    "@context": {
-      "@vocab": "http://example.edu/ctx/edu.jsonld"
-    },
-    "job": {
-      "id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
-      "type": "ChronJob",
-      "jobTag": "caliper",
-      "jobDate": "2016-11-16T01:01:00.000Z"
-    }
-  }
+  "uuid": "cd088ca7-c044-405c-bb41-0b2a8506f907"
 }
 ```
 
