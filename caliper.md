@@ -125,7 +125,7 @@ The Caliper Analytics® specification attempts to address the underlying interop
 <a name="conventions" />
 
 ### 1.1 Conventions
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
 <a name="definitions" />
 
@@ -133,37 +133,67 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **TODO review and update these short definitions as necessary.  Add links **
 
-__Actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system, or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
+<a name="actorDef" />
+
+__Actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
+
+<a name="actionDef" />
 
 __Action__: something done to accomplish a purpose
 
+<a name="contextDef" />
+
 __Context__: a special [JSON-LD](http://json-ld.org/spec/latest/json-ld/) keyword that maps the terms employed in a JSON document to [IRIs](https://www.ietf.org/rfc/rfc3987.txt) that link to one or more published vocabularies.  Inclusion of a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context provides an economical way of communicating document semantics to services interested in consuming Caliper event data.
 
-__Endpoint__: a specified set of operations and messages bound to a specific network protocol.  
+<a name="endpointDef" />
 
-__Entity__:  describes an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity)types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  
+__Endpoint__: a receiver of Caliper messages that is bound to a specific network protocol.  
+
+<a name="entityDef" />
+
+__Entity__: describes an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity)types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  
+
+<a name="eventDef" />
 
 __Event__: describes a relationship established between an actor and an object formed as a result of a purposeful action undertaken by the actor in connection to the object at a particular moment in time.  **TODO what about the context?** 
 
+<a name="jsonldDef" />
+
 __JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data.  The messages described in this specification are intended to be used in programming environments that support JSON-LD.
+
+<a name="iriDef" />
 
 __IRI__: The Internationalized Resource Identifier ([IRI](https://www.ietf.org/rfc/rfc3987.txt)) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  Linked Data rely on [IRIs](https://www.ietf.org/rfc/rfc3987.txt) to refer to most nodes and properties.
 
+<a name="iso8601Def" /> 
+
 __ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is set to UTC.
+
+<a name="linkedDataDef" /> 
  
 __Linked Data__: A set of best practices for connecting structure data over the Web.  The term was coined by Tim Berners-Lee. 
  
+<a name="ltiDef" />
+ 
 __LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS Global standard for integration of rich learning applications within educational environments.
 
+<a name="metricProfileDef" />
+
 __Metric Profile__: metric profiles define the information model for caliper.  The caliper metric profiles are organized by activity.
+
+<a name="objectDef" />
  
 __Object__: TODO
 
+<a name="sensorDef" />
+
 __Sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
 
-<a name=termDef />
+<a name="termDef" />
 
 __Term__: a word or short expression that expands to an [IRI](https://www.ietf.org/rfc/rfc3987.txt) when mapped to JSON-LD Context. Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
+
+<a name="typeCoercionDef" />
 
 __Type Coercion__: TODO
 
