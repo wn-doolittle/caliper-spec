@@ -2271,20 +2271,20 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 <a name="threadEvent" />
 
 ### 6.13 ThreadEvent
-TODO . . . A Caliper ThreadEvent models an actor marking a forum thread as either read or unread.  ThreadEvent inherits all the properties and requirements defined for Event, its superclass.
+TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum thread or topic as either read or unread.  
 
 #### Supported actions
-[markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnread)
+[MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnread)
 
 #### Properties
-ThreadEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[ThreadEvent](#threadEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-* `type`: the string value term `ThreadEvent' MUST be specified.
-* `actor`: the [Person](#person) who initiated this ThreadEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [Thread](#thread) that comprises the object of this ThreadEvent MUST be specified.
+| type | String | The string value MUST be set to the term *ThreadEvent*. | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | The [Thread](#thread) that constitutes the `object` of the interaction MUST be specified. | Required |
 
 #### Example: ThreadEvent marked as read
 ```json
@@ -2346,21 +2346,20 @@ ThreadEvent inherits all properties defined by its superclass [Event](#event). A
 <a name="toolUseEvent" />
 
 ### 6.14 ToolUseEvent
-A Caliper ToolUseEvent models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a "learning interaction". It's meant to be a fundamental event that tool creators can implement to demonstrate in the Caliper event stream that "users are using the tool in the way in which it's intended to be used."
+A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction. It's meant to be a fundamental [Event](#event) that tool creators can implement to demonstrate that users are using the tool in the way in which it's intended to be used.
 
 #### Supported actions
-[used](#used)
+[Used](#used)
 
 #### Properties
-ToolUseEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[ToolUseEvent](#toolUseEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-
-* `type`: the string value term `ToolUseEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this ThreadEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [SoftwareApplication](#softwareApplication) that comprises the object of this ToolUseEvent MUST be specified.
+| type | String | The string value MUST be set to the term *ToolUseEvent*. | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [SoftwareApplication](#softwareApplication) | The [SoftwareApplication](#softwareApplication) that constitutes  the `object` of the interaction MUST be specified. | Required |
 
 #### Example: ToolUseEvent marked as read
 ```json
@@ -2413,18 +2412,20 @@ ToolUseEvent inherits all properties defined by its superclass [Event](#event). 
 <a name="viewEvent" />
 
 ### 6.15 ViewEvent
-A Caliper ViewEvent models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a file.   ViewEvent inherits all the properties and requirements defined for Event, its superclass.
+A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.
 
 #### Supported actions
 [viewed](#viewed)
 
 #### Properties
-ViewEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[ViewEvent](#viewEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `ViewEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this ViewEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [DigitalResource](#digitalResource) that comprises the object of this ViewEvent MUST be specified.  DigitalResource is a generic type that is subtyped for greater type specificity.  Utilize DigitalResource only if no suitable subtype exists to represent the object.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *ViewEvent* MUST be specified.
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object. | Required |
 
 #### Example ViewEvent viewed (with extensions)
 ```json
