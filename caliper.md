@@ -1848,7 +1848,7 @@ MessageEvent inherits all properties defined by its superclass [Event](#event). 
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
+  "action": "Posted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
     "type": "Message",
@@ -1894,15 +1894,16 @@ MessageEvent inherits all properties defined by its superclass [Event](#event). 
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "0d015a85-abf5-49ee-abb1-46dbd57fe64e"
 }
 ```
 
@@ -1915,7 +1916,7 @@ MessageEvent inherits all properties defined by its superclass [Event](#event). 
     "id": "https://example.edu/users/778899",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
+  "action": "Posted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
     "type": "Message",
@@ -1962,15 +1963,16 @@ MessageEvent inherits all properties defined by its superclass [Event](#event). 
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:12:00.000Z"
-  }
+  },
+  "uuid": "aed54386-a3fb-45ff-90f9-a35d3daaf031"
 }
 ```
 
