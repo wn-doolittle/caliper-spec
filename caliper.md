@@ -184,7 +184,7 @@ The Caliper information model defines a set of concepts, rules and relationships
 <a name="infoModelEntity" />
 
 ### 3.1 The Caliper Entity
-A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subclassed for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of attributes that support discovery and description.  As a data structure an [Entity](#entity) constitutes an unordered set of key:value pairs or properties. 
+A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of attributes that support discovery and description.  As a data structure an [Entity](#entity) constitutes an unordered set of key:value pairs or properties. 
 
 Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](https://www.ietf.org/rfc/rfc3987.txt) MUST also be provided.  [Entity](#entity) [IRI](https://www.ietf.org/rfc/rfc3987.txt) values MUST be unique as well as valid.  The [IRI](https://www.ietf.org/rfc/rfc3987.txt) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the [Entity](#entity) over HTTP once authorization to access the resource is granted.
 
@@ -198,7 +198,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](https://www.ietf.org/rfc/rfc3987.txt) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](https://www.ietf.org/rfc/rfc3987.txt) MUST be specified.  The [IRI](#rfc3987)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](https://www.ietf.org/rfc/rfc3987.txt) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
-| type | String | A string value corresponding to the short-hand term defined for the [Entity](#entity) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Entity set the `type` value to the term *Entity*.  If a subclass of [Entity](#entity) is created, set the type to the term corresponding to the subclass utilized, e.g., *Person*. | Required |
+| type | String | A string value corresponding to the short-hand term defined for the [Entity](#entity) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic Entity set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the term corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -258,7 +258,7 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | uuid | [UUID](https://tools.ietf.org/html/rfc4122) | a [UUID](https://tools.ietf.org/html/rfc4122) string identifier that conform to [RFC 4122](#rfc4122) MUST be generated. | Required |
-| type | String | A string value corresponding to the short-hand term defined for the [Event](#event) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` value to the term *Event*.  If a subclass of [Entity](#entity) is created, set the type to the term corresponding to the subclass utilized, e.g., *NavigationEvent*. | Required |
+| type | String | A string value corresponding to the short-hand term defined for the [Event](#event) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` value to the term *Event*.  If a subtype of [Entity](#entity) is created, set the type to the term corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
 | action | [action](#actions) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type. | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
@@ -364,13 +364,13 @@ Create and send a generic Caliper [Event](#event) to a target [endpoint](#endpoi
 <a name="annotationProfile" />
 
 ### 3.3.2 Annotation Profile
-The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subclassed for greater type specificity.
+The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 #### Supported events
 [AnnotationEvent](#annotationEvent)
 
 #### Generated annotations
-[Annotation](#annotation) subclassed as [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
+[Annotation](#annotation) subtyped as [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
@@ -440,7 +440,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported responses
-[Response](#response) subclassed as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+[Response](#response) subtyped as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Supported actions
 | Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
@@ -697,7 +697,7 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  T
 <a name="mediaProfile" />
 
 ### 3.3.7 Media Profile
-The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subclassed from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
+The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
 #### Supported events
 [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
@@ -768,7 +768,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 <a name="readingProfile" />
 
 ### 3.3.8 Reading Profile
-The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subclassed from [DigitalResource](#digitalResource).
+The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
 
 #### Supported events
 [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
@@ -985,6 +985,8 @@ When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/lat
 
 ### 4.X JSON-LD Contexts and Type Coercion
 
+**FORBID OVERRIDING KEYS**
+
 A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.  
    
 JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the coercion of values to particular data types.  Certain JSON object property values described in the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by layering an embedded context on top of the external context.  ~~This will allow users to indicate that the value of a term within the scope of the active context is an [IRI](https://www.ietf.org/rfc/rfc3987.txt) in place of the fully described JSON object.~~  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
@@ -1167,7 +1169,7 @@ TODO ADD EVENT
 <a name="annotationEvent" />
 
 ### 6.2 AnnotationEvent
-The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subclassed for greater type specificity.
+The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 ##### Supported actions
  [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
@@ -1186,8 +1188,8 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 | type | String | The string value MUST be set to the term *AnnotationEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Deprecated actions SHOULD NOT be utilized. | Required |
-| object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subclass exists to represent the `object`. | Required |
-| generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified.  Note that Annotation is a generic type that is subclassed for greater type specificity.  Utilize [Annotation](#annotation) only if no suitable subclass exists to represent the `generated` object. | Recommended |
+| object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the `object`. | Required |
+| generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified.  Note that Annotation is a generic type that is subtyped for greater type specificity.  Utilize [Annotation](#annotation) only if no suitable subtype exists to represent the `generated` object. | Recommended |
 
 #### Example: AnnotationEvent bookmarked
 ```json
@@ -1434,7 +1436,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
 | object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required | 
-| generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  Note that [Response](#response) is a generic type that is subclassed for greater type specificity.  Utilize [Response](#response) only if no suitable subclass exists to represent the `generated` object. | Recommended |
+| generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  Note that [Response](#response) is a generic type that is subtyped for greater type specificity.  Utilize [Response](#response) only if no suitable subtype exists to represent the `generated` object. | Recommended |
 | referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`. | Optional |
 
 #### Example: AssessmentItem started
@@ -1620,7 +1622,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 | type | String | The string value MUST be set to the term *AssignableEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Deprecated actions SHOULD NOT be utilized. | Required | 
-| object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  [AssignableDigitalResource](#assignableDigitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subclass exists to represent the `object`. | Required |
+| object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  [AssignableDigitalResource](#assignableDigitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the `object`. | Required |
 
 #### Example: AssignableEvent activated
 ```json
@@ -1776,7 +1778,7 @@ TODO
 | type | String | The string value MUST be set to the term *MediaEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the `object` of the interaction MUST be specified.  [MediaObject](#mediaObject) is a generic type that is subclassed for greater type specificity.  Utilize [MediaObject](#mediaObject) only if no suitable subclass exists to represent the `object`. | Required |
+| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the `object` of the interaction MUST be specified.  [MediaObject](#mediaObject) is a generic type that is subtyped for greater type specificity.  Utilize [MediaObject](#mediaObject) only if no suitable subtype exists to represent the `object`. | Required |
 | target | [MediaLocation](#mediaLocation) | If the `object` is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide the [currentTime](#currentTime) in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". | Recommended |
 
 #### Example: MediaEvent paused
@@ -2004,8 +2006,8 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 | type | String | The string value MUST be set to the term *NavigationEvent*. |Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [SoftwareApplication](#softwareApplication), [DigitalResource](#digitalResource) | the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. Note that [DigitalResource](#digitalResource)  is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subclass exists to represent the `object`. | Required | 
-| referrer | [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) | The [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the referring context SHOULD be specified.  Note that [DigitalResource](#digitalResource)  is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subclass exists to represent the `referrer`. | Recommended |
+| object | [SoftwareApplication](#softwareApplication), [DigitalResource](#digitalResource) | the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `object`. | Required | 
+| referrer | [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) | The [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the referring context SHOULD be specified.  Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `referrer`. | Recommended |
 
 #### Example: NavigationEvent navigated to
 ```json
@@ -2150,26 +2152,28 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 | type | String | The string value MUST be set to the term *ReadingEvent* MUST be specified. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subclass exists to represent the object.
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object.
 
 <a name="sessionEvent" />
 
 ### 6.12 SessionEvent
-TODO . . . A SessionEvent models . . . .  SessionEvent inherits all the properties and requirements defined for Event, its superclass.
+TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 #### Supported actions
 [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
 
 #### Properties
-SessionEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[SessionEvent](#sessionEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-* `type`: the string value term `SessionEvent` MUST be specified.
-* `actor`: the [Agent](#agent) who initiated or is the subject of this SessionEvent.  For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the actor.  For a [timedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the actor.  Note that Agent is a generic type that is subclassed for greater type specificity.  Utilize Agent only if no suitable subclass exists to represent the actor.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) SHOULD be specified as the object.  For a [timedOut](#timedOut) action the [Session](#session) MUST be specified as the object.
-* `target`: the target [DigitalResource](#digitalResource) MAY be specified.
+| type | String | The string value MUST be set to the term *SessionEvent*. | Required |
+| actor | [Agent](#agent) | The [Agent](#agent) who initiated the `action` MUST be specified.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [Session](#session), [SoftwareApplication](#softwareApplication) | For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) MUST be specified as the `object`.  For a [TimedOut](#timedOut) action the [Session](#session) MUST be specified as the object. | Required |
+| target | [DigitalResource](#digitalResource) | When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction. | Optional |
+| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| session | [Session](#session) | the relevant user [Session](#session) SHOULD be specified. | Recommended |
 
 #### Example: SessionEvent logged in
 ```json
@@ -2275,6 +2279,8 @@ TODO . . . A Caliper ThreadEvent models an actor marking a forum thread as eithe
 #### Properties
 ThreadEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
 * `type`: the string value term `ThreadEvent' MUST be specified.
 * `actor`: the [Person](#person) who initiated this ThreadEvent MUST be specified.
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
@@ -2348,6 +2354,9 @@ A Caliper ToolUseEvent models a [Person](#person) using a learning tool in a way
 #### Properties
 ToolUseEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+
 * `type`: the string value term `ToolUseEvent` MUST be specified.
 * `actor`: the [Person](#person) who initiated this ThreadEvent MUST be specified.
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
@@ -2415,7 +2424,7 @@ ViewEvent inherits all properties defined by its superclass [Event](#event). Add
 * `type`: the string value term `ViewEvent` MUST be specified.
 * `actor`: the [Person](#person) who initiated this ViewEvent MUST be specified.
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [DigitalResource](#digitalResource) that comprises the object of this ViewEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
+* `object`: the [DigitalResource](#digitalResource) that comprises the object of this ViewEvent MUST be specified.  DigitalResource is a generic type that is subtyped for greater type specificity.  Utilize DigitalResource only if no suitable subtype exists to represent the object.
 
 #### Example ViewEvent viewed (with extensions)
 ```json
@@ -2524,7 +2533,7 @@ Annotation inherits all properties defined by its superclass [Entity](#entity). 
 
 * `type`: the string value `Annotation` MUST be specified.
 * `annotator`: the [Agent](#agent), typically a [Person](#person) who created the Annotation SHOULD be specified.
-* `annotated`: the [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for more precise type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the annotated resource.
+* `annotated`: the [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that DigitalResource is a generic type that is subtyped for more precise type specificity.  Utilize DigitalResource only if no suitable subtype exists to represent the annotated resource.
 
 #### Subclasses 
 [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
@@ -2680,7 +2689,7 @@ Attempt inherits all the properties and requirements defined for its superclass 
 * `type`: the string value `Attempt` MUST be specified.
 * ~~`actor`: the [Person](#person) who initiated the Attempt SHOULD be specified.~~ Deprecated in favor of `assignee`.
 * `assignee`: the [Agent](#agent), typically a [Person](#person) who initiated the Attempt SHOULD be specified.
-* `assignable`: the [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for more precise type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the annotated resource.
+* `assignable`: the [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  Note that DigitalResource is a generic type that is subtyped for more precise type specificity.  Utilize DigitalResource only if no suitable subtype exists to represent the annotated resource.
 * `isPartOf`: the parent Attempt of this Attempt MAY be specified.
 * `count`: the total number of attempts inclusive of the current Attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified.
 * `startedAtTime`: an optional date and time value expressed with millisecond precision that describes when this Attempt was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [provo:startedAtTime](https://www.w3.org/TR/2013/REC-prov-o-20130430/#startedAtTime).
