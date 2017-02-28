@@ -2072,17 +2072,17 @@ OutcomeEvent inherits all properties defined by its superclass [Event](#event). 
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded",
+  "action": "Graded",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
+    "assignee": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment"
-    },
-    "actor": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -2098,8 +2098,8 @@ OutcomeEvent inherits all properties defined by its superclass [Event](#event). 
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
       "type": "Attempt"
     },
-    "normalScore": 15,
-    "totalScore": 15,
+    "normalScore": 15.0,
+    "totalScore": 15.0,
     "scoredBy": {
       "id": "https://example.edu/autograder",
       "type": "SoftwareApplication"
@@ -2111,7 +2111,8 @@ OutcomeEvent inherits all properties defined by its superclass [Event](#event). 
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
-  }
+  },
+  "uuid": "a50ca17f-5971-47bb-8fca-4e6e6879001d"
 }
 ```
 <a name="readingEvent" />
