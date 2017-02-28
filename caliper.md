@@ -1776,7 +1776,7 @@ TODO
 | type | String | The string value MUST be set to the term *MediaEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the object of the interaction MUST be specified.  [MediaObject](#mediaObject) is a generic type that is subclassed for greater type specificity.  Utilize [MediaObject](#mediaObject) only if no suitable subclass exists to represent the object. | Required |
+| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the `object` of the interaction MUST be specified.  [MediaObject](#mediaObject) is a generic type that is subclassed for greater type specificity.  Utilize [MediaObject](#mediaObject) only if no suitable subclass exists to represent the `object`. | Required |
 | target | [MediaLocation](#mediaLocation) | If the `object` is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide the [currentTime](#currentTime) in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". | Recommended |
 
 #### Example: MediaEvent paused
@@ -1991,19 +1991,21 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 <a name="navigationEvent" />
 
 ### 6.9 NavigationEvent
-The Caliper NavigationEvent models an actor traversing a network of digital resources.  NavigationEvent inherits all the properties and requirements defined for Event, its superclass.
+The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
 
 #### Supported actions
-[navigatedTo](#navigatedTo)
+[NavigatedTo](#navigatedTo)
 
 #### Properties
-NavigationEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[NavigationEvent](#navigationEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `NavigationEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this NavigationEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the object of this NavigationEvent MUST be specified. Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object. 
-* `referrer`: the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that comprises the referring context SHOULD be specified.  Note that DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the referrer.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *NavigationEvent*. |Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [SoftwareApplication](#softwareApplication), [DigitalResource](#digitalResource) | the [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. Note that [DigitalResource](#digitalResource)  is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subclass exists to represent the `object`. | Required | 
+| referrer | [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) | The [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) that constitutes the referring context SHOULD be specified.  Note that [DigitalResource](#digitalResource)  is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subclass exists to represent the `referrer`. | Recommended |
 
 #### Example: NavigationEvent navigated to
 ```json
@@ -2063,18 +2065,21 @@ NavigationEvent inherits all properties defined by its superclass [Event](#event
 <a name="outcomeEvent" />
 
 ### 6.10 OutcomeEvent
-TODO The Caliper OutcomeEvent models . . . .  OutcomeEvent inherits all the properties and requirements defined for Event, its superclass.
+TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 #### Supported actions
-[graded](#graded)
+[Graded](#graded)
 
 #### Properties
-OutcomeEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[OutcomeEvent](#outcomeEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `OutcomeEvent` MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the graded item's [Attempt](#attempt) MUST be specified.
-* `generated`: the generated [Result](#result) SHOULD be provided.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *OutcomeEvent* MUST be specified. | Required |
+| actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically, [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`. | Required |
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [Attempt](#attempt) | The completed [Attempt](#attempt) MUST be specified. | Required |
+| generated | [Result](#result) | The generated [Result](#result) SHOULD be provided. | Recommended |
 
 #### Example: OutcomeEvent graded
 ```json
@@ -2132,18 +2137,20 @@ OutcomeEvent inherits all properties defined by its superclass [Event](#event). 
 
 ### 6.11 ReadingEvent DEPRECATED
 
-The Caliper ReadingEvent models an actor reading textural content.  ReadingEvent is a DEPRECATED event that will be removed in a future version of the specification.  It SHOULD NOT be utilized.
+The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be utilized.
 
 #### Supported actions
 [NavigatedTo](#navigatedTo), [Searched](#searched), [Viewed](#viewed)
 
 #### Properties
-ReadingEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
+[ReadingEvent](#readingEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
-* `type`: the string value term `ReadingEvent` MUST be specified.
-* `actor`: the [Person](#person) who initiated this ReadingEvent MUST be specified.
-* `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
-* `object`: the [DigitalResource](#digitalResource) that comprises the object of this ReadingEvent MUST be specified.  DigitalResource is a generic type that is subclassed for greater type specificity.  Utilize DigitalResource only if no suitable subclass exists to represent the object.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type | String | The string value MUST be set to the term *ReadingEvent* MUST be specified. | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
+| action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subclass exists to represent the object.
 
 <a name="sessionEvent" />
 
@@ -2151,11 +2158,13 @@ ReadingEvent inherits all properties defined by its superclass [Event](#event). 
 TODO . . . A SessionEvent models . . . .  SessionEvent inherits all the properties and requirements defined for Event, its superclass.
 
 #### Supported actions
-[loggedIn](#loggedIn), [loggedOut](#loggedOut), [timedOut](#timedOut)
+[LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
 
 #### Properties
 SessionEvent inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
 * `type`: the string value term `SessionEvent` MUST be specified.
 * `actor`: the [Agent](#agent) who initiated or is the subject of this SessionEvent.  For [loggedIn](#loggedIn) and [loggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the actor.  For a [timedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the actor.  Note that Agent is a generic type that is subclassed for greater type specificity.  Utilize Agent only if no suitable subclass exists to represent the actor.
 * `action`: the action or predicate that binds the actor or subject to the object MUST be specified.  The value range is limited to the action terms listed above.
