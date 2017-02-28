@@ -1162,7 +1162,7 @@ action can involve the change of a particular characteristic (e.g., resolution, 
 ### 6.1 AnnotationEvent
 The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
-##### Supported actions
+#### Supported actions
  [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
  
 #### Deprecated actions
