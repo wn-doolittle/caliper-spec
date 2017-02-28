@@ -1186,7 +1186,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 | type | String | The string value MUST be set to the term *AnnotationEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Deprecated actions SHOULD NOT be utilized. | Required |
-| object | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subclass exists to represent the `object`. | Required |
+| object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subclass exists to represent the `object`. | Required |
 | generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified.  Note that Annotation is a generic type that is subclassed for greater type specificity.  Utilize [Annotation](#annotation) only if no suitable subclass exists to represent the `generated` object. | Recommended |
 
 #### Example: AnnotationEvent bookmarked
@@ -1273,7 +1273,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above. | Required |
 | object | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions the [Assessment](#assessment) constitutes the `object` of the interaction and MUST be specified.  For a [Submitted](#submitted) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required |
-| generated | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions an [Attempt](#attempt) SHOULD be specified in order to record a [count](#count) of the number of times the `actor` has interacted with the [Assessment](#assessment). | Recommended |
+| generated | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions an [Attempt](#attempt) SHOULD be specified in order to record a [count](#count) of the number of times the `actor` has interacted with the [Assessment](#assessment). | Recommended |
 
 #### Example: AssessmentEvent started
 ```json
@@ -1432,8 +1432,8 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 | :------- | :--- | ----------- | :---------: |
 | type | String | The string value MUST be set to the term *AssessmentItemEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
-| action | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required | 
+| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified. | Required | 
 | generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  Note that [Response](#response) is a generic type that is subclassed for greater type specificity.  Utilize [Response](#response) only if no suitable subclass exists to represent the `generated` object. | Recommended |
 | referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`. | Optional |
 
@@ -1610,7 +1610,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Reviewed](#reviewed)
 
 #### Deprecated actions
-[Abandoned](#abandoned), [Hid](#hid), [Showed](#showed]
+[Abandoned](#abandoned), [Hid](#hid), [Showed](#showed)
 
 #### Properties
 [AssignableEvent](#assignableEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
@@ -1620,7 +1620,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 | type | String | The string value MUST be set to the term *AssignableEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Deprecated actions SHOULD NOT be utilized. | Required | 
-| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subclass exists to represent the `object`. | Required |
+| object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  [AssignableDigitalResource](#assignableDigitalResource) is a generic type that is subclassed for greater type specificity.  Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subclass exists to represent the `object`. | Required |
 
 #### Example: AssignableEvent activated
 ```json
@@ -1699,7 +1699,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 | type | String | The string value MUST be set to the term *ForumEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object| [Forum](#forum) | The [Forum](#forum) that comprises the object of this interaction MUST be specified. | Required |
+| object| [Forum](#forum) | The [Forum](#forum) that comprises the `object` of this interaction MUST be specified. | Required |
 
 #### Example: ForumEvent subscribed
 ```json
@@ -1850,8 +1850,8 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 | :------- | :--- | ----------- | :---------: |
 | type | String | The string value MUST be set to the term *MessageEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
-| action | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [Message](#Message) | The [Message](#Message) that constitutes the `object` of the interaction MUST be specified.  If the `object` represents a [Message](#Message) posted in reply to a previous post, the prior post prompting the [Message](#Message) SHOULD be referenced using the [Message](#Message) [replyTo](#replyTo) property. | Required |
+| action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
+| object | [Message](#Message) | The [Message](#Message) that constitutes the `object` of the interaction MUST be specified.  If the `object` represents a [Message](#Message) posted in reply to a previous post, the prior post prompting the [Message](#Message) SHOULD be referenced using the [Message](#Message) `replyTo` property. | Required |
 
 #### Example: MessageEvent posted
 ```json
