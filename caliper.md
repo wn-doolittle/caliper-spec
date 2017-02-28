@@ -1670,7 +1670,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
     "id": "https://example.edu/users/112233",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Activated",
+  "action": "Activated",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "type": "Assessment",
@@ -1683,7 +1683,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
     "dateToSubmit": "2016-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
-    "maxScore": 25,
+    "maxScore": 25.0,
     "version": "1.0"
   },
   "eventTime": "2016-11-12T10:15:00.000Z",
@@ -1709,15 +1709,16 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Instructor" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
     "type": "Session",
     "startedAtTime": "2016-11-12T10:00:00.000Z"
-  }
+  },
+  "uuid": "2635b9dd-0061-4059-ac61-2718ab366f75"
 }
 ```
 
@@ -1761,7 +1762,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed",
+  "action": "Subscribed",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
     "type": "Forum",
@@ -1795,15 +1796,16 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "a2f41f9c-d57d-4400-b3fe-716b9026334e"
 }
 ```
 
@@ -1849,7 +1851,7 @@ TODO
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused",
+  "action": "Paused",
   "object": {
     "id": "https://example.edu/UQVK-dsU7-Y",
     "type": "VideoObject",
@@ -1884,15 +1886,16 @@ TODO
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "956b4a02-8de0-4991-b8c5-b6eebb6b4cab"
 }
 ```
 
@@ -1934,7 +1937,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
+  "action": "Posted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
     "type": "Message",
@@ -1980,15 +1983,16 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "0d015a85-abf5-49ee-abb1-46dbd57fe64e"
 }
 ```
 
@@ -2001,7 +2005,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
     "id": "https://example.edu/users/778899",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Posted",
+  "action": "Posted",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
     "type": "Message",
@@ -2048,15 +2052,16 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:12:00.000Z"
-  }
+  },
+  "uuid": "aed54386-a3fb-45ff-90f9-a35d3daaf031"
 }
 ```
 
@@ -2098,7 +2103,7 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
+  "action": "NavigatedTo",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
     "type": "WebPage",
@@ -2132,15 +2137,16 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f"
 }
 ```
 
@@ -2182,17 +2188,17 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded",
+  "action": "Graded",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
+    "assignee": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment"
-    },
-    "actor": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
     },
     "count": 1,
     "dateCreated": "2016-11-15T10:05:00.000Z",
@@ -2208,8 +2214,8 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
       "type": "Attempt"
     },
-    "normalScore": 15,
-    "totalScore": 15,
+    "normalScore": 15.0,
+    "totalScore": 15.0,
     "scoredBy": {
       "id": "https://example.edu/autograder",
       "type": "SoftwareApplication"
@@ -2221,7 +2227,8 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
-  }
+  },
+  "uuid": "a50ca17f-5971-47bb-8fca-4e6e6879001d"
 }
 ```
 <a name="readingEvent" />
@@ -2285,13 +2292,13 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "341db3d9-71cc-4081-9423-cbed73cb0179",
+  "uuid": "341db3d9-71cc-4081-9423-cbed73cb0179",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn",
+  "action": "LoggedIn",
   "object": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -2307,7 +2314,8 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
     },
     "dateCreated": "2016-11-15T10:00:00.000Z",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "fcd495d0-3740-4298-9bec-1154571dc211"
 }
 ```
 
@@ -2315,13 +2323,13 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "5fac90a9-531a-41f6-9b8d-7a26e61dcc27",
+  "uuid": "5fac90a9-531a-41f6-9b8d-7a26e61dcc27",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut",
+  "action": "LoggedOut",
   "object": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -2339,7 +2347,8 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
     "startedAtTime": "2016-11-15T10:00:00.000Z",
     "endedAtTime": "2016-11-15T11:05:00.000Z",
     "duration": "PT3000S"
-  }
+  },
+  "uuid": "a438f8ac-1da3-4d48-8c86-94a1b387e0f6"
 }
 ```
 
@@ -2347,13 +2356,13 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
+  "uuid": "513d4ca1-0ecf-4234-932d-c4cb287884a3",
   "type": "SessionEvent",
   "actor": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut",
+  "action": "TimedOut",
   "object": {
     "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
     "type": "Session",
@@ -2370,7 +2379,8 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
-  }
+  },
+  "uuid": "4e61cf6c-ffbe-45bc-893f-afe7ad4079dc"
 }
 ```
 
@@ -2412,7 +2422,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead",
+  "action": "MarkedAsRead",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
     "type": "Thread",
@@ -2448,15 +2458,16 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "6b20c5ba-301c-4e56-85a0-2f3d9a94c249"
 }
 ```
 
@@ -2492,13 +2503,13 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 #### Example: ToolUseEvent (used)
 ```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "type": "ToolUseEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Used",
+  "action": "Used",
   "object": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
@@ -2525,15 +2536,16 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "7e10e4f3-a0d8-4430-95bd-783ffae4d916"
 }
 ```
 
@@ -2575,7 +2587,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed",
+  "action": "Viewed",
   "object": {
     "id": "https://example.edu/etexts/200.epub",
     "type": "Document",
@@ -2604,8 +2616,8 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
@@ -2613,9 +2625,17 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
-  "extensions": {
+  "uuid": "3a9bd869-addc-48b1-80f6-a14b2ff591ed",
+  "extensions": [{
     "@context": {
-      "@vocab": "http://example.edu/ctx/edu.jsonld"
+      "id": "@id",
+      "type": "@type",
+      "example": "http://example.edu/ctx/edu",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "ChronJob": "example:ChronJob",
+      "job": "example:job",
+      "jobTag": { "id": "example:jobTag", "type": "xsd:string" },
+      "jobDate": { "id": "example:jobDate", "type": "xsd:dateTime" }
     },
     "job": {
       "id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
@@ -2623,7 +2643,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
       "jobTag": "caliper",
       "jobDate": "2016-11-16T01:01:00.000Z"
     }
-  }
+  }]
 }
 ```
 
