@@ -1999,7 +1999,7 @@ NavigationEvent inherits all properties defined by its superclass [Event](#event
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo",
+  "action": "NavigatedTo",
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
     "type": "WebPage",
@@ -2033,15 +2033,16 @@ NavigationEvent inherits all properties defined by its superclass [Event](#event
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-    "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+    "roles": [ "Learner" ],
+    "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
-  }
+  },
+  "uuid": "ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f"
 }
 ```
 
