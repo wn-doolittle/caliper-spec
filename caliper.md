@@ -3853,6 +3853,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 * `type`: the string value `Organization` MUST be specified.
 * `subOrganizationOf`: the parent [Organization](#organization) of this Organization MAY be specified.
+* `members`: ordered array of [Agent](#agent) members MAY be specified.
 
 #### Subclasses 
 [CourseOffering](#CourseOffering), [CourseSection](#CourseSection), [Group](#group)
