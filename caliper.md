@@ -432,12 +432,12 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#e
 <a name="assessmentProfile" />
 
 ### 3.3.3 Assessment Profile
-The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.
+The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.  Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile.
 
 #### Supported events
 [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Supported responses
+#### Generated responses
 [Response](#response) subtyped as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Supported actions
@@ -1168,7 +1168,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 #### Deprecated actions
 [Attached](#attached), [Classified](#classified),  [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended), [Replied](#replied), [Subscribed](#subscribed)
 
-#### Generated Annotations
+#### Generated annotations
 [Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation)
  
 #### Properties
@@ -1266,6 +1266,9 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 
 #### Supported actions
 [Started](#started), [Paused](#paused), [Restarted](#restarted), [Submitted](#submitted)
+
+#### Generated responses
+[Response](#response) subtyped as [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Properties
 [AssessmentEvent](#assessmentEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
