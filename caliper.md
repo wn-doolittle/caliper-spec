@@ -161,9 +161,9 @@ __Object__: TODO
 
 __Sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
 
-<a name=termDefinition />
+<a name=termDef />
 
-__[Term](#termDef)__: a word or short expression that expands to an [IRI](https://www.ietf.org/rfc/rfc3987.txt) when mapped to JSON-LD Context. Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
+__Term__: a word or short expression that expands to an [IRI](https://www.ietf.org/rfc/rfc3987.txt) when mapped to JSON-LD Context. Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
 
 __Type Coercion__: TODO
 
