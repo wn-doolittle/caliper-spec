@@ -2152,7 +2152,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 | type | String | The string value MUST be set to the term *ReadingEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. | Required |
-| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object.
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object. | Required |
 
 <a name="sessionEvent" />
 
