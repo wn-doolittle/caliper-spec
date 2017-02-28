@@ -179,7 +179,7 @@ The Linked Data principles first outlined by Tim Berners-Lee that inform todayâ€
 
 The Caliper information model defines a set of concepts, rules and relationships for describing learning activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles).  Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a controlled vocabulary of [actions](#actions) undertaken by learners, instructors and others that are scoped to the event.  Various [Entity](#entity) types representing people, groups and resources are provided in order to better describe both the relationships established between participating entities and the contextual elements relevant to the interaction.
 
-<a name="infoModelEntity" />
+<a name="entity" />
 
 ### 3.1 The Caliper Entity
 A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of attributes that support discovery and description.  As a data structure an [Entity](#entity) constitutes an unordered set of key:value pairs or properties. 
@@ -239,7 +239,7 @@ When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/late
 }
 ```
 
-<a name="infoModelEvent" />
+<a name="event" />
 
 ### 3.2 The Caliper Event
 A Caliper [Event](#event) is a generic type that describes a relationship established between two entities, an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as events.
@@ -1270,9 +1270,6 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 #### Supported actions
 [Started](#started), [Paused](#paused), [Restarted](#restarted), [Submitted](#submitted)
 
-#### Generated responses
-[Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
-
 #### Properties
 [AssessmentEvent](#assessmentEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
 
@@ -1443,6 +1440,9 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 #### Supported actions
 [Started](#started), [Skipped](#skipped), [Completed](#completed)
+
+#### Generated responses
+[Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Properties
 [AssessmentItemEvent](#assessmentItemEvent) inherits all properties defined by its superclass [Event](#event). Additional requirements are described below:
