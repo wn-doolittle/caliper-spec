@@ -175,7 +175,7 @@ __Linked Data__: A set of best practices for connecting structure data over the 
  
 <a name="ltiDef" />
  
-__LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS Global standard for integration of rich learning applications within educational environments.
+__LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS standard for integration of rich learning applications within educational environments.
 
 <a name="metricProfileDef" />
 
@@ -231,7 +231,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](https://www.ietf.org/rfc/rfc3987.txt) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](https://www.ietf.org/rfc/rfc3987.txt) MUST be specified.  The [IRI](#rfc3987)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](https://www.ietf.org/rfc/rfc3987.txt) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
-| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -242,7 +242,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter) (deprecated), [EpubPart](#epubPart) (deprecated), [EpubSubChapter](#epubSubChapter) (deprecated), [EpubVolume](#epubVolume) (deprecated), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading) (deprecated), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 #### Example
-When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
+When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
 
 ```json
 {
@@ -291,7 +291,7 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required |
-| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS Global [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
@@ -307,7 +307,7 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example
-When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
+When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
 ```json
 {
@@ -944,18 +944,19 @@ Caliper defines an application programming interface (the Sensor API™) for mar
 <a name="sensorBehavior" />
 
 ### 4.1 Behavior
-A Caliper [Sensor](#sensor) MUST be capable of performing the following operations: 
+A Caliper [Sensor](#sensor) MUST be capable of performing the following operations:
 
 * send events: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or more Caliper [Event](#event) types to a target endpoint.
 * describe entities: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or Caliper [Entity](#entity) types to a target endpoint.
-
-**TODO getStatistics should not be a part of the API.  Agreed?**
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
 
 <a name="envelope" />
 
 ### 4.2 Envelope
+
+**TODO Should we permit the Sensor to send mixed payloads of Entity describes/Events? Seems reasonable. If the Sensor can mix entities and events why do we need a Sensor.describe() method?**
+
 Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
 
 #### Properties
@@ -965,10 +966,10 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | :------- | :--- | ----------- | :---------: |
 | sensor | String | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](https://www.ietf.org/rfc/rfc3987.txt). | Required |
 | sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| dataVersion | String | A string value indicating which IMS Caliper specification version governs the form of the Caliper entities and events found in the `data` payload MUST be specified. The value MUST be set to the IMS Global external Caliper context document URL used to resolve the meanings of the `data` payload's terms and values. | Required |
-| data | Array | An ordered list of one or more Caliper entities or events that comprise the Envelope's payload.  ~~The Sensor MAY mix entity and event structures in the same envelope~~. | Required |
+| dataVersion | String | A string value indicating which IMS Caliper specification version governs the form of the Caliper entities and events found in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) document URL used to resolve the meanings of the `data` payload's terms and values. | Required |
+| data | Array | An ordered list of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
 
-**TODO if the Sensor can mix entities and events why do we need a Sensor.describe() method?**
+
 
 <a name="jsonldPayload" />
 
@@ -978,9 +979,9 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 
 The [Event](#event) types and [Entity](#entity) "describes" that constitute an envelope's `data` payload messages MUST be represented as [JSON-LD](http://json-ld.org/spec/latest/json-ld/).  
 
-When representing an [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  
+When representing an [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  
 
-When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Global Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
+When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
 #### Example
 ``` json
@@ -1069,7 +1070,7 @@ The receiver of a Caliper Event or Entity with a property having a URI value tha
 
 **Should we define custom headers for Caliper version, payload type?**
 
-A [Sensor](#sensor) MUST be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP POST request method; note that the IMS Global Caliper certification suite requires a [Sensor](#sensor) to send data to the certification test endpoint using this form of transport. A [Sensor](#sensor) MAY employ other methods to communicate with an [Endpoint](#endpoint).
+A [Sensor](#sensor) MUST be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP POST request method; note that the IMS Caliper certification suite requires a [Sensor](#sensor) to send data to the certification test endpoint using this form of transport. A [Sensor](#sensor) MAY employ other methods to communicate with an [Endpoint](#endpoint).
 
 Every message sent by a [Sensor](#sensor) MUST consist of a JSON representation of a single Caliper [Envelope](#envelope).
 
@@ -1086,7 +1087,7 @@ When sending messages to an [Endpoint](#endpoint), a Caliper [Sensor](#sensor) S
 
 ### 4.5 Endpoint
 
-A Caliper endpoint MUST at a minimum be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method; current Caliper certification tests require that the endpoint receive data from the IMS Global certification suite using this form of transport. Caliper endpoints MAY use other methods to receive data from sensors.
+A Caliper endpoint MUST at a minimum be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method; current Caliper certification tests require that the endpoint receive data from the IMS certification suite using this form of transport. Caliper endpoints MAY use other methods to receive data from sensors.
 
 For transport and security and authentication, Caliper sensors SHOULD:
 
