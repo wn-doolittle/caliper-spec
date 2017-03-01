@@ -20,29 +20,30 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 ## Table of Contents
 * 1.0 [Introduction](#introduction)
   * 1.1 [Conventions](#conventions)
-  * 1.2 [Terminology](#terminology)
-* 2.0 [Caliper, Linked Data and JSON-LD](#linkedData)
-* 3.0 [Information Model](#infoModel)
-  * 3.1 [Entity](#entity)
-  * 3.2 [Event](#event)
-  * 3.3 [Metric Profiles](#infoModelProfiles)
-      * 3.3.1 [Basic Profile](#basicProfile)
-      * 3.3.2 [Annotation Profile](#annotationProfile)
-      * 3.3.3 [Assignable Profile](#assignableProfile)
-      * 3.3.4 [Assessment Profile](#assessmentProfile)
-      * 3.3.5 [Forum Profile](#forumProfile)
-      * 3.3.6 [Grading Profile](#gradingProfile)
-      * 3.3.7 [Media Profile](#mediaProfile)
-      * 3.3.8 [Reading Profile](#readingProfile)
-      * 3.3.9 [Session Profile](#sessionProfile)
-      * 3.3.10 [Tool Use Profile](#toolUseProfile)
+  * 1.2 [Terminology](#terminology
+* 2.0 [Information Model](#infoModel)
+  * 2.1 [Entity](#entity)
+  * 2.2 [Event](#event)
+  * 2.3 [Metric Profiles](#infoModelProfiles)
+      * 2.3.1 [Basic Profile](#basicProfile)
+      * 2.3.2 [Annotation Profile](#annotationProfile)
+      * 2.3.3 [Assignable Profile](#assignableProfile)
+      * 2.3.4 [Assessment Profile](#assessmentProfile)
+      * 2.3.5 [Forum Profile](#forumProfile)
+      * 2.3.6 [Grading Profile](#gradingProfile)
+      * 2.3.7 [Media Profile](#mediaProfile)
+      * 2.3.8 [Reading Profile](#readingProfile)
+      * 2.3.9 [Session Profile](#sessionProfile)
+      * 2.3.10 [Tool Use Profile](#toolUseProfile)
+* 3.0 [JSON-LD Data Format](#dataFormat)
+  * 3.1 [Context](#jsonldContext)
+  * 3.2 [Type Coercion](#jsonldContext)
 * 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#behavior)
   * 4.2 [Envelope](#envelope)
-  * 4.3 [Representing Events and Entities as JSON-LD](#jsonldPayload)
-  * 4.4 [Transport](#transport)
-  * 4.5 [Endpoint](#endpoint)
-  * 4.6 [Endpoint Responses](#endpointResponses)
+  * 4.3 [Transport](#transport)
+  * 4.4 [Endpoint](#endpoint)
+  * 4.5 [Endpoint Responses](#endpointResponses)
 * 5.0 [Appendix A. Actions](#actions)
 * 6.0 [Appendix B. Event Types](#events)
   * 6.1 [AnnotationEvent](#annotationEvent)
@@ -120,7 +121,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 
 The drive to deliver education at scale coupled with a demand for measurable accountability | "accountability backed by measurability" has spurred interest in the application of “big data” principles to the business of education.  Opportunities to tap new data sources, ask new questions and pursue new insights have grown as both the learning technology ecosystem has expanded and the definition of what constitutes learning has evolved beyond the formal classroom experience to include informal, social and experiential modes of acquiring knowledge and skills. The challenges inherent in describing, collecting and exchanging learning activity data originating from such diverse learning sources and context are now formidable.
 
-The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities.  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage, analysis and re-use.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
+The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities.  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage, analysis and re-use.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
 <a name="conventions" />
 
@@ -159,11 +160,11 @@ __Event__: describes a relationship established between an actor and an object f
 
 <a name="jsonldDef" />
 
-__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data.  The messages described in this specification are intended to be used in programming environments that support [JSON-LD](http://json-ld.org/spec/latest/json-ld/).
+__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with [Linked Data](#linkedData).  The messages described in this specification are intended to be used in programming environments that support [JSON-LD](http://json-ld.org/spec/latest/json-ld/).
 
 <a name="iriDef" />
 
-__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII per [RFC 3987](https://www.ietf.org/rfc/rfc3987.txt).  Linked Data rely on IRIs to refer to most nodes and properties.
+__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII per [RFC 3987](https://www.ietf.org/rfc/rfc3987.txt).  [Linked Data](#linkedData) rely on IRIs to refer to most nodes and properties.
 
 <a name="iso8601Def" /> 
 
@@ -171,7 +172,7 @@ __ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the a
 
 <a name="linkedDataDef" /> 
  
-__Linked Data__: A set of best practices for connecting structured data over the Web.  The term was coined by Tim Berners-Lee. 
+__Linked Data__: A set of design principles first articulated by Tim Berners-Lee for connecting structured data over the Web.
  
 <a name="ltiDef" />
  
@@ -197,26 +198,15 @@ __Term__: a word or short expression that expands to an [IRI](#iriDef) when mapp
 
 __Type Coercion__: TODO
 
-<a name="linkedData" />
-
-## 2.0 Caliper, Linked Data and JSON-LD
-
-**TODO revise and elaborate further on the value proposition (structure, flow, pointers)**
-** TODO para 2 is mostly about JSON-LD so move.**
-
-Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling “bundles of data pointing to other bundles of data” now requires thinking in terms of graphs.  Caliper event data presents us with similar structures.  A Caliper [Event](#event) may link to user or group data, institutional/organizational data, digital resources, courses and rosters, grades and credentials, application and session data and so on.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides the “representational horsepower” to describe these kind of data linkages and specify how data is to be understood when published and shared across a network.
-
-The Linked Data principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies are relatively straightforward: use URIs (more recently [IRIs](https://www.ietf.org/rfc/rfc3987.txt)) as names for things; use HTTP [IRIs](https://www.ietf.org/rfc/rfc3987.txt) so that information about things (e.g., people, organizations, resources) can be retrieved using a standard format; refer to other relevant things by way of their HTTP [IRI](#iriDef) identifiers to encourage further discovery of new relationships between things.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) abides by these “rules”. It features a lightweight syntax and a JSON-based format for serializing linked data.  It requires that globally-scoped entities and their attributes be uniquely identifiable using IRIs/URIs.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) also provides a means of expressing relationships between entities in one or more directed graphs.  Crucially, for machine-to-machine data exchange, [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides a mechanism for rendering comprehensible the underlying semantics of a JSON Document via a mapping of its terms to one or more published vocabularies.  In a world where learners are interacting increasingly with an array of learning applications the need to blend learning data generated from multiple sources and discern its meaning across application boundaries is of vital importance.
-
 <a name="infoModel" />
 
-## 3.0 Information Model 
+## 2.0 Information Model 
 
 The Caliper information model defines a set of concepts, rules and relationships for describing learning activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles).  Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a controlled vocabulary of [actions](#actions) undertaken by learners, instructors and others that are scoped to the event.  Various [Entity](#entity) types representing people, groups and resources are provided in order to better describe both the relationships established between participating entities and the contextual elements relevant to the interaction.
 
 <a name="entity" />
 
-### 3.1 The Caliper Entity
+### 2.1 The Caliper Entity
 A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of attributes that support discovery and description.  As a data structure an [Entity](#entity) constitutes an unordered set of key:value pairs or properties. 
 
 Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](#iriDef) MUST also be provided.  [Entity](#entity) [IRI](#iriDef) values MUST be unique as well as valid.  The [IRI](#iriDef) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the [Entity](#entity) over HTTP once authorization to access the resource is granted.
@@ -230,7 +220,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](#iriDef) MUST be specified.  The [IRI](#iriDef)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](#iriDef) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
+| id | [IRI](#iriDef) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](#iriDef) MUST be specified.  The [IRI](#iriDef) SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](#iriDef) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
@@ -276,7 +266,7 @@ When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/late
 
 <a name="event" />
 
-### 3.2 The Caliper Event
+### 2.2 The Caliper Event
 A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as events.
 
 Caliper defines a number of [Event](#event) types, each scoped to a particular activity domain.  The event model also seeks to describe the environment or context in which a learning activity is situated.  Group affiliation, membership roles and status, recent navigation history, supporting technology and session information can all be represented.  Entities generated as a result of the interaction between an `actor` and an `object` can also be described (annotating a piece of digital content and producing an [Annotation](#annotation) is one such example).
@@ -334,7 +324,7 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
 
 <a name="infoModelProfiles" />
 
-### 3.3 Metric Profiles
+### 2.3 Metric Profiles
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
 Think of each metric profile as a stand-alone, logical container or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
@@ -349,7 +339,7 @@ The following metric profiles are currently available and are summarized individ
 
 <a name="basicProfile" />
 
-### 3.3.1 Basic Profile
+### 2.3.1 Basic Profile
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.
 
 #### Supported events
@@ -396,7 +386,7 @@ Create and send a generic Caliper [Event](#event) to a target [endpoint](#endpoi
 
 <a name="annotationProfile" />
 
-### 3.3.2 Annotation Profile
+### 2.3.2 Annotation Profile
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 #### Supported events
@@ -466,7 +456,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#e
 
 <a name="assessmentProfile" />
 
-### 3.3.3 Assessment Profile
+### 2.3.3 Assessment Profile
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.  Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile.
 
 #### Supported events
@@ -536,7 +526,7 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#e
 
 <a name="assignableProfile" />
 
-### 3.3.4 Assignable Profile
+### 2.3.4 Assignable Profile
 The Assignable Profile models activities associated with digital content assigned to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted. 
 
 #### Supported events
@@ -594,7 +584,7 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#e
 
 <a name="forumProfile" />
 
-### 3.3.5 Forum Profile
+### 2.3.5 Forum Profile
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
 #### Supported events
@@ -657,7 +647,7 @@ Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Poste
 
 <a name="gradingProfile" />
 
-### 3.3.6 Grading Profile
+### 2.3.6 Grading Profile
 The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. The Grading Profile replaces the Caliper 1.0 Outcomes Profile.
 
 #### Supported events
@@ -729,7 +719,7 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  T
 
 <a name="mediaProfile" />
 
-### 3.3.7 Media Profile
+### 2.3.7 Media Profile
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
 #### Supported events
@@ -800,7 +790,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 
 <a name="readingProfile" />
 
-### 3.3.8 Reading Profile
+### 2.3.8 Reading Profile
 The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
 
 #### Supported events
@@ -848,7 +838,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 
 <a name="sessionProfile" />
 
-### 3.3.9 Session Profile
+### 2.3.9 Session Profile
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
 #### Supported events
@@ -897,7 +887,7 @@ Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The [Logge
 
 <a name="toolUseProfile" />
 
-### 3.3.10 Tool Use Profile
+### 2.3.10 Tool Use Profile
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
 #### Supported events
@@ -936,94 +926,40 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 }
 ```
 
-<a name="sensor" />
+<a name="dataFormat" />
 
-## 4.0 Sensor API™
-Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
+## 3.0 JSON-LD Data Format
+**Revise**
+"elaborate on structured data, a little bit more [Linked Data](#linkedData), the blending of data from diverse sources, plus data sharing between institutions."
 
-<a name="sensorBehavior" />
+Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of [Linked Data](#linkedData) and graphs.  Caliper [Event](#event) data exhibits such characteristics.  A Caliper [Event](#event) may link to user or group data, institutional/organizational data, digital content, courses and rosters, grades and credentials, application and session data and so on.  
+  
+The [Linked Data](#linkedData) principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies have influenced Caliper's design: use HTTP [IRIs](#iriDef)/URIs as names for entities; use HTTP [IRIs](#iriDef)/URIs so that representations of entities (e.g., people, organizations, resources) can be retrieved using a standard format; refer to other relevant entities by way of their HTTP [IRIs](#iriDef)/URIs in order to encourage further discovery of new relationships.
 
-### 4.1 Behavior
-A Caliper [Sensor](#sensor) MUST be capable of performing the following operations:
+[Linked Data](#linkedData) concerns also animate [JSON-LD](http://json-ld.org/spec/latest/json-ld/), Caliper's chosen syntax for representing learning activity data as [Linked Data](#linkedData) using a JSON-based interchange format.  [JSON-LD](#jsonldDef) encourages use of globally unique, persistent, dereferenceable [IRIs](#iriDef) for entities (i.e., nodes) and attributes.  [JSON-LD](#jsonldDef) also provides a means of expressing relationships between entities in one or more directed graphs (a JSON-LD document is a representation of a directed graph).  Crucially, for machine-to-machine data exchange, [JSON-LD](#jsonldDef) provides Caliper with a mechanism called a [context](#contextDef) for rendering comprehensible the underlying semantics of its JSON-based documents via a mapping of the [Terms](#terms) employed to one or more published vocabularies.  
 
-* send events: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or more Caliper [Event](#event) types to a target endpoint.
-* describe entities: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or Caliper [Entity](#entity) types to a target endpoint.
+In a world where learners are increasingly interacting with an array of learning applications the need to draw together learning data generated from multiple sources and discern its meaning across application boundaries is of vital importance.  *Caliperized* data streams are likely to be aggregated and blended in an effort to discern new patterns, behaviors and relationships.  [JSON-LD](#jsonldDef) provides the representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.
 
-A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
+### 3.1 Context
 
-<a name="envelope" />
-
-### 4.2 Envelope
-
-**TODO Confirm that we will permit the Sensor to send mixed payloads of Entity describes/Events?  Seems reasonable.**
-
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
-
-#### Properties
-Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
-
-| Property | Type | Description | Conformance |
-| :------- | :--- | ----------- | :---------: |
-| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
-| sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| dataVersion | String | A string value indicating which IMS Caliper specification version governs the form of the Caliper entities and events found in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) IRI used to resolve the meanings of the `data` payload's terms and values. | Required |
-| data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
-
-
-
-<a name="jsonldPayload" />
-
-### 4.4 Representing Events and Entities as JSON-LD
-
-*TODO Further elaboration and reorganization required**
-
-The [Event](#event) types and [Entity](#entity) "describes" that constitute an envelope's `data` payload messages MUST be represented as [JSON-LD](http://json-ld.org/spec/latest/json-ld/).  
-
-When representing an [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  
-
-When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
+A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.
 
 #### Example
-``` json
-{
-   "sensor": "https://example.edu/sensors/1",
-   "sendTime": "2016-11-15T11:05:01.000Z",
-   "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
-   "data": [
-    {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
-      "type": "DigitalResource",
-      "name": "Course Syllabus",
-      "mediaType": "application/pdf",
-      "creators": [
-        {
-          "id": "https://example.edu/users/223344",
-          "type": "Person"
-        }
-      ],
-      "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
-        "type": "DigitalResourceCollection",
-        "name": "Course Assets",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "type": "CourseSection"
-        }
-      },
-      "dateCreated": "2016-08-02T11:32:00.000Z"
-    }
-   ]
-}
+```json
+
+
+
 ```
 
-### 4.X JSON-LD Contexts and Type Coercion
+#### Requirements
+* The [Event](#event) types and [Entity](#entity) "describes" that constitute an envelope's `data` payload messages MUST be represented as [JSON-LD](http://json-ld.org/spec/latest/json-ld/).  
+* When representing an [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  
+* When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
-**FORBID OVERRIDING KEYS**
+### 3.2 Type Coercion
+**FORBID OVERRIDING OF KEYS**
 
-A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.  
-   
-JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the coercion of values to particular data types.  Certain JSON object property values described in the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by layering an embedded context on top of the external context.  ~~This will allow users to indicate that the value of a term within the scope of the active context is an [IRI](#iriDef) in place of the fully described JSON object.~~  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
+[JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the coercion of values to particular data types.  Certain JSON object property values described in the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by layering an embedded context on top of the external context.  ~~This will allow users to indicate that the value of a term within the scope of the active context is an [IRI](#iriDef) in place of the fully described JSON object.~~  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
 
 The following example demonstrates the layering of an embedded context on top of the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in order to coerce the `actor` and `object` property value to their respective string identifiers.
 
@@ -1064,6 +1000,72 @@ If this local context is at the “top-most” layer of a Caliper document (the 
 
 The receiver of a Caliper Event or Entity with a property having a URI value that should have been a contained object, without this form indicating type coercion will not be considered as valid.
 
+<a name="sensor" />
+
+## 4.0 Sensor API™
+Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
+
+<a name="sensorBehavior" />
+
+### 4.1 Behavior
+A Caliper [Sensor](#sensor) MUST be capable of performing the following operations:
+
+* send events: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or more Caliper [Event](#event) types to a target endpoint.
+* describe entities: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or Caliper [Entity](#entity) types to a target endpoint.
+
+A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
+
+<a name="envelope" />
+
+### 4.2 Envelope
+**TODO Confirm that we will permit the Sensor to send mixed payloads of Entity describes/Events.  I'm +1.**
+
+Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
+
+#### Properties
+Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
+| sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| dataVersion | String | A string value indicating which version of the IMS Caliper Analytics® specification governs the form of the Caliper entities and events contained in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
+| data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
+
+#### Example
+``` json
+{
+   "sensor": "https://example.edu/sensors/1",
+   "sendTime": "2016-11-15T11:05:01.000Z",
+   "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+   "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "creators": [
+        {
+          "id": "https://example.edu/users/223344",
+          "type": "Person"
+        }
+      ],
+      "isPartOf": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201601/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2016-08-02T11:32:00.000Z"
+    }
+   ]
+}
+```
+
 <a name="transport" />
 
 ### 4.3 Transport
@@ -1085,7 +1087,7 @@ When sending messages to an [Endpoint](#endpoint), a Caliper [Sensor](#sensor) S
 
 <a name="endpoint" />
 
-### 4.5 Endpoint
+### 4.4 Endpoint
 
 A Caliper endpoint MUST at a minimum be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method; current Caliper certification tests require that the endpoint receive data from the IMS certification suite using this form of transport. Caliper endpoints MAY use other methods to receive data from sensors.
 
@@ -1098,7 +1100,7 @@ Caliper endpoints MAY support additional modes of transport security and authent
 
 <a name="endpointResponses" />
 
-### 4.6 Endpoint HTTPS responses
+### 4.5 Endpoint HTTPS responses
 
 When using HTTPS as the transport, the Caliper Endpoint MUST conform to these points of response behaviour. Caliper Endpoint implementers should bear in mind that the Caliper Sensors sending them messages may not be in a position to perform sophisticated error handling.
 
@@ -4527,6 +4529,10 @@ The following Caliper Working Group participants contributed to the writing of t
 <a name="jsonldSpec" />
 
 __JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL: http://json-ld.org/spec/latest/json-ld/
+
+<a name="linkedData" />
+
+__Linked Data__  Tim Berners-Lee.  "Linked Data."  W3C internal document.  July 2006, rev. June 2009.  URL: https://www.w3.org/DesignIssues/LinkedData.html
 
 <a name="lti" />
 
