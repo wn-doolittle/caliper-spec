@@ -120,7 +120,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 
 The drive to deliver education at scale coupled with a demand for measurable accountability | "accountability backed by measurability" has spurred interest in the application of “big data” principles to the business of education.  Opportunities to tap new data sources, ask new questions and pursue new insights have grown as both the learning technology ecosystem has expanded and the definition of what constitutes learning has evolved beyond the formal classroom experience to include informal, social and experiential modes of acquiring knowledge and skills. The challenges inherent in describing, collecting and exchanging learning activity data originating from such diverse learning sources and context are now formidable.
 
-The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities.  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage and analysis.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
+The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities.  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage, analysis and re-use.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
 <a name="conventions" />
 
@@ -159,11 +159,11 @@ __Event__: describes a relationship established between an actor and an object f
 
 <a name="jsonldDef" />
 
-__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data.  The messages described in this specification are intended to be used in programming environments that support JSON-LD.
+__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data.  The messages described in this specification are intended to be used in programming environments that support [JSON-LD](http://json-ld.org/spec/latest/json-ld/).
 
 <a name="iriDef" />
 
-__IRI__: The Internationalized Resource Identifier ([IRI](https://www.ietf.org/rfc/rfc3987.txt)) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII.  Linked Data rely on [IRIs](https://www.ietf.org/rfc/rfc3987.txt) to refer to most nodes and properties.
+__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII per [RFC 3987](https://www.ietf.org/rfc/rfc3987.txt).  Linked Data rely on IRIs to refer to most nodes and properties.
 
 <a name="iso8601Def" /> 
 
@@ -171,7 +171,7 @@ __ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the a
 
 <a name="linkedDataDef" /> 
  
-__Linked Data__: A set of best practices for connecting structure data over the Web.  The term was coined by Tim Berners-Lee. 
+__Linked Data__: A set of best practices for connecting structured data over the Web.  The term was coined by Tim Berners-Lee. 
  
 <a name="ltiDef" />
  
@@ -191,7 +191,7 @@ __Sensor__: Software assets deployed within a learning application to facilitate
 
 <a name="termDef" />
 
-__Term__: a word or short expression that expands to an [IRI](https://www.ietf.org/rfc/rfc3987.txt) when mapped to a JSON-LD [Context](#contextDef). Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
+__Term__: a word or short expression that expands to an [IRI](#iriDef) when mapped to a JSON-LD [Context](#contextDef). Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
 
 <a name="typeCoercionDef" />
 
@@ -206,7 +206,7 @@ __Type Coercion__: TODO
 
 Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling “bundles of data pointing to other bundles of data” now requires thinking in terms of graphs.  Caliper event data presents us with similar structures.  A Caliper [Event](#event) may link to user or group data, institutional/organizational data, digital resources, courses and rosters, grades and credentials, application and session data and so on.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides the “representational horsepower” to describe these kind of data linkages and specify how data is to be understood when published and shared across a network.
 
-The Linked Data principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies are relatively straightforward: use URIs (more recently [IRIs](https://www.ietf.org/rfc/rfc3987.txt)) as names for things; use HTTP [IRIs](https://www.ietf.org/rfc/rfc3987.txt) so that information about things (e.g., people, organizations, resources) can be retrieved using a standard format; refer to other relevant things by way of their HTTP [IRI](https://www.ietf.org/rfc/rfc3987.txt) identifiers to encourage further discovery of new relationships between things.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) abides by these “rules”. It features a lightweight syntax and a JSON-based format for serializing linked data.  It requires that globally-scoped entities and their attributes be uniquely identifiable using IRIs/URIs.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) also provides a means of expressing relationships between entities in one or more directed graphs.  Crucially, for machine-to-machine data exchange, [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides a mechanism for rendering comprehensible the underlying semantics of a JSON Document via a mapping of its terms to one or more published vocabularies.  In a world where learners are interacting increasingly with an array of learning applications the need to blend learning data generated from multiple sources and discern its meaning across application boundaries is of vital importance.
+The Linked Data principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies are relatively straightforward: use URIs (more recently [IRIs](https://www.ietf.org/rfc/rfc3987.txt)) as names for things; use HTTP [IRIs](https://www.ietf.org/rfc/rfc3987.txt) so that information about things (e.g., people, organizations, resources) can be retrieved using a standard format; refer to other relevant things by way of their HTTP [IRI](#iriDef) identifiers to encourage further discovery of new relationships between things.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) abides by these “rules”. It features a lightweight syntax and a JSON-based format for serializing linked data.  It requires that globally-scoped entities and their attributes be uniquely identifiable using IRIs/URIs.  [JSON-LD](http://json-ld.org/spec/latest/json-ld/) also provides a means of expressing relationships between entities in one or more directed graphs.  Crucially, for machine-to-machine data exchange, [JSON-LD](http://json-ld.org/spec/latest/json-ld/) provides a mechanism for rendering comprehensible the underlying semantics of a JSON Document via a mapping of its terms to one or more published vocabularies.  In a world where learners are interacting increasingly with an array of learning applications the need to blend learning data generated from multiple sources and discern its meaning across application boundaries is of vital importance.
 
 <a name="infoModel" />
 
@@ -219,7 +219,7 @@ The Caliper information model defines a set of concepts, rules and relationships
 ### 3.1 The Caliper Entity
 A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of attributes that support discovery and description.  As a data structure an [Entity](#entity) constitutes an unordered set of key:value pairs or properties. 
 
-Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](https://www.ietf.org/rfc/rfc3987.txt) MUST also be provided.  [Entity](#entity) [IRI](https://www.ietf.org/rfc/rfc3987.txt) values MUST be unique as well as valid.  The [IRI](https://www.ietf.org/rfc/rfc3987.txt) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the [Entity](#entity) over HTTP once authorization to access the resource is granted.
+Caliper entities are largely self-describing via a required `type` property.  A unique identifier in the form of an [IRI](#iriDef) MUST also be provided.  [Entity](#entity) [IRI](#iriDef) values MUST be unique as well as valid.  The [IRI](#iriDef) SHOULD be long-lived as well as dereferenceable, i.e., capable of returning a representation of the [Entity](#entity) over HTTP once authorization to access the resource is granted.
 
 **TODO should we state that IRIs/URIs should not employ the URN syntax (implied by dereferenceable which URNs by nature are not)**
 
@@ -230,13 +230,13 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](https://www.ietf.org/rfc/rfc3987.txt) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](https://www.ietf.org/rfc/rfc3987.txt) MUST be specified.  The [IRI](#rfc3987)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](https://www.ietf.org/rfc/rfc3987.txt) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
+| id | [IRI](#iriDef) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](#iriDef) MUST be specified.  The [IRI](#iriDef)  SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](#iriDef) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Entity Types
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter) (deprecated), [EpubPart](#epubPart) (deprecated), [EpubSubChapter](#epubSubChapter) (deprecated), [EpubVolume](#epubVolume) (deprecated), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading) (deprecated), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
@@ -304,7 +304,7 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional | 
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example
 When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
@@ -955,7 +955,7 @@ A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and 
 
 ### 4.2 Envelope
 
-**TODO Should we permit the Sensor to send mixed payloads of Entity describes/Events? Seems reasonable. If the Sensor can mix entities and events why do we need a Sensor.describe() method?**
+**TODO Confirm that we will permit the Sensor to send mixed payloads of Entity describes/Events?  Seems reasonable.**
 
 Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
 
@@ -964,10 +964,10 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](https://www.ietf.org/rfc/rfc3987.txt). | Required |
+| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
 | sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| dataVersion | String | A string value indicating which IMS Caliper specification version governs the form of the Caliper entities and events found in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) document URL used to resolve the meanings of the `data` payload's terms and values. | Required |
-| data | Array | An ordered list of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
+| dataVersion | String | A string value indicating which IMS Caliper specification version governs the form of the Caliper entities and events found in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) IRI used to resolve the meanings of the `data` payload's terms and values. | Required |
+| data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
 
 
 
@@ -1023,7 +1023,7 @@ When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/lat
 
 A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.  
    
-JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the coercion of values to particular data types.  Certain JSON object property values described in the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by layering an embedded context on top of the external context.  ~~This will allow users to indicate that the value of a term within the scope of the active context is an [IRI](https://www.ietf.org/rfc/rfc3987.txt) in place of the fully described JSON object.~~  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
+JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the coercion of values to particular data types.  Certain JSON object property values described in the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by layering an embedded context on top of the external context.  ~~This will allow users to indicate that the value of a term within the scope of the active context is an [IRI](#iriDef) in place of the fully described JSON object.~~  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
 
 The following example demonstrates the layering of an embedded context on top of the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in order to coerce the `actor` and `object` property value to their respective string identifiers.
 
@@ -1117,7 +1117,7 @@ If the Endpoint implementer wants the Endpoint to communicate more detailed info
 <a name="actions"/>
    
 ## 5.0 Appendix A. Actions
-Caliper includes a vocabulary of actions for describing learning interactions. Each action [Term](#termdef) is based on the past-tense form of an English (en-US) verb.  An action [Term](#termdef) can also indicate a change in a particular characteristic of the `object` (e.g., resolution, size, speed, volume).  Each action [Term](#termdef) is mapped to a persistent [IRI](https://www.ietf.org/rfc/rfc3987.txt) listed in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Each action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton University's WordNet® project in order to eliminate ambiguity and aid natural language processing.
+Caliper includes a vocabulary of actions for describing learning interactions. Each action [Term](#termdef) is based on the past-tense form of an English (en-US) verb.  An action [Term](#termdef) can also indicate a change in a particular characteristic of the `object` (e.g., resolution, size, speed, volume).  Each action [Term](#termdef) is mapped to a persistent [IRI](#iriDef) listed in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Each action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton University's WordNet® project in order to eliminate ambiguity and aid natural language processing.
  
  Each Caliper [Event](#event) type supports one one or more of the actions listed below.  The [Event](#event) `action` property string value MUST be set to the appropriate [Term](#termDef). Only one action may be specified per [Event](#event).
  
@@ -1129,7 +1129,7 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 | <a name="activated" />Activated | [http://purl.imsglobal.org/vocab/caliper/v1/action#Activated](http://purl.imsglobal.org/vocab/caliper/v1/action#Activated) | [make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v) |
 | <a name="added" />Added | [http://purl.imsglobal.org/vocab/caliper/v1/action#Added](http://purl.imsglobal.org/vocab/caliper/v1/action#Added) | [make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v) |
 | <a name="attached" />Attached | [http://purl.imsglobal.org/vocab/caliper/v1/action#Attached](http://purl.imsglobal.org/vocab/caliper/v1/action#Attached) | [cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v) |
-| <a name="bookmarked" />Bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) | An [IRI](https://www.ietf.org/rfc/rfc3987.txt) that marks a location of interest in a DigitalResource that is recorded for later retrieval.  |
+| <a name="bookmarked" />Bookmarked | [http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked](http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked) | An [IRI](#iriDef) that marks a location of interest in a DigitalResource that is recorded for later retrieval.  |
 | <a name="changedResolution" />ChangedResolution | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n) |
 | <a name="changedSize" />ChangedSize | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n) |
 | <a name="changedSpeed" />ChangedSpeed | [http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed](http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSpeed) | [cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n) |
@@ -1227,7 +1227,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AnnotationEvent (bookmarked)
 ```json
@@ -1323,7 +1323,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentEvent (started)
 ```json
@@ -1497,7 +1497,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentItem (started)
 ```json
@@ -1693,7 +1693,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssignableEvent (activated)
 ```json
@@ -1785,7 +1785,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ForumEvent (subscribed)
 ```json
@@ -1874,7 +1874,7 @@ TODO
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: MediaEvent (paused)
 ```json
@@ -1960,7 +1960,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: MessageEvent (posted)
 ```json
@@ -2126,7 +2126,7 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: NavigationEvent (navigated to)
 ```json
@@ -2211,7 +2211,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: OutcomeEvent (graded)
 ```json
@@ -2294,7 +2294,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 <a name="sessionEvent" />
 
@@ -2322,7 +2322,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | the relevant user [Session](#session) SHOULD be specified. | Recommended |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: SessionEvent (logged in)
 ```json
@@ -2447,7 +2447,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ThreadEvent (marked as read)
 ```json
@@ -2534,7 +2534,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ToolUseEvent (used)
 ```json
@@ -2612,7 +2612,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
-| extensions | Array | An ordered array of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example ViewEvent (viewed)
 ```json
@@ -2747,7 +2747,7 @@ A Caliper Assessment represents an assessment instrument such as a test or quiz.
 Assessment inherits all the properties and requirements defined by its superclasses [DigitalResourceCollection](#digitalResourceCollection) and [AssignableDigitalResource](#assignableDigitalResource).  Additional requirements are described below:
 
 * `type`: the string value `Assessment` MUST be specified.
-* `items`: an optional ordered array of [AssessmentItem](#assessmentItem) entities contained in the Assessment MAY be specified.
+* `items`: an optional ordered collection of [AssessmentItem](#assessmentItem) entities contained in the Assessment MAY be specified.
 
 #### Example
 ```json
@@ -3081,9 +3081,9 @@ DigitalResource inherits all the properties and requirements defined for its sup
 * `creators`: an optional ordered list of [Agent](#agent) entities typically of type [Person](#person), that are responsible for bringing this DigitalResource into being MAY be specified.
 * `mediaType`: an optional string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this DigitalResource MAY be specified.
 * ~~`objectType`: an optional string value that designates the type of this DigitalResource.~~ DEPRECATED and SHOULD NOT be referenced.
-* `keywords`: an optional ordered array of one or more string values that represent tags or labels that are used to identify this DigitalResource MAY be specified.  Analogous to [schema:keywords](http://schema.org/keywords).
-* `learningObjectives`: an optional ordered array of one or more [LearningObjectives](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this DigitalResource MAY be specified.
-* ~~`alignedlearningObjective`: an optional ordered array of one or more [LearningObjectives](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this DigitalResource MAY be specified.~~  DEPRECATED in favor of `learningObjectives`.
+* `keywords`: an optional ordered collection of one or more string values that represent tags or labels that are used to identify this DigitalResource MAY be specified.  Analogous to [schema:keywords](http://schema.org/keywords).
+* `learningObjectives`: an optional ordered collection of one or more [LearningObjectives](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this DigitalResource MAY be specified.
+* ~~`alignedlearningObjective`: an optional ordered collection of one or more [LearningObjectives](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this DigitalResource MAY be specified.~~  DEPRECATED in favor of `learningObjectives`.
 * `isPartOf`: a related [Entity](#entity), typically a DigitalResource, that includes or incorporates this DigitalResource as a part of its whole MAY be specified.  Analogous to [schema:isPartOf](http://schema.org/isPartOf) or [dcterms:isPartOf](http://purl.org/dc/terms/isPartOf).
 * `datePublished`: an optional date and time value expressed with millisecond precision that provides the publication date of this DigitalResource.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC.  Analogous to [schema:datePublished](http://schema.org/datePublished).
 * `version`: an optional string value that designates the current form or version of this DigitalResource.  Analogous to [schema:version](http://schema.org/version).
@@ -3124,7 +3124,7 @@ DigitalResource inherits all the properties and requirements defined for its sup
 <a name="digitalResourceCollection" />
 
 ### 7.13 DigitalResourceCollection
-A Caliper DigitalResourceCollection represents an ordered array of [DigitalResource](#digitalResources) entities.
+A Caliper DigitalResourceCollection represents an ordered collection of [DigitalResource](#digitalResources) entities.
 
 #### Superclass
 [DigitalResource](#digitalResource)
@@ -3133,7 +3133,7 @@ A Caliper DigitalResourceCollection represents an ordered array of [DigitalResou
 DigitalResourceCollection inherits all the properties and requirements defined for its superclass [DigitalResource](#digitalResources).  Additional properties and requirements are described below:
 
 * `type`: the string value `DigitalResourceCollection` MUST be specified. 
-* `items`: an optional ordered array of [DigitalResource](#digitalResources) entities that comprise this collection MAY be specified.
+* `items`: an optional ordered collection of [DigitalResource](#digitalResources) entities that comprise this collection MAY be specified.
 
 #### Subclasses 
 [Assessment](#assessment), [Forum](#forum), [Thread](#thread)
@@ -3280,7 +3280,7 @@ A Caliper FillinBlankResponse represents a form of response in which a responden
 FillinBlankResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below: 
 
 * `type`: the string value `FillinBlankResponse` MUST be specified.
-* `values`: an optional ordered array of one or more string values representing words, expressions or short phrases that constitutes the FillinBlankResponse MAY be specified.
+* `values`: an optional ordered collection of one or more string values representing words, expressions or short phrases that constitutes the FillinBlankResponse MAY be specified.
 
 #### Example
 ```json
@@ -3326,7 +3326,7 @@ A Caliper Forum represents a channel or virtual space in which group discussions
 Frame inherits all the properties and requirements defined for its superclass [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below: 
   
  * `type`: the string value `Forum` MUST be specified. 
- * `items`: an optional ordered array of [Thread](#thread) entities that comprise this Forum MAY be specified.
+ * `items`: an optional ordered collection of [Thread](#thread) entities that comprise this Forum MAY be specified.
 
 #### Example
 ```json
@@ -3668,7 +3668,7 @@ Membership inherits all the properties and requirements defined for its supercla
 * `type`: the string value `Membership` MUST be specified.
 * `organization`: the [Organization](#organization) associated with this Membership SHOULD be specified.
 * `member`: the [Person](#person) associated with this Membership SHOULD be specified.
-* `roles`: an optional ordered array of organizational roles assigned to the member SHOULD be specified.  If one or more rols are specified the value(s) MUST be chosen from the list of Caliper defined [roles](#roles].
+* `roles`: an optional ordered collection of organizational roles assigned to the member SHOULD be specified.  If one or more rols are specified the value(s) MUST be chosen from the list of Caliper defined [roles](#roles].
 * `status`: an optional string value that indicates the member's current status SHOULD be specified.  If a status is specified, the value MUST be set to the one of the following defined states:  [Active](#active) or [Inactive](#inactive).
 
 #### Example
@@ -3709,7 +3709,7 @@ Message inherits all the properties and requirements defined for its superclass 
 * `type`: the string value `Message` MUST be specified.
 * `replyTo`: a [Message](#message) that represents the post to which this Message is directed in reply SHOULD be referenced.  Analogous to [sioc:reply_of](http://rdfs.org/sioc/spec/#term_reply_of).
 * `body`: an optional string value comprising a plain-text rendering of the body content of the Message MAY be specified.  Analogous to [sioc:content](http://rdfs.org/sioc/spec/#content). |
-* `attachments`: | an optional ordered array of one or more [DigitalResource](#digitalResource) entities attached to this Message MAY be specified.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment).
+* `attachments`: | an optional ordered collection of one or more [DigitalResource](#digitalResource) entities attached to this Message MAY be specified.  Analogous to [sioc:attachment](http://rdfs.org/sioc/spec/#term_attachment).
 
 #### Example
 ```json
@@ -3807,7 +3807,7 @@ A Caliper MultipleResponseResponse represents a form of response in which a resp
 MultipleResponseResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below:
 
 * `type`: the string value `MultipleResponseResponse` MUST be specified.
-* `values`: an optional ordered array of one or more selected options MAY be specified.
+* `values`: an optional ordered collection of one or more selected options MAY be specified.
 
 #### Example
 ```json
@@ -3854,7 +3854,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 * `type`: the string value `Organization` MUST be specified.
 * `subOrganizationOf`: the parent [Organization](#organization) of this Organization MAY be specified.
-* `members`: ordered array of [Agent](#agent) members MAY be specified.
+* `members`: ordered collection of [Agent](#agent) members MAY be specified.
 
 #### Subclasses 
 [CourseOffering](#CourseOffering), [CourseSection](#CourseSection), [Group](#group)
@@ -4038,7 +4038,7 @@ A Caliper SelectTextResponse represents a response that identifies text or a map
 SelectTextResponse inherits all the properties and requirements defined for its superclass [Response](#response).  Additional properties and requirements are described below:
 
 * `type`: the string value `SelectTextResponse` MUST be specified.
-* `values`: an optional ordered array of one or more selected options MAY be specified.
+* `values`: an optional ordered collection of one or more selected options MAY be specified.
 
 #### Example
 ```json
@@ -4119,7 +4119,7 @@ A Caliper SharedAnnotation represents the act of sharing a reference to a Digita
 SharedAnnotation inherits all the properties and requirements defined for its superclass [Annotation](#annotation).  Additional properties and requirements are described below:
 
 * `type`: the string value `SharedAnnotation` MUST be specified.
-* `withAgents`: an optional ordered array of one or more [Agent](#agent) entities, typically of type [Person](#person), with whom the annotated DigitalResource has been shared.
+* `withAgents`: an optional ordered collection of one or more [Agent](#agent) entities, typically of type [Person](#person), with whom the annotated DigitalResource has been shared.
 
 #### Example
 ```json
@@ -4187,7 +4187,7 @@ A Caliper TagAnnotation represents the act of tagging a DigitalResource with tag
 TagAnnotation inherits all the properties and requirements defined for its superclass [Annotation](#annotation).  Additional properties and requirements are described below:
 
 * `type`: the string value `TagAnnotation` MUST be specified.
-* `tags`: an optional ordered array of one or more string values that represent the tags associated with the annotated [DigitalResource](#digitalResource).
+* `tags`: an optional ordered collection of one or more string values that represent the tags associated with the annotated [DigitalResource](#digitalResource).
 
 #### Example
 ```json
@@ -4220,7 +4220,7 @@ A Caliper Thread represents a series of one or more messages that share a common
 Thread inherits all the properties and requirements defined for its superclass [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below:
 
 * `type`: the string value `Thread` MUST be specified.
-* `items`: an optional ordered array of [Message](#message) entities that comprise this Forum MAY be specified.
+* `items`: an optional ordered collection of [Message](#message) entities that comprise this Forum MAY be specified.
 
 #### Example
 ```json
