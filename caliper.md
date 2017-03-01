@@ -138,6 +138,10 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 __Actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
 
+<a name="blankNodeDef" />
+
+__Blank Node__: TODO
+
 <a name="actionDef" />
 
 __Action__: something done to accomplish a purpose
@@ -152,7 +156,7 @@ __Endpoint__: a receiver of Caliper messages that is bound to a specific network
 
 <a name="entityDef" />
 
-__Entity__: describes an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity)types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  
+__Entity__: describes an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
 
 <a name="eventDef" />
 
@@ -198,6 +202,9 @@ __Term__: a word or short expression that expands to an [IRI](#iriDef) when mapp
 
 __Type Coercion__: TODO
 
+__UUID__: TODO. . . . Each Caliper [Event](#event) is assigned a UUID for the purposes of auditing and retrieval.
+
+
 <a name="infoModel" />
 
 ## 2.0 Information Model 
@@ -216,11 +223,13 @@ Caliper entities are largely self-describing via a required `type` property.  A 
 Other [Entity](#entity) properties are descriptive in nature or link the [Entity](#entity) to other related entities.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Certain [Entity](#entity) types like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties in order to allow for a more complete representation of the object.
 
 #### Properties
-The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.    
+The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
+   
+**What's our take on blank nodes for things that we don't want to identify with an IRI?**
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A unique identifier assigned to the [Entity](#entity) in the form of a valid [IRI](#iriDef) MUST be specified.  The [IRI](#iriDef) SHOULD be persistent as well as dereferenceable.  ~~In cases where an [IRI](#iriDef) is inappropriate, an Entity MUST be assigned a blank node identifier.~~ | Required |
+| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
@@ -940,7 +949,66 @@ Caliper [Event](#event) data is [Linked Data](#linkedData).  A Caliper [Event](#
 
 In a world where learners are increasingly interacting with an array of learning applications the need to draw together learning data generated from multiple sources and discern its meaning across application boundaries is of vital importance.  *Caliperized* data streams are likely to be aggregated and blended in an effort to discern new patterns, behaviors and relationships.  [JSON-LD](#jsonldDef) provides the representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.
 
-### 3.1 Context
+### 3.x Context
+
+Caliper defines . . .
+
+A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.
+
+### 3.x Identifiers
+[Linked Data](#linkedData) relies on [IRIs](#iriDef)/URIs for the identification and retrieval of resources.  Likewise, [JSON-LD](#jsonldDef) specifies the use of [IRIs](#iriDef) for identifying most nodes (i.e., JSON objects) and their attributes.  In JSON-LD, IRIs may be represented either as an absolute IRI containing a scheme, path and optional query and fragment segments or as a relative IRI minus the scheme and/or domain that is resolved relative to a base IRI.  If an [IRI](#iriDef) is deemed inappropriate for the resource a [blank node](#blankNodeDef) identifier may be assigned.  [JSON-LD](#jsonldDef) provides a special `@id` keyword for assigning identifiers to nodes.
+   
+In Caliper, the [JSON-LD](#jsonldDef) `@id` keyword is aliased as `id` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  This is done in order to avoid the temptation of employing [JSON-LD](#jsonldDef) keywords as JSON object property names and is aligned with [JSON-LD](#jsonldDef) community practice.  Thus, each Caliper [Entity](#entity) described by the information model is provisioned with an `id` rather than `@id` property for identifying the resource.  
+
+Every [Entity](#entity) associated with a Caliper [Event](#event) MUST be assigned an `id` in the form of a valid [IRI](#iriDef) or a blank node identifier. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity).  Use of the URN scheme in place of an [IRI](#iriDef) is inappropriate since such an identifier precludes the possibility of locating and retrieving the named resource.
+
+A Caliper [JSON-LD](#jsonldDef) document is a representation of a directed graph.  Each [Entity](#entity) described therein is a node in the graph.  The enclosing [Event](#event) is not considered a graph element and is instead identified by a [UUID](#uuidDef) for the purposes of auditing and retrieval.
+
+**Is the above UUID rationale sufficient?**
+
+### 3.x Types
+[JSON-LD](#jsonldDef) employs the `@type` keyword to indicate the data type of a node or typed value.  As with the aliasing of the `@id` keyword, `@type` is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.  Typed values are expressed in [JSON-LD](#jsonldDef)
+
+utilizing the `@type` keyword when defining a [Term](#term) within a `@context`
+utilizing a JSON object with a @value member 
+utilizing a native JSON type like a string, number or boolean.
+
+
+#### Example: Value type
+```json
+{
+    "@context": {
+      "caliper": "http://purl.imsglobal.org/caliper/",
+      . . . 
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      . . .  
+      "description": {
+            "@id": "caliper:description",
+            "@type": "xsd:string"
+      }
+      . . .
+    }
+}
+
+```
+
+
+
+
+@type
+Used to set the data type of a node or typed value. This keyword is described in section 4.4 Typed Values.
+
+
+
+A Caliper [JSON-LD](#jsonldDef) document is a representation of a directed graph.  Each [Entity](#entity) described therein constitutes a node in the graph.  
+
+In Caliper, the [JSON-LD](#jsonldDef) `@type` keyword is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
+
+
+A Caliper [Entity](#entity) is a node in a directed graph.  
+
+
+### 3.x Context
 
 A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.
 
@@ -999,6 +1067,13 @@ This local context applies to the object in which it appears and each object “
 If this local context is at the “top-most” layer of a Caliper document (the Entity or Event in question with the local context is directly contained in a Caliper Envelope), then the context should include as the first element a reference to the Caliper remote context document (in the example, “http://purl.imsglobal.org/ctx/caliper/v1p1”).
 
 The receiver of a Caliper Event or Entity with a property having a URI value that should have been a contained object, without this form indicating type coercion will not be considered as valid.
+
+
+#### Transformations
+**Provide a brief overview**
+
+[JSON-LD](#jsonldDef) defines processing algorithms and API for transforming . . . 
+
 
 <a name="sensor" />
 
@@ -1065,6 +1140,12 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
    ]
 }
 ```
+
+### 4.x Sending Events
+
+
+### 4.x Sending Describes
+
 
 <a name="transport" />
 
@@ -4526,9 +4607,13 @@ The following Caliper Working Group participants contributed to the writing of t
 
 ### 12.0 References
 
-<a name="jsonldSpec" />
+<a name="jsonldSyntax" />
 
-__JSON-LD__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström. JSON-LD 1.0. A JSON-based Serialization for Linked Data. 16 January 2014.  URL: http://json-ld.org/spec/latest/json-ld/
+__JSON-LD Syntax__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström.  JSON-LD 1.1.  A JSON-based Serialization for Linked Data. 15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld/
+
+<a name="jsonldProcessing" />
+
+__JSON-LD Processing__  D. Longley, G. Kellog, M. Lanthaler, M. Sporny.  JSON-LD 1.1 Processing Algorithms and API.  15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld-api/
 
 <a name="linkedData" />
 
