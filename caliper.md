@@ -4517,7 +4517,7 @@ TODO Intro
 ## 9.0 Appendix E. Roles
 
 ### Roles
-One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate term string value:
+One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate [Term](#term) string value:
 
 | Term | IRI |
 | :--- | :-- | 
@@ -4577,7 +4577,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 <a name="status" />
 
 ### 10.0 Appendix F. Status
-The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate term string value:
+The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate [Term](#term) string value:
 
 | Term | IRI |
 | :--- | :-- | 
