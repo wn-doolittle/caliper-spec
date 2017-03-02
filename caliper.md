@@ -35,9 +35,12 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
       * 2.3.8 [Reading Profile](#readingProfile)
       * 2.3.9 [Session Profile](#sessionProfile)
       * 2.3.10 [Tool Use Profile](#toolUseProfile)
-* 3.0 [JSON-LD Data Format](#dataFormat)
+* 3.0 [JSON-LD](#jsonLd)
   * 3.1 [Context](#jsonldContext)
-  * 3.2 [Type Coercion](#jsonldContext)
+  * 3.2 [Identifiers](#jsonldIdentifiers)
+  * 3.3 [Types](#jsonldTypes)
+  * 3.2 [Type Coercion](#jsonldTypeCoercion)
+  * 3.5 [Processing Algorithms](#jsonldProcessing)
 * 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#behavior)
   * 4.2 [Envelope](#envelope)
@@ -126,7 +129,7 @@ The Caliper Analytics® specification attempts to address the underlying interop
 <a name="conventions" />
 
 ### 1.1 Conventions
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered non-conformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
 
 <a name="definitions" />
 
@@ -225,7 +228,7 @@ Other [Entity](#entity) properties are descriptive in nature or link the [Entity
 #### Properties
 The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
 
-**If an IRI is deemed inappropriate as an identifier what do we recommend--a blank node?  See 
+**TODO If an IRI is deemed inappropriate as an identifier what do we recommend--a blank node?  See 
 http://json-ld.org/spec/latest/json-ld/#identifying-blank-nodes**
 
 "It is worth nothing that blank node identifiers may be relabeled during processing. If a developer finds that they refer to the blank node more than once, they should consider naming the node using a dereferenceable IRI so that it can also be referenced from other documents."
@@ -337,6 +340,8 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
 <a name="infoModelProfiles" />
 
 ### 2.3 Metric Profiles
+**TODO emphasize that Metric Profiles are by their nature opinionated and deliberately so.**
+
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
 Think of each metric profile as a stand-alone, logical container or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
@@ -940,43 +945,53 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 }
 ```
 
-<a name="dataFormat" />
+<a name="jsonLd" />
 
-## 3.0 JSON-LD Data Format
-**Revise**
-"elaborate on structured data, a little bit more [Linked Data](#linkedData), the blending of data from diverse sources, plus data sharing between institutions."
+## 3.0 JSON-LD
+**TODO Revise elaborate machine-to-machine exchange, plus data sharing between institutions."**
 
 Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of [Linked Data](#linkedData) and graphs.  
 
-Caliper [Event](#event) data is [Linked Data](#linkedData).  A Caliper [Event](#event) links to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data and so on.  The [Linked Data](#linkedData) principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies have influenced Caliper's design: use HTTP [IRIs](#iriDef)/URIs as names for entities; use HTTP [IRIs](#iriDef)/URIs so that representations of entities (e.g., people, organizations, resources) can be retrieved using a standard format; refer to other relevant entities by way of their HTTP [IRIs](#iriDef)/URIs in order to encourage further discovery of new relationships.
+Caliper [Event](#event) data exhibits the raw ~~basic~~ characteristics of [Linked Data](#linkedData).  A Caliper [Event](#event) links to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data and so on.  The [Linked Data](#linkedData) principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies also influence Caliper's design.  Caliper invites ~~requires~~ use of [IRIs](#iriDef)/URIs as names for entities.  Caliper prefers dereferenceable HTTP [IRIs](#iriDef)/URIs so that representations of entities (e.g., people, organizations, resources) can be retrieved ~~using a standard format~~.  Caliper encourages discovery of new relationships by providing an information model and standard vocabulary that can be shared across Ed Tech.  In a world where learners now interact with an array of learning applications the need to aggregate data streams generated from multiple sources in order to discern patterns and behaviors that transcend application boundaries is of vital importance.   
 
-[Linked Data](#linkedData) concerns also animate [JSON-LD](http://json-ld.org/spec/latest/json-ld/), Caliper's chosen syntax for representing learning activity data as [Linked Data](#linkedData) using a JSON-based interchange format.  [JSON-LD](#jsonldDef) encourages use of globally unique, persistent, dereferenceable [IRIs](#iriDef) for entities (i.e., nodes) and attributes.  [JSON-LD](#jsonldDef) also provides a means of expressing relationships between entities in one or more directed graphs (a JSON-LD document is a representation of a directed graph).  Crucially, for machine-to-machine data exchange, [JSON-LD](#jsonldDef) provides Caliper with a mechanism called a [context](#contextDef) for rendering comprehensible the underlying semantics of its JSON-based documents via a mapping of the [Terms](#terms) employed to one or more published vocabularies.  
+[Linked Data](#linkedData) concerns also animate [JSON-LD](http://json-ld.org/spec/latest/json-ld/), Caliper's chosen syntax for representing learning activity data as [Linked Data](#linkedData) using a JSON-based interchange format.  [JSON-LD](#jsonldDef) encourages use of globally unique, persistent, dereferenceable [IRIs](#iriDef) for entities (i.e., nodes) and attributes.  [JSON-LD](#jsonldDef) also provides a means of expressing relationships between entities in one or more directed graphs (a JSON-LD document is a representation of a directed graph).  Crucially, for machine-to-machine data exchange, [JSON-LD](#jsonldDef) provides Caliper with a mechanism called a [context](#contextDef) for rendering comprehensible the underlying semantics of its JSON-based documents via a mapping of the [Terms](#terms) employed that link out to concepts described in one or more published vocabularies.  [JSON-LD](#jsonldDef) provides Caliper with the necessary representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.  
 
-In a world where learners are increasingly interacting with an array of learning applications the need to draw together learning data generated from multiple sources and discern its meaning across application boundaries is of vital importance.  *Caliperized* data streams are likely to be aggregated and blended in an effort to discern new patterns, behaviors and relationships.  [JSON-LD](#jsonldDef) provides the representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.
+<a name="jsonldContext" />
 
-### 3.x Context
+### 3.1 Context
+**TODO FORBID OVERRIDING OF CALIPER DEFINED KEYS, i.e., caliper:Person overridden as schema:Person by a trailing local context.**
 
-Caliper defines . . .
+Caliper [JSON-LD](#jsonldDef) documents feature a context, denoted by the `@context` keyword, that is employed to map document [Terms](#termDef) to [IRIs](#iriDef) that then link out to one or more controlled vocabularies.  Inclusion of a [JSON-LD](#jsonldDef) context provides an economical way for Caliper to communicate document semantics to services interested in consuming Caliper event data.
 
-A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.
+[JSON-LD](#jsonldDef) contexts can be inserted inline or located in a file external to the document and referenced.  In the case of Caliper an external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) is available and MUST be referenced in Caliper [JSON-LD](#jsonldDef) documents.  Each Caliper [Event](#event) and [Entity](#entity) describe emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that provides a context definition.  That said, defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper JSON-LD document it SHOULD be omitted when serializing the object.  
 
-### 3.x Context
+**TODO craft a new example, this is one is used elsewhere**
 
-A [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context may be referenced any time a Caliper [Entity](#entity) is defined. That said, referencing a context that duplicates the [Event](#event) context SHOULD be avoided.
-
-#### Example
+#### Example: remote Caliper context
 ```json
-
-
-
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "type": "Event",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Created",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "type": "Document",
+    "name": "Course Syllabus",
+    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "version": "1"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "uuid": "3a648e68-f00d-4c08-aa59-8738e1884f2c"
+}
 ```
 
-#### Requirements
-* The [Event](#event) types and [Entity](#entity) "describes" that constitute an envelope's `data` payload messages MUST be represented as [JSON-LD](http://json-ld.org/spec/latest/json-ld/).  
-* When representing an [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  
-* When representing an [Entity](#entity)  as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper context document [http://purl.imsglobal.org/ctx/caliper/v1p1](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted.
+<a name="jsonldIdentifiers" />
 
-### 3.x Identifiers
+### 3.2 Identifiers
 [Linked Data](#linkedData) relies on [IRIs](#iriDef)/URIs for the identification and retrieval of resources.  Likewise, [JSON-LD](#jsonldDef) specifies the use of [IRIs](#iriDef) for identifying most nodes (i.e., JSON objects) and their attributes.  In JSON-LD, IRIs may be represented either as an absolute IRI containing a scheme, path and optional query and fragment segments or as a relative IRI minus the scheme and/or domain that is resolved relative to a base IRI.  If an [IRI](#iriDef) is deemed inappropriate for the resource a [blank node](#blankNodeDef) identifier may be assigned.  [JSON-LD](#jsonldDef) provides a special `@id` keyword for assigning identifiers to nodes.
    
 In Caliper, the [JSON-LD](#jsonldDef) `@id` keyword is aliased as `id` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  This is done in order to avoid the temptation of employing [JSON-LD](#jsonldDef) keywords as JSON object property names and is aligned with [JSON-LD](#jsonldDef) community practice.  Thus, each Caliper [Entity](#entity) described by the information model is provisioned with an `id` rather than `@id` property for identifying the resource.  
@@ -985,9 +1000,11 @@ Every [Entity](#entity) associated with a Caliper [Event](#event) MUST be assign
 
 A Caliper [JSON-LD](#jsonldDef) document is a representation of a directed graph.  Each [Entity](#entity) described therein is a node in the graph.  The enclosing [Event](#event) is not considered a graph element and is instead identified by a [UUID](#uuidDef) for the purposes of auditing and retrieval.
 
-**Is the above UUID rationale sufficient? Is the enclosing Event not a graph element--is it not a node type?**
+**TODO Is the above UUID rationale sufficient? Satisfy ourselves that the enclosing Event is not a graph element--i.e., not a node type?  Requirements: 1) exists outside of a JSON-LD context, 2) does not contain the @value, @list, or @set keywords, 3) is NOT the top-most JSON object in the JSON-LD document consisting of no other members than @graph and @context. See http://json-ld.org/spec/latest/json-ld/#node-objects**
 
-### 3.x Types
+<a name="jsonldTypes" />
+
+### 3.3 Types
 [JSON-LD](#jsonldDef) employs the `@type` keyword to indicate the data type of a node or typed value.  As with the aliasing of the `@id` keyword, `@type` is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.  [JSON-LD](#jsonldDef) employs a number of different mechanisms for expressing typed values.  The IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) currently includes the following typed values: node types, value types and object properties with values that are mapped to a [Term](#term) defined in the active context. 
 
 As the example below illustrates, the node type specifies the type of [Entity](#entity) being described like a [Person](#person) or [Message](#message) in the example below.  A value type specifies the data type of particular value like a string, integer, boolean or date.  [Terms](#term) such as `body`, `dateCreated`, `eventTime` and `uuid` are typed in this way.  An object property like `action` in the example references a `@vocab` keyword indicating that the property value is mapped to a [Term](#term) defined in the active context, in this case `Posted`. 
@@ -1028,13 +1045,12 @@ As the example below illustrates, the node type specifies the type of [Entity](#
     "uuid": "0d015a85-abf5-49ee-abb1-46dbd57fe64e"
 }
 ```
+<a name="jsonldTypeCoercion" />
 
-### 3.2 Type Coercion
-**FORBID OVERRIDING OF KEYS**
+### 3.4 Type Coercion
+[JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the *coercion* of values to particular data types.  Certain Caliper JSON object property values described in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by "layering" an embedded context over the Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
 
-[JSON-LD](http://json-ld.org/spec/latest/json-ld/) supports the coercion of values to particular data types.  Certain JSON object property values described in the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) MAY be coerced to a string identifier by layering an embedded context on top of the external context.  ~~This will allow users to indicate that the value of a term within the scope of the active context is an [IRI](#iriDef) in place of the fully described JSON object.~~  Duplicate context terms are overridden by [JSON-LD](http://json-ld.org/spec/latest/json-ld/) using a most-recently-defined-wins mechanism.    
-
-The following example demonstrates the layering of an embedded context on top of the external Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in order to coerce the `actor` and `object` property value to their respective string identifiers.
+Coercing object properties requires an explicit declaration in the active context.  The following example demonstrates the use of an inline context object to coerce both the `actor` and `object` property values to their respective `@id` values (aliased as `id').
 
 ```json
 {
@@ -1060,25 +1076,28 @@ The following example demonstrates the layering of an embedded context on top of
     ]
 }
 ```
-Any Caliper 1.1 Sensor can send a Caliper Event or Entity that uses precisely this form to indicate that an object property value is to be coerced to a string IRI, which the receiver should understand is the id property of the Entity with properties defined elsewhere (notice in the example that the actor property’s value in 2b is the same value as the actor.id property value in 2a).
+A Caliper [Sensor](#sensor) MAY send an [Event](#event) or [Entity](#entity) that includes an array of local contexts to indicate that one or more object property values are to be coerced to an [IRI](#iriDef).  The external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) value MUST be listed first in the `@context` array.  Additional inline contexts MUST then be added that identify which object properties are to be coerced.  The following format applies where the `edApp` [Term](#term) serves as an example object property with an (aliased) `id` used as value to indicate the string value of [Term](#coerced) is to be interpreted as an [IRI](#iriDef) within the body of the JSON-LD document. 
+  
+```json
+{
+  "edApp": {"id": "SoftwareApplication", "type": "id"}
+}
 
-To perform this value substitution for an object property, the Sensor must use the precise form of the local context:
+```  
 
-A  JSON array containing an entry for each type-coerced property described as follows (the italicized names are placeholders: the term is the property being coerced (“actor” in the example), and type is the known Caliper entity type of the object the identifier should get understood as (“Person” in the example):
+An [Endpoint](#endpoint) must be capable of interpreting coerced values of this type as [Entity](#entity) identifiers.  The receiver of a Caliper [Event](#event) or [Entity](#entity) with coerced object properties but lacking an explicit declaration embedded in an inline context will be considered nonconformant.
 
-{ “term”: {“id”: “entity type”, “type”: “id” } }
+<a name="jsonldProcessing" />
 
-This local context applies to the object in which it appears and each object “further down” in contained scope (so all instances of the field name at that level in the scope and farther down must also be a URI).
-If this local context is at the “top-most” layer of a Caliper document (the Entity or Event in question with the local context is directly contained in a Caliper Envelope), then the context should include as the first element a reference to the Caliper remote context document (in the example, “http://purl.imsglobal.org/ctx/caliper/v1p1”).
+### 3.5 Processing Algorithms
+**TODO Provide the briefest of overviews (OR NOT).  Make clear that endpoints are not required to utilize JSON-LD parsers to transform Caliper JSON-LD documents.**
 
-The receiver of a Caliper Event or Entity with a property having a URI value that should have been a contained object, without this form indicating type coercion will not be considered as valid.
+[JSON-LD](#jsonldDef) defines a number of processing algorithms for transforming JSON-LD documents. . . .  
 
-
-#### Transformations
-**Provide a brief overview**
-
-[JSON-LD](#jsonldDef) defines processing algorithms and API for transforming . . . 
-
+* expansion
+* compaction
+* flattening
+* RDF serialization/deserialization.
 
 <a name="sensor" />
 
@@ -1100,7 +1119,7 @@ A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and 
 ### 4.2 Envelope
 **TODO Confirm that we will permit the Sensor to send mixed payloads of Entity describes/Events.  I'm +1.**
 
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  
+Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) "describe" included in an envelope's `data` payload messages MUST be expressed as a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) document. 
 
 #### Properties
 Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
