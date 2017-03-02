@@ -994,7 +994,7 @@ In Caliper, the [JSON-LD](#jsonldDef) `@id` keyword is aliased as `id` in the ex
 
 Every [Entity](#entity) associated with a Caliper [Event](#event) MUST be assigned an `id` in the form of a valid [IRI](#iriDef) or a blank node identifier. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity).  Use of the URN scheme in place of an [IRI](#iriDef) is inappropriate since such an identifier precludes the possibility of locating and retrieving the named resource.
 
-A Caliper [JSON-LD](#jsonldDef) document is a representation of a directed graph.  Each [Entity](#entity) described therein is a node in the graph.  The enclosing [Event](#event) is not considered a graph element and is instead identified by a [UUID](#uuidDef) for the purposes of auditing and retrieval.
+A Caliper [JSON-LD](#jsonldDef) document is a representation of a directed graph.  Each [Entity](#entity) described therein is a node in the graph.  The enclosing [Event](#event) is not considered a node and is instead identified by a [UUID](#uuidDef) for the purposes of auditing and retrieval.
 
 **TODO Is the above UUID rationale sufficient? Satisfy ourselves that the enclosing Event is not a graph element--i.e., not a node type?  Requirements: 1) exists outside of a JSON-LD context, 2) does not contain the @value, @list, or @set keywords, 3) is NOT the top-most JSON object in the JSON-LD document consisting of no other members than @graph and @context. See http://json-ld.org/spec/latest/json-ld/#node-objects**
 
@@ -1103,10 +1103,7 @@ Caliper defines an application programming interface (the Sensor API™) for mar
 <a name="behavior" />
 
 ### 4.1 Behavior
-A Caliper [Sensor](#sensor) MUST be capable of performing the following operations:
-
-* send events: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or more Caliper [Event](#event) types to a target endpoint.
-* describe entities: i.e., emit a Caliper [Envelope](#envelope) containing a `data` payload consisting of one or Caliper [Entity](#entity) types to a target endpoint.
+A Caliper [Sensor](#sensor) MUST be capable of sending an [Envelope](#envelope) containing a `data` payload consisting of one or more Caliper events and entities to a target endpoint.
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
 
