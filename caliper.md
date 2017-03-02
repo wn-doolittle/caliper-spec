@@ -2540,7 +2540,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 | type | [Term](#termDef) | The string value MUST be set to the term *ThreadEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event).  | Required |
-| object | The [Thread](#thread) that constitutes the `object` of the interaction MUST be specified. | Required |
+| object | [Thread](#thread) | The [Thread](#thread) that constitutes the `object` of the interaction MUST be specified. | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
