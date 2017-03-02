@@ -20,7 +20,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 ## Table of Contents
 * 1.0 [Introduction](#introduction)
   * 1.1 [Conventions](#conventions)
-  * 1.2 [Terminology](#terminology
+  * 1.2 [Terminology](#terminology)
 * 2.0 [Information Model](#infoModel)
   * 2.1 [Entity](#entity)
   * 2.2 [Event](#event)
