@@ -1072,7 +1072,7 @@ Coercing object properties requires an explicit declaration in the active contex
     ]
 }
 ```
-A Caliper [Sensor](#sensor) MAY send an [Event](#event) or [Entity](#entity) that includes an array of local contexts to indicate that one or more object property values are to be coerced to an [IRI](#iriDef).  The external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) value MUST be listed first in the `@context` array.  Additional inline contexts MUST then be added that identify which object properties are to be coerced.  The following format applies where the `edApp` [Term](#term) serves as an example object property with an (aliased) `id` used as value to indicate the string value of [Term](#coerced) is to be interpreted as an [IRI](#iriDef) within the body of the JSON-LD document. 
+A Caliper [Sensor](#sensor) MAY send an [Event](#event) or [Entity](#entity) that includes an array of local contexts to indicate that one or more object property values are to be coerced to an [IRI](#iriDef).  The external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) value MUST be listed first in the `@context` array.  Additional inline contexts MUST then be added that identify which object properties are to be coerced.  The following format applies where the `edApp` [Term](#term) serves as an example object property with an (aliased) `id` used as a value to indicate the string value of [Term](#coerced) is to be interpreted as an [IRI](#iriDef) within the body of the JSON-LD document. 
   
 ```json
 {
@@ -1190,32 +1190,32 @@ When sending messages to an [Endpoint](#endpoint), a Caliper [Sensor](#sensor) S
 
 ### 4.4 Endpoint
 
-A Caliper endpoint MUST at a minimum be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method; current Caliper certification tests require that the endpoint receive data from the IMS certification suite using this form of transport. Caliper endpoints MAY use other methods to receive data from sensors.
+A Caliper [Endpoint](#endpoint) MUST at a minimum be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method; current Caliper certification tests require that the endpoint receive data from the IMS certification suite using this form of transport. Caliper endpoints MAY use other methods to receive data from sensors.
 
 For transport and security and authentication, Caliper sensors SHOULD:
 
 * Use HTTPS to secure the transport between itself and sensors, and if so, MUST provide a valid HTTP Certificate.
 * Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the sensor itself.
 
-Caliper endpoints MAY support additional modes of transport security and authentication; the certification tests for Caliper endpoints require the endpoint receive data from the certification service using HTTPS and a bearer token credential consistent with [RFC 6750](#rfc6750).
+A Caliper [Endpoint](#endpoint) MAY support additional modes of transport security and authentication; the certification tests require the [Endpoint](#endpoint) receive data from the certification service using HTTPS and a bearer token credential consistent with [RFC 6750](#rfc6750).
 
 <a name="endpointResponses" />
 
 ### 4.5 Endpoint HTTPS responses
 
-When using HTTPS as the transport, the Caliper Endpoint MUST conform to these points of response behaviour. Caliper Endpoint implementers should bear in mind that the Caliper Sensors sending them messages may not be in a position to perform sophisticated error handling.
+When using HTTPS as the transport, the Caliper [Endpoint](#endpoint) MUST conform to these points of response behaviour. Caliper [Endpoint](#endpoint) implementers should bear in mind that Caliper [Sensors](#sensor) sending them messages may not be in a position to perform sophisticated error handling.
 
-To signal to the Sensor that it has received the Sensor's message, and no error state pertains (see following), the Endpoint MUST reply with a `2xx` series success. The Endpoint SHOULD use the `200 OK` response, but it MAY instead choose to send a `201 Created` response (to indicate successful receipt and persistence of the Sensor message's contained data payload) or a `202 Accepted` response (to indicate successful acceptance of the Caliper Envelope and queueing for further processing). The body of a successful response SHOULD be empty.
+To signal to the [Sensor](#sensor) that it has received an emitted message, and no error state pertains (see following), the [Endpoint](#endpoint) MUST reply with a `2xx` series success. The [Endpoint](#endpoint) SHOULD use the `200 OK` response, but it MAY instead choose to send a `201 Created` response (to indicate successful receipt and persistence of the [Sensor](#sensor) message's contained data payload) or a `202 Accepted` response (to indicate successful acceptance of the Caliper [Envelope](#envelope) and queueing for further processing). The body of a successful response SHOULD be empty.
 
-If the Sensor sends a malformed Caliper Envelope (it does not contain `sensor`, `sendTime`, and `dataVersion`, and `data` properties, of the required form), the Endpoint SHOULD reply with a `400 Bad Request` response. (Note that the Endpoint SHOULD NOT send this response if the envelope contains a `dataVersion` value, but it's one that the endpoint cannot support: in this case, the Endpoint SHOULD send a `422 Unprocessable Entity` response instead.)
+If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion`, and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response. (Note that the [Endpoint](#endpoint) SHOULD NOT send this response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint)  SHOULD send a `422 Unprocessable Entity` response instead.)
 
-If the Sensor sends a message with a content-type other than `application/json` or `application/ld+json`, the Endpoint SHOULD reply with a `415 Unsupported Media Type` response.
+If the [Sensor](#sensor) sends a message with a content-type other than `application/json` or `application/ld+json`, the [Endpoint](#endpoint) SHOULD reply with a `415 Unsupported Media Type` response.
 
-If the Sensor sends a message without an Authorization Request Header Field of the suggested form, or if the Sensor sends a token credential that the Endpoint is unable to validate or determine has sufficient privilege to submit Caliper data, the Endpoint SHOULD reply with a `401 Unauthorized` response.
+If the [Sensor](#sensor) sends a message without an Authorization Request Header Field of the suggested form, or if the [Sensor](#sensor) sends a token credential that the [Endpoint](#endpoint) is unable to validate or determine has sufficient privilege to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
 
-The Endpoint MAY respond to Sensor messages with other standard HTTP status codes to indicate result disposition of varying kinds.
+The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions of varying kinds.
 
-If the Endpoint implementer wants the Endpoint to communicate more detailed information about problem states when receiving messages, the Endpoint SHOULD use the standard method for reporting problem details described in [RFC 7807, Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807).
+If the [Endpoint](#endpoint) implementer wants the [Endpoint](#endpoint) to communicate more detailed information about problem states when receiving messages, the [Endpoint](#endpoint) SHOULD use the standard method for reporting problem details described in [RFC 7807](#rfc7807).
 
 <a name="actions"/>
    
@@ -4658,6 +4658,10 @@ __RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Ide
 <a name="rfc6750 />
 
 __RFC 6750__ IETF.  TODO Add reference
+
+<a name="rfc7807 />
+
+__RFC 7807__ IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2016.  URL: https://tools.ietf.org/html/rfc7807
 
 <a name="caliperWhitepaper" />
 
