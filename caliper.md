@@ -266,8 +266,8 @@ When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/late
             "type": "Person"
         }
     ],
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "datePublished": "2016-10-01T06:00:00.000Z",
+    "dateCreated": "2017-08-01T06:00:00.000Z",
+    "datePublished": "2017-10-01T06:00:00.000Z",
     "version": "1.1",
     "extensions": [
         {
@@ -327,10 +327,10 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
     "type": "Document",
     "name": "Course Syllabus",
-    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "dateCreated": "2017-11-12T07:15:00.000Z",
     "version": "1"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z"
+  "eventTime": "2017-11-15T10:15:00.000Z"
 }
 ```
 
@@ -395,10 +395,10 @@ Create and send a generic Caliper [Event](#event) to a target [endpoint](#endpoi
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
     "type": "Document",
     "name": "Course Syllabus",
-    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "dateCreated": "2017-11-12T07:15:00.000Z",
     "version": "1"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "uuid": "3a648e68-f00d-4c08-aa59-8738e1884f2c"
 }
 ```
@@ -446,7 +446,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#e
         "id": "https://example.edu/etexts/201",
         "type": "Document",
         "name": "IMS Caliper Implementation Guide",
-        "dateCreated": "2016-10-01T06:00:00.000Z",
+        "dateCreated": "2017-10-01T06:00:00.000Z",
         "version": "1.1"
     },
     "generated": {
@@ -466,9 +466,9 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#e
             "end": 2370
         },
         "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
-        "dateCreated": "2016-11-15T10:15:00.000Z"
+        "dateCreated": "2017-11-15T10:15:00.000Z"
     },
-    "eventTime": "2016-11-15T10:15:00.000Z",
+    "eventTime": "2017-11-15T10:15:00.000Z",
     "uuid": "0067a052-9bb4-4b49-9d1a-87cd43da488a"
 }
 ```
@@ -535,10 +535,10 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#e
             "type": "Assessment"
         },
         "count": 1,
-        "dateCreated": "2016-11-15T10:15:00.000Z",
-        "startedAtTime": "2016-11-15T10:15:00.000Z"
+        "dateCreated": "2017-11-15T10:15:00.000Z",
+        "startedAtTime": "2017-11-15T10:15:00.000Z"
     },
-    "eventTime": "2016-11-15T10:15:00.000Z",
+    "eventTime": "2017-11-15T10:15:00.000Z",
     "uuid": "27734504-068d-4596-861c-2315be33a2a2"
 }
 ```
@@ -589,14 +589,14 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#e
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
         "type": "Assessment",
         "name": "Quiz One",
-        "datePublished": "2016-11-12T10:10:00.000Z",
-        "dateToStartOn": "2016-11-14T05:00:00.000Z",
-        "dateToSubmit": "2016-11-18T11:59:59.000Z",
+        "datePublished": "2017-11-12T10:10:00.000Z",
+        "dateToStartOn": "2017-11-14T05:00:00.000Z",
+        "dateToSubmit": "2017-11-18T11:59:59.000Z",
         "maxAttempts": 2,
         "maxSubmits": 2,
         "maxScore": 25
     },
-    "eventTime": "2016-11-12T10:15:00.000Z",
+    "eventTime": "2017-11-12T10:15:00.000Z",
     "uuid": "2635b9dd-0061-4059-ac61-2718ab366f75"
 }
 ```
@@ -657,9 +657,9 @@ Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Poste
                 "type": "Forum"
             }
         },
-        "dateCreated": "2016-11-15T10:15:00.000Z"
+        "dateCreated": "2017-11-15T10:15:00.000Z"
     },
-    "eventTime": "2016-11-15T10:15:00.000Z",
+    "eventTime": "2017-11-15T10:15:00.000Z",
     "uuid": "0d015a85-abf5-49ee-abb1-46dbd57fe64e"
 }
 ```
@@ -711,12 +711,12 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  T
             "type": "Assessment"
         },
         "count": 1,
-        "dateCreated": "2016-11-15T10:05:00.000Z",
-        "startedAtTime": "2016-11-15T10:05:00.000Z",
-        "endedAtTime": "2016-11-15T10:55:12.000Z",
+        "dateCreated": "2017-11-15T10:05:00.000Z",
+        "startedAtTime": "2017-11-15T10:05:00.000Z",
+        "endedAtTime": "2017-11-15T10:55:12.000Z",
         "duration": "PT50M12S"
     },
-    "eventTime": "2016-11-15T10:57:06.000Z",
+    "eventTime": "2017-11-15T10:57:06.000Z",
     "generated": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
         "type": "Result",
@@ -730,7 +730,7 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  T
             "id": "https://example.edu/autograder",
             "type": "SoftwareApplication"
         },
-        "dateCreated": "2016-11-15T10:55:05.000Z"
+        "dateCreated": "2017-11-15T10:55:05.000Z"
     },
     "uuid": "a50ca17f-5971-47bb-8fca-4e6e6879001d"
 }
@@ -802,7 +802,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
         "type": "MediaLocation",
         "currentTime": "PT05M21S"
     },
-    "eventTime": "2016-11-15T10:15:00.000Z",
+    "eventTime": "2017-11-15T10:15:00.000Z",
     "uuid": "956b4a02-8de0-4991-b8c5-b6eebb6b4cab"
 }
 ```
@@ -846,7 +846,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
         "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
         "type": "WebPage"
     },
-    "eventTime": "2016-11-15T10:15:00.000Z",
+    "eventTime": "2017-11-15T10:15:00.000Z",
     "referrer": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
         "type": "WebPage"
@@ -895,7 +895,7 @@ Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The [Logge
         "id": "https://example.edu",
         "type": "SoftwareApplication"
     },
-    "eventTime": "2016-11-15T10:15:00.000Z",
+    "eventTime": "2017-11-15T10:15:00.000Z",
     "session": {
         "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session"
@@ -940,7 +940,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
         "id": "https://example.edu",
         "type": "SoftwareApplication"
     },
-    "eventTime": "2016-11-15T10:15:00.000Z",
+    "eventTime": "2017-11-15T10:15:00.000Z",
     "uuid": "7e10e4f3-a0d8-4430-95bd-783ffae4d916"
 }
 ```
@@ -977,10 +977,10 @@ Caliper [JSON-LD](#jsonldDef) documents feature a context, denoted by the `@cont
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
     "type": "Document",
     "name": "Course Syllabus",
-    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "dateCreated": "2017-11-12T07:15:00.000Z",
     "version": "1"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "uuid": "3a648e68-f00d-4c08-aa59-8738e1884f2c"
 }
 ```
@@ -1051,7 +1051,7 @@ Coercing object properties requires an explicit declaration in the active contex
 ```json
 {
     "sensor": "https://example.edu/sensors/1",
-    "sendTime": "2016-11-15T11:05:01.000Z",
+    "sendTime": "2017-11-15T11:05:01.000Z",
     "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
     "data": [
         {
@@ -1066,7 +1066,7 @@ Coercing object properties requires an explicit declaration in the active contex
             "actor": "https://example.edu/users/554433",
             "action": "Created",
             "object": "https://example.edu/terms/201701/courses/7/sections/1/resources/27",
-            "eventTime": "2016-11-15T10:15:00.000Z",
+            "eventTime": "2017-11-15T10:15:00.000Z",
             "uuid": "7025d2f8-c76c-44b8-9d98-593d7969177f"
         }
     ]
@@ -1131,7 +1131,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 ```json
 {
    "sensor": "https://example.edu/sensors/1",
-   "sendTime": "2016-11-15T11:05:01.000Z",
+   "sendTime": "2017-11-15T11:05:01.000Z",
    "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1/Context",
    "data": [
     {
@@ -1155,7 +1155,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
           "type": "CourseSection"
         }
       },
-      "dateCreated": "2016-08-02T11:32:00.000Z"
+      "dateCreated": "2017-08-02T11:32:00.000Z"
     }
    ]
 }
@@ -1360,9 +1360,9 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
       "type": "Chapter"
     },
     "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that enable learning.",
-    "dateCreated": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1388,12 +1388,12 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "d4618c23-d612-4709-8d9a-478d87808067"
 }
@@ -1442,8 +1442,8 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "type": "Assessment",
     "name": "Quiz One",
-    "dateToStartOn": "2016-11-14T05:00:00.000Z",
-    "dateToSubmit": "2016-11-18T11:59:59.000Z",
+    "dateToStartOn": "2017-11-14T05:00:00.000Z",
+    "dateToSubmit": "2017-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 25.0,
@@ -1461,10 +1461,10 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1489,12 +1489,12 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "27734504-068d-4596-861c-2315be33a2a2"
 }
@@ -1521,20 +1521,20 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment",
       "name": "Quiz One",
-      "dateToStartOn": "2016-11-14T05:00:00.000Z",
-      "dateToSubmit": "2016-11-18T11:59:59.000Z",
+      "dateToStartOn": "2017-11-14T05:00:00.000Z",
+      "dateToSubmit": "2017-11-18T11:59:59.000Z",
       "maxAttempts": 2,
       "maxSubmits": 2,
       "maxScore": 25.0,
       "version": "1.0"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z",
-    "endedAtTime": "2016-11-15T10:25:30.000Z",
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z",
+    "endedAtTime": "2017-11-15T10:25:30.000Z",
     "duration": "PT10M30S"
   },
-  "eventTime": "2016-11-15T10:25:30.000Z",
+  "eventTime": "2017-11-15T10:25:30.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1559,12 +1559,12 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "dad88464-0c20-4a19-a1ba-ddf2f9c3ff33"
 }
@@ -1620,8 +1620,8 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
-    "dateToStartOn": "2016-11-14T05:00:00.000Z",
-    "dateToSubmit": "2016-11-18T11:59:59.000Z",
+    "dateToStartOn": "2017-11-14T05:00:00.000Z",
+    "dateToSubmit": "2017-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 1.0,
@@ -1644,10 +1644,10 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
       "type": "Attempt"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1672,12 +1672,12 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "1b557176-ba67-4624-b060-6bee670a3d8e"
 }
@@ -1714,9 +1714,9 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
       "type": "Attempt"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:15:02.000Z",
-    "startedAtTime": "2016-11-15T10:15:02.000Z",
-    "endedAtTime": "2016-11-15T10:15:12.000Z"
+    "dateCreated": "2017-11-15T10:15:02.000Z",
+    "startedAtTime": "2017-11-15T10:15:02.000Z",
+    "endedAtTime": "2017-11-15T10:15:12.000Z"
   },
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
@@ -1725,12 +1725,12 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
       "type": "Attempt"
     },
-    "dateCreated": "2016-11-15T10:15:12.000Z",
-    "startedAtTime": "2016-11-15T10:15:02.000Z",
-    "endedAtTime": "2016-11-15T10:15:12.000Z",
+    "dateCreated": "2017-11-15T10:15:12.000Z",
+    "startedAtTime": "2017-11-15T10:15:02.000Z",
+    "endedAtTime": "2017-11-15T10:15:12.000Z",
     "values": [ "subject", "object", "predicate" ]
   },
-  "eventTime": "2016-11-15T10:15:12.000Z",
+  "eventTime": "2017-11-15T10:15:12.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1755,12 +1755,12 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "e5891791-3d27-4df1-a272-091806a43dfb"
 }
@@ -1812,18 +1812,18 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "type": "Assessment",
     "name": "Quiz One",
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z",
-    "datePublished": "2016-11-12T10:10:00.000Z",
-    "dateToActivate": "2016-11-12T10:15:00.000Z",
-    "dateToStartOn": "2016-11-14T05:00:00.000Z",
-    "dateToSubmit": "2016-11-18T11:59:59.000Z",
+    "dateCreated": "2017-08-01T06:00:00.000Z",
+    "dateModified": "2017-09-02T11:30:00.000Z",
+    "datePublished": "2017-11-12T10:10:00.000Z",
+    "dateToActivate": "2017-11-12T10:15:00.000Z",
+    "dateToStartOn": "2017-11-14T05:00:00.000Z",
+    "dateToSubmit": "2017-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 25.0,
     "version": "1.0"
   },
-  "eventTime": "2016-11-12T10:15:00.000Z",
+  "eventTime": "2017-11-12T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1848,12 +1848,12 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
     },
     "roles": [ "Instructor" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
     "type": "Session",
-    "startedAtTime": "2016-11-12T10:00:00.000Z"
+    "startedAtTime": "2017-11-12T10:00:00.000Z"
   },
   "uuid": "2635b9dd-0061-4059-ac61-2718ab366f75"
 }
@@ -1908,9 +1908,9 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "dateCreated": "2016-09-14T11:00:00.000Z"
+    "dateCreated": "2017-09-14T11:00:00.000Z"
   },
-  "eventTime": "2016-11-15T10:16:00.000Z",
+  "eventTime": "2017-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
@@ -1935,12 +1935,12 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "a2f41f9c-d57d-4400-b3fe-716b9026334e"
 }
@@ -2001,7 +2001,7 @@ TODO
     "type": "MediaLocation",
     "currentTime": "PT05M21S"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu/player",
     "type": "SoftwareApplication"
@@ -2025,12 +2025,12 @@ TODO
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "956b4a02-8de0-4991-b8c5-b6eebb6b4cab"
 }
@@ -2095,9 +2095,9 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
         "name": "Caliper Forum"
       }
     },
-    "dateCreated": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
@@ -2122,12 +2122,12 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "0d015a85-abf5-49ee-abb1-46dbd57fe64e"
 }
@@ -2164,9 +2164,9 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
         "type": "Forum"
       }
     },
-    "dateCreated": "2016-11-15T10:15:30.000Z"
+    "dateCreated": "2017-11-15T10:15:30.000Z"
   },
-  "eventTime": "2016-11-15T10:15:30.000Z",
+  "eventTime": "2017-11-15T10:15:30.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
@@ -2191,12 +2191,12 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:12:00.000Z"
+    "startedAtTime": "2017-11-15T10:12:00.000Z"
   },
   "uuid": "aed54386-a3fb-45ff-90f9-a35d3daaf031"
 }
@@ -2246,9 +2246,9 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
     "type": "WebPage",
     "name": "Learning Analytics Specifications",
     "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
-    "dateCreated": "2016-08-01T09:00:00.000Z"
+    "dateCreated": "2017-08-01T09:00:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "referrer": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
     "type": "WebPage"
@@ -2276,12 +2276,12 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f"
 }
@@ -2339,12 +2339,12 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:05:00.000Z",
-    "startedAtTime": "2016-11-15T10:05:00.000Z",
-    "endedAtTime": "2016-11-15T10:55:12.000Z",
+    "dateCreated": "2017-11-15T10:05:00.000Z",
+    "startedAtTime": "2017-11-15T10:05:00.000Z",
+    "endedAtTime": "2017-11-15T10:55:12.000Z",
     "duration": "PT50M12S"
   },
-  "eventTime": "2016-11-15T10:57:06.000Z",
+  "eventTime": "2017-11-15T10:57:06.000Z",
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
     "type": "Result",
@@ -2358,7 +2358,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
       "id": "https://example.edu/autograder",
       "type": "SoftwareApplication"
     },
-    "dateCreated": "2016-11-15T10:55:05.000Z"
+    "dateCreated": "2017-11-15T10:55:05.000Z"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -2443,7 +2443,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
@@ -2451,8 +2451,8 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
-    "dateCreated": "2016-11-15T10:00:00.000Z",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "dateCreated": "2017-11-15T10:00:00.000Z",
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "fcd495d0-3740-4298-9bec-1154571dc211"
 }
@@ -2474,7 +2474,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "eventTime": "2016-11-15T11:05:00.000Z",
+  "eventTime": "2017-11-15T11:05:00.000Z",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
@@ -2482,9 +2482,9 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
-    "dateCreated": "2016-11-15T10:00:00.000Z",
-    "startedAtTime": "2016-11-15T10:00:00.000Z",
-    "endedAtTime": "2016-11-15T11:05:00.000Z",
+    "dateCreated": "2017-11-15T10:00:00.000Z",
+    "startedAtTime": "2017-11-15T10:00:00.000Z",
+    "endedAtTime": "2017-11-15T11:05:00.000Z",
     "duration": "PT3000S"
   },
   "uuid": "a438f8ac-1da3-4d48-8c86-94a1b387e0f6"
@@ -2509,12 +2509,12 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
       "id": "https://example.edu/users/112233",
       "type": "Person"
     },
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z",
-    "endedAtTime": "2016-11-15T11:15:00.000Z",
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z",
+    "endedAtTime": "2017-11-15T11:15:00.000Z",
     "duration": "PT3600S"
   },
-  "eventTime": "2016-11-15T11:15:00.000Z",
+  "eventTime": "2017-11-15T11:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
@@ -2570,11 +2570,11 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
       "type": "Forum",
       "name": "Caliper Forum",
-      "dateCreated": "2016-11-15T10:15:00.000Z"
+      "dateCreated": "2017-11-15T10:15:00.000Z"
     },
-    "dateCreated": "2016-11-15T10:16:00.000Z"
+    "dateCreated": "2017-11-15T10:16:00.000Z"
   },
-  "eventTime": "2016-11-15T10:16:00.000Z",
+  "eventTime": "2017-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
@@ -2599,12 +2599,12 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "6b20c5ba-301c-4e56-85a0-2f3d9a94c249"
 }
@@ -2653,7 +2653,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
     "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
@@ -2677,12 +2677,12 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "7e10e4f3-a0d8-4430-95bd-783ffae4d916"
 }
@@ -2733,7 +2733,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
     "name": "IMS Caliper Specification",
     "version": "1.1"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication"
@@ -2757,12 +2757,12 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
     },
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   },
   "uuid": "3a9bd869-addc-48b1-80f6-a14b2ff591ed",
   "extensions": [{
@@ -2780,7 +2780,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
       "id": "https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7",
       "type": "ChronJob",
       "jobTag": "caliper",
-      "jobDate": "2016-11-16T01:01:00.000Z"
+      "jobDate": "2017-11-16T01:01:00.000Z"
     }
   }]
 }
@@ -2873,13 +2873,13 @@ Assessment inherits all the properties and requirements defined by its superclas
       "type": "AssessmentItem"
     }
   ],
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z",
-  "datePublished": "2016-08-15T09:30:00.000Z",
-  "dateToActivate": "2016-08-16T05:00:00.000Z",
-  "dateToShow": "2016-08-16T05:00:00.000Z",
-  "dateToStartOn": "2016-08-16T05:00:00.000Z",
-  "dateToSubmit": "2016-09-28T11:59:59.000Z",
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z",
+  "datePublished": "2017-08-15T09:30:00.000Z",
+  "dateToActivate": "2017-08-16T05:00:00.000Z",
+  "dateToShow": "2017-08-16T05:00:00.000Z",
+  "dateToStartOn": "2017-08-16T05:00:00.000Z",
+  "dateToSubmit": "2017-09-28T11:59:59.000Z",
   "maxAttempts": 2,
   "maxScore": 15,
   "maxSubmits": 2,
@@ -2910,8 +2910,8 @@ AssessmentItem inherits all the properties and requirements defined by its super
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "type": "Assessment"
   },
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "datePublished": "2016-08-15T09:30:00.000Z",
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "datePublished": "2017-08-15T09:30:00.000Z",
   "isTimeDependent": false,
   "maxAttempts": 2,
   "maxScore": 5,
@@ -2957,11 +2957,11 @@ AssignableDigitalResource inherits all the properties and requirements defined f
   "type": "AssignableDigitalResource",
   "name": "Week 9 Reflection",
   "description": "3-5 page reflection on this week's assigned readings.",
-  "dateCreated": "2016-11-01T06:00:00.000Z",
-  "dateToActivate": "2016-11-10T11:59:59.000Z",
-  "dateToShow": "2016-11-10T11:59:59.000Z",
-  "dateToStartOn": "2016-11-10T11:59:59.000Z",
-  "dateToSubmit": "2016-11-14T11:59:59.000Z",
+  "dateCreated": "2017-11-01T06:00:00.000Z",
+  "dateToActivate": "2017-11-10T11:59:59.000Z",
+  "dateToShow": "2017-11-10T11:59:59.000Z",
+  "dateToStartOn": "2017-11-10T11:59:59.000Z",
+  "dateToSubmit": "2017-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,
   "maxScore": 50
@@ -3004,9 +3004,9 @@ Attempt inherits all the properties and requirements defined for its superclass 
     "type": "Person"
   },
   "count": 1,
-  "dateCreated": "2016-11-15T10:05:00.000Z",
-  "startedAtTime": "2016-11-15T10:05:00.000Z",
-  "endedAtTime": "2016-11-15T10:55:30.000Z",
+  "dateCreated": "2017-11-15T10:05:00.000Z",
+  "startedAtTime": "2017-11-15T10:05:00.000Z",
+  "endedAtTime": "2017-11-15T10:55:30.000Z",
   "duration": "PT50M30S"
 }
 ```
@@ -3036,7 +3036,7 @@ AudioObject inherits all the properties and requirements defined for its supercl
   "type": "AudioObject",
   "name": "Audio Recording: IMS Caliper Sensor API Q&A.",
   "mediaType": "audio/ogg",
-  "datePublished": "2016-12-01T06:00:00.000Z",
+  "datePublished": "2017-12-01T06:00:00.000Z",
   "duration": "PT55M13S"
 }
 ```
@@ -3070,7 +3070,7 @@ BookmarkAnnotation inherits all the properties and requirements defined for its 
     "type": "Chapter"
   },
   "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
-  "dateCreated": "2016-08-01T06:00:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z"
 }
 ```
 
@@ -3097,7 +3097,7 @@ Chapter inherits all the properties and requirements defined for its superclass 
   "isPartOf": {
     "id": "https://example.edu/etexts/201.epub",
     "type": "Document",
-    "dateCreated": "2016-10-01T06:00:00.000Z",
+    "dateCreated": "2017-10-01T06:00:00.000Z",
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
   }
@@ -3131,8 +3131,8 @@ CourseOffering inherits all the properties and requirements defined for its supe
   "courseNumber": "CPS 435",
   "academicSession": "Fall 2016",
   "name": "CPS 435 Learning Analytics",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z"
 }
 ```
 
@@ -3165,7 +3165,7 @@ CourseSection inherits all the properties and requirements defined for its super
     "type": "CourseOffering",
     "courseNumber": "CPS 435"
   },
-  "dateCreated": "2016-08-01T06:00:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z"
 }
 ```
 
@@ -3220,7 +3220,7 @@ DigitalResource inherits all the properties and requirements defined for its sup
       "type": "CourseSection"
     }
   },
-  "dateCreated": "2016-08-02T11:32:00.000Z"
+  "dateCreated": "2017-08-02T11:32:00.000Z"
 }
 ```
 
@@ -3255,7 +3255,7 @@ DigitalResourceCollection inherits all the properties and requirements defined f
       "type": "VideoObject",
       "mediaType": "video/ogg",
       "name": "Introduction to IMS Caliper",
-      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "dateCreated": "2017-08-01T06:00:00.000Z",
       "duration": "PT1H12M27S",
       "version": "1.1"
     },
@@ -3264,7 +3264,7 @@ DigitalResourceCollection inherits all the properties and requirements defined f
       "type": "VideoObject",
       "mediaType": "video/ogg",
       "name": "IMS Caliper Activity Profiles",
-      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "dateCreated": "2017-08-01T06:00:00.000Z",
       "duration": "PT55M13S",
       "version": "1.1.1"
     }
@@ -3277,8 +3277,8 @@ DigitalResourceCollection inherits all the properties and requirements defined f
       "type": "CourseOffering"
     }
   },
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z"
 }
 ```
 
@@ -3313,8 +3313,8 @@ Document inherits all the properties and requirements defined for its superclass
       "type": "Person"
     }
   ],
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "datePublished": "2016-10-01T06:00:00.000Z",
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "datePublished": "2017-10-01T06:00:00.000Z",
   "version": "1.1"
 }
 ```
@@ -3407,12 +3407,12 @@ FillinBlankResponse inherits all the properties and requirements defined for its
       }
     },
     "count": 1,
-    "startedAtTime": "2016-11-15T10:15:02.000Z",
-    "endedAtTime": "2016-11-15T10:15:12.000Z"
+    "startedAtTime": "2017-11-15T10:15:02.000Z",
+    "endedAtTime": "2017-11-15T10:15:12.000Z"
   },
-  "dateCreated": "2016-11-15T10:15:12.000Z",
-  "startedAtTime": "2016-11-15T10:15:02.000Z",
-  "endedAtTime": "2016-11-15T10:15:12.000Z",
+  "dateCreated": "2017-11-15T10:15:12.000Z",
+  "startedAtTime": "2017-11-15T10:15:02.000Z",
+  "endedAtTime": "2017-11-15T10:15:12.000Z",
   "values": [ "data interoperability", "semantic interoperability" ]
 }
 ```
@@ -3443,19 +3443,19 @@ Frame inherits all the properties and requirements defined for its superclass [D
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
       "type": "Thread",
       "name": "Caliper Information Model",
-      "dateCreated": "2016-11-01T09:30:00.000Z"
+      "dateCreated": "2017-11-01T09:30:00.000Z"
     },
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/2",
       "type": "Thread",
       "name": "Caliper Sensor API",
-      "dateCreated": "2016-11-01T09:30:00.000Z"
+      "dateCreated": "2017-11-01T09:30:00.000Z"
     },
     {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/3",
       "type": "Thread",
       "name": "Caliper Certification",
-      "dateCreated": "2016-11-01T09:30:00.000Z"
+      "dateCreated": "2017-11-01T09:30:00.000Z"
     }
   ],
   "isPartOf": {
@@ -3466,8 +3466,8 @@ Frame inherits all the properties and requirements defined for its superclass [D
       "type": "CourseOffering"
     }
   },
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z"
 }
 ```
 
@@ -3491,7 +3491,7 @@ Frame inherits all the properties and requirements defined for its superclass [D
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/etexts/201?index=2502",
   "type": "Frame",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateCreated": "2017-08-01T06:00:00.000Z",
   "index": 2502,
   "isPartOf": {
     "id": "https://example.edu/etexts/201",
@@ -3530,7 +3530,7 @@ Group inherits all the properties and requirements defined for its superclass [O
       "type": "CourseOffering"
     }
   },
-  "dateCreated": "2016-11-01T06:00:00.000Z"
+  "dateCreated": "2017-11-01T06:00:00.000Z"
 }
 ```
 
@@ -3572,7 +3572,7 @@ HighlightAnnotation inherits all the properties and requirements defined for its
     "end": 2370
   },
   "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
-  "dateCreated": "2016-08-01T06:00:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z"
 }
 ```
 
@@ -3597,7 +3597,7 @@ ImageObject inherits all the properties and requirements defined for its supercl
   "type": "ImageObject",
   "name": "IMS Caliper/LTI Integration Work Flow",
   "mediaType": "image/jpeg",
-  "dateCreated": "2016-09-01T06:00:00.000Z"
+  "dateCreated": "2017-09-01T06:00:00.000Z"
 }
 ```
 
@@ -3628,14 +3628,14 @@ LearningObjective inherits all the properties and requirements defined for its s
       "type": "LearningObjective",
       "name": "Research techniques",
       "description": "Demonstrate ability to model a learning activity as a Caliper profile.",
-      "dateCreated": "2016-08-01T06:00:00.000Z"
+      "dateCreated": "2017-08-01T06:00:00.000Z"
     }
   ],
-  "dateToActivate": "2016-11-10T11:59:59.000Z",
-  "dateToShow": "2016-11-10T11:59:59.000Z",
-  "dateCreated": "2016-11-01T06:00:00.000Z",
-  "dateToStartOn": "2016-11-15T11:59:59.000Z",
-  "dateToSubmit": "2016-11-14T11:59:59.000Z",
+  "dateToActivate": "2017-11-10T11:59:59.000Z",
+  "dateToShow": "2017-11-10T11:59:59.000Z",
+  "dateCreated": "2017-11-01T06:00:00.000Z",
+  "dateToStartOn": "2017-11-15T11:59:59.000Z",
+  "dateToSubmit": "2017-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,
   "maxScore": 50
@@ -3702,8 +3702,8 @@ LtiSession inherits all the properties and requirements defined for its supercla
       "isOnSabbatical": false
     }
   },
-  "dateCreated": "2016-11-15T10:15:00.000Z",
-  "startedAtTime": "2016-11-15T10:15:00.000Z"
+  "dateCreated": "2017-11-15T10:15:00.000Z",
+  "startedAtTime": "2017-11-15T10:15:00.000Z"
 }
 ```
 
@@ -3729,7 +3729,7 @@ MediaLocation inherits all the properties and requirements defined for its super
   "id": "https://example.edu/videos/1225",
   "type": "MediaLocation",
   "currentTime": "PT30M54S",
-  "dateCreated": "2016-08-01T06:00:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z"
 }
 ```
 
@@ -3794,7 +3794,7 @@ Membership inherits all the properties and requirements defined for its supercla
   },
   "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
   "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
-  "dateCreated": "2016-11-01T06:00:00.000Z"
+  "dateCreated": "2017-11-01T06:00:00.000Z"
 }
 ```
 
@@ -3844,11 +3844,11 @@ Message inherits all the properties and requirements defined for its superclass 
       "id": "https://example.edu/etexts/201.epub",
       "type": "Document",
       "name": "IMS Caliper Implementation Guide",
-      "dateCreated": "2016-10-01T06:00:00.000Z",
+      "dateCreated": "2017-10-01T06:00:00.000Z",
       "version": "1.1"
     }
   ],
-  "dateCreated": "2016-11-15T10:15:30.000Z"
+  "dateCreated": "2017-11-15T10:15:30.000Z"
 }
  ```
  
@@ -3888,12 +3888,12 @@ MultipleChoiceResponse inherits all the properties and requirements defined for 
       }
     },
     "count": 1,
-    "startedAtTime": "2016-11-15T10:15:14.000Z",
-    "endedAtTime": "2016-11-15T10:15:20.000Z"
+    "startedAtTime": "2017-11-15T10:15:14.000Z",
+    "endedAtTime": "2017-11-15T10:15:20.000Z"
   },
-  "dateCreated": "2016-11-15T10:15:20.000Z",
-  "startedAtTime": "2016-11-15T10:15:14.000Z",
-  "endedAtTime": "2016-11-15T10:15:20.000Z",
+  "dateCreated": "2017-11-15T10:15:20.000Z",
+  "startedAtTime": "2017-11-15T10:15:14.000Z",
+  "endedAtTime": "2017-11-15T10:15:20.000Z",
   "value": "C"
 }
 ```
@@ -3934,12 +3934,12 @@ MultipleResponseResponse inherits all the properties and requirements defined fo
       }
     },
     "count": 1,
-    "startedAtTime": "2016-11-15T10:15:22.000Z",
-    "endedAtTime": "2016-11-15T10:15:30.000Z"
+    "startedAtTime": "2017-11-15T10:15:22.000Z",
+    "endedAtTime": "2017-11-15T10:15:30.000Z"
   },
-  "dateCreated": "2016-11-15T10:15:22.000Z",
-  "startedAtTime": "2016-11-15T10:15:22.000Z",
-  "endedAtTime": "2016-11-15T10:15:30.000Z",
+  "dateCreated": "2017-11-15T10:15:22.000Z",
+  "startedAtTime": "2017-11-15T10:15:22.000Z",
+  "endedAtTime": "2017-11-15T10:15:30.000Z",
   "values": [ "A", "D", "E" ]
 }
 ```
@@ -4005,7 +4005,7 @@ Page inherits all the properties and requirements defined for its superclass [Di
       "id": "https://example.edu/etexts/201",
       "type": "Document",
       "name": "IMS Caliper Implementation Guide",
-      "dateCreated": "2016-10-01T06:00:00.000Z",
+      "dateCreated": "2017-10-01T06:00:00.000Z",
       "version": "1.1"
     }
   }
@@ -4031,8 +4031,8 @@ Person inherits all the properties and requirements defined for its superclass [
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433",
   "type": "Person",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z"
 }
 ```
 
@@ -4111,9 +4111,9 @@ Result inherits all the properties and requirements defined for its superclass [
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:05:00.000Z",
-    "startedAtTime": "2016-11-15T10:05:00.000Z",
-    "endedAtTime": "2016-11-15T10:55:30.000Z",
+    "dateCreated": "2017-11-15T10:05:00.000Z",
+    "startedAtTime": "2017-11-15T10:05:00.000Z",
+    "endedAtTime": "2017-11-15T10:55:30.000Z",
     "duration": "PT50M30S"
   },
   "comment": "Well done.",
@@ -4123,9 +4123,9 @@ Result inherits all the properties and requirements defined for its superclass [
   "scoredBy": {
     "id": "https://example.edu/autograder",
     "type": "SoftwareApplication",
-    "dateCreated": "2016-11-15T10:55:58.000Z"
+    "dateCreated": "2017-11-15T10:55:58.000Z"
   },
-  "dateCreated": "2016-11-15T10:56:00.000Z"
+  "dateCreated": "2017-11-15T10:56:00.000Z"
 }
 ```
 
@@ -4165,12 +4165,12 @@ SelectTextResponse inherits all the properties and requirements defined for its 
       }
     },
     "count": 1,
-    "startedAtTime": "2016-11-15T10:15:32.000Z",
-    "endedAtTime": "2016-11-15T10:15:38.000Z"
+    "startedAtTime": "2017-11-15T10:15:32.000Z",
+    "endedAtTime": "2017-11-15T10:15:38.000Z"
   },
-  "dateCreated": "2016-11-15T10:15:32.000Z",
-  "startedAtTime": "2016-11-15T10:15:32.000Z",
-  "endedAtTime": "2016-11-15T10:15:38.000Z",
+  "dateCreated": "2017-11-15T10:15:32.000Z",
+  "startedAtTime": "2017-11-15T10:15:32.000Z",
+  "endedAtTime": "2017-11-15T10:15:38.000Z",
   "values": [ "Information Model", "Sensor API", "Profiles" ]
 }
 ```
@@ -4206,7 +4206,7 @@ Session inherits all the properties and requirements defined for [Entity](#entit
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "startedAtTime": "2016-09-15T10:00:00.000Z"
+  "startedAtTime": "2017-09-15T10:00:00.000Z"
 }
 ```
 
@@ -4248,7 +4248,7 @@ SharedAnnotation inherits all the properties and requirements defined for its su
       "type": "Person"
     }
   ],
-  "dateCreated": "2016-08-01T09:00:00.000Z"
+  "dateCreated": "2017-08-01T09:00:00.000Z"
 }
 ```
 
@@ -4307,7 +4307,7 @@ TagAnnotation inherits all the properties and requirements defined for its super
     "type": "Chapter"
   },
   "tags": [ "profile", "event", "entity" ],
-  "dateCreated": "2016-08-01T09:00:00.000Z"
+  "dateCreated": "2017-08-01T09:00:00.000Z"
 }
 ```
 
@@ -4367,8 +4367,8 @@ Thread inherits all the properties and requirements defined for its superclass [
       }
     }
   },
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z"
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z"
 }
 ```
 
@@ -4408,12 +4408,12 @@ TrueFalseResponse inherits all the properties and requirements defined for [Resp
       }
     },
     "count": 1,
-    "startedAtTime": "2016-11-15T10:15:40.000Z",
-    "endedAtTime": "2016-11-15T10:15:45.000Z"
+    "startedAtTime": "2017-11-15T10:15:40.000Z",
+    "endedAtTime": "2017-11-15T10:15:45.000Z"
   },
-  "dateCreated": "2016-11-15T10:15:45.000Z",
-  "startedAtTime": "2016-11-15T10:15:40.000Z",
-  "endedAtTime": "2016-11-15T10:15:45.000Z",
+  "dateCreated": "2017-11-15T10:15:45.000Z",
+  "startedAtTime": "2017-11-15T10:15:40.000Z",
+  "endedAtTime": "2017-11-15T10:15:45.000Z",
   "value": "true"
 }
 ```
@@ -4440,8 +4440,8 @@ VideoObject inherits all the properties and requirements defined for its supercl
   "mediaType": "video/ogg",
   "name": "Introduction to IMS Caliper",
   "version": "1.1",
-  "dateCreated": "2016-08-01T06:00:00.000Z",
-  "dateModified": "2016-09-02T11:30:00.000Z",
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z",
   "duration": "PT1H12M27S"
 }
 ```
@@ -4508,7 +4508,7 @@ TODO Intro
       "end": 2370
     },
     "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
-    "dateCreated": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z"
 }
 ```
 
