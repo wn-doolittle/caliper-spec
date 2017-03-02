@@ -297,7 +297,7 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | :------- | :--- | ----------- | :---------: |
 | uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
-| actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication], MUST be specified. | Required |
+| actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication](#softwareApplication), MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
@@ -2540,7 +2540,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 | type | [Term](#termDef) | The string value MUST be set to the term *ThreadEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event).  | Required |
-| object | The [Thread](#thread) that constitutes the `object` of the interaction MUST be specified. | Required |
+| object | [Thread](#thread) | The [Thread](#thread) that constitutes the `object` of the interaction MUST be specified. | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
@@ -4520,7 +4520,7 @@ TODO Intro
 One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate term string value:
 
 | Term | IRI |
-| ----  | --- | 
+| :--- | :-- | 
 | Learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner |
 | Learner#ExternalLearner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner |
 | Learner#GuestLearner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner |
@@ -4529,7 +4529,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | Learner#NonCreditLearner  | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
 
 | Term | IRI |
-| ----  | --- | 
+| :--- | :-- | 
 | Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
 | Instructor#ExternalInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor |
 | Instructor#GuestInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor |
@@ -4537,7 +4537,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | Instructor#PrimaryInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor |
 
 | Term | IRI |
-| ----  | --- | 
+| :--- | :-- |
 | Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
 | Administrator#Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
 | Administrator#Developer  | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer |
@@ -4548,15 +4548,15 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | Administrator#ExternalSystemAdministrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator |
 
 | Term | IRI |
-| ----  | --- | 
+| :--- | :-- |
 | ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
 | ContentDeveloper#ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper |
 | ContentDeveloper#Librarian | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian |
 | ContentDeveloper#ContentExpert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert |
 | ContentDeveloper#ExternalContentExpert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert |
 
-| Tern | IRI |
-| ----  | --- | 
+| Term | IRI |
+| :--- | :-- | 
 | Manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
 | Manager#AreaManager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
 | Manager#CourseCoordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
@@ -4564,12 +4564,12 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | Manager#ExternalObserver | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
 
 | Term | IRI |
-| ----  | --- | 
+| :--- | :-- |
 | Member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
 | Member#Member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
 
 | Term | IRI |
-| ----  | --- | 
+| :--- | :-- |
 | Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
 | Mentor#Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor |
 | Mentor#ExternalMentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor |
@@ -4585,7 +4585,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | Mentor#ExternalTutor | "http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor |
 
 | Term | IRI |
-| ----  | --- | 
+| :--- | :-- |
 | TeachingAssistant | http://purl.imsglobal.org/vocab/lis/v2/membership#TeachingAssistant |
 | TeachingAssistant#TeachingAssistant | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistant |
 | TeachingAssistant#Grader | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#Grader |
@@ -4601,7 +4601,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate term string value:
 
 | Term | IRI |
-| ------  | --- | 
+| :--- | :-- | 
 | Active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
 | Inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
@@ -4612,14 +4612,14 @@ The following Caliper Working Group participants contributed to the writing of t
 
 #### Authors
 | Name | Organization |
-| ------ | --------- |
+| :--- | :----------- |
 | Anthony Whyte | University of Michigan |
 | Viktor Haag | D2L |
 | Wes LaMarche | ACT |
 
 #### Editors
 | Name | Organization |
-| ------ | --------- |
+| :--- | :----------- |
 | Anthony Whyte | University of Michigan |
 | Steven Erickson | Unicon |
 
