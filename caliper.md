@@ -135,7 +135,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ### 1.2 Terminology
 
-**TODO review and update these short definitions as necessary.  Add links **
+**TODO review and update these short definitions as necessary.  Add links**
 
 <a name="actorDef" />
 
