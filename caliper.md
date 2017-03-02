@@ -1100,7 +1100,7 @@ An [Endpoint](#endpoint) must be capable of interpreting coerced values of this 
 ## 4.0 Sensor API™
 Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
-<a name="sensorBehavior" />
+<a name="behavior" />
 
 ### 4.1 Behavior
 A Caliper [Sensor](#sensor) MUST be capable of performing the following operations:
@@ -1114,6 +1114,7 @@ A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and 
 
 ### 4.2 Envelope
 **TODO Confirm that we will permit the Sensor to send mixed payloads of Entity describes/Events.  I'm +1.**
+**TODO talk more about sending Events and sending describes -- rationale**
 
 Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) "describe" included in an envelope's `data` payload messages MUST be expressed as a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) document. 
 
@@ -1127,7 +1128,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | dataVersion | String | A string value indicating which version of the IMS Caliper Analytics® specification governs the form of the Caliper entities and events contained in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
 | data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
 
-#### Example
+#### Example: Event payload
 ```json
 {
    "sensor": "https://example.edu/sensors/1",
@@ -1161,11 +1162,40 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 }
 ```
 
-### 4.x Sending Events
+#### Example: Entity describe payload
 
-
-### 4.x Sending Describes
-
+```json
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2016-11-15T11:05:01.000Z",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "creators": [
+        {
+          "id": "https://example.edu/users/223344",
+          "type": "Person"
+        }
+      ],
+      "isPartOf": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201601/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2016-08-02T11:32:00.000Z"
+    }
+  ]
+}
+```
 
 <a name="transport" />
 
