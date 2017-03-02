@@ -4527,17 +4527,11 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | Learner#Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor |
 | Learner#Learner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner |
 | Learner#NonCreditLearner  | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
-
-| Term | IRI |
-| :--- | :-- | 
 | Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
 | Instructor#ExternalInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor |
 | Instructor#GuestInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor |
 | Instructor#Lecturer | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer |
 | Instructor#PrimaryInstructor | http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor |
-
-| Term | IRI |
-| :--- | :-- |
 | Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
 | Administrator#Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
 | Administrator#Developer  | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer |
@@ -4546,30 +4540,18 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | Administrator#ExternalSupport | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport |
 | Administrator#ExternalDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper |
 | Administrator#ExternalSystemAdministrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator |
-
-| Term | IRI |
-| :--- | :-- |
 | ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
 | ContentDeveloper#ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper |
 | ContentDeveloper#Librarian | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian |
 | ContentDeveloper#ContentExpert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert |
 | ContentDeveloper#ExternalContentExpert | http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert |
-
-| Term | IRI |
-| :--- | :-- | 
 | Manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
 | Manager#AreaManager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
 | Manager#CourseCoordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
 | Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
 | Manager#ExternalObserver | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
-
-| Term | IRI |
-| :--- | :-- |
 | Member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
 | Member#Member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
-
-| Term | IRI |
-| :--- | :-- |
 | Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
 | Mentor#Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor |
 | Mentor#ExternalMentor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor |
@@ -4583,9 +4565,6 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 | Mentor#ExternalReviewer | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer |
 | Mentor#Tutor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor |
 | Mentor#ExternalTutor | "http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor |
-
-| Term | IRI |
-| :--- | :-- |
 | TeachingAssistant | http://purl.imsglobal.org/vocab/lis/v2/membership#TeachingAssistant |
 | TeachingAssistant#TeachingAssistant | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#TeachingAssistant |
 | TeachingAssistant#Grader | http://purl.imsglobal.org/vocab/lis/v2/membership/TeachingAssistant#Grader |
