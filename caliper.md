@@ -47,76 +47,76 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 4.3 [Transport](#transport)
   * 4.4 [Endpoint](#endpoint)
   * 4.5 [Endpoint Responses](#endpointResponses)
-* 5.0 [Appendix A. Actions](#actions)
-* 6.0 [Appendix B. Event Types](#events)
-  * 6.1 [AnnotationEvent](#annotationEvent)
-  * 6.2 [AssessmentEvent](#assessmentEvent)
-  * 6.3 [AssessmentItemEvent](#assessmentItemEvent)
-  * 6.4 [AssignableEvent](#assignableEvent)
-  * 6.5 [ForumEvent](#forumEvent)
-  * 6.6 [MediaEvent](#mediaEvent)
-  * 6.7 [MessageEvent](#messageEvent)
-  * 6.8 [NavigationEvent](#navigationEvent)
-  * 6.9 [OutcomeEvent](#outcomeEvent)
-  * 6.10 [ReadingEvent](#readingEvent) (deprecated)
-  * 6.11 [SessionEvent](#sessionEvent)
-  * 6.12 [ThreadEvent](#threadEvent)
-  * 6.13 [ToolUseEvent](#toolUseEvent)
-  * 6.14 [ViewEvent](#viewEvent)
-* 7.0 [Appendix C. Entity Types](#entities)
-  * 7.1 [Agent](#agent)
-  * 7.2 [Annotation](#annotation)
-  * 7.3 [Assessment](#assessment)
-  * 7.4 [AssessmentItem](#assessmentItem)
-  * 7.5 [AssignableDigitalResource](#assignableDigitalResource)
-  * 7.6 [Attempt](#attempt)
-  * 7.7 [AudioObject](#audioObject)
-  * 7.8 [BookmarkAnnotation](#bookmarkAnnotation)
-  * 7.9 [Chapter](#chapter)
-  * 7.10 [CourseOffering](#courseOffering)
-  * 7.11 [CourseSection](#courseSection)
-  * 7.12 [DigitalResource](#digitalResource)
-  * 7.13 [DigitalResourceCollection](#digitalResourceCollection)
-  * 7.14 [Document](#document)
-  * 7.15 [EpubChapter](#epubChapter) (deprecated)
-  * 7.16 [EpubPart](#epubPart) (deprecated)
-  * 7.17 [EpubSubChapter](#epubSubChapter) (deprecated)
-  * 7.18 [EpubVolume](#epubVolume) (deprecated)
-  * 7.19 [FillinBlankResponse](#fillinBlankResponse)
-  * 7.20 [Forum](#forum)
-  * 7.21 [Frame](#frame)
-  * 7.22 [Group](#group)
-  * 7.23 [HighlightAnnotation](#highlightAnnotation)
-  * 7.24 [ImageObject](#imageObject)
-  * 7.25 [LearningObjective](#learningObjective)
-  * 7.26 [LtiSession](#ltiSession) 
-  * 7.27 [MediaLocation](#mediaLocation)
-  * 7.28 [MediaObject](#mediaObject)
-  * 7.29 [Membership](#membership)
-  * 7.30 [Message](#message)
-  * 7.31 [MultipleChoiceResponse](#multipleChoiceResponse)
-  * 7.32 [MultipleResponseResponse](#multipleResponseResponse)
-  * 7.33 [Organization](#organization)
-  * 7.34 [Page](#page)
-  * 7.35 [Person](#person)
-  * 7.36 [Reading](#reading) (deprecated)
-  * 7.37 [Response](#response)
-  * 7.38 [Result](#result)
-  * 7.39 [Session](#session)
-  * 7.40 [SharedAnnotation](#sharedAnnotation)
-  * 7.41 [SelectTextResponse](#selectTextResponse)
-  * 7.42 [SoftwareApplication](#softwareApplication)
-  * 7.43 [TagAnnotation](#tagAnnotation)
-  * 7.44 [TrueFalseResponse](#trueFalseResponse)
-  * 7.45 [Thread](#thread)
-  * 7.46 [VideoObject](#videoObject)
-  * 7.47 [WebPage](#webpage)
-* 8.0 [Appendix D. Selectors](#selectors)
-  * 8.1 [TextPositionSelector](#textPositionSelector)
-* 9.0 [Appendix E. Roles](#roles)
-* 10.0 [Appendix F. Status](#status)
-* 11.0 [Contributors](#contributors)
-* 12.0 [References](#references)
+* [Appendix A. Actions](#actions)
+* [Appendix B. Event Types](#events)
+  * B.1 [AnnotationEvent](#annotationEvent)
+  * B.2 [AssessmentEvent](#assessmentEvent)
+  * B.3 [AssessmentItemEvent](#assessmentItemEvent)
+  * B.4 [AssignableEvent](#assignableEvent)
+  * B.5 [ForumEvent](#forumEvent)
+  * B.6 [MediaEvent](#mediaEvent)
+  * B.7 [MessageEvent](#messageEvent)
+  * B.8 [NavigationEvent](#navigationEvent)
+  * B.9 [OutcomeEvent](#outcomeEvent)
+  * B.10 [ReadingEvent](#readingEvent) (deprecated)
+  * B.11 [SessionEvent](#sessionEvent)
+  * B.12 [ThreadEvent](#threadEvent)
+  * B.13 [ToolUseEvent](#toolUseEvent)
+  * B.14 [ViewEvent](#viewEvent)
+* [Appendix C. Entity Types](#entities)
+  * C.1 [Agent](#agent)
+  * C.2 [Annotation](#annotation)
+  * C.3 [Assessment](#assessment)
+  * C.4 [AssessmentItem](#assessmentItem)
+  * C.5 [AssignableDigitalResource](#assignableDigitalResource)
+  * C.6 [Attempt](#attempt)
+  * C.7 [AudioObject](#audioObject)
+  * C.8 [BookmarkAnnotation](#bookmarkAnnotation)
+  * C.9 [Chapter](#chapter)
+  * C.10 [CourseOffering](#courseOffering)
+  * C.11 [CourseSection](#courseSection)
+  * C.12 [DigitalResource](#digitalResource)
+  * C.13 [DigitalResourceCollection](#digitalResourceCollection)
+  * C.14 [Document](#document)
+  * C.15 [EpubChapter](#epubChapter) (deprecated)
+  * C.16 [EpubPart](#epubPart) (deprecated)
+  * C.17 [EpubSubChapter](#epubSubChapter) (deprecated)
+  * C.18 [EpubVolume](#epubVolume) (deprecated)
+  * C.19 [FillinBlankResponse](#fillinBlankResponse)
+  * C.20 [Forum](#forum)
+  * C.21 [Frame](#frame)
+  * C.22 [Group](#group)
+  * C.23 [HighlightAnnotation](#highlightAnnotation)
+  * C.24 [ImageObject](#imageObject)
+  * C.25 [LearningObjective](#learningObjective)
+  * C.26 [LtiSession](#ltiSession) 
+  * C.27 [MediaLocation](#mediaLocation)
+  * C.28 [MediaObject](#mediaObject)
+  * C.29 [Membership](#membership)
+  * C.30 [Message](#message)
+  * C.31 [MultipleChoiceResponse](#multipleChoiceResponse)
+  * C.32 [MultipleResponseResponse](#multipleResponseResponse)
+  * C.33 [Organization](#organization)
+  * C.34 [Page](#page)
+  * C.35 [Person](#person)
+  * C.36 [Reading](#reading) (deprecated)
+  * C.37 [Response](#response)
+  * C.38 [Result](#result)
+  * C.39 [Session](#session)
+  * C.40 [SharedAnnotation](#sharedAnnotation)
+  * C.41 [SelectTextResponse](#selectTextResponse)
+  * C.42 [SoftwareApplication](#softwareApplication)
+  * C.43 [TagAnnotation](#tagAnnotation)
+  * C.44 [TrueFalseResponse](#trueFalseResponse)
+  * C.45 [Thread](#thread)
+  * C.46 [VideoObject](#videoObject)
+  * C.47 [WebPage](#webpage)
+* [Appendix D. Selectors](#selectors)
+  * D.1 [TextPositionSelector](#textPositionSelector)
+* [Appendix E. Roles](#roles)
+* [Appendix F. Status](#status)
+* [Contributors](#contributors)
+* [References](#references)
 
 <a name="introduction" />
   
@@ -1291,7 +1291,7 @@ If the [Endpoint](#endpoint) implementer wants the [Endpoint](#endpoint) to comm
 
 <a name="actions"/>
    
-## 5.0 Appendix A. Actions
+## Appendix A. Actions
 Caliper includes a vocabulary of actions for describing learning interactions. Each action [Term](#termdef) is based on the past-tense form of an English (en-US) verb.  An action [Term](#termdef) can also indicate a change in a particular characteristic of the `object` (e.g., resolution, size, speed, volume).  Each action [Term](#termdef) is mapped to a persistent [IRI](#iriDef) listed in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Each action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton University's WordNet® project in order to eliminate ambiguity and aid natural language processing.
  
  Each Caliper [Event](#event) type supports one one or more of the actions listed below.  The [Event](#event) `action` property string value MUST be set to the appropriate [Term](#termDef). Only one action may be specified per [Event](#event).
@@ -1367,11 +1367,11 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 
 <a name="events" />
 
-## 6.0 Appendix B. Event Types
+## Appendix B. Event Types
 
 <a name="annotationEvent" />
 
-### 6.1 AnnotationEvent
+### B.1 AnnotationEvent
 The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 #### Supported actions
@@ -1473,7 +1473,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 	
 <a name="assessmentEvent" />
 
-### 6.2 AssessmentEvent
+### B.2 AssessmentEvent
 The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.  
 
 #### Supported actions
@@ -1644,7 +1644,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 
 <a name="assessmentItemEvent" />
 
-### 6.3 AssessmentItemEvent
+### B.3 AssessmentItemEvent
 The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).  
 
 #### Supported actions
@@ -1840,7 +1840,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 <a name="assignableEvent" />
 
-### 6.4 AssignableEvent
+### B.4 AssignableEvent
 TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 #### Supported actions
@@ -1933,7 +1933,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 <a name="forumEvent" />
 
-### 6.5 ForumEvent
+### B.5 ForumEvent
 
 TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
@@ -2020,7 +2020,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
 <a name="mediaEvent" />
 
-### 6.6 MediaEvent
+### B.6 MediaEvent
 TODO The Caliper [MediaEvent](#mediaEvent) models . . . .
 
 TODO   
@@ -2110,7 +2110,7 @@ TODO
 
 <a name="messageEvent" />
 
-### 6.7 MessageEvent
+### B.7 MessageEvent
 The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
 
 #### Supported actions
@@ -2276,7 +2276,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 <a name="navigationEvent" />
 
-### 6.8 NavigationEvent
+### B.8 NavigationEvent
 The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
 
 #### Supported actions
@@ -2361,7 +2361,7 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 
 <a name="outcomeEvent" />
 
-### 6.9 OutcomeEvent
+### B.9 OutcomeEvent
 TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 #### Supported actions
@@ -2443,7 +2443,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 ```
 <a name="readingEvent" />
 
-### 6.10 ReadingEvent DEPRECATED
+### B.10 ReadingEvent DEPRECATED
 
 The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be utilized.
 
@@ -2473,7 +2473,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 
 <a name="sessionEvent" />
 
-### 6.11 SessionEvent
+### B.11 SessionEvent
 TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 #### Supported actions
@@ -2597,7 +2597,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 <a name="threadEvent" />
 
-### 6.12 ThreadEvent
+### B.12 ThreadEvent
 TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum thread or topic as either read or unread.  
 
 #### Supported actions
@@ -2684,7 +2684,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 
 <a name="toolUseEvent" />
 
-### 6.13 ToolUseEvent
+### B.13 ToolUseEvent
 A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction. It's meant to be a fundamental [Event](#event) that tool creators can implement to demonstrate that users are using the tool in the way in which it's intended to be used.
 
 #### Supported actions
@@ -2762,7 +2762,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 
 <a name="viewEvent" />
 
-### 6.14 ViewEvent
+### B.14 ViewEvent
 A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.
 
 #### Supported actions
@@ -2860,11 +2860,11 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 <a name="entities" />
 
-### 7.0 Appendix C. Entity Types
+### Appendix C. Entity Types
 
 <a name="agent" />
 
-### 7.1 Agent
+### C.1 Agent
 A Caliper [Agent](#agent) is a generic type that represents an Entity that can initiate or perform an action.
 
 #### Supertype
@@ -2895,7 +2895,7 @@ A Caliper [Agent](#agent) is a generic type that represents an Entity that can i
 
 <a name="annotation" />
 
-### 7.2 Annotation
+### C.2 Annotation
 A Caliper [Annotation](#annotation) is a generic type that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.
 
 #### Supertype
@@ -2928,7 +2928,7 @@ A Caliper [Annotation](#annotation) is a generic type that represents a comment,
 
 <a name="assessment" />
 
-### 7.3 Assessment
+### C.3 Assessment
 A Caliper [Assessment](#assessment) represents an assessment instrument such as a test or quiz.
 
 #### Supertype
@@ -2999,7 +2999,7 @@ A Caliper [Assessment](#assessment) represents an assessment instrument such as 
 ```
 <a name="assessmentItem" />
 
-### 7.4 AssessmentItem
+### C.4 AssessmentItem
 A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
 
 #### Supertype
@@ -3063,7 +3063,7 @@ A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
 
 <a name="assignableDigitalResource" />
 
-### 7.5 AssignableDigitalResource
+### C.5 AssignableDigitalResource
 A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic type that represents digital content associated with a graded or ungraded assignment.
 
 #### Supertype
@@ -3121,7 +3121,7 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 
 <a name="attempt" />
 
-### 7.6 Attempt
+### C.6 Attempt
 A Caliper [Attempt](#attempt) provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An [Attempt](#attempt) is generated as the result of an action such as starting an [Assessment](#assessment).
 
 #### Supertype
@@ -3172,7 +3172,7 @@ A Caliper [Attempt](#attempt) provides a count of the number of times an actor h
 
 <a name="audioObject" />
 
-### 7.7 AudioObject
+### C.7 AudioObject
 A Caliper [AudioObject](#audioObject) represents an audio or sound file.
 
 #### Supertype
@@ -3220,7 +3220,7 @@ A Caliper [AudioObject](#audioObject) represents an audio or sound file.
 
 <a name="bookmarkAnnotation" />
 
-### 7.8 BookmarkAnnotation
+### C.8 BookmarkAnnotation
 A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of marking a [DigitalResource](#digitalResource) at a particular location.
 
 **TODO how do you transmit the position of the bookmark?**
@@ -3265,7 +3265,7 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 
 <a name="chapter" />
 
-### 7.9 Chapter
+### C.9 Chapter
 A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digital content.
 
 #### Supertype 
@@ -3312,7 +3312,7 @@ A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digi
 
 <a name="courseOffering" />
 
-### 7.10 CourseOffering
+### C.10 CourseOffering
 A Caliper [CourseOffering](#courseOffering) represents the occurrence of a course or a type during a specified time period.  [CourseOffering](#courseOffering) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Supertype
@@ -3354,7 +3354,7 @@ A Caliper [CourseOffering](#courseOffering) represents the occurrence of a cours
 
 <a name="courseSection" />
 
-### 7.11 CourseSection
+### C.11 CourseSection
 A Caliper [CourseSection](#courseSection) represents a specific instance of a [CourseOffering](#courseOffering) occurring during a specific semester, term or period.  [CourseSection](#courseSection) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Supertype
@@ -3399,7 +3399,7 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 
 <a name="digitalResource" />
 
-### 7.12 DigitalResource
+### C.12 DigitalResource
 A Caliper [DigitalResource](#digitalResource) is a generic type that represents digital content.
 
 #### Supertype 
@@ -3462,7 +3462,7 @@ A Caliper [DigitalResource](#digitalResource) is a generic type that represents 
 
 <a name="digitalResourceCollection" />
 
-### 7.13 DigitalResourceCollection
+### C.13 DigitalResourceCollection
 A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an ordered collection of [DigitalResource](#digitalResource) entities.
 
 #### Supertype
@@ -3537,7 +3537,7 @@ A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an 
 
 <a name="document" />
 
-### 7.14 Document
+### C.14 Document
 A Caliper [Document](#document) represents textual content.
 
 #### Supertype 
@@ -3591,7 +3591,7 @@ A Caliper [Document](#document) represents textual content.
  
 <a name="epubChapter" />
 
-### 7.15 EpubChapter (DEPRECATED)
+### C.15 EpubChapter (DEPRECATED)
 A Caliper [EpubChapter](#epubChapter) represents a major structural division of a piece of writing.  [EpubChapter](#epubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -3621,7 +3621,7 @@ A Caliper [EpubChapter](#epubChapter) represents a major structural division of 
 
 <a name="epubPart" />
 
-### 7.16 EpubPart (DEPRECATED)
+### C.16 EpubPart (DEPRECATED)
 A Caliper [EpubPart](#epubPart) represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  [EpubPart](#epubPart) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -3651,7 +3651,7 @@ A Caliper [EpubPart](#epubPart) represents a major structural division of a piec
 
 <a name="epubSubChapter" />
 
-### 7.17 EpubSubChapter (DEPRECATED)
+### C.17 EpubSubChapter (DEPRECATED)
 A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of an [EpubChapter](#epubChapter).  [EpubSubChapter](#epubSubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -3681,7 +3681,7 @@ A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of a
 
 <a name="epubVolume" />
 
-### 7.18 EpubVolume (DEPRECATED)
+### C.18 EpubVolume (DEPRECATED)
 A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its supertype.  [EpubVolume](#epubVolume) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -3711,7 +3711,7 @@ A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  Epu
 
 <a name="fillinBlankResponse" />
 
-### 7.19 FillinBlankResponse
+### C.19 FillinBlankResponse
 A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Response](#response) in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
 #### Supertype 
@@ -3771,7 +3771,7 @@ A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Resp
 
 <a name="forum" />
 
-### 7.20 Forum
+### C.20 Forum
 A Caliper [Forum](#forum) represents a channel or virtual space in which group discussions take place.  A [Forum](#forum) typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.
 
 #### Supertype 
@@ -3842,7 +3842,7 @@ A Caliper [Forum](#forum) represents a channel or virtual space in which group d
 
 <a name="frame" />
 
-### 7.21 Frame
+### C.21 Frame
 A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalResource](#digitalResource).
 
 **TODO DEFINE INDEX PROPERTY IN MORE DETAIL**
@@ -3892,7 +3892,7 @@ A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalRes
 
 <a name="group" />
 
-### 7.22 Group
+### C.22 Group
 A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
 #### Supertype
@@ -3934,7 +3934,7 @@ A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collectio
 
 <a name="highlightAnnotation" />
 
-### 7.23 HighlightAnnotation
+### C.23 HighlightAnnotation
 A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
 
 ### TODO
@@ -3986,7 +3986,7 @@ A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of mark
 
 <a name="imageObject" />
 
-### 7.24 ImageObject
+### C.24 ImageObject
 A Caliper [ImageObject](#imageObject) represents an image file.
 
 #### Supertype 
@@ -4029,7 +4029,7 @@ A Caliper [ImageObject](#imageObject) represents an image file.
 
 <a name="learningObjective" />
 
-### 7.25 LearningObjective
+### C.25 LearningObjective
 The Caliper [LearningObjective](#learningObjective) represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
 #### Supertype 
@@ -4078,7 +4078,7 @@ The Caliper [LearningObjective](#learningObjective) represents a summary stateme
 
 <a name="ltiSession" />
 
-### 7.26 LtiSession
+### C.26 LtiSession
 A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user session.
 
 #### Supertype
@@ -4156,7 +4156,7 @@ A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user
 
 <a name="mediaLocation" />
 
-### 7.27 MediaLocation
+### C.27 MediaLocation
 
 A Caliper [MediaLocation](#mediaLocation) provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
  
@@ -4199,7 +4199,7 @@ A Caliper [MediaLocation](#mediaLocation) provides the current playback position
 
 <a name="mediaObject" />
 
-### 7.28 MediaObject
+### C.28 MediaObject
 A Caliper [MediaObject](#mediaObject) represents a generic piece of media content.
 
 #### Supertype 
@@ -4240,7 +4240,7 @@ A Caliper [MediaObject](#mediaObject) represents a generic piece of media conten
 
 <a name="membership" />
 
-### 7.29 Membership
+### C.29 Membership
 A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
 
 #### Supertype 
@@ -4289,7 +4289,7 @@ A Caliper [Membership](#membership) describes the relationship between an [Organ
 
 <a name="message" />
 
-### 7.30 Message
+### C.30 Message
 A Caliper [Message](#message) is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.
 
 #### Supertype 
@@ -4360,7 +4360,7 @@ A Caliper [Message](#message) is a digital form of written communication sent to
  
 <a name="multipleChoiceResponse" />
 
-### 7.31 MultipleChoiceResponse
+### C.31 MultipleChoiceResponse
 A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of [Response](#response) in which a respondent is asked to provide the best possible answer from a list of choices.
 
 #### Supertype 
@@ -4420,7 +4420,7 @@ A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of
 
 <a name="multipleResponseResponse" />
 
-### 7.32 MultipleResponseResponse
+### C.32 MultipleResponseResponse
 A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
 #### Supertype 
@@ -4480,7 +4480,7 @@ A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a for
 
 <a name="organization" />
 
-### 7.33 Organization
+### C.33 Organization
 A Caliper [Organization](#organization) represents a formal collection of people organized for some common educational, social or administrative purpose.  An [Organization](#organization) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
 #### Supertype
@@ -4521,7 +4521,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 <a name="page" />
 
-### 7.34 Page
+### C.34 Page
 A Caliper [Page](#page) represents an item of paginated content.
 
 #### Supertype 
@@ -4573,7 +4573,7 @@ A Caliper [Page](#page) represents an item of paginated content.
 
 <a name="person" />
 
-### 7.35 Person
+### C.35 Person
 A Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.
 #### Supertype
 [Agent](#agent)
@@ -4604,7 +4604,7 @@ A Caliper [Person](#person) represents a human being, alive or deceased, real or
 
 <a name="reading" />
 
-### 7.36 Reading (DEPRECATED)
+### C.36 Reading (DEPRECATED)
 A Caliper [Reading](#reading) represents an item of paginated content.  [Reading](#reading) is a DEPRECATED entity superseded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -4634,7 +4634,7 @@ A Caliper [Reading](#reading) represents an item of paginated content.  [Reading
 
 <a name="response" />
 
-### 7.37 Response
+### C.37 Response
 A Caliper [Response](#response) is a generic type that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).
 
 #### Supertype 
@@ -4664,7 +4664,7 @@ A Caliper [Response](#response) is a generic type that represents the selected o
 
 <a name="result" />
 
-### 7.38 Result
+### C.38 Result
 A Caliper [Result](#result) represents a grade applied to an assignment submission.
 
 **TODO describe scores**
@@ -4732,7 +4732,7 @@ A Caliper [Result](#result) represents a grade applied to an assignment submissi
 
 <a name="selectTextResponse" />
 
-### 7.39 SelectTextResponse
+### C.39 SelectTextResponse
 A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
 
 #### Supertype 
@@ -4792,7 +4792,7 @@ A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Respon
 
 <a name="session" />
 
-### 7.40 Session
+### C.40 Session
 A Caliper [Session](#session) represents a web application user session.
 
 #### Supertype
@@ -4835,7 +4835,7 @@ A Caliper [Session](#session) represents a web application user session.
 
 <a name="sharedAnnotation" />
 
-### 7.41 SharedAnnotation
+### C.41 SharedAnnotation
 A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
 
 #### Supertype
@@ -4887,7 +4887,7 @@ A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a 
 
 <a name="softwareApplication" />
 
-#### 7.42 SoftwareApplication
+#### C.42 SoftwareApplication
 A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
 
 #### Supertype
@@ -4921,7 +4921,7 @@ A Caliper [SoftwareApplication](#softwareApplication) represents a computer prog
 
 <a name="tagAnnotation" />
 
-### 7.43 TagAnnotation
+### C.43 TagAnnotation
 A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
 
 #### Supertype
@@ -4964,7 +4964,7 @@ A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [Digit
 
 <a name="thread" />
 
-### 7.44 Thread
+### C.44 Thread
 A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
 #### Supertype 
@@ -5042,7 +5042,7 @@ A Caliper [Thread](#thread) represents a series of one or more messages that sha
 
 <a name="trueFalseResponse" />
 
-### 7.45 TrueFalseResponse
+### C.45 TrueFalseResponse
 A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
 
 #### Supertype 
@@ -5102,7 +5102,7 @@ A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response
 
 <a name="videoObject" />
 
-### 7.46 VideoObject
+### C.46 VideoObject
 A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
 
 #### Supertype 
@@ -5148,7 +5148,7 @@ A Caliper [VideoObject](#videoObject) represents a visual recording stored in di
 
 <a name="webPage" />
 
-### 7.47 WebPage
+### C.47 WebPage
 A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
 
 #### Supertype 
@@ -5195,10 +5195,10 @@ A Caliper [WebPage](#webPage) represents a document containing markup that is su
 
 <a name="#selectors" />
 
-### 8.0 Appendix D. Selectors
+### Appendix D. Selectors
 TODO Intro
 
-### 8.1 TextPositionSelector
+### D.1 TextPositionSelector
 TODO Intro
 
 #### Properties
@@ -5231,7 +5231,7 @@ TODO Intro
 
 <a name="roles" />
 
-## 9.0 Appendix E. Roles
+## Appendix E. Roles
 
 ### Roles
 One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate [Term](#term) string value:
@@ -5293,7 +5293,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 
 <a name="status" />
 
-### 10.0 Appendix F. Status
+### Appendix F. Status
 The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate [Term](#term) string value:
 
 | Term | IRI |
@@ -5303,7 +5303,7 @@ The status of a [member](#member) within an organization can be set to one of th
 
 <a name="contributors" />
 
-### 11.0 Contributors
+### Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
 #### Authors
@@ -5321,7 +5321,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="reference" />
 
-### 12.0 References
+### References
 
 <a name="jsonldSyntax" />
 
