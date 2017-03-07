@@ -1103,7 +1103,7 @@ Caliper defines an application programming interface (the Sensor API™) for mar
 <a name="behavior" />
 
 ### 4.1 Behavior
-A Caliper [Sensor](#sensor) MUST be capable of sending an [Envelope](#envelope) containing a `data` payload consisting of one or more Caliper events and/or entities to a target endpoint.
+A Caliper [Sensor](#sensor) MUST be capable of sending an [Envelope](#envelope) containing a mixed `data` payload consisting of one or more Caliper events and/or entities to a target endpoint.
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
 
