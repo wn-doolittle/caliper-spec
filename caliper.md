@@ -39,7 +39,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types](#jsonldTypes)
-  * 3.2 [Type Coercion](#jsonldTypeCoercion)
+  * 3.4 [Type Coercion](#jsonldTypeCoercion)
   * 3.5 [Processing Algorithms](#jsonldProcessing)
 * 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#behavior)
