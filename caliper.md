@@ -5193,10 +5193,12 @@ A Caliper [WebPage](#webPage) represents a document containing markup that is su
 }
 ```
 
-<a name="#selectors" />
+<a name="selectors" />
 
 ### Appendix D. Selectors
 TODO Intro
+
+<a name="textPositionSelector" />
 
 ### D.1 TextPositionSelector
 TODO Intro
