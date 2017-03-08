@@ -3779,7 +3779,6 @@ A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  Epu
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubVolume](#epubVolume) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubVolume](#epubVolume) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | Array | The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [EpubVolume](#epubVolume) as a part MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4800,6 +4799,9 @@ A Caliper [Response](#response) is a generic type that represents the selected o
 #### Supertype 
 [Entity](#entity)
 
+#### Subtypes
+[FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+
 #### Properties
 [Response](#response) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
 
@@ -4810,8 +4812,6 @@ A Caliper [Response](#response) is a generic type that represents the selected o
 | name | String | A string value comprising a word or phrase by which the [Response](#response)  is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Response](#response) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [Response](#response) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| ~~actor~~ | [Person](#person) | The `actor` property is DEPRECATED in favor of `attempt`. | Deprecated |
-| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The `assignable` property is DEPRECATED in favor of `attempt`. | Deprecated |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response)  was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
@@ -4819,8 +4819,14 @@ A Caliper [Response](#response) is a generic type that represents the selected o
 | duration | Duration | A time interval that represents the time taken to complete the [Response](#response) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Response](#response). | Optional |
 
-#### Subtypes
-[FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+#### Deprecated Properties
+The following [Response](#response) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+
 
 <a name="result" />
 
@@ -4841,7 +4847,7 @@ A Caliper [Result](#result) represents a grade applied to an assignment submissi
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Result*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
-| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [Result](#result) and the assigned [DigitalResource](#digitalResource). | Recommended |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
 | normalScore | Integer | TODO | Optional |
 | penaltyScore | Integer | TODO | Optional |
 | extraCreditScore | Integer | TODO | Optional |
@@ -4976,7 +4982,6 @@ A Caliper [Session](#session) represents a web application user session.
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Session](#session) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Session](#session) MAY be specified. | Optional |
-| ~~actor~~ | [Person](#person) | The `actor` property is DEPRECATED in favor of `user`. | Deprecated |
 | user | [Person](#person) | The [Person](#person) who initiated the [Session](#session) SHOULD be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
