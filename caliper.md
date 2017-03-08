@@ -373,9 +373,9 @@ The Caliper Basic Profile provides a generic [Event](#event) for describing lear
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
+* A generic [Agent](#agent) or one of its subtypes, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
 * The `action` value range is limited to the set of [actions](#actions) described in this specification and no other.
-* A generic [Entity](#entity) or one of its subclasses MUST be specified as the `object` of the interaction.  
+* A generic [Entity](#entity) or one of its subtypes MUST be specified as the `object` of the interaction.  
 * When navigating to an [Entity](#entity) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Minimum conformance
@@ -501,7 +501,7 @@ The Caliper Assessment Profile models assessment-related activities including in
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* The choice of `object` depends on the action initiated.  For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object`.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subclasses.
+* The choice of `object` depends on the action initiated.  For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object`.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subtypes.
 * For a [Started](#started) action the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For an [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
@@ -568,7 +568,7 @@ The Assignable Profile models activities associated with digital content assigne
 * Certain [Event](#event) properties are required and MUST be specified when creating an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subclasses, or a learner's [Attempt](#attempt).
+* For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subtypes, or a learner's [Attempt](#attempt).
 * When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Minimum conformance
@@ -681,7 +681,7 @@ The Caliper Grading Profile models grading activities performed by an [Agent](#a
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating an [OutcomeEvent](#outcomeEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
-* A generic [Agent](#agent) or one of its subclasses, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
+* A generic [Agent](#agent) or one of its subtypes, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * The learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction.
 * The `generated` [Result](#result) SHOULD also be specified.
@@ -773,10 +773,10 @@ The Caliper Media Profile models interactions between learners and rich content 
 * Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* A [MediaObject](#mediaObject) or one of its subclasses MUST be specified as the `object` of the interaction.
+* A [MediaObject](#mediaObject) or one of its subtypes MUST be specified as the `object` of the interaction.
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
-* When navigating to a [MediaObject](#mediaObject) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subclasses; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subclasses.
+* When navigating to a [MediaObject](#mediaObject) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subtypes; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subtypes.
 
 #### Minimum conformance
 Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions are required and MUST be implemented.  All other supported events are considered optional.
@@ -825,9 +825,9 @@ The Caliper Reading Profile models activities associated with navigating to and 
 * Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
-* For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subclasses.
+* For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subtypes.
 * If relevant, a [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
-* When navigating to a [DigitalResource](#digitalResource) or one of its subclasses the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* When navigating to a [DigitalResource](#digitalResource) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Minimum conformance
 Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target endpoint.  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
@@ -950,7 +950,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 ## 3.0 JSON-LD
 Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) links to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data and so on.  [JSON-LD](#jsonldDef), Caliper's chosen syntax for describing learning activity data as [Linked Data](#linkedData) using a JSON-based interchange format, provides the necessary representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.  
 
-The [Linked Data](#linkedData) principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies also influence [JSON-LD](#jsonldDef) and Caliper: use [IRIs](#iriDef)/URIs as names for things; use HTTP [IRIs](#iriDef)/URIs so that information about things (e.g., people, objects, concepts) can be retrieved ~~using a standard format~~; link out to other relevant things by way of their [IRIs](#iriDef)/URIs in order to ~~encourage~~ promote discovery of new relationships between things.  [JSON-LD](#jsonldDef) abides by these “rules”. It features a lightweight syntax and a JSON-based format for serializing [Linked Data](#linkedData).  [JSON-LD](#jsonldDef) encourages use of globally unique, persistent, dereferenceable [IRIs](#iriDef) for entities (i.e., nodes) and attributes.  [JSON-LD](#jsonldDef) also provides a means of expressing relationships between entities as a directed graph.  Crucially, for machine-to-machine data exchange, [JSON-LD](#jsonldDef) provides Caliper with a mechanism for rendering comprehensible the underlying semantics of its JSON-based documents via a mapping of its [Terms](#terms) to one or more published vocabularies.  In a world where learners now interact with an array of learning applications the need to aggregate data streams generated from multiple sources in order to discern patterns and behaviors that transcend application boundaries is of vital importance. 
+The [Linked Data](#linkedData) principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies also influence [JSON-LD](#jsonldDef) and Caliper: use [IRIs](#iriDef)/URIs as names for things; use HTTP [IRIs](#iriDef)/URIs so that information about things (e.g., people, objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of their [IRIs](#iriDef)/URIs in order to promote discovery of new relationships between things.  [JSON-LD](#jsonldDef) abides by these “rules”. It features a lightweight syntax and a JSON-based format for serializing [Linked Data](#linkedData).  [JSON-LD](#jsonldDef) encourages use of globally unique, persistent, dereferenceable [IRIs](#iriDef) for entities (i.e., nodes) and attributes.  [JSON-LD](#jsonldDef) also provides a means of expressing relationships between entities as a directed graph.  Crucially, for machine-to-machine data exchange, [JSON-LD](#jsonldDef) provides Caliper with a mechanism for rendering comprehensible the underlying semantics of its JSON-based documents via a mapping of its [Terms](#terms) to one or more published vocabularies.  In a world where learners now interact with an array of learning applications the need to aggregate data streams generated from multiple sources in order to discern patterns and behaviors that transcend application boundaries is of vital importance. 
 
 <a name="jsonldContext" />
 
@@ -2303,6 +2303,13 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
+#### Deprecated Properties
+The following [NavigationEvent](#navigationEvent) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~navigatedFrom~~ | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context. `navigatedFrom` has been DEPRECATED and replaced by `referrer`. | Deprecated |
+
 #### Example: NavigationEvent (navigated to)
 ```json
 {
@@ -2945,9 +2952,7 @@ A Caliper [Assessment](#assessment) represents an assessment instrument such as 
 | description | String |  A string value comprising a brief, written representation of the [Assessment](#assessment) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Assessment](#assessment) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Assessment](#assessment) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Assessment](#assessment) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Assessment](#assessment) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Assessment](#assessment) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Assessment](#assessment) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Assessment](#assessment) as a part of its whole MAY be specified. | Optional |
 | items | Array | An ordered collection of [AssessmentItem](#assessmentItem) entities that comprise this collection MAY be specified. | Optional |
@@ -2962,6 +2967,15 @@ A Caliper [Assessment](#assessment) represents an assessment instrument such as 
 | maxScore | Integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
 | version | String | A string value that designates the current form or version of the [Assessment](#assessment) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Assessment](#assessment). | Optional |
+
+#### Deprecated Properties
+The following [Assessment](#assessment) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+
 
 #### Example
 ```json
@@ -3016,9 +3030,7 @@ A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
 | description | String |  A string value comprising a brief, written representation of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [AssessmentItem](#assessmentItem) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [AssessmentItem](#assessmentItem) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AssessmentItem](#assessmentItem) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | isTimeDependent | Boolean | A boolean value indicating whether or not interacting with the item is time dependent MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [AssessmentItem](#assessmentItem) as a part of its whole MAY be specified. | Optional |
@@ -3033,6 +3045,14 @@ A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
 | maxScore | Integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
 | version | String | A string value that designates the current form or version of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssessmentItem](#assessmentItem). | Optional |
+
+#### Deprecated Properties
+The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -3069,8 +3089,11 @@ A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic t
 #### Supertype
 [DigitalResource](#digitalResource)
 
+#### Subtypes 
+[Assessment](#assessment), [AssessmentItem](#assessmentItem)
+
 #### Properties
-AssignableDigitalResource inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
+[AssignableDigitalResource](#assignableDigitalResource) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3080,9 +3103,7 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 | description | String |  A string value comprising a brief, written representation of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [AssignableDigitalResource](#assignableDigitalResource) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [AssignableDigitalResource](#assignableDigitalResource) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AssignableDigitalResource](#assignableDigitalResource) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [AssignableDigitalResource](#assignableDigitalResource) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AssignableDigitalResource](#assignableDigitalResource) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3097,8 +3118,13 @@ AssignableDigitalResource inherits all the properties and requirements defined f
 | version | String | A string value that designates the current form or version of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssignableDigitalResource](#assignableDigitalResource). | Optional |
 
-#### Subtypes 
-[Assessment](#assessment), [AssessmentItem](#assessmentItem)
+#### Deprecated Properties
+The following [AssignableDigitalResource](#assignableDigitalResource) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -3136,7 +3162,6 @@ A Caliper [Attempt](#attempt) provides a count of the number of times an actor h
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Attempt*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Attempt](#attempt) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Attempt](#attempt) MAY be specified. | Optional |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the [Attempt](#attempt) SHOULD be specified.~~  The `actor` property is DEPRECATED in favor of `assignee`. | Deprecated |
 | assignee | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt) SHOULD be specified. | Recommended |
 | assignable | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  Note that [DigitalResource](#digitalResource) is a generic type that is subtyped for more precise type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the annotated resource. | Recommended |
 | isPartOf | [Attempt](#attempt) | The parent [Attempt](#attempt), if any, MAY be specified. | Optional |
@@ -3147,6 +3172,13 @@ A Caliper [Attempt](#attempt) provides a count of the number of times an actor h
 | endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | duration | Duration | A time interval that represents the time taken to complete the [Attempt](#attempt) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Attempt](#attempt). | Optional |
+
+#### Deprecated Properties
+The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt). `actor` has been DEPRECATED and replaced by  `assignee`. | Deprecated |
 
 #### Example
 ```json
@@ -3189,9 +3221,7 @@ A Caliper [AudioObject](#audioObject) represents an audio or sound file.
 | description | String |  A string value comprising a brief, written representation of the [AudioObject](#audioObject) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [AudioObject](#audioObject) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AudioObject](#audioObject) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [AudioObject](#audioObject) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AudioObject](#audioObject) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AudioObject](#audioObject) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AudioObject](#audioObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [AudioObject](#audioObject) as a part of its whole MAY be specified. | Optional |
 | volumeMin | String | A string value indicating the minimum volume level MAY be specified. | Optional |
@@ -3204,6 +3234,14 @@ A Caliper [AudioObject](#audioObject) represents an audio or sound file.
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [AudioObject](#audioObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [AudioObject](#audioObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AudioObject](#audioObject). | Optional |
+
+#### Deprecated Properties
+The following [AudioObject](#audioObject) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -3282,9 +3320,7 @@ A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digi
 | description | String |  A string value comprising a brief, written representation of the [Chapter](#chapter) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Chapter](#chapter) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Chapter](#chapter) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Chapter](#chapter) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Chapter](#chapter) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Chapter](#chapter) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Chapter](#chapter) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Chapter](#chapter) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Chapter](#chapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3292,6 +3328,14 @@ A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digi
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Chapter](#chapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [Chapter](#chapter) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Chapter](#chapter). | Optional |
+
+#### Deprecated Properties
+The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -3405,6 +3449,12 @@ A Caliper [DigitalResource](#digitalResource) is a generic type that represents 
 #### Supertype 
 [Entity](#entity)
 
+#### Subtypes
+[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Forum](#forum), [Frame](#frame), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Page](#page), [Thread](#thread), [WebPage](#webpage)
+
+#### Deprecated subtypes
+[EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
+
 #### Properties
 [DigitalResource](#digitalResource) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
 
@@ -3416,9 +3466,7 @@ A Caliper [DigitalResource](#digitalResource) is a generic type that represents 
 | description | String |  A string value comprising a brief, written representation of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [DigitalResource](#digitalResource) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [DigitalResource](#digitalResource) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [DigitalResource](#digitalResource) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [DigitalResource](#digitalResource) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [DigitalResource](#digitalResource) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [DigitalResource](#digitalResource) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [DigitalResource](#digitalResource) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3427,11 +3475,13 @@ A Caliper [DigitalResource](#digitalResource) is a generic type that represents 
 | version | String | A string value that designates the current form or version of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [DigitalResource](#digitalResource). | Optional |
 
-#### Subtypes
-[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Forum](#forum), [Frame](#frame), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Page](#page), [Thread](#thread), [WebPage](#webpage)
+#### Deprecated Properties
+The following [DigitalResource](#digitalResource) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
 
-#### Deprecated subtypes
-[EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -3468,6 +3518,9 @@ A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an 
 #### Supertype
 [DigitalResource](#digitalResource)
 
+#### Subtypes 
+[Assessment](#assessment), [Forum](#forum), [Thread](#thread)
+
 #### Properties
 [DigitalResourceCollection](#digitalResourceCollection) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
 
@@ -3479,9 +3532,7 @@ A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an 
 | description | String |  A string value comprising a brief, written representation of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [DigitalResourceCollection](#digitalResourceCollection) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [DigitalResourceCollection](#digitalResourceCollection) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [DigitalResourceCollection](#digitalResourceCollection) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [DigitalResourceCollection](#digitalResourceCollection) as a part of its whole MAY be specified. | Optional |
 | items | Array | An ordered collection of [DigitalResource](#digitalResource) entities that comprise this collection MAY be specified. | Optional |
@@ -3491,8 +3542,13 @@ A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an 
 | version | String | A string value that designates the current form or version of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [DigitalResourceCollection](#digitalResourceCollection). | Optional |
 
-#### Subtypes 
-[Assessment](#assessment), [Forum](#forum), [Thread](#thread)
+#### Deprecated Properties
+The following [DigitalResourceCollection](#digitalResourceCollection) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -3554,9 +3610,7 @@ A Caliper [Document](#document) represents textual content.
 | description | String |  A string value comprising a brief, written representation of the [Document](#document) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Document](#document) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Document](#document) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Document](#document) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Document](#document) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Document](#document) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Document](#document) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Document](#document) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Document](#document) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3564,6 +3618,14 @@ A Caliper [Document](#document) represents textual content.
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Document](#document) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [Document](#document) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Document](#document). | Optional | 
+
+#### Deprecated Properties
+The following [Document](#document) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -3608,16 +3670,22 @@ A Caliper [EpubChapter](#epubChapter) represents a major structural division of 
 | description | String |  A string value comprising a brief, written representation of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubChapter](#epubChapter) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubChapter](#epubChapter) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [EpubChapter](#epubChapter) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubChapter](#epubChapter) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubChapter](#epubChapter) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [EpubChapter](#epubChapter) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubChapter](#epubChapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubChapter](#epubChapter) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubChapter](#epubChapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
-| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubChapter](#epubChapter). | Optional | 
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubChapter](#epubChapter). | Optional |
+ 
+#### Deprecated Properties
+The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 <a name="epubPart" />
 
@@ -3638,16 +3706,22 @@ A Caliper [EpubPart](#epubPart) represents a major structural division of a piec
 | description | String |  A string value comprising a brief, written representation of the [EpubPart](#epubPart) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubPart](#epubPart) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubPart](#epubPart) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [EpubPart](#epubPart) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubPart](#epubPart) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubPart](#epubPart) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubPart](#epubPart) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [EpubPart](#epubPart) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubPart](#epubPart) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubPart](#epubPart) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubPart](#epubPart) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [EpubPart](#epubPart) MAY be specified. | Optional |
-| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubPart](#epubPart). | Optional |  
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubPart](#epubPart). | Optional |
+  
+#### Deprecated Properties
+The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |   
 
 <a name="epubSubChapter" />
 
@@ -3668,16 +3742,22 @@ A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of a
 | description | String |  A string value comprising a brief, written representation of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubSubChapter](#epubSubChapter) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [EpubSubChapter](#epubSubChapter) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubSubChapter](#epubSubChapter) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | isPartOf | [EpubChapter](#epubChapter) | a related [EpubChapter](#epubChapter) that includes or incorporates this [EpubSubChapter](#epubSubChapter) as a part MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubSubChapter](#epubSubChapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubSubChapter](#epubSubChapter) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubSubChapter](#epubSubChapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
-| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubSubChapter](#epubSubChapter). | Optional | 
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubSubChapter](#epubSubChapter). | Optional |
+ 
+#### Deprecated Properties
+The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 <a name="epubVolume" />
 
@@ -3698,16 +3778,23 @@ A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  Epu
 | description | String |  A string value comprising a brief, written representation of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubVolume](#epubVolume) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubVolume](#epubVolume) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [EpubVolume](#epubVolume) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubVolume](#epubVolume) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubVolume](#epubVolume) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [EpubVolume](#epubVolume) as a part MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubVolume](#epubVolume) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
-| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubVolume](#epubVolume). | Optional | 
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubVolume](#epubVolume). | Optional |
+ 
+#### Deprecated Properties
+The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |  
 
 <a name="fillinBlankResponse" />
 
@@ -3727,8 +3814,6 @@ A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Resp
 | name | String | A string value comprising a word or phrase by which the [FillinBlankResponse](#fillinBlankResponse)  is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [FillinBlankResponse](#fillinBlankResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [FillinBlankResponse](#fillinBlankResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
-| ~~assignable~~ | ~~[AssessmentItem](#assessmentItem)~~ | ~~The [AssessmentItem](#assessmentItem) that constitutes the `object` of the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
 | values | Array | ordered collection of one or more string values representing words, expressions or short phrases that constitute the [FillinBlankResponse](#fillinBlankResponse) SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3736,6 +3821,14 @@ A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Resp
 | endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | duration | Duration | A time interval that represents the time taken to complete the [FillinBlankResponse](#fillinBlankResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [FillinBlankResponse](#fillinBlankResponse). | Optional |
+
+#### Deprecated Properties
+The following [FillinBlankResponse](#fillinBlankResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
 ```json
@@ -3780,25 +3873,31 @@ A Caliper [Forum](#forum) represents a channel or virtual space in which group d
 #### Properties
 [Forum](#forum) inherits all the properties and requirements defined for its supertype [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below:
  
- | Property | Type | Description | Conformance |
- | :------- | :--- | ----------- | :---------: |
- | id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
- | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
- | name | String | A string value comprising a word or phrase by which the [Forum](#forum) is known MAY be specified. | Optional |
- | description | String |  A string value comprising a brief, written representation of the [Forum](#forum) MAY be specified. | Optional |
- | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Forum](#forum) into being MAY be specified. | Optional |
- | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Forum](#forum) MAY be specified. | Optional |
- | ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Forum](#forum) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
- | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Forum](#forum) MAY be specified. | Optional |
- | ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Forum](#forum) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
- | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Forum](#forum) MAY be specified. | Optional |
- | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Forum](#forum) as a part of its whole MAY be specified. | Optional |
- | items | Array | An ordered collection of [Thread](#thread) entities that comprise this collection MAY be specified. | Optional |
- | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
- | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
- | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Forum](#forum) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
- | version | String | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
- | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Forum](#forum). | Optional |
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
+| name | String | A string value comprising a word or phrase by which the [Forum](#forum) is known MAY be specified. | Optional |
+| description | String |  A string value comprising a brief, written representation of the [Forum](#forum) MAY be specified. | Optional |
+| creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Forum](#forum) into being MAY be specified. | Optional |
+| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Forum](#forum) MAY be specified. | Optional |
+| keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Forum](#forum) MAY be specified. | Optional |
+| learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Forum](#forum) MAY be specified. | Optional |
+| isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Forum](#forum) as a part of its whole MAY be specified. | Optional |
+| items | Array | An ordered collection of [Thread](#thread) entities that comprise this collection MAY be specified. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Forum](#forum) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| version | String | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Forum](#forum). | Optional |
+ 
+#### Deprecated Properties
+The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
   
 #### Example
 ```json
@@ -3861,9 +3960,7 @@ A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalRes
 | description | String |  A string value comprising a brief, written representation of the [Frame](#frame) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Frame](#frame) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Frame](#frame) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Frame](#frame) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Frame](#frame) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Frame](#frame) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Frame](#frame) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Frame](#frame) as a part of its whole MAY be specified. | Optional |
 | index | integer | A non-negative integer that represents the position of the [Frame](#frame) SHOULD be specified. | Recommended |
@@ -3872,6 +3969,14 @@ A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalRes
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Frame](#frame) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [Frame](#frame) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Frame](#frame). | Optional | 
+
+#### Deprecated Properties
+The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 #### Example
 ```json
@@ -4003,9 +4108,7 @@ A Caliper [ImageObject](#imageObject) represents an image file.
 | description | String |  A string value comprising a brief, written representation of the [ImageObject](#imageObject) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [ImageObject](#imageObject) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [ImageObject](#imageObject) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [ImageObject](#imageObject) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [ImageObject](#imageObject) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [ImageObject](#imageObject) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [ImageObject](#imageObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [ImageObject](#imageObject) as a part of its whole MAY be specified. | Optional |
 | duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [ImageObject](#imageObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
@@ -4014,6 +4117,14 @@ A Caliper [ImageObject](#imageObject) represents an image file.
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [ImageObject](#imageObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [ImageObject](#imageObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [ImageObject](#imageObject). | Optional |
+
+#### Deprecated Properties
+The following [ImageObject](#imageObject) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -4093,7 +4204,6 @@ A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *LtiSession*. | Required |
 | name | String | A string value comprising a word or phrase by which the [LtiSession](#ltiSession) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [LtiSession](#ltiSession) MAY be specified. | Optional |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the [LtiSession](#ltiSession) SHOULD be specified.~~  DEPRECATED in favor of `user`. | Optional |
 | user | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession) SHOULD be specified. | Optional |
 | launchParameters | Object | An object comprising LTI-specified launch parameters that provide Tool Consumer-related contextual information MAY be specified.  LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4102,6 +4212,13 @@ A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user
 | endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | duration | Duration | A time interval that represents the time taken to complete the [LtiSession](#ltiSession) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [LtiSession](#ltiSession). | Optional |
+
+#### Deprecated Properties
+The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession).  `actor` property has been DEPRECATED in and replaced by `user`. | Optional |
 
 #### Example
 ```json
@@ -4174,9 +4291,7 @@ A Caliper [MediaLocation](#mediaLocation) provides the current playback position
 | description | String |  A string value comprising a brief, written representation of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [MediaLocation](#mediaLocation) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [MediaLocation](#mediaLocation) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [MediaLocation](#mediaLocation) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [MediaLocation](#mediaLocation) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [MediaLocation](#mediaLocation) as a part of its whole MAY be specified. | Optional |
 | currentTime | Duration | A time interval or duration that represents the current playback position measured from the beginning of an [AudioObject](#audioObject) or [VideoObject](#videoObject) SHOULD be specified.  If a currentTime is specified the value MUST conform to the ISO-8601 duration format. | Recommended |
@@ -4185,6 +4300,14 @@ A Caliper [MediaLocation](#mediaLocation) provides the current playback position
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [MediaLocation](#mediaLocation) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MediaLocation](#mediaLocation). | Optional |
+
+#### Deprecated Properties
+The following [MediaLocation](#mediaLocation) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -4205,6 +4328,9 @@ A Caliper [MediaObject](#mediaObject) represents a generic piece of media conten
 #### Supertype 
 [DigitalResource](#digitalResource)
 
+#### Subtypes
+[AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject)
+
 #### Properties
 [MediaObject](#mediaObject) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
 
@@ -4216,9 +4342,7 @@ A Caliper [MediaObject](#mediaObject) represents a generic piece of media conten
 | description | String |  A string value comprising a brief, written representation of the [MediaObject](#mediaObject) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [MediaObject](#mediaObject) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [MediaObject](#mediaObject) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [MediaObject](#mediaObject) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [MediaObject](#mediaObject) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [MediaObject](#mediaObject) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [MediaObject](#mediaObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [MediaObject](#mediaObject) as a part of its whole MAY be specified. | Optional |
 | duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [MediaObject](#mediaObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
@@ -4228,8 +4352,14 @@ A Caliper [MediaObject](#mediaObject) represents a generic piece of media conten
 | version | String | A string value that designates the current form or version of the [MediaObject](#mediaObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MediaObject](#mediaObject). | Optional |
 
-#### Subtypes
-[AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject)
+#### Deprecated Properties
+The following [MediaObject](#mediaObject) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+
 
 #### Example
 ```json
@@ -4306,9 +4436,7 @@ A Caliper [Message](#message) is a digital form of written communication sent to
 | description | String |  A string value comprising a brief, written representation of the [Message](#message) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Message](#message) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Message](#message) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Message](#message) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Message](#message) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Message](#message) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Message](#message) MAY be specified. | Optional |
 | isPartOf | [Thread](#thread) | a related [Thread](#thread) that includes or incorporates this [Message](#message) as a part of its whole MAY be specified. | Optional |
 | replyTo | [Message](#message) | A [Message](#message) that represents the post to which this [Message](#message) is directed in reply SHOULD be referenced. | Optional |
@@ -4319,6 +4447,14 @@ A Caliper [Message](#message) is a digital form of written communication sent to
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Message](#message) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [Message](#message) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Message](#message). | Optional |
+
+#### Deprecated Properties
+The following [Message](#message) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -4376,8 +4512,6 @@ A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of
 | name | String | A string value comprising a word or phrase by which the [MultipleChoiceResponse](#multipleChoiceResponse) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [MultipleChoiceResponse](#multipleChoiceResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
-| ~~assignable~~ | ~~[AssessmentItem](#assessmentItem)~~ | ~~The [AssessmentItem](#assessmentItem) that constitutes the `object` of the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
 | value | String | A string value that represents the selected option SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4385,6 +4519,14 @@ A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of
 | endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | duration | Duration | A time interval that represents the time taken to complete the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MultipleChoiceResponse](#multipleChoiceResponse). | Optional |
+
+#### Deprecated Properties
+The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
 ```json
@@ -4436,8 +4578,6 @@ A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a for
 | name | String | A string value comprising a word or phrase by which the [MultipleResponseResponse](#multipleResponseResponse) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [MultipleResponseResponse](#multipleResponseResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
-| ~~assignable~~ | ~~[DigitalResource](#digitalResource)~~ | ~~The [DigitalResource](#digitalResource) that constitutes the `object` of the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
 | values | Array | A ordered collection of one or more selected options MAY be specified | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4445,6 +4585,14 @@ A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a for
 | endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | duration | Duration | A time interval that represents the time taken to complete the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MultipleResponseResponse](#multipleResponseResponse). | Optional |
+
+#### Deprecated Properties
+The following [MultipleResponseResponse](#multipleResponseResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
 ```json
@@ -4538,9 +4686,7 @@ A Caliper [Page](#page) represents an item of paginated content.
 | description | String |  A string value comprising a brief, written representation of the [Page](#page) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Page](#page) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Page](#page) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Page](#page)  type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Page](#page) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Page](#page) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Page](#page) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Page](#page) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Page](#page) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4548,6 +4694,14 @@ A Caliper [Page](#page) represents an item of paginated content.
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Page](#page) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [Page](#page) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Page](#page). | Optional | 
+
+#### Deprecated Properties
+The following [Page](#page) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -4621,9 +4775,7 @@ A Caliper [Reading](#reading) represents an item of paginated content.  [Reading
 | description | String |  A string value comprising a brief, written representation of the [Reading](#reading) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Reading](#reading) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Reading](#reading) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Reading](#reading) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Reading](#reading) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Reading](#reading) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Reading](#reading) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Reading](#reading) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Reading](#reading) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4631,6 +4783,14 @@ A Caliper [Reading](#reading) represents an item of paginated content.  [Reading
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Reading](#reading) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [Reading](#reading) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Reading](#reading). | Optional |
+
+#### Deprecated Properties
+The following [Reading](#reading) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 <a name="response" />
 
@@ -4650,8 +4810,8 @@ A Caliper [Response](#response) is a generic type that represents the selected o
 | name | String | A string value comprising a word or phrase by which the [Response](#response)  is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Response](#response) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [Response](#response) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
-| ~~assignable~~ | ~~[AssessmentItem](#assessmentItem)~~ | ~~The [AssessmentItem](#assessmentItem) that constitutes the `object` of the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The `actor` property is DEPRECATED in favor of `attempt`. | Deprecated |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The `assignable` property is DEPRECATED in favor of `attempt`. | Deprecated |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response)  was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
@@ -4748,8 +4908,6 @@ A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Respon
 | name | String | A string value comprising a word or phrase by which the [SelectTextResponse](#selectTextResponse) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [SelectTextResponse](#selectTextResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [SelectTextResponse](#selectTextResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
-| ~~assignable~~ | ~~[AssessmentItem](#assessmentItem)~~ | ~~The [AssessmentItem](#assessmentItem) that constitutes the `object` of the Response.~~  DEPRECATED in favor of `attempt`. | Deprecated |
 | values | Array | A ordered collection of one or more selected options MAY be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4757,6 +4915,14 @@ A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Respon
 | endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | duration | Duration | A time interval that represents the time taken to complete the [SelectTextResponse](#selectTextResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [SelectTextResponse](#selectTextResponse). | Optional |
+
+#### Deprecated Properties
+The following [SelectTextResponse](#selectTextResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
 ```json
@@ -4798,6 +4964,9 @@ A Caliper [Session](#session) represents a web application user session.
 #### Supertype
 [Entity](#entity)
 
+#### Subtypes
+[LtiSession](#ltiSession)
+
 #### Properties
 [Session](#session) inherits all the properties and requirements defined for [Entity](#entity), its supertype.  Additional properties and requirements are described below:
 
@@ -4807,7 +4976,7 @@ A Caliper [Session](#session) represents a web application user session.
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Session](#session) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Session](#session) MAY be specified. | Optional |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the [Session](#session) SHOULD be specified.~~  DEPRECATED in favor of `user`. | Optional |
+| ~~actor~~ | [Person](#person) | The `actor` property is DEPRECATED in favor of `user`. | Deprecated |
 | user | [Person](#person) | The [Person](#person) who initiated the [Session](#session) SHOULD be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4816,8 +4985,12 @@ A Caliper [Session](#session) represents a web application user session.
 | duration | Duration | A time interval that represents the time taken to complete the [Session](#session) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Session](#session). | Optional |
 
-#### subclasses
-[LtiSession](#ltiSession)
+#### Deprecated Properties
+The following [Session](#session) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+ 
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession).  `actor` property has been DEPRECATED in and replaced by `user`. | Optional |
 
 #### Example
 ```json
@@ -4974,24 +5147,30 @@ A Caliper [Thread](#thread) represents a series of one or more messages that sha
 [Thread](#thread) inherits all the properties and requirements defined for its supertype [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
- | :------- | :--- | ----------- | :---------: |
- | id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
- | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
- | name | String | A string value comprising a word or phrase by which the [Thread](#thread) is known MAY be specified. | Optional |
- | description | String |  A string value comprising a brief, written representation of the [Thread](#thread) MAY be specified. | Optional |
- | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Thread](#thread) into being MAY be specified. | Optional |
- | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Thread](#thread) MAY be specified. | Optional |
- | ~~objectType~~ | ~~String~~ | ~~A string value that designates the [Thread](#thread) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
- | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Thread](#thread) MAY be specified. | Optional |
- | ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Thread](#thread) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
- | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Thread](#thread) MAY be specified. | Optional |
- | isPartOf | [Forum](#forum) | a related [Forum](#forum) that includes or incorporates this [Thread](#thread) as a part of its whole MAY be specified. | Optional |
- | items | Array | An ordered collection of [Message](#message) entities that comprise this collection MAY be specified. | Optional |
- | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
- | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
- | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Thread](#thread) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
- | version | String | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
- | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Thread](#thread). | Optional |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
+| name | String | A string value comprising a word or phrase by which the [Thread](#thread) is known MAY be specified. | Optional |
+| description | String |  A string value comprising a brief, written representation of the [Thread](#thread) MAY be specified. | Optional |
+| creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Thread](#thread) into being MAY be specified. | Optional |
+| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Thread](#thread) MAY be specified. | Optional |
+| keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Thread](#thread) MAY be specified. | Optional |
+| learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Thread](#thread) MAY be specified. | Optional |
+| isPartOf | [Forum](#forum) | a related [Forum](#forum) that includes or incorporates this [Thread](#thread) as a part of its whole MAY be specified. | Optional |
+| items | Array | An ordered collection of [Message](#message) entities that comprise this collection MAY be specified. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Thread](#thread) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| version | String | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Thread](#thread). | Optional |
+ 
+#### Deprecated Properties
+The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+  
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -5058,8 +5237,6 @@ A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response
 | name | String | A string value comprising a word or phrase by which the [TrueFalseResponse](#trueFalseResponse) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [TrueFalseResponse](#trueFalseResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [TrueFalseResponse](#trueFalseResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| ~~actor~~ | ~~[Person](#person)~~ | ~~The [Person](#person) who initiated the Response.~~ DEPRECATED in favor of `attempt`. | Deprecated |
-| ~~assignable~~ | ~~[AssessmentItem](#assessmentItem)~~ | ~~The [AssessmentItem](#assessmentItem) that constitutes the `object` of the Response.~~  DEPRECATED in favor of `attempt`. | Deprecated |
 | value | String | A string value that provides the true/false, yes/no binary selection SHOULD be provided. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -5067,6 +5244,14 @@ A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response
 | endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | duration | Duration | A time interval that represents the time taken to complete the [TrueFalseResponse](#trueFalseResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [TrueFalseResponse](#trueFalseResponse). | Optional |
+
+#### Deprecated Properties
+The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
 ```json
@@ -5119,9 +5304,7 @@ A Caliper [VideoObject](#videoObject) represents a visual recording stored in di
 | description | String |  A string value comprising a brief, written representation of the [VideoObject](#videoObject) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [VideoObject](#videoObject) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [VideoObject](#videoObject) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [VideoObject](#videoObject) type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [VideoObject](#videoObject) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [VideoObject](#videoObject) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [VideoObject](#videoObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [VideoObject](#videoObject) as a part of its whole MAY be specified. | Optional |
 | duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [VideoObject](#videoObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
@@ -5130,6 +5313,14 @@ A Caliper [VideoObject](#videoObject) represents a visual recording stored in di
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [VideoObject](#videoObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [VideoObject](#videoObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [VideoObject](#videoObject). | Optional |
+
+#### Deprecated Properties
+The following [VideoObject](#videoObject) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+  
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
@@ -5165,9 +5356,7 @@ A Caliper [WebPage](#webPage) represents a document containing markup that is su
 | description | String |  A string value comprising a brief, written representation of the [WebPage](#webPage) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [WebPage](#webPage) into being MAY be specified. | Optional |
 | mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [WebPage](#webPage) MAY be specified. | Optional |
-| ~~objectType~~ | ~~String~~ | ~~A string value that designates the [WebPage](#webPage)  type.~~  The `objectType` property is DEPRECATED. | Deprecated |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [WebPage](#webPage) MAY be specified. | Optional |
-| ~~alignedLearningObjective~~ | ~~Array~~ | ~~An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [WebPage](#webPage) MAY be specified.~~  The `alignedLearningObjective` property is DEPRECATED in favor of `learningObjectives`. | Deprecated |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [WebPage](#webPage) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [WebPage](#webPage) as a part of its whole MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [WebPage](#webPage) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -5175,6 +5364,14 @@ A Caliper [WebPage](#webPage) represents a document containing markup that is su
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [WebPage](#webPage) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | String | A string value that designates the current form or version of the [WebPage](#webPage) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [WebPage](#webPage). | Optional |
+
+#### Deprecated Properties
+The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+  
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```json
