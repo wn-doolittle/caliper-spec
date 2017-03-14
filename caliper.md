@@ -1,6 +1,6 @@
-#IMS Global Learning Consortium, Inc.
+# IMS Global Learning Consortium, Inc.
 
-#Caliper Analytics® Specification, version 1.1</h2>
+# Caliper Analytics® Specification, version 1.1
 
 ## IPR and Distribution Notices
 Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
