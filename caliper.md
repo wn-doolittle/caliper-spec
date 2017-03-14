@@ -171,7 +171,7 @@ __JSON-LD__: a specification providing a JSON-based data serialization and messa
 
 <a name="iriDef" />
 
-__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier (URI) scheme by using characters drawn from the Universal Character Set rather than ASCII per [RFC 3987](https://www.ietf.org/rfc/rfc3987.txt).  [Linked Data](#linkedData) rely on IRIs to refer to most nodes and properties.
+__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier ([URI](#uriDef)) scheme by using characters drawn from the Universal character set rather than US-ASCII per [RFC 3987](https://www.ietf.org/rfc/rfc3987.txt).  [Linked Data](#linkedData) rely on IRIs to refer to most nodes and properties.
 
 <a name="iso8601Def" /> 
 
@@ -205,6 +205,18 @@ __Term__: a word or short expression that expands to an [IRI](#iriDef) when mapp
 
 __Type Coercion__: TODO
 
+<a name="uriDef" />
+
+__URI__:  the Uniform Resource Identifier ([URI](#uriDef)) utilizes the US-ASCII character set to identify a resource.  Per [RFC 2396](#rfc2396) a [URI](#uriDef) "can be further classified as a locator, a name or both."  Both the Uniform Resource Locator ([URL](#urlDef)) and the Uniform Resource Name ([URN](#urnDef)) are considered subspaces of the more general [URI](#uriDef) space. 
+
+<a name="urlDef" />
+ 
+__URL__: A Uniform Resource Locator ([URL](#urlDef)) is a type of [URI](#uriDef) that provides a reference to resource that specifies both its location and a means of retrieving a representation of it.  An HTTP [URI](#uriDef) is a [URL](#urlDef) and using HTTP IRIs/URIs to identify things is fundamental to Linked Data.
+
+<a name="urnDef" />
+
+__URN__: A Uniform Resource Name ([URN](#urnDef)) is a type of [URI](#uriDef) that provides a persistent identifier for a resource that is bound to a defined namespace.  Unlike a [URL](#urlDef) a [URN](#urnDef) is location-independent and provides no means of accessing a representation of the named resource.  
+
 __UUID__: TODO. . . . Each Caliper [Event](#event) is assigned a UUID for the purposes of auditing and retrieval.
 
 
@@ -235,7 +247,7 @@ http://json-ld.org/spec/latest/json-ld/#identifying-blank-nodes**
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
@@ -2882,7 +2894,7 @@ A Caliper [Agent](#agent) is a generic type that represents an Entity that can i
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Agent](#agent) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Agent](#agent) MAY be specified. | Optional |
@@ -2913,7 +2925,7 @@ A Caliper [Annotation](#annotation) is a generic type that represents a comment,
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Annotation*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Annotation](#annotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [Annotation](#annotation) MAY be specified. | Optional |
@@ -2946,7 +2958,7 @@ A Caliper [Assessment](#assessment) represents an assessment instrument such as 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Assessment*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Assessment](#assessment) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Assessment](#assessment) MAY be specified. | Optional |
@@ -3024,7 +3036,7 @@ A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentItem*. | Required |
 | name | String | A string value comprising a word or phrase by which the [AssessmentItem](#assessmentItem) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
@@ -3097,7 +3109,7 @@ A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic t
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssignableDigitalResource*. | Required |
 | name | String | A string value comprising a word or phrase by which the [AssignableDigitalResource](#assignableDigitalResource) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
@@ -3158,7 +3170,7 @@ A Caliper [Attempt](#attempt) provides a count of the number of times an actor h
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Attempt*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Attempt](#attempt) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Attempt](#attempt) MAY be specified. | Optional |
@@ -3215,7 +3227,7 @@ A Caliper [AudioObject](#audioObject) represents an audio or sound file.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AudioObject*. | Required |
 | name | String | A string value comprising a word or phrase by which the [AudioObject](#audioObject) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [AudioObject](#audioObject) MAY be specified. | Optional |
@@ -3271,7 +3283,7 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
 | name | String | A string value comprising a word or phrase by which the [BookmarkAnnotation](#bookmarkAnnotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [BookmarkAnnotation](#bookmarkAnnotation) MAY be specified. | Optional |
@@ -3314,7 +3326,7 @@ A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digi
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Chapter*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Chapter](#chapter) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Chapter](#chapter) MAY be specified. | Optional |
@@ -3367,7 +3379,7 @@ A Caliper [CourseOffering](#courseOffering) represents the occurrence of a cours
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *CourseOffering*. | Required |
 | courseNumber | String | A string value that constitutes a human-readable identifier for this CourseOffering SHOULD be specified. | Recommended |
 | academicSession | String | A string value that constitutes a human-readable identifier for the designated period in which this CourseOffering occurs SHOULD be specified. | Recommended |
@@ -3409,7 +3421,7 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *CourseSection*. | Required |
 | courseNumber | String | A string value that constitutes a human-readable identifier for this CourseOffering SHOULD be specified. | Recommended |
 | academicSession | String | A string value that constitutes a human-readable identifier for the designated period in which this CourseOffering occurs SHOULD be specified. | Recommended |
@@ -3460,7 +3472,7 @@ A Caliper [DigitalResource](#digitalResource) is a generic type that represents 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitaResource*. | Required |
 | name | String | A string value comprising a word or phrase by which the [DigitalResource](#digitalResource) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
@@ -3526,7 +3538,7 @@ A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitaResourceCollection*. | Required |
 | name | String | A string value comprising a word or phrase by which the [DigitalResourceCollection](#digitalResourceCollection) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
@@ -3604,7 +3616,7 @@ A Caliper [Document](#document) represents textual content.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Document*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Document](#document) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Document](#document) MAY be specified. | Optional |
@@ -3664,7 +3676,7 @@ A Caliper [EpubChapter](#epubChapter) represents a major structural division of 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubChapter*. | Required |
 | name | String | A string value comprising a word or phrase by which the [EpubChapter](#epubChapter) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
@@ -3700,7 +3712,7 @@ A Caliper [EpubPart](#epubPart) represents a major structural division of a piec
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubPart*. | Required |
 | name | String | A string value comprising a word or phrase by which the [EpubPart](#epubPart) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [EpubPart](#epubPart) MAY be specified. | Optional |
@@ -3736,7 +3748,7 @@ A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of a
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubSubChapter*. | Required |
 | name | String | A string value comprising a word or phrase by which the [EpubSubChapter](#epubSubChapter) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
@@ -3772,7 +3784,7 @@ A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  Epu
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubSubChapter*. | Required |
 | name | String | A string value comprising a word or phrase by which the [EpubVolume](#epubVolume) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
@@ -3808,7 +3820,7 @@ A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Resp
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *FillinBlankResponse*. | Required |
 | name | String | A string value comprising a word or phrase by which the [FillinBlankResponse](#fillinBlankResponse)  is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [FillinBlankResponse](#fillinBlankResponse) MAY be specified. | Optional |
@@ -3874,7 +3886,7 @@ A Caliper [Forum](#forum) represents a channel or virtual space in which group d
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Forum](#forum) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Forum](#forum) MAY be specified. | Optional |
@@ -3953,7 +3965,7 @@ A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalRes
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Frame*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Frame](#frame) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Frame](#frame) MAY be specified. | Optional |
@@ -4007,7 +4019,7 @@ A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collectio
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Group*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Group](#group) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Group](#group) MAY be specified. | Optional |
@@ -4052,7 +4064,7 @@ A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of mark
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
 | name | String | A string value comprising a word or phrase by which the [HighlightAnnotation](#highlightAnnotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [HighlightAnnotation](#highlightAnnotation) MAY be specified. | Optional |
@@ -4101,7 +4113,7 @@ A Caliper [ImageObject](#imageObject) represents an image file.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ImageObject*. | Required |
 | name | String | A string value comprising a word or phrase by which the [ImageObject](#imageObject) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [ImageObject](#imageObject) MAY be specified. | Optional |
@@ -4150,7 +4162,7 @@ The Caliper [LearningObjective](#learningObjective) represents a summary stateme
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *LearningObjective*. | Required |
 | name | String | A string value comprising a word or phrase by which the [LearningObjective](#learningObjective) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [LearningObjective](#learningObjective) MAY be specified. | Optional |
@@ -4199,7 +4211,7 @@ A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *LtiSession*. | Required |
 | name | String | A string value comprising a word or phrase by which the [LtiSession](#ltiSession) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [LtiSession](#ltiSession) MAY be specified. | Optional |
@@ -4284,7 +4296,7 @@ A Caliper [MediaLocation](#mediaLocation) provides the current playback position
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaLocation*. | Required |
 | name | String | A string value comprising a word or phrase by which the [MediaLocation](#mediaLocation) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
@@ -4335,7 +4347,7 @@ A Caliper [MediaObject](#mediaObject) represents a generic piece of media conten
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaObject*. | Required |
 | name | String | A string value comprising a word or phrase by which the [MediaObject](#mediaObject) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [MediaObject](#mediaObject) MAY be specified. | Optional |
@@ -4380,7 +4392,7 @@ A Caliper [Membership](#membership) describes the relationship between an [Organ
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Membership*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Membership](#membership) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Membership](#membership) MAY be specified. | Optional |
@@ -4429,7 +4441,7 @@ A Caliper [Message](#message) is a digital form of written communication sent to
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Message*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Message](#message) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Message](#message) MAY be specified. | Optional |
@@ -4506,7 +4518,7 @@ A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MultipleChoiceResponse*. | Required |
 | name | String | A string value comprising a word or phrase by which the [MultipleChoiceResponse](#multipleChoiceResponse) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified. | Optional |
@@ -4572,7 +4584,7 @@ A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a for
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MultipleResponseResponse*. | Required |
 | name | String | A string value comprising a word or phrase by which the [MultipleResponseResponse](#multipleResponseResponse) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified. | Optional |
@@ -4638,7 +4650,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Organization*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Organization](#organization) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Organization](#organization) MAY be specified. | Optional |
@@ -4679,7 +4691,7 @@ A Caliper [Page](#page) represents an item of paginated content.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Page*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Page](#page) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Page](#page) MAY be specified. | Optional |
@@ -4736,7 +4748,7 @@ A Caliper [Person](#person) represents a human being, alive or deceased, real or
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Person*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Person](#person) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Person](#person) MAY be specified. | Optional |
@@ -4768,7 +4780,7 @@ A Caliper [Reading](#reading) represents an item of paginated content.  [Reading
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Reading*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Reading](#reading) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Reading](#reading) MAY be specified. | Optional |
@@ -4807,7 +4819,7 @@ A Caliper [Response](#response) is a generic type that represents the selected o
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Response*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Response](#response)  is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Response](#response) MAY be specified. | Optional |
@@ -4843,7 +4855,7 @@ A Caliper [Result](#result) represents a grade applied to an assignment submissi
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Result*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
@@ -4909,7 +4921,7 @@ A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Respon
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SelectTextResponse*. | Required |
 | name | String | A string value comprising a word or phrase by which the [SelectTextResponse](#selectTextResponse) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [SelectTextResponse](#selectTextResponse) MAY be specified. | Optional |
@@ -4978,7 +4990,7 @@ A Caliper [Session](#session) represents a web application user session.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Session](#session) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Session](#session) MAY be specified. | Optional |
@@ -5024,7 +5036,7 @@ A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SharedAnnotation*. | Required |
 | name | String | A string value comprising a word or phrase by which the [SharedAnnotation](#sharedAnnotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [SharedAnnotation](#sharedAnnotation) MAY be specified. | Optional |
@@ -5076,7 +5088,7 @@ A Caliper [SoftwareApplication](#softwareApplication) represents a computer prog
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SoftwareApplication*. | Required |
 | name | String | A string value comprising a word or phrase by which the [SoftwareApplication](#softwareApplication) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [SoftwareApplication](#softwareApplication) MAY be specified. | Optional |
@@ -5110,7 +5122,7 @@ A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [Digit
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TagAnnotation*. | Required |
 | name | String | A string value comprising a word or phrase by which the [TagAnnotation](#tagAnnotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [TagAnnotation](#tagAnnotation) MAY be specified. | Optional |
@@ -5153,7 +5165,7 @@ A Caliper [Thread](#thread) represents a series of one or more messages that sha
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
 | name | String | A string value comprising a word or phrase by which the [Thread](#thread) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Thread](#thread) MAY be specified. | Optional |
@@ -5237,7 +5249,7 @@ A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TrueFalseResponse*. | Required |
 | name | String | A string value comprising a word or phrase by which the [TrueFalseResponse](#trueFalseResponse) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [TrueFalseResponse](#trueFalseResponse) MAY be specified. | Optional |
@@ -5303,7 +5315,7 @@ A Caliper [VideoObject](#videoObject) represents a visual recording stored in di
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *VideoObject*. | Required |
 | name | String | A string value comprising a word or phrase by which the [VideoObject](#videoObject) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [VideoObject](#videoObject) MAY be specified. | Optional |
@@ -5355,7 +5367,7 @@ A Caliper [WebPage](#webPage) represents a document containing markup that is su
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | An identifier in the form of a valid [IRI](#iriDef) ~~or a blank node identifier if an [IRI](#iriDef) is deemed inappropriate~~ MUST be specified. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity). | Required |
+| id | [IRI](#iriDef) | A valid HTTP [IRI](#iriDef) MUST be specified. If an [IRI](#iriDef) is specified it MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of serving machine-readable data from it. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *WebPage*. | Required |
 | name | String | A string value comprising a word or phrase by which the [WebPage](#webPage) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [WebPage](#webPage) MAY be specified. | Optional |
@@ -5545,7 +5557,11 @@ __LTI__  TODO
 
 <a name="rfc2119" />
 
-__RFC 2119__ IETF.  S. Bradner. "Key words for use in RFCs to Indicate Requirement Levels." March 1997. URL: https://tools.ietf.org/html/rfc2119
+__RFC 2119__ IETF.  S. Bradner.  "Key words for use in RFCs to Indicate Requirement Levels."  March 1997.  URL: https://tools.ietf.org/html/rfc2119
+
+<a name="rfc2396" />
+
+__RFC 2396__ IETF.  T. Berners-Lee, R. Fielding, L. Masinter.  "Uniform Resource Identifiers (URI): Generic Syntax."  August 1998.  URL: https://www.ietf.org/rfc/rfc2396.txt
 
 <a name="rfc3987" />
 
