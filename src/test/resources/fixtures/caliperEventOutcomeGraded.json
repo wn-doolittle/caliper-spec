@@ -26,19 +26,14 @@
     "duration": "PT50M12S"
   },
   "eventTime": "2016-11-15T10:57:06.000Z",
+  "edApp": "https://example.edu",
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
     "type": "Result",
-    "attempt": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "type": "Attempt"
-    },
+    "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "normalScore": 15.0,
     "totalScore": 15.0,
-    "scoredBy": {
-      "id": "https://example.edu/autograder",
-      "type": "SoftwareApplication"
-    },
+    "scoredBy": "https://example.edu/autograder",
     "dateCreated": "2016-11-15T10:55:05.000Z"
   },
   "group": {

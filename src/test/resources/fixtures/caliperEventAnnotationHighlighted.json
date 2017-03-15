@@ -17,14 +17,8 @@
   "generated": {
     "id": "https://example.edu/users/554433/etexts/201/highlights?start=2300&end=2370",
     "type": "HighlightAnnotation",
-    "annotator": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "annotated": {
-      "id": "https://example.edu/etexts/201",
-      "type": "Document"
-    },
+    "annotator": "https://example.edu/users/554433",
+    "annotated": "https://example.edu/etexts/201",
     "selection": {
       "type": "TextPositionSelector",
       "start": 2300,
@@ -48,14 +42,8 @@
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
     "type": "Membership",
-    "member": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "organization": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "CourseSection"
-    },
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
