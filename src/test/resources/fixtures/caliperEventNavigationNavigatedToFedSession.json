@@ -1,5 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:4be6d29d-5728-44cd-8a8f-3d3f07e46b61",
   "type": "NavigationEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
@@ -48,7 +49,6 @@
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
-  "uuid": "4be6d29d-5728-44cd-8a8f-3d3f07e46b61",
   "federatedSession": {
     "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
     "type": "LtiSession",

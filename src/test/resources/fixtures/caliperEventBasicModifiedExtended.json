@@ -1,5 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:5973dcd9-3126-4dcc-8fd8-8153a155361c",
   "type": "Event",
   "actor": {
     "id": "https://example.edu/users/554433",
@@ -15,7 +16,6 @@
     "version": "2"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
-  "uuid": "5973dcd9-3126-4dcc-8fd8-8153a155361c",
   "extensions": [{
     "@context": {
       "id": "@id",
