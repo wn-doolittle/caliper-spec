@@ -1,5 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
   "type": "OutcomeEvent",
   "actor": {
     "id": "https://example.edu/autograder",
@@ -45,6 +46,5 @@
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2016"
-  },
-  "uuid": "a50ca17f-5971-47bb-8fca-4e6e6879001d"
+  }
 }
