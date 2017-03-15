@@ -25,8 +25,10 @@
         "type": "WebPage"
       },
       "edApp": {
-        "id": "https://example.edu",
-        "type": "SoftwareApplication"
+        "id": "https://example.edu/reader",
+        "type": "SoftwareApplication",
+        "name": "ePub Reader",
+        "version": "1.2.3"
       },
       "group": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -37,14 +39,8 @@
       "membership": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
         "type": "Membership",
-        "member": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        },
-        "organization": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "type": "CourseSection"
-        },
+        "member": "https://example.edu/users/554433",
+        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
         "roles": [ "Learner" ],
         "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -73,10 +69,7 @@
       "generated": {
         "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
         "type": "BookmarkAnnotation",
-        "annotator": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        },
+        "annotator": "https://example.edu/users/554433",
         "annotated": {
           "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
           "type": "Chapter"
@@ -86,7 +79,7 @@
       },
       "eventTime": "2016-11-15T10:20:00.000Z",
       "edApp": {
-        "id": "https://example.edu",
+        "id": "https://example.edu/reader",
         "type": "SoftwareApplication",
         "name": "ePub Reader",
         "version": "1.2.3"
@@ -100,14 +93,8 @@
       "membership": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
         "type": "Membership",
-        "member": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        },
-        "organization": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "type": "CourseSection"
-        },
+        "member": "https://example.edu/users/554433",
+        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
         "roles": [ "Learner" ],
         "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
@@ -137,8 +124,10 @@
       },
       "eventTime": "2016-11-15T10:21:00.000Z",
       "edApp": {
-        "id": "https://example.edu",
-        "type": "SoftwareApplication"
+        "id": "https://example.edu/reader",
+        "type": "SoftwareApplication",
+        "name": "ePub Reader",
+        "version": "1.2.3"
       },
       "group": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -149,14 +138,8 @@
       "membership": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
         "type": "Membership",
-        "member": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        },
-        "organization": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "type": "CourseSection"
-        },
+        "member": "https://example.edu/users/554433",
+        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
         "roles": [ "Learner" ],
         "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"

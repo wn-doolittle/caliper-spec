@@ -10,10 +10,7 @@
   "object": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
-    "assignee": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
+    "assignee": "https://example.edu/users/554433",
     "assignable": {
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
       "type": "AssessmentItem",
@@ -23,10 +20,7 @@
         "type": "Assessment"
       }
     },
-    "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "type": "Attempt"
-    },
+    "isPartOf": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "count": 1,
     "dateCreated": "2016-11-15T10:15:02.000Z",
     "startedAtTime": "2016-11-15T10:15:02.000Z",
@@ -35,10 +29,7 @@
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
     "type": "FillinBlankResponse",
-    "attempt": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-      "type": "Attempt"
-    },
+    "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "dateCreated": "2016-11-15T10:15:12.000Z",
     "startedAtTime": "2016-11-15T10:15:02.000Z",
     "endedAtTime": "2016-11-15T10:15:12.000Z",
@@ -59,14 +50,8 @@
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
     "type": "Membership",
-    "member": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "organization": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "CourseSection"
-    },
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"

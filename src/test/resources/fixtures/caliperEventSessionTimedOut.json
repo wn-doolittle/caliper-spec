@@ -20,8 +20,5 @@
     "duration": "PT3600S"
   },
   "eventTime": "2016-11-15T11:15:00.000Z",
-  "edApp": {
-    "id": "https://example.edu",
-    "type": "SoftwareApplication"
-  }
+  "edApp": "https://example.edu"
 }

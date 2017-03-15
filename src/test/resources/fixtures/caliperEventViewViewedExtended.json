@@ -14,10 +14,7 @@
     "version": "1.1"
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
-  "edApp": {
-    "id": "https://example.edu",
-    "type": "SoftwareApplication"
-  },
+  "edApp": "https://example.edu",
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
@@ -27,14 +24,8 @@
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
     "type": "Membership",
-    "member": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "organization": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "CourseSection"
-    },
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
