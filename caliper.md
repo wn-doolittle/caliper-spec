@@ -249,7 +249,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioobject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter) (deprecated), [EpubPart](#epubPart) (deprecated), [EpubSubChapter](#epubSubChapter) (deprecated), [EpubVolume](#epubVolume) (deprecated), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading) (deprecated), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter) (deprecated), [EpubPart](#epubPart) (deprecated), [EpubSubChapter](#epubSubChapter) (deprecated), [EpubVolume](#epubVolume) (deprecated), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading) (deprecated), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 #### Example
 When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
@@ -294,13 +294,13 @@ Caliper defines a number of [Event](#event) types, each scoped to a particular a
 Like an [Entity](#entity), a Caliper [Event](#event) is largely self-describing via a required `type` property.  A unique identifier in the form of a [UUID](https://tools.ietf.org/html/rfc4122) MUST also be provided.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Again, like an [Entity](#entity), an [Event](#event) as a data structure constitutes an unordered set of key:value pairs or properties.      
 
 #### Properties
-The base set of [Event](#event) properties is listed below.  Each property MUST only be referenced once.  The `uuid`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
+The base set of [Event](#event) properties is listed below.  Each property MUST only be referenced once.  The `id`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
 
 **TODO WHAT VALUE DOES `target` ADD TO AN EVENT THAT CAN'T BE REPRESENTED BY `object`?  DEPRECATE?**
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication](#softwareApplication), MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -370,14 +370,14 @@ The Caliper Basic Profile provides a generic [Event](#event) for describing lear
 [Event](#event)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `uuid` |
-| ----- | ------  | -------- | -------- | ---------- | ------ |
-| [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- |
+| [Event](#event) | [UUID](#uuidDef) | `Event` | [Agent](#agent) | [action](#actions) | [Entity](#entity) | DateTime |
 
 **TODO Should we restrict the list of supported actions to those not associated with other typed Events?**
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, ``type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A generic [Agent](#agent) or one of its subtypes, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
 * The `action` value range is limited to the set of [actions](#actions) described in this specification and no other.
 * A generic [Entity](#entity) or one of its subtypes MUST be specified as the `object` of the interaction.  
@@ -420,15 +420,15 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 [Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | DateTime | [BookmarkAnnotation](#bookmarkAnnotation) |[UUID](https://tools.ietf.org/html/rfc4122) |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | DateTime | [HighlightAnnotation](#highlightAnnotation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | DateTime | [SharedAnnotation](#sharedAnnotation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) | DateTime | [TagAnnotation](#tagAnnotation) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `generated` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
+| [AnnotationEvent](#annotationEvent) | [UUID](#uuidDef) | `AnnotationEvent` | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | DateTime | [BookmarkAnnotation](#bookmarkAnnotation) |
+| [AnnotationEvent](#annotationEvent) |[UUID](#uuidDef) | `AnnotationEvent` | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | DateTime | [HighlightAnnotation](#highlightAnnotation) |
+| [AnnotationEvent](#annotationEvent) | [UUID](#uuidDef) | `AnnotationEvent` | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | DateTime | [SharedAnnotation](#sharedAnnotation) |
+| [AnnotationEvent](#annotationEvent) | [UUID](#uuidDef) | `AnnotationEvent` | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) | DateTime | [TagAnnotation](#tagAnnotation) |
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described below.
 * The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of the interaction.
@@ -490,20 +490,20 @@ The Caliper Assessment Profile models assessment-related activities including in
 [Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Skipped](#skipped)  | [AssessmentItem](#assessmentItem) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | [Response](#response) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `generated` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
+| [AssessmentEvent](#assessmentEvent) | [UUID](#uuidDef) | `AssessmentEvent` | [Person](#person) | [Started](#started) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) |
+| [AssessmentEvent](#assessmentEvent) | [UUID](#uuidDef) | `AssessmentEvent` | [Person](#person) | [Paused](#paused) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) |
+| [AssessmentEvent](#assessmentEvent) | [UUID](#uuidDef) | `AssessmentEvent` | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) |
+| [AssessmentEvent](#assessmentEvent) | [UUID](#uuidDef) | `AssessmentEvent` | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; |
+| [AssessmentItemEvent](#assessmentItemEvent) | [UUID](#uuidDef) | `AssessmentItemEvent` | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | DateTime | [Attempt](#attempt) |
+| [AssessmentItemEvent](#assessmentItemEvent) | [UUID](#uuidDef) | `AssessmentItemEvent` | [Person](#person) | [Skipped](#skipped)  | [AssessmentItem](#assessmentItem) | DateTime | &nbsp; |
+| [AssessmentItemEvent](#assessmentItemEvent) | [UUID](#uuidDef) | `AssessmentItemEvent` | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | [Response](#response) |
+| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment) | DateTime | &nbsp; |
+| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment) | DateTime | &nbsp; |
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * The choice of `object` depends on the action initiated.  For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object`.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subtypes.
@@ -557,20 +557,19 @@ The Assignable Profile models activities associated with digital content assigne
 [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | [Attempt](#attempt) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-
-**TODO: Do we need to add a submitted action or replace "completed" with "submitted" so that we align this set of actions with the AssessmentEvent submitted actions?**
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `generated` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
+| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | [Attempt](#attempt) |
+| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | DateTime | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; |
+| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; |
 
 #### Requirements 
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subtypes, or a learner's [Attempt](#attempt).
@@ -615,20 +614,20 @@ The Caliper Forum Profile models learners and others participating in online for
 [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `uuid` |
-| ----- | ------  | -------- | -------- | ---------- | ------ |
-| [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MessageEvent](#messageEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Message](#message) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- |
+| [ForumEvent](#forumEvent) | [UUID](#uuidDef) | `ForumEvent` | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | DateTime |
+| [ForumEvent](#forumEvent) | [UUID](#uuidDef) | `ForumEvent` | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | DateTime |
+| [MessageEvent](#messageEvent) | [UUID](#uuidDef) | `MessageEvent` | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | DateTime |
+| [MessageEvent](#messageEvent) | [UUID](#uuidDef) | `MessageEvent` | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Message](#message) | DateTime |
+| [MessageEvent](#messageEvent) | [UUID](#uuidDef) | `MessageEvent` | [Person](#person) | [Posted](#posted) | [Message](#message) | DateTime |
+| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime |
+| [ThreadEvent](#threadEvent) | [UUID](#uuidDef) | `ThreadEvent` | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | DateTime |
+| [ThreadEvent](#threadEvent) | [UUID](#uuidDef) | `ThreadEvent` | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | DateTime |
+| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime |
 
 #### Requirements 
-* Certain [Event](#event) properties are required and MUST be specified when creating a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For a [ForumEvent](#forumEvent) the `object` range is limited to [Forum](#forum); for a [ThreadEvent](#threadEvent) the `object` range is limited to [Thread](#thread); for a [MessageEvent](#messageEvent) the `object` range is limited to [Message](#message); for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).
@@ -678,14 +677,14 @@ The Caliper Grading Profile models grading activities performed by an [Agent](#a
 [OutcomeEvent](#outcomeEvent)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `generated` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | ----------- | ------ |
-| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | DateTime | [Result](#result) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `generated` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
+| [OutcomeEvent](#outcomeEvent) | [UUID](#uuidDef) | `OutcomeEvent` | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | DateTime | [Result](#result) |
 
 **TODO: ADD ViewEvent, as in view the Result?**
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating an [OutcomeEvent](#outcomeEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating an [OutcomeEvent](#outcomeEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A generic [Agent](#agent) or one of its subtypes, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * The learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction.
@@ -750,32 +749,32 @@ The Caliper Media Profile models interactions between learners and rich content 
 [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
  
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `target` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | -------- | ------ |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Rewound](#rewound) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSize](#changedSize) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSpeed](#changedSpeed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedVolume](#changedVolume) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [EnteredFullScreen](#enteredFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ExitedFullScreen](#exitedFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Muted](#muted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `target` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | -------- |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) |  [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Rewound](#rewound) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ChangedSize](#changedSize) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ChangedSpeed](#changedSpeed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ChangedVolume](#changedVolume) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [EnteredFullScreen](#enteredFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ExitedFullScreen](#exitedFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Muted](#muted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
+| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | DateTime | &nbsp; |
+| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | DateTime | &nbsp; |
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * A [MediaObject](#mediaObject) or one of its subtypes MUST be specified as the `object` of the interaction.
@@ -821,13 +820,13 @@ The Caliper Reading Profile models activities associated with navigating to and 
 [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `target` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | -------- | ------ |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `target` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | -------- |
+| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` |  [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) |
+| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` |  [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) |
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subtypes.
@@ -869,14 +868,14 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 [SessionEvent](#sessionEvent)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `session` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | --------- | ------ |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) | [UUID](https://tools.ietf.org/html/rfc4122) |
-| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | DateTime | &nbsp; | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `session` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
+| [SessionEvent](#sessionEvent) | [UUID](#uuidDef) | `SessionEvent` | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) |
+| [SessionEvent](#sessionEvent) | [UUID](#uuidDef) | `SessionEvent` | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) |
+| [SessionEvent](#sessionEvent) | [UUID](#uuidDef) | `SessionEvent` | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | DateTime | &nbsp; |
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * The choice of `actor` depends on the action initiated.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.
@@ -918,12 +917,12 @@ The Caliper Tool Use Profile models an intended interaction between a user and a
 [ToolUseEvent](#toolUseEvent)
 
 #### Supported actions
-| Event | `actor` | `action` | `object` | `dateTime` | `uuid` |
-| ----- | ------- | -------- | -------- | ---------- | ------ |
-| [ToolUseEvent](#toolUseEvent) | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | DateTime | [UUID](https://tools.ietf.org/html/rfc4122) |
+| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` |
+| ----- | ---- | ------ | ------  | -------- | -------- | ---------- |
+| [ToolUseEvent](#toolUseEvent) | [UUID](#uuidDef) | `ToolUseEvent` | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | DateTime |
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating a [ToolUseEvent](#toolUseEvent).  Required properties include `type`, `actor`, `action`, `object`, `eventTime` and `uuid`.  All other [Event](#event) properties are considered optional.
+* Certain [Event](#event) properties are required and MUST be specified when creating a [ToolUseEvent](#toolUseEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
 * A [Person](#person) MUST be specified as the `actor`.
 * The `action` value range is scoped by event and limited to the supported actions described above.
 * A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
@@ -997,18 +996,14 @@ Caliper [JSON-LD](#jsonldDef) documents feature a context, denoted by the `@cont
    
 In Caliper, the [JSON-LD](#jsonldDef) `@id` keyword is aliased as `id` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  This is done in order to avoid the temptation of employing [JSON-LD](#jsonldDef) keywords as JSON object property names and is aligned with [JSON-LD](#jsonldDef) community practice.  Thus, each Caliper [Entity](#entity) described by the information model is provisioned with an `id` rather than `@id` property for identifying the resource.  
 
-Every [Entity](#entity) associated with a Caliper [Event](#event) MUST be assigned an `id` in the form of a valid [IRI](#iriDef) or a blank node identifier. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity).  Use of the URN scheme in place of an [IRI](#iriDef) is inappropriate since such an identifier precludes the possibility of locating and retrieving the named resource.
-
-A Caliper [JSON-LD](#jsonldDef) document is a representation of a directed graph.  Each [Entity](#entity) described therein is a node in the graph.  The enclosing [Event](#event) is not considered a node and is instead identified by a [UUID](#uuidDef) for the purposes of auditing and retrieval.
-
-**TODO Is the above UUID rationale sufficient? Satisfy ourselves that the enclosing Event is not a graph element--i.e., not a node type?  Requirements: 1) exists outside of a JSON-LD context, 2) does not contain the @value, @list, or @set keywords, 3) is NOT the top-most JSON object in the JSON-LD document consisting of no other members than @graph and @context. See http://json-ld.org/spec/latest/json-ld/#node-objects**
+A Caliper [JSON-LD](#jsonldDef) document is a representation of a directed graph.  Every [Entity](#entity) associated with a Caliper [Event](#event) MUST be assigned an `id` in the form of a valid [IRI](#iriDef) or a blank node identifier. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity).  Use of the URN scheme in place of an [IRI](#iriDef) is inappropriate since such an identifier precludes the possibility of locating and retrieving the named resource.
 
 <a name="jsonldTypes" />
 
 ### 3.3 Types
 [JSON-LD](#jsonldDef) employs the `@type` keyword to indicate the data type of a node or typed value.  As with the aliasing of the `@id` keyword, `@type` is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.  [JSON-LD](#jsonldDef) employs a number of different mechanisms for expressing typed values.  The IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) currently includes the following typed values: node types, value types and object properties with values that are mapped to a [Term](#term) defined in the active context. 
 
-As the example below illustrates, the node type specifies the type of [Entity](#entity) being described like a [Person](#person) or [Message](#message) in the example below.  A value type specifies the data type of particular value like a string, integer, boolean or date.  [Terms](#term) such as `body`, `dateCreated`, `eventTime` and `uuid` are typed in this way.  An object property like `action` in the example references a `@vocab` keyword indicating that the property value is mapped to a [Term](#term) defined in the active context, in this case `Posted`. 
+As the example below illustrates, the node type specifies the type of [Entity](#entity) being described like a [Person](#person) or [Message](#message) in the example below.  A value type specifies the data type of particular value like a string, integer, boolean or date.  [Terms](#term) such as `name`, `description`, `body`, `dateCreated` and `eventTime` are typed in this way.  An object property like `action` in the example references a `@vocab` keyword indicating that the property value is mapped to a [Term](#term) defined in the active context, in this case `Posted`.
 
 #### Example: embedded context featuring keyword aliasing, node types, value types and an object property with a @vocab mapping
 ```json
@@ -1393,7 +1388,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AnnotationEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` term may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required |
@@ -1489,7 +1484,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required | 
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -1663,7 +1658,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentItemEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -1859,7 +1854,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssignableEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required | 
@@ -1950,7 +1945,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ForumEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2040,7 +2035,7 @@ TODO
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` term may be specified per [Event](#event). | Required |
@@ -2126,7 +2121,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MessageEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2292,7 +2287,7 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *NavigationEvent*. |Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2384,7 +2379,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *OutcomeEvent*. | Required |
 | actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2467,7 +2462,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ReadingEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2496,7 +2491,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required | 
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SessionEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the `action` MUST be specified.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2620,7 +2615,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the term *ThreadEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event).  | Required |
@@ -2707,7 +2702,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ToolUseEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
@@ -2785,7 +2780,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ViewEvent* MUST be specified.
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
@@ -3374,8 +3369,8 @@ A Caliper [CourseOffering](#courseOffering) represents the occurrence of a cours
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *CourseOffering*. | Required |
-| courseNumber | String | A string value that constitutes a human-readable identifier for this CourseOffering SHOULD be specified. | Recommended |
-| academicSession | String | A string value that constitutes a human-readable identifier for the designated period in which this CourseOffering occurs SHOULD be specified. | Recommended |
+| courseNumber | String | A string value that constitutes a human-readable identifier for the [CourseOffering](#courseOffering) SHOULD be specified. | Recommended |
+| academicSession | String | A string value that constitutes a human-readable identifier for the designated period in which this [CourseOffering](#courseOffering) occurs SHOULD be specified. | Recommended |
 | name | String | A string value comprising a word or phrase by which the [CourseOffering](#courseOffering) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [CourseOffering](#courseOffering) MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseOffering](#courseOffering) MAY be specified. | Optional |
@@ -3416,8 +3411,8 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *CourseSection*. | Required |
-| courseNumber | String | A string value that constitutes a human-readable identifier for this CourseOffering SHOULD be specified. | Recommended |
-| academicSession | String | A string value that constitutes a human-readable identifier for the designated period in which this CourseOffering occurs SHOULD be specified. | Recommended |
+| courseNumber | String | A string value that constitutes a human-readable identifier for the [CourseSection](#courseSection) SHOULD be specified. | Recommended |
+| academicSession | String | A string value that constitutes a human-readable identifier for the designated period in which the [CourseSection](#courseSection) occurs SHOULD be specified. | Recommended |
 | name | String | A string value comprising a word or phrase by which the [CourseSection](#courseSection) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [CourseSection](#courseSection) MAY be specified. | Optional |
 | category | String | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | Optional |
