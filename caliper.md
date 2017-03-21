@@ -770,8 +770,8 @@ The Caliper Media Profile models interactions between learners and rich content 
 | [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
 | [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
 | [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | DateTime | &nbsp; |
-| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | DateTime | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | DateTime | &nbsp; |
+| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | DateTime | &nbsp; |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
@@ -822,7 +822,7 @@ The Caliper Reading Profile models activities associated with navigating to and 
 #### Supported actions
 | Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `target` |
 | ----- | ---- | ------ | ------  | -------- | -------- | ---------- | -------- |
-| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` |  [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | | DateTime | [Frame](#frame) |
+| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` |  [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) |
 | [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` |  [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) |
 
 #### Requirements
