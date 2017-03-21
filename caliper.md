@@ -300,7 +300,7 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication](#softwareApplication), MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -1389,7 +1389,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AnnotationEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` term may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required |
@@ -1485,7 +1485,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required | 
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -1659,7 +1659,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentItemEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -1855,7 +1855,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssignableEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required | 
@@ -1946,7 +1946,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ForumEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2036,7 +2036,7 @@ TODO
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` term may be specified per [Event](#event). | Required |
@@ -2122,7 +2122,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MessageEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2288,7 +2288,7 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *NavigationEvent*. |Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2380,7 +2380,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *OutcomeEvent*. | Required |
 | actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2463,7 +2463,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ReadingEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2492,7 +2492,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required | 
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SessionEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the `action` MUST be specified.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
@@ -2616,7 +2616,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the term *ThreadEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event).  | Required |
@@ -2703,7 +2703,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ToolUseEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
@@ -2781,7 +2781,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| uuid | [UUID](https://tools.ietf.org/html/rfc4122) | A [UUID](https://tools.ietf.org/html/rfc4122) string value that conforms to [RFC 4122](#rfc4122) MUST be generated. | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ViewEvent* MUST be specified.
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
