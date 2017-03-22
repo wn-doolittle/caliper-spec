@@ -1245,7 +1245,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 
 **Should we define custom headers for Caliper version, payload type?**
 
-A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP request-response transport protocol and with messages sent using the HTTP POST request method.  A [Sensor](#sensor) MAY employ other transport protocols to communicate with an [Endpoint](#endpoint).  Note that the IMS Caliper certification suite requires implementors seeking certification utilize a conventional HTTP POST request to send data to the certification test endpoint. 
+A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP request-response transport protocol and with messages sent using the HTTP POST request method.  A [Sensor](#sensor) MAY employ other transport protocols to communicate with an [Endpoint](#endpoint).  Note that the IMS Caliper certification suite requires implementors seeking certification to utilize a conventional HTTP POST request to send data to the certification test endpoint. 
 
 Every message sent by a [Sensor](#sensor) MUST consist of a JSON representation of a single Caliper [Envelope](#envelope).
 
