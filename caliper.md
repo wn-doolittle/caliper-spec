@@ -1245,7 +1245,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 
 **Should we define custom headers for Caliper version, payload type?**
 
-A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP request-response transport protocol and with messages sent using the HTTP POST request method.  A [Sensor](#sensor) MAY employ other transport protocols to communicate with an [Endpoint](#endpoint).  Note that the IMS Caliper certification suite requires a [Sensor](#sensor) to utilize a conventional HTTP POST request to send data to the certification test endpoint. 
+A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP request-response transport protocol and with messages sent using the HTTP POST request method.  A [Sensor](#sensor) MAY employ other transport protocols to communicate with an [Endpoint](#endpoint).  Note that the IMS Caliper certification suite requires implementors seeking certification utilize a conventional HTTP POST request to send data to the certification test endpoint. 
 
 Every message sent by a [Sensor](#sensor) MUST consist of a JSON representation of a single Caliper [Envelope](#envelope).
 
@@ -1262,7 +1262,7 @@ When sending messages to an [Endpoint](#endpoint), a Caliper [Sensor](#sensor) S
 
 ### 4.4 Endpoint
 
-A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method; current Caliper certification tests require that the endpoint receive data from the IMS certification suite using this form of transport. Caliper endpoints MAY use other transport protocols to receive data from sensors.
+A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method.  Caliper endpoints MAY use other transport protocols to receive data from sensors.
 
 For transport and security and authentication, Caliper sensors SHOULD:
 
