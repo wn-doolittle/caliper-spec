@@ -8,9 +8,9 @@
   },
   "action": "Bookmarked",
   "object": {
-    "id": "https://example.com/#/texts/imscaliperimplguide",
-    "type": "Document",
-    "name": "IMS Caliper Implementation Guide",
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
+    "type": "Page",
+    "name": "IMS Caliper Implementation Guide, pg 5",
     "version": "1.1"
   },
   "generated": {
