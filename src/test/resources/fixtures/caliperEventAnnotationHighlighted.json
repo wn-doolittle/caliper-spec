@@ -8,17 +8,17 @@
   },
   "action": "Highlighted",
   "object": {
-    "id": "https://example.edu/etexts/201",
+    "id": "https://example.com/#/texts/imscaliperimplguide",
     "type": "Document",
     "name": "IMS Caliper Implementation Guide",
     "dateCreated": "2016-10-01T06:00:00.000Z",
     "version": "1.1"
   },
   "generated": {
-    "id": "https://example.edu/users/554433/etexts/201/highlights?start=2300&end=2370",
+    "id": "https://example.com/users/554433/texts/imscaliperimplguide/highlights?start=2300&end=2370",
     "type": "HighlightAnnotation",
     "annotator": "https://example.edu/users/554433",
-    "annotated": "https://example.edu/etexts/201",
+    "annotated": "https://example.com/#/texts/imscaliperimplguide",
     "selection": {
       "type": "TextPositionSelector",
       "start": 2300,
@@ -29,9 +29,10 @@
   },
   "eventTime": "2016-11-15T10:15:00.000Z",
   "edApp": {
-    "id": "https://example.edu",
+    "id": "https://example.com/reader",
     "type": "SoftwareApplication",
-    "version": "v3"
+    "name": "ePub Reader",
+    "version": "1.2.3"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -49,7 +50,7 @@
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "id": "https://example.com/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   }

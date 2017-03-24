@@ -1,14 +1,14 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/users/554433/etexts/201/tags/3",
+  "id": "https://example.com/users/554433/texts/imscaliperimplguide/tags/3",
   "type": "TagAnnotation",
   "annotator": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "annotated": {
-    "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/12[para06]/1:97)",
-    "type": "Chapter"
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
+    "type": "Page"
   },
   "tags": [ "profile", "event", "entity" ],
   "dateCreated": "2016-08-01T09:00:00.000Z"

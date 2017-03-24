@@ -1,14 +1,14 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/etexts/201/chs/2/pp/23",
+  "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
   "type": "Page",
-  "name": "Page 23",
+  "name": "Page 5",
   "isPartOf": {
-    "id": "https://example.edu/etexts/201/chs/2",
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10",
     "type": "Chapter",
-    "name": "Chapter 2",
+    "name": "Chapter 1",
     "isPartOf": {
-      "id": "https://example.edu/etexts/201",
+      "id": "https://example.com/#/texts/imscaliperimplguide",
       "type": "Document",
       "name": "IMS Caliper Implementation Guide",
       "dateCreated": "2016-10-01T06:00:00.000Z",
