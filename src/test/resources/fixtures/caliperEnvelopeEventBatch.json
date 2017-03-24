@@ -25,7 +25,7 @@
         "type": "WebPage"
       },
       "edApp": {
-        "id": "https://example.edu/reader",
+        "id": "https://example.com/reader",
         "type": "SoftwareApplication",
         "name": "ePub Reader",
         "version": "1.2.3"
@@ -46,7 +46,7 @@
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
-        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+        "id": "https://example.com/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session",
         "startedAtTime": "2016-11-15T10:00:00.000Z"
       }
@@ -61,25 +61,22 @@
       },
       "action": "Bookmarked",
       "object": {
-        "id": "https://example.edu/etexts/201.epub",
+        "id": "https://example.com/#/texts/imscaliperimplguide",
         "type": "Document",
         "name": "IMS Caliper Implementation Guide",
         "version": "1.1"
       },
       "generated": {
-        "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
+        "id": "https://example.com/users/554433/texts/imscaliperimplguide/bookmarks/1",
         "type": "BookmarkAnnotation",
         "annotator": "https://example.edu/users/554433",
-        "annotated": {
-          "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
-          "type": "Chapter"
-        },
-        "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that enable learning.",
+        "annotated": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
+        "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
         "dateCreated": "2016-11-15T10:20:00.000Z"
       },
       "eventTime": "2016-11-15T10:20:00.000Z",
       "edApp": {
-        "id": "https://example.edu/reader",
+        "id": "https://example.com/reader",
         "type": "SoftwareApplication",
         "name": "ePub Reader",
         "version": "1.2.3"
@@ -100,7 +97,7 @@
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
-        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+        "id": "https://example.com/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session",
         "startedAtTime": "2016-11-15T10:00:00.000Z"
       }
@@ -124,7 +121,7 @@
       },
       "eventTime": "2016-11-15T10:21:00.000Z",
       "edApp": {
-        "id": "https://example.edu/reader",
+        "id": "https://example.com/reader",
         "type": "SoftwareApplication",
         "name": "ePub Reader",
         "version": "1.2.3"
@@ -145,7 +142,7 @@
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
-        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+        "id": "https://example.com/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session",
         "startedAtTime": "2016-11-15T10:00:00.000Z"
       }
