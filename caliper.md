@@ -22,8 +22,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 1.1 [Conventions](#conventions)
   * 1.2 [Terminology](#terminology)
 * 2.0 [Information Model](#infoModel)
-  * 2.1 [Entity](#entity)
-  * 2.2 [Event](#event)
+  * 2.1 [Entity](#infoModelEntity)
+  * 2.2 [Event](#infoModelEvent)
   * 2.3 [Metric Profiles](#infoModelProfiles)
       * 2.3.1 [Basic Profile](#basicProfile)
       * 2.3.2 [Annotation Profile](#annotationProfile)
@@ -49,68 +49,70 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 4.5 [Endpoint Responses](#endpointResponses)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Event Types](#events)
-  * B.1 [AnnotationEvent](#annotationEvent)
-  * B.2 [AssessmentEvent](#assessmentEvent)
-  * B.3 [AssessmentItemEvent](#assessmentItemEvent)
-  * B.4 [AssignableEvent](#assignableEvent)
-  * B.5 [ForumEvent](#forumEvent)
-  * B.6 [MediaEvent](#mediaEvent)
-  * B.7 [MessageEvent](#messageEvent)
-  * B.8 [NavigationEvent](#navigationEvent)
-  * B.9 [OutcomeEvent](#outcomeEvent)
-  * B.10 [ReadingEvent](#readingEvent) (deprecated)
-  * B.11 [SessionEvent](#sessionEvent)
-  * B.12 [ThreadEvent](#threadEvent)
-  * B.13 [ToolUseEvent](#toolUseEvent)
-  * B.14 [ViewEvent](#viewEvent)
+  * B.1 [Event](#event)
+  * B.2 [AnnotationEvent](#annotationEvent)
+  * B.3 [AssessmentEvent](#assessmentEvent)
+  * B.4 [AssessmentItemEvent](#assessmentItemEvent)
+  * B.5 [AssignableEvent](#assignableEvent)
+  * B.6 [ForumEvent](#forumEvent)
+  * B.7 [MediaEvent](#mediaEvent)
+  * B.8 [MessageEvent](#messageEvent)
+  * B.9 [NavigationEvent](#navigationEvent)
+  * B.10 [OutcomeEvent](#outcomeEvent)
+  * B.11 [ReadingEvent](#readingEvent) (deprecated)
+  * B.12 [SessionEvent](#sessionEvent)
+  * B.13 [ThreadEvent](#threadEvent)
+  * B.14 [ToolUseEvent](#toolUseEvent)
+  * B.15 [ViewEvent](#viewEvent)
 * [Appendix C. Entity Types](#entities)
-  * C.1 [Agent](#agent)
-  * C.2 [Annotation](#annotation)
-  * C.3 [Assessment](#assessment)
-  * C.4 [AssessmentItem](#assessmentItem)
-  * C.5 [AssignableDigitalResource](#assignableDigitalResource)
-  * C.6 [Attempt](#attempt)
-  * C.7 [AudioObject](#audioObject)
-  * C.8 [BookmarkAnnotation](#bookmarkAnnotation)
-  * C.9 [Chapter](#chapter)
-  * C.10 [CourseOffering](#courseOffering)
-  * C.11 [CourseSection](#courseSection)
-  * C.12 [DigitalResource](#digitalResource)
-  * C.13 [DigitalResourceCollection](#digitalResourceCollection)
-  * C.14 [Document](#document)
-  * C.15 [EpubChapter](#epubChapter) (deprecated)
-  * C.16 [EpubPart](#epubPart) (deprecated)
-  * C.17 [EpubSubChapter](#epubSubChapter) (deprecated)
-  * C.18 [EpubVolume](#epubVolume) (deprecated)
-  * C.19 [FillinBlankResponse](#fillinBlankResponse)
-  * C.20 [Forum](#forum)
-  * C.21 [Frame](#frame)
-  * C.22 [Group](#group)
-  * C.23 [HighlightAnnotation](#highlightAnnotation)
-  * C.24 [ImageObject](#imageObject)
-  * C.25 [LearningObjective](#learningObjective)
-  * C.26 [LtiSession](#ltiSession) 
-  * C.27 [MediaLocation](#mediaLocation)
-  * C.28 [MediaObject](#mediaObject)
-  * C.29 [Membership](#membership)
-  * C.30 [Message](#message)
-  * C.31 [MultipleChoiceResponse](#multipleChoiceResponse)
-  * C.32 [MultipleResponseResponse](#multipleResponseResponse)
-  * C.33 [Organization](#organization)
-  * C.34 [Page](#page)
-  * C.35 [Person](#person)
-  * C.36 [Reading](#reading) (deprecated)
-  * C.37 [Response](#response)
-  * C.38 [Result](#result)
-  * C.39 [Session](#session)
-  * C.40 [SharedAnnotation](#sharedAnnotation)
-  * C.41 [SelectTextResponse](#selectTextResponse)
-  * C.42 [SoftwareApplication](#softwareApplication)
-  * C.43 [TagAnnotation](#tagAnnotation)
-  * C.44 [TrueFalseResponse](#trueFalseResponse)
-  * C.45 [Thread](#thread)
-  * C.46 [VideoObject](#videoObject)
-  * C.47 [WebPage](#webpage)
+  * C.1 [Entity](#entity)
+  * C.2 [Agent](#agent)
+  * C.3 [Annotation](#annotation)
+  * C.4 [Assessment](#assessment)
+  * C.5 [AssessmentItem](#assessmentItem)
+  * C.6 [AssignableDigitalResource](#assignableDigitalResource)
+  * C.7 [Attempt](#attempt)
+  * C.8 [AudioObject](#audioObject)
+  * C.9 [BookmarkAnnotation](#bookmarkAnnotation)
+  * C.10 [Chapter](#chapter)
+  * C.11 [CourseOffering](#courseOffering)
+  * C.12 [CourseSection](#courseSection)
+  * C.13 [DigitalResource](#digitalResource)
+  * C.14 [DigitalResourceCollection](#digitalResourceCollection)
+  * C.15 [Document](#document)
+  * C.16 [EpubChapter](#epubChapter) (deprecated)
+  * C.17 [EpubPart](#epubPart) (deprecated)
+  * C.18 [EpubSubChapter](#epubSubChapter) (deprecated)
+  * C.19 [EpubVolume](#epubVolume) (deprecated)
+  * C.20 [FillinBlankResponse](#fillinBlankResponse)
+  * C.21 [Forum](#forum)
+  * C.22 [Frame](#frame)
+  * C.23 [Group](#group)
+  * C.24 [HighlightAnnotation](#highlightAnnotation)
+  * C.25 [ImageObject](#imageObject)
+  * C.26 [LearningObjective](#learningObjective)
+  * C.27 [LtiSession](#ltiSession) 
+  * C.28 [MediaLocation](#mediaLocation)
+  * C.29 [MediaObject](#mediaObject)
+  * C.30 [Membership](#membership)
+  * C.31 [Message](#message)
+  * C.32 [MultipleChoiceResponse](#multipleChoiceResponse)
+  * C.33 [MultipleResponseResponse](#multipleResponseResponse)
+  * C.34 [Organization](#organization)
+  * C.35 [Page](#page)
+  * C.36 [Person](#person)
+  * C.37 [Reading](#reading) (deprecated)
+  * C.38 [Response](#response)
+  * C.39 [Result](#result)
+  * C.40 [Session](#session)
+  * C.41 [SharedAnnotation](#sharedAnnotation)
+  * C.42 [SelectTextResponse](#selectTextResponse)
+  * C.43 [SoftwareApplication](#softwareApplication)
+  * C.44 [TagAnnotation](#tagAnnotation)
+  * C.45 [TrueFalseResponse](#trueFalseResponse)
+  * C.46 [Thread](#thread)
+  * C.47 [VideoObject](#videoObject)
+  * C.48 [WebPage](#webpage)
 * [Appendix D. Selectors](#selectors)
   * D.1 [TextPositionSelector](#textPositionSelector)
 * [Appendix E. Roles](#roles)
@@ -226,7 +228,7 @@ __UUID__: TODO. . . . Each Caliper [Event](#event) is assigned a UUID for the pu
 
 The Caliper information model defines a set of concepts, rules and relationships for describing learning activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles).  Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a controlled vocabulary of [actions](#actions) undertaken by learners, instructors and others that are scoped to the event.  Various [Entity](#entity) types representing people, groups and resources are provided in order to better describe both the relationships established between participating entities and the contextual elements relevant to the interaction.
 
-<a name="entity" />
+<a name="infoModelEntity" />
 
 ### 2.1 The Caliper Entity
 A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of attributes that support discovery and description.  As a data structure an [Entity](#entity) constitutes an unordered set of key:value pairs or properties. 
@@ -251,47 +253,14 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 #### Subtypes
 [Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter) (deprecated), [EpubPart](#epubPart) (deprecated), [EpubSubChapter](#epubSubChapter) (deprecated), [EpubVolume](#epubVolume) (deprecated), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading) (deprecated), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
-#### Example
-When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
-
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "id": "https://example.edu/etexts/201.epub",
-    "type": "Document",
-    "name": "Example Guide",
-    "mediaType": "application/epub+zip",
-    "creators": [
-        {
-            "id": "https://example.edu/people/12345",
-            "type": "Person"
-        },
-        {
-            "id": "https://example.com/staff/56789",
-            "type": "Person"
-        }
-    ],
-    "dateCreated": "2017-08-01T06:00:00.000Z",
-    "datePublished": "2017-10-01T06:00:00.000Z",
-    "version": "1.1",
-    "extensions": [
-        {
-            "hostname": "example.docker",
-            "request_id": "f72863c5-d541-40b3-8183-e9e3e877e3bc",
-            "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
-        }
-    ]
-}
-```
-
-<a name="event" />
+<a name="infoModelEvent" />
 
 ### 2.2 The Caliper Event
 A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as events.
 
 Caliper defines a number of [Event](#event) types, each scoped to a particular activity domain.  The event model also seeks to describe the environment or context in which a learning activity is situated.  Group affiliation, membership roles and status, recent navigation history, supporting technology and session information can all be represented.  Entities generated as a result of the interaction between an `actor` and an `object` can also be described (annotating a piece of digital content and producing an [Annotation](#annotation) is one such example).
   
-Like an [Entity](#entity), a Caliper [Event](#event) is largely self-describing via a required `type` property.  A unique identifier in the form of a [UUID](https://tools.ietf.org/html/rfc4122) MUST also be provided.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Again, like an [Entity](#entity), an [Event](#event) as a data structure constitutes an unordered set of key:value pairs or properties.      
+Like an [Entity](#entity), a Caliper [Event](#event) is largely self-describing via a required `type` property.  A unique identifier in the form of a [UUID](https://tools.ietf.org/html/rfc4122) MUST also be provided.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Again, like an [Entity](#entity), an [Event](#event) as a data structure constitutes an unordered set of key:value pairs or properties.
 
 #### Properties
 The base set of [Event](#event) properties is listed below.  Each property MUST only be referenced once.  The `id`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
@@ -315,29 +284,6 @@ The base set of [Event](#event) properties is listed below.  Each property MUST 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional | 
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
-
-#### Example
-When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
-
-```json
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "Event",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
-  "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
-    "type": "Document",
-    "name": "Course Syllabus",
-    "dateCreated": "2017-11-12T07:15:00.000Z",
-    "version": "1"
-  },
-  "eventTime": "2017-11-15T10:15:00.000Z"
-}
-```
 
 #### Subtypes
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent) (deprecated), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
@@ -1369,9 +1315,59 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 
 ## Appendix B. Event Types
 
+<a name="event" />
+
+### B.1 Event
+A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  
+
+#### Properties
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef) that conforms to [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>`. | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
+| actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication](#softwareApplication), MUST be specified. | Required |
+| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. | Optional |
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. | Optional |
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+
+#### Subtypes
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent) (deprecated), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+
+#### Example
+When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
+
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "type": "Event",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "http://purl.imsglobal.org/vocab/caliper/v1/action#Created",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "type": "Document",
+    "name": "Course Syllabus",
+    "dateCreated": "2017-11-12T07:15:00.000Z",
+    "version": "1"
+  },
+  "eventTime": "2017-11-15T10:15:00.000Z"
+}
+```
+
 <a name="annotationEvent" />
 
-### B.1 AnnotationEvent
+### B.2 AnnotationEvent
 The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 #### Supported actions
@@ -1473,7 +1469,7 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 	
 <a name="assessmentEvent" />
 
-### B.2 AssessmentEvent
+### B.3 AssessmentEvent
 The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.  
 
 #### Supported actions
@@ -1644,7 +1640,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 
 <a name="assessmentItemEvent" />
 
-### B.3 AssessmentItemEvent
+### B.4 AssessmentItemEvent
 The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).  
 
 #### Supported actions
@@ -1840,7 +1836,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 <a name="assignableEvent" />
 
-### B.4 AssignableEvent
+### B.5 AssignableEvent
 TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 #### Supported actions
@@ -1933,7 +1929,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 
 <a name="forumEvent" />
 
-### B.5 ForumEvent
+### B.6 ForumEvent
 
 TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
@@ -2020,7 +2016,7 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 
 <a name="mediaEvent" />
 
-### B.6 MediaEvent
+### B.7 MediaEvent
 TODO The Caliper [MediaEvent](#mediaEvent) models . . . .
 
 TODO   
@@ -2110,7 +2106,7 @@ TODO
 
 <a name="messageEvent" />
 
-### B.7 MessageEvent
+### B.8 MessageEvent
 The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
 
 #### Supported actions
@@ -2276,7 +2272,7 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 <a name="navigationEvent" />
 
-### B.8 NavigationEvent
+### B.9 NavigationEvent
 The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
 
 #### Supported actions
@@ -2368,7 +2364,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 
 <a name="outcomeEvent" />
 
-### B.9 OutcomeEvent
+### B.10 OutcomeEvent
 TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 #### Supported actions
@@ -2450,7 +2446,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 ```
 <a name="readingEvent" />
 
-### B.10 ReadingEvent DEPRECATED
+### B.11 ReadingEvent DEPRECATED
 
 The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be utilized.
 
@@ -2480,7 +2476,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 
 <a name="sessionEvent" />
 
-### B.11 SessionEvent
+### B.12 SessionEvent
 TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 #### Supported actions
@@ -2604,7 +2600,7 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 
 <a name="threadEvent" />
 
-### B.12 ThreadEvent
+### B.13 ThreadEvent
 TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum thread or topic as either read or unread.  
 
 #### Supported actions
@@ -2691,7 +2687,7 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 
 <a name="toolUseEvent" />
 
-### B.13 ToolUseEvent
+### B.14 ToolUseEvent
 A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction. It's meant to be a fundamental [Event](#event) that tool creators can implement to demonstrate that users are using the tool in the way in which it's intended to be used.
 
 #### Supported actions
@@ -2769,7 +2765,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 
 <a name="viewEvent" />
 
-### B.14 ViewEvent
+### B.15 ViewEvent
 A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.
 
 #### Supported actions
@@ -2869,9 +2865,63 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 ### Appendix C. Entity Types
 
+<a name="entity" />
+
+### C.1 Entity
+A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).
+
+#### Properties
+The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
+| name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
+| description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
+
+#### Subtypes
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [EpubChapter](#epubChapter) (deprecated), [EpubPart](#epubPart) (deprecated), [EpubSubChapter](#epubSubChapter) (deprecated), [EpubVolume](#epubVolume) (deprecated), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Reading](#reading) (deprecated), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+
+#### Example
+When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
+
+```json
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "https://example.edu/etexts/201.epub",
+    "type": "Document",
+    "name": "Example Guide",
+    "mediaType": "application/epub+zip",
+    "creators": [
+        {
+            "id": "https://example.edu/people/12345",
+            "type": "Person"
+        },
+        {
+            "id": "https://example.com/staff/56789",
+            "type": "Person"
+        }
+    ],
+    "dateCreated": "2017-08-01T06:00:00.000Z",
+    "datePublished": "2017-10-01T06:00:00.000Z",
+    "version": "1.1",
+    "extensions": [
+        {
+            "hostname": "example.docker",
+            "request_id": "f72863c5-d541-40b3-8183-e9e3e877e3bc",
+            "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+        }
+    ]
+}
+```
+
 <a name="agent" />
 
-### C.1 Agent
+### C.2 Agent
 A Caliper [Agent](#agent) is a generic type that represents an Entity that can initiate or perform an action.
 
 #### Supertype
@@ -2902,7 +2952,7 @@ A Caliper [Agent](#agent) is a generic type that represents an Entity that can i
 
 <a name="annotation" />
 
-### C.2 Annotation
+### C.3 Annotation
 A Caliper [Annotation](#annotation) is a generic type that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.
 
 #### Supertype
@@ -2935,7 +2985,7 @@ A Caliper [Annotation](#annotation) is a generic type that represents a comment,
 
 <a name="assessment" />
 
-### C.3 Assessment
+### C.4 Assessment
 A Caliper [Assessment](#assessment) represents an assessment instrument such as a test or quiz.
 
 #### Supertype
@@ -3013,7 +3063,7 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 ```
 <a name="assessmentItem" />
 
-### C.4 AssessmentItem
+### C.5 AssessmentItem
 A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
 
 #### Supertype
@@ -3083,14 +3133,11 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 
 <a name="assignableDigitalResource" />
 
-### C.5 AssignableDigitalResource
+### C.6 AssignableDigitalResource
 A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic type that represents digital content associated with a graded or ungraded assignment.
 
 #### Supertype
 [DigitalResource](#digitalResource)
-
-#### Subtypes 
-[Assessment](#assessment), [AssessmentItem](#assessmentItem)
 
 #### Properties
 [AssignableDigitalResource](#assignableDigitalResource) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
@@ -3126,6 +3173,9 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 | ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
+#### Subtypes 
+[Assessment](#assessment), [AssessmentItem](#assessmentItem)
+
 #### Example
 ```json
 {
@@ -3147,7 +3197,7 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 
 <a name="attempt" />
 
-### C.6 Attempt
+### C.7 Attempt
 A Caliper [Attempt](#attempt) provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An [Attempt](#attempt) is generated as the result of an action such as starting an [Assessment](#assessment).
 
 #### Supertype
@@ -3204,7 +3254,7 @@ The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT b
 
 <a name="audioObject" />
 
-### C.7 AudioObject
+### C.8 AudioObject
 A Caliper [AudioObject](#audioObject) represents an audio or sound file.
 
 #### Supertype
@@ -3258,7 +3308,7 @@ The following [AudioObject](#audioObject) properties have been DEPRECATED and MU
 
 <a name="bookmarkAnnotation" />
 
-### C.8 BookmarkAnnotation
+### C.9 BookmarkAnnotation
 A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of marking a [DigitalResource](#digitalResource) at a particular location.
 
 **TODO how do you transmit the position of the bookmark?**
@@ -3303,7 +3353,7 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 
 <a name="chapter" />
 
-### C.9 Chapter
+### C.10 Chapter
 A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digital content.
 
 #### Supertype 
@@ -3356,7 +3406,7 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 
 <a name="courseOffering" />
 
-### C.10 CourseOffering
+### C.11 CourseOffering
 A Caliper [CourseOffering](#courseOffering) represents the occurrence of a course or a type during a specified time period.  [CourseOffering](#courseOffering) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Supertype
@@ -3398,7 +3448,7 @@ A Caliper [CourseOffering](#courseOffering) represents the occurrence of a cours
 
 <a name="courseSection" />
 
-### C.11 CourseSection
+### C.12 CourseSection
 A Caliper [CourseSection](#courseSection) represents a specific instance of a [CourseOffering](#courseOffering) occurring during a specific semester, term or period.  [CourseSection](#courseSection) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### Supertype
@@ -3443,17 +3493,11 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 
 <a name="digitalResource" />
 
-### C.12 DigitalResource
+### C.13 DigitalResource
 A Caliper [DigitalResource](#digitalResource) is a generic type that represents digital content.
 
 #### Supertype 
 [Entity](#entity)
-
-#### Subtypes
-[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Forum](#forum), [Frame](#frame), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Page](#page), [Thread](#thread), [WebPage](#webpage)
-
-#### Deprecated subtypes
-[EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
 
 #### Properties
 [DigitalResource](#digitalResource) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
@@ -3482,6 +3526,12 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+
+#### Subtypes
+[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Forum](#forum), [Frame](#frame), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Page](#page), [Thread](#thread), [WebPage](#webpage)
+
+#### Deprecated subtypes
+[EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
 
 #### Example
 ```json
@@ -3512,14 +3562,11 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 
 <a name="digitalResourceCollection" />
 
-### C.13 DigitalResourceCollection
+### C.14 DigitalResourceCollection
 A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an ordered collection of [DigitalResource](#digitalResource) entities.
 
 #### Supertype
 [DigitalResource](#digitalResource)
-
-#### Subtypes 
-[Assessment](#assessment), [Forum](#forum), [Thread](#thread)
 
 #### Properties
 [DigitalResourceCollection](#digitalResourceCollection) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
@@ -3549,6 +3596,9 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+
+#### Subtypes 
+[Assessment](#assessment), [Forum](#forum), [Thread](#thread)
 
 #### Example
 ```json
@@ -3593,7 +3643,7 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 
 <a name="document" />
 
-### C.14 Document
+### C.15 Document
 A Caliper [Document](#document) represents textual content.
 
 #### Supertype 
@@ -3653,7 +3703,7 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
  
 <a name="epubChapter" />
 
-### C.15 EpubChapter (DEPRECATED)
+### C.16 EpubChapter (DEPRECATED)
 A Caliper [EpubChapter](#epubChapter) represents a major structural division of a piece of writing.  [EpubChapter](#epubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -3689,7 +3739,7 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 
 <a name="epubPart" />
 
-### C.16 EpubPart (DEPRECATED)
+### C.17 EpubPart (DEPRECATED)
 A Caliper [EpubPart](#epubPart) represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  [EpubPart](#epubPart) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -3725,7 +3775,7 @@ The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST NOT
 
 <a name="epubSubChapter" />
 
-### C.17 EpubSubChapter (DEPRECATED)
+### C.18 EpubSubChapter (DEPRECATED)
 A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of an [EpubChapter](#epubChapter).  [EpubSubChapter](#epubSubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -3761,7 +3811,7 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 
 <a name="epubVolume" />
 
-### C.18 EpubVolume (DEPRECATED)
+### C.19 EpubVolume (DEPRECATED)
 A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its supertype.  [EpubVolume](#epubVolume) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -3797,7 +3847,7 @@ The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST
 
 <a name="fillinBlankResponse" />
 
-### C.19 FillinBlankResponse
+### C.20 FillinBlankResponse
 A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Response](#response) in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
 #### Supertype 
@@ -3863,7 +3913,7 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 
 <a name="forum" />
 
-### C.20 Forum
+### C.21 Forum
 A Caliper [Forum](#forum) represents a channel or virtual space in which group discussions take place.  A [Forum](#forum) typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.
 
 #### Supertype 
@@ -3940,7 +3990,7 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 
 <a name="frame" />
 
-### C.21 Frame
+### C.22 Frame
 A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalResource](#digitalResource).
 
 **TODO DEFINE INDEX PROPERTY IN MORE DETAIL**
@@ -3996,7 +4046,7 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
 
 <a name="group" />
 
-### C.22 Group
+### C.23 Group
 A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
 #### Supertype
@@ -4038,7 +4088,7 @@ A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collectio
 
 <a name="highlightAnnotation" />
 
-### C.23 HighlightAnnotation
+### C.24 HighlightAnnotation
 A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
 
 ### TODO
@@ -4090,7 +4140,7 @@ A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of mark
 
 <a name="imageObject" />
 
-### C.24 ImageObject
+### C.25 ImageObject
 A Caliper [ImageObject](#imageObject) represents an image file.
 
 #### Supertype 
@@ -4139,7 +4189,7 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
 
 <a name="learningObjective" />
 
-### C.25 LearningObjective
+### C.26 LearningObjective
 The Caliper [LearningObjective](#learningObjective) represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
 #### Supertype 
@@ -4188,7 +4238,7 @@ The Caliper [LearningObjective](#learningObjective) represents a summary stateme
 
 <a name="ltiSession" />
 
-### C.26 LtiSession
+### C.27 LtiSession
 A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user session.
 
 #### Supertype
@@ -4272,7 +4322,7 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
 
 <a name="mediaLocation" />
 
-### C.27 MediaLocation
+### C.28 MediaLocation
 
 A Caliper [MediaLocation](#mediaLocation) provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
  
@@ -4321,14 +4371,11 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
 
 <a name="mediaObject" />
 
-### C.28 MediaObject
+### C.29 MediaObject
 A Caliper [MediaObject](#mediaObject) represents a generic piece of media content.
 
 #### Supertype 
 [DigitalResource](#digitalResource)
-
-#### Subtypes
-[AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject)
 
 #### Properties
 [MediaObject](#mediaObject) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
@@ -4359,6 +4406,8 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 | ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
+#### Subtypes
+[AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject)
 
 #### Example
 ```json
@@ -4369,7 +4418,7 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 
 <a name="membership" />
 
-### C.29 Membership
+### C.30 Membership
 A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
 
 #### Supertype 
@@ -4418,7 +4467,7 @@ A Caliper [Membership](#membership) describes the relationship between an [Organ
 
 <a name="message" />
 
-### C.30 Message
+### C.31 Message
 A Caliper [Message](#message) is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.
 
 #### Supertype 
@@ -4495,7 +4544,7 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
  
 <a name="multipleChoiceResponse" />
 
-### C.31 MultipleChoiceResponse
+### C.32 MultipleChoiceResponse
 A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of [Response](#response) in which a respondent is asked to provide the best possible answer from a list of choices.
 
 #### Supertype 
@@ -4561,7 +4610,7 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 
 <a name="multipleResponseResponse" />
 
-### C.32 MultipleResponseResponse
+### C.33 MultipleResponseResponse
 A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
 #### Supertype 
@@ -4627,7 +4676,7 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 
 <a name="organization" />
 
-### C.33 Organization
+### C.34 Organization
 A Caliper [Organization](#organization) represents a formal collection of people organized for some common educational, social or administrative purpose.  An [Organization](#organization) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
 #### Supertype
@@ -4668,7 +4717,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 <a name="page" />
 
-### C.34 Page
+### C.35 Page
 A Caliper [Page](#page) represents an item of paginated content.
 
 #### Supertype 
@@ -4726,7 +4775,7 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
 
 <a name="person" />
 
-### C.35 Person
+### C.36 Person
 A Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.
 #### Supertype
 [Agent](#agent)
@@ -4757,7 +4806,7 @@ A Caliper [Person](#person) represents a human being, alive or deceased, real or
 
 <a name="reading" />
 
-### C.36 Reading (DEPRECATED)
+### C.37 Reading (DEPRECATED)
 A Caliper [Reading](#reading) represents an item of paginated content.  [Reading](#reading) is a DEPRECATED entity superseded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### Supertype 
@@ -4793,14 +4842,11 @@ The following [Reading](#reading) properties have been DEPRECATED and MUST NOT b
 
 <a name="response" />
 
-### C.37 Response
+### C.38 Response
 A Caliper [Response](#response) is a generic type that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).
 
 #### Supertype 
 [Entity](#entity)
-
-#### Subtypes
-[FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Properties
 [Response](#response) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
@@ -4827,10 +4873,12 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 | ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
+#### Subtypes
+[FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 <a name="result" />
 
-### C.38 Result
+### C.39 Result
 A Caliper [Result](#result) represents a grade applied to an assignment submission.
 
 **TODO describe scores**
@@ -4898,7 +4946,7 @@ A Caliper [Result](#result) represents a grade applied to an assignment submissi
 
 <a name="selectTextResponse" />
 
-### C.39 SelectTextResponse
+### C.40 SelectTextResponse
 A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
 
 #### Supertype 
@@ -4964,14 +5012,11 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 
 <a name="session" />
 
-### C.40 Session
+### C.41 Session
 A Caliper [Session](#session) represents a web application user session.
 
 #### Supertype
 [Entity](#entity)
-
-#### Subtypes
-[LtiSession](#ltiSession)
 
 #### Properties
 [Session](#session) inherits all the properties and requirements defined for [Entity](#entity), its supertype.  Additional properties and requirements are described below:
@@ -4997,6 +5042,9 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 | :------- | :--- | ----------- | :---------: |
 | ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession).  `actor` property has been DEPRECATED in and replaced by `user`. | Optional |
 
+#### Subtypes
+[LtiSession](#ltiSession)
+
 #### Example
 ```json
 {
@@ -5013,7 +5061,7 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 
 <a name="sharedAnnotation" />
 
-### C.41 SharedAnnotation
+### C.42 SharedAnnotation
 A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
 
 #### Supertype
@@ -5065,7 +5113,7 @@ A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a 
 
 <a name="softwareApplication" />
 
-#### C.42 SoftwareApplication
+#### C.43 SoftwareApplication
 A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
 
 #### Supertype
@@ -5099,7 +5147,7 @@ A Caliper [SoftwareApplication](#softwareApplication) represents a computer prog
 
 <a name="tagAnnotation" />
 
-### C.43 TagAnnotation
+### C.44 TagAnnotation
 A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
 
 #### Supertype
@@ -5142,7 +5190,7 @@ A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [Digit
 
 <a name="thread" />
 
-### C.44 Thread
+### C.45 Thread
 A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
 #### Supertype 
@@ -5226,7 +5274,7 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 
 <a name="trueFalseResponse" />
 
-### C.45 TrueFalseResponse
+### C.46 TrueFalseResponse
 A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
 
 #### Supertype 
@@ -5292,7 +5340,7 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 
 <a name="videoObject" />
 
-### C.46 VideoObject
+### C.47 VideoObject
 A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
 
 #### Supertype 
@@ -5344,7 +5392,7 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 
 <a name="webPage" />
 
-### C.47 WebPage
+### C.48 WebPage
 A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
 
 #### Supertype 
