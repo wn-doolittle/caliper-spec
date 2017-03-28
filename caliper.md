@@ -242,7 +242,7 @@ Other [Entity](#entity) properties are descriptive in nature or link the [Entity
 If a \<string\> representation is provided the value MUST correspond to the [IRI](#iriDef) defined for the [Entity](#entity).
 
 #### Properties
-The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  When representing an [Entity](#entity) as an \<Object\> the `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
+The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  When representing an [Entity](#entity) as an \<Object\> the `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property as an array of \<Object\> values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -271,7 +271,7 @@ Caliper defines a number of [Event](#event) types, each scoped to a particular a
 Like an [Entity](#entity), a Caliper [Event](#event) is largely self-describing via a required `type` property.  A unique identifier in the form of a [UUID](https://tools.ietf.org/html/rfc4122) MUST also be provided.  An optional `extensions` property is also defined so that implementors can add custom properties not described by the model.  Again, like an [Entity](#entity), an [Event](#event) as a data structure constitutes an unordered set of key:value pairs or properties.
 
 #### Properties
-The base set of [Event](#event) properties is listed below.  Each property MUST only be referenced once.  The `id`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
+The base set of [Event](#event) properties is listed below.  Each property MUST only be referenced once.  The `id`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property as an array of \<Object\> values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
 
 **TODO WHAT VALUE DOES `target` ADD TO AN EVENT THAT CAN'T BE REPRESENTED BY `object`?  DEPRECATE?**
 
