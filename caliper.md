@@ -1401,10 +1401,10 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AnnotationEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
 | action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` term may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required |
-| object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the `object`.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
+| object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified.  Note that Annotation is a generic type that is subtyped for greater type specificity.  Utilize [Annotation](#annotation) only if no suitable subtype exists to represent the `generated` object.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Recommended |
 | edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the edApp's [IRI](#iriDef). | Optional | 
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the referrer's [IRI](#iriDef). | Optional |
 | group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the group's [IRI](#iriDef). | Optional | 
@@ -1674,7 +1674,7 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 | object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  Note that [Response](#response) is a generic type that is subtyped for greater type specificity.  Utilize [Response](#response) only if no suitable subtype exists to represent the `generated` object.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Recommended |
 | edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the edApp's [IRI](#iriDef). | Optional | 
 | referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`.  The `referrer` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the referrer's [IRI](#iriDef). | Optional |
 | group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.   The `group` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the group's [IRI](#iriDef). | Optional | 
@@ -1867,7 +1867,7 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssignableEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required | 
-| object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  [AssignableDigitalResource](#assignableDigitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the `object`.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
+| object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Optional |
@@ -2048,7 +2048,7 @@ TODO
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` term may be specified per [Event](#event). | Required |
-| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the `object` of the interaction MUST be specified.  [MediaObject](#mediaObject) is a generic type that is subtyped for greater type specificity.  Utilize [MediaObject](#mediaObject) only if no suitable subtype exists to represent the `object`.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
+| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [MediaLocation](#mediaLocation) | If the `object` is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide the [currentTime](#currentTime) in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S".  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Recommended |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Optional |
@@ -2300,12 +2300,12 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *NavigationEvent*. |Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)| The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the `object` of the interaction MUST be specified. Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `object`.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
+| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)| The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Optional |
 | edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context SHOULD be specified.  Note that [DigitalResource](#digitalResource)  is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource)  only if no suitable subtype exists to represent the `referrer`.  The `referrer` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the referrer's [IRI](#iriDef). | Recommended |
+| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context SHOULD be specified.  The `referrer` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the referrer's [IRI](#iriDef). | Recommended |
 | group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the group's [IRI](#iriDef). | Optional | 
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the membership entity's [IRI](#iriDef). | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the session's [IRI](#iriDef). | Optional |
@@ -2475,7 +2475,7 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ReadingEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Optional |
@@ -2794,7 +2794,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ViewEvent* MUST be specified.
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
-| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. [DigitalResource](#digitalResource) is a generic type that is subtyped for greater type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the object.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the generated entity's [IRI](#iriDef). | Optional |
@@ -2936,7 +2936,9 @@ When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/late
 <a name="agent" />
 
 ### C.2 Agent
-A Caliper [Agent](#agent) is a generic type that represents an Entity that can initiate or perform an action.
+A Caliper [Agent](#agent) is a generic type that represents an [Entity](#entity) that can initiate or perform an action.
+
+Utilize [Agent](#agent) only if no suitable subtype exists to represent the actor being decribed.
 
 #### Supertype
 [Entity](#entity)
@@ -2969,6 +2971,8 @@ A Caliper [Agent](#agent) is a generic type that represents an Entity that can i
 ### C.3 Annotation
 A Caliper [Annotation](#annotation) is a generic type that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.
 
+Utilize [Annotation](#annotation) only if no suitable subtype exists to represent the annotation being described.
+
 #### Supertype
 [Entity](#entity)
 
@@ -2982,7 +2986,7 @@ A Caliper [Annotation](#annotation) is a generic type that represents a comment,
 | name | String | A string value comprising a word or phrase by which the [Annotation](#annotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [Annotation](#annotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [Annotation](#annotation) SHOULD be specified. | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that [DigitalResource](#digitalResource) is a generic type that is subtyped for more precise type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the annotated resource.  | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Annotation](#annotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Annotation](#annotation) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Annotation](#annotation). | Optional |
@@ -3150,6 +3154,9 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 ### C.6 AssignableDigitalResource
 A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic type that represents digital content associated with a graded or ungraded assignment.
 
+Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the resource being described.  
+
+
 #### Supertype
 [DigitalResource](#digitalResource)
 
@@ -3227,7 +3234,7 @@ A Caliper [Attempt](#attempt) provides a count of the number of times an actor h
 | name | String | A string value comprising a word or phrase by which the [Attempt](#attempt) is known MAY be specified. | Optional |
 | description | String |  A string value comprising a brief, written representation of the [Attempt](#attempt) MAY be specified. | Optional |
 | assignee | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt) SHOULD be specified. | Recommended |
-| assignable | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  Note that [DigitalResource](#digitalResource) is a generic type that is subtyped for more precise type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the annotated resource. | Recommended |
+| assignable | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified. | Recommended |
 | isPartOf | [Attempt](#attempt) | The parent [Attempt](#attempt), if any, MAY be specified. | Optional |
 | count | Integer | The total number of attempts inclusive of the current Attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3340,7 +3347,7 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 | name | String | A string value comprising a word or phrase by which the [BookmarkAnnotation](#bookmarkAnnotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [BookmarkAnnotation](#bookmarkAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified. | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that [DigitalResource](#digitalResource) is a generic type that is subtyped for more precise type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the annotated resource.  | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified. | Recommended |
 | bookmarkNotes | String | A string value comprising a plain-text rendering of the note that accompanies the bookmark MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [BookmarkAnnotation](#bookmarkAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [BookmarkAnnotation](#bookmarkAnnotation) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3509,6 +3516,8 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 
 ### C.13 DigitalResource
 A Caliper [DigitalResource](#digitalResource) is a generic type that represents digital content.
+
+Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the resource being described.
 
 #### Supertype 
 [Entity](#entity)
@@ -4121,7 +4130,7 @@ A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of mark
 | name | String | A string value comprising a word or phrase by which the [HighlightAnnotation](#highlightAnnotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [HighlightAnnotation](#highlightAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [HighlightAnnotation](#highlightAnnotation) SHOULD be specified. | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that [DigitalResource](#digitalResource) is a generic type that is subtyped for more precise type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the annotated resource.  | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  | Recommended |
 | selection | [TextPositionSelector](#textPositionSelector) | The start and end positions of the highlighted text segment SHOULD be specified.  The first character in the full text is character position 0.  If a [TextPositionSelector](#textPositionSelector) is defined both its [start](#start) and [end](#end) positions MUST be specified. | Recommended |
 | selectionText | String | A string value representing a plain-text rendering of the highlighted segment of the annotated [DigitalResource](#digitalResource) MAY be specified | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4859,6 +4868,8 @@ The following [Reading](#reading) properties have been DEPRECATED and MUST NOT b
 ### C.38 Response
 A Caliper [Response](#response) is a generic type that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).
 
+Utilize [Response](#response) only if no suitable subtype exists to represent the response being described.
+
 #### Supertype 
 [Entity](#entity)
 
@@ -5091,7 +5102,7 @@ A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a 
 | name | String | A string value comprising a word or phrase by which the [SharedAnnotation](#sharedAnnotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [SharedAnnotation](#sharedAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [SharedAnnotation](#sharedAnnotation) SHOULD be specified. | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that [DigitalResource](#digitalResource) is a generic type that is subtyped for more precise type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the annotated resource.  | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  | Recommended |
 | withAgents | Array | an ordered collection of one or more [Agent](#agent) entities, typically of type [Person](#person), with whom the annotated [DigitalResource](#digitalResource) has been shared SHOULD be specified.. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SharedAnnotation](#sharedAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SharedAnnotation](#sharedAnnotation) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -5177,7 +5188,7 @@ A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [Digit
 | name | String | A string value comprising a word or phrase by which the [TagAnnotation](#tagAnnotation) is known MAY be specified. | Optional |
 | description | String | A string value comprising a brief, written representation of the [TagAnnotation](#tagAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [TagAnnotation](#tagAnnotation) SHOULD be specified. | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  Note that [DigitalResource](#digitalResource) is a generic type that is subtyped for more precise type specificity.  Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the annotated resource.  | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  | Recommended |
 | tags | Array | an ordered collection of one or more string values that represent the tags associated with the annotated [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [TagAnnotation](#tagAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [TagAnnotation](#tagAnnotation) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
