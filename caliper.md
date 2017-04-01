@@ -35,18 +35,18 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
       * 2.3.8 [Reading Profile](#readingProfile)
       * 2.3.9 [Session Profile](#sessionProfile)
       * 2.3.10 [Tool Use Profile](#toolUseProfile)
-* 3.0 [JSON-LD](#jsonLd)
+* 3.0 [JSON-LD](#jsonld)
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types](#jsonldTypes)
   * 3.4 [Type Coercion](#jsonldTypeCoercion)
   * 3.5 [Processing Algorithms](#jsonldProcessing)
 * 4.0 [Sensor API](#sensor)
-  * 4.1 [Behavior](#behavior)
-  * 4.2 [Envelope](#envelope)
-  * 4.3 [Transport](#transport)
-  * 4.4 [Endpoint](#endpoint)
-  * 4.5 [Endpoint Responses](#endpointResponses)
+  * 4.1 [Behavior](#sensorBehavior)
+  * 4.2 [Envelope](#sensorEnvelope)
+  * 4.3 [Transport](#sensorTransport)
+* 5.0 [Endpoint](#endpoint)
+  * 5.1 [Endpoint Responses](#endpointResponses)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Event Types](#events)
   * B.1 [Event](#event)
@@ -911,7 +911,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 }
 ```
 
-<a name="jsonLd" />
+<a name="jsonld" />
 
 ## 3.0 JSON-LD
 Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) links to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data and so on.  [JSON-LD](#jsonldDef), Caliper's chosen syntax for describing learning activity data as [Linked Data](#linkedData) using a JSON-based interchange format, provides the necessary representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.  
@@ -1059,23 +1059,24 @@ An [Endpoint](#endpoint) must be capable of interpreting coerced values of this 
 
 <a name="sensor" />
 
-## 4.0 Sensor API™
+## 4.0 The Sensor API™
 Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
-<a name="behavior" />
+<a name="sensorBehavior" />
 
 ### 4.1 Behavior
-A Caliper [Sensor](#sensor) MUST be capable of sending an [Envelope](#envelope) containing a mixed `data` payload consisting of one or more Caliper events and/or entities to a target endpoint.
+A Caliper [Sensor](#sensor) MUST be capable of serializing and sending a Caliper [Envelope](#envelope) containing the following payloads to one or more target [Endpoints](#endpoint).
+
+* A JSON array consisting of one or more Caliper [Event](#event) documents, each expressed as JSON-LD.
+* A JSON array consisting of one or more Caliper [Entity](#entity) "describe" documents, each expressed as JSON-LD.
+* A JSON array consisting of a mix of one or more Caliper [Event](#event) and [Entity](#entity) describe documents, each expressed as JSON-LD.
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
 
-<a name="envelope" />
+<a name="sensorEnvelope" />
 
 ### 4.2 Envelope
-**TODO Confirm that we will permit the Sensor to send mixed payloads of Entity describes/Events.  I'm +1.**
-**TODO talk more about sending Events and sending describes -- rationale**
-
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) "describe" included in an envelope's `data` payload messages MUST be expressed as a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) document. 
+Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) "describe" included in an envelope's `data` array MUST be expressed as a [JSON-LD](#jsonld) document. 
 
 #### Properties
 Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
@@ -1087,169 +1088,219 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | dataVersion | String | A string value indicating which version of the IMS Caliper Analytics® specification governs the form of the Caliper entities and events contained in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
 | data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
 
-#### Example: Event payload
+#### Example: Mixed payload
 ```json
 {
-  "sensor": "https://example.edu/sensors/1",
-  "sendTime": "2016-11-15T11:05:01.000Z",
-  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "data": [
-    {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "type": "AssessmentEvent",
-      "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      },
-      "action": "Started",
-      "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "Assessment",
-        "name": "Quiz One",
-        "dateToStartOn": "2016-11-14T05:00:00.000Z",
-        "dateToSubmit": "2016-11-18T11:59:59.000Z",
-        "maxAttempts": 2,
-        "maxSubmits": 2,
-        "maxScore": 25.0,
-        "version": "1.0"
-      },
-      "generated": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-        "type": "Attempt",
-        "assignee": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        },
-        "assignable": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-          "type": "Assessment"
-        },
-        "count": 1,
-        "dateCreated": "2016-11-15T10:15:00.000Z",
-        "startedAtTime": "2016-11-15T10:15:00.000Z"
-      },
-      "eventTime": "2016-11-15T10:15:00.000Z",
-      "edApp": {
-        "id": "https://example.edu",
-        "type": "SoftwareApplication",
-        "version": "v2"
-      },
-      "group": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1",
-        "type": "CourseSection",
-        "courseNumber": "CPS 435-01",
-        "academicSession": "Fall 2016"
-      },
-      "membership": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-        "type": "Membership",
-        "member": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        },
-        "organization": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "type": "CourseSection"
-        },
-        "roles": [ "Learner" ],
-        "status": "Active",
-        "dateCreated": "2016-08-01T06:00:00.000Z"
-      },
-      "session": {
-        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-        "type": "Session",
-        "startedAtTime": "2016-11-15T10:00:00.000Z"
-      },
-      "uuid": "c51570e4-f8ed-4c18-bb3a-dfe51b2cc594"
-    }
-  ]
-}
-```
-
-#### Example: Entity describe payload
-
-```json
-{
-  "sensor": "https://example.edu/sensors/1",
-  "sendTime": "2016-11-15T11:05:01.000Z",
-  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "data": [
-    {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
-      "type": "DigitalResource",
-      "name": "Course Syllabus",
-      "mediaType": "application/pdf",
-      "creators": [
+    "sensor": "https://example.edu/sensors/1",
+    "sendTime": "2016-11-15T11:05:01.000Z",
+    "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "data": [
         {
-          "id": "https://example.edu/users/223344",
-          "type": "Person"
+            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+            "id": "https://example.edu/users/554433",
+            "type": "Person"
+        },
+        {
+            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+            "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+            "type": "Assessment",
+            "name": "Quiz One",
+            "items": [
+                "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
+                "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+                "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3"
+            ],
+            "dateCreated": "2016-08-01T06:00:00.000Z",
+            "dateModified": "2016-09-02T11:30:00.000Z",
+            "datePublished": "2016-08-15T09:30:00.000Z",
+            "dateToActivate": "2016-08-16T05:00:00.000Z",
+            "dateToShow": "2016-08-16T05:00:00.000Z",
+            "dateToStartOn": "2016-08-16T05:00:00.000Z",
+            "dateToSubmit": "2016-09-28T11:59:59.000Z",
+            "maxAttempts": 2,
+            "maxScore": 15,
+            "maxSubmits": 2,
+            "version": "1.0"
+        },
+        {
+            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+            "id": "https://example.edu",
+            "type": "SoftwareApplication"
+        },
+        {
+            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+            "id": "https://example.edu/terms/201601/courses/7/sections/1",
+            "type": "CourseSection",
+            "academicSession": "Fall 2016",
+            "courseNumber": "CPS 435-01",
+            "name": "CPS 435 Learning Analytics, Section 01",
+            "category": "seminar",
+            "subOrganizationOf": {
+                "id": "https://example.edu/terms/201601/courses/7",
+                "type": "CourseOffering",
+                "courseNumber": "CPS 435"
+            },
+            "dateCreated": "2016-08-01T06:00:00.000Z"
+        },
+        {
+            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+            "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
+            "type": "AssessmentEvent",
+            "actor": "https://example.edu/users/554433",
+            "action": "Started",
+            "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+            "generated": {
+                "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+                "type": "Attempt",
+                "assignee": "https://example.edu/users/554433",
+                "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+                "count": 1,
+                "dateCreated": "2016-11-15T10:15:00.000Z",
+                "startedAtTime": "2016-11-15T10:15:00.000Z"
+            },
+            "eventTime": "2016-11-15T10:15:00.000Z",
+            "edApp": "https://example.edu",
+            "group": "https://example.edu/terms/201601/courses/7/sections/1",
+            "membership": {
+                "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+                "type": "Membership",
+                "member": "https://example.edu/users/554433",
+                "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+                "roles": [
+                    "Learner"
+                ],
+                "status": "Active",
+                "dateCreated": "2016-08-01T06:00:00.000Z"
+            },
+            "session": {
+                "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+                "type": "Session",
+                "startedAtTime": "2016-11-15T10:00:00.000Z"
+            }
+        },
+        {
+            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+            "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
+            "type": "AssessmentEvent",
+            "actor": "https://example.edu/users/554433",
+            "action": "Submitted",
+            "object": {
+                "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+                "type": "Attempt",
+                "assignee": "https://example.edu/users/554433",
+                "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+                "count": 1,
+                "dateCreated": "2016-11-15T10:15:00.000Z",
+                "startedAtTime": "2016-11-15T10:15:00.000Z",
+                "endedAtTime": "2016-11-15T10:25:30.000Z",
+                "duration": "PT10M30S"
+            },
+            "eventTime": "2016-11-15T10:25:30.000Z",
+            "edApp": "https://example.edu",
+            "group": "https://example.edu/terms/201601/courses/7/sections/1",
+            "membership": {
+                "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+                "type": "Membership",
+                "member": "https://example.edu/users/554433",
+                "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+                "roles": [
+                    "Learner"
+                ],
+                "status": "Active",
+                "dateCreated": "2016-08-01T06:00:00.000Z"
+            },
+            "session": {
+                "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+                "type": "Session",
+                "startedAtTime": "2016-11-15T10:00:00.000Z"
+            }
+        },
+        {
+            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+            "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
+            "type": "OutcomeEvent",
+            "actor": {
+                "id": "https://example.edu/autograder",
+                "type": "SoftwareApplication",
+                "version": "v2"
+            },
+            "action": "Graded",
+            "object": {
+                "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+                "type": "Attempt",
+                "assignee": "https://example.edu/users/554433",
+                "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+                "count": 1,
+                "dateCreated": "2016-11-15T10:05:00.000Z",
+                "startedAtTime": "2016-11-15T10:05:00.000Z",
+                "endedAtTime": "2016-11-15T10:55:12.000Z",
+                "duration": "PT50M12S"
+            },
+            "eventTime": "2016-11-15T10:57:06.000Z",
+            "edApp": "https://example.edu",
+            "generated": {
+                "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
+                "type": "Result",
+                "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+                "normalScore": 15,
+                "totalScore": 15,
+                "scoredBy": "https://example.edu/autograder",
+                "dateCreated": "2016-11-15T10:55:05.000Z"
+            },
+            "group": "https://example.edu/terms/201601/courses/7/sections/1"
         }
-      ],
-      "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
-        "type": "DigitalResourceCollection",
-        "name": "Course Assets",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "type": "CourseSection"
-        }
-      },
-      "dateCreated": "2016-08-02T11:32:00.000Z"
-    }
-  ]
+    ]
 }
 ```
 
-<a name="transport" />
+<a name="sensorTransport" />
 
 ### 4.3 Transport
+Business requirements informed by industry best practices will determine the choice of transport protocol for Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementors.  Real-time or near real-time messaging scenarios are likely to require adoption of a transport protocol other than the familiar application protocol HTTP layered over TCP/IP.
 
-**Should we define custom headers for Caliper version, payload type?**
+Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).
 
-A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) using the HTTP request-response transport protocol and with messages sent using the HTTP POST request method.  A [Sensor](#sensor) MAY employ other transport protocols to communicate with an [Endpoint](#endpoint).  Note that the IMS Caliper certification suite requires implementors seeking certification to utilize a conventional HTTP POST request to send data to the certification test endpoint. 
+For Caliper messaging scenarios involving HTTP the following requirements are in force: 
+ 
+* A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS or SSL.
+* Messages MUST be sent using the POST request method.
+* The following standard HTTP request headers MUST be set for use by the [Endpoint](#endpoint):
+  * `Accept`
+  * `Content-Type`
+  * `Host`
+* The `Content-Type` value MUST be set to the IANA media type "application/json".
+* The following standard HTTP request headers SHOULD be set for use by the [Endpoint](#endpoint):
+  * `Authorization`
+  * `Content-Length`
+* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
+* The `Content-Length` of the request body MUST be measured in octets (8-bit bytes).
 
-Every message sent by a [Sensor](#sensor) MUST consist of a JSON representation of a single Caliper [Envelope](#envelope).
-
-For transport security and authentication, a [Sensor](#sensor) SHOULD:
-
-* Use HTTPS to secure the transport between the Sensor and receiving endpoint.
-* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the Sensor MUST be one the [Endpoint](#endpoint) can validate, but the credential MAY be opaque to the [Sensor](#sensor) itself.
-
-A [Sensor](#sensor) MAY support additional modes of transport security and authentication; the certification tests for Caliper sensors require the [Sensor](#sensor) to send data to the certification service using HTTPS and a bearer token credential consistent with [RFC 6750](#rfc6750).
-
-When sending messages to an [Endpoint](#endpoint), a Caliper [Sensor](#sensor) SHOULD indicate that the message payload has the `application/ld+json` IANA media-type, and MAY indicate instead that the message has the `application/json` IANA media-type (in the case, for example, that a Caliper [Endpoint](#endpoint) reports that it cannot process the `application/ld+json` media type).
+Note that the IMS Caliper certification suite currently requires implementors seeking certification to send data to the certification test [Endpoint](#endpoint) using HTTPS with a bearer token credential consistent with [RFC 6750](#rfc6750).
 
 <a name="endpoint" />
 
-### 4.4 Endpoint
+### 5.0 Endpoint
 
-A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method.  Caliper endpoints MAY use other transport protocols to receive data from sensors.
+A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.
 
-For transport and security and authentication, Caliper sensors SHOULD:
+For Caliper messaging scenarios involving HTTP the following requirements are in force:
 
-* Use HTTPS to secure the transport between itself and sensors, and if so, MUST provide a valid HTTP Certificate.
-* Support message authentication using the Authorization Request Header Field (as described in [RFC 6750, Section 2.1](https://tools.ietf.org/html/rfc6750#section-2); in this case, the `b64token` credential sent by the sensor MUST be one the Endpoint can validate, but the credential MAY be opaque to the sensor itself.
-
-A Caliper [Endpoint](#endpoint) MAY support additional modes of transport security and authentication; the certification tests require the [Endpoint](#endpoint) receive data from the certification service using HTTPS and a bearer token credential consistent with [RFC 6750](#rfc6750).
+* An [Endpoint](#endpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
+* An [Endpoint](#endpoint) MUST be capable of accessing standard HTTP request headers.
+* An [Endpoint](#endpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
 
 <a name="endpointResponses" />
 
-### 4.5 Endpoint HTTPS responses
+#### 5.1 Endpoint Responses
+When using HTTPS an [Endpoint](#endpoint) MUST implement the following response behaviour: 
 
-When using HTTPS as the transport, the Caliper [Endpoint](#endpoint) MUST conform to these points of response behaviour. Caliper [Endpoint](#endpoint) implementers should bear in mind that Caliper [Sensors](#sensor) sending them messages may not be in a position to perform sophisticated error handling.
+* To signal to a [Sensor](#sensor) that it has received an emitted message and no error state pertains an [Endpoint](#endpoint) MUST reply with a `2xx` class status code. The [Endpoint](#endpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
+* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#endpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint) SHOULD send a `422 Unprocessable Entity` response instead.
+* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#endpoint) SHOULD reply with a `415 Unsupported Media Type` response.
+* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the recommended form or sends a token credential that the [Endpoint](#endpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
+* The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions of varying kinds.  The [Endpoint](#endpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
 
-To signal to the [Sensor](#sensor) that it has received an emitted message, and no error state pertains (see following), the [Endpoint](#endpoint) MUST reply with a `2xx` series success. The [Endpoint](#endpoint) SHOULD use the `200 OK` response, but it MAY instead choose to send a `201 Created` response (to indicate successful receipt and persistence of the [Sensor](#sensor) message's contained data payload) or a `202 Accepted` response (to indicate successful acceptance of the Caliper [Envelope](#envelope) and queueing for further processing). The body of a successful response SHOULD be empty.
-
-If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion`, and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response. (Note that the [Endpoint](#endpoint) SHOULD NOT send this response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint)  SHOULD send a `422 Unprocessable Entity` response instead.)
-
-If the [Sensor](#sensor) sends a message with a content-type other than `application/json` or `application/ld+json`, the [Endpoint](#endpoint) SHOULD reply with a `415 Unsupported Media Type` response.
-
-If the [Sensor](#sensor) sends a message without an Authorization Request Header Field of the suggested form, or if the [Sensor](#sensor) sends a token credential that the [Endpoint](#endpoint) is unable to validate or determine has sufficient privilege to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
-
-The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions of varying kinds.
-
-If the [Endpoint](#endpoint) implementer wants the [Endpoint](#endpoint) to communicate more detailed information about problem states when receiving messages, the [Endpoint](#endpoint) SHOULD use the standard method for reporting problem details described in [RFC 7807](#rfc7807).
+Caliper [Endpoint](#endpoint) implementers should bear in mind that some Caliper [Sensors](#sensor) may lack sophisticated error handling.
 
 <a name="actions"/>
    
@@ -5487,7 +5538,7 @@ __RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Ide
 
 <a name="rfc6750 />
 
-__RFC 6750__ IETF.  TODO Add reference
+__RFC 6750__ IETF.  M. Jones and D. Hardt.  "The OAuth 2.0 Authorization Framework: Bearer Token Usage."  October 2012.  URL: https://tools.ietf.org/html/rfc6750
 
 <a name="rfc7807 />
 
