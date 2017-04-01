@@ -1093,7 +1093,10 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 <a name="event" />
 
 ### B.1 Event
-A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  
+A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Event
 
 #### Properties
 | Property | Type | Description | Conformance |
@@ -1149,6 +1152,9 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
 ### B.2 AnnotationEvent
 The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
+#### IRI
+http://purl.imsglobal.org/caliper/AnnotationEvent
+ 
 #### Supported actions
  [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
  
@@ -1237,7 +1243,10 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 <a name="assessmentEvent" />
 
 ### B.3 AssessmentEvent
-The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.  
+The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.
+
+#### IRI
+http://purl.imsglobal.org/caliper/AssessmentEvent
 
 #### Supported actions
 [Started](#started), [Paused](#paused), [Restarted](#restarted), [Submitted](#submitted)
@@ -1387,8 +1396,11 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 <a name="assessmentItemEvent" />
 
 ### B.4 AssessmentItemEvent
-The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).  
+The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).
 
+#### IRI
+http://purl.imsglobal.org/caliper/AssessmentItemEvent
+ 
 #### Supported actions
 [Started](#started), [Skipped](#skipped), [Completed](#completed)
 
@@ -1556,7 +1568,10 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 <a name="assignableEvent" />
 
 ### B.5 AssignableEvent
-TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
+The Assignable Profile models activities associated with the assignment of digital content assigned to a learner for completion.
+
+#### IRI
+http://purl.imsglobal.org/caliper/AssignableEvent
 
 #### Supported actions
 [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Reviewed](#reviewed)
@@ -1643,8 +1658,10 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 <a name="forumEvent" />
 
 ### B.6 ForumEvent
+The Caliper [ForumEvent](#forumEvent) models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.
 
-TODO The Caliper [ForumEvent](#forumEvent) models . . . .
+#### IRI
+http://purl.imsglobal.org/caliper/ForumEvent
 
 #### Supported actions
 [Subscribed](#subscribed), [Unsubscribed](#unsubscribed)
@@ -1724,11 +1741,14 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 <a name="mediaEvent" />
 
 ### B.7 MediaEvent
-TODO The Caliper [MediaEvent](#mediaEvent) models . . . .
+TODO The Caliper [MediaEvent](#mediaEvent) models interactions between learners and rich content such as audio, images and video.
 
-TODO   
+**TODO**   
 * Should MediaLocation be the object or the target of the interaction?
 * Should ImageObject be included in this event (ViewEvent appears more appropriate)?
+
+#### IRI
+http://purl.imsglobal.org/caliper/MediaEvent
 
 #### Supported actions
 [Started](#started), [Paused](#paused), [Resumed](#resumed), [Ended](#ended), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [Rewound](#rewound), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
@@ -1806,6 +1826,9 @@ TODO
 
 ### B.8 MessageEvent
 The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
+
+#### IRI
+http://purl.imsglobal.org/caliper/MessageEvent
 
 #### Supported actions
 [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
@@ -1961,6 +1984,9 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 ### B.9 NavigationEvent
 The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
 
+#### IRI
+http://purl.imsglobal.org/caliper/NavigationEvent
+
 #### Supported actions
 [NavigatedTo](#navigatedTo)
 
@@ -2042,7 +2068,10 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 <a name="outcomeEvent" />
 
 ### B.10 OutcomeEvent
-TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
+TODO The Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
+
+#### IRI
+http://purl.imsglobal.org/caliper/OutcomeEvent
 
 #### Supported actions
 [Graded](#graded)
@@ -2120,7 +2149,10 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 ### B.11 ReadingEvent DEPRECATED
 
-The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be utilized.
+The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+
+#### IRI
+http://purl.imsglobal.org/caliper/ReadingEvent
 
 #### Supported actions
 [NavigatedTo](#navigatedTo), [Searched](#searched), [Viewed](#viewed)
@@ -2149,7 +2181,10 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 <a name="sessionEvent" />
 
 ### B.12 SessionEvent
-TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
+A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).
+
+#### IRI
+http://purl.imsglobal.org/caliper/SessionEvent
 
 #### Supported actions
 [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
@@ -2264,7 +2299,10 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 <a name="threadEvent" />
 
 ### B.13 ThreadEvent
-TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum thread or topic as either read or unread.  
+A Caliper [ThreadEvent](#threadEvent) models an actor interacting with a [Forum](#forum) thread or topic. 
+ 
+#### IRI
+http://purl.imsglobal.org/caliper/ThreadEvent
 
 #### Supported actions
 [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnread)
@@ -2347,6 +2385,9 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 ### B.14 ToolUseEvent
 A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction. It's meant to be a fundamental [Event](#event) that tool creators can implement to demonstrate that users are using the tool in the way in which it's intended to be used.
 
+#### IRI
+http://purl.imsglobal.org/caliper/ToolUseEvent
+
 #### Supported actions
 [Used](#used)
 
@@ -2415,6 +2456,9 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 
 ### B.15 ViewEvent
 A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.
+
+#### IRI
+http://purl.imsglobal.org/caliper/ViewEvent
 
 #### Supported actions
 [viewed](#viewed)
