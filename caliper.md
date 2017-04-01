@@ -348,28 +348,6 @@ The Caliper Basic Profile provides a generic [Event](#event) for describing lear
 #### Minimum conformance
 Create and send a generic Caliper [Event](#event) to a target [endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
 
-#### Example
-```json
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "type": "Event",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Created",
-  "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
-    "type": "Document",
-    "name": "Course Syllabus",
-    "dateCreated": "2017-11-12T07:15:00.000Z",
-    "version": "1"
-  },
-  "eventTime": "2017-11-15T10:15:00.000Z",
-  "uuid": "3a648e68-f00d-4c08-aa59-8738e1884f2c"
-}
-```
-
 <a name="annotationProfile" />
 
 ### 2.3.2 Annotation Profile
@@ -398,47 +376,6 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 
 #### Minimum conformance
 Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported events are considered optional.
- 
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "AnnotationEvent",
-    "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-    },
-    "action": "Highlighted",
-    "object": {
-        "id": "https://example.edu/etexts/201",
-        "type": "Document",
-        "name": "IMS Caliper Implementation Guide",
-        "dateCreated": "2017-10-01T06:00:00.000Z",
-        "version": "1.1"
-    },
-    "generated": {
-        "id": "https://example.edu/users/554433/etexts/201/highlights?start=2300&end=2370",
-        "type": "HighlightAnnotation",
-        "annotator": {
-            "id": "https://example.edu/users/554433",
-            "type": "Person"
-        },
-        "annotated": {
-            "id": "https://example.edu/etexts/201",
-            "type": "Document"
-        },
-        "selection": {
-            "type": "TextPositionSelector",
-            "start": 2300,
-            "end": 2370
-        },
-        "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
-        "dateCreated": "2017-11-15T10:15:00.000Z"
-    },
-    "eventTime": "2017-11-15T10:15:00.000Z",
-    "uuid": "0067a052-9bb4-4b49-9d1a-87cd43da488a"
-}
-```
 
 <a name="assessmentProfile" />
 
@@ -476,40 +413,6 @@ The Caliper Assessment Profile models assessment-related activities including in
 #### Minimum conformance
 Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events are considered optional. 
 
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "AssessmentEvent",
-    "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-    },
-    "action": "Started",
-    "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "Assessment"
-    },
-    "generated": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-        "type": "Attempt",
-        "assignee": {
-            "id": "https://example.edu/users/554433",
-            "type": "Person"
-        },
-        "assignable": {
-            "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-            "type": "Assessment"
-        },
-        "count": 1,
-        "dateCreated": "2017-11-15T10:15:00.000Z",
-        "startedAtTime": "2017-11-15T10:15:00.000Z"
-    },
-    "eventTime": "2017-11-15T10:15:00.000Z",
-    "uuid": "27734504-068d-4596-861c-2315be33a2a2"
-}
-```
-
 <a name="assignableProfile" />
 
 ### 2.3.4 Assignable Profile
@@ -538,34 +441,7 @@ The Assignable Profile models activities associated with digital content assigne
 * When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 #### Minimum conformance
-Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#endpoint). The [Started](#started) and [Completed](#completed) actions are required and MUST be implemented.  All other supported events are considered optional. 
-
-#### Example
-
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "AssignableEvent",
-    "actor": {
-        "id": "https://example.edu/users/112233",
-        "type": "Person"
-    },
-    "action": "Activated",
-    "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "Assessment",
-        "name": "Quiz One",
-        "datePublished": "2017-11-12T10:10:00.000Z",
-        "dateToStartOn": "2017-11-14T05:00:00.000Z",
-        "dateToSubmit": "2017-11-18T11:59:59.000Z",
-        "maxAttempts": 2,
-        "maxSubmits": 2,
-        "maxScore": 25
-    },
-    "eventTime": "2017-11-12T10:15:00.000Z",
-    "uuid": "2635b9dd-0061-4059-ac61-2718ab366f75"
-}
-```
+Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#endpoint). The [Started](#started) and [Completed](#completed) actions are required and MUST be implemented.  All other supported events are considered optional.
 
 <a name="forumProfile" />
 
@@ -600,36 +476,6 @@ The Caliper Forum Profile models learners and others participating in online for
 #### Minimum conformance
 Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Posted](#posted) action is required and MUST be implemented.  All other supported events are considered optional.
 
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "MessageEvent",
-    "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-    },
-    "action": "Posted",
-    "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
-        "type": "Message",
-        "name": "Caliper MessageEvent example",
-        "body": "Posting a Message referencing its parent Thread and Forum.",
-        "isPartOf": {
-            "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
-            "type": "Thread",
-            "isPartOf": {
-                "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
-                "type": "Forum"
-            }
-        },
-        "dateCreated": "2017-11-15T10:15:00.000Z"
-    },
-    "eventTime": "2017-11-15T10:15:00.000Z",
-    "uuid": "0d015a85-abf5-49ee-abb1-46dbd57fe64e"
-}
-```
-
 <a name="gradingProfile" />
 
 ### 2.3.6 Grading Profile
@@ -654,53 +500,6 @@ The Caliper Grading Profile models grading activities performed by an [Agent](#a
 
 #### Minimum conformance
 Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  The [Graded](#graded) action is required and MUST be implemented.
-
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "OutcomeEvent",
-    "actor": {
-        "id": "https://example.edu/autograder",
-        "type": "SoftwareApplication"
-    },
-    "action": "Graded",
-    "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-        "type": "Attempt",
-        "assignee": {
-            "id": "https://example.edu/users/554433",
-            "type": "Person"
-        },
-        "assignable": {
-            "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-            "type": "Assessment"
-        },
-        "count": 1,
-        "dateCreated": "2017-11-15T10:05:00.000Z",
-        "startedAtTime": "2017-11-15T10:05:00.000Z",
-        "endedAtTime": "2017-11-15T10:55:12.000Z",
-        "duration": "PT50M12S"
-    },
-    "eventTime": "2017-11-15T10:57:06.000Z",
-    "generated": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
-        "type": "Result",
-        "attempt": {
-            "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "type": "Attempt"
-        },
-        "normalScore": 15,
-        "totalScore": 15,
-        "scoredBy": {
-            "id": "https://example.edu/autograder",
-            "type": "SoftwareApplication"
-        },
-        "dateCreated": "2017-11-15T10:55:05.000Z"
-    },
-    "uuid": "a50ca17f-5971-47bb-8fca-4e6e6879001d"
-}
-```
 
 <a name="mediaProfile" />
 
@@ -747,32 +546,6 @@ The Caliper Media Profile models interactions between learners and rich content 
 #### Minimum conformance
 Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions are required and MUST be implemented.  All other supported events are considered optional.
 
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "MediaEvent",
-    "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-    },
-    "action": "Paused",
-    "object": {
-        "id": "https://example.edu/UQVK-dsU7-Y",
-        "type": "VideoObject",
-        "mediaType": "video/ogg",
-        "duration": "PT20M20S"
-    },
-    "target": {
-        "id": "https://example.edu/UQVK-dsU7-Y?t=321",
-        "type": "MediaLocation",
-        "currentTime": "PT05M21S"
-    },
-    "eventTime": "2017-11-15T10:15:00.000Z",
-    "uuid": "956b4a02-8de0-4991-b8c5-b6eebb6b4cab"
-}
-```
-
 <a name="readingProfile" />
 
 ### 2.3.8 Reading Profile
@@ -797,29 +570,6 @@ The Caliper Reading Profile models activities associated with navigating to and 
 
 #### Minimum conformance
 Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target endpoint.  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
-
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "NavigationEvent",
-    "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-    },
-    "action": "NavigatedTo",
-    "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
-        "type": "WebPage"
-    },
-    "eventTime": "2017-11-15T10:15:00.000Z",
-    "referrer": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
-        "type": "WebPage"
-    },
-    "uuid": "ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f"
-}
-```
 
 <a name="sessionProfile" />
 
@@ -847,29 +597,6 @@ The Caliper Session Profile models the creation and subsequent termination of a 
 #### Minimum conformance
 Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The [LoggedIn](#loggedIn) action is required and MUST be implemented.
 
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "SessionEvent",
-    "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-    },
-    "action": "LoggedIn",
-    "object": {
-        "id": "https://example.edu",
-        "type": "SoftwareApplication"
-    },
-    "eventTime": "2017-11-15T10:15:00.000Z",
-    "session": {
-        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-        "type": "Session"
-    },
-    "uuid": "fcd495d0-3740-4298-9bec-1154571dc211"
-}
-```
-
 <a name="toolUseProfile" />
 
 ### 2.3.10 Tool Use Profile
@@ -891,25 +618,6 @@ The Caliper Tool Use Profile models an intended interaction between a user and a
 
 #### Minimum conformance
 Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  The [Used](#used) action is required and MUST be implemented.
-
-#### Example
-```json
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "type": "ToolUseEvent",
-    "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-    },
-    "action": "Used",
-    "object": {
-        "id": "https://example.edu",
-        "type": "SoftwareApplication"
-    },
-    "eventTime": "2017-11-15T10:15:00.000Z",
-    "uuid": "7e10e4f3-a0d8-4430-95bd-783ffae4d916"
-}
-```
 
 <a name="jsonld" />
 
@@ -1292,7 +1000,7 @@ For Caliper messaging scenarios involving HTTP the following requirements are in
 <a name="endpointResponses" />
 
 #### 5.1 Endpoint Responses
-When using HTTPS an [Endpoint](#endpoint) MUST implement the following response behaviour: 
+When using HTTPS an [Endpoint](#endpoint) MUST exhibit the following response behaviour: 
 
 * To signal to a [Sensor](#sensor) that it has received an emitted message and no error state pertains an [Endpoint](#endpoint) MUST reply with a `2xx` class status code. The [Endpoint](#endpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
 * If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#endpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint) SHOULD send a `422 Unprocessable Entity` response instead.
