@@ -292,8 +292,8 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
@@ -791,9 +791,9 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| sensor | String | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
+| sensor | string | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
 | sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| dataVersion | String | A string value indicating which version of the IMS Caliper Analytics® specification governs the form of the Caliper entities and events contained in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
+| dataVersion | string | A string value indicating which version of the IMS Caliper Analytics® specification governs the form of the Caliper entities and events contained in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
 | data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
 
 #### Example: Mixed payload
@@ -1172,7 +1172,7 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
 | id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AnnotationEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
-| action | String | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` term may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required |
+| action | string | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` term may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required |
 | object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
@@ -2549,8 +2549,8 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
@@ -2607,8 +2607,8 @@ http://purl.imsglobal.org/caliper/Agent
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Agent](#agent) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Agent](#agent) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Agent](#agent) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Agent](#agent) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Agent](#agent) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Agent](#agent) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Agent](#agent). | Optional |
@@ -2647,8 +2647,8 @@ http://purl.imsglobal.org/caliper/Annotation
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Annotation*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Annotation](#annotation) is known MAY be specified. | Optional |
-| description | String | A string value comprising a brief, written representation of the [Annotation](#annotation) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Annotation](#annotation) is known MAY be specified. | Optional |
+| description | string | A string value comprising a brief, written representation of the [Annotation](#annotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [Annotation](#annotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotator's [IRI](#iriDef). | Recommended |
 | annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  The `annotated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Annotation](#annotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -2694,10 +2694,10 @@ http://purl.imsglobal.org/caliper/Assessment
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Assessment*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Assessment](#assessment) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Assessment](#assessment) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Assessment](#assessment) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Assessment](#assessment) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Assessment](#assessment) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Assessment](#assessment) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Assessment](#assessment) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Assessment](#assessment) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Assessment](#assessment) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Assessment](#assessment) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -2708,10 +2708,10 @@ http://purl.imsglobal.org/caliper/Assessment
 | dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | Integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | Integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | Integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
-| version | String | A string value that designates the current form or version of the [Assessment](#assessment) MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
+| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Assessment](#assessment) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Assessment](#assessment). | Optional |
 
 #### Deprecated Properties
@@ -2719,7 +2719,7 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -2774,10 +2774,10 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentItem*. | Required |
-| name | String | A string value comprising a word or phrase by which the [AssessmentItem](#assessmentItem) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [AssessmentItem](#assessmentItem) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [AssessmentItem](#assessmentItem) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | isTimeDependent | Boolean | A boolean value indicating whether or not interacting with the item is time dependent MAY be specified. | Optional |
@@ -2788,10 +2788,10 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 | dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | Integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | Integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | Integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
-| version | String | A string value that designates the current form or version of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
+| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssessmentItem](#assessmentItem). | Optional |
 
 #### Deprecated Properties
@@ -2799,7 +2799,7 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -2855,10 +2855,10 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssignableDigitalResource*. | Required |
-| name | String | A string value comprising a word or phrase by which the [AssignableDigitalResource](#assignableDigitalResource) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [AssignableDigitalResource](#assignableDigitalResource) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [AssignableDigitalResource](#assignableDigitalResource) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [AssignableDigitalResource](#assignableDigitalResource) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -2868,10 +2868,10 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 | dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [AssignableDigitalResource](#assignableDigitalResource) was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [AssignableDigitalResource](#assignableDigitalResource) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [AssignableDigitalResource](#assignableDigitalResource) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | Integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | Integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | Integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
-| version | String | A string value that designates the current form or version of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
+| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssignableDigitalResource](#assignableDigitalResource). | Optional |
 
 #### Deprecated Properties
@@ -2879,7 +2879,7 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes 
@@ -2922,12 +2922,12 @@ http://purl.imsglobal.org/caliper/Attempt
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Attempt*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Attempt](#attempt) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Attempt](#attempt) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Attempt](#attempt) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Attempt](#attempt) MAY be specified. | Optional |
 | assignee | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt) SHOULD be specified.  The `assignee` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the assignee's [IRI](#iriDef). | Recommended |
 | assignable | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  The `assignable` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the assigned resource's [IRI](#iriDef). | Recommended |
 | isPartOf | [Attempt](#attempt) | The parent [Attempt](#attempt), if any, MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated attempt's [IRI](#iriDef). | Optional |
-| count | Integer | The total number of attempts inclusive of the current Attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
+| count | integer | The total number of attempts inclusive of the current Attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
@@ -2982,22 +2982,22 @@ http://purl.imsglobal.org/caliper/AudioObject
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AudioObject*. | Required |
-| name | String | A string value comprising a word or phrase by which the [AudioObject](#audioObject) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [AudioObject](#audioObject) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [AudioObject](#audioObject) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [AudioObject](#audioObject) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [AudioObject](#audioObject) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AudioObject](#audioObject) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AudioObject](#audioObject) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AudioObject](#audioObject) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AudioObject](#audioObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [AudioObject](#audioObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| volumeMin | String | A string value indicating the minimum volume level MAY be specified. | Optional |
-| volumeMax | String | A string value indicating the maximum volume level MAY be specified. | Optional |
-| volumeLevel | String | A string value indicating the current volume level MAY be specified. | Optional |
+| volumeMin | string | A string value indicating the minimum volume level MAY be specified. | Optional |
+| volumeMax | string | A string value indicating the maximum volume level MAY be specified. | Optional |
+| volumeLevel | string | A string value indicating the current volume level MAY be specified. | Optional |
 | muted | Boolean | an optional boolean value indicating whether or not the AudioObject has been muted MAY be specified. | Optional |
 | duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [AudioObject](#audioObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [AudioObject](#audioObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [AudioObject](#audioObject) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [AudioObject](#audioObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AudioObject](#audioObject). | Optional |
 
 #### Deprecated Properties
@@ -3005,7 +3005,7 @@ The following [AudioObject](#audioObject) properties have been DEPRECATED and MU
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -3041,11 +3041,11 @@ http://purl.imsglobal.org/caliper/BookmarkAnnotation
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
-| name | String | A string value comprising a word or phrase by which the [BookmarkAnnotation](#bookmarkAnnotation) is known MAY be specified. | Optional |
-| description | String | A string value comprising a brief, written representation of the [BookmarkAnnotation](#bookmarkAnnotation) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [BookmarkAnnotation](#bookmarkAnnotation) is known MAY be specified. | Optional |
+| description | string | A string value comprising a brief, written representation of the [BookmarkAnnotation](#bookmarkAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotator's [IRI](#iriDef). | Recommended |
 | annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  The `annotated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
-| bookmarkNotes | String | A string value comprising a plain-text rendering of the note that accompanies the bookmark MAY be specified. | Optional |
+| bookmarkNotes | string | A string value comprising a plain-text rendering of the note that accompanies the bookmark MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [BookmarkAnnotation](#bookmarkAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [BookmarkAnnotation](#bookmarkAnnotation) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [BookmarkAnnotation](#bookmarkAnnotation). | Optional |
@@ -3087,17 +3087,17 @@ http://purl.imsglobal.org/caliper/Chapter
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Chapter*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Chapter](#chapter) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Chapter](#chapter) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Chapter](#chapter) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Chapter](#chapter) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Chapter](#chapter) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Chapter](#chapter) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Chapter](#chapter) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Chapter](#chapter) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Chapter](#chapter) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Chapter](#chapter) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Chapter](#chapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Chapter](#chapter) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Chapter](#chapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [Chapter](#chapter) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Chapter](#chapter) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Chapter](#chapter). | Optional |
 
 #### Deprecated Properties
@@ -3105,7 +3105,7 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -3143,10 +3143,10 @@ http://purl.imsglobal.org/caliper/CourseOffering
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *CourseOffering*. | Required |
-| courseNumber | String | A string value that constitutes a human-readable identifier for the [CourseOffering](#courseOffering) SHOULD be specified. | Recommended |
-| academicSession | String | A string value that constitutes a human-readable identifier for the designated period in which this [CourseOffering](#courseOffering) occurs SHOULD be specified. | Recommended |
-| name | String | A string value comprising a word or phrase by which the [CourseOffering](#courseOffering) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [CourseOffering](#courseOffering) MAY be specified. | Optional |
+| courseNumber | string | A string value that constitutes a human-readable identifier for the [CourseOffering](#courseOffering) SHOULD be specified. | Recommended |
+| academicSession | string | A string value that constitutes a human-readable identifier for the designated period in which this [CourseOffering](#courseOffering) occurs SHOULD be specified. | Recommended |
+| name | string | A string value comprising a word or phrase by which the [CourseOffering](#courseOffering) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [CourseOffering](#courseOffering) MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseOffering](#courseOffering) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the parent organization's [IRI](#iriDef). | Optional |
 | members | [CourseSection](#courseSection), [Group](#group), [Person](#person) | An ordered collection of [CourseSection](#courseOffering), [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseOffering](#courseOffering) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3188,11 +3188,11 @@ http://purl.imsglobal.org/caliper/CourseSection
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *CourseSection*. | Required |
-| courseNumber | String | A string value that constitutes a human-readable identifier for the [CourseSection](#courseSection) SHOULD be specified. | Recommended |
-| academicSession | String | A string value that constitutes a human-readable identifier for the designated period in which the [CourseSection](#courseSection) occurs SHOULD be specified. | Recommended |
-| name | String | A string value comprising a word or phrase by which the [CourseSection](#courseSection) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [CourseSection](#courseSection) MAY be specified. | Optional |
-| category | String | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | Optional |
+| courseNumber | string | A string value that constitutes a human-readable identifier for the [CourseSection](#courseSection) SHOULD be specified. | Recommended |
+| academicSession | string | A string value that constitutes a human-readable identifier for the designated period in which the [CourseSection](#courseSection) occurs SHOULD be specified. | Recommended |
+| name | string | A string value comprising a word or phrase by which the [CourseSection](#courseSection) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [CourseSection](#courseSection) MAY be specified. | Optional |
+| category | string | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseSection](#courseSection) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the parent organization's [IRI](#iriDef). | Optional |
 | members | [Group](#group), [Person](#person) | An ordered collection of [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3238,17 +3238,17 @@ http://purl.imsglobal.org/caliper/DigitalResource
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitaResource*. | Required |
-| name | String | A string value comprising a word or phrase by which the [DigitalResource](#digitalResource) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [DigitalResource](#digitalResource) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [DigitalResource](#digitalResource) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [DigitalResource](#digitalResource) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [DigitalResource](#digitalResource) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [DigitalResource](#digitalResource) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [DigitalResource](#digitalResource) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [DigitalResource](#digitalResource) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [DigitalResource](#digitalResource). | Optional |
 
 #### Deprecated Properties
@@ -3256,7 +3256,7 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes
@@ -3310,10 +3310,10 @@ http://purl.imsglobal.org/caliper/DigitalResourceCollection
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitaResourceCollection*. | Required |
-| name | String | A string value comprising a word or phrase by which the [DigitalResourceCollection](#digitalResourceCollection) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [DigitalResourceCollection](#digitalResourceCollection) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [DigitalResourceCollection](#digitalResourceCollection) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [DigitalResourceCollection](#digitalResourceCollection) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -3321,7 +3321,7 @@ http://purl.imsglobal.org/caliper/DigitalResourceCollection
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [DigitalResourceCollection](#digitalResourceCollection) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [DigitalResourceCollection](#digitalResourceCollection) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [DigitalResourceCollection](#digitalResourceCollection). | Optional |
 
 #### Deprecated Properties
@@ -3329,7 +3329,7 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes 
@@ -3394,17 +3394,17 @@ http://purl.imsglobal.org/caliper/Document
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Document*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Document](#document) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Document](#document) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Document](#document) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Document](#document) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Document](#document) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Document](#document) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Document](#document) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Document](#document) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Document](#document) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Document](#document) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Document](#document) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Document](#document) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Document](#document) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [Document](#document) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Document](#document) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Document](#document). | Optional | 
 
 #### Deprecated Properties
@@ -3412,7 +3412,7 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -3457,17 +3457,17 @@ http://purl.imsglobal.org/caliper/EpubChapter
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubChapter*. | Required |
-| name | String | A string value comprising a word or phrase by which the [EpubChapter](#epubChapter) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [EpubChapter](#epubChapter) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubChapter](#epubChapter) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubChapter](#epubChapter) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [EpubChapter](#epubChapter) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubChapter](#epubChapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubChapter](#epubChapter) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubChapter](#epubChapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubChapter](#epubChapter). | Optional |
  
 #### Deprecated Properties
@@ -3475,7 +3475,7 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 <a name="epubPart" />
@@ -3496,17 +3496,17 @@ http://purl.imsglobal.org/caliper/EpubPart
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubPart*. | Required |
-| name | String | A string value comprising a word or phrase by which the [EpubPart](#epubPart) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [EpubPart](#epubPart) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [EpubPart](#epubPart) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [EpubPart](#epubPart) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubPart](#epubPart) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubPart](#epubPart) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubPart](#epubPart) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubPart](#epubPart) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubPart](#epubPart) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [EpubPart](#epubPart) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubPart](#epubPart) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubPart](#epubPart) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubPart](#epubPart) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [EpubPart](#epubPart) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [EpubPart](#epubPart) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubPart](#epubPart). | Optional |
   
 #### Deprecated Properties
@@ -3514,7 +3514,7 @@ The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST NOT
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |   
 
 <a name="epubSubChapter" />
@@ -3535,17 +3535,17 @@ http://purl.imsglobal.org/caliper/EpubSubChapter
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubSubChapter*. | Required |
-| name | String | A string value comprising a word or phrase by which the [EpubSubChapter](#epubSubChapter) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [EpubSubChapter](#epubSubChapter) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubSubChapter](#epubSubChapter) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | isPartOf | [EpubChapter](#epubChapter) | a related [EpubChapter](#epubChapter) that includes or incorporates this [EpubSubChapter](#epubSubChapter) as a part MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubSubChapter](#epubSubChapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubSubChapter](#epubSubChapter) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubSubChapter](#epubSubChapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubSubChapter](#epubSubChapter). | Optional |
  
 #### Deprecated Properties
@@ -3553,7 +3553,7 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 <a name="epubVolume" />
@@ -3574,17 +3574,17 @@ http://purl.imsglobal.org/caliper/EpubVolume
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubSubChapter*. | Required |
-| name | String | A string value comprising a word or phrase by which the [EpubVolume](#epubVolume) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [EpubVolume](#epubVolume) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [EpubVolume](#epubVolume) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubVolume](#epubVolume) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [EpubVolume](#epubVolume) as a part MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubVolume](#epubVolume) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubVolume](#epubVolume). | Optional |
  
 #### Deprecated Properties
@@ -3592,7 +3592,7 @@ The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |  
 
 <a name="fillinBlankResponse" />
@@ -3613,8 +3613,8 @@ http://purl.imsglobal.org/caliper/FillinBlankResponse
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *FillinBlankResponse*. | Required |
-| name | String | A string value comprising a word or phrase by which the [FillinBlankResponse](#fillinBlankResponse)  is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [FillinBlankResponse](#fillinBlankResponse) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [FillinBlankResponse](#fillinBlankResponse)  is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [FillinBlankResponse](#fillinBlankResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the attempt's [IRI](#iriDef).  If an \<Object\> representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [FillinBlankResponse](#fillinBlankResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | values | Array | ordered collection of one or more string values representing words, expressions or short phrases that constitute the [FillinBlankResponse](#fillinBlankResponse) SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3682,10 +3682,10 @@ http://purl.imsglobal.org/caliper/Forum
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Forum](#forum) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Forum](#forum) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Forum](#forum) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Forum](#forum) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Forum](#forum) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Forum](#forum) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Forum](#forum) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Forum](#forum) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Forum](#forum) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Forum](#forum) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -3693,7 +3693,7 @@ http://purl.imsglobal.org/caliper/Forum
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Forum](#forum) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Forum](#forum). | Optional |
  
 #### Deprecated Properties
@@ -3701,7 +3701,7 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
   
 #### Example
@@ -3762,10 +3762,10 @@ http://purl.imsglobal.org/caliper/Frame
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Frame*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Frame](#frame) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Frame](#frame) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Frame](#frame) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Frame](#frame) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Frame](#frame) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Frame](#frame) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Frame](#frame) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Frame](#frame) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Frame](#frame) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Frame](#frame) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -3773,7 +3773,7 @@ http://purl.imsglobal.org/caliper/Frame
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Frame](#frame) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Frame](#frame) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Frame](#frame) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [Frame](#frame) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Frame](#frame) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Frame](#frame). | Optional | 
 
 #### Deprecated Properties
@@ -3781,7 +3781,7 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 #### Example
@@ -3819,8 +3819,8 @@ http://purl.imsglobal.org/caliper/Group
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Group*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Group](#group) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Group](#group) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Group](#group) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Group](#group) MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [Group](#group) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the parent organization's [IRI](#iriDef). | Optional |
 | members | [Group](#group), [Person](#person) | An ordered collection of [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Group](#group) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -3886,12 +3886,12 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
-| name | String | A string value comprising a word or phrase by which the [HighlightAnnotation](#highlightAnnotation) is known MAY be specified. | Optional |
-| description | String | A string value comprising a brief, written representation of the [HighlightAnnotation](#highlightAnnotation) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [HighlightAnnotation](#highlightAnnotation) is known MAY be specified. | Optional |
+| description | string | A string value comprising a brief, written representation of the [HighlightAnnotation](#highlightAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [HighlightAnnotation](#highlightAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotator's [IRI](#iriDef). | Recommended |
 | annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  The `annotated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotated resource's [IRI](#iriDef).  | Recommended |
 | selection | [TextPositionSelector](#textPositionSelector) | The start and end positions of the highlighted text segment SHOULD be specified.  The first character in the full text is character position 0.  If a [TextPositionSelector](#textPositionSelector) is defined both its [start](#start) and [end](#end) positions MUST be specified. | Recommended |
-| selectionText | String | A string value representing a plain-text rendering of the highlighted segment of the annotated [DigitalResource](#digitalResource) MAY be specified | Optional |
+| selectionText | string | A string value representing a plain-text rendering of the highlighted segment of the annotated [DigitalResource](#digitalResource) MAY be specified | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [HighlightAnnotation](#highlightAnnotation). | Optional |
@@ -3938,10 +3938,10 @@ http://purl.imsglobal.org/caliper/ImageObject
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ImageObject*. | Required |
-| name | String | A string value comprising a word or phrase by which the [ImageObject](#imageObject) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [ImageObject](#imageObject) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [ImageObject](#imageObject) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [ImageObject](#imageObject) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [ImageObject](#imageObject) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [ImageObject](#imageObject) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [ImageObject](#imageObject) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [ImageObject](#imageObject) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [ImageObject](#imageObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [ImageObject](#imageObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -3949,7 +3949,7 @@ http://purl.imsglobal.org/caliper/ImageObject
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [ImageObject](#imageObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [ImageObject](#imageObject) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [ImageObject](#imageObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [ImageObject](#imageObject) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [ImageObject](#imageObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [ImageObject](#imageObject). | Optional |
 
 #### Deprecated Properties
@@ -3957,7 +3957,7 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -3990,8 +3990,8 @@ http://purl.imsglobal.org/caliper/LearningObjective
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *LearningObjective*. | Required |
-| name | String | A string value comprising a word or phrase by which the [LearningObjective](#learningObjective) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [LearningObjective](#learningObjective) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [LearningObjective](#learningObjective) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [LearningObjective](#learningObjective) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [LearningObjective](#learningObjective) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [LearningObjective](#learningObjective) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [LearningObjective](#learningObjective). | Optional |
@@ -4042,8 +4042,8 @@ http://purl.imsglobal.org/caliper/LtiSession
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *LtiSession*. | Required |
-| name | String | A string value comprising a word or phrase by which the [LtiSession](#ltiSession) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [LtiSession](#ltiSession) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [LtiSession](#ltiSession) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [LtiSession](#ltiSession) MAY be specified. | Optional |
 | user | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession) SHOULD be specified. | Optional |
 | launchParameters | Object | An object comprising LTI-specified launch parameters that provide Tool Consumer-related contextual information MAY be specified.  LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4134,10 +4134,10 @@ http://purl.imsglobal.org/caliper/MediaLocation
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaLocation*. | Required |
-| name | String | A string value comprising a word or phrase by which the [MediaLocation](#mediaLocation) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [MediaLocation](#mediaLocation) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [MediaLocation](#mediaLocation) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [MediaLocation](#mediaLocation) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [MediaLocation](#mediaLocation) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -4145,7 +4145,7 @@ http://purl.imsglobal.org/caliper/MediaLocation
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaLocation](#mediaLocation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaLocation](#mediaLocation) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [MediaLocation](#mediaLocation) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MediaLocation](#mediaLocation). | Optional |
 
 #### Deprecated Properties
@@ -4153,7 +4153,7 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -4185,10 +4185,10 @@ http://purl.imsglobal.org/caliper/MediaObject
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaObject*. | Required |
-| name | String | A string value comprising a word or phrase by which the [MediaObject](#mediaObject) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [MediaObject](#mediaObject) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [MediaObject](#mediaObject) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [MediaObject](#mediaObject) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [MediaObject](#mediaObject) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [MediaObject](#mediaObject) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [MediaObject](#mediaObject) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [MediaObject](#mediaObject) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [MediaObject](#mediaObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [MediaObject](#mediaObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -4196,7 +4196,7 @@ http://purl.imsglobal.org/caliper/MediaObject
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaObject](#mediaObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaObject](#mediaObject) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [MediaObject](#mediaObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [MediaObject](#mediaObject) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [MediaObject](#mediaObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MediaObject](#mediaObject). | Optional |
 
 #### Deprecated Properties
@@ -4204,7 +4204,7 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes
@@ -4240,8 +4240,8 @@ http://purl.imsglobal.org/caliper/Membership
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Membership*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Membership](#membership) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Membership](#membership) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Membership](#membership) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Membership](#membership) MAY be specified. | Optional |
 | organization | [Organization](#organization) | The [Organization](#organization) associated with the [Membership](#membership) SHOULD be specified.  The `organization` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the organization's [IRI](#iriDef). | Recommended |
 | member | [Person](#person) | The [Person](#person) associated with this [Membership](#membership) SHOULD be specified.  The `member` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the member's [IRI](#iriDef). | Recommended |
 | roles | Array | An ordered collection of organizational roles assigned to the `member` MAY be specified.  If one or more roles are specified the value(s) MUST be chosen from the list of Caliper defined [roles](#roles]. | Optional |
@@ -4292,20 +4292,20 @@ http://purl.imsglobal.org/caliper/Message
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Message*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Message](#message) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Message](#message) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Message](#message) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Message](#message) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Message](#message) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Message](#message) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Message](#message) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Message](#message) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Message](#message) MAY be specified. | Optional |
 | isPartOf | [Thread](#thread) | a related [Thread](#thread) that includes or incorporates this [Message](#message) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated thread's [IRI](#iriDef). | Optional |
 | replyTo | [Message](#message) | A [Message](#message) that represents the post to which this [Message](#message) is directed in reply SHOULD be referenced.  The `replyTo` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated message's [IRI](#iriDef). | Optional |
-| body | String | A string value comprising a plain-text rendering of the `body` content of the [Message](#message) MAY be specified. | Optional |
+| body | string | A string value comprising a plain-text rendering of the `body` content of the [Message](#message) MAY be specified. | Optional |
 | attachments | Array | An ordered collection of one or more [DigitalResource](#digitalResource) entities attached to this [Message](#message) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Message](#message) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Message](#message) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Message](#message) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [Message](#message) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Message](#message) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Message](#message). | Optional |
 
 #### Deprecated Properties
@@ -4313,7 +4313,7 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -4372,10 +4372,10 @@ http://purl.imsglobal.org/caliper/MultipleChoiceResponse
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MultipleChoiceResponse*. | Required |
-| name | String | A string value comprising a word or phrase by which the [MultipleChoiceResponse](#multipleChoiceResponse) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [MultipleChoiceResponse](#multipleChoiceResponse) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the attempt's [IRI](#iriDef).  If an \<Object\> representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [MultipleChoiceResponse](#multipleChoiceResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| value | String | A string value that represents the selected option SHOULD be specified. | Recommended |
+| value | string | A string value that represents the selected option SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
@@ -4441,8 +4441,8 @@ http://purl.imsglobal.org/caliper/MultipleResponseResponse
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MultipleResponseResponse*. | Required |
-| name | String | A string value comprising a word or phrase by which the [MultipleResponseResponse](#multipleResponseResponse) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [MultipleResponseResponse](#multipleResponseResponse) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the attempt's [IRI](#iriDef).  If an \<Object\> representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [MultipleResponseResponse](#multipleResponseResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | values | Array | A ordered collection of one or more selected options MAY be specified | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4510,8 +4510,8 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Organization*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Organization](#organization) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Organization](#organization) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Organization](#organization) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Organization](#organization) MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [Organization](#organization) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the parent organization's [IRI](#iriDef). | Optional |
 | members | [Organization](#organization), [Person](#person) | An ordered collection of [Organization](#organization) and/or [Person](#person) members MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Organization](#organization) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4554,17 +4554,17 @@ http://purl.imsglobal.org/caliper/Page
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Page*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Page](#page) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Page](#page) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Page](#page) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Page](#page) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Page](#page) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Page](#page) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Page](#page) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Page](#page) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Page](#page) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Page](#page) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Page](#page) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Page](#page) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Page](#page) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [Page](#page) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Page](#page) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Page](#page). | Optional | 
 
 #### Deprecated Properties
@@ -4572,7 +4572,7 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -4615,8 +4615,8 @@ http://purl.imsglobal.org/caliper/Person
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Person*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Person](#person) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Person](#person) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Person](#person) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Person](#person) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Person](#person) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Person](#person) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Person](#person). | Optional |
@@ -4650,17 +4650,17 @@ http://purl.imsglobal.org/caliper/Reading
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Reading*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Reading](#reading) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Reading](#reading) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Reading](#reading) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Reading](#reading) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Reading](#reading) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Reading](#reading) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Reading](#reading) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Reading](#reading) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Reading](#reading) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [Reading](#reading) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Reading](#reading) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Reading](#reading) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Reading](#reading) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [Reading](#reading) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Reading](#reading) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Reading](#reading). | Optional |
 
 #### Deprecated Properties
@@ -4668,7 +4668,7 @@ The following [Reading](#reading) properties have been DEPRECATED and MUST NOT b
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 <a name="response" />
@@ -4691,8 +4691,8 @@ http://purl.imsglobal.org/caliper/Response
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Response*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Response](#response)  is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Response](#response) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Response](#response)  is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Response](#response) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the attempt's [IRI](#iriDef).  If an \<Object\> representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [Response](#response) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response)  was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4765,17 +4765,17 @@ http://purl.imsglobal.org/caliper/Result
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Result*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the attempt's [IRI](#iriDef).  If an \<Object\> representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
-| normalScore | Integer | TODO | Optional |
-| penaltyScore | Integer | TODO | Optional |
-| extraCreditScore | Integer | TODO | Optional |
-| totalScore | Integer | TODO | Optional |
-| curvedTotalScore | Integer | TODO | Optional |
-| curveFactor | Integer | TODO | Optional |
+| normalScore | integer | TODO | Optional |
+| penaltyScore | integer | TODO | Optional |
+| extraCreditScore | integer | TODO | Optional |
+| totalScore | integer | TODO | Optional |
+| curvedTotalScore | integer | TODO | Optional |
+| curveFactor | integer | TODO | Optional |
 | scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
-| comment | String | Feedback provided by the scorer. | Optional |
+| comment | string | Feedback provided by the scorer. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Result](#result). | Optional |
@@ -4834,8 +4834,8 @@ http://purl.imsglobal.org/caliper/SelectTextResponse
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SelectTextResponse*. | Required |
-| name | String | A string value comprising a word or phrase by which the [SelectTextResponse](#selectTextResponse) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [SelectTextResponse](#selectTextResponse) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [SelectTextResponse](#selectTextResponse) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [SelectTextResponse](#selectTextResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the attempt's [IRI](#iriDef).  If an \<Object\> representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [SelectTextResponse](#selectTextResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | values | Array | A ordered collection of one or more selected options MAY be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4903,8 +4903,8 @@ http://purl.imsglobal.org/caliper/Session
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Session](#session) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Session](#session) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Session](#session) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Session](#session) MAY be specified. | Optional |
 | user | [Person](#person) | The [Person](#person) who initiated the [Session](#session) SHOULD be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4955,8 +4955,8 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SharedAnnotation*. | Required |
-| name | String | A string value comprising a word or phrase by which the [SharedAnnotation](#sharedAnnotation) is known MAY be specified. | Optional |
-| description | String | A string value comprising a brief, written representation of the [SharedAnnotation](#sharedAnnotation) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [SharedAnnotation](#sharedAnnotation) is known MAY be specified. | Optional |
+| description | string | A string value comprising a brief, written representation of the [SharedAnnotation](#sharedAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [SharedAnnotation](#sharedAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotator's [IRI](#iriDef). | Recommended |
 | annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  The `annotated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotated resource's [IRI](#iriDef).  | Recommended |
 | withAgents | Array | an ordered collection of one or more [Agent](#agent) entities, typically of type [Person](#person), with whom the annotated [DigitalResource](#digitalResource) has been shared SHOULD be specified.. | Recommended |
@@ -5010,11 +5010,11 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SoftwareApplication*. | Required |
-| name | String | A string value comprising a word or phrase by which the [SoftwareApplication](#softwareApplication) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [SoftwareApplication](#softwareApplication) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [SoftwareApplication](#softwareApplication) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [SoftwareApplication](#softwareApplication) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SoftwareApplication](#softwareApplication) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SoftwareApplication](#softwareApplication) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | An optional string value that designates the current form or version of this [SoftwareApplication](#softwareApplication). | Optional |
+| version | string | An optional string value that designates the current form or version of this [SoftwareApplication](#softwareApplication). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [SoftwareApplication](#softwareApplication). | Optional |
 
 #### Example
@@ -5047,8 +5047,8 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TagAnnotation*. | Required |
-| name | String | A string value comprising a word or phrase by which the [TagAnnotation](#tagAnnotation) is known MAY be specified. | Optional |
-| description | String | A string value comprising a brief, written representation of the [TagAnnotation](#tagAnnotation) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [TagAnnotation](#tagAnnotation) is known MAY be specified. | Optional |
+| description | string | A string value comprising a brief, written representation of the [TagAnnotation](#tagAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [TagAnnotation](#tagAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotator's [IRI](#iriDef). | Recommended |
 | annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the actor SHOULD be specified.  The `annotated` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the annotated resource's [IRI](#iriDef).  | Recommended |
 | tags | Array | an ordered collection of one or more string values that represent the tags associated with the annotated [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
@@ -5093,10 +5093,10 @@ http://purl.imsglobal.org/caliper/Thread
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
-| name | String | A string value comprising a word or phrase by which the [Thread](#thread) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [Thread](#thread) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Thread](#thread) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Thread](#thread) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [Thread](#thread) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Thread](#thread) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Thread](#thread) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Thread](#thread) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Thread](#thread) MAY be specified. | Optional |
 | isPartOf | [Forum](#forum) | a related [Forum](#forum) that includes or incorporates this [Thread](#thread) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -5104,7 +5104,7 @@ http://purl.imsglobal.org/caliper/Thread
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Thread](#thread) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Thread](#thread). | Optional |
  
 #### Deprecated Properties
@@ -5112,7 +5112,7 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
   
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -5180,10 +5180,10 @@ http://purl.imsglobal.org/caliper/TrueFalseResponse
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TrueFalseResponse*. | Required |
-| name | String | A string value comprising a word or phrase by which the [TrueFalseResponse](#trueFalseResponse) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [TrueFalseResponse](#trueFalseResponse) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [TrueFalseResponse](#trueFalseResponse) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [TrueFalseResponse](#trueFalseResponse) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the attempt's [IRI](#iriDef).  If an \<Object\> representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [TrueFalseResponse](#trueFalseResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| value | String | A string value that provides the true/false, yes/no binary selection SHOULD be provided. | Recommended |
+| value | string | A string value that provides the true/false, yes/no binary selection SHOULD be provided. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
@@ -5249,10 +5249,10 @@ http://purl.imsglobal.org/caliper/VideoObject
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *VideoObject*. | Required |
-| name | String | A string value comprising a word or phrase by which the [VideoObject](#videoObject) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [VideoObject](#videoObject) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [VideoObject](#videoObject) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [VideoObject](#videoObject) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [VideoObject](#videoObject) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [VideoObject](#videoObject) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [VideoObject](#videoObject) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [VideoObject](#videoObject) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [VideoObject](#videoObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [VideoObject](#videoObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
@@ -5260,7 +5260,7 @@ http://purl.imsglobal.org/caliper/VideoObject
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [VideoObject](#videoObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [VideoObject](#videoObject) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [VideoObject](#videoObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [VideoObject](#videoObject) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [VideoObject](#videoObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [VideoObject](#videoObject). | Optional |
 
 #### Deprecated Properties
@@ -5268,7 +5268,7 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
   
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
@@ -5304,17 +5304,17 @@ http://purl.imsglobal.org/caliper/WebPage
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *WebPage*. | Required |
-| name | String | A string value comprising a word or phrase by which the [WebPage](#webPage) is known MAY be specified. | Optional |
-| description | String |  A string value comprising a brief, written representation of the [WebPage](#webPage) MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [WebPage](#webPage) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [WebPage](#webPage) MAY be specified. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [WebPage](#webPage) into being MAY be specified. | Optional |
-| mediaType | String | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [WebPage](#webPage) MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [WebPage](#webPage) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [WebPage](#webPage) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [WebPage](#webPage) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [WebPage](#webPage) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [WebPage](#webPage) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [WebPage](#webPage) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [WebPage](#webPage) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | String | A string value that designates the current form or version of the [WebPage](#webPage) MAY be specified. | Optional |
+| version | string | A string value that designates the current form or version of the [WebPage](#webPage) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [WebPage](#webPage). | Optional |
 
 #### Deprecated Properties
@@ -5322,7 +5322,7 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
   
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
