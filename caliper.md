@@ -2537,6 +2537,11 @@ http://purl.imsglobal.org/caliper/ViewEvent
 ### C.1 Entity
 A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).
 
+Utilize [Entity](#entity) only if no suitable subtype exists to represent the thing being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Entity
+
 #### Properties
 The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
 
@@ -2585,9 +2590,12 @@ When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/late
 <a name="agent" />
 
 ### C.2 Agent
-A Caliper [Agent](#agent) is a generic type that represents an [Entity](#entity) that can initiate or perform an action.
+A Caliper [Agent](#agent) is a generic type that represents an [Entity](#entity) that can initiate or perform an action.  
 
 Utilize [Agent](#agent) only if no suitable subtype exists to represent the actor being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Agent
 
 #### Supertype
 [Entity](#entity)
@@ -2625,6 +2633,9 @@ Utilize [Agent](#agent) only if no suitable subtype exists to represent the acto
 A Caliper [Annotation](#annotation) is a generic type that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.
 
 Utilize [Annotation](#annotation) only if no suitable subtype exists to represent the annotation being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Annotation
 
 #### Supertype
 [Entity](#entity)
@@ -2670,6 +2681,9 @@ Utilize [Annotation](#annotation) only if no suitable subtype exists to represen
 ### C.4 Assessment
 A Caliper [Assessment](#assessment) represents an assessment instrument such as a test or quiz.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Assessment
+
 #### Supertype
 [DigitalResourceCollection](#digitalResourceCollection), [AssignableDigitalResource](#assignableDigitalResource)
 
@@ -2707,7 +2721,6 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
-
 
 #### Example
 ```json
@@ -2747,6 +2760,9 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 
 ### C.5 AssessmentItem
 A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
+
+#### IRI
+http://purl.imsglobal.org/caliper/AssessmentItem
 
 #### Supertype
 [AssignableDigitalResource](#assignableDigitalResource)
@@ -2824,8 +2840,10 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 ### C.6 AssignableDigitalResource
 A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic type that represents digital content associated with a graded or ungraded assignment.
 
-Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the resource being described.  
+Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the resource being described.
 
+#### IRI
+http://purl.imsglobal.org/caliper/AssignableDigitalResource
 
 #### Supertype
 [DigitalResource](#digitalResource)
@@ -2891,6 +2909,9 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 ### C.7 Attempt
 A Caliper [Attempt](#attempt) provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An [Attempt](#attempt) is generated as the result of an action such as starting an [Assessment](#assessment).
 
+#### IRI
+http://purl.imsglobal.org/caliper/Attempt
+
 #### Supertype
 [Entity](#entity)
 
@@ -2948,6 +2969,9 @@ The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT b
 ### C.8 AudioObject
 A Caliper [AudioObject](#audioObject) represents an audio or sound file.
 
+#### IRI
+http://purl.imsglobal.org/caliper/AudioObject
+
 #### Supertype
 [MediaObject](#mediaObject)
 
@@ -3004,6 +3028,9 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 
 **TODO how do you transmit the position of the bookmark?**
 
+#### IRI
+http://purl.imsglobal.org/caliper/BookmarkAnnotation
+
 #### Supertype
 [Annotation](#annotation)
 
@@ -3046,6 +3073,9 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 
 ### C.10 Chapter
 A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digital content.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Chapter
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -3100,6 +3130,9 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 ### C.11 CourseOffering
 A Caliper [CourseOffering](#courseOffering) represents the occurrence of a course or a type during a specified time period.  [CourseOffering](#courseOffering) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
+#### IRI
+http://purl.imsglobal.org/caliper/CourseOffering
+
 #### Supertype
 [Organization](#organization)
 
@@ -3141,6 +3174,9 @@ A Caliper [CourseOffering](#courseOffering) represents the occurrence of a cours
 
 ### C.12 CourseSection
 A Caliper [CourseSection](#courseSection) represents a specific instance of a [CourseOffering](#courseOffering) occurring during a specific semester, term or period.  [CourseSection](#courseSection) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
+
+#### IRI
+http://purl.imsglobal.org/caliper/CourseSection
 
 #### Supertype
 [[CourseOffering](#courseOffering)
@@ -3188,6 +3224,9 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 A Caliper [DigitalResource](#digitalResource) is a generic type that represents digital content.
 
 Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the resource being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/DigitalResource
 
 #### Supertype 
 [Entity](#entity)
@@ -3257,6 +3296,9 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 
 ### C.14 DigitalResourceCollection
 A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an ordered collection of [DigitalResource](#digitalResource) entities.
+
+#### IRI
+http://purl.imsglobal.org/caliper/DigitalResourceCollection
 
 #### Supertype
 [DigitalResource](#digitalResource)
@@ -3339,6 +3381,9 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 ### C.15 Document
 A Caliper [Document](#document) represents textual content.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Document
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -3399,6 +3444,9 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
 ### C.16 EpubChapter (DEPRECATED)
 A Caliper [EpubChapter](#epubChapter) represents a major structural division of a piece of writing.  [EpubChapter](#epubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
+#### IRI
+http://purl.imsglobal.org/caliper/EpubChapter
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -3434,6 +3482,9 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 
 ### C.17 EpubPart (DEPRECATED)
 A Caliper [EpubPart](#epubPart) represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  [EpubPart](#epubPart) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+
+#### IRI
+http://purl.imsglobal.org/caliper/EpubPart
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -3471,6 +3522,9 @@ The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST NOT
 ### C.18 EpubSubChapter (DEPRECATED)
 A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of an [EpubChapter](#epubChapter).  [EpubSubChapter](#epubSubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
+#### IRI
+http://purl.imsglobal.org/caliper/EpubSubChapter
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -3507,6 +3561,9 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 ### C.19 EpubVolume (DEPRECATED)
 A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its supertype.  [EpubVolume](#epubVolume) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
+#### IRI
+http://purl.imsglobal.org/caliper/EpubVolume
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -3542,6 +3599,9 @@ The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST
 
 ### C.20 FillinBlankResponse
 A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Response](#response) in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
+
+#### IRI
+http://purl.imsglobal.org/caliper/FillinBlankResponse
 
 #### Supertype 
 [Response](#response)
@@ -3608,6 +3668,9 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 
 ### C.21 Forum
 A Caliper [Forum](#forum) represents a channel or virtual space in which group discussions take place.  A [Forum](#forum) typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Forum
 
 #### Supertype 
 [DigitalResourceCollection](#digitalResourceCollection)
@@ -3685,6 +3748,9 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 
 ### C.22 Frame
 A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalResource](#digitalResource).
+
+#### IRI
+http://purl.imsglobal.org/caliper/Frame
  
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -3739,6 +3805,9 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
 
 ### C.23 Group
 A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Group
 
 #### Supertype
 [Organization](#organization)
@@ -3802,10 +3871,10 @@ A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collectio
 <a name="highlightAnnotation" />
 
 ### C.24 HighlightAnnotation
-A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
-
-### TODO
-* Add additional instructions regarding start and end properties
+A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.
+  
+#### IRI
+http://purl.imsglobal.org/caliper/HighlightAnnotation 
 
 #### Supertype
 [Annotation](#annotation)
@@ -3856,6 +3925,9 @@ A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of mark
 ### C.25 ImageObject
 A Caliper [ImageObject](#imageObject) represents an image file.
 
+#### IRI
+http://purl.imsglobal.org/caliper/ImageObject
+
 #### Supertype 
 [MediaObject](#mediaObject)
 
@@ -3905,6 +3977,9 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
 ### C.26 LearningObjective
 The Caliper [LearningObjective](#learningObjective) represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
+#### IRI
+http://purl.imsglobal.org/caliper/LearningObjective
+
 #### Supertype 
 [Entity](#entity)
 
@@ -3953,6 +4028,9 @@ The Caliper [LearningObjective](#learningObjective) represents a summary stateme
 
 ### C.27 LtiSession
 A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user session.
+
+#### IRI
+http://purl.imsglobal.org/caliper/LtiSession
 
 #### Supertype
 [Session](#session)
@@ -4042,6 +4120,9 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
 ### C.28 MediaLocation
 
 A Caliper [MediaLocation](#mediaLocation) provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
+
+#### IRI
+http://purl.imsglobal.org/caliper/MediaLocation
  
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -4090,6 +4171,9 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
 
 ### C.29 MediaObject
 A Caliper [MediaObject](#mediaObject) represents a generic piece of media content.
+
+#### IRI
+http://purl.imsglobal.org/caliper/MediaObject
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -4141,7 +4225,10 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 <a name="membership" />
 
 ### C.30 Membership
-A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
+A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.
+  
+#### IRI
+http://purl.imsglobal.org/caliper/Membership  
 
 #### Supertype 
 [Entity](#entity)
@@ -4191,6 +4278,9 @@ A Caliper [Membership](#membership) describes the relationship between an [Organ
 
 ### C.31 Message
 A Caliper [Message](#message) is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Message
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -4269,6 +4359,9 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
 ### C.32 MultipleChoiceResponse
 A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of [Response](#response) in which a respondent is asked to provide the best possible answer from a list of choices.
 
+#### IRI
+http://purl.imsglobal.org/caliper/MultipleChoiceResponse
+
 #### Supertype 
 [Response](#response)
 
@@ -4334,6 +4427,9 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 
 ### C.33 MultipleResponseResponse
 A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
+
+#### IRI
+http://purl.imsglobal.org/caliper/MultipleResponseResponse
 
 #### Supertype 
 [Response](#response)
@@ -4401,6 +4497,9 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 ### C.34 Organization
 A Caliper [Organization](#organization) represents a formal collection of people organized for some common educational, social or administrative purpose.  An [Organization](#organization) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Organization
+
 #### Supertype
 [Agent](#agent)
 
@@ -4441,6 +4540,9 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 ### C.35 Page
 A Caliper [Page](#page) represents an item of paginated content.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Page
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -4499,6 +4601,10 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
 
 ### C.36 Person
 A Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Person
+
 #### Supertype
 [Agent](#agent)
 
@@ -4530,6 +4636,9 @@ A Caliper [Person](#person) represents a human being, alive or deceased, real or
 
 ### C.37 Reading (DEPRECATED)
 A Caliper [Reading](#reading) represents an item of paginated content.  [Reading](#reading) is a DEPRECATED entity superseded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Reading
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -4568,6 +4677,9 @@ The following [Reading](#reading) properties have been DEPRECATED and MUST NOT b
 A Caliper [Response](#response) is a generic type that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).
 
 Utilize [Response](#response) only if no suitable subtype exists to represent the response being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Response
 
 #### Supertype 
 [Entity](#entity)
@@ -4640,6 +4752,9 @@ A Caliper [Result](#result) represents a grade applied to an assignment submissi
 
 **TODO describe scores**
 
+#### IRI
+http://purl.imsglobal.org/caliper/Result
+
 #### Supertype 
 [Entity](#entity)
 
@@ -4705,6 +4820,9 @@ A Caliper [Result](#result) represents a grade applied to an assignment submissi
 
 ### C.40 SelectTextResponse
 A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
+
+#### IRI
+http://purl.imsglobal.org/caliper/SelectTextResponse
 
 #### Supertype 
 [Response](#response)
@@ -4772,6 +4890,9 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 ### C.41 Session
 A Caliper [Session](#session) represents a web application user session.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Session
+
 #### Supertype
 [Entity](#entity)
 
@@ -4820,6 +4941,9 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 
 ### C.42 SharedAnnotation
 A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
+
+#### IRI
+http://purl.imsglobal.org/caliper/SharedAnnotation
 
 #### Supertype
 [Annotation](#annotation)
@@ -4873,6 +4997,9 @@ A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a 
 #### C.43 SoftwareApplication
 A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
 
+#### IRI
+http://purl.imsglobal.org/caliper/SoftwareApplication
+
 #### Supertype
 [Agent](#agent)
 
@@ -4906,6 +5033,9 @@ A Caliper [SoftwareApplication](#softwareApplication) represents a computer prog
 
 ### C.44 TagAnnotation
 A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
+
+#### IRI
+http://purl.imsglobal.org/caliper/TagAnnotation
 
 #### Supertype
 [Annotation](#annotation)
@@ -4949,6 +5079,9 @@ A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [Digit
 
 ### C.45 Thread
 A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Thread
 
 #### Supertype 
 [DigitalResourceCollection](#digitalResourceCollection)
@@ -5034,6 +5167,9 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 ### C.46 TrueFalseResponse
 A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
 
+#### IRI
+http://purl.imsglobal.org/caliper/TrueFalseResponse
+
 #### Supertype 
 [Response](#response)
 
@@ -5100,6 +5236,9 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 ### C.47 VideoObject
 A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
 
+#### IRI
+http://purl.imsglobal.org/caliper/VideoObject
+
 #### Supertype 
 [MediaObject](#mediaObject)
 
@@ -5151,6 +5290,9 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 
 ### C.48 WebPage
 A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
+
+#### IRI
+http://purl.imsglobal.org/caliper/WebPage
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -5210,12 +5352,15 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 ### D.1 TextPositionSelector
 **TODO Intro**
 
+#### IRI
+http://purl.imsglobal.org/caliper/TextPositionSelector
+
 #### Properties
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | type| [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TextPositionSelector*. | Required |
-| start | integer | **TODO** The start position . . . MUST be specified | Required |
-| end | integer | **TODO** The end position . . . MUST be specified. | Required |
+| start | integer | The starting position of the selected text MUST be specified.  The first character in the full text is character position 0. | Required |
+| end | integer | The end position of the selected text MUST be specified. | Required |
 
 ```json
 {
