@@ -231,7 +231,7 @@ The Caliper information model defines a set of concepts, rules and relationships
 <a name="infoModelEvent" />
 
 ### 2.1 The Caliper Event
-A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time.  The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as events.
+A Caliper [Event](#event) is a generic type that describes the relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time and (optionally) within a given context.  The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video or posting a message to a forum are examples of learning activities that Caliper models as events.
 
 Caliper defines a number of [Event](#event) subtypes, each scoped to a particular activity domain and distinguishable via a `type` property.  Each [Event](#event) instance can be referenced by its unique identifier.  The `type` value is a \<string\> that MUST match the term specified for the [Event](#event) by the Caliper information model (e.g. "MessageEvent").  The assigned `id` value MUST be a \<string\> representation of a [UUID](#uuidDef) as a [URN](#urnDef) per [RFC 4122](#rfc4122) which describes a [URN](#urnDef) namespace for [UUIDs](#uuidDef).  
 
@@ -800,7 +800,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 ```json
 {
     "sensor": "https://example.edu/sensors/1",
-    "sendTime": "2016-11-15T11:05:01.000Z",
+    "sendTime": "2017-11-15T11:05:01.000Z",
     "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
     "data": [
         {
@@ -818,13 +818,13 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
                 "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
                 "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3"
             ],
-            "dateCreated": "2016-08-01T06:00:00.000Z",
-            "dateModified": "2016-09-02T11:30:00.000Z",
-            "datePublished": "2016-08-15T09:30:00.000Z",
-            "dateToActivate": "2016-08-16T05:00:00.000Z",
-            "dateToShow": "2016-08-16T05:00:00.000Z",
-            "dateToStartOn": "2016-08-16T05:00:00.000Z",
-            "dateToSubmit": "2016-09-28T11:59:59.000Z",
+            "dateCreated": "2017-08-01T06:00:00.000Z",
+            "dateModified": "2017-09-02T11:30:00.000Z",
+            "datePublished": "2017-08-15T09:30:00.000Z",
+            "dateToActivate": "2017-08-16T05:00:00.000Z",
+            "dateToShow": "2017-08-16T05:00:00.000Z",
+            "dateToStartOn": "2017-08-16T05:00:00.000Z",
+            "dateToSubmit": "2017-09-28T11:59:59.000Z",
             "maxAttempts": 2,
             "maxScore": 15,
             "maxSubmits": 2,
@@ -848,7 +848,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
                 "type": "CourseOffering",
                 "courseNumber": "CPS 435"
             },
-            "dateCreated": "2016-08-01T06:00:00.000Z"
+            "dateCreated": "2017-08-01T06:00:00.000Z"
         },
         {
             "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -863,10 +863,10 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
                 "assignee": "https://example.edu/users/554433",
                 "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
                 "count": 1,
-                "dateCreated": "2016-11-15T10:15:00.000Z",
-                "startedAtTime": "2016-11-15T10:15:00.000Z"
+                "dateCreated": "2017-11-15T10:15:00.000Z",
+                "startedAtTime": "2017-11-15T10:15:00.000Z"
             },
-            "eventTime": "2016-11-15T10:15:00.000Z",
+            "eventTime": "2017-11-15T10:15:00.000Z",
             "edApp": "https://example.edu",
             "group": "https://example.edu/terms/201601/courses/7/sections/1",
             "membership": {
@@ -878,12 +878,12 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
                     "Learner"
                 ],
                 "status": "Active",
-                "dateCreated": "2016-08-01T06:00:00.000Z"
+                "dateCreated": "2017-08-01T06:00:00.000Z"
             },
             "session": {
                 "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
                 "type": "Session",
-                "startedAtTime": "2016-11-15T10:00:00.000Z"
+                "startedAtTime": "2017-11-15T10:00:00.000Z"
             }
         },
         {
@@ -898,12 +898,12 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
                 "assignee": "https://example.edu/users/554433",
                 "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
                 "count": 1,
-                "dateCreated": "2016-11-15T10:15:00.000Z",
-                "startedAtTime": "2016-11-15T10:15:00.000Z",
-                "endedAtTime": "2016-11-15T10:25:30.000Z",
+                "dateCreated": "2017-11-15T10:15:00.000Z",
+                "startedAtTime": "2017-11-15T10:15:00.000Z",
+                "endedAtTime": "2017-11-15T10:25:30.000Z",
                 "duration": "PT10M30S"
             },
-            "eventTime": "2016-11-15T10:25:30.000Z",
+            "eventTime": "2017-11-15T10:25:30.000Z",
             "edApp": "https://example.edu",
             "group": "https://example.edu/terms/201601/courses/7/sections/1",
             "membership": {
@@ -915,12 +915,12 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
                     "Learner"
                 ],
                 "status": "Active",
-                "dateCreated": "2016-08-01T06:00:00.000Z"
+                "dateCreated": "2017-08-01T06:00:00.000Z"
             },
             "session": {
                 "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
                 "type": "Session",
-                "startedAtTime": "2016-11-15T10:00:00.000Z"
+                "startedAtTime": "2017-11-15T10:00:00.000Z"
             }
         },
         {
@@ -939,12 +939,12 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
                 "assignee": "https://example.edu/users/554433",
                 "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
                 "count": 1,
-                "dateCreated": "2016-11-15T10:05:00.000Z",
-                "startedAtTime": "2016-11-15T10:05:00.000Z",
-                "endedAtTime": "2016-11-15T10:55:12.000Z",
+                "dateCreated": "2017-11-15T10:05:00.000Z",
+                "startedAtTime": "2017-11-15T10:05:00.000Z",
+                "endedAtTime": "2017-11-15T10:55:12.000Z",
                 "duration": "PT50M12S"
             },
-            "eventTime": "2016-11-15T10:57:06.000Z",
+            "eventTime": "2017-11-15T10:57:06.000Z",
             "edApp": "https://example.edu",
             "generated": {
                 "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
@@ -953,7 +953,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
                 "normalScore": 15,
                 "totalScore": 15,
                 "scoredBy": "https://example.edu/autograder",
-                "dateCreated": "2016-11-15T10:55:05.000Z"
+                "dateCreated": "2017-11-15T10:55:05.000Z"
             },
             "group": "https://example.edu/terms/201601/courses/7/sections/1"
         }
@@ -999,7 +999,7 @@ For Caliper messaging scenarios involving HTTP the following requirements are in
 
 <a name="endpointResponses" />
 
-#### 5.1 Endpoint Responses
+### 5.1 Endpoint Responses
 When using HTTPS an [Endpoint](#endpoint) MUST exhibit the following response behaviour: 
 
 * To signal to a [Sensor](#sensor) that it has received an emitted message and no error state pertains an [Endpoint](#endpoint) MUST reply with a `2xx` class status code. The [Endpoint](#endpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
@@ -1093,7 +1093,10 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 <a name="event" />
 
 ### B.1 Event
-A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  
+A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Event
 
 #### Properties
 | Property | Type | Description | Conformance |
@@ -1137,10 +1140,10 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
     "type": "Document",
     "name": "Course Syllabus",
-    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "dateCreated": "2017-11-12T07:15:00.000Z",
     "version": "1"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z"
+  "eventTime": "2017-11-15T10:15:00.000Z"
 }
 ```
 
@@ -1149,6 +1152,9 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
 ### B.2 AnnotationEvent
 The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
+#### IRI
+http://purl.imsglobal.org/caliper/AnnotationEvent
+ 
 #### Supported actions
  [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
  
@@ -1202,9 +1208,9 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
     "annotator": "https://example.edu/users/554433",
     "annotated": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
     "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
-    "dateCreated": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.com/reader",
     "type": "SoftwareApplication",
@@ -1224,12 +1230,12 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.com/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1237,7 +1243,10 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 <a name="assessmentEvent" />
 
 ### B.3 AssessmentEvent
-The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.  
+The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.
+
+#### IRI
+http://purl.imsglobal.org/caliper/AssessmentEvent
 
 #### Supported actions
 [Started](#started), [Paused](#paused), [Restarted](#restarted), [Submitted](#submitted)
@@ -1278,8 +1287,8 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "type": "Assessment",
     "name": "Quiz One",
-    "dateToStartOn": "2016-11-14T05:00:00.000Z",
-    "dateToSubmit": "2016-11-18T11:59:59.000Z",
+    "dateToStartOn": "2017-11-14T05:00:00.000Z",
+    "dateToSubmit": "2017-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 25.0,
@@ -1291,10 +1300,10 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
     "assignee": "https://example.edu/users/554433",
     "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "count": 1,
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1313,12 +1322,12 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1342,20 +1351,20 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment",
       "name": "Quiz One",
-      "dateToStartOn": "2016-11-14T05:00:00.000Z",
-      "dateToSubmit": "2016-11-18T11:59:59.000Z",
+      "dateToStartOn": "2017-11-14T05:00:00.000Z",
+      "dateToSubmit": "2017-11-18T11:59:59.000Z",
       "maxAttempts": 2,
       "maxSubmits": 2,
       "maxScore": 25.0,
       "version": "1.0"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z",
-    "endedAtTime": "2016-11-15T10:25:30.000Z",
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z",
+    "endedAtTime": "2017-11-15T10:25:30.000Z",
     "duration": "PT10M30S"
   },
-  "eventTime": "2016-11-15T10:25:30.000Z",
+  "eventTime": "2017-11-15T10:25:30.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1374,12 +1383,12 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1387,8 +1396,11 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 <a name="assessmentItemEvent" />
 
 ### B.4 AssessmentItemEvent
-The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).  
+The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).
 
+#### IRI
+http://purl.imsglobal.org/caliper/AssessmentItemEvent
+ 
 #### Supported actions
 [Started](#started), [Skipped](#skipped), [Completed](#completed)
 
@@ -1435,8 +1447,8 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
-    "dateToStartOn": "2016-11-14T05:00:00.000Z",
-    "dateToSubmit": "2016-11-18T11:59:59.000Z",
+    "dateToStartOn": "2017-11-14T05:00:00.000Z",
+    "dateToSubmit": "2017-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 1.0,
@@ -1453,10 +1465,10 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
       "type": "Attempt"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1475,12 +1487,12 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1511,20 +1523,20 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
     },
     "isPartOf": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "count": 1,
-    "dateCreated": "2016-11-15T10:15:02.000Z",
-    "startedAtTime": "2016-11-15T10:15:02.000Z",
-    "endedAtTime": "2016-11-15T10:15:12.000Z"
+    "dateCreated": "2017-11-15T10:15:02.000Z",
+    "startedAtTime": "2017-11-15T10:15:02.000Z",
+    "endedAtTime": "2017-11-15T10:15:12.000Z"
   },
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
     "type": "FillinBlankResponse",
     "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "dateCreated": "2016-11-15T10:15:12.000Z",
-    "startedAtTime": "2016-11-15T10:15:02.000Z",
-    "endedAtTime": "2016-11-15T10:15:12.000Z",
+    "dateCreated": "2017-11-15T10:15:12.000Z",
+    "startedAtTime": "2017-11-15T10:15:02.000Z",
+    "endedAtTime": "2017-11-15T10:15:12.000Z",
     "values": [ "subject", "object", "predicate" ]
   },
-  "eventTime": "2016-11-15T10:15:12.000Z",
+  "eventTime": "2017-11-15T10:15:12.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1543,12 +1555,12 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1556,7 +1568,10 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 <a name="assignableEvent" />
 
 ### B.5 AssignableEvent
-TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
+The Assignable Profile models activities associated with the assignment of digital content assigned to a learner for completion.
+
+#### IRI
+http://purl.imsglobal.org/caliper/AssignableEvent
 
 #### Supported actions
 [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Reviewed](#reviewed)
@@ -1600,18 +1615,18 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
     "type": "Assessment",
     "name": "Quiz One",
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "dateModified": "2016-09-02T11:30:00.000Z",
-    "datePublished": "2016-11-12T10:10:00.000Z",
-    "dateToActivate": "2016-11-12T10:15:00.000Z",
-    "dateToStartOn": "2016-11-14T05:00:00.000Z",
-    "dateToSubmit": "2016-11-18T11:59:59.000Z",
+    "dateCreated": "2017-08-01T06:00:00.000Z",
+    "dateModified": "2017-09-02T11:30:00.000Z",
+    "datePublished": "2017-11-12T10:10:00.000Z",
+    "dateToActivate": "2017-11-12T10:15:00.000Z",
+    "dateToStartOn": "2017-11-14T05:00:00.000Z",
+    "dateToSubmit": "2017-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 25.0,
     "version": "1.0"
   },
-  "eventTime": "2016-11-12T10:15:00.000Z",
+  "eventTime": "2017-11-12T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
@@ -1630,12 +1645,12 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Instructor" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
     "type": "Session",
-    "startedAtTime": "2016-11-12T10:00:00.000Z"
+    "startedAtTime": "2017-11-12T10:00:00.000Z"
   }
 }
 ```
@@ -1643,8 +1658,10 @@ TODO The Caliper [AssignableEvent](#assignableEvent) models . . . .
 <a name="forumEvent" />
 
 ### B.6 ForumEvent
+The Caliper [ForumEvent](#forumEvent) models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.
 
-TODO The Caliper [ForumEvent](#forumEvent) models . . . .
+#### IRI
+http://purl.imsglobal.org/caliper/ForumEvent
 
 #### Supported actions
 [Subscribed](#subscribed), [Unsubscribed](#unsubscribed)
@@ -1690,9 +1707,9 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "dateCreated": "2016-09-14T11:00:00.000Z"
+    "dateCreated": "2017-09-14T11:00:00.000Z"
   },
-  "eventTime": "2016-11-15T10:16:00.000Z",
+  "eventTime": "2017-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
@@ -1711,12 +1728,12 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1724,11 +1741,14 @@ TODO The Caliper [ForumEvent](#forumEvent) models . . . .
 <a name="mediaEvent" />
 
 ### B.7 MediaEvent
-TODO The Caliper [MediaEvent](#mediaEvent) models . . . .
+TODO The Caliper [MediaEvent](#mediaEvent) models interactions between learners and rich content such as audio, images and video.
 
-TODO   
+**TODO**   
 * Should MediaLocation be the object or the target of the interaction?
 * Should ImageObject be included in this event (ViewEvent appears more appropriate)?
+
+#### IRI
+http://purl.imsglobal.org/caliper/MediaEvent
 
 #### Supported actions
 [Started](#started), [Paused](#paused), [Resumed](#resumed), [Ended](#ended), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [Rewound](#rewound), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
@@ -1777,7 +1797,7 @@ TODO
     "type": "MediaLocation",
     "currentTime": "PT05M21S"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": "https://example.edu/player",
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -1792,12 +1812,12 @@ TODO
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1806,6 +1826,9 @@ TODO
 
 ### B.8 MessageEvent
 The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
+
+#### IRI
+http://purl.imsglobal.org/caliper/MessageEvent
 
 #### Supported actions
 [posted](#posted), [markedAsRead](#markedAsRead), [markedAsUnRead](#markedAsUnRead)
@@ -1862,9 +1885,9 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
         "name": "Caliper Forum"
       }
     },
-    "dateCreated": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
@@ -1883,12 +1906,12 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1925,9 +1948,9 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
         "type": "Forum"
       }
     },
-    "dateCreated": "2016-11-15T10:15:30.000Z"
+    "dateCreated": "2017-11-15T10:15:30.000Z"
   },
-  "eventTime": "2016-11-15T10:15:30.000Z",
+  "eventTime": "2017-11-15T10:15:30.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
@@ -1946,12 +1969,12 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:12:00.000Z"
+    "startedAtTime": "2017-11-15T10:12:00.000Z"
   }
 }
 ```
@@ -1960,6 +1983,9 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 ### B.9 NavigationEvent
 The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
+
+#### IRI
+http://purl.imsglobal.org/caliper/NavigationEvent
 
 #### Supported actions
 [NavigatedTo](#navigatedTo)
@@ -2008,9 +2034,9 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
     "type": "WebPage",
     "name": "Learning Analytics Specifications",
     "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
-    "dateCreated": "2016-08-01T09:00:00.000Z"
+    "dateCreated": "2017-08-01T09:00:00.000Z"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "referrer": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
     "type": "WebPage"
@@ -2029,12 +2055,12 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2042,7 +2068,10 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 <a name="outcomeEvent" />
 
 ### B.10 OutcomeEvent
-TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
+TODO The Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
+
+#### IRI
+http://purl.imsglobal.org/caliper/OutcomeEvent
 
 #### Supported actions
 [Graded](#graded)
@@ -2092,12 +2121,12 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2016-11-15T10:05:00.000Z",
-    "startedAtTime": "2016-11-15T10:05:00.000Z",
-    "endedAtTime": "2016-11-15T10:55:12.000Z",
+    "dateCreated": "2017-11-15T10:05:00.000Z",
+    "startedAtTime": "2017-11-15T10:05:00.000Z",
+    "endedAtTime": "2017-11-15T10:55:12.000Z",
     "duration": "PT50M12S"
   },
-  "eventTime": "2016-11-15T10:57:06.000Z",
+  "eventTime": "2017-11-15T10:57:06.000Z",
   "edApp": "https://example.edu",
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
@@ -2106,7 +2135,7 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
     "normalScore": 15.0,
     "totalScore": 15.0,
     "scoredBy": "https://example.edu/autograder",
-    "dateCreated": "2016-11-15T10:55:05.000Z"
+    "dateCreated": "2017-11-15T10:55:05.000Z"
   },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -2120,7 +2149,10 @@ TODO The Caliper [OutcomeEvent](#outcomeEvent) models . . . .
 
 ### B.11 ReadingEvent DEPRECATED
 
-The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be utilized.
+The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+
+#### IRI
+http://purl.imsglobal.org/caliper/ReadingEvent
 
 #### Supported actions
 [NavigatedTo](#navigatedTo), [Searched](#searched), [Viewed](#viewed)
@@ -2149,7 +2181,10 @@ The Caliper [ReadingEvent](#readingEvent) models an actor reading textural conte
 <a name="sessionEvent" />
 
 ### B.12 SessionEvent
-TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
+A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).
+
+#### IRI
+http://purl.imsglobal.org/caliper/SessionEvent
 
 #### Supported actions
 [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
@@ -2191,14 +2226,14 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "user": "https://example.edu/users/554433",
-    "dateCreated": "2016-11-15T10:00:00.000Z",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "dateCreated": "2017-11-15T10:00:00.000Z",
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2219,15 +2254,15 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "eventTime": "2016-11-15T11:05:00.000Z",
+  "eventTime": "2017-11-15T11:05:00.000Z",
   "edApp": "https://example.edu",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "user": "https://example.edu/users/554433",
-    "dateCreated": "2016-11-15T10:00:00.000Z",
-    "startedAtTime": "2016-11-15T10:00:00.000Z",
-    "endedAtTime": "2016-11-15T11:05:00.000Z",
+    "dateCreated": "2017-11-15T10:00:00.000Z",
+    "startedAtTime": "2017-11-15T10:00:00.000Z",
+    "endedAtTime": "2017-11-15T11:05:00.000Z",
     "duration": "PT3000S"
   }
 }
@@ -2251,12 +2286,12 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
       "id": "https://example.edu/users/112233",
       "type": "Person"
     },
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z",
-    "endedAtTime": "2016-11-15T11:15:00.000Z",
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z",
+    "endedAtTime": "2017-11-15T11:15:00.000Z",
     "duration": "PT3600S"
   },
-  "eventTime": "2016-11-15T11:15:00.000Z",
+  "eventTime": "2017-11-15T11:15:00.000Z",
   "edApp": "https://example.edu"
 }
 ```
@@ -2264,7 +2299,10 @@ TODO A Caliper [SessionEvent](#sessionEvent) models . . . .
 <a name="threadEvent" />
 
 ### B.13 ThreadEvent
-TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum thread or topic as either read or unread.  
+A Caliper [ThreadEvent](#threadEvent) models an actor interacting with a [Forum](#forum) thread or topic. 
+ 
+#### IRI
+http://purl.imsglobal.org/caliper/ThreadEvent
 
 #### Supported actions
 [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnread)
@@ -2309,11 +2347,11 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
       "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
       "type": "Forum",
       "name": "Caliper Forum",
-      "dateCreated": "2016-11-15T10:15:00.000Z"
+      "dateCreated": "2017-11-15T10:15:00.000Z"
     },
-    "dateCreated": "2016-11-15T10:16:00.000Z"
+    "dateCreated": "2017-11-15T10:16:00.000Z"
   },
-  "eventTime": "2016-11-15T10:16:00.000Z",
+  "eventTime": "2017-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
@@ -2332,12 +2370,12 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2346,6 +2384,9 @@ TODO A Caliper [ThreadEvent](#threadEvent) models an actor marking a forum threa
 
 ### B.14 ToolUseEvent
 A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction. It's meant to be a fundamental [Event](#event) that tool creators can implement to demonstrate that users are using the tool in the way in which it's intended to be used.
+
+#### IRI
+http://purl.imsglobal.org/caliper/ToolUseEvent
 
 #### Supported actions
 [Used](#used)
@@ -2386,7 +2427,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
     "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -2401,12 +2442,12 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2415,6 +2456,9 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 
 ### B.15 ViewEvent
 A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.
+
+#### IRI
+http://purl.imsglobal.org/caliper/ViewEvent
 
 #### Supported actions
 [viewed](#viewed)
@@ -2455,11 +2499,11 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
     "id": "https://example.edu/etexts/201.epub",
     "type": "Document",
     "name": "IMS Caliper Implementation Guide",
-    "dateCreated": "2016-08-01T06:00:00.000Z",
-    "datePublished": "2016-10-01T06:00:00.000Z",
+    "dateCreated": "2017-08-01T06:00:00.000Z",
+    "datePublished": "2017-10-01T06:00:00.000Z",
     "version": "1.1"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -2474,12 +2518,12 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2017-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2016-11-15T10:00:00.000Z"
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2492,6 +2536,11 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 ### C.1 Entity
 A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).
+
+Utilize [Entity](#entity) only if no suitable subtype exists to represent the thing being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Entity
 
 #### Properties
 The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
@@ -2534,23 +2583,19 @@ When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/late
     ],
     "dateCreated": "2017-08-01T06:00:00.000Z",
     "datePublished": "2017-10-01T06:00:00.000Z",
-    "version": "1.1",
-    "extensions": [
-        {
-            "hostname": "example.docker",
-            "request_id": "f72863c5-d541-40b3-8183-e9e3e877e3bc",
-            "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
-        }
-    ]
+    "version": "1.1"
 }
 ```
 
 <a name="agent" />
 
 ### C.2 Agent
-A Caliper [Agent](#agent) is a generic type that represents an [Entity](#entity) that can initiate or perform an action.
+A Caliper [Agent](#agent) is a generic type that represents an [Entity](#entity) that can initiate or perform an action.  
 
-Utilize [Agent](#agent) only if no suitable subtype exists to represent the actor being decribed.
+Utilize [Agent](#agent) only if no suitable subtype exists to represent the actor being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Agent
 
 #### Supertype
 [Entity](#entity)
@@ -2574,7 +2619,11 @@ Utilize [Agent](#agent) only if no suitable subtype exists to represent the acto
 #### Example
 ```json
 {
-    TODO
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/agents/99999",
+  "type": "Agent",
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z"
 }
 ```
 
@@ -2584,6 +2633,9 @@ Utilize [Agent](#agent) only if no suitable subtype exists to represent the acto
 A Caliper [Annotation](#annotation) is a generic type that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.
 
 Utilize [Annotation](#annotation) only if no suitable subtype exists to represent the annotation being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Annotation
 
 #### Supertype
 [Entity](#entity)
@@ -2609,7 +2661,18 @@ Utilize [Annotation](#annotation) only if no suitable subtype exists to represen
 #### Example
 ```json
 {
-    TODO
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.com/users/554433/texts/imscaliperimplguide/annotations/1",
+  "type": "Annotation",
+  "annotator": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "annotated": {
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
+    "type": "Page"
+  },
+  "dateCreated": "2017-08-01T06:00:00.000Z"
 }
 ```
 
@@ -2617,6 +2680,9 @@ Utilize [Annotation](#annotation) only if no suitable subtype exists to represen
 
 ### C.4 Assessment
 A Caliper [Assessment](#assessment) represents an assessment instrument such as a test or quiz.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Assessment
 
 #### Supertype
 [DigitalResourceCollection](#digitalResourceCollection), [AssignableDigitalResource](#assignableDigitalResource)
@@ -2656,7 +2722,6 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 | ~~objectType~~ | String | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
-
 #### Example
 ```json
 {
@@ -2686,7 +2751,7 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
   "dateToStartOn": "2017-08-16T05:00:00.000Z",
   "dateToSubmit": "2017-09-28T11:59:59.000Z",
   "maxAttempts": 2,
-  "maxScore": 15,
+  "maxScore": 15.0,
   "maxSubmits": 2,
   "version": "1.0"
 }
@@ -2695,6 +2760,9 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 
 ### C.5 AssessmentItem
 A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
+
+#### IRI
+http://purl.imsglobal.org/caliper/AssessmentItem
 
 #### Supertype
 [AssignableDigitalResource](#assignableDigitalResource)
@@ -2748,16 +2816,22 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
   "datePublished": "2017-08-15T09:30:00.000Z",
   "isTimeDependent": false,
   "maxAttempts": 2,
-  "maxScore": 5,
+  "maxScore": 5.0,
   "maxSubmits": 2,
-  "extensions": {
+  "extensions": [{
     "@context": {
-      "@vocab": "http://example.edu/ctx/edu.jsonld"
+      "id": "@id",
+      "type": "@type",
+      "example": "http://example.edu/ctx/edu",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "itemType": { "id": "example:itemType", "type": "xsd:string" },
+      "itemText": { "id": "example:itemText",  "type": "xsd:string" },
+      "itemCorrectResponse": { "id": "example:itemCorrectResponse", "type": "xsd:boolean" }
     },
     "itemType": "true/false",
     "itemText": "In Caliper event actors are limited to people only.",
     "itemCorrectResponse": false
-  }
+  }]
 }
 ```
 
@@ -2766,8 +2840,10 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 ### C.6 AssignableDigitalResource
 A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic type that represents digital content associated with a graded or ungraded assignment.
 
-Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the resource being described.  
+Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the resource being described.
 
+#### IRI
+http://purl.imsglobal.org/caliper/AssignableDigitalResource
 
 #### Supertype
 [DigitalResource](#digitalResource)
@@ -2824,7 +2900,7 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
   "dateToSubmit": "2017-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,
-  "maxScore": 50
+  "maxScore": 50.0
 }
 ```
 
@@ -2832,6 +2908,9 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 
 ### C.7 Attempt
 A Caliper [Attempt](#attempt) provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An [Attempt](#attempt) is generated as the result of an action such as starting an [Assessment](#assessment).
+
+#### IRI
+http://purl.imsglobal.org/caliper/Attempt
 
 #### Supertype
 [Entity](#entity)
@@ -2890,6 +2969,9 @@ The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT b
 ### C.8 AudioObject
 A Caliper [AudioObject](#audioObject) represents an audio or sound file.
 
+#### IRI
+http://purl.imsglobal.org/caliper/AudioObject
+
 #### Supertype
 [MediaObject](#mediaObject)
 
@@ -2946,6 +3028,9 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 
 **TODO how do you transmit the position of the bookmark?**
 
+#### IRI
+http://purl.imsglobal.org/caliper/BookmarkAnnotation
+
 #### Supertype
 [Annotation](#annotation)
 
@@ -2969,15 +3054,15 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/users/554433/etexts/201/bookmarks/1",
+  "id": "https://example.com/users/554433/texts/imscaliperimplguide/bookmarks/1",
   "type": "BookmarkAnnotation",
-  "assignee": {
+  "annotator": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "annotated": {
-    "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/10[para05]/1:20)",
-    "type": "Chapter"
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
+    "type": "Page"
   },
   "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
   "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2988,6 +3073,9 @@ A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of markin
 
 ### C.10 Chapter
 A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digital content.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Chapter
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -3024,11 +3112,11 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!)",
+  "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10",
   "type": "Chapter",
   "name": "The Caliper Information Model",
   "isPartOf": {
-    "id": "https://example.edu/etexts/201.epub",
+    "id": "https://example.com/#/texts/imscaliperimplguide",
     "type": "Document",
     "dateCreated": "2017-10-01T06:00:00.000Z",
     "name": "IMS Caliper Implementation Guide",
@@ -3041,6 +3129,9 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 
 ### C.11 CourseOffering
 A Caliper [CourseOffering](#courseOffering) represents the occurrence of a course or a type during a specified time period.  [CourseOffering](#courseOffering) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
+
+#### IRI
+http://purl.imsglobal.org/caliper/CourseOffering
 
 #### Supertype
 [Organization](#organization)
@@ -3083,6 +3174,9 @@ A Caliper [CourseOffering](#courseOffering) represents the occurrence of a cours
 
 ### C.12 CourseSection
 A Caliper [CourseSection](#courseSection) represents a specific instance of a [CourseOffering](#courseOffering) occurring during a specific semester, term or period.  [CourseSection](#courseSection) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
+
+#### IRI
+http://purl.imsglobal.org/caliper/CourseSection
 
 #### Supertype
 [[CourseOffering](#courseOffering)
@@ -3130,6 +3224,9 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 A Caliper [DigitalResource](#digitalResource) is a generic type that represents digital content.
 
 Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the resource being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/DigitalResource
 
 #### Supertype 
 [Entity](#entity)
@@ -3199,6 +3296,9 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 
 ### C.14 DigitalResourceCollection
 A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an ordered collection of [DigitalResource](#digitalResource) entities.
+
+#### IRI
+http://purl.imsglobal.org/caliper/DigitalResourceCollection
 
 #### Supertype
 [DigitalResource](#digitalResource)
@@ -3281,6 +3381,9 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 ### C.15 Document
 A Caliper [Document](#document) represents textual content.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Document
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -3341,6 +3444,9 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
 ### C.16 EpubChapter (DEPRECATED)
 A Caliper [EpubChapter](#epubChapter) represents a major structural division of a piece of writing.  [EpubChapter](#epubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
+#### IRI
+http://purl.imsglobal.org/caliper/EpubChapter
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -3376,6 +3482,9 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 
 ### C.17 EpubPart (DEPRECATED)
 A Caliper [EpubPart](#epubPart) represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  [EpubPart](#epubPart) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+
+#### IRI
+http://purl.imsglobal.org/caliper/EpubPart
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -3413,6 +3522,9 @@ The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST NOT
 ### C.18 EpubSubChapter (DEPRECATED)
 A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of an [EpubChapter](#epubChapter).  [EpubSubChapter](#epubSubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
+#### IRI
+http://purl.imsglobal.org/caliper/EpubSubChapter
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -3449,6 +3561,9 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 ### C.19 EpubVolume (DEPRECATED)
 A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its supertype.  [EpubVolume](#epubVolume) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
+#### IRI
+http://purl.imsglobal.org/caliper/EpubVolume
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -3484,6 +3599,9 @@ The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST
 
 ### C.20 FillinBlankResponse
 A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Response](#response) in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
+
+#### IRI
+http://purl.imsglobal.org/caliper/FillinBlankResponse
 
 #### Supertype 
 [Response](#response)
@@ -3550,6 +3668,9 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 
 ### C.21 Forum
 A Caliper [Forum](#forum) represents a channel or virtual space in which group discussions take place.  A [Forum](#forum) typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Forum
 
 #### Supertype 
 [DigitalResourceCollection](#digitalResourceCollection)
@@ -3628,7 +3749,8 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 ### C.22 Frame
 A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalResource](#digitalResource).
 
-**TODO DEFINE INDEX PROPERTY IN MORE DETAIL**
+#### IRI
+http://purl.imsglobal.org/caliper/Frame
  
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -3676,13 +3798,16 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
   }
-} 
+}
 ```
 
 <a name="group" />
 
 ### C.23 Group
 A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Group
 
 #### Supertype
 [Organization](#organization)
@@ -3717,6 +3842,28 @@ A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collectio
       "type": "CourseOffering"
     }
   },
+  "members": [
+    {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/778899",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/445566",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/667788",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/889900",
+      "type": "Person"
+    }
+  ],
   "dateCreated": "2017-11-01T06:00:00.000Z"
 }
 ```
@@ -3724,10 +3871,10 @@ A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collectio
 <a name="highlightAnnotation" />
 
 ### C.24 HighlightAnnotation
-A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.  
-
-### TODO
-* Add additional instructions regarding start and end properties
+A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.
+  
+#### IRI
+http://purl.imsglobal.org/caliper/HighlightAnnotation 
 
 #### Supertype
 [Annotation](#annotation)
@@ -3755,7 +3902,7 @@ A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of mark
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/highlights/20",
   "type": "HighlightAnnotation",
-  "assignee": {
+  "annotator": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -3777,6 +3924,9 @@ A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of mark
 
 ### C.25 ImageObject
 A Caliper [ImageObject](#imageObject) represents an image file.
+
+#### IRI
+http://purl.imsglobal.org/caliper/ImageObject
 
 #### Supertype 
 [MediaObject](#mediaObject)
@@ -3827,6 +3977,9 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
 ### C.26 LearningObjective
 The Caliper [LearningObjective](#learningObjective) represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
+#### IRI
+http://purl.imsglobal.org/caliper/LearningObjective
+
 #### Supertype 
 [Entity](#entity)
 
@@ -3867,7 +4020,7 @@ The Caliper [LearningObjective](#learningObjective) represents a summary stateme
   "dateToSubmit": "2017-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,
-  "maxScore": 50
+  "maxScore": 50.0
 }
 ```
 
@@ -3875,6 +4028,9 @@ The Caliper [LearningObjective](#learningObjective) represents a summary stateme
 
 ### C.27 LtiSession
 A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user session.
+
+#### IRI
+http://purl.imsglobal.org/caliper/LtiSession
 
 #### Supertype
 [Session](#session)
@@ -3937,17 +4093,21 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
     "custom_user_image": "https://example.edu/users/554433/profile/avatar.jpg",
     "ext_vnd_instructor": {
       "@context": {
-        "@vocab": "http://example.edu/ctx/edu.jsonld",
-        "sdo": "http://schema.org/"
+        "sdo": "http://schema.org/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "jobTitle": { "id": "sdo:jobTitle", "type": "xsd:string" },
+        "givenName": { "id": "sdo:givenName", "type": "xsd:string" },
+        "familyName": { "id": "sdo:familyName", "type": "xsd:string" },
+        "email": { "id": "sdo:email", "type": "xsd:string" },
+        "url": { "id": "sdo:url", "type": "xsd:string" }
       },
-      "type": "Faculty",
-      "schema:jobTitle": "Professor",
-      "schema:givenName": "Trig",
-      "schema:familyName": "Haversine",
-      "schema:email": "trighaversine@example.edu",
-      "schema:url": "https://example.edu/faculty/trighaversine",
-      "isTenured": true,
-      "isOnSabbatical": false
+      "id": "https://example.edu/faculty/trighaversine",
+      "type": "Person",
+      "jobTitle": "Professor",
+      "givenName": "Trig",
+      "familyName": "Haversine",
+      "email": "trighaversine@example.edu",
+      "url": "https://example.edu/faculty/trighaversine"
     }
   },
   "dateCreated": "2017-11-15T10:15:00.000Z",
@@ -3960,6 +4120,9 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
 ### C.28 MediaLocation
 
 A Caliper [MediaLocation](#mediaLocation) provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
+
+#### IRI
+http://purl.imsglobal.org/caliper/MediaLocation
  
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -4009,6 +4172,9 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
 ### C.29 MediaObject
 A Caliper [MediaObject](#mediaObject) represents a generic piece of media content.
 
+#### IRI
+http://purl.imsglobal.org/caliper/MediaObject
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -4047,14 +4213,22 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 #### Example
 ```json
 {
-  TODO
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/media/54321",
+  "type": "MediaObject",
+  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateModified": "2017-09-02T11:30:00.000Z",
+  "duration": "PT1H17M50S"
 }
 ```
 
 <a name="membership" />
 
 ### C.30 Membership
-A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.  
+A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.
+  
+#### IRI
+http://purl.imsglobal.org/caliper/Membership  
 
 #### Supertype 
 [Entity](#entity)
@@ -4094,8 +4268,8 @@ A Caliper [Membership](#membership) describes the relationship between an [Organ
       "type": "CourseOffering"
     }
   },
-  "roles": [ "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" ],
-  "status": "http://purl.imsglobal.org/vocab/lis/v2/status#Active",
+  "roles": [ "Learner" ],
+  "status": "Active",
   "dateCreated": "2017-11-01T06:00:00.000Z"
 }
 ```
@@ -4104,6 +4278,9 @@ A Caliper [Membership](#membership) describes the relationship between an [Organ
 
 ### C.31 Message
 A Caliper [Message](#message) is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Message
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -4182,6 +4359,9 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
 ### C.32 MultipleChoiceResponse
 A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of [Response](#response) in which a respondent is asked to provide the best possible answer from a list of choices.
 
+#### IRI
+http://purl.imsglobal.org/caliper/MultipleChoiceResponse
+
 #### Supertype 
 [Response](#response)
 
@@ -4247,6 +4427,9 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 
 ### C.33 MultipleResponseResponse
 A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
+
+#### IRI
+http://purl.imsglobal.org/caliper/MultipleResponseResponse
 
 #### Supertype 
 [Response](#response)
@@ -4314,6 +4497,9 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 ### C.34 Organization
 A Caliper [Organization](#organization) represents a formal collection of people organized for some common educational, social or administrative purpose.  An [Organization](#organization) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Organization
+
 #### Supertype
 [Agent](#agent)
 
@@ -4355,6 +4541,9 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 ### C.35 Page
 A Caliper [Page](#page) represents an item of paginated content.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Page
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -4390,15 +4579,15 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/etexts/201/chs/2/pp/23",
+  "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
   "type": "Page",
-  "name": "Page 23",
+  "name": "Page 5",
   "isPartOf": {
-    "id": "https://example.edu/etexts/201/chs/2",
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10",
     "type": "Chapter",
-    "name": "Chapter 2",
+    "name": "Chapter 1",
     "isPartOf": {
-      "id": "https://example.edu/etexts/201",
+      "id": "https://example.com/#/texts/imscaliperimplguide",
       "type": "Document",
       "name": "IMS Caliper Implementation Guide",
       "dateCreated": "2017-10-01T06:00:00.000Z",
@@ -4412,6 +4601,10 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
 
 ### C.36 Person
 A Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Person
+
 #### Supertype
 [Agent](#agent)
 
@@ -4443,6 +4636,9 @@ A Caliper [Person](#person) represents a human being, alive or deceased, real or
 
 ### C.37 Reading (DEPRECATED)
 A Caliper [Reading](#reading) represents an item of paginated content.  [Reading](#reading) is a DEPRECATED entity superseded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Reading
 
 #### Supertype 
 [DigitalResource](#digitalResource)
@@ -4482,6 +4678,9 @@ A Caliper [Response](#response) is a generic type that represents the selected o
 
 Utilize [Response](#response) only if no suitable subtype exists to represent the response being described.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Response
+
 #### Supertype 
 [Entity](#entity)
 
@@ -4513,12 +4712,48 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 #### Subtypes
 [FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
+#### Example
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "type": "Response",
+  "attempt": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
+    "count": 1,
+    "startedAtTime": "2017-11-15T10:15:14.000Z",
+    "endedAtTime": "2017-11-15T10:15:20.000Z"
+  },
+  "dateCreated": "2017-11-15T10:15:20.000Z",
+  "startedAtTime": "2017-11-15T10:15:14.000Z",
+  "endedAtTime": "2017-11-15T10:15:20.000Z",
+  "extensions": [
+    {
+      "@context": {
+        "id": "@id",
+        "type": "@type",
+        "example": "http://example.edu/ctx/edu",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "shortAnswerText": { "id": "example:shortAnswerText", "type": "xsd:string" }
+      },
+      "shortAnswerText": "A Caliper Event is a generic type that describes a relationship established between an actor and an object at a particular moment in time and (optionally) within a given context."
+    }
+  ]
+}
+```
+
 <a name="result" />
 
 ### C.39 Result
 A Caliper [Result](#result) represents a grade applied to an assignment submission.
 
 **TODO describe scores**
+
+#### IRI
+http://purl.imsglobal.org/caliper/Result
 
 #### Supertype 
 [Entity](#entity)
@@ -4586,6 +4821,9 @@ A Caliper [Result](#result) represents a grade applied to an assignment submissi
 ### C.40 SelectTextResponse
 A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
 
+#### IRI
+http://purl.imsglobal.org/caliper/SelectTextResponse
+
 #### Supertype 
 [Response](#response)
 
@@ -4652,6 +4890,9 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 ### C.41 Session
 A Caliper [Session](#session) represents a web application user session.
 
+#### IRI
+http://purl.imsglobal.org/caliper/Session
+
 #### Supertype
 [Entity](#entity)
 
@@ -4701,6 +4942,9 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 ### C.42 SharedAnnotation
 A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
 
+#### IRI
+http://purl.imsglobal.org/caliper/SharedAnnotation
+
 #### Supertype
 [Annotation](#annotation)
 
@@ -4726,7 +4970,7 @@ A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a 
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/shares/1",
   "type": "SharedAnnotation",
-  "assignee": {
+  "annotator": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -4752,6 +4996,9 @@ A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a 
 
 #### C.43 SoftwareApplication
 A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
+
+#### IRI
+http://purl.imsglobal.org/caliper/SoftwareApplication
 
 #### Supertype
 [Agent](#agent)
@@ -4787,6 +5034,9 @@ A Caliper [SoftwareApplication](#softwareApplication) represents a computer prog
 ### C.44 TagAnnotation
 A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
 
+#### IRI
+http://purl.imsglobal.org/caliper/TagAnnotation
+
 #### Supertype
 [Annotation](#annotation)
 
@@ -4810,15 +5060,15 @@ A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [Digit
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/users/554433/etexts/201/tags/3",
+  "id": "https://example.com/users/554433/texts/imscaliperimplguide/tags/3",
   "type": "TagAnnotation",
-  "assignee": {
+  "annotator": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "annotated": {
-    "id": "https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/12[para06]/1:97)",
-    "type": "Chapter"
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
+    "type": "Page"
   },
   "tags": [ "profile", "event", "entity" ],
   "dateCreated": "2017-08-01T09:00:00.000Z"
@@ -4829,6 +5079,9 @@ A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [Digit
 
 ### C.45 Thread
 A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Thread
 
 #### Supertype 
 [DigitalResourceCollection](#digitalResourceCollection)
@@ -4914,6 +5167,9 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 ### C.46 TrueFalseResponse
 A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
 
+#### IRI
+http://purl.imsglobal.org/caliper/TrueFalseResponse
+
 #### Supertype 
 [Response](#response)
 
@@ -4980,6 +5236,9 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 ### C.47 VideoObject
 A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
 
+#### IRI
+http://purl.imsglobal.org/caliper/VideoObject
+
 #### Supertype 
 [MediaObject](#mediaObject)
 
@@ -5032,6 +5291,9 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 ### C.48 WebPage
 A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
 
+#### IRI
+http://purl.imsglobal.org/caliper/WebPage
+
 #### Supertype 
 [DigitalResource](#digitalResource)
 
@@ -5083,38 +5345,43 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 <a name="selectors" />
 
 ### Appendix D. Selectors
-TODO Intro
+**TODO Intro**
 
 <a name="textPositionSelector" />
 
 ### D.1 TextPositionSelector
-TODO Intro
+**TODO Intro**
+
+#### IRI
+http://purl.imsglobal.org/caliper/TextPositionSelector
 
 #### Properties
-
-* `type`: the string value `TextPositionSelector` MUST be specified.
-* `start`: TODO The start position . . . MUST be specified.
-* `end`: TODO The end position . . . MUST be specified.
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| type| [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TextPositionSelector*. | Required |
+| start | integer | The starting position of the selected text MUST be specified.  The first character in the full text is character position 0. | Required |
+| end | integer | The end position of the selected text MUST be specified. | Required |
 
 ```json
 {
-    "id": "https://example.edu/users/554433/etexts/201/highlights?start=2300&end=2370",
-    "type": "HighlightAnnotation",
-    "annotator": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "annotated": {
-      "id": "https://example.edu/etexts/201",
-      "type": "Document"
-    },
-    "selection": {
-      "type": "TextPositionSelector",
-      "start": 2300,
-      "end": 2370
-    },
-    "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
-    "dateCreated": "2017-11-15T10:15:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/users/554433/etexts/201/highlights/20",
+  "type": "HighlightAnnotation",
+  "annotator": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "annotated": {
+    "id": "https://example.edu/etexts/201",
+    "type": "Document"
+  },
+  "selection": {
+    "type": "TextPositionSelector",
+    "start": 2300,
+    "end": 2370
+  },
+  "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
+  "dateCreated": "2017-08-01T06:00:00.000Z"
 }
 ```
 
