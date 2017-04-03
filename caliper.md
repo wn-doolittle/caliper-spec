@@ -367,7 +367,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#e
 [Person](#person)
 
 #### Supported Objects
-[DigitalResource](#digitalResource) and its subtypes.
+[DigitalResource](#digitalResource), [AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Frame](#frame), [Page](#page), [WebPage](#webpage)
 
 #### Generated Annotations
 [Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
@@ -442,19 +442,19 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#e
 [Person](#person)
 
 #### Supported Objects
-[DigitalResource](#digitalResource)
+[AssignableDigitalResource](#assignableDigitalResource)
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
 | :---- | :----- | :---------- | :---------- |
-| [AssignableEvent](#assignableEvent) | [Started](#started) | The [DigitalResource](#digitalResource) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
+| [AssignableEvent](#assignableEvent) | [Started](#started) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
 | [AssignableEvent](#assignableEvent) | [Completed](#completed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
 | [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Required |
-| [AssignableEvent](#assignableEvent) | [Activated](#activated) | The [DigitalResource](#digitalResource) MUST be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | The [DigitalResource](#digitalResource) MUST be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Activated](#activated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
 | [AssignableEvent](#assignableEvent) | [Reset](#reset) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
 | [AssignableEvent](#assignableEvent) | [Reviewed](#reviewed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | The [DigitalResource](#digitalResource) MUST be specified as the `object`.  When navigating to an [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  When navigating to an [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
 
 #### General Requirements
@@ -467,10 +467,10 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#e
 ### 2.3.5 Forum Profile
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
-#### Minimum conformance
+#### Minimum Conformance
 Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Posted](#posted) action is required and MUST be implemented.  All other supported events and actions are considered optional.
 
-#### Supported events
+#### Supported Events
 [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
@@ -513,7 +513,7 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  T
 [Agent](#agent) and its subtypes 
 
 #### Supported Objects
-[DigitalResource](#digitalResource)
+[Attempt](#attempt), [Result](#result)
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
@@ -592,7 +592,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 [Person](#person)
 
 #### Supported Objects
-[DigitalResource](#digitalResource) 
+[DigitalResource](#digitalResource), [AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Frame](#frame), [Page](#page), [WebPage](#webpage)
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
