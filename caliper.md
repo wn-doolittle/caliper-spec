@@ -657,10 +657,10 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 #### Supported Objects
 [SoftwareApplication](#softwareApplication)
 
-#### Supported Actions
-| Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
-| [ToolUseEvent](#toolUseEvent) | [Used](#used) | A [SoftwareApplication](#softwareApplication) MUST be specified as the `object`. | Required |
+#### ToolUseEvent Supported Actions
+| Actor | Action | Object | Context | Conformance |
+| :---- | :----- |  :---- | :------ | :---------- |
+| [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | &nbsp: | Required |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
