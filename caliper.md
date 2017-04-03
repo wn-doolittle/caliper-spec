@@ -195,6 +195,10 @@ __Metric Profile__: metric profiles define the information model for caliper.  T
  
 __Object__: TODO
 
+<a name="profileDef" />
+
+__Profile__: TODO
+
 <a name="sensorDef" />
 
 __Sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
@@ -249,7 +253,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 | id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication](#softwareApplication), MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
@@ -299,7 +303,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document),  [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 #### Deprecated subtypes
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
@@ -317,7 +321,7 @@ As an example, the [Forum Profile](#forumProfile) models a set of activities ass
      
 Extending Caliper's information model involves designing a new metric profile or enhancing an existing one.  Implementors are free to implement only those Caliper metric profiles as are necessary to model a learning domain.  A video platform provider may decide that only the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile) and [Session Profile](#sessionProfile) are relevant to its needs while developers instrumenting an assessment engine would most likely implement the [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile) and [Session Profile](#sessionProfile).
 
-**Should mention that we encourage implementors to design their own custom profiles**
+**TODO should mention that we encourage implementors to design their own custom profiles**
 
 The following metric profiles are currently available and are summarized individually below:
 
@@ -328,296 +332,342 @@ The following metric profiles are currently available and are summarized individ
 ### 2.3.1 Basic Profile
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.
 
-#### Supported events
+#### Minimum Conformance
+Create and send a generic Caliper [Event](#event) to a target [endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
+
+#### Supported Events
 [Event](#event)
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- |
-| [Event](#event) | [UUID](#uuidDef) | `Event` | [Agent](#agent) | [action](#actions) | [Entity](#entity) | DateTime |
+#### Supported Actors
+[Agent](#agent) and its subtypes.
 
-**TODO Should we restrict the list of supported actions to those not associated with other typed Events?**
+#### Supported Objects
+[Entity](#entity) and its subtypes.
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, ``type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
-* A generic [Agent](#agent) or one of its subtypes, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
-* The `action` value range is limited to the set of [actions](#actions) described in this specification and no other.
-* A generic [Entity](#entity) or one of its subtypes MUST be specified as the `object` of the interaction.  
-* When navigating to an [Entity](#entity) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+#### Supported Actions
+Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
-#### Minimum conformance
-Create and send a generic Caliper [Event](#event) to a target [endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
+* The `action` range is limited to the set of [actions](#actions) described in this specification and no other.
 
 <a name="annotationProfile" />
 
 ### 2.3.2 Annotation Profile
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
-#### Supported events
+#### Minimum Conformance
+Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported actions are considered optional.
+
+#### Supported Events
 [AnnotationEvent](#annotationEvent)
 
-#### Generated annotations
+#### Supported Actors
+[Person](#person)
+
+#### Supported Objects
+[DigitalResource](#digitalResource), [AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Frame](#frame), [Page](#page), [WebPage](#webpage)
+
+#### Generated Annotations
 [Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `generated` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
-| [AnnotationEvent](#annotationEvent) | [UUID](#uuidDef) | `AnnotationEvent` | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | DateTime | [BookmarkAnnotation](#bookmarkAnnotation) |
-| [AnnotationEvent](#annotationEvent) |[UUID](#uuidDef) | `AnnotationEvent` | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | DateTime | [HighlightAnnotation](#highlightAnnotation) |
-| [AnnotationEvent](#annotationEvent) | [UUID](#uuidDef) | `AnnotationEvent` | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | DateTime | [SharedAnnotation](#sharedAnnotation) |
-| [AnnotationEvent](#annotationEvent) | [UUID](#uuidDef) | `AnnotationEvent` | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) | DateTime | [TagAnnotation](#tagAnnotation) |
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | The learner's `generated` [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified. | Required |
+| [AnnotationEvent](#annotationEvent) | [Highlighted](#highlighted) | The learner's `generated` [HighlightAnnotation](#highlightAnnotation) SHOULD be specified. | Optional |
+| [AnnotationEvent](#annotationEvent) | [Shared](#shared) | The learner's `generated` [SharedAnnotation](#sharedAnnotation) SHOULD be specified. | Optional |
+| [AnnotationEvent](#annotationEvent) | [Tagged](#tagged) | The learner's `generated` [TaggedAnnotation](#taggedAnnotation) SHOULD be specified. | Optional |
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AnnotationEvent](#annotationEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described below.
-* The annotated [DigitalResource](#digitalResource) MUST be specified as the `object` of the interaction.
-* Although optional the `generated` [Annotation](#annotation) SHOULD be specified.
-
-#### Minimum conformance
-Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported events are considered optional.
+* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
+* Although optional, the `generated` [Annotation](#annotation) subtype associated with the `action` described SHOULD be specified.
 
 <a name="assessmentProfile" />
 
 ### 2.3.3 Assessment Profile
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.  Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile.
 
-#### Supported events
+#### Minimum Conformance
+Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
+
+#### Supported Events
 [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Generated responses
-[Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+#### Supported Actors
+[Person](#person)
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `generated` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
-| [AssessmentEvent](#assessmentEvent) | [UUID](#uuidDef) | `AssessmentEvent` | [Person](#person) | [Started](#started) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) |
-| [AssessmentEvent](#assessmentEvent) | [UUID](#uuidDef) | `AssessmentEvent` | [Person](#person) | [Paused](#paused) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) |
-| [AssessmentEvent](#assessmentEvent) | [UUID](#uuidDef) | `AssessmentEvent` | [Person](#person) | [Restarted](#restarted) | [Assessment](#assessment) | DateTime | [Attempt](#attempt) |
-| [AssessmentEvent](#assessmentEvent) | [UUID](#uuidDef) | `AssessmentEvent` | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; |
-| [AssessmentItemEvent](#assessmentItemEvent) | [UUID](#uuidDef) | `AssessmentItemEvent` | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | DateTime | [Attempt](#attempt) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [UUID](#uuidDef) | `AssessmentItemEvent` | [Person](#person) | [Skipped](#skipped)  | [AssessmentItem](#assessmentItem) | DateTime | &nbsp; |
-| [AssessmentItemEvent](#assessmentItemEvent) | [UUID](#uuidDef) | `AssessmentItemEvent` | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | [Response](#response) |
-| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment) | DateTime | &nbsp; |
-| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment) | DateTime | &nbsp; |
+#### Supported Objects
+[Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt)
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
-* A [Person](#person) MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* The choice of `object` depends on the action initiated.  For [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) and [AssessmentEvent](#assessmentEvent) [Submitted](#submitted) actions the learner's [Attempt](#attempt) MUST be specified as the `object`.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Assessment](#assessment), [AssessmentItem](#assessmentItem), [Attempt](#attempt), [Response](#response) or one of its subtypes.
-* For a [Started](#started) action the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For an [AssessmentItemEvent](#assessmentItemEvent) [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.
+#### Generated Entities
+[Attempt](#attempt), [Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [AssessmentEvent](#assessmentEvent) | [Started](#started) | The [Assessment](#assessment) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
+| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | The learner's [Attempt](#attempt) MUST be specified as the `object`. | Required |
+| [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Restarted](#restarted) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | The [AssessmentItem](#assessmentItem) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD be specified. | Required |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | The learner's [Attempt](#attempt) MUST be specified as the `object`.  The learner's `generated` [Response](#response) MAY be specified. | Required |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem).  When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`. | Optional |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem). | Optional |
+
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
+* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
-
-#### Minimum conformance
-Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events are considered optional. 
 
 <a name="assignableProfile" />
 
 ### 2.3.4 Assignable Profile
-The Assignable Profile models activities associated with digital content assigned to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted. 
+The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.
 
-#### Supported events
+#### Minimum Conformance
+Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#endpoint). The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
+
+#### Supported Events
 [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `generated` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
-| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | [Attempt](#attempt) |
-| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | DateTime | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | DateTime | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [UUID](#uuidDef) | `AssignableEvent` | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | DateTime | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; |
-| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | DateTime | &nbsp; |
+#### Supported Actors
+[Person](#person)
 
-#### Requirements 
-* Certain [Event](#event) properties are required and MUST be specified when creating an [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
-* A [Person](#person) MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* For [AssignableEvent](#assignableEvent) [Completed](#completed), [Submitted](#submitted) or [Reviewed](#reviewed) actions the learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction; otherwise the [Attempt](#attempt) SHOULD be specified as the `generated` object.  For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [AssignableDigitalResource](#assignableDigitalResource), one of it subtypes, or a learner's [Attempt](#attempt).
-* When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+#### Supported Objects
+[AssignableDigitalResource](#assignableDigitalResource)
 
-#### Minimum conformance
-Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#endpoint). The [Started](#started) and [Completed](#completed) actions are required and MUST be implemented.  All other supported events are considered optional.
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [AssignableEvent](#assignableEvent) | [Started](#started) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
+| [AssignableEvent](#assignableEvent) | [Completed](#completed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Required |
+| [AssignableEvent](#assignableEvent) | [Activated](#activated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Reset](#reset) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Reviewed](#reviewed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  When navigating to an [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
+* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
 
 <a name="forumProfile" />
 
 ### 2.3.5 Forum Profile
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
-#### Supported events
+#### Minimum Conformance
+Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Posted](#posted) action is required and MUST be implemented.  All other supported events and actions are considered optional.
+
+#### Supported Events
 [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- |
-| [ForumEvent](#forumEvent) | [UUID](#uuidDef) | `ForumEvent` | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | DateTime |
-| [ForumEvent](#forumEvent) | [UUID](#uuidDef) | `ForumEvent` | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | DateTime |
-| [MessageEvent](#messageEvent) | [UUID](#uuidDef) | `MessageEvent` | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | DateTime |
-| [MessageEvent](#messageEvent) | [UUID](#uuidDef) | `MessageEvent` | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Message](#message) | DateTime |
-| [MessageEvent](#messageEvent) | [UUID](#uuidDef) | `MessageEvent` | [Person](#person) | [Posted](#posted) | [Message](#message) | DateTime |
-| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime |
-| [ThreadEvent](#threadEvent) | [UUID](#uuidDef) | `ThreadEvent` | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | DateTime |
-| [ThreadEvent](#threadEvent) | [UUID](#uuidDef) | `ThreadEvent` | [Person](#person) | [markedAsUnRead](#markedAsUnRead) | [Thread](#thread) | DateTime |
-| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | DateTime |
+#### Supported Actors
+[Person](#person)
 
-#### Requirements 
-* Certain [Event](#event) properties are required and MUST be specified when creating a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
-* A [Person](#person) MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* For a [ForumEvent](#forumEvent) the `object` range is limited to [Forum](#forum); for a [ThreadEvent](#threadEvent) the `object` range is limited to [Thread](#thread); for a [MessageEvent](#messageEvent) the `object` range is limited to [Message](#message); for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).
-* When a [MessageEvent](#messageEvent) represents a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
-* Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by judicious use of the inherited [DigitalResource](#digitalResource) `isPartOf` property.
-* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+#### Supported Objects
+[Forum](#forum), [Message](#message), [Thread](#thread)
 
-#### Minimum conformance
-Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Posted](#posted) action is required and MUST be implemented.  All other supported events are considered optional.
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | The [Forum](#forum) MUST be specified as the `object`. | Optional |
+| [ForumEvent](#forumEvent) | [Unsubscribed](#unsubscribed) | The [Forum](#forum) MUST be specified as the `object`. | Optional |
+| [MessageEvent](#messageEvent) | [Posted](#posted) | The [Message](#message) MUST be specified as the `object`.   When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property. | Required |
+| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead) | The [Message](#message) MUST be specified as the `object`. | Optional |
+| [MessageEvent](#messageEvent) | [MarkedAsUnRead](#markedAsUnRead) | The [Message](#message) MUST be specified as the `object`. | Optional |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | The `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).  When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead) | The [Thread](#thread) MUST be specified as the `object`. | Optional |
+| [ThreadEvent](#threadEvent) | [MarkedAsUnRead](#markedAsUnRead) | The [Thread](#thread) MUST be specified as the `object`. | Optional |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | The `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message). | Optional |
+
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
+* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
+* Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by judicious use of the `isPartOf` property.
 
 <a name="gradingProfile" />
 
 ### 2.3.6 Grading Profile
 The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. The Grading Profile replaces the Caliper 1.0 Outcomes Profile.
 
-#### Supported events
+#### Minimum Conformance
+Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  The [Graded](#graded) action is required and MUST be implemented.
+
+#### Supported Events
 [OutcomeEvent](#outcomeEvent)
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `generated` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
-| [OutcomeEvent](#outcomeEvent) | [UUID](#uuidDef) | `OutcomeEvent` | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | DateTime | [Result](#result) |
+#### Supported Actors
+[Agent](#agent) and its subtypes 
 
-**TODO: ADD ViewEvent, as in view the Result?**
+#### Supported Objects
+[Attempt](#attempt), [Result](#result)
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating an [OutcomeEvent](#outcomeEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
-* A generic [Agent](#agent) or one of its subtypes, typically, [Person](#person), [Group](#group), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* The learner's [Attempt](#attempt) MUST be specified as the `object` of the interaction.
-* The `generated` [Result](#result) SHOULD also be specified.
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [OutcomeEvent](#outcomeEvent) | [Graded](#graded) | For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.  The learner's [Attempt](#attempt) MUST be specified as the `object`.  The `generated` [Result](#result) SHOULD also be specified. | Required |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | The graded [Result](#result) MUST be specified as the `object`. | Optional |
 
-#### Minimum conformance
-Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  The [Graded](#graded) action is required and MUST be implemented.
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
+* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
 
 <a name="mediaProfile" />
 
 ### 2.3.7 Media Profile
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
-#### Supported events
+#### Minimum Conformance
+Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
+
+#### Supported Events
 [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
+
+#### Supported Actors
+[Person](#person)
+
+#### Supported Objects
+[MediaObject](#mediaObject), [AudioObject](#audioObject), [ImageObject](#imageObject), [VideoObject](#videoObject)
+
+#### Supported Targets
+[MediaLocation](#mediaLocation)
  
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `target` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | -------- |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) |  [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Rewound](#rewound) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ChangedSize](#changedSize) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ChangedSpeed](#changedSpeed) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ChangedVolume](#changedVolume) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [EnteredFullScreen](#enteredFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ExitedFullScreen](#exitedFullScreen) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Muted](#muted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [UUID](#uuidDef) | `MediaEvent` | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | DateTime | [MediaLocation](#mediaLocation) |
-| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | DateTime | &nbsp; |
-| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` | [Person](#person) | [Viewed](#viewed)  | [MediaObject](#mediaObject) | DateTime | &nbsp; |
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [MediaEvent](#mediaEvent) | [Started](#started) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Required |
+| [MediaEvent](#mediaEvent) | [Paused](#paused) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Required |
+| [MediaEvent](#mediaEvent) | [Resumed](#resumed) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Required |
+| [MediaEvent](#mediaEvent) | [Ended](#ended) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Required |
+| [MediaEvent](#mediaEvent) | [ForwardedTo](#forwardedTo) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [JumpedTo](#jumpedTo) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [Rewound](#rewound) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [ChangedResolution](#changedResolution) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [ChangedSize](#changedSize) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [ChangedSpeed](#changedSpeed) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [ChangedVolume](#changedVolume) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [EnteredFullScreen](#enteredFullScreen) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [ExitedFullScreen](#exitedFullScreen) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. |  Optional |
+| [MediaEvent](#mediaEvent) | [Muted](#muted) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [Unmuted](#unmuted) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [OpenedPopout](#openedPopout) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [MediaEvent](#mediaEvent) | [ClosedPopout](#closedPopout) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Optional |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | When navigating to a [MediaObject](#mediaObject) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed)  | The `object` range is limited to [ImageObject](#imageObject). | Optional |
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating a [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* A [MediaObject](#mediaObject) or one of its subtypes MUST be specified as the `object` of the interaction.
-* A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
-* When navigating to a [MediaObject](#mediaObject) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* For a [MediaEvent](#mediaEvent) the `object` range is limited to [MediaObject](#mediaObject) or its subtypes; for a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [MediaObject](#mediaObject) or one of it subtypes.
-
-#### Minimum conformance
-Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started), [Paused](#paused), [Resumed](#resumed) and [Ended](#ended) actions are required and MUST be implemented.  All other supported events are considered optional.
+* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
 
 <a name="readingProfile" />
 
 ### 2.3.8 Reading Profile
 The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
 
-#### Supported events
+#### Minimum Conformance
+Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target endpoint.  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
+
+#### Supported Events
 [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `target` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | -------- |
-| [NavigationEvent](#navigationEvent) | [UUID](#uuidDef) | `NavigationEvent` |  [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) |
-| [ViewEvent](#viewEvent) | [UUID](#uuidDef) | `ViewEvent` |  [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | DateTime | [Frame](#frame) |
+#### Supported Actors
+[Person](#person)
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
+#### Supported Objects
+[DigitalResource](#digitalResource), [AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Frame](#frame), [Page](#page), [WebPage](#webpage)
+
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.  When navigating to a [DigitalResource](#digitalResource) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Required |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) | A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location. | Required |
+
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* For a [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) the `object` of the interaction is limited to [DigitalResource](#digitalResource) or one of it subtypes.
-* If relevant, a [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
-* When navigating to a [DigitalResource](#digitalResource) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-
-#### Minimum conformance
-Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target endpoint.  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
+* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
 
 <a name="sessionProfile" />
 
 ### 2.3.9 Session Profile
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
-#### Supported events
+#### Minimum Conformance
+Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The [LoggedIn](#loggedIn) action is required and MUST be implemented.
+
+#### Supported Events
 [SessionEvent](#sessionEvent)
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` | `session` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- | ----------- |
-| [SessionEvent](#sessionEvent) | [UUID](#uuidDef) | `SessionEvent` | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) |
-| [SessionEvent](#sessionEvent) | [UUID](#uuidDef) | `SessionEvent` | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | DateTime | [Session](#session) |
-| [SessionEvent](#sessionEvent) | [UUID](#uuidDef) | `SessionEvent` | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | DateTime | &nbsp; |
+#### Supported Actors
+[Person](#person), [SoftwareApplication](#softwareApplication)
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating a [SessionEvent](#sessionEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
+#### Supported Objects
+[Session](#session), [SoftwareApplication](#softwareApplication)
+
+#### Supported Targets
+[DigitalResource](#digitalResource)
+
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | A [Person](#person) MUST be specified as the `actor`.  The [SoftwareApplication](#softwareApplication) MUST be specified as the `object`.  If the `actor` is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction. | Required |
+| [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | A [Person](#person) MUST be specified as the `actor`.  The [SoftwareApplication](#softwareApplication) MUST be specified as the `object`. | Optional |
+| [SessionEvent](#sessionEvent) | [TimedOut](#timedOut) | A [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`. | Optional |
+
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * The choice of `actor` depends on the action initiated.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.
-* When logging in or out of a [SoftwareApplication](#softwareApplication), the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
-* Although the [SessionEvent](#sessionEvent) `session` property is optional, the relevant user [Session](#session) SHOULD be specified.
-
-#### Minimum conformance
-Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The [LoggedIn](#loggedIn) action is required and MUST be implemented.
+* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
+* Although optional, the relevant user `session` SHOULD be specified.
 
 <a name="toolUseProfile" />
 
 ### 2.3.10 Tool Use Profile
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
-#### Supported events
+#### Minimum Conformance
+Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  The [Used](#used) action is required and MUST be implemented.
+
+#### Supported Events
 [ToolUseEvent](#toolUseEvent)
 
-#### Supported actions
-| Event | `id` | `type` | `actor` | `action` | `object` | `dateTime` |
-| ----- | ---- | ------ | ------  | -------- | -------- | ---------- |
-| [ToolUseEvent](#toolUseEvent) | [UUID](#uuidDef) | `ToolUseEvent` | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) | DateTime |
+#### Supported Actors
+[Person](#person)
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified when creating a [ToolUseEvent](#toolUseEvent).  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional.
+#### Supported Objects
+[SoftwareApplication](#softwareApplication)
+
+#### Supported Actions
+| Event | Action | Description | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [ToolUseEvent](#toolUseEvent) | A [SoftwareApplication](#softwareApplication) MUST be specified as the `object`. | Required |
+
+#### General Requirements
+* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor`.
-* The `action` value range is scoped by event and limited to the supported actions described above.
-* A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
-
-#### Minimum conformance
-Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  The [Used](#used) action is required and MUST be implemented.
+* The `action` range is scoped by event and limited to the supported actions described above.
+* A [SoftwareApplication](#softwareApplication) MUST be specified as the `object`.
 
 <a name="jsonld" />
 
@@ -1104,7 +1154,7 @@ http://purl.imsglobal.org/caliper/Event
 | id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
 | actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person]([#person), [Organization]([#organization) or [SoftwareApplication](#softwareApplication), MUST be specified.  The `actor` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` value range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified.  The `object` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to the target entity's [IRI](#iriDef). | Optional |
