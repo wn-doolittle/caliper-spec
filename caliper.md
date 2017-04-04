@@ -441,7 +441,7 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | When navigating to a [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; |
 
 <a name="forumProfile" />
@@ -469,7 +469,7 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 | [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property. |
 | [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsRead](#markedAsRead) | &nbsp; |
 | [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsUnRead](#markedAsUnRead) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | &nbsp; |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; |
@@ -542,7 +542,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) |When navigating to a [MediaObject](#mediaObject) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) |When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [ImageObject](#imageObject), [VideoObject](#videoObject). | &nbsp; |
 
 <a name="readingProfile" />
@@ -565,7 +565,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 #### Supported Actions
 | Event | Actor |	Action | Object |	Notes |
 | :---- | :---- | :----- | :----- | :---- |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.  When navigating to a [DigitalResource](#digitalResource) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.  When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location. |
 
 <a name="sessionProfile" />
