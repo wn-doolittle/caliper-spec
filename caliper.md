@@ -346,7 +346,7 @@ Create and send a generic Caliper [Event](#event) to a target [Endpoint](#endpoi
 
 #### Supported Actions
 | Event | Actor |	Action | Object |	Notes |	Conformance |
-| :---- | : ----| :----- | : ---- | :---- | :---------: |
+| :---- | : --- | :----- | : ---- | :---- | :---------: |
 | [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) | &nbsp; | See above |
 
 #### General Requirements
@@ -376,7 +376,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#e
 
 #### Supported Actions
 | Event | Actor |	Action | Object |	Notes |	Conformance |
-| :---- | : ----| :----- | : ---- | :---- | :---------: |
+| :---- | : --- | :----- | : ---- | :---- | :---------: |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | The learner's `generated` [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified. | Required |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | The learner's `generated` [HighlightAnnotation](#highlightAnnotation) SHOULD be specified. | Optional |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | The learner's `generated` [SharedAnnotation](#sharedAnnotation) SHOULD be specified. | Optional |
@@ -411,7 +411,7 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#e
 
 #### Supported Actions
 | Event | Actor |	Action | Object |	Notes |	Conformance |
-| :---- | : ----| :----- | : ---- | :---- | :---------: |
+| :---- | : --- | :----- | : ---- | :---- | :---------: |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | The [Assessment](#assessment) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | The learner's [Attempt](#attempt) MUST be specified as the `object`. | Required |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
