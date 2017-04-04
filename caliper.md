@@ -330,10 +330,10 @@ The following metric profiles are currently available and are summarized individ
 <a name="basicProfile" />
 
 ### 2.3.1 Basic Profile
-The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.
+The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
 #### Minimum Conformance
-Create and send a generic Caliper [Event](#event) to a target [endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
+Create and send a generic Caliper [Event](#event) to a target [Endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
 
 #### Supported Events
 [Event](#event)
@@ -345,7 +345,9 @@ Create and send a generic Caliper [Event](#event) to a target [endpoint](#endpoi
 [Entity](#entity) and its subtypes.
 
 #### Supported Actions
-Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
+| Event | Actor |	Action | Object |	Notes |	Conformance |
+| :---- | : ----| :----- | : ---- | :---- | :---------: |
+| [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) | &nbsp; | See above |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -373,18 +375,18 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#e
 [Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Supported Actions
-| Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------: |
-| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | The learner's `generated` [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified. | Required |
-| [AnnotationEvent](#annotationEvent) | [Highlighted](#highlighted) | The learner's `generated` [HighlightAnnotation](#highlightAnnotation) SHOULD be specified. | Optional |
-| [AnnotationEvent](#annotationEvent) | [Shared](#shared) | The learner's `generated` [SharedAnnotation](#sharedAnnotation) SHOULD be specified. | Optional |
-| [AnnotationEvent](#annotationEvent) | [Tagged](#tagged) | The learner's `generated` [TaggedAnnotation](#taggedAnnotation) SHOULD be specified. | Optional |
+| Event | Actor |	Action | Object |	Notes |	Conformance |
+| :---- | : ----| :----- | : ---- | :---- | :---------: |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | The learner's `generated` [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified. | Required |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | The learner's `generated` [HighlightAnnotation](#highlightAnnotation) SHOULD be specified. | Optional |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | The learner's `generated` [SharedAnnotation](#sharedAnnotation) SHOULD be specified. | Optional |
+| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) | The learner's `generated` [TaggedAnnotation](#taggedAnnotation) SHOULD be specified. | Optional |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
 * Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor`.
-* The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
+* The `action` range is limited to the supported actions described above.
 * Although optional, the `generated` [Annotation](#annotation) subtype associated with the `action` described SHOULD be specified.
 
 <a name="assessmentProfile" />
@@ -408,18 +410,18 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#e
 [Attempt](#attempt), [Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Supported Actions
-| Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------: |
-| [AssessmentEvent](#assessmentEvent) | [Started](#started) | The [Assessment](#assessment) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
-| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | The learner's [Attempt](#attempt) MUST be specified as the `object`. | Required |
-| [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssessmentEvent](#assessmentEvent) | [Restarted](#restarted) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | The [AssessmentItem](#assessmentItem) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD be specified. | Required |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | The learner's [Attempt](#attempt) MUST be specified as the `object`.  The learner's `generated` [Response](#response) MAY be specified. | Required |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem).  When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`. | Optional |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem). | Optional |
+| Event | Actor |	Action | Object |	Notes |	Conformance |
+| :---- | : ----| :----- | : ---- | :---- | :---------: |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | The [Assessment](#assessment) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | The learner's [Attempt](#attempt) MUST be specified as the `object`. | Required |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD be specified. | Required |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | The learner's [Attempt](#attempt) MUST be specified as the `object`.  The learner's `generated` [Response](#response) MAY be specified. | Required |
+| [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem).  When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`. | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem). | Optional |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
@@ -658,15 +660,15 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 [SoftwareApplication](#softwareApplication)
 
 #### Supported Actions
-| Event |	Action |	Description |	Conformance |
-| :---- | :----- |  :---------- | :---------: |
-| ToolUseEvent | Used |	A [SoftwareApplication](#softwareApplication) MUST be specified as the `object`. | Required |
+| Event | Actor |	Action | Object |	Notes |	Conformance |
+| :---- | : ----| :----- | : ---- | :---- | :---------: |
+| ToolUseEvent | [Person](#person) | Used | [SoftwareApplication](#softwareApplication) | &nbsp;	 | Required |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
 * Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor`.
-* The `action` range is scoped by event and limited to the supported actions described above.
+* The `action` range is limited to the supported actions described above.
 * A [SoftwareApplication](#softwareApplication) MUST be specified as the `object`.
 
 <a name="jsonld" />
