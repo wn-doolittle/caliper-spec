@@ -412,22 +412,23 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#e
 #### Supported Actions
 | Event | Actor |	Action | Object |	Notes |	Conformance |
 | :---- | :---- | :----- | :----- | :---- | :---------: |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | The [Assessment](#assessment) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | The learner's [Attempt](#attempt) MUST be specified as the `object`. | Required |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD be specified. | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | The learner's [Attempt](#attempt) MUST be specified as the `object`.  The learner's `generated` [Response](#response) MAY be specified. | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem).  When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`. | Optional |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem). | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | Required |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | &nbsp; | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Attempt](#attempt) | &nbsp; | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | &nbsp; | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | The learner's `generated` [Attempt](#attempt) SHOULD be specified. | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | The learner's `generated` [Response](#response) MAY be specified. | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [Attempt](#attempt) | &nbsp; | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`. | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | Optional |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
 * Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
+* A [Person](#person) MUST be specified as the `actor`.
 * The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
-* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
+* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.  
 
 <a name="assignableProfile" />
 
@@ -452,20 +453,24 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#e
 #### Supported Actions
 | Event | Actor |	Action | Object |	Notes |	Conformance |
 | :---- | :---- | :----- | :----- | :---- | :---------: |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Attempt](#attempt) | [Completed](#completed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Attempt](#attempt) | [Submitted](#submitted) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Required |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [AssignableDigitalResource](#assignableDigitalResource) | [Activated](#activated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [AssignableDigitalResource](#assignableDigitalResource) | [Deactivated](#deactivated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Attempt](#attempt) | [Reset](#reset) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Attempt](#attempt) | [Reviewed](#reviewed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [AssignableDigitalResource](#assignableDigitalResource) | [NavigatedTo](#navigatedTo) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  When navigating to an [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | The learner's `generated` [Attempt](#attempt) SHOULD be specified. | Required |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | &nbsp; | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Required |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  When navigating to an [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
 * Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * The `action` range is scoped by the [Event](#event) subtype and limited to the supported actions described above.
+
+
+The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.
+The learner's [Attempt](#attempt) SHOULD be specified as the `object`.
 
 <a name="forumProfile" />
 
