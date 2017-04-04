@@ -417,8 +417,8 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#e
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD be specified. | Required |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | The learner's [Attempt](#attempt) MUST be specified as the `object`.  The learner's `generated` [Response](#response) MAY be specified. | Required |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD be specified. | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | The learner's [Attempt](#attempt) MUST be specified as the `object`.  The learner's `generated` [Response](#response) MAY be specified. | Optional |
 | [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [Attempt](#attempt) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem).  When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`. | Optional |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | The `object` range is limited to [Assessment](#assessment) or [AssessmentItem](#assessmentItem). | Optional |
@@ -444,20 +444,23 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#e
 [Person](#person)
 
 #### Supported Objects
-[AssignableDigitalResource](#assignableDigitalResource)
+[AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt)
+
+#### Generated Entities
+[Attempt](#attempt)
 
 #### Supported Actions
-| Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------: |
-| [AssignableEvent](#assignableEvent) | [Started](#started) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
-| [AssignableEvent](#assignableEvent) | [Completed](#completed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Required |
-| [AssignableEvent](#assignableEvent) | [Activated](#activated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Reset](#reset) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [AssignableEvent](#assignableEvent) | [Reviewed](#reviewed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  When navigating to an [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+| Event | Actor |	Action | Object |	Notes |	Conformance |
+| :---- | :---- | :----- | :----- | :---- | :---------: |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Attempt](#attempt) | [Completed](#completed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Attempt](#attempt) | [Submitted](#submitted) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Required |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [AssignableDigitalResource](#assignableDigitalResource) | [Activated](#activated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [AssignableDigitalResource](#assignableDigitalResource) | [Deactivated](#deactivated) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Attempt](#attempt) | [Reset](#reset) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Attempt](#attempt) | [Reviewed](#reviewed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [AssignableDigitalResource](#assignableDigitalResource) | [NavigatedTo](#navigatedTo) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  When navigating to an [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`. | Optional |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
@@ -482,17 +485,17 @@ Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Poste
 [Forum](#forum), [Message](#message), [Thread](#thread)
 
 #### Supported Actions
-| Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------: |
-| [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | The [Forum](#forum) MUST be specified as the `object`. | Optional |
-| [ForumEvent](#forumEvent) | [Unsubscribed](#unsubscribed) | The [Forum](#forum) MUST be specified as the `object`. | Optional |
-| [MessageEvent](#messageEvent) | [Posted](#posted) | The [Message](#message) MUST be specified as the `object`.   When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property. | Required |
-| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead) | The [Message](#message) MUST be specified as the `object`. | Optional |
-| [MessageEvent](#messageEvent) | [MarkedAsUnRead](#markedAsUnRead) | The [Message](#message) MUST be specified as the `object`. | Optional |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | The `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).  When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
-| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead) | The [Thread](#thread) MUST be specified as the `object`. | Optional |
-| [ThreadEvent](#threadEvent) | [MarkedAsUnRead](#markedAsUnRead) | The [Thread](#thread) MUST be specified as the `object`. | Optional |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) | The `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message). | Optional |
+| Event | Actor |	Action | Object |	Notes |	Conformance |
+| :---- | :---- | :----- | :----- | :---- | :---------: |
+| [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | The [Forum](#forum) MUST be specified as the `object`. | Optional |
+| [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | The [Forum](#forum) MUST be specified as the `object`. | Optional |
+| [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | The [Message](#message) MUST be specified as the `object`.   When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property. | Required |
+| [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsRead](#markedAsRead) | The [Message](#message) MUST be specified as the `object`. | Optional |
+| [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsUnRead](#markedAsUnRead) | The [Message](#message) MUST be specified as the `object`. | Optional |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | The `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message).  When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Optional |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | The [Thread](#thread) MUST be specified as the `object`. | Optional |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Thread](#thread) | The [Thread](#thread) MUST be specified as the `object`. | Optional |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | The `object` range is limited to [Forum](#forum), [Thread](#thread) or [Message](#message). | Optional |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
