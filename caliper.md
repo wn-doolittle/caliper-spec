@@ -374,7 +374,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [endpoint](#e
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :---------- | :---------: |
 | [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | The learner's `generated` [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified. | Required |
 | [AnnotationEvent](#annotationEvent) | [Highlighted](#highlighted) | The learner's `generated` [HighlightAnnotation](#highlightAnnotation) SHOULD be specified. | Optional |
 | [AnnotationEvent](#annotationEvent) | [Shared](#shared) | The learner's `generated` [SharedAnnotation](#sharedAnnotation) SHOULD be specified. | Optional |
@@ -409,7 +409,7 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [endpoint](#e
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :---------- | :---------: |
 | [AssessmentEvent](#assessmentEvent) | [Started](#started) | The [Assessment](#assessment) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
 | [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | The learner's [Attempt](#attempt) MUST be specified as the `object`. | Required |
 | [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
@@ -446,7 +446,7 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [endpoint](#e
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :---------- | :---------: |
 | [AssignableEvent](#assignableEvent) | [Started](#started) | The [AssignableDigitalResource](#assignableDigitalResource) MUST be specified as the `object`.  The learner's `generated` [Attempt](#attempt) SHOULD also be specified. | Required |
 | [AssignableEvent](#assignableEvent) | [Completed](#completed) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Optional |
 | [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | The learner's [Attempt](#attempt) SHOULD be specified as the `object`. | Required |
@@ -481,7 +481,7 @@ Create and send a [MessageEvent](#messageEvent) to a target endpoint. The [Poste
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :---------- | :---------: |
 | [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | The [Forum](#forum) MUST be specified as the `object`. | Optional |
 | [ForumEvent](#forumEvent) | [Unsubscribed](#unsubscribed) | The [Forum](#forum) MUST be specified as the `object`. | Optional |
 | [MessageEvent](#messageEvent) | [Posted](#posted) | The [Message](#message) MUST be specified as the `object`.   When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property. | Required |
@@ -517,7 +517,7 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target endpoint.  T
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :---------- | :---------: |
 | [OutcomeEvent](#outcomeEvent) | [Graded](#graded) | For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.  The learner's [Attempt](#attempt) MUST be specified as the `object`.  The `generated` [Result](#result) SHOULD also be specified. | Required |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) | The graded [Result](#result) MUST be specified as the `object`. | Optional |
 
@@ -548,7 +548,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
  
 #### Supported Actions
 | Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :---------- | :---------: |
 | [MediaEvent](#mediaEvent) | [Started](#started) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Required |
 | [MediaEvent](#mediaEvent) | [Paused](#paused) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Required |
 | [MediaEvent](#mediaEvent) | [Resumed](#resumed) | A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream. | Required |
@@ -596,7 +596,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :---------- | :---------: |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.  When navigating to a [DigitalResource](#digitalResource) or one of its subtypes the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. | Required |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) | A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location. | Required |
 
@@ -628,7 +628,7 @@ Create and send a [SessionEvent](#sessionEvent) to a target endpoint. The [Logge
 
 #### Supported Actions
 | Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :---------- | :---------: |
 | [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | A [Person](#person) MUST be specified as the `actor`.  The [SoftwareApplication](#softwareApplication) MUST be specified as the `object`.  If the `actor` is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction. | Required |
 | [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | A [Person](#person) MUST be specified as the `actor`.  The [SoftwareApplication](#softwareApplication) MUST be specified as the `object`. | Optional |
 | [SessionEvent](#sessionEvent) | [TimedOut](#timedOut) | A [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`. | Optional |
@@ -658,9 +658,9 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target endpoint.  T
 [SoftwareApplication](#softwareApplication)
 
 #### Supported Actions
-| Event | Action | Description | Conformance |
-| :---- | :----- | :---------- | :---------- |
-| [ToolUseEvent](#toolUseEvent) | [Used](#used) | A [SoftwareApplication](#softwareApplication) MUST be specified as the `object`. | Required |
+| Event |	Action |	Description |	Conformance |
+| :---- | :----- |  :---------- | :---------: |
+| ToolUseEvent | Used |	A SoftwareApplication MUST be specified as the object. | Required |
 
 #### General Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
