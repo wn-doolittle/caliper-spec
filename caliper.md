@@ -682,7 +682,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 #### Supported Actions
 | Event | Actor |	Action | Object |
 | :---- | :---- | :----- | :---- |
-| ToolUseEvent | [Person](#person) | Used | [SoftwareApplication](#softwareApplication) |
+| ToolUseEvent | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) |
 
 #### Requirements
 * Certain [ToolUseEvent](#toolUseEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ToolUseEvent](#toolUseEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
