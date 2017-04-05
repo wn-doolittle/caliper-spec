@@ -345,9 +345,9 @@ Create and send a generic Caliper [Event](#event) to a target [Endpoint](#endpoi
 [Entity](#entity) and its subtypes.
 
 #### Supported Actions
-| Event | Actor |	Action | Object |	Notes |
-| :---- | :---- | :----- | :----- | :---- |
-| [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) | &nbsp; |
+| Event | Actor |	Action | Object |
+| :---- | :---- | :----- | :----- |
+| [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) |
 
 #### Requirements
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -455,7 +455,7 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 #### Supported Actions
 | Event | Actor |	Action | Object |	Generated | Referrer |
 | :---- | :---- | :----- | :----- | :-------- | :------- |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource] | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
@@ -493,17 +493,17 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 [Forum](#forum), [Message](#message), [Thread](#thread)
 
 #### Supported Actions
-| Event | Actor |	Action | Object |	Generated | Referrer |
-| :---- | :---- | :----- | :----- | :-------- | :------- |
-| [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | &nbsp; | &nbsp; |
-| [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | &nbsp; | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | &nbsp; | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsRead](#markedAsRead) | &nbsp; | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsUnRead](#markedAsUnRead) | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | &nbsp; | &nbsp; |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; | &nbsp; |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; | &nbsp; |
+| Event | Actor |	Action | Object | Referrer |
+| :---- | :---- | :----- | :----- | :------- |
+| [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | &nbsp; |
+| [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | &nbsp; |
+| [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | &nbsp; |
+| [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsRead](#markedAsRead) | &nbsp; |
+| [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsUnRead](#markedAsUnRead) | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | &nbsp; |
+| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; |
 
 #### Requirements
 * Certain [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -580,7 +580,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSize](#changedSize) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSpeed](#changedSpeed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedVolume](#changedVolume) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaLocation](#mediaLocation) | &nbsp; |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [EnteredFullScreen](#enteredFullScreen) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ExitedFullScreen](#exitedFullScreen) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
@@ -653,7 +653,7 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 | :---- | :---- | :----- | :----- | :----- | :------ |
 | [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) |  [DigitalResource](#digitalResource) | [Session](#session) |
 | [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | &nbsp; | [Session](#session) |
-| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | &nbsp; | [Session](#session) |
+| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | &nbsp; |
 
 #### Requirements
 * Certain [SessionEvent](#sessionEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [SessionEvent](#sessionEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -681,7 +681,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 
 #### Supported Actions
 | Event | Actor |	Action | Object |
-| :---- | : ----| :----- | : ---- |
+| :---- | :---- | :----- | : ---- |
 | ToolUseEvent | [Person](#person) | Used | [SoftwareApplication](#softwareApplication) |
 
 #### Requirements
