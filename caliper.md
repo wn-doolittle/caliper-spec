@@ -416,7 +416,7 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | &nbsp; | &nbsp; | 
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | [Attempt](#attempt) | [Assessment](#assessment) |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | [Response](#response) | [AssessmentItem](#assessmentItem) |
 | [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [Attempt](#attempt) | &nbsp; | [AssessmentItem](#assessmentItem) |
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
@@ -681,7 +681,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 
 #### Supported Actions
 | Event | Actor |	Action | Object |
-| :---- | :---- | :----- | : ---- |
+| :---- | :---- | :----- | :---- |
 | ToolUseEvent | [Person](#person) | Used | [SoftwareApplication](#softwareApplication) |
 
 #### Requirements
