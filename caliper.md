@@ -696,9 +696,6 @@ Over the last decade the advent of cloud-based, networked applications have led 
 
 Exchanging data linked to other data distributed across a wide network requires both a simple, well-understood data-interchange format as well as means of defining unambiguously the underlying semantics or meaning intended for the data structures transmitted from one machine to another.  [JSON-LD](#jsonldDef) provides Caliper with an economical syntax for representing learning activity data as [Linked Data](#linkedData) using [JSON](#jsonDef) as the underlying data-interchange format.  For Caliper,  [JSON-LD](#jsonldDef) provides the necessary representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.
 
-<a name="jsonld" />
-JSON-LD syntax
-
 <a name="jsonldContext" />
 
 ### 3.1 Context
