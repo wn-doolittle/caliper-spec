@@ -35,7 +35,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
       * 2.3.8 [Reading Profile](#readingProfile)
       * 2.3.9 [Session Profile](#sessionProfile)
       * 2.3.10 [Tool Use Profile](#toolUseProfile)
-* 3.0 [JSON-LD](#jsonld)
+* 3.0 [Data Exchange](#dataExchange)
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types](#jsonldTypes)
@@ -181,7 +181,7 @@ __ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the a
 
 <a name="linkedDataDef" /> 
  
-__Linked Data__: A set of design principles first articulated by Tim Berners-Lee for connecting structured data over the Web.
+__Linked Data__: A set of design principles first articulated by Tim Berners-Lee for discovering, connecting and sharing structured data over the Web.  The principles can be summarized as follows: use [IRIs](#iriDef)/[URIs](#uriDef) as names for things; use HTTP [IRIs](#iriDef)/[URIs](#uriDef) so that information about things (e.g., people, objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of their [IRIs](#iriDef)/[URIs](#uriDef) in order to promote discovery of new relationships between things.
  
 <a name="ltiDef" />
  
@@ -689,28 +689,32 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 * Each [Entity](#entity) participating in the [ToolUseEvent](#toolUseEvent) MUST be expressed either as an \<Object\> or coerced to a \<string\> corresponding to it's [IRI](#iriDef).
 * The `action` vocabulary is limited to the supported actions described in the profile.
 
+<a name="dataExchange" />
+
+## 3.0 Data Exchange
+Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) can link to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data and so on, the sources for are likely diverse and the opportunities for discovering new relationships between the entities represented therein both numerous as well as enlightening.
+
+Exchanging data linked to other data distributed across a wide network requires both a simple, well-understood data-interchange format as well as means of defining unambiguously the underlying semantics or meaning intended for the data structures transmitted from one machine to another.  [JSON-LD](#jsonldDef) provides Caliper with an economical syntax for representing learning activity data as [Linked Data](#linkedData) using [JSON](#jsonDef) as the underlying data-interchange format.  For Caliper,  [JSON-LD](#jsonldDef) provides the necessary representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.
+
 <a name="jsonld" />
-
-## 3.0 JSON-LD
-Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) links to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data and so on.  [JSON-LD](#jsonldDef), Caliper's chosen syntax for describing learning activity data as [Linked Data](#linkedData) using a JSON-based interchange format, provides the necessary representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.  
-
-The [Linked Data](#linkedData) principles first outlined by Tim Berners-Lee that inform today’s Semantic Web technologies also influence [JSON-LD](#jsonldDef) and Caliper: use [IRIs](#iriDef)/URIs as names for things; use HTTP [IRIs](#iriDef)/URIs so that information about things (e.g., people, objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of their [IRIs](#iriDef)/URIs in order to promote discovery of new relationships between things.  [JSON-LD](#jsonldDef) abides by these “rules”. It features a lightweight syntax and a JSON-based format for serializing [Linked Data](#linkedData).  [JSON-LD](#jsonldDef) encourages use of globally unique, persistent, dereferenceable [IRIs](#iriDef) for entities (i.e., nodes) and attributes.  [JSON-LD](#jsonldDef) also provides a means of expressing relationships between entities as a directed graph.  Crucially, for machine-to-machine data exchange, [JSON-LD](#jsonldDef) provides Caliper with a mechanism for rendering comprehensible the underlying semantics of its JSON-based documents via a mapping of its [Terms](#terms) to one or more published vocabularies.  In a world where learners now interact with an array of learning applications the need to aggregate data streams generated from multiple sources in order to discern patterns and behaviors that transcend application boundaries is of vital importance. 
+JSON-LD syntax
 
 <a name="jsonldContext" />
 
 ### 3.1 Context
-**TODO FORBID OVERRIDING OF CALIPER DEFINED KEYS, i.e., caliper:Person overridden as schema:Person by a trailing local context.**
+Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@context` keyword, a property employed to map document [Terms](#termDef) to [IRIs](#iriDef) to one or more published vocabularies.  Inclusion of a [JSON-LD](#jsonldDef) context provides an economical way for Caliper to communicate document semantics to services interested in consuming Caliper event data.
 
-Caliper [JSON-LD](#jsonldDef) documents feature a context, denoted by the `@context` keyword, that is employed to map document [Terms](#termDef) to [IRIs](#iriDef) that then link out to one or more controlled vocabularies.  Inclusion of a [JSON-LD](#jsonldDef) context provides an economical way for Caliper to communicate document semantics to services interested in consuming Caliper event data.
+[Linked Data](#linkedData) utilizes [IRIs](#iriDef)/[URIs](#uriDefs) to specify meaning.  The Caliper context  . . .
 
-[JSON-LD](#jsonldDef) contexts can be inserted inline or located in a file external to the document and referenced.  In the case of Caliper an external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) is available and MUST be referenced in Caliper [JSON-LD](#jsonldDef) documents.  Each Caliper [Event](#event) and [Entity](#entity) describe emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that provides a context definition.  That said, defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper JSON-LD document it SHOULD be omitted when serializing the object.  
+**TODO SHOW EXAMPLE CONTEXT DEFINITIONS**
 
-**TODO craft a new example, this is one is used elsewhere**
+[JSON-LD](#jsonldDef) contexts can be inserted inline or located in a file external to the document and referenced.  In the case of Caliper an external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) is available and MUST be referenced in Caliper [JSON-LD](#jsonldDef) documents.  Each Caliper [Event](#event) and [Entity](#entity) *describe* emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that provides a context definition.
 
-#### Example: remote Caliper context
+#### Example: remote IMS Caliper context
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
   "type": "Event",
   "actor": {
     "id": "https://example.edu/users/554433",
@@ -721,19 +725,27 @@ Caliper [JSON-LD](#jsonldDef) documents feature a context, denoted by the `@cont
     "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
     "type": "Document",
     "name": "Course Syllabus",
-    "dateCreated": "2017-11-12T07:15:00.000Z",
+    "dateCreated": "2016-11-12T07:15:00.000Z",
     "version": "1"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
-  "uuid": "3a648e68-f00d-4c08-aa59-8738e1884f2c"
+  "eventTime": "2016-11-15T10:15:00.000Z"
+}
+```
+
+A [JSON-LD](#jsonldDef) document can reference more than one context.  Additional contexts MAY be defined for a Caliper [Event](#event) in order to ascribe meaning to terms not defined by the model.  However, Caliper-defined terms MUST NOT be overridden by any additional contexts added to the document.  Defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing the object.  
+
+#### Example: using multiple contexts
+```json
+{
+ TODO
 }
 ```
 
 <a name="jsonldIdentifiers" />
 
 ### 3.2 Identifiers
-[Linked Data](#linkedData) relies on [IRIs](#iriDef)/URIs for the identification and retrieval of resources.  Likewise, [JSON-LD](#jsonldDef) specifies the use of [IRIs](#iriDef) for identifying most nodes (i.e., JSON objects) and their attributes.  In JSON-LD, IRIs may be represented either as an absolute IRI containing a scheme, path and optional query and fragment segments or as a relative IRI minus the scheme and/or domain that is resolved relative to a base IRI.  If an [IRI](#iriDef) is deemed inappropriate for the resource a [blank node](#blankNodeDef) identifier may be assigned.  [JSON-LD](#jsonldDef) provides a special `@id` keyword for assigning identifiers to nodes.
-   
+[Linked Data](#linkedData) relies on [IRIs](#iriDef)/[URIs](#uriDefs) for the identification and retrieval of resources.  Likewise, [JSON-LD](#jsonldDef) specifies the use of [IRIs](#iriDef) for identifying most nodes (i.e., JSON objects) and their attributes.  In [JSON-LD](#jsonldDef), [IRIs](#iriDef) may be represented either as an absolute IRI containing a scheme, path and optional query and fragment segments or as a relative IRI minus the scheme and/or domain that is resolved relative to a base IRI.  If an [IRI](#iriDef) is deemed inappropriate for the resource a [blank node](#blankNodeDef) identifier may be assigned.  [JSON-LD](#jsonldDef) provides a special `@id` keyword for assigning identifiers to nodes.
+    
 In Caliper, the [JSON-LD](#jsonldDef) `@id` keyword is aliased as `id` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  This is done in order to avoid the temptation of employing [JSON-LD](#jsonldDef) keywords as JSON object property names and is aligned with [JSON-LD](#jsonldDef) community practice.  Thus, each Caliper [Entity](#entity) described by the information model is provisioned with an `id` rather than `@id` property for identifying the resource.  
 
 A Caliper [JSON-LD](#jsonldDef) document is a representation of a directed graph.  Every [Entity](#entity) associated with a Caliper [Event](#event) MUST be assigned an `id` in the form of a valid [IRI](#iriDef) or a blank node identifier. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity).  Use of the URN scheme in place of an [IRI](#iriDef) is inappropriate since such an identifier precludes the possibility of locating and retrieving the named resource.
