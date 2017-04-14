@@ -38,9 +38,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 3.0 [Serialization of the Model](#dataSerialization)
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
-  * 3.3 [Types](#jsonldTypes)
-  * 3.4 [Type Coercion](#jsonldTypeCoercion)
-  * 3.5 [Processing Algorithms](#jsonldProcessing)
+  * 3.3 [Types and Type Coercion](#jsonldTypes)
+  * 3.4 [Processing Algorithms](#jsonldProcessing)
 * 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#sensorBehavior)
   * 4.2 [Envelope](#sensorEnvelope)
@@ -724,7 +723,7 @@ Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@con
 
 A [JSON-LD](#jsonldDef) document can reference more than one context.  Additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *describe* in order to ascribe meaning to terms not defined by the model.  However, Caliper-defined terms MUST NOT be overridden by additional contexts added to the document ([JSON-LD](#jsonldDef) relies on a "most-recently-defined-wins" approach when parsing duplicate terms).  Defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing the object.  
 
-#### Example: using multiple contexts (external and in-line)
+#### Example: using multiple contexts in an Entity describe (external and in-line)
 ```json
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -794,7 +793,7 @@ Each [Event](#event) MUST be assigned an identifier in the form of a [UUID](#uui
 ### 3.3 Types and Type Coercion
 [JSON-LD](#jsonldDef) employs the `@type` keyword in two ways.  Individual nodes (i.e., the thing being described) can by assigned a type.  Values can also be associated with or *coerced* to a particular type.  As with the aliasing of the `@id` keyword, `@type` is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.
   
-The following example [MessageEvent](#messageEvent) utilizes an in-line context to illustrate how [JSON-LD](#jsonldDef) types can be specified.  The [MessageEvent](#messageEvent), [Person](#person) and [Message](#message) terms are all considered node types.  Other terms illustrate the *coercion* of the values to specified data types.  In the example below, the values of the `actor`, `object` and `edApp` terms are *coerced* to `@id` keyword.  This signals to a [JSON-LD](#jsonldDef) parser that if the value is set to a string (as is the case with `edApp`) it is to be interpreted as an [IRI](#iriDef).  In a like manner, the `action` the value is *coerced* to the `@vocab` keyword indicating that the value is to be interpreted as a [Term](#termDef) defined in the active context or as an [IRI](#iriDef); in this case *Posted*.  Terms such as `name`, `description`, `dateCreated`, `dateModified` and `duration` are *coerced* to a particular value type such as a string, integer, boolean or date.
+The following example [MessageEvent](#messageEvent) utilizes an in-line context to illustrate how [JSON-LD](#jsonldDef) types can be specified.  The [MessageEvent](#messageEvent), [Person](#person) and [Message](#message) terms are all considered node types.  Other terms illustrate the *coercion* of values to specified data types.  In the example below, the values of the `actor`, `object` and `edApp` terms are *coerced* to `@id` keyword.  This signals to a [JSON-LD](#jsonldDef) parser that if the value is set to a string (as is the case with `edApp`) it is to be interpreted as an [IRI](#iriDef).  In a like manner, the `action` value is *coerced* to the `@vocab` keyword indicating that the value is to be interpreted as a [Term](#termDef) defined in the active context or as an [IRI](#iriDef); in this case *Posted*.  Terms such as `name`, `description`, `dateCreated`, `dateModified` and `duration` are *coerced* to a particular value type such as a string, integer, boolean or date.
 
 Both node types and typed values are specified in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Implementors are encouraged to familiarize themselves with the term definitions described therein.
 
@@ -842,7 +841,7 @@ An [Endpoint](#endpoint) must be capable of interpreting coerced values.  For Ca
 
 <a name="jsonldProcessing" />
 
-### 3.5 Processing Algorithms
+### 3.4 Processing Algorithms
 **TODO Provide the briefest of overviews (OR NOT).  Make clear that endpoints are not required to utilize JSON-LD parsers to transform Caliper JSON-LD documents.**
 
 [JSON-LD](#jsonldDef) defines a number of processing algorithms for transforming JSON-LD documents. . . .  
