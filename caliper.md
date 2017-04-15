@@ -703,7 +703,7 @@ Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@con
 [JSON-LD](#jsonldDef) contexts can be inserted in-line or located in a file external to the document and referenced.  In the case of Caliper an external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) is available and MUST be referenced in Caliper [JSON-LD](#jsonldDef) documents.  Each Caliper [Event](#event) and [Entity](#entity) *describe* emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that provides a context definition.
 
 #### Example: referencing an external JSON-LD context
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
@@ -724,7 +724,7 @@ Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@con
 A [JSON-LD](#jsonldDef) document can reference more than one context.  Additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *describe* in order to ascribe meaning to terms not defined by the model.  However, Caliper-defined terms MUST NOT be overridden by additional contexts added to the document ([JSON-LD](#jsonldDef) relies on a "most-recently-defined-wins" approach when parsing duplicate terms).  Defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing the object.  
 
 #### Example: using multiple contexts in an Entity describe (external and in-line)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -801,7 +801,7 @@ An [Endpoint](#endpoint) must be capable of interpreting coerced values.  For Ca
  
 #### Example: node and value types
 
-```json
+```
 {
   "@context": {
     "id": "@id",
@@ -883,7 +883,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
 
 #### Example: Mixed payload
-```json
+```
 {
     "sensor": "https://example.edu/sensors/1",
     "sendTime": "2017-11-15T11:05:01.000Z",
@@ -1212,7 +1212,7 @@ http://purl.imsglobal.org/caliper/Event
 #### Example
 When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
@@ -1272,7 +1272,7 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AnnotationEvent (bookmarked)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:d4618c23-d612-4709-8d9a-478d87808067",
@@ -1359,7 +1359,7 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentEvent (started)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:27734504-068d-4596-861c-2315be33a2a2",
@@ -1419,7 +1419,7 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 ```
 
 #### Example: AssessmentEvent (submitted)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
@@ -1515,7 +1515,7 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentItem (started)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:1b557176-ba67-4624-b060-6bee670a3d8e",
@@ -1584,7 +1584,7 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 ```
 
 #### Example: AssessmentItem (completed)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:e5891791-3d27-4df1-a272-091806a43dfb",
@@ -1687,7 +1687,7 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssignableEvent (activated)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:2635b9dd-0061-4059-ac61-2718ab366f75",
@@ -1775,7 +1775,7 @@ http://purl.imsglobal.org/caliper/ForumEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ForumEvent (subscribed)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
@@ -1861,7 +1861,7 @@ http://purl.imsglobal.org/caliper/MediaEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: MediaEvent (paused)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:956b4a02-8de0-4991-b8c5-b6eebb6b4cab",
@@ -1941,7 +1941,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: MessageEvent (posted)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:0d015a85-abf5-49ee-abb1-46dbd57fe64e",
@@ -2003,7 +2003,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
 ```
 
 #### Example: MessageEvent (posted reply)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:aed54386-a3fb-45ff-90f9-a35d3daaf031",
@@ -2105,7 +2105,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 | ~~navigatedFrom~~ | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context. `navigatedFrom` has been DEPRECATED and replaced by `referrer`. | Deprecated |
 
 #### Example: NavigationEvent (navigated to)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f",
@@ -2184,7 +2184,7 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: OutcomeEvent (graded)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
@@ -2297,7 +2297,7 @@ http://purl.imsglobal.org/caliper/SessionEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: SessionEvent (logged in)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:fcd495d0-3740-4298-9bec-1154571dc211",
@@ -2325,7 +2325,7 @@ http://purl.imsglobal.org/caliper/SessionEvent
 ```
 
 #### Example: SessionEvent (logged out)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:a438f8ac-1da3-4d48-8c86-94a1b387e0f6",
@@ -2355,7 +2355,7 @@ http://purl.imsglobal.org/caliper/SessionEvent
 ```
 
 #### Example: SessionEvent (timed out)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:4e61cf6c-ffbe-45bc-893f-afe7ad4079dc",
@@ -2415,7 +2415,7 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ThreadEvent (marked as read)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:6b20c5ba-301c-4e56-85a0-2f3d9a94c249",
@@ -2499,7 +2499,7 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ToolUseEvent (used)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
@@ -2571,7 +2571,7 @@ http://purl.imsglobal.org/caliper/ViewEvent
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example ViewEvent (viewed)
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "urn:uuid:cd088ca7-c044-405c-bb41-0b2a8506f907",
@@ -2650,7 +2650,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 #### Example
 When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
 
-```json
+```
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
     "id": "https://example.edu/etexts/201.epub",
@@ -2703,7 +2703,7 @@ http://purl.imsglobal.org/caliper/Agent
 [Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/agents/99999",
@@ -2745,7 +2745,7 @@ http://purl.imsglobal.org/caliper/Annotation
 [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/users/554433/texts/imscaliperimplguide/annotations/1",
@@ -2809,7 +2809,7 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
@@ -2889,7 +2889,7 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
@@ -2972,7 +2972,7 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 [Assessment](#assessment), [AssessmentItem](#assessmentItem)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
@@ -3029,7 +3029,7 @@ The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT b
 | ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt). `actor` has been DEPRECATED and replaced by  `assignee`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
@@ -3095,7 +3095,7 @@ The following [AudioObject](#audioObject) properties have been DEPRECATED and MU
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/audio/765",
@@ -3137,7 +3137,7 @@ http://purl.imsglobal.org/caliper/BookmarkAnnotation
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [BookmarkAnnotation](#bookmarkAnnotation). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/users/554433/texts/imscaliperimplguide/bookmarks/1",
@@ -3195,7 +3195,7 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10",
@@ -3243,7 +3243,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
 [CourseSection](#courseSection)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7",
@@ -3286,7 +3286,7 @@ http://purl.imsglobal.org/caliper/CourseSection
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [CourseSection](#courseSection). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1",
@@ -3352,7 +3352,7 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
@@ -3422,7 +3422,7 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 [Assessment](#assessment), [Forum](#forum), [Thread](#thread)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
@@ -3502,7 +3502,7 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/etexts/201.epub",
@@ -3719,7 +3719,7 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
@@ -3791,7 +3791,7 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
   
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
@@ -3871,7 +3871,7 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/etexts/201?index=2502",
@@ -3914,7 +3914,7 @@ http://purl.imsglobal.org/caliper/Group
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Group](#group). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/2",
@@ -3983,7 +3983,7 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [HighlightAnnotation](#highlightAnnotation). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/highlights/20",
@@ -4047,7 +4047,7 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/images/caliper_lti.jpg",
@@ -4083,7 +4083,7 @@ http://purl.imsglobal.org/caliper/LearningObjective
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [LearningObjective](#learningObjective). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
@@ -4147,7 +4147,7 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
 | ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession).  `actor` property has been DEPRECATED in and replaced by `user`. | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
@@ -4243,7 +4243,7 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/videos/1225",
@@ -4297,7 +4297,7 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 [AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/media/54321",
@@ -4337,7 +4337,7 @@ http://purl.imsglobal.org/caliper/Membership
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Membership](#membership). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
@@ -4403,7 +4403,7 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
@@ -4478,7 +4478,7 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
@@ -4547,7 +4547,7 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
@@ -4608,7 +4608,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 [CourseOffering](#CourseOffering), [CourseSection](#CourseSection), [Group](#group)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/colleges/1/depts/1",
@@ -4662,7 +4662,7 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
@@ -4708,7 +4708,7 @@ http://purl.imsglobal.org/caliper/Person
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Person](#person). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433",
@@ -4799,7 +4799,7 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 [FillinBlankResponse](#fillinblankResponse.md), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#mutlipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
@@ -4867,7 +4867,7 @@ http://purl.imsglobal.org/caliper/Result
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Result](#result). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
@@ -4940,7 +4940,7 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
@@ -5010,7 +5010,7 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 [LtiSession](#ltiSession)
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
@@ -5051,7 +5051,7 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [SharedAnnotation](#sharedAnnotation). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/shares/1",
@@ -5104,7 +5104,7 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [SoftwareApplication](#softwareApplication). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/autograder",
@@ -5143,7 +5143,7 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [TagAnnotation](#tagAnnotation). | Optional |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.com/users/554433/texts/imscaliperimplguide/tags/3",
@@ -5202,7 +5202,7 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
@@ -5286,7 +5286,7 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
@@ -5358,7 +5358,7 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/videos/1225",
@@ -5412,7 +5412,7 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/index.html",
@@ -5448,7 +5448,7 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 | start | integer | The starting position of the selected text MUST be specified.  The first character in the full text is character position 0. | Required |
 | end | integer | The end position of the selected text MUST be specified. | Required |
 
-```json
+```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433/etexts/201/highlights/20",
