@@ -885,165 +885,159 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 #### Example: Mixed payload
 ```
 {
-    "sensor": "https://example.edu/sensors/1",
-    "sendTime": "2017-11-15T11:05:01.000Z",
-    "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "data": [
-        {
-            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-            "id": "https://example.edu/users/554433",
-            "type": "Person"
-        },
-        {
-            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-            "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
-            "type": "Assessment",
-            "name": "Quiz One",
-            "items": [
-                "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
-                "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
-                "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3"
-            ],
-            "dateCreated": "2017-08-01T06:00:00.000Z",
-            "dateModified": "2017-09-02T11:30:00.000Z",
-            "datePublished": "2017-08-15T09:30:00.000Z",
-            "dateToActivate": "2017-08-16T05:00:00.000Z",
-            "dateToShow": "2017-08-16T05:00:00.000Z",
-            "dateToStartOn": "2017-08-16T05:00:00.000Z",
-            "dateToSubmit": "2017-09-28T11:59:59.000Z",
-            "maxAttempts": 2,
-            "maxScore": 15,
-            "maxSubmits": 2,
-            "version": "1.0"
-        },
-        {
-            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-            "id": "https://example.edu",
-            "type": "SoftwareApplication"
-        },
-        {
-            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-            "id": "https://example.edu/terms/201601/courses/7/sections/1",
-            "type": "CourseSection",
-            "academicSession": "Fall 2016",
-            "courseNumber": "CPS 435-01",
-            "name": "CPS 435 Learning Analytics, Section 01",
-            "category": "seminar",
-            "subOrganizationOf": {
-                "id": "https://example.edu/terms/201601/courses/7",
-                "type": "CourseOffering",
-                "courseNumber": "CPS 435"
-            },
-            "dateCreated": "2017-08-01T06:00:00.000Z"
-        },
-        {
-            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-            "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
-            "type": "AssessmentEvent",
-            "actor": "https://example.edu/users/554433",
-            "action": "Started",
-            "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
-            "generated": {
-                "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-                "type": "Attempt",
-                "assignee": "https://example.edu/users/554433",
-                "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
-                "count": 1,
-                "dateCreated": "2017-11-15T10:15:00.000Z",
-                "startedAtTime": "2017-11-15T10:15:00.000Z"
-            },
-            "eventTime": "2017-11-15T10:15:00.000Z",
-            "edApp": "https://example.edu",
-            "group": "https://example.edu/terms/201601/courses/7/sections/1",
-            "membership": {
-                "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-                "type": "Membership",
-                "member": "https://example.edu/users/554433",
-                "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-                "roles": [
-                    "Learner"
-                ],
-                "status": "Active",
-                "dateCreated": "2017-08-01T06:00:00.000Z"
-            },
-            "session": {
-                "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-                "type": "Session",
-                "startedAtTime": "2017-11-15T10:00:00.000Z"
-            }
-        },
-        {
-            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-            "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
-            "type": "AssessmentEvent",
-            "actor": "https://example.edu/users/554433",
-            "action": "Submitted",
-            "object": {
-                "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-                "type": "Attempt",
-                "assignee": "https://example.edu/users/554433",
-                "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
-                "count": 1,
-                "dateCreated": "2017-11-15T10:15:00.000Z",
-                "startedAtTime": "2017-11-15T10:15:00.000Z",
-                "endedAtTime": "2017-11-15T10:25:30.000Z",
-                "duration": "PT10M30S"
-            },
-            "eventTime": "2017-11-15T10:25:30.000Z",
-            "edApp": "https://example.edu",
-            "group": "https://example.edu/terms/201601/courses/7/sections/1",
-            "membership": {
-                "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-                "type": "Membership",
-                "member": "https://example.edu/users/554433",
-                "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-                "roles": [
-                    "Learner"
-                ],
-                "status": "Active",
-                "dateCreated": "2017-08-01T06:00:00.000Z"
-            },
-            "session": {
-                "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-                "type": "Session",
-                "startedAtTime": "2017-11-15T10:00:00.000Z"
-            }
-        },
-        {
-            "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-            "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
-            "type": "OutcomeEvent",
-            "actor": {
-                "id": "https://example.edu/autograder",
-                "type": "SoftwareApplication",
-                "version": "v2"
-            },
-            "action": "Graded",
-            "object": {
-                "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-                "type": "Attempt",
-                "assignee": "https://example.edu/users/554433",
-                "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
-                "count": 1,
-                "dateCreated": "2017-11-15T10:05:00.000Z",
-                "startedAtTime": "2017-11-15T10:05:00.000Z",
-                "endedAtTime": "2017-11-15T10:55:12.000Z",
-                "duration": "PT50M12S"
-            },
-            "eventTime": "2017-11-15T10:57:06.000Z",
-            "edApp": "https://example.edu",
-            "generated": {
-                "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
-                "type": "Result",
-                "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-                "normalScore": 15,
-                "totalScore": 15,
-                "scoredBy": "https://example.edu/autograder",
-                "dateCreated": "2017-11-15T10:55:05.000Z"
-            },
-            "group": "https://example.edu/terms/201601/courses/7/sections/1"
-        }
-    ]
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2017-11-15T11:05:01.000Z",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+      "type": "Assessment",
+      "name": "Quiz One",
+      "items": [
+        "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
+        "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+        "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3"
+      ],
+      "dateCreated": "2017-08-01T06:00:00.000Z",
+      "datePublished": "2017-08-15T09:30:00.000Z",
+      "dateToActivate": "2017-08-16T05:00:00.000Z",
+      "dateToStartOn": "2017-08-16T05:00:00.000Z",
+      "dateToSubmit": "2017-09-28T11:59:59.000Z",
+      "maxAttempts": 2,
+      "maxScore": 15,
+      "maxSubmits": 2,
+      "version": "1.0"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "https://example.edu",
+      "type": "SoftwareApplication"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "CourseSection",
+      "academicSession": "Fall 2016",
+      "courseNumber": "CPS 435-01",
+      "name": "CPS 435 Learning Analytics, Section 01",
+      "category": "seminar",
+      "subOrganizationOf": {
+        "id": "https://example.edu/terms/201601/courses/7",
+        "type": "CourseOffering",
+        "courseNumber": "CPS 435"
+      },
+      "dateCreated": "2017-08-01T06:00:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
+      "type": "AssessmentEvent",
+      "actor": "https://example.edu/users/554433",
+      "action": "Started",
+      "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+      "generated": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "type": "Attempt",
+        "assignee": "https://example.edu/users/554433",
+        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+        "count": 1,
+        "dateCreated": "2017-11-15T10:15:00.000Z",
+        "startedAtTime": "2017-11-15T10:15:00.000Z"
+      },
+      "eventTime": "2017-11-15T10:15:00.000Z",
+      "edApp": "https://example.edu",
+      "group": "https://example.edu/terms/201601/courses/7/sections/1",
+      "membership": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+        "type": "Membership",
+        "member": "https://example.edu/users/554433",
+        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+        "roles": [ "Learner" ],
+        "status": "Active",
+        "dateCreated": "2017-08-01T06:00:00.000Z"
+      },
+      "session": {
+        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+        "type": "Session",
+        "startedAtTime": "2017-11-15T10:00:00.000Z"
+      }
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
+      "type": "AssessmentEvent",
+      "actor": "https://example.edu/users/554433",
+      "action": "Submitted",
+      "object": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "type": "Attempt",
+        "assignee": "https://example.edu/users/554433",
+        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+        "count": 1,
+        "dateCreated": "2017-11-15T10:15:00.000Z",
+        "startedAtTime": "2017-11-15T10:15:00.000Z",
+        "endedAtTime": "2017-11-15T10:25:30.000Z",
+        "duration": "PT10M30S"
+      },
+      "eventTime": "2017-11-15T10:25:30.000Z",
+      "edApp": "https://example.edu",
+      "group": "https://example.edu/terms/201601/courses/7/sections/1",
+      "membership": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+        "type": "Membership",
+        "member": "https://example.edu/users/554433",
+        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+        "roles": [ "Learner" ],
+        "status": "Active",
+        "dateCreated": "2017-08-01T06:00:00.000Z"
+      },
+      "session": {
+        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+        "type": "Session",
+        "startedAtTime": "2017-11-15T10:00:00.000Z"
+      }
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
+      "type": "OutcomeEvent",
+      "actor": {
+        "id": "https://example.edu/autograder",
+        "type": "SoftwareApplication",
+        "version": "v2"
+      },
+      "action": "Graded",
+      "object": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "type": "Attempt",
+        "assignee": "https://example.edu/users/554433",
+        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+        "count": 1,
+        "dateCreated": "2017-11-15T10:05:00.000Z",
+        "startedAtTime": "2017-11-15T10:05:00.000Z",
+        "endedAtTime": "2017-11-15T10:55:12.000Z",
+        "duration": "PT50M12S"
+      },
+      "eventTime": "2017-11-15T10:57:06.000Z",
+      "edApp": "https://example.edu",
+      "generated": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
+        "type": "Result",
+        "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "normalScore": 15,
+        "totalScore": 15,
+        "scoredBy": "https://example.edu/autograder",
+        "dateCreated": "2017-11-15T10:55:05.000Z"
+      },
+      "group": "https://example.edu/terms/201601/courses/7/sections/1"
+    }
+  ]
 }
 ```
 
