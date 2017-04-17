@@ -729,7 +729,7 @@ A [JSON-LD](#jsonldDef) document can reference more than one context.  Additiona
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1",
   "type": "CourseSection",
-  "academicSession": "Fall 2016",
+  "academicSession": "Fall 2017",
   "courseNumber": "CPS 435-01",
   "name": "CPS 435 Learning Analytics, Section 01",
   "category": "seminar",
@@ -791,13 +791,11 @@ Each [Event](#event) MUST be assigned an identifier in the form of a [UUID](#uui
 <a name="jsonldTypes" />
 
 ### 3.3 Types and Type Coercion
-[JSON-LD](#jsonldDef) employs the `@type` keyword in two ways.  Individual nodes (i.e., the thing being described) can by assigned a type.  Values can also be associated with or *coerced* to a particular type.  As with the aliasing of the `@id` keyword, `@type` is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.
+[JSON-LD](#jsonldDef) employs the `@type` keyword in two ways.  Individual nodes (i.e., the thing being described) can by assigned a type.  Values can also be associated with or *coerced* to a particular type.  As with the aliasing of the `@id` keyword as `id`, `@type` is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.
   
-The following example [MessageEvent](#messageEvent) utilizes an in-line context to illustrate how [JSON-LD](#jsonldDef) types can be specified.  The [MessageEvent](#messageEvent), [Person](#person) and [Message](#message) terms are all considered node types.  Other terms illustrate the *coercion* of values to specified data types.  In the example below, the values of the `actor`, `object` and `edApp` terms are *coerced* to `@id` keyword.  This signals to a [JSON-LD](#jsonldDef) parser that if the value is set to a string (as is the case with `edApp`) it is to be interpreted as an [IRI](#iriDef).  In a like manner, the `action` value is *coerced* to the `@vocab` keyword indicating that the value is to be interpreted as a [Term](#termDef) defined in the active context or as an [IRI](#iriDef); in this case *Posted*.  Terms such as `name`, `description`, `dateCreated`, `dateModified` and `duration` are *coerced* to a particular value type such as a string, integer, boolean or date.
+The following [MessageEvent](#messageEvent) example utilizes an in-line context to illustrate how [JSON-LD](#jsonldDef) types can be specified.  The [MessageEvent](#messageEvent), [Person](#person) and [Message](#message) terms are all considered node types.  Other terms illustrate the *coercion* of values to specified data types.  In the example below, the values of the `actor`, `object` and `edApp` terms are *coerced* to `@id` keyword.  This signals to a [JSON-LD](#jsonldDef) parser that if the value is set to a string (as is the case with `edApp`) it is to be interpreted as an [IRI](#iriDef).  In a like manner, the `action` value is *coerced* to the `@vocab` keyword indicating that the value is to be interpreted as a [Term](#termDef) defined in the active context or as an [IRI](#iriDef); in this case *Posted*.  Terms such as `name`, `description`, `dateCreated`, `dateModified` and `duration` are *coerced* to a particular value type such as a string, integer, boolean or date.
 
 Both node types and typed values are specified in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Implementors are encouraged to familiarize themselves with the term definitions described therein.
-
-An [Endpoint](#endpoint) must be capable of interpreting coerced values.  For Caliper defined [Terms](#terms) implementors need only reference the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in their [Event](#event) or [Entity](#entity) *describe* in order to link to the assoicated term definitions.  The receiver of a Caliper [Event](#event) or [Entity](#entity) containing coerced values that do not map to an explicit context declaration will be considered nonconformant.
  
 #### Example: node and value types
 
@@ -838,6 +836,109 @@ An [Endpoint](#endpoint) must be capable of interpreting coerced values.  For Ca
   "edApp": "https://example.edu"
 }
 ```
+
+As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to the `@id` keyword, which signals that string values are to be interpreted as [IRIs](#iriDef).  In other words, certain [Event](#event) and [Entity](#entity) attributes MAY be expressed either as a JSON object or as a string that corresponds to its identifier.  Type coercion of this sort provides an element of representational flexibility that implementors are encouraged to leverage.  As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in cases where an [Event](#event) references the same [Entity](#entity) more than once (e.g., `actor`, `member`; `group`, `organization`), or a property is associated with a specific type (e.g., `edApp`) or an [Entity](#entity) possesses an [IRI](#iriDef) that is dereferenceable, consider expressing the value as a string corresponding to [Entity's](#entity) identifier.
+
+#### Example: ForumEvent property values expressed as JSON objects
+```
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+    "type": "ForumEvent",
+    "actor": {
+        "id": "https://example.edu/users/554433",
+        "type": "Person",
+        . . .
+    },
+    "action": "Subscribed",
+    "object": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+        "type": "Forum",
+        . . .
+    },
+    "eventTime": "2017-11-15T10:16:00.000Z",
+    "edApp": {
+        "id": "https://example.edu/forums",
+        "type": "SoftwareApplication",
+        "version": "v2",
+        . . .
+    },
+    "group": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1",
+        "type": "CourseSection",
+        "courseNumber": "CPS 435-01",
+        "academicSession": "Fall 2017",
+        . . .
+    },
+    "membership": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+        "type": "Membership",
+        "member": {
+            "id": "https://example.edu/users/554433",
+            "type": "Person",
+            . . .
+        },
+        "organization": {
+            "id": "https://example.edu/terms/201601/courses/7/sections/1",
+            "type": "CourseSection",
+            "courseNumber": "CPS 435-01",
+            "academicSession": "Fall 2017",
+            . . .
+        },
+        . . .
+    },
+    . . .
+}
+````
+
+#### Example: Duplicate Membership member (actor) and organization (group) references expressed as IRIs
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "ForumEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person",
+    . . .
+  },
+  . . .
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2017",
+    . . .
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    . . .
+  },
+  . . .
+}
+```
+
+#### Example: Thinned ForumEvent featuring dereferenceable IRI values
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "ForumEvent",
+  "actor": "https://example.edu/users/554433",
+  "action": "Subscribed",
+  "object": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+  "eventTime": "2017-11-15T10:16:00.000Z",
+  "edApp": "https://example.edu/forums",
+  "group": "https://example.edu/terms/201601/courses/7/sections/1",
+  "membership": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1"
+  "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
+}
+```
+
+An [Endpoint](#endpoint) must be capable of interpreting coerced values.  For Caliper defined [Terms](#terms) implementors need only reference the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in their [Event](#event) or [Entity](#entity) *describe* [JSON-LD](#jsonldDef) documents in order to link to the associated term definitions.  The receiver of a Caliper [Event](#event) or [Entity](#entity) containing coerced values that do not map to an explicit context declaration will be considered nonconformant.
 
 <a name="jsonldProcessing" />
 
@@ -923,7 +1024,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection",
-      "academicSession": "Fall 2016",
+      "academicSession": "Fall 2017",
       "courseNumber": "CPS 435-01",
       "name": "CPS 435 Learning Analytics, Section 01",
       "category": "seminar",
@@ -1301,7 +1402,7 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -1393,7 +1494,7 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -1454,7 +1555,7 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -1558,7 +1659,7 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -1626,7 +1727,7 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -1716,7 +1817,7 @@ http://purl.imsglobal.org/caliper/AssignableEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -1799,7 +1900,7 @@ http://purl.imsglobal.org/caliper/ForumEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -1883,7 +1984,7 @@ http://purl.imsglobal.org/caliper/MediaEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -1977,7 +2078,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -2040,7 +2141,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -2126,7 +2227,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -2221,7 +2322,7 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   }
 }
 ```
@@ -2441,7 +2542,7 @@ http://purl.imsglobal.org/caliper/ThreadEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -2513,7 +2614,7 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -2589,7 +2690,7 @@ http://purl.imsglobal.org/caliper/ViewEvent
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
@@ -3243,7 +3344,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
   "id": "https://example.edu/terms/201601/courses/7",
   "type": "CourseOffering",
   "courseNumber": "CPS 435",
-  "academicSession": "Fall 2016",
+  "academicSession": "Fall 2017",
   "name": "CPS 435 Learning Analytics",
   "dateCreated": "2017-08-01T06:00:00.000Z",
   "dateModified": "2017-09-02T11:30:00.000Z"
@@ -3285,7 +3386,7 @@ http://purl.imsglobal.org/caliper/CourseSection
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201601/courses/7/sections/1",
   "type": "CourseSection",
-  "academicSession": "Fall 2016",
+  "academicSession": "Fall 2017",
   "courseNumber": "CPS 435-01",
   "name": "CPS 435 Learning Analytics, Section 01",
   "category": "seminar",
@@ -5417,7 +5518,7 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   }
 }
 ```
@@ -5597,7 +5698,7 @@ __RFC 6750__ IETF.  M. Jones and D. Hardt.  "The OAuth 2.0 Authorization Framewo
 
 <a name="rfc7807 />
 
-__RFC 7807__ IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2016.  URL: https://tools.ietf.org/html/rfc7807
+__RFC 7807__ IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2017.  URL: https://tools.ietf.org/html/rfc7807
 
 <a name="caliperWhitepaper" />
 
