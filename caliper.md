@@ -188,7 +188,7 @@ __LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS standard for 
 
 <a name="metricProfileDef" />
 
-__Metric Profile__: metric profiles define the information model for caliper.  The caliper metric profiles are organized by activity.
+__Metric Profile__: metric profiles define the information model for caliper.  The Caliper metric profiles are organized by activity.
 
 <a name="objectDef" />
  
