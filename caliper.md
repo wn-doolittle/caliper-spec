@@ -791,7 +791,7 @@ Each [Event](#event) MUST be assigned an identifier in the form of a [UUID](#uui
 <a name="jsonldTypes" />
 
 ### 3.3 Types and Type Coercion
-[JSON-LD](#jsonldDef) employs the `@type` keyword in two ways.  Individual nodes (i.e., the thing being described) can by assigned a type.  Values can also be associated with or *coerced* to a particular type.  As with the aliasing of the `@id` keyword as `id`, `@type` is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.
+[JSON-LD](#jsonldDef) employs the `@type` keyword in two ways.  Individual *nodes* (i.e., the thing being described) can by assigned a type.  Values can also be associated with or *coerced* to a particular type.  As with the aliasing of the `@id` keyword as `id`, `@type` is aliased as `type` in the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.
   
 The following [MessageEvent](#messageEvent) example utilizes an in-line context to illustrate how [JSON-LD](#jsonldDef) types can be specified.  The [MessageEvent](#messageEvent), [Person](#person) and [Message](#message) terms are all considered node types.  Other terms illustrate the *coercion* of values to specified data types.  In the example below, the values of the `actor`, `object` and `edApp` terms are *coerced* to `@id` keyword.  This signals to a [JSON-LD](#jsonldDef) parser that if the value is set to a string (as is the case with `edApp`) it is to be interpreted as an [IRI](#iriDef).  In a like manner, the `action` value is *coerced* to the `@vocab` keyword indicating that the value is to be interpreted as a [Term](#termDef) defined in the active context or as an [IRI](#iriDef); in this case *Posted*.  Terms such as `name`, `description`, `dateCreated`, `dateModified` and `duration` are *coerced* to a particular value type such as a string, integer, boolean or date.
 
@@ -837,9 +837,9 @@ Both node types and typed values are specified in the external IMS Caliper [Cont
 }
 ```
 
-As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to the `@id` keyword, which signals that string values are to be interpreted as [IRIs](#iriDef).  In other words, certain [Event](#event) and [Entity](#entity) attributes MAY be expressed either as a JSON object or as a string that corresponds to its identifier.  Type coercion of this sort provides an element of representational flexibility that implementors are encouraged to leverage.  As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in cases where an [Event](#event) references the same [Entity](#entity) more than once (e.g., `actor`, `member`; `group`, `organization`), or a property is associated with a specific type (e.g., `edApp`) or an [Entity](#entity) possesses an [IRI](#iriDef) that is dereferenceable, consider expressing the value as a string corresponding to [Entity's](#entity) identifier.
+As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to the `@id` keyword, which signals that string values are to be interpreted as [IRIs](#iriDef).  In other words, certain [Event](#event) and [Entity](#entity) attributes MAY be expressed either as a JSON object or as a string that corresponds to its identifier.  Type coercion of this sort provides an element of representational flexibility that implementors are encouraged to leverage.  As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in cases where an [Event](#event) references the same [Entity](#entity) more than once (e.g., `actor`, `member`; `group`, `organization`), or a property is associated with a specific type (e.g., `edApp`) or an [Entity](#entity) possesses an [IRI](#iriDef) that is dereferenceable, consider expressing the value as a string corresponding to the [Entity's](#entity) identifier.
 
-#### Example: ForumEvent property values expressed as JSON objects
+#### Example: ForumEvent attributes expressed as JSON objects
 ```
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -891,12 +891,10 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
 }
 ````
 
-#### Example: Duplicate Membership member (actor) and organization (group) references expressed as IRIs
+#### Example: Duplicate Membership `member` and `organization` references expressed as IRIs
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
-  "type": "ForumEvent",
+  . . .
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person",
@@ -921,7 +919,7 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
 }
 ```
 
-#### Example: Thinned ForumEvent featuring dereferenceable IRI values
+#### Example: Thinned ForumEvent attributes expressed as (dereferenceable) IRI values
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
