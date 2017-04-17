@@ -837,75 +837,35 @@ Both node types and typed values are specified in the external IMS Caliper [Cont
 }
 ```
 
-As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to the `@id` keyword, which signals that string values are to be interpreted as [IRIs](#iriDef).  In other words, certain [Event](#event) and [Entity](#entity) attributes MAY be expressed either as a JSON object or as a string that corresponds to its identifier.  Type coercion of this sort provides an element of representational flexibility that implementors are encouraged to leverage.  As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in cases where an [Event](#event) references the same [Entity](#entity) more than once (e.g., `actor`, `member`; `group`, `organization`), or a property is associated with a specific type (e.g., `edApp`) or an [Entity](#entity) possesses an [IRI](#iriDef) that is dereferenceable, consider expressing the value as a string corresponding to the [Entity's](#entity) identifier.
+As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to the `@id` keyword, which signals that string values are to be interpreted as [IRIs](#iriDef).  In other words, certain [Event](#event) and [Entity](#entity) attributes MAY be expressed either as a JSON object or as a string that corresponds to its identifier.  Type coercion of this sort provides an element of representational flexibility that implementors are encouraged to leverage.  As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in cases where an [Event](#event) references the same [Entity](#entity) more than once (e.g., `actor`, `member`, `user`; `group`, `organization`), or a property is associated with a specific type (e.g., `edApp`) or an [Entity](#entity) possesses an [IRI](#iriDef) that is dereferenceable, consider expressing the value as a string corresponding to the [Entity's](#entity) identifier.
 
-#### Example: ForumEvent attributes expressed as JSON objects
+#### Example: `membership` and `session` references to `actor` and `group` expressed as IRIs
 ```
 {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
-    "type": "ForumEvent",
-    "actor": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person",
-        . . .
-    },
-    "action": "Subscribed",
-    "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
-        "type": "Forum",
-        . . .
-    },
-    "eventTime": "2017-11-15T10:16:00.000Z",
-    "edApp": {
-        "id": "https://example.edu/forums",
-        "type": "SoftwareApplication",
-        "version": "v2",
-        . . .
-    },
-    "group": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1",
-        "type": "CourseSection",
-        "courseNumber": "CPS 435-01",
-        "academicSession": "Fall 2017",
-        . . .
-    },
-    "membership": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-        "type": "Membership",
-        "member": {
-            "id": "https://example.edu/users/554433",
-            "type": "Person",
-            . . .
-        },
-        "organization": {
-            "id": "https://example.edu/terms/201601/courses/7/sections/1",
-            "type": "CourseSection",
-            "courseNumber": "CPS 435-01",
-            "academicSession": "Fall 2017",
-            . . .
-        },
-        . . .
-    },
-    . . .
-}
-````
-
-#### Example: Duplicate Membership `member` and `organization` references expressed as IRIs
-```
-{
-  . . .
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "ForumEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
-    "type": "Person",
+    "type": "Person"
+  },
+  "action": "Subscribed",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "type": "Forum",
+    "name": "Caliper Forum",
     . . .
   },
-  . . .
+  "eventTime": "2017-11-15T10:16:00.000Z",
+  "edApp": {
+    "id": "https://example.edu/forums",
+    "type": "SoftwareApplication",
+    . . .
+  },
   "group": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017",
     . . .
   },
   "membership": {
@@ -913,13 +873,21 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
     "type": "Membership",
     "member": "https://example.edu/users/554433",
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": [ "Learner" ],
     . . .
   },
-  . . .
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "user": "https://example.edu/users/554433",
+    "startedAtTime": "2017-11-15T10:00:00.000Z"
+  }
 }
-```
+````
 
-#### Example: Thinned ForumEvent attributes expressed as (dereferenceable) IRI values
+Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if each referenced [Entity](#entity) is provisioned with a dereferenceable [IRI](#iriDef) that permits consumers to retrieve a more robust representation of the object if required.
+
+#### Example: Thinned ForumEvent comprised of (dereferenceable) IRI values
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
