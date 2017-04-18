@@ -136,19 +136,17 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ### 1.2 Terminology
 
-**TODO review and update these short definitions as necessary.  Add links**
-
 <a name="actorDef" />
 
-__Actor__: An actor specifies an external entity that interacts with a subject, a human user of a designed system or some other system or hardware using services of the subject. An actor is the direct driver of an action. 
+__Actor__: An actor is an [Agent](#agent) capable of initiating or performing an [action](#actionDef) on a thing or as part of a process.  A Caliper [Event](#event) includes an `actor` attribute for representing the [Agent](#agent). 
 
 <a name="blankNodeDef" />
 
-__Blank Node__: TODO
+__Blank Node Identifier__: a string that begins with "_:" that is used to identify an [Entity](#entity) for which an [IRI](#iriDef) is not provided.  An [Entity](#entity) provisioned with a blank node identifier is neither dereferenceable nor has meaning outside the scope of the [JSON-LD](#jsonldDef) document within which it resides.
 
 <a name="actionDef" />
 
-__Action__: something done to accomplish a purpose
+__Action__: something performed or done to accomplish a purpose.  Caliper [Event](#event) subtypes define a controlled vocabulary of one or more [actions](#actions) relevant to the activity domain.  A Caliper [Event](#event) includes an `action` attribute for expressing the associated action.     
 
 <a name="contextDef" />
 
@@ -156,15 +154,15 @@ __Context__: a special [JSON-LD](http://json-ld.org/spec/latest/json-ld/) keywor
 
 <a name="endpointDef" />
 
-__Endpoint__: a receiver of Caliper messages that is bound to a specific network protocol.  
+__Endpoint__: a receiver or consumer of Caliper data that is bound to a specific network protocol.  
 
 <a name="entityDef" />
 
-__Entity__: describes an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
+__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
 
 <a name="eventDef" />
 
-__Event__: describes a relationship established between an actor and an object formed as a result of a purposeful action undertaken by the actor in connection to the object at a particular moment in time.  **TODO what about the context?** 
+__Event__: describes a relationship established between an [Agent](#agent) (the `actor`) and an [Entity](#entity) (the `object`) formed as a result of a purposeful `action` undertaken by the `actor` in connection to the `object` at a particular moment in time.
 
 <a name="jsonldDef" />
 
@@ -188,19 +186,15 @@ __LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS standard for 
 
 <a name="metricProfileDef" />
 
-__Metric Profile__: metric profiles define the information model for caliper.  The Caliper metric profiles are organized by activity.
+__Metric Profile__: models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.
 
 <a name="objectDef" />
  
-__Object__: TODO
-
-<a name="profileDef" />
-
-__Profile__: TODO
+__Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that becomes the focus, target or object of an interaction.  A Caliper [Event](#event) includes an `object` attribute for representing the resource.
 
 <a name="sensorDef" />
 
-__Sensor__: Software assets deployed within a learning application to facilitate interaction between the learning application and an event store
+__Sensor__: Software assets deployed within a learning application for marshalling and transmitting Caliper data to a target endpoint.
 
 <a name="termDef" />
 
@@ -208,7 +202,7 @@ __Term__: a word or short expression that expands to an [IRI](#iriDef) when mapp
 
 <a name="typeCoercionDef" />
 
-__Type Coercion__: TODO
+__Type Coercion__: the process of coercing values to a particular data type.
 
 <a name="uriDef" />
 
@@ -222,7 +216,9 @@ __URL__: A Uniform Resource Locator ([URL](#urlDef)) is a type of [URI](#uriDef)
 
 __URN__: A Uniform Resource Name ([URN](#urnDef)) is a type of [URI](#uriDef) that provides a persistent identifier for a resource that is bound to a defined namespace.  Unlike a [URL](#urlDef) a [URN](#urnDef) is location-independent and provides no means of accessing a representation of the named resource.  
 
-__UUID__: TODO. . . . Each Caliper [Event](#event) is assigned a UUID for the purposes of auditing and retrieval.
+<a name="uuidDef" />
+
+__UUID__: a 128-bit number used to identify resources.  *TODO EXPAND ON DEFINITION as it relates to Caliper*
 
 
 <a name="infoModel" />
