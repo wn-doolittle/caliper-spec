@@ -5626,11 +5626,11 @@ __RFC 3987__ IETF. M. Duerst and M. Suignard.  "Internationalized Resource Ident
 
 __RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
 
-<a name="rfc6750 />
+<a name="rfc6750" />
 
 __RFC 6750__ IETF.  M. Jones and D. Hardt.  "The OAuth 2.0 Authorization Framework: Bearer Token Usage."  October 2012.  URL: https://tools.ietf.org/html/rfc6750
 
-<a name="rfc7807 />
+<a name="rfc7807" />
 
 __RFC 7807__ IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2017.  URL: https://tools.ietf.org/html/rfc7807
 
