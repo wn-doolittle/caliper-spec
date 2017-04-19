@@ -5583,10 +5583,10 @@ The following Caliper Working Group participants contributed to the writing of t
 #### Editors and Reviewers
 | Name | Organization |
 | :--- | :----------- |
-| Daniel Green | VitalSource Technologies |
 | Steven Erickson | Unicon |
-| Yong-Sang Cho | KERIS |
+| Daniel Green | VitalSource Technologies |
 | Wes LaMarche | ACT |
+| Yong-Sang Cho | KERIS |
 
 <a name="reference" />
 
