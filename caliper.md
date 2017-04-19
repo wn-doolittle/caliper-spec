@@ -4880,11 +4880,11 @@ http://purl.imsglobal.org/caliper/Result
 | name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
-| normalScore | double | The score earned by the learner before adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `cureveFActor`. | Optional |
+| normalScore | double | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
 | penaltyScore | double | The number of points deducted from the `normalScore` due to an infraction such as submitting an assignment after the due date. | Optional |
 | extraCreditScore | double | The number of extra credit points earned by the learner. | Optional |
 | totalScore | double | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
-| curvedTotalScore | double | The total score earned by the learner after applying a computed `curveFactor`, e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
+| curvedTotalScore | double | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
 | curveFactor | double | A scale factor to be used in adjusting the `totalScore`. | Optional |
 | scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
 | comment | string | Feedback provided by the scorer. | Optional |
