@@ -5582,8 +5582,9 @@ The following Caliper Working Group participants contributed to the writing of t
 
 #### Editors and Reviewers
 | Name | Organization |
-| :--- | :----------- 
+| :--- | :----------- |
 | Steven Erickson | Unicon |
+| Yong-Sang Cho | KERIS |
 | Wes LaMarche | ACT |
 
 <a name="reference" />
