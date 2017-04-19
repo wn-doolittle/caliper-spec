@@ -5457,12 +5457,12 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 <a name="selectors" />
 
 ### Appendix D. Selectors
-**TODO Intro**
+A Caliper Selector represents a fragment, selection or part of an [Entity](#entity).
 
 <a name="textPositionSelector" />
 
 ### D.1 TextPositionSelector
-**TODO Intro**
+A Caliper TextPositionSelector represents a fragment or selection of textual content, the starting and ending positions of which is determined by the distance in characters from the initial character (position 0) of the enclosing full text.
 
 #### IRI
 http://purl.imsglobal.org/caliper/TextPositionSelector
@@ -5579,13 +5579,12 @@ The following Caliper Working Group participants contributed to the writing of t
 | :--- | :----------- |
 | Anthony Whyte | University of Michigan |
 | Viktor Haag | D2L |
-| Wes LaMarche | ACT |
 
-#### Editors
+#### Editors and Reviewers
 | Name | Organization |
-| :--- | :----------- |
-| Anthony Whyte | University of Michigan |
+| :--- | :----------- 
 | Steven Erickson | Unicon |
+| Wes LaMarche | ACT |
 
 <a name="reference" />
 
