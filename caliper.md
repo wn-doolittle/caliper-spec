@@ -39,7 +39,6 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types and Type Coercion](#jsonldTypes)
-  * 3.4 [Processing Algorithms](#jsonldProcessing)
 * 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#sensorBehavior)
   * 4.2 [Envelope](#sensorEnvelope)
@@ -218,7 +217,7 @@ __URN__: A Uniform Resource Name ([URN](#urnDef)) is a type of [URI](#uriDef) th
 
 <a name="uuidDef" />
 
-__UUID__: a 128-bit number used to identify resources.  *TODO EXPAND ON DEFINITION as it relates to Caliper*
+__UUID__: a 128-bit identifier that does not require a registration authority to assure uniqueness.  However, absolute uniqueness is not guaranteed although the collision probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly generated version 4 UUIDs.  Each Caliper [Event](#event) MUST be assigned a UUID that is expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` as described in [RFC 4122](#rfc4122).
 
 
 <a name="infoModel" />
@@ -240,8 +239,6 @@ Considered as a data structure an [Event](#event) constitutes an unordered set o
 
 #### Properties
 The base set of [Event](#event) properties or attributes is listed below.  Each property MUST only be referenced once.  The `id`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property as an array of object values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
-
-**TODO WHAT VALUE DOES `target` ADD TO AN EVENT THAT CAN'T BE REPRESENTED BY `object`?  DEPRECATE?**
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -280,10 +277,6 @@ Other [Entity](#entity) properties are descriptive in nature or link the [Entity
 
 If a string representation is provided the value MUST correspond to the [IRI](#iriDef) defined for the [Entity](#entity).
 
-
-**TODO ELABORATE ON ENTITY DESCRIBES**
-A representation of an [Entity](#entity) can be sent to an [Endpoint](#endpoint).
-
 #### Properties
 The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  When representing an [Entity](#entity) as an object the `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property as an array of object values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
 
@@ -298,7 +291,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageObject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaObject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareApplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoObject), [WebPage](#webPage)
 
 #### Deprecated subtypes
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
@@ -306,8 +299,6 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 <a name="infoModelProfiles" />
 
 ### 2.3 Metric Profiles
-**TODO emphasize that Metric Profiles are by their nature opinionated and deliberately so.**
-
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
 Think of each metric profile as a stand-alone, logical container or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
@@ -315,8 +306,6 @@ Think of each metric profile as a stand-alone, logical container or collection o
 As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
      
 Extending Caliper's information model involves designing a new metric profile or enhancing an existing one.  Implementors are free to implement only those Caliper metric profiles as are necessary to model a learning domain.  A video platform provider may decide that only the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile) and [Session Profile](#sessionProfile) are relevant to its needs while developers instrumenting an assessment engine would most likely implement the [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile) and [Session Profile](#sessionProfile).
-
-**TODO should mention that we encourage implementors to design their own custom profiles**
 
 The following metric profiles are currently available and are summarized individually below:
 
@@ -687,9 +676,11 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 <a name="dataSerialization" />
 
 ## 3.0 Serialization of the Model
-Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) can link to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data and so on, the sources for are likely diverse and the opportunities for discovering new relationships between the entities represented therein both numerous as well as enlightening.
+Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical like a curriculum, a course roster or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) can link to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data and so on, the sources of which are likely diverse and the opportunities for discovering new relationships between the entities represented therein both numerous as well as enlightening.
 
-Exchanging data linked to other data distributed across a wide network requires both a simple, well-understood data-interchange format as well as means of defining unambiguously the underlying semantics or meaning intended for the data structures transmitted from one machine to another.  [JSON-LD](#jsonldDef) provides Caliper with an economical syntax for representing learning activity data as [Linked Data](#linkedData) using [JSON](#jsonDef) as the underlying data-interchange format.  For Caliper, [JSON-LD](#jsonldDef) provides the necessary representational horsepower to describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.
+Exchanging data linked to other data distributed across a wide network requires both a simple, well-understood data-interchange format as well as means of defining unambiguously the underlying semantics or meaning intended for the data structures transmitted from one machine to another.  For Caliper, [JSON-LD](#jsonldDef) provides the necessary representational horsepower to both describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.
+  
+[JSON-LD](#jsonldDef) defines an economical syntax for representing learning activity data as [Linked Data](#linkedData) using [JSON](#jsonDef) as the underlying data-interchange format.  [JSON-LD](#jsonldDef) also provides an API and set of processing algorithms for working with [JSON-LD](#jsonldDef) documents that are based on different contexts.  Algorithms have also been developed to serialize [RDF](#rdf) as [JSON-LD](#jsonldDef) and deserialize a [JSON-LD](#jsonldDef) document to an [RDF](#rdf) data set.
 
 <a name="jsonldContext" />
 
@@ -901,18 +892,6 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
 ```
 
 An [Endpoint](#endpoint) must be capable of interpreting coerced values.  For Caliper defined [Terms](#terms) implementors need only reference the external IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) in their [Event](#event) or [Entity](#entity) *describe* [JSON-LD](#jsonldDef) documents in order to link to the associated term definitions.  The receiver of a Caliper [Event](#event) or [Entity](#entity) containing coerced values that do not map to an explicit context declaration will be considered nonconformant.
-
-<a name="jsonldProcessing" />
-
-### 3.4 Processing Algorithms
-**TODO Provide the briefest of overviews (OR NOT).  Make clear that endpoints are not required to utilize JSON-LD parsers to transform Caliper JSON-LD documents.**
-
-[JSON-LD](#jsonldDef) defines a number of processing algorithms for transforming JSON-LD documents. . . .  
-
-* expansion
-* compaction
-* flattening
-* RDF serialization/deserialization.
 
 <a name="sensor" />
 
@@ -1882,11 +1861,7 @@ http://purl.imsglobal.org/caliper/ForumEvent
 <a name="mediaEvent" />
 
 ### B.7 MediaEvent
-TODO The Caliper [MediaEvent](#mediaEvent) models interactions between learners and rich content such as audio, images and video.
-
-**TODO**   
-* Should MediaLocation be the object or the target of the interaction?
-* Should ImageObject be included in this event (ViewEvent appears more appropriate)?
+The Caliper [MediaEvent](#mediaEvent) models interactions between learners and rich content such as audio, images and video.
 
 #### IRI
 http://purl.imsglobal.org/caliper/MediaEvent
@@ -2209,7 +2184,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 <a name="outcomeEvent" />
 
 ### B.10 OutcomeEvent
-TODO The Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
+The Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
 
 #### IRI
 http://purl.imsglobal.org/caliper/OutcomeEvent
@@ -3166,8 +3141,6 @@ The following [AudioObject](#audioObject) properties have been DEPRECATED and MU
 
 ### C.9 BookmarkAnnotation
 A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of marking a [DigitalResource](#digitalResource) at a particular location.
-
-**TODO how do you transmit the position of the bookmark?**
 
 #### IRI
 http://purl.imsglobal.org/caliper/BookmarkAnnotation
@@ -4891,8 +4864,6 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 ### C.39 Result
 A Caliper [Result](#result) represents a grade applied to an assignment submission.
 
-**TODO describe scores**
-
 #### IRI
 http://purl.imsglobal.org/caliper/Result
 
@@ -4909,12 +4880,12 @@ http://purl.imsglobal.org/caliper/Result
 | name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
-| normalScore | integer | TODO | Optional |
-| penaltyScore | integer | TODO | Optional |
-| extraCreditScore | integer | TODO | Optional |
-| totalScore | integer | TODO | Optional |
-| curvedTotalScore | integer | TODO | Optional |
-| curveFactor | integer | TODO | Optional |
+| normalScore | double | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
+| penaltyScore | double | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | Optional |
+| extraCreditScore | double | The number of extra credit points earned by the learner. | Optional |
+| totalScore | double | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
+| curvedTotalScore | double | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
+| curveFactor | double | A scale factor to be used in adjusting the `totalScore`. | Optional |
 | scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
 | comment | string | Feedback provided by the scorer. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -5486,12 +5457,12 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 <a name="selectors" />
 
 ### Appendix D. Selectors
-**TODO Intro**
+A Caliper Selector represents a fragment, selection or part of an [Entity](#entity).
 
 <a name="textPositionSelector" />
 
 ### D.1 TextPositionSelector
-**TODO Intro**
+A Caliper TextPositionSelector represents a fragment or selection of textual content, the starting and ending positions of which are determined by the distance in characters from the initial character (position 0) of the enclosing full text.
 
 #### IRI
 http://purl.imsglobal.org/caliper/TextPositionSelector
@@ -5608,13 +5579,12 @@ The following Caliper Working Group participants contributed to the writing of t
 | :--- | :----------- |
 | Anthony Whyte | University of Michigan |
 | Viktor Haag | D2L |
-| Wes LaMarche | ACT |
 
-#### Editors
+#### Editors and Reviewers
 | Name | Organization |
-| :--- | :----------- |
-| Anthony Whyte | University of Michigan |
+| :--- | :----------- 
 | Steven Erickson | Unicon |
+| Wes LaMarche | ACT |
 
 <a name="reference" />
 
@@ -5622,46 +5592,50 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="jsonldSyntax" />
 
-__JSON-LD Syntax__  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström.  JSON-LD 1.1.  A JSON-based Serialization for Linked Data. 15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld/
+__JSON-LD Syntax__.  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström.  JSON-LD 1.1.  A JSON-based Serialization for Linked Data. 15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld/
 
 <a name="jsonldProcessing" />
 
-__JSON-LD Processing__  D. Longley, G. Kellog, M. Lanthaler, M. Sporny.  JSON-LD 1.1 Processing Algorithms and API.  15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld-api/
+__JSON-LD Processing__.  D. Longley, G. Kellog, M. Lanthaler, M. Sporny.  JSON-LD 1.1 Processing Algorithms and API.  15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld-api/
 
 <a name="linkedData" />
 
-__Linked Data__  Tim Berners-Lee.  "Linked Data."  W3C internal document.  July 2006, rev. June 2009.  URL: https://www.w3.org/DesignIssues/LinkedData.html
+__Linked Data__.  Tim Berners-Lee.  "Linked Data."  W3C internal document.  July 2006, rev. June 2009.  URL: https://www.w3.org/DesignIssues/LinkedData.html
 
 <a name="lti" />
 
-__LTI__  TODO
+__LTI__.  IMS Global Learning Consortium.  Learning Tools Interoperability<sup>&reg;</sup> 2.0.  January 2014.  URL: https://www.imsglobal.org/specs/ltiv2p0
+
+<a name="rdf" />
+
+__RDF__.  W3C. Resource Description Framework (RDF).  URL: https://www.w3.org/RDF/
 
 <a name="rfc2119" />
 
-__RFC 2119__ IETF.  S. Bradner.  "Key words for use in RFCs to Indicate Requirement Levels."  March 1997.  URL: https://tools.ietf.org/html/rfc2119
+__RFC 2119__.  IETF.  S. Bradner.  "Key words for use in RFCs to Indicate Requirement Levels."  March 1997.  URL: https://tools.ietf.org/html/rfc2119
 
 <a name="rfc2396" />
 
-__RFC 2396__ IETF.  T. Berners-Lee, R. Fielding, L. Masinter.  "Uniform Resource Identifiers (URI): Generic Syntax."  August 1998.  URL: https://www.ietf.org/rfc/rfc2396.txt
+__RFC 2396__.  IETF.  T. Berners-Lee, R. Fielding, L. Masinter.  "Uniform Resource Identifiers (URI): Generic Syntax."  August 1998.  URL: https://www.ietf.org/rfc/rfc2396.txt
 
 <a name="rfc3987" />
 
-__RFC 3987__ IETF. M. Duerst and M. Suignard.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: https://www.ietf.org/rfc/rfc3987.txt
+__RFC 3987__.  IETF. M. Duerst and M. Suignard.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: https://www.ietf.org/rfc/rfc3987.txt
 
 <a name="rfc4122" />
 
-__RFC 4122__ IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
+__RFC 4122__.  IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
 
-<a name="rfc6750 />
+<a name="rfc6750" />
 
-__RFC 6750__ IETF.  M. Jones and D. Hardt.  "The OAuth 2.0 Authorization Framework: Bearer Token Usage."  October 2012.  URL: https://tools.ietf.org/html/rfc6750
+__RFC 6750__.  IETF.  M. Jones and D. Hardt.  "The OAuth 2.0 Authorization Framework: Bearer Token Usage."  October 2012.  URL: https://tools.ietf.org/html/rfc6750
 
-<a name="rfc7807 />
+<a name="rfc7807" />
 
-__RFC 7807__ IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2017.  URL: https://tools.ietf.org/html/rfc7807
+__RFC 7807__.  IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2017.  URL: https://tools.ietf.org/html/rfc7807
 
 <a name="caliperWhitepaper" />
 
-__White paper__  IMS Global Learning Consortium.  "Learning Measurement for Analytics Whitepaper \[sic\]."  August 2013.  URL: https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
+__White paper__.  IMS Global Learning Consortium.  "Learning Measurement for Analytics Whitepaper \[sic\]."  August 2013.  URL: https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
 
-__WordNet__  Princeton University.  WordNet®.  A lexical database for English. 2010.  URL: https://wordnet.princeton.edu/
+__WordNet__.  Princeton University.  WordNet®.  A lexical database for English. 2010.  URL: https://wordnet.princeton.edu/
