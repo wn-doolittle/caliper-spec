@@ -5589,7 +5589,7 @@ Caliper 1.1 additions and deprecations summarized below.
 | :------ | :----- | :---------- |
 | [AssessmentItem Profile](#assessmentItemProfile) | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
 | [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. | 
-| [Tool Use Profile](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) |
+| [Tool Use Profile](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) and a [SoftwareApplication](#softwareApplication) |
 
 #### Events
 | Event | Status | Disposition |
@@ -5604,7 +5604,7 @@ Caliper 1.1 additions and deprecations summarized below.
 | Property | Domain | Status | Disposition |
 | :------- | :----- | :----- | :---------- |
 | id | [Event](#event) | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is recommended. | 
-| type | [Event](#event) | New | Replaces use of the JSON-LD(#jsonldDef) `@type` which is now aliased as `type` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document. |
+| type | [Event](#event) | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` which is now aliased as `type` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document. |
 | @type | [Event](#event) | Deprecated | Use `type`. | 
 | referrer | [Event](#event) | New | Each [Event](#event) subtype can now specify a referring context.  In the case of [NavigationEvent](#navigationEvent) it replaces the `navigatedFrom` property. |
 | navigatedFrom | [NavigationEvent](#navigationEvent) | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
@@ -5630,14 +5630,14 @@ Caliper 1.1 additions and deprecations summarized below.
 #### Entity Properties
 | Property | Domain | Status | Disposition |
 | :------- | :----- | :----- | :---------- |
-| id | [Entity](#entity) | New | Replaces use of the [JSON-LD] keyword `@id` which is now aliased as `id` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
+| id | [Entity](#entity) | New | Replaces use of the [JSON-LD](#jsonldDef) keyword `@id` which is now aliased as `id` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
 | @id | [Entity](#entity) | Deprecated | Use `id`. |
-| type | [Entity](#entity) | New | Replaces use of the JSON-LD(#jsonldDef) `@type` which is now aliased as `type` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1).
+| type | [Entity](#entity) | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` which is now aliased as `type` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1).
 | @type | [Entity](#entity) | Deprecated | Use `type`. |
 | alignedLearningObjective | [DigitalResource](#digitalResource) | Deprecated | Targeted for removal in a future version of the specification.  Use `learningObjectives`. |
-| actor | [Attempt](#attempt), [Response](#response), [Result](#result), [Session](#session) | Deprecated | Targeted for removal in a future version of the specification.  Instead [Attempt](#attempt) now references the `assignee`, [Response](#response) and [Result](#result) now reference the `attempt`, while [Session](#session) now references the `user`.  |
+| actor | [Attempt](#attempt), [Response](#response), [Result](#result), [Session](#session) | Deprecated | Targeted for removal in a future version of the specification.  [Attempt](#attempt) now references the `assignee`, [Response](#response) and [Result](#result) now reference the `attempt`, while [Session](#session) now references the `user`.  |
 | annotator | [Annotation](#annotation) | New | Adds the ability to specify the [Person](#person) who created the [Annotation](#annotation). |
-| assignee | [Attempt](#attempt) | New | Replaces `actor` in order to provide more targeted specificity to the terms employed. |
+| assignee | [Attempt](#attempt) | New | Replaces `actor` in order to provide a more concise term. |
 | assignable | [Response](#response), [Result](#result) | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | attempt | [Response](#response), [Result](#result) | New | Adds the ability to reference the associated [Attempt](#attempt). Replaces `actor` and `assignable`. |
 | creators | [DigitalResource](#digitalResource) | New | Adds the ability to specify the authors of the resource. |
@@ -5649,7 +5649,7 @@ Caliper 1.1 additions and deprecations summarized below.
 | mediaType | [DigitalResource](#digitalResource) | New | Adds the ability to specify the IANA media type that identifies the file format of the resource. |
 | members | [Organization](#organization) | New | Adds the ability to specify the individual members of an [Organization](#organization). |
 | objectType | [DigitalResource](#digitalResource) | Deprecated | Targeted for removal in a future version of the specification. |
-| user | [Session](#session) | New | Replaces `actor` in order to provide more targeted specificity to the terms employed. |
+| user | [Session](#session) | New | Replaces `actor` in order to provide a more concise term. |
 | version | [SoftwareApplication](#softwareApplication) | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
 
 #### Actions
