@@ -5586,14 +5586,14 @@ Caliper 1.1 additions and deprecations summarized below.
 
 #### Profiles
 | Profile | Status | Disposition |
-| :------ | :----- | :---------: |
+| :------ | :----- | :---------- |
 | [AssessmentItem Profile](#assessmentItemProfile) | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
 | [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. | 
 | [Tool Use Profile](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) |
 
 #### Events
 | Event | Status | Disposition |
-| :---- | :----- | :---------: |
+| :---- | :----- | :---------- |
 | [ForumEvent](#forumEvent) | New | Introduced in tandem with the Caliper 1.1 [Forum Profile](#forumProfile). |
 | [MessageEvent](#messageEvent) | New | Introduced in tandem with the Caliper 1.1 [Forum Profile](#forumProfile). |
 | [ReadingEvent](#readingEvent) | Deprecated | Targeted for removal in a future version of the specification. |
@@ -5602,7 +5602,7 @@ Caliper 1.1 additions and deprecations summarized below.
 
 #### Event Properties
 | Property | Domain | Status | Disposition |
-| :------- | :----- | :----- | :---------: |
+| :------- | :----- | :----- | :---------- |
 | id | [Event](#event) | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is recommended. | 
 | type | [Event](#event) | New | Replaces use of the JSON-LD(#jsonldDef) `@type` which is now aliased as `type` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document. |
 | @type | [Event](#event) | Deprecated | Use `type`. | 
@@ -5612,7 +5612,7 @@ Caliper 1.1 additions and deprecations summarized below.
 
 #### Entities
 | Entity | Status | Disposition |
-| :----- | :----- | :---------: |
+| :----- | :----- | :---------- |
 | [Chapter](#chapter) | New | Introduced as part of revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
 | [DigitalResourceCollection](#digitalResourceCollection) | New | Provides a means of representing a collection of items of type [DigitalResource](#digitalResource). |
 | [Document](#document) | New | Introduced as part of revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
@@ -5629,7 +5629,7 @@ Caliper 1.1 additions and deprecations summarized below.
 
 #### Entity Properties
 | Property | Domain | Status | Disposition |
-| :------- | :----- | :----- | :---------: |
+| :------- | :----- | :----- | :---------- |
 | id | [Entity](#entity) | New | Replaces use of the [JSON-LD] keyword `@id` which is now aliased as `id` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
 | @id | [Entity](#entity) | Deprecated | Use `id`. |
 | type | [Entity](#entity) | New | Replaces use of the JSON-LD(#jsonldDef) `@type` which is now aliased as `type` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1).
@@ -5651,8 +5651,6 @@ Caliper 1.1 additions and deprecations summarized below.
 | objectType | [DigitalResource](#digitalResource) | Deprecated | Targeted for removal in a future version of the specification. |
 | user | [Session](#session) | New | Replaces `actor` in order to provide more targeted specificity to the terms employed. |
 | version | [SoftwareApplication](#softwareApplication) | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
-
-
 
 #### Actions
 
