@@ -115,6 +115,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * D.1 [TextPositionSelector](#textPositionSelector)
 * [Appendix E. Roles](#roles)
 * [Appendix F. Status](#status)
+* [Appendix G. Change Log](#changeLog)
 * [Contributors](#contributors)
 * [References](#references)
 
@@ -259,7 +260,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Subtypes
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Deprecated subtypes
 [ReadingEvent](#readingEvent)
@@ -282,7 +283,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
@@ -291,7 +292,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageObject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaObject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareApplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoObject), [WebPage](#webPage)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageObject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaObject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareApplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoObject), [WebPage](#webPage)
 
 #### Deprecated subtypes
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
@@ -1238,7 +1239,7 @@ http://purl.imsglobal.org/caliper/Event
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Subtypes
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssignmentEvent](#assignmentEvent), [AssignmentItemEvent](#assignmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Deprecated subtypes
 [ReadingEvent](#readingEvent)
@@ -2663,7 +2664,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
@@ -2672,7 +2673,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [Collection](#collection), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webpage)
 
 #### Deprecated subtypes
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
@@ -2721,7 +2722,7 @@ http://purl.imsglobal.org/caliper/Agent
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Agent](#agent) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Agent](#agent) MAY be specified. | Optional |
@@ -2761,7 +2762,7 @@ http://purl.imsglobal.org/caliper/Annotation
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Annotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Annotation](#annotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [Annotation](#annotation) MAY be specified. | Optional |
@@ -2808,7 +2809,7 @@ http://purl.imsglobal.org/caliper/Assessment
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Assessment*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Assessment](#assessment) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Assessment](#assessment) MAY be specified. | Optional |
@@ -2888,7 +2889,7 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentItem*. | Required |
 | name | string | A string value comprising a word or phrase by which the [AssessmentItem](#assessmentItem) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
@@ -2969,7 +2970,7 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssignableDigitalResource*. | Required |
 | name | string | A string value comprising a word or phrase by which the [AssignableDigitalResource](#assignableDigitalResource) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
@@ -3036,7 +3037,7 @@ http://purl.imsglobal.org/caliper/Attempt
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Attempt*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Attempt](#attempt) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Attempt](#attempt) MAY be specified. | Optional |
@@ -3096,7 +3097,7 @@ http://purl.imsglobal.org/caliper/AudioObject
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AudioObject*. | Required |
 | name | string | A string value comprising a word or phrase by which the [AudioObject](#audioObject) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [AudioObject](#audioObject) MAY be specified. | Optional |
@@ -3153,7 +3154,7 @@ http://purl.imsglobal.org/caliper/BookmarkAnnotation
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [BookmarkAnnotation](#bookmarkAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [BookmarkAnnotation](#bookmarkAnnotation) MAY be specified. | Optional |
@@ -3199,7 +3200,7 @@ http://purl.imsglobal.org/caliper/Chapter
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Chapter*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Chapter](#chapter) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Chapter](#chapter) MAY be specified. | Optional |
@@ -3255,7 +3256,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *CourseOffering*. | Required |
 | courseNumber | string | A string value that constitutes a human-readable identifier for the [CourseOffering](#courseOffering) SHOULD be specified. | Recommended |
 | academicSession | string | A string value that constitutes a human-readable identifier for the designated period in which this [CourseOffering](#courseOffering) occurs SHOULD be specified. | Recommended |
@@ -3300,7 +3301,7 @@ http://purl.imsglobal.org/caliper/CourseSection
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *CourseSection*. | Required |
 | courseNumber | string | A string value that constitutes a human-readable identifier for the [CourseSection](#courseSection) SHOULD be specified. | Recommended |
 | academicSession | string | A string value that constitutes a human-readable identifier for the designated period in which the [CourseSection](#courseSection) occurs SHOULD be specified. | Recommended |
@@ -3350,20 +3351,20 @@ http://purl.imsglobal.org/caliper/DigitalResource
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitaResource*. | Required |
-| name | string | A string value comprising a word or phrase by which the [DigitalResource](#digitalResource) is known MAY be specified. | Optional |
-| description | string |  A string value comprising a brief, written representation of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
-| creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing this [DigitalResource](#digitalResource) into being MAY be specified. | Optional |
-| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [DigitalResource](#digitalResource) MAY be specified. | Optional |
-| keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [DigitalResource](#digitalResource) MAY be specified. | Optional |
-| learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [DigitalResource](#digitalResource) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates this [DigitalResource](#digitalResource) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [DigitalResource](#digitalResource) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [DigitalResource](#digitalResource) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [DigitalResource](#digitalResource) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| version | string | A string value that designates the current form or version of the [DigitalResource](#digitalResource) MAY be specified. | Optional |
-| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [DigitalResource](#digitalResource). | Optional |
+| name | string | A string value comprising a word or phrase by which the resource is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the resource MAY be specified. | Optional |
+| creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing resource into being MAY be specified. | Optional |
+| mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of the resource MAY be specified. | Optional |
+| keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the resource MAY be specified. | Optional |
+| learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with the resource MAY be specified. | Optional |
+| isPartOf | [Entity](#entity) | a related [Entity](#entity) that includes or incorporates the resource as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the resource was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the resource was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the resource MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| version | string | A string value that designates the current form or version of the resource MAY be specified. | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the resource. | Optional |
 
 #### Deprecated Properties
 The following [DigitalResource](#digitalResource) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
@@ -3422,7 +3423,7 @@ http://purl.imsglobal.org/caliper/DigitalResourceCollection
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitaResourceCollection*. | Required |
 | name | string | A string value comprising a word or phrase by which the [DigitalResourceCollection](#digitalResourceCollection) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
@@ -3506,7 +3507,7 @@ http://purl.imsglobal.org/caliper/Document
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Document*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Document](#document) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Document](#document) MAY be specified. | Optional |
@@ -3569,7 +3570,7 @@ http://purl.imsglobal.org/caliper/EpubChapter
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubChapter*. | Required |
 | name | string | A string value comprising a word or phrase by which the [EpubChapter](#epubChapter) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
@@ -3608,7 +3609,7 @@ http://purl.imsglobal.org/caliper/EpubPart
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubPart*. | Required |
 | name | string | A string value comprising a word or phrase by which the [EpubPart](#epubPart) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [EpubPart](#epubPart) MAY be specified. | Optional |
@@ -3647,7 +3648,7 @@ http://purl.imsglobal.org/caliper/EpubSubChapter
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubSubChapter*. | Required |
 | name | string | A string value comprising a word or phrase by which the [EpubSubChapter](#epubSubChapter) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
@@ -3686,7 +3687,7 @@ http://purl.imsglobal.org/caliper/EpubVolume
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EpubSubChapter*. | Required |
 | name | string | A string value comprising a word or phrase by which the [EpubVolume](#epubVolume) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
@@ -3725,7 +3726,7 @@ http://purl.imsglobal.org/caliper/FillinBlankResponse
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *FillinBlankResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [FillinBlankResponse](#fillinBlankResponse)  is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [FillinBlankResponse](#fillinBlankResponse) MAY be specified. | Optional |
@@ -3794,7 +3795,7 @@ http://purl.imsglobal.org/caliper/Forum
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Forum](#forum) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Forum](#forum) MAY be specified. | Optional |
@@ -3874,7 +3875,7 @@ http://purl.imsglobal.org/caliper/Frame
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Frame*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Frame](#frame) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Frame](#frame) MAY be specified. | Optional |
@@ -3931,7 +3932,7 @@ http://purl.imsglobal.org/caliper/Group
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Group*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Group](#group) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Group](#group) MAY be specified. | Optional |
@@ -3998,7 +3999,7 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [HighlightAnnotation](#highlightAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [HighlightAnnotation](#highlightAnnotation) MAY be specified. | Optional |
@@ -4050,7 +4051,7 @@ http://purl.imsglobal.org/caliper/ImageObject
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ImageObject*. | Required |
 | name | string | A string value comprising a word or phrase by which the [ImageObject](#imageObject) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [ImageObject](#imageObject) MAY be specified. | Optional |
@@ -4102,7 +4103,7 @@ http://purl.imsglobal.org/caliper/LearningObjective
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *LearningObjective*. | Required |
 | name | string | A string value comprising a word or phrase by which the [LearningObjective](#learningObjective) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [LearningObjective](#learningObjective) MAY be specified. | Optional |
@@ -4154,7 +4155,7 @@ http://purl.imsglobal.org/caliper/LtiSession
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *LtiSession*. | Required |
 | name | string | A string value comprising a word or phrase by which the [LtiSession](#ltiSession) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [LtiSession](#ltiSession) MAY be specified. | Optional |
@@ -4246,7 +4247,7 @@ http://purl.imsglobal.org/caliper/MediaLocation
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaLocation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [MediaLocation](#mediaLocation) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
@@ -4297,7 +4298,7 @@ http://purl.imsglobal.org/caliper/MediaObject
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaObject*. | Required |
 | name | string | A string value comprising a word or phrase by which the [MediaObject](#mediaObject) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [MediaObject](#mediaObject) MAY be specified. | Optional |
@@ -4352,14 +4353,14 @@ http://purl.imsglobal.org/caliper/Membership
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Membership*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Membership](#membership) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Membership](#membership) MAY be specified. | Optional |
 | organization | [Organization](#organization) | The [Organization](#organization) associated with the [Membership](#membership) SHOULD be specified.  The `organization` value MUST be expressed either as an object or coerced to a string corresponding to the organization's [IRI](#iriDef). | Recommended |
 | member | [Person](#person) | The [Person](#person) associated with this [Membership](#membership) SHOULD be specified.  The `member` value MUST be expressed either as an object or coerced to a string corresponding to the member's [IRI](#iriDef). | Recommended |
 | roles | Array | An ordered collection of organizational roles assigned to the `member` MAY be specified.  If one or more roles are specified the value(s) MUST be chosen from the list of Caliper defined [roles](#roles]. | Optional |
-| status | [Term](#term) | A string value that indicates the current status of the `member` MAY be specified.  If a status is specified, the value be chosen from the list of Caliper defined [statuses](#statuses]. | Optional |
+| status | [Term](#term) | A string value that indicates the current status of the `member` MAY be specified.  If a status is specified, the value be chosen from the list of Caliper defined [statuses](#statuses). | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Membership](#membership) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Membership](#membership) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Membership](#membership). | Optional |
@@ -4404,7 +4405,7 @@ http://purl.imsglobal.org/caliper/Message
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Message*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Message](#message) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Message](#message) MAY be specified. | Optional |
@@ -4484,7 +4485,7 @@ http://purl.imsglobal.org/caliper/MultipleChoiceResponse
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MultipleChoiceResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [MultipleChoiceResponse](#multipleChoiceResponse) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified. | Optional |
@@ -4553,7 +4554,7 @@ http://purl.imsglobal.org/caliper/MultipleResponseResponse
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MultipleResponseResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [MultipleResponseResponse](#multipleResponseResponse) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified. | Optional |
@@ -4622,7 +4623,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Organization*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Organization](#organization) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Organization](#organization) MAY be specified. | Optional |
@@ -4666,7 +4667,7 @@ http://purl.imsglobal.org/caliper/Page
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Page*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Page](#page) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Page](#page) MAY be specified. | Optional |
@@ -4727,7 +4728,7 @@ http://purl.imsglobal.org/caliper/Person
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Person*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Person](#person) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Person](#person) MAY be specified. | Optional |
@@ -4762,7 +4763,7 @@ http://purl.imsglobal.org/caliper/Reading
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Reading*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Reading](#reading) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Reading](#reading) MAY be specified. | Optional |
@@ -4803,7 +4804,7 @@ http://purl.imsglobal.org/caliper/Response
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Response*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Response](#response)  is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Response](#response) MAY be specified. | Optional |
@@ -4875,7 +4876,7 @@ http://purl.imsglobal.org/caliper/Result
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Result*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
@@ -4891,6 +4892,14 @@ http://purl.imsglobal.org/caliper/Result
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Result](#result). | Optional |
+
+#### Deprecated Properties
+The following [Result](#result) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Attempt](#attempt).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~assignable~~ | [DigitalResource](#digitalResource) | The assigned [DigitalResource](#digitalResource) associated with the [Result](#result). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
 ```
@@ -4944,7 +4953,7 @@ http://purl.imsglobal.org/caliper/SelectTextResponse
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SelectTextResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [SelectTextResponse](#selectTextResponse) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [SelectTextResponse](#selectTextResponse) MAY be specified. | Optional |
@@ -5013,7 +5022,7 @@ http://purl.imsglobal.org/caliper/Session
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Session](#session) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Session](#session) MAY be specified. | Optional |
@@ -5030,7 +5039,7 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession).  `actor` property has been DEPRECATED in and replaced by `user`. | Optional |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession).  `actor` property has been DEPRECATED and replaced by `user`. | Optional |
 
 #### Subtypes
 [LtiSession](#ltiSession)
@@ -5065,7 +5074,7 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SharedAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [SharedAnnotation](#sharedAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [SharedAnnotation](#sharedAnnotation) MAY be specified. | Optional |
@@ -5120,7 +5129,7 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SoftwareApplication*. | Required |
 | name | string | A string value comprising a word or phrase by which the [SoftwareApplication](#softwareApplication) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [SoftwareApplication](#softwareApplication) MAY be specified. | Optional |
@@ -5157,7 +5166,7 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TagAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [TagAnnotation](#tagAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [TagAnnotation](#tagAnnotation) MAY be specified. | Optional |
@@ -5203,7 +5212,7 @@ http://purl.imsglobal.org/caliper/Thread
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Forum*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Thread](#thread) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Thread](#thread) MAY be specified. | Optional |
@@ -5290,7 +5299,7 @@ http://purl.imsglobal.org/caliper/TrueFalseResponse
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TrueFalseResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [TrueFalseResponse](#trueFalseResponse) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [TrueFalseResponse](#trueFalseResponse) MAY be specified. | Optional |
@@ -5359,7 +5368,7 @@ http://purl.imsglobal.org/caliper/VideoObject
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *VideoObject*. | Required |
 | name | string | A string value comprising a word or phrase by which the [VideoObject](#videoObject) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [VideoObject](#videoObject) MAY be specified. | Optional |
@@ -5414,7 +5423,7 @@ http://purl.imsglobal.org/caliper/WebPage
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a Linked Data friendly HTTP URI is either unavailable or inappropriate. | Required |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *WebPage*. | Required |
 | name | string | A string value comprising a word or phrase by which the [WebPage](#webPage) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [WebPage](#webPage) MAY be specified. | Optional |
@@ -5569,6 +5578,85 @@ The status of a [member](#member) within an organization can be set to one of th
 | Active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
 | Inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
+
+<a name="changeLog">
+
+###  Appendix G. Change Log
+Caliper 1.1 additions and deprecations summarized below.
+
+#### Profiles
+| Profile | Status | Disposition |
+| :------ | :----- | :---------: |
+| [AssessmentItem Profile](#assessmentItemProfile) | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
+| [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. | 
+| [Tool Use Profile](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) |
+
+#### Events
+| Event | Status | Disposition |
+| :---- | :----- | :---------: |
+| [ForumEvent](#forumEvent) | New | Introduced in tandem with the Caliper 1.1 [Forum Profile](#forumProfile). |
+| [MessageEvent](#messageEvent) | New | Introduced in tandem with the Caliper 1.1 [Forum Profile](#forumProfile). |
+| [ReadingEvent](#readingEvent) | Deprecated | Targeted for removal in a future version of the specification. |
+| [ToolUseEvent](#toolUseEvent) | New | Introduced in tandem with the Caliper 1.1 [Tool Use Profile](#toolUseProfile). |
+| [ThreadEvent](#threadEvent) | New | Introduced in tandem with the Caliper 1.1 [Forum Profile](#forumProfile). |
+
+#### Event Properties
+| Property | Domain | Status | Disposition |
+| :------- | :----- | :----- | :---------: |
+| id | [Event](#event) | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is recommended. | 
+| type | [Event](#event) | New | Replaces use of the JSON-LD(#jsonldDef) `@type` which is now aliased as `type` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1) document. |
+| @type | [Event](#event) | Deprecated | Use `type`. | 
+| referrer | [Event](#event) | New | Each [Event](#event) subtype can now specify a referring context.  In the case of [NavigationEvent](#navigationEvent) it replaces the `navigatedFrom` property. |
+| navigatedFrom | [NavigationEvent](#navigationEvent) | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
+| extensions | [Event](#event) | New | Adds the ability to include an ordered collection of custom objects not defined by the model. |
+
+#### Entities
+| Entity | Status | Disposition |
+| :----- | :----- | :---------: |
+| [Chapter](#chapter) | New | Introduced as part of revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
+| [DigitalResourceCollection](#digitalResourceCollection) | New | Provides a means of representing a collection of items of type [DigitalResource](#digitalResource). |
+| [Document](#document) | New | Introduced as part of revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
+| [EpubChapter](#epubChapter) | Deprecated | Targeted for removal in a future version of the specification. |
+| [EpubPart](#epubPart) | Deprecated | Targeted for removal in a future version of the specification. |
+| [EpubSubChapter](#epubSubChapter) | Deprecated | Targeted for removal in a future version of the specification. | 
+| [EpubVolume](#epubVolume) | Deprecated | Targeted for removal in a future version of the specification. |
+| [Forum](#forum) | New | Introduced in tandem with the Caliper 1.1 [Forum Profile](#forumProfile). |
+| [LtiSession](#ltiSession) | New | Extends [Session](#session) with the addition of an LTI-related `launchParameters` property. | 
+| [Message](#message) | New | Introduced in tandem with the Caliper 1.1 [Forum Profile](#forumProfile). |
+| [Page](#page) | New | Introduced as part of revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
+| [Reading](#reading) | Deprecated | Targeted for removal in a future version of the specification. |
+| [Thread](#thread) | New | Introduced in tandem with the Caliper 1.1 [Forum Profile](#forumProfile). |
+
+#### Entity Properties
+| Property | Domain | Status | Disposition |
+| :------- | :----- | :----- | :---------: |
+| id | [Entity](#entity) | New | Replaces use of the [JSON-LD] keyword `@id` which is now aliased as `id` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
+| @id | [Entity](#entity) | Deprecated | Use `id`. |
+| type | [Entity](#entity) | New | Replaces use of the JSON-LD(#jsonldDef) `@type` which is now aliased as `type` in the external external IMS [Caliper context](http://purl.imsglobal.org/ctx/caliper/v1p1).
+| @type | [Entity](#entity) | Deprecated | Use `type`. |
+| alignedLearningObjective | [DigitalResource](#digitalResource) | Deprecated | Targeted for removal in a future version of the specification.  Use `learningObjectives`. |
+| actor | [Attempt](#attempt), [Response](#response), [Result](#result), [Session](#session) | Deprecated | Targeted for removal in a future version of the specification.  Instead [Attempt](#attempt) now references the `assignee`, [Response](#response) and [Result](#result) now reference the `attempt`, while [Session](#session) now references the `user`.  |
+| annotator | [Annotation](#annotation) | New | Adds the ability to specify the [Person](#person) who created the [Annotation](#annotation). |
+| assignee | [Attempt](#attempt) | New | Replaces `actor` in order to provide more targeted specificity to the terms employed. |
+| assignable | [Response](#response), [Result](#result) | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| attempt | [Response](#response), [Result](#result) | New | Adds the ability to reference the associated [Attempt](#attempt). Replaces `actor` and `assignable`. |
+| creators | [DigitalResource](#digitalResource) | New | Adds the ability to specify the authors of the resource. |
+| items | [DigitalResourceCollection](#digitalResourceCollection) | New | Adds the ability to specify the resources that comprise the collection. |
+| currentTime | [MediaLocation](#mediaLocation) | datatype change | Datatype changed to an ISO-8601 formatted date/time string set to UTC. | 
+| isPartOf | [Attempt](#attempt) | New | Adds the ability to reference the parent [Attempt](#attempt), if any. |
+| launchParameters | [LtiSession](#ltiSession) | New | Adds the ability to specify LTI launch parameters. |
+| learningObjectives | [DigitalResource](#digitalResource) | New | Replaces the deprecated `alignedLearningObjective`. | 
+| mediaType | [DigitalResource](#digitalResource) | New | Adds the ability to specify the IANA media type that identifies the file format of the resource. |
+| members | [Organization](#organization) | New | Adds the ability to specify the individual members of an [Organization](#organization). |
+| objectType | [DigitalResource](#digitalResource) | Deprecated | Targeted for removal in a future version of the specification. |
+| user | [Session](#session) | New | Replaces `actor` in order to provide more targeted specificity to the terms employed. |
+| version | [SoftwareApplication](#softwareApplication) | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
+
+
+
+#### Actions
+
+
 <a name="contributors" />
 
 ### Contributors
@@ -5587,6 +5675,13 @@ The following Caliper Working Group participants contributed to the writing of t
 | Daniel Green | VitalSource Technologies |
 | Wes LaMarche | ACT |
 | Yong-Sang Cho | KERIS |
+
+#### Reference Implementation Contributors
+| Name | Organization |
+| :--- | :----------- |
+| Anthony Whyte | University of Michigan |
+| Viktor Haag | D2L |
+| Lance Sloan | University of Michigan |
 
 <a name="reference" />
 
