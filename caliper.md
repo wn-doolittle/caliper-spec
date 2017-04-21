@@ -116,6 +116,12 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [Appendix E. Roles](#roles)
 * [Appendix F. Status](#status)
 * [Appendix G. Change Log](#changeLog)
+  * G.1 [Profiles](#changeLogProfiles)
+  * G.2 [Actions](#changeLogActions)
+  * G.3 [Events](#changeLogEvents)
+  * G.4 [Entities](#changeLogEntities)
+  * G.5 [Properties](#changeLogProperties)
+  * G.6 [JSON-LD Context](#changeLogJsonldContext)
 * [Contributors](#contributors)
 * [References](#references)
 
@@ -1141,7 +1147,7 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
  Each Caliper [Event](#event) type supports one one or more of the actions listed below.  The [Event](#event) `action` property string value MUST be set to the appropriate [Term](#termDef). Only one action may be specified per [Event](#event).
 
 | Term (IRI) | WordNet® Gloss |
-| :--------- | ------------- |
+| :--------- | :------------- |
 | <a name="abandoned" />Abandoned (http://purl.imsglobal.org/vocab/caliper/action#Abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
 | <a name="activated" />Activated (http://purl.imsglobal.org/vocab/caliper/action#Activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
 | <a name="added" />Added (http://purl.imsglobal.org/vocab/caliper/action#Added) | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
@@ -5468,7 +5474,7 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 
 <a name="selectors" />
 
-### Appendix D. Selectors
+## Appendix D. Selectors
 A Caliper Selector represents a fragment, selection or part of an [Entity](#entity).
 
 <a name="textPositionSelector" />
@@ -5573,7 +5579,7 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 
 <a name="status" />
 
-### Appendix F. Status
+## Appendix F. Status
 The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate [Term](#term) string value:
 
 | Term | IRI |
@@ -5581,26 +5587,26 @@ The status of a [member](#member) within an organization can be set to one of th
 | Active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
 | Inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
-
 <a name="changeLog">
 
-###  Appendix G. Change Log
-Caliper 1.1 additions and deprecations summarized below.
+##  Appendix G. Change Log
+Caliper 1.1 additions and deprecations are summarized below.
 
-#### JSON-LD context
-A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document has been created.  See http://purl.imsglobal.org/ctx/caliper/v1p1.
+<a name="changeLogProfiles">
 
-#### Profiles
+### G.1 Profiles
 | Profile | Status | Disposition |
 | :------ | :----: | :---------- |
-| [AssessmentItem Profile](#assessmentItemProfile) | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
-| [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. | 
-| [Reading Profile](#readingProfile) | Revised | [ReadingEvent](#readingEvent) has been deprecated and targeted for removal while [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) have been added to the profile. [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume) have been deprecated in favor of [Document](#document), [Chapter](#chapter) and [Page](#page). |
-| [Tool Use Profile](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) and a [SoftwareApplication](#softwareApplication). |
+| [AssessmentItem](#assessmentItemProfile) | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
+| [Forum](#forumProfile) | New | Models learners and others participating in online forum communities. | 
+| [Reading](#readingProfile) | Revised | [ReadingEvent](#readingEvent) has been deprecated and targeted for removal while [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) have been added to the profile. [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume) have been deprecated in favor of [Document](#document), [Chapter](#chapter) and [Page](#page). |
+| [Tool Use](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) and a [SoftwareApplication](#softwareApplication). |
 
-#### Actions
+<a name="changeLogActions">
+
+### G.2 Actions
 | Actions | Status | WordNet® Gloss |
-| :------ | :----: | -------------- |
+| :------ | :----: | :------------- |
 | [Added](#added) | New | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
 | [Created](#created) | New | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v).  Inverse of [Deleted](#deleted). |
 | [Deleted](#deleted) | New | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v).  Inverse of [Created](#created). |
@@ -5614,7 +5620,9 @@ A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document
 | [Unsubscribed](#Unsubscribed) | New | Inverse of [Subscribed](#Subscribed). |
 | [Used](#used) |  New | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
 
-#### Events
+<a name="changeLogEvents">
+
+### G.3 Events
 | Event | Status | Disposition |
 | :---- | :----: | :---------- |
 | [AnnotationEvent](#annotationEvent) | Revised | The following actions have been deprecated and are targeted for removal from the list of supported [AnnotationEvent](#annotationEvent) actions: [Attached](#attached), [Classified](#classified),  [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended), [Replied](#replied), [Subscribed](#subscribed). |
@@ -5624,21 +5632,12 @@ A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document
 | [ForumEvent](#forumEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Subscribed](#subscribed), [Unsubscribed](#unsubscribed). |
 | [MessageEvent](#messageEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
 | [ReadingEvent](#readingEvent) | Deprecated | Targeted for removal in a future version of the specification. |
-| [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile).  Supported actions: [Used](#used). |
 | [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
+| [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile).  Supported actions: [Used](#used). |
 
-#### Event Properties
-| Domain | Property | Status | Disposition |
-| :------| :------- | :----: | :---------- |
-| [Event](#event) | id | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is recommended. | 
-| [Event](#event) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *MessageEvent*. |
-| [Event](#event) | @type | Deprecated | Use `type`. |
-| [Event](#event) | action | Revised | `action` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Person*. |
-| [Event](#event) | referrer | New | Adds the ability to specify a referring context.  In the case of [NavigationEvent](#navigationEvent) `referrer` supersedes the deprecated `navigatedFrom` property. |
-| [Event](#event) | extensions | New | Adds the ability to include an ordered collection of custom objects not defined by the model. |
-| [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
+<a name="changeLogEntities">
 
-#### Entities
+### G.4 Entities
 | Entity | Status | Disposition |
 | :----- | :----: | :---------- |
 | [Chapter](#chapter) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
@@ -5655,20 +5654,29 @@ A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document
 | [Reading](#reading) | Deprecated | Targeted for removal in a future version of the specification. |
 | [Thread](#thread) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 
-#### Entity Properties
+<a name="changeLogEvents">
+
+### G.5 Properties
 | Domain | Property | Status | Disposition |
 | :------| :------- | :----: | :---------- |
+| [Event](#event) | id | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is recommended. | 
+| [Event](#event) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *MessageEvent*. |
+| [Event](#event) | @type | Deprecated | Use `type`. |
+| [Event](#event) | action | Revised | `action` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Person*. |
+| [Event](#event) | referrer | New | Adds the ability to specify a referring context.  In the case of [NavigationEvent](#navigationEvent) `referrer` supersedes the deprecated `navigatedFrom` property. |
+| [Event](#event) | extensions | New | Adds the ability to include an ordered collection of custom objects not defined by the model. |
+| [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
 | [Entity](#entity) | id | New | Replaces use of the [JSON-LD](#jsonldDef) keyword `@id` which is now aliased as `id` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
 | [Entity](#entity) | @id | Deprecated | Use `id`. |
 | [Entity](#entity) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).
 | [Entity](#entity) | @type | Deprecated | Use `type`. |
 | [Annotation](#annotation) | annotator | New | Adds the ability to specify the [Person](#person) who created the [Annotation](#annotation). |
 | [Attempt](#attempt) | actor | Deprecated | Targeted for removal in a future version of the specification. Use `assignee`. |
-| [Attempt](#attempt) | assignee | New | Replaces `actor` in order to provide a more concise term. |
+| [Attempt](#attempt) | assignee | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [Attempt](#attempt) | isPartOf | New | Adds the ability to reference the parent [Attempt](#attempt), if any. |
 | [DigitalResource](#digitalResource) | alignedLearningObjective | Deprecated | Targeted for removal in a future version of the specification.  Use `learningObjectives`. |
 | [DigitalResource](#digitalResource) | creators | New | Adds the ability to specify the authors of the resource. |
-| [DigitalResource](#digitalResource) | learningObjectives | New | Replaces the deprecated `alignedLearningObjective` with a plural term that aligns with the Caliper naming approach for collections and lists. |
+| [DigitalResource](#digitalResource) | learningObjectives | New | Replaces the deprecated `alignedLearningObjective` property with a plural term that adheres to the naming format adopted for collections and lists. |
 | [DigitalResource](#digitalResource) | mediaType | New | Adds the ability to specify the IANA media type that identifies the file format of the resource. |
 | [DigitalResource](#digitalResource) | objectType | Deprecated | Targeted for removal in a future version of the specification.  Use `type`. |
 | [DigitalResourceCollection](#digitalResourceCollection) | items | New | Adds the ability to specify the resources that comprise the collection. |
@@ -5679,26 +5687,31 @@ A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document
 | [Organization](#organization) | members | New | Adds the ability to specify the collection of members that comprise the [Organization](#organization). |
 | [Response](#response)| actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Response](#response) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Response](#response) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces `actor` and `assignable`. |
+| [Response](#response) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable`. |
 | [Result](#result) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Result](#result) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Result](#result) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces `actor` and `assignable`. |
+| [Result](#result) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable` properties. |
 | [Session](#session) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `user`. |
-| [Session](#session) | user | New | Replaces `actor` in order to provide a more concise term. |
+| [Session](#session) | user | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [SoftwareApplication](#softwareApplication) | version | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
+
+<a name="changeLogJsonldContext">
+
+### G.6 JSON-LD context
+A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document has been created.  See http://purl.imsglobal.org/ctx/caliper/v1p1.
 
 <a name="contributors" />
 
 ### Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
-#### Authors
+#### Specification Authors
 | Name | Organization |
 | :--- | :----------- |
 | Anthony Whyte | University of Michigan |
 | Viktor Haag | D2L |
 
-#### Editors and Reviewers
+#### Specification Editors and Reviewers
 | Name | Organization |
 | :--- | :----------- |
 | Steven Erickson | Unicon |
