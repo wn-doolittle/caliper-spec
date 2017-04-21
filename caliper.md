@@ -5709,9 +5709,12 @@ The following Caliper Working Group participants contributed to the writing of t
 #### Reference Implementation Contributors
 | Name | Organization |
 | :--- | :----------- |
-| Anthony Whyte | University of Michigan |
+| Markus Gylling | IMS Global |
 | Viktor Haag | D2L |
+| Sophiann Hayet | Explorance |
+| Paul Kerschen | UC Berkeley |
 | Lance Sloan | University of Michigan |
+| Anthony Whyte | University of Michigan |
 
 <a name="reference" />
 
