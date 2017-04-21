@@ -5702,7 +5702,7 @@ A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document
 
 <a name="contributors" />
 
-### Contributors
+## Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
 #### Specification Authors
@@ -5731,7 +5731,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="reference" />
 
-### References
+## References
 
 <a name="jsonldSyntax" />
 
