@@ -5654,7 +5654,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Reading](#reading) | Deprecated | Targeted for removal in a future version of the specification. |
 | [Thread](#thread) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 
-<a name="changeLogEvents">
+<a name="changeLogProperties">
 
 ### G.5 Properties
 | Domain | Property | Status | Disposition |
