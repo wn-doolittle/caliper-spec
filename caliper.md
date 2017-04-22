@@ -549,16 +549,7 @@ The Caliper Media Profile models interactions between learners and rich content 
 Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started) and [Ended](#ended) actions are required and MUST be implemented.  [Paused](#paused), [Resumed](#resumed) and [Restarted](#restared) actions are recommended.  All other supported events and actions are considered optional.
 
 #### Supported Events
-[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
-
-#### Supported Actors
-[Person](#person)
-
-#### Supported Objects
-[MediaObject](#mediaObject), [AudioObject](#audioObject), [ImageObject](#imageObject), [VideoObject](#videoObject)
-
-#### Supported Targets
-[MediaLocation](#mediaLocation)
+[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
