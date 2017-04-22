@@ -639,19 +639,17 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 #### Supported Events
 [SessionEvent](#sessionEvent)
 
-#### Supported Actors
-[Person](#person), [SoftwareApplication](#softwareApplication)
-
-#### Supported Objects
-[Session](#session), [SoftwareApplication](#softwareApplication)
-
-#### Supported Targets
-[DigitalResource](#digitalResource)
-
 #### Supported Actions
+| Event | Action | WordNet® Gloss | Conformance |
+| :---- | :----- | :------------- | :---------- |
+| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). | Required |
+| [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). | Optional |
+| [SessionEvent](#sessionEvent) | [TimedOut](#timedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. | Optional |
+
+#### Supported Entities
 | Event | Actor |	Action | Object |	Target | Session |
 | :---- | :---- | :----- | :----- | :----- | :------ |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) |  [DigitalResource](#digitalResource) | [Session](#session) |
+| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | [DigitalResource](#digitalResource) | [Session](#session) |
 | [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | &nbsp; | [Session](#session) |
 | [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | &nbsp; |
 
@@ -675,7 +673,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
-| :---- | :----- | :---------- | :---------- |
+| :---- | :----- | :------------- | :---------- |
 | [ToolUseEvent](#toolUseEvent) | Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). | Required |
 
 #### Supported Entities
