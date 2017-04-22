@@ -518,16 +518,13 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 #### Supported Events
 [OutcomeEvent](#outcomeEvent)
 
-#### Supported Actors
-[Agent](#agent) and its subtypes 
-
-#### Supported Objects
-[Attempt](#attempt), [Result](#result)
-
-#### Generated Entities
-[Result](#result)
-
 #### Supported Actions
+| Event | Action | WordNet® Gloss | Conformance |
+| :---- | :----- | :------------- | :---------- |
+| [OutcomeEvent](#outcomeEvent) | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). | Required |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
+
+#### Supported Entities
 | Event | Actor |	Action | Object | Generated |
 | :---- | :---- | :----- | :----- | :-------- |
 | [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) |
@@ -536,8 +533,8 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 #### Requirements
 * Certain [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [OutcomeEvent](#outcomeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.  
 * For [Graded](#graded) actions, the `generated` [Result](#result) SHOULD be specified.
 
 <a name="mediaProfile" />
