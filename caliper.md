@@ -420,10 +420,8 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * The [Attempt](#attempt) SHOULD reference both the `annotator` and the `annotated` [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
 * For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified with the `count` value incremented by 1.
-* For a [Paused](#paused) action the [Attempt](#attempt) `count` value MUST not change.
-* For a [Resumed](#resumed) action the [Attempt](#attempt) `count` value MUST not change.
+* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions the [Attempt](#attempt) `count` value MUST NOT be changed.
 * For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value SHOULD be incremented by 1.
-* For a [Reset](#reset) action the [Attempt](#attempt) `count` value MUST not change.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
