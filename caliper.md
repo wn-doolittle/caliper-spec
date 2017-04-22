@@ -673,15 +673,14 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 #### Supported Events
 [ToolUseEvent](#toolUseEvent)
 
-#### Supported Actors
-[Person](#person)
-
-#### Supported Objects
-[SoftwareApplication](#softwareApplication)
-
 #### Supported Actions
+| Event | Action | WordNet® Gloss | Conformance |
+| :---- | :----- | :---------- | :---------- |
+| [ToolUseEvent](#toolUseEvent) | Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). | Required |
+
+#### Supported Entities
 | Event | Actor |	Action | Object |
-| :---- | :---- | :----- | :---- |
+| :---- | :---- | :----- | :----- |
 | ToolUseEvent | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) |
 
 #### Requirements
