@@ -607,15 +607,15 @@ The Caliper Reading Profile models activities associated with navigating to and 
 Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
 
 #### Supported Events
-[NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent) 
-
-#### Supported Actors
-[Person](#person)
-
-#### Supported Objects
-[DigitalResource](#digitalResource), [AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Frame](#frame), [Page](#page), [WebPage](#webpage)
+[NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
+| Event | Action | WordNet® Gloss | Conformance |
+| :---- | :----- | :------------- | :---------- |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Required |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Required |
+
+#### Supported Entities
 | Event | Actor |	Action | Object |	Target | Referrer |
 | :---- | :---- | :----- | :----- | :----- | :------- |
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | [Frame](#frame) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
@@ -624,7 +624,9 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 #### Requirements
 * Certain [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
+* A [DigitalResource](#digitalResource) or one of it's subtypes MUST be specified as the `object` of the interaction.
 * A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
 * When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
@@ -682,9 +684,11 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 | ToolUseEvent | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) |
 
 #### Requirements
-* Certain [ToolUseEvent](#toolUseEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ToolUseEvent](#toolUseEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
+* Certain [ToolUseEvent](#toolUseEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ToolUseEvent](#toolUseEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
 * Each [Entity](#entity) participating in the [ToolUseEvent](#toolUseEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
+* A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
 
 <a name="dataSerialization" />
 
@@ -1217,7 +1221,7 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 | <a name="unmuted" />Unmuted (http://purl.imsglobal.org/vocab/caliper/action#Unmuted) | Inverse of [Muted](#muted). |
 | <a name="unsubscribed" />Unsubscribed (http://purl.imsglobal.org/vocab/caliper/action#Unsubscribed) | Inverse of [Subscribed](#subscribed). |
 | <a name="used" />Used (http://purl.imsglobal.org/vocab/caliper/action#Used) | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
-| <a name="viewed" />Viewed (http://purl.imsglobal.org/vocab/caliper/action#Viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v) |
+| <a name="viewed" />Viewed (http://purl.imsglobal.org/vocab/caliper/action#Viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 <a name="events" />
 
