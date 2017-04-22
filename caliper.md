@@ -1793,8 +1793,8 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 #### Deprecated Actions
 The following actions are deprecated and targeted for removal from the [AssignableEvent](#assignableEvent) list of supported actions.
 
-| Event | Action | WordNet® Gloss |
-| :---- | :----- | :------------- |
+| Action | WordNet® Gloss |
+| :----- | :------------- |
 | [Abandoned](#abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
 | [Hid](#hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v).  Inverse of [Showed](#showed). |
 | [Showed](#showed) | [Make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v).  Inverse of [Hid](#hid). |
