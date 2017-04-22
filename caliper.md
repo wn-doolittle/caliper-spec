@@ -419,9 +419,9 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 * Each [Entity](#entity) participating in the [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * The [Attempt](#attempt) SHOULD reference both the `annotator` and the `annotated` [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified with the `count` value incremented by 1.
+* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
 * For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions the [Attempt](#attempt) `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value SHOULD be incremented by 1.
+* For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value MUST be incremented by 1.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
@@ -591,10 +591,10 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 * Each [Entity](#entity) participating in the [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
-* For a [Started](#started) action, the [MediaLocation](#mediaLocation) `currentTime` value should be set to the beginning or initial starting location in the audio or video stream.
-* For a [Paused](#paused) action the [MediaLocation](#mediaLocation) `currentTime` value should be set to the location in the audio or video stream where the pause occurred.
-* For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation) `currentTime` value should be set to the location in the audio or video stream where the previous pause occurred.
-* For a [Restarted](#restarted) action the [MediaLocation](#mediaLocation) `currentTime` value should be set to the beginning or initial starting location in the audio or video stream.
+* For a [Started](#started) action, the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream.
+* For a [Paused](#paused) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred.
+* For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred.
+* For a [Restarted](#restarted) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream.
 * When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="readingProfile" />
