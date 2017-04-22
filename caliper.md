@@ -46,7 +46,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 5.0 [Endpoint](#endpoint)
   * 5.1 [Endpoint Responses](#endpointResponses)
 * [Appendix A. Actions](#actions)
-* [Appendix B. Event Types](#events)
+* [Appendix B. Events](#events)
   * B.1 [Event](#event)
   * B.2 [AnnotationEvent](#annotationEvent)
   * B.3 [AssessmentEvent](#assessmentEvent)
@@ -62,7 +62,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * B.13 [ThreadEvent](#threadEvent)
   * B.14 [ToolUseEvent](#toolUseEvent)
   * B.15 [ViewEvent](#viewEvent)
-* [Appendix C. Entity Types](#entities)
+* [Appendix C. Entities](#entities)
   * C.1 [Entity](#entity)
   * C.2 [Agent](#agent)
   * C.3 [Annotation](#annotation)
@@ -404,7 +404,8 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | :---- | :---- | :----- | :----- | :-------- | :------- |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | &nbsp; | &nbsp; | 
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | &nbsp; | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Resumed](#resumed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | &nbsp; | &nbsp; |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | [Attempt](#attempt) | [Assessment](#assessment) |
@@ -418,7 +419,11 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 * Each [Entity](#entity) participating in the [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * The [Attempt](#attempt) SHOULD reference both the `annotator` and the `annotated` [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
-* For [Started](#started) actions, the learner's `generated` [Attempt](#attempt) SHOULD be specified.
+* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified with the `count` value incremented by 1.
+* For a [Paused](#paused) action the [Attempt](#attempt) `count` value MUST not change.
+* For a [Resumed](#resumed) action the [Attempt](#attempt) `count` value MUST not change.
+* For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value SHOULD be incremented by 1.
+* For a [Reset](#reset) action the [Attempt](#attempt) `count` value MUST not change.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
@@ -561,8 +566,9 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | Event | Actor |	Action | Object |	Target | Referrer |
 | :---- | :---- | :----- | :----- | :----- | :------- |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) |[Paused](#paused) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Restarted](#restared) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
@@ -587,6 +593,10 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 * Each [Entity](#entity) participating in the [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
+* For a [Started](#started) action, the [MediaLocation](#mediaLocation) `currentTime` value should be set to the beginning or initial starting location in the audio or video stream.
+* For a [Paused](#paused) action the [MediaLocation](#mediaLocation) `currentTime` value should be set to the location in the audio or video stream where the pause occurred.
+* For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation) `currentTime` value should be set to the location in the audio or video stream where the previous pause occurred.
+* For a [Restarted](#restarted) action the [MediaLocation](#mediaLocation) `currentTime` value should be set to the beginning or initial starting location in the audio or video stream.
 * When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="readingProfile" />
@@ -1193,9 +1203,9 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 | <a name="ranked" />Ranked (http://purl.imsglobal.org/vocab/caliper/action#Ranked) | [Assign a rank or rating to](http://wordnet-rdf.princeton.edu/wn31/200659723-v). |
 | <a name="recommended" />Recommended (http://purl.imsglobal.org/vocab/caliper/action#Recommended) | [Express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v). |
 | <a name="removed" />Removed (http://purl.imsglobal.org/vocab/caliper/action#Removed) | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
-| <a name="reset" />Reset (http://purl.imsglobal.org/vocab/caliper/action#Reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v). |
-| <a name="restarted" />Restarted (http://purl.imsglobal.org/vocab/caliper/action#Restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v). |
-| <a name="resumed" />Resumed (http://purl.imsglobal.org/vocab/caliper/action#Resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v). |
+| <a name="reset" />Reset (http://purl.imsglobal.org/vocab/caliper/action#Reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v)  without changing or incrementing the [Attempt] `count` value. |
+| <a name="restarted" />Restarted (http://purl.imsglobal.org/vocab/caliper/action#Restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, make progress but then stop and return to the beginning in order to start again.  Restarting an [Attempt](#attempt) SHOULD trigger the incrementing of the `count` value by 1. |
+| <a name="resumed" />Resumed (http://purl.imsglobal.org/vocab/caliper/action#Resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, pause and then begin again at the location where the pause in action occurred. Resuming an [Attempt](#attempt) MUST not change the current `count` value. |
 | <a name="retrieved" />Retrieved (http://purl.imsglobal.org/vocab/caliper/action#Retrieved) | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
 | <a name="reviewed" />Reviewed (http://purl.imsglobal.org/vocab/caliper/action#Reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
 | <a name="rewound" />Rewound (http://purl.imsglobal.org/vocab/caliper/action#Rewound) | [Wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v). |
@@ -1215,7 +1225,7 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 
 <a name="events" />
 
-## Appendix B. Event Types
+## Appendix B. Events
 
 <a name="event" />
 
@@ -1376,7 +1386,7 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 http://purl.imsglobal.org/caliper/AssessmentEvent
 
 #### Supported actions
-[Started](#started), [Paused](#paused), [Reset](#reset), [Restarted](#restarted), [Submitted](#submitted)
+[Started](#started), [Paused](#paused), [Resumed](#resumed), [Reset](#reset), [Restarted](#restarted), [Submitted](#submitted)
 
 #### Properties
 [AssessmentEvent](#assessmentEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -1387,10 +1397,10 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified.   The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions the [Assessment](#assessment) constitutes the `object` of the interaction and MUST be specified.  For a [Submitted](#submitted) action the actor's [Attempt](#attempt) is the `object` and MUST be specified.  In either case, the `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| object | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused), [Reset](#reset) and [Restarted](#restarted) actions the [Assessment](#assessment) constitutes the `object` of the interaction and MUST be specified.  For a [Submitted](#submitted) action the actor's [Attempt](#attempt) is the `object` and MUST be specified.  In either case, the `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Attempt](#attempt) | For [Started](#started), [Paused](#paused) and [Restarted](#restarted) actions an [Attempt](#attempt) SHOULD be specified in order to record a [count](#count) of the number of times the `actor` has interacted with the [Assessment](#assessment).  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| generated | [Attempt](#attempt) | For a [Started](#started) action an [Attempt](#attempt) MUST be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
 | edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
 | group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
@@ -1877,7 +1887,7 @@ The Caliper [MediaEvent](#mediaEvent) models interactions between learners and r
 http://purl.imsglobal.org/caliper/MediaEvent
 
 #### Supported actions
-[Started](#started), [Paused](#paused), [Resumed](#resumed), [Ended](#ended), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [Rewound](#rewound), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
+[Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Ended](#ended), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [Rewound](#rewound), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
 
 #### Properties
 [MediaEvent](#mediaEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2656,7 +2666,7 @@ http://purl.imsglobal.org/caliper/ViewEvent
 
 <a name="entities" />
 
-## Appendix C. Entity Types
+## Appendix C. Entities
 
 <a name="entity" />
 
@@ -3053,7 +3063,7 @@ http://purl.imsglobal.org/caliper/Attempt
 | assignee | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt) SHOULD be specified.  The `assignee` value MUST be expressed either as an object or coerced to a string corresponding to the assignee's [IRI](#iriDef). | Recommended |
 | assignable | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  The `assignable` value MUST be expressed either as an object or coerced to a string corresponding to the assigned resource's [IRI](#iriDef). | Recommended |
 | isPartOf | [Attempt](#attempt) | The parent [Attempt](#attempt), if any, MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated attempt's [IRI](#iriDef). | Optional |
-| count | integer | The total number of attempts inclusive of the current Attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
+| count | integer | The total number of attempts inclusive of the current attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
@@ -5615,7 +5625,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Modified](#modified) | New | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v). |
 | [Posted](#posted) | New  | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v).  |
 | [Removed](#removed) | New | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
-| [Reset](#reset) | New | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v). |
+| [Reset](#reset) | New | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt] `count` value. |
 | [Retrieved](#retrieved) | New | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
 | [Unsubscribed](#Unsubscribed) | New | Inverse of [Subscribed](#Subscribed). |
 | [Used](#used) |  New | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
@@ -5626,10 +5636,11 @@ Caliper 1.1 additions and deprecations are summarized below.
 | Event | Status | Disposition |
 | :---- | :----: | :---------- |
 | [AnnotationEvent](#annotationEvent) | Revised | The following actions have been deprecated and are targeted for removal from the list of supported [AnnotationEvent](#annotationEvent) actions: [Attached](#attached), [Classified](#classified),  [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended), [Replied](#replied), [Subscribed](#subscribed). |
-| [AssessmentEvent](#assessmentEvent) | Revised | [Reset](#reset) added to the list of supported actions. |
+| [AssessmentEvent](#assessmentEvent) | Revised | [Reset](#reset) and [Restarted](#restarted) added to the list of supported actions. |
 | [AssessmentItemEvent](#assessmentItemEvent) | Revised | The following actions have been deprecated and are targeted for removal from the list of supported [AssessmentItemEvent](#assessmentItemEvent) actions: [Reviewed](#reviewed), [Viewed](#viewed). |
 | [AssignableEvent](#assignableEvent) | Revised | [Submitted](#submitted) added to the list of supported actions.  The following actions have been deprecated and are targeted for removal from the list of supported [AssignableEvent](#assignableEvent) actions: [Abandoned](#abandoned), [Hid](#hid), [Showed](#showed). |
 | [ForumEvent](#forumEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Subscribed](#subscribed), [Unsubscribed](#unsubscribed). |
+| [MediaEvent](#mediaEvent) | Revised | [Restarted](#restarted) added to the list of supported actions. |
 | [MessageEvent](#messageEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
 | [ReadingEvent](#readingEvent) | Deprecated | Targeted for removal in a future version of the specification. |
 | [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
