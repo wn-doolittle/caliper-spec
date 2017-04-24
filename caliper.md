@@ -1188,16 +1188,19 @@ Caliper [Endpoint](#endpoint) implementers should bear in mind that some Caliper
 ### 5.2 Minimum Supported String Lengths
 Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementors will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, the following *minimum* character lengths SHOULD be adopted for the Caliper string properties listed below.  
 
-| Domain | Property | Description | Minimum Length |
+| Event | Property | Description | Minimum Length |
 | :------| :------- | :---------- | ---------: |
 | [Event](#event) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>`. | 2048 |
 | [Event](#event) | type | The Caliper [Term](termDef) designated for the [Event](#event). | 2048 |
 | [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 2048 |
 | [Event](#event) | eventTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+
+| Entity | Property | Description | Minimum Length |
+| :------| :------- | :---------- | ---------: |
 | [Entity](#entity) | id | The [IRI](#iriDef) assigned to the [Entity](#entity). | 2048 |
 | [Entity](#entity) | type | The Caliper designated [Term](termDef) for the [Entity](#entity). | 2048 |
 | [Entity](#entity) | name | A word or phrase by which the [Entity](#entity) is known. | 256 |
-| [Entity](#entity) | description | A brief, plain text representation of the [Entity](#entity). | 1024 |
+| [Entity](#entity) | description | A human-readable plain text representation of the [Entity](#entity). | 1024 |
 | [Entity](#entity) | dateCreated | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Entity](#entity) | dateModified | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [AssignableDigitalResource](#assignableDigitalResource) | dateToActivate | A date and time value expressed with millisecond precision that describes when the resource was activated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
@@ -1207,7 +1210,7 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [Attempt](#attempt) | staredAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Attempt](#attempt) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Attempt](#attempt) | duration | A time interval that represents the time taken to complete the [Attempt](#attempt).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [AudioObject](#audioObject) | volumeLevel | the current volume level. | 32 |
+| [AudioObject](#audioObject) | volumeLevel | The current volume level. | 32 |
 | [AudioObject](#audioObject) | volumeMax | The maximum volume level. | 32 |
 | [AudioObject](#audioObject) | volumeMin | The minimum volume level.  | 32 |
 | [BookmarkAnnotation](#bookmarkAnnotation) | BookmarkNotes | A plain text rendering of the note that accompanies the bookmark. | 1024 |
