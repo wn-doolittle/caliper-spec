@@ -1183,7 +1183,7 @@ When using HTTPS an [Endpoint](#endpoint) MUST exhibit the following response be
 
 Caliper [Endpoint](#endpoint) implementers should bear in mind that some Caliper [Sensors](#sensor) may lack sophisticated error handling.
 
-<a name="endpointStringLength" />
+<a name="endpointStringLengths" />
 
 ### 5.2 Minimum Supported String Lengths
 Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementors will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, the following *minimum* character lengths SHOULD be adopted for the Caliper string properties listed below.  
