@@ -1188,9 +1188,9 @@ Caliper [Endpoint](#endpoint) implementers should bear in mind that some Caliper
 ### 5.2 Minimum Supported String Lengths
 Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementors will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, the following *minimum* character lengths SHOULD be adopted for the Caliper string properties listed below.  
 
-| Domain | Property | Description | Min Length (chars) |
-| :------| :------- | :---------- | :----------------- |
-| [Event](#event) | id | A [UUID](#uuidDef] assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>`. | 2048 |
+| Domain | Property | Description | Min Length |
+| :------| :------- | :---------- | ---------: |
+| [Event](#event) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>`. | 2048 |
 | [Event](#event) | type | The Caliper [Term](termDef) designated for the [Event](#event). | 2048 |
 | [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 2048 |
 | [Event](#event) | eventTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
@@ -1210,7 +1210,7 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [AudioObject](#audioObject) | volumeLevel | the current volume level. | 32 |
 | [AudioObject](#audioObject) | volumeMax | The maximum volume level. | 32 |
 | [AudioObject](#audioObject) | volumeMin | The minimum volume level.  | 32 |
-| [BookmarkAnnotation](#bookmarkAnnotation) | A plain text rendering of the note that accompanies the bookmark. | BookmarkNotes | 1024 |
+| [BookmarkAnnotation](#bookmarkAnnotation) | BookmarkNotes | A plain text rendering of the note that accompanies the bookmark. | 1024 |
 | [CourseOffering](#courseOffering) | academicSession | A human-readable identifier of the designated period in which the course occurs. | 256 |
 | [CourseOffering](#courseOffering) | courseNumber | A human-readable identifier assigned to the course. | 128 |
 | [CourseSection](#courseSection) | category | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | 128 |
