@@ -1191,14 +1191,14 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | Event | Property | Description | Minimum Length |
 | :------| :------- | :---------- | ---------: |
 | [Event](#event) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>`. | 2048 |
-| [Event](#event) | type | The Caliper [Term](termDef) designated for the [Event](#event). | 2048 |
-| [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 2048 |
+| [Event](#event) | type | The Caliper [Term](termDef) designated for the [Event](#event). | 256 |
+| [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 256 |
 | [Event](#event) | eventTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 
 | Entity | Property | Description | Minimum Length |
 | :------| :------- | :---------- | ---------: |
 | [Entity](#entity) | id | The [IRI](#iriDef) assigned to the [Entity](#entity). | 2048 |
-| [Entity](#entity) | type | The Caliper designated [Term](termDef) for the [Entity](#entity). | 2048 |
+| [Entity](#entity) | type | The Caliper designated [Term](termDef) for the [Entity](#entity). | 256 |
 | [Entity](#entity) | name | A word or phrase by which the [Entity](#entity) is known. | 256 |
 | [Entity](#entity) | description | A human-readable plain text representation of the [Entity](#entity). | 1024 |
 | [Entity](#entity) | dateCreated | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
