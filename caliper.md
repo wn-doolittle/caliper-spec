@@ -1224,7 +1224,6 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 <a name="httpEndpoint" />
 
 #### 5.2.1 HTTP Endpoint Requirements
-
 * An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
 * An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
 * An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
@@ -1242,7 +1241,6 @@ Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Cal
 <a name="nonHttpEndpoint" />
 
 #### 5.2.2 Endpoints supporting non-HTTP protocols
-
 Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Endpoint](#endpoint) maintain support for HTTP transport for maximum interoperability.
 
 <a name="actions"/>
