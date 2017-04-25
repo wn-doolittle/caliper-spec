@@ -44,8 +44,9 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 4.2 [Envelope](#sensorEnvelope)
   * 4.3 [Transport](#sensorTransport)
 * 5.0 [Endpoint](#endpoint)
-  * 5.1 [Endpoint Responses](#endpointResponses)
-  * 5.2 [Minimum Supported String Lengths](#endpointStringLengths)
+  * 5.1 [Minimum Supported String Lengths](#endpointStringLengths)
+  * 5.2.1 [HTTP Endpoint](#httpEndpoint)
+  * 5.2.2 [Endpoints supporting non HTTP protocols](#nonHttpEndpoint)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Events](#events)
   * B.1 [Event](#event)
@@ -942,7 +943,7 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
 }
 ```
 
-An [Endpoint](#endpoint) must be capable of interpreting coerced values.  For Caliper defined [Terms](#terms) implementors need only reference the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) in their [Event](#event) or [Entity](#entity) *describe* [JSON-LD](#jsonldDef) documents in order to link to the associated term definitions.  The receiver of a Caliper [Event](#event) or [Entity](#entity) containing coerced values that do not map to an explicit context declaration will be considered nonconformant.
+Analytical consumers require accurate [JSON-LD](#jsonldDef) context definitions to be capable of interpreting coerced values.  For Caliper defined [Terms](#terms) implementors need only reference the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) in their [Event](#event) or [Entity](#entity) *describe* [JSON-LD](#jsonldDef) documents in order to link to the associated term definitions.  A Caliper [Event](#event) or [Entity](#entity) containing coerced values that do not map to an explicit context declaration will be considered nonconformant.
 
 <a name="sensor" />
 
@@ -1137,11 +1138,12 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 <a name="sensorTransport" />
 
 ### 4.3 Transport
-Business requirements informed by industry best practices will determine the choice of transport protocol for Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementors.  Real-time or near real-time messaging scenarios are likely to require adoption of a transport protocol other than the familiar application protocol HTTP layered over TCP/IP.
 
-Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).
+Business requirements informed by industry best practices will determine the choice of transport protocol for Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementors.  _Note that the IMS Caliper certification suite currently requires implementors seeking certification to send data to the certification test [Endpoint](#endpoint) using HTTPS with a bearer token credential consistent with [RFC 6750](#rfc6750)._  Where an alternate transport protocol is preferred for performance or other considerations, it is recommended to add that support in addition to HTTP transport for maximum interoperability.
 
-For Caliper messaging scenarios involving HTTP the following requirements are in force: 
+Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope). 
+
+#### 4.3.1 HTTP Transport Requirements
  
 * A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS or SSL.
 * Messages MUST be sent using the POST request method.
@@ -1156,36 +1158,16 @@ For Caliper messaging scenarios involving HTTP the following requirements are in
 * A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
 * The `Content-Length` of the request body MUST be measured in octets (8-bit bytes).
 
-Note that the IMS Caliper certification suite currently requires implementors seeking certification to send data to the certification test [Endpoint](#endpoint) using HTTPS with a bearer token credential consistent with [RFC 6750](#rfc6750).
 
 <a name="endpoint" />
 
 ## 5.0 Endpoint
 
-A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.
-
-For Caliper messaging scenarios involving HTTP the following requirements are in force:
-
-* An [Endpoint](#endpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
-* An [Endpoint](#endpoint) MUST be capable of accessing standard HTTP request headers.
-* An [Endpoint](#endpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
-
-<a name="endpointResponses" />
-
-### 5.1 Endpoint Responses
-When using HTTPS an [Endpoint](#endpoint) MUST exhibit the following response behaviour: 
-
-* To signal to a [Sensor](#sensor) that it has received an emitted message and no error state pertains an [Endpoint](#endpoint) MUST reply with a `2xx` class status code. The [Endpoint](#endpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
-* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#endpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint) SHOULD send a `422 Unprocessable Entity` response instead.
-* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#endpoint) SHOULD reply with a `415 Unsupported Media Type` response.
-* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#endpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
-* The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions of varying kinds.  The [Endpoint](#endpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
-
-Caliper [Endpoint](#endpoint) implementers should bear in mind that some Caliper [Sensors](#sensor) may lack sophisticated error handling.
+A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints supporting non HTTP protocols](#nonHttpEndpoint) for recommendations.
 
 <a name="endpointStringLengths" />
 
-### 5.2 Minimum Supported String Lengths
+### 5.1 Minimum Supported String Lengths
 Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementors will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, the following *minimum* character lengths SHOULD be adopted for the Caliper string properties listed below.  
 
 | Domain | Property | Description | Minimum Length |
@@ -1236,6 +1218,35 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [Session](#session) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session).  The value MUST conform to the ISO-8601 duration format. | 64 |
 | [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
+
+
+### 5.2 Endpoint Requirements
+
+<a name="httpEndpoint" />
+
+#### 5.2.1 HTTP Endpoint Requirements
+
+* An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
+* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
+* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+
+##### HTTP Endpoint Responses
+When using HTTPS an [Endpoint](#httpEndpoint) MUST exhibit the following response behaviour:
+
+* To signal to a [Sensor](#sensor) that it has successfully received an emitted [Envelope](#envelope) an [Endpoint](#httpEndpoint) MUST reply with a `2xx` class status code. The [Endpoint](#httpEndpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
+* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#httpEndpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#httpEndpoint) cannot support; in this case, the [Endpoint](#httpEndpoint) SHOULD send a `422 Unprocessable Entity` response instead.
+* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#httpEndpoint) SHOULD reply with a `415 Unsupported Media Type` response.
+* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#httpEndpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#httpEndpoint) SHOULD reply with a `401 Unauthorized` response.
+* The [Endpoint](#httpEndpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions of varying kinds.  The [Endpoint](#httpEndpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
+
+Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Caliper [Sensors](#sensor) may lack sophisticated error handling.
+
+<a name="nonHttpEndpoint" />
+
+#### 5.2.2 Endpoints supporting non HTTP protocols
+
+Support for non HTTP transport protocols is a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is recommended that a Caliper [Endpoint](#endpoint) maintain support for HTTP transport for maximum interoperability.
+
 
 <a name="actions"/>
    
