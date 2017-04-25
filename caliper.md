@@ -1241,7 +1241,7 @@ Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Cal
 
 <a name="nonHttpEndpoint" />
 
-#### 5.2.3 Endpoints supporting non-HTTP protocols
+#### 5.2.2 Endpoints supporting non-HTTP protocols
 
 Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Endpoint](#endpoint) maintain support for HTTP transport for maximum interoperability.
 
