@@ -265,7 +265,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional | 
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
-| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more complete representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Subtypes
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
@@ -276,7 +276,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 <a name="infoModelEntity" />
 
 ### 2.2 The Caliper Entity
-A Caliper [Entity](#entity) is a generic type that represents objects that participate in learning-related activities.  A number of [Entity](#entity) subtypes have been defined in order to better describe people, groups, organizations, digital content, courses, software applications, and other objects that constitute the content of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of properties or attributes that support discovery and description.
+A Caliper [Entity](#entity) is a generic type that represents objects that participate in learning-related activities.  A number of [Entity](#entity) subtypes have been defined in order to better describe people, groups, organizations, digital content, courses, software applications, and other objects that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of properties or attributes that support discovery and description.
 
 Like an [Event](#event), an [Entity](#entity) is considered semi-structured data consisting of an unordered set of key:value pairs.  Optional attributes need not be referenced when describing an [Entity](#entity).  When referenced in a Caliper [Event](#infoModelEvent) an [Entity](#entity) can be represented as an object or as a string.
 
