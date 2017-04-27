@@ -1331,6 +1331,8 @@ A Caliper [Event](#event) is a generic type that describes a relationship establ
 #### IRI
 http://purl.imsglobal.org/caliper/Event
 
+![Event Created image](/assets/caliper-event_created-v2.png)
+
 #### Properties
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -1387,6 +1389,8 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 
 #### IRI
 http://purl.imsglobal.org/caliper/AnnotationEvent
+
+![AnnotationEvent Highlighted image](/assets/caliper-annotation_event_highlighted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1503,6 +1507,9 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentEvent
+
+![AssessmentEvent Started image](/assets/caliper-assessment_event_started-v2.png)
+![AssessmentEvent Submitted image](/assets/caliper-assessment_event_submitted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1666,6 +1673,9 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentItemEvent
+
+![AssessmentItemEvent Started image](/assets/caliper-assessmentItem_event_started-v2.png)
+![AssessmentItemEvent Completed image](/assets/caliper-assessmentItem_event_completed-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1852,6 +1862,8 @@ The Assignable Profile models activities associated with the assignment of digit
 #### IRI
 http://purl.imsglobal.org/caliper/AssignableEvent
 
+![AssignableEvent Activated image](/assets/caliper-assignable_event_activated-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -1958,6 +1970,8 @@ The Caliper [ForumEvent](#forumEvent) models learners and others participating i
 #### IRI
 http://purl.imsglobal.org/caliper/ForumEvent
 
+![ForumEvent Subscribed image](/assets/caliper-forum_event_subscribed-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2046,6 +2060,8 @@ The Caliper [MediaEvent](#mediaEvent) models interactions between learners and r
 
 #### IRI
 http://purl.imsglobal.org/caliper/MediaEvent
+
+![MediaEvent Paused image](/assets/caliper-media_event_paused-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2156,6 +2172,8 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 #### IRI
 http://purl.imsglobal.org/caliper/MessageEvent
+
+![MessageEvent Posted image](/assets/caliper-message_event_posted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2321,6 +2339,8 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 #### IRI
 http://purl.imsglobal.org/caliper/NavigationEvent
 
+![NavigationEvent NavigatedTo image](/assets/caliper-navigation_event_navigatedto-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2411,6 +2431,8 @@ The Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by
 
 #### IRI
 http://purl.imsglobal.org/caliper/OutcomeEvent
+
+![OutcomeEvent Graded image](/assets/caliper-outcome_event_graded-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2537,6 +2559,10 @@ A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termi
 #### IRI
 http://purl.imsglobal.org/caliper/SessionEvent
 
+![SessionEvent LoggedIn image](/assets/caliper-session_event_loggedin-v2.png)
+![SessionEvent LoggedOut image](/assets/caliper-session_event_loggedout-v2.png)
+![SessionEvent TimedOut image](/assets/caliper-session_event_timedout-v2.png)
+
 #### Supported actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
@@ -2659,6 +2685,8 @@ A Caliper [ThreadEvent](#threadEvent) models an actor interacting with a [Forum]
 #### IRI
 http://purl.imsglobal.org/caliper/ThreadEvent
 
+![ThreadEvent MarkedAsRead image](/assets/caliper-thread_event_markedasread-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2749,6 +2777,8 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 #### IRI
 http://purl.imsglobal.org/caliper/ToolUseEvent
 
+![ToolEvent Used image](/assets/caliper-tool_event_used-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2825,6 +2855,8 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 #### IRI
 http://purl.imsglobal.org/caliper/ViewEvent
+
+![ViewEvent Viewed image](/assets/caliper-view_event_viewed-v2.png)
 
 #### Supertype
 [Event](#event)
