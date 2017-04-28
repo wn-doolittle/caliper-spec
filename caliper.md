@@ -2784,7 +2784,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 #### IRI
 http://purl.imsglobal.org/caliper/ToolUseEvent
 
-![ToolEvent Used image](/assets/caliper-tool_event_used-v2.png)
+![ToolEvent Used image](/assets/caliper-tool_use_event_used-v2.png)
 
 #### Supertype
 [Event](#event)
