@@ -240,6 +240,8 @@ The Caliper information model defines a set of concepts, rules, and relationship
 ### 2.1 The Caliper Event
 A Caliper [Event](#event) ("event") is a generic type that describes the relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time and (optionally) within a given context.  The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video, or posting a message to a forum, are examples of learning activities that Caliper models as events.
 
+<div style="float: center"><img src="/assets/caliper-event_model-v2.png"></div>
+
 Caliper defines a number of [Event](#event) subtypes, each scoped to a particular activity domain and distinguishable via a `type` property.  Each [Event](#event) instance can be referenced by its unique identifier.  The `type` value is a string that MUST match the term specified for the [Event](#event) by the Caliper information model (e.g. "MessageEvent").  The assigned `id` value MUST be a string representation of a [UUID](#uuidDef) as a [URN](#urnDef) per [RFC 4122](#rfc4122) which describes a [URN](#urnDef) namespace for [UUIDs](#uuidDef).  
 
 The information model also seeks to describe the learning environment or context in which a learning activity is situated.  Group affiliation, membership roles, and status, recent navigation history, supporting technology and session information can all be optionally represented.  An [Entity](#entity) generated as a result of the interaction between an `actor` and an `object` can also be described; annotating a piece of digital content and producing an [Annotation](#annotation) is one such example.  An `extensions` property is also provided so that implementors can add custom properties not described by the model.  
@@ -3580,7 +3582,7 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 http://purl.imsglobal.org/caliper/CourseSection
 
 #### Supertype
-[[CourseOffering](#courseOffering)
+[CourseOffering](#courseOffering)
 
 #### Properties
 [CourseSection](#courseSection) inherits all the properties and requirements defined for its supertype [CourseOffering](#courseOffering).  Additional properties and requirements are described below:
