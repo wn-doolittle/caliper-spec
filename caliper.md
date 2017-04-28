@@ -1678,8 +1678,8 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentItemEvent
 
-![AssessmentItemEvent Started image](/assets/caliper-assessmentItem_event_started-v2.png)
-![AssessmentItemEvent Completed image](/assets/caliper-assessmentItem_event_completed-v2.png)
+![AssessmentItemEvent Started image](/assets/caliper-assessmentitem_event_started-v2.png)
+![AssessmentItemEvent Completed image](/assets/caliper-assessmentitem_event_completed-v2.png)
 
 #### Supertype
 [Event](#event)
