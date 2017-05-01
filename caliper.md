@@ -959,6 +959,8 @@ Analytical consumers require accurate [JSON-LD](#jsonldDef) context definitions 
 ## 4.0 The Sensor API™
 Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
+<div style="design: block;margin: 0 auto"><img alt="Caliper Sensor" src="/assets/caliper-sensor-v2.png"></div>
+
 <a name="sensorBehavior" />
 
 ### 4.1 Behavior
