@@ -279,11 +279,8 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 
 ### 2.2 The Caliper Entity
 A Caliper [Entity](#entity) is a generic type that represents objects that participate in learning-related activities.  A number of [Entity](#entity) subtypes have been defined in order to better describe people, groups, organizations, digital content, courses, software applications, and other objects that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of properties or attributes that support discovery and description.
-<<<<<<< HEAD
 
 <div style="design: block;margin: 0 auto"><img alt="Event Model" src="/assets/caliper-entity_model-v2.png"></div>
-=======
->>>>>>> c17b1bce9b7edb6d5062ddc499ff4be0fb4e43da
 
 Like an [Event](#event), an [Entity](#entity) is considered semi-structured data consisting of an unordered set of key:value pairs.  Optional attributes need not be referenced when describing an [Entity](#entity).  When referenced in a Caliper [Event](#infoModelEvent) an [Entity](#entity) can be represented as an object or as a string.
 
