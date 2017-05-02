@@ -238,6 +238,8 @@ The Caliper information model defines a set of concepts, rules, and relationship
 <a name="infoModelEvent" />
 
 ### 2.1 The Caliper Event
+<div style="design: block;margin: 0 auto"><img alt="Event Model" src="/assets/caliper-event_model_no_title-v3.png"></div>
+
 A Caliper [Event](#event) ("event") is a generic type that describes the relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time and (optionally) within a given context.  The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video, or posting a message to a forum, are examples of learning activities that Caliper models as events.
 
 Caliper defines a number of [Event](#event) subtypes, each scoped to a particular activity domain and distinguishable via a `type` property.  Each [Event](#event) instance can be referenced by its unique identifier.  The `type` value is a string that MUST match the term specified for the [Event](#event) by the Caliper information model (e.g. "MessageEvent").  The assigned `id` value MUST be a string representation of a [UUID](#uuidDef) as a [URN](#urnDef) per [RFC 4122](#rfc4122) which describes a [URN](#urnDef) namespace for [UUIDs](#uuidDef).  
@@ -265,7 +267,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 | membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional | 
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
-| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more complete representation of the [Event](#event). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Subtypes
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
@@ -276,6 +278,8 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 <a name="infoModelEntity" />
 
 ### 2.2 The Caliper Entity
+<div style="design: block;margin: 0 auto"><img alt="Caliper Entities" src="/assets/caliper-entities-v2.png"></div>
+
 A Caliper [Entity](#entity) is a generic type that represents objects that participate in learning-related activities.  A number of [Entity](#entity) subtypes have been defined in order to better describe people, groups, organizations, digital content, courses, software applications, and other objects that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of properties or attributes that support discovery and description.
 
 Like an [Event](#event), an [Entity](#entity) is considered semi-structured data consisting of an unordered set of key:value pairs.  Optional attributes need not be referenced when describing an [Entity](#entity).  When referenced in a Caliper [Event](#infoModelEvent) an [Entity](#entity) can be represented as an object or as a string.
@@ -287,7 +291,7 @@ Other [Entity](#entity) properties are descriptive in nature, or link the [Entit
 If a string representation is provided the value MUST correspond to the [IRI](#iriDef) defined for the [Entity](#entity).
 
 #### Properties
-The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  When representing an [Entity](#entity) as an object the `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property as an array of object values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
+The base set of [Entity](#entity) properties is listed below.  Each property MUST be referenced only once.  When representing an [Entity](#entity) as an object the `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property as an array of object values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -308,6 +312,8 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 <a name="infoModelProfiles" />
 
 ### 2.3 Metric Profiles
+<div style="design: block;margin: 0 auto"><img alt="Metric Profiles" src="/assets/caliper-profiles-v3.png"></div>
+
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test, or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
 Think of each metric profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
@@ -533,6 +539,8 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 ### 2.3.6 Grading Profile
 The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
 
+![Grading Profile OutcomeEvent](/assets/caliper-outcome_event_graded-v2.png)
+
 #### Minimum Conformance
 Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
 
@@ -575,8 +583,8 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | [MediaEvent](#mediaEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). | Required |
 | [MediaEvent](#mediaEvent) | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). | Required |
 | [MediaEvent](#mediaEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. | Recommended |
-| [MediaEvent](#mediaEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. | Recommended |
-| [MediaEvent](#mediaEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. | Recommended |
+| [MediaEvent](#mediaEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. | Recommended |
+| [MediaEvent](#mediaEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. | Recommended |
 | [MediaEvent](#mediaEvent) | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). | Optional |
 | [MediaEvent](#mediaEvent) | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). | Optional |
 | [MediaEvent](#mediaEvent) | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). | Optional |
@@ -950,6 +958,8 @@ Analytical consumers require accurate [JSON-LD](#jsonldDef) context definitions 
 ## 4.0 The Sensor API™
 Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
+<div style="design: block;margin: 0 auto"><img alt="Caliper Sensor" src="/assets/caliper-sensor-v2.png"></div>
+
 <a name="sensorBehavior" />
 
 ### 4.1 Behavior
@@ -967,7 +977,7 @@ A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and 
 Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) "describe" included in an envelope's `data` array MUST be expressed as a [JSON-LD](#jsonld) document. 
 
 #### Properties
-Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST only be referenced once.  No custom properties are permitted.
+Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST be referenced only once.  No custom properties are permitted.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -1298,8 +1308,8 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 | <a name="recommended" />Recommended (http://purl.imsglobal.org/vocab/caliper/action#Recommended) | [Express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v). |
 | <a name="removed" />Removed (http://purl.imsglobal.org/vocab/caliper/action#Removed) | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
 | <a name="reset" />Reset (http://purl.imsglobal.org/vocab/caliper/action#Reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v). |
-| <a name="restarted" />Restarted (http://purl.imsglobal.org/vocab/caliper/action#Restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, make progress but then stop and return to the beginning in order to start again. |
-| <a name="resumed" />Resumed (http://purl.imsglobal.org/vocab/caliper/action#Resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused). |
+| <a name="restarted" />Restarted (http://purl.imsglobal.org/vocab/caliper/action#Restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again. |
+| <a name="resumed" />Resumed (http://purl.imsglobal.org/vocab/caliper/action#Resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused). |
 | <a name="retrieved" />Retrieved (http://purl.imsglobal.org/vocab/caliper/action#Retrieved) | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
 | <a name="reviewed" />Reviewed (http://purl.imsglobal.org/vocab/caliper/action#Reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
 | <a name="rewound" />Rewound (http://purl.imsglobal.org/vocab/caliper/action#Rewound) | [Wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v). |
@@ -1328,6 +1338,8 @@ A Caliper [Event](#event) is a generic type that describes a relationship establ
 
 #### IRI
 http://purl.imsglobal.org/caliper/Event
+
+![Event Created image](/assets/caliper-event_created-v2.png)
 
 #### Properties
 | Property | Type | Description | Conformance |
@@ -1385,6 +1397,8 @@ The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
 
 #### IRI
 http://purl.imsglobal.org/caliper/AnnotationEvent
+
+![AnnotationEvent Highlighted image](/assets/caliper-annotation_event_highlighted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1502,6 +1516,9 @@ The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentEvent
 
+![AssessmentEvent Started image](/assets/caliper-assessment_event_started-v2.png)
+![AssessmentEvent Submitted image](/assets/caliper-assessment_event_submitted-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -1511,8 +1528,8 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
 | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, make progress but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
+| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
+| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
 | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. |
 
 #### Properties
@@ -1664,6 +1681,9 @@ The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's inter
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentItemEvent
+
+![AssessmentItemEvent Started image](/assets/caliper-assessmentitem_event_started-v2.png)
+![AssessmentItemEvent Completed image](/assets/caliper-assessmentitem_event_completed-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1850,6 +1870,8 @@ The Assignable Profile models activities associated with the assignment of digit
 #### IRI
 http://purl.imsglobal.org/caliper/AssignableEvent
 
+![AssignableEvent Activated image](/assets/caliper-assignable_event_activated-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -1956,6 +1978,8 @@ The Caliper [ForumEvent](#forumEvent) models learners and others participating i
 #### IRI
 http://purl.imsglobal.org/caliper/ForumEvent
 
+![ForumEvent Subscribed image](/assets/caliper-forum_event_subscribed-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2045,6 +2069,8 @@ The Caliper [MediaEvent](#mediaEvent) models interactions between learners and r
 #### IRI
 http://purl.imsglobal.org/caliper/MediaEvent
 
+![MediaEvent Paused image](/assets/caliper-media_event_paused-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2054,8 +2080,8 @@ http://purl.imsglobal.org/caliper/MediaEvent
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
 | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
 | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. |
-| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. |
-| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v) as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
+| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. |
+| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
 | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
 | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
 | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
@@ -2154,6 +2180,8 @@ The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting 
 
 #### IRI
 http://purl.imsglobal.org/caliper/MessageEvent
+
+![MessageEvent Posted image](/assets/caliper-message_event_posted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2319,6 +2347,8 @@ The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a net
 #### IRI
 http://purl.imsglobal.org/caliper/NavigationEvent
 
+![NavigationEvent NavigatedTo image](/assets/caliper-navigation_event_navigatedto-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2409,6 +2439,8 @@ The Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by
 
 #### IRI
 http://purl.imsglobal.org/caliper/OutcomeEvent
+
+![OutcomeEvent Graded image](/assets/caliper-outcome_event_graded-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2535,6 +2567,10 @@ A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termi
 #### IRI
 http://purl.imsglobal.org/caliper/SessionEvent
 
+![SessionEvent LoggedIn image](/assets/caliper-session_event_loggedin-v2.png)
+![SessionEvent LoggedOut image](/assets/caliper-session_event_loggedout-v2.png)
+![SessionEvent TimedOut image](/assets/caliper-session_event_timedout-v2.png)
+
 #### Supported actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
@@ -2657,6 +2693,8 @@ A Caliper [ThreadEvent](#threadEvent) models an actor interacting with a [Forum]
 #### IRI
 http://purl.imsglobal.org/caliper/ThreadEvent
 
+![ThreadEvent MarkedAsRead image](/assets/caliper-thread_event_markedasread-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2747,6 +2785,8 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 #### IRI
 http://purl.imsglobal.org/caliper/ToolUseEvent
 
+![ToolEvent Used image](/assets/caliper-tool_use_event_used-v2.png)
+
 #### Supertype
 [Event](#event)
 
@@ -2823,6 +2863,8 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 
 #### IRI
 http://purl.imsglobal.org/caliper/ViewEvent
+
+![ViewEvent Viewed image](/assets/caliper-view_event_viewed-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2912,7 +2954,7 @@ Utilize [Entity](#entity) only if no suitable subtype exists to represent the th
 http://purl.imsglobal.org/caliper/Entity
 
 #### Properties
-The base set of [Entity](#entity) properties is listed below.  Each property MUST only be referenced once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
+The base set of [Entity](#entity) properties is listed below.  Each property MUST be referenced only once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3546,7 +3588,7 @@ A Caliper [CourseSection](#courseSection) represents a specific instance of a [C
 http://purl.imsglobal.org/caliper/CourseSection
 
 #### Supertype
-[[CourseOffering](#courseOffering)
+[CourseOffering](#courseOffering)
 
 #### Properties
 [CourseSection](#courseSection) inherits all the properties and requirements defined for its supertype [CourseOffering](#courseOffering).  Additional properties and requirements are described below:
