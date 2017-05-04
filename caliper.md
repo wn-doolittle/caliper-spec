@@ -382,7 +382,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 * Each [Entity](#entity) participating in the [AnnotationEvent](#annotationEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The `generated` [Annotation](#Annotation) SHOULD be specified.
+* The `generated` [Annotation](#annotation) SHOULD be specified.
 
 <a name="assessmentProfile" />
 
@@ -2202,7 +2202,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MessageEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Message](#Message) | The [Message](#Message) that constitutes the `object` of the interaction MUST be specified.  If the `object` represents a [Message](#Message) posted in reply to a previous post, the prior post prompting the [Message](#Message) SHOULD be referenced using the [Message](#Message) `replyTo` property.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| object | [Message](#message) | The [Message](#message) that constitutes the `object` of the interaction MUST be specified.  If the `object` represents a [Message](#message) posted in reply to a previous post, the prior post prompting the [Message](#message) SHOULD be referenced using the [Message](#message) `replyTo` property.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
 | generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
@@ -4928,7 +4928,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Organization](#organization). | Optional |
 
 #### Subtypes 
-[CourseOffering](#CourseOffering), [CourseSection](#CourseSection), [Group](#group)
+[CourseOffering](#courseOffering), [CourseSection](#courseSection), [Group](#group)
 
 #### Example
 ```
@@ -5902,7 +5902,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Removed](#removed) | New | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
 | [Reset](#reset) | New | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt] `count` value. |
 | [Retrieved](#retrieved) | New | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
-| [Unsubscribed](#Unsubscribed) | New | Inverse of [Subscribed](#Subscribed). |
+| [Unsubscribed](#unsubscribed) | New | Inverse of [Subscribed](#subscribed). |
 | [Used](#used) |  New | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
 
 <a name="changeLogEvents">
