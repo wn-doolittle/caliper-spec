@@ -569,7 +569,7 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 <a name="mediaProfile" />
 
 ### 2.3.7 Media Profile
-<div style="design: block;margin: 0 auto"><img alt="Event Model" src="/assets/caliper-profile-media.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Media Profile" src="/assets/caliper-profile_media.png"></div>
 
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
