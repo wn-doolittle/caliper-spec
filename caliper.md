@@ -710,6 +710,8 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 <a name="toolUseProfile" />
 
 ### 2.3.10 Tool Use Profile
+<div style="design: block;margin: 0 auto"><img alt="Tool Use Profile" src="/assets/caliper-profile_tool_use.png"></div>
+
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
 #### Minimum Conformance
