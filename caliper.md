@@ -441,6 +441,8 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 <a name="assignableProfile" />
 
 ### 2.3.4 Assignable Profile
+<div style="design: block;margin: 0 auto"><img alt="Assignable Profile" src="/assets/caliper-profile_assignable.png"></div>
+
 The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.
 
 #### Minimum Conformance
@@ -492,6 +494,7 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 
 ### 2.3.5 Forum Profile
 <div style="design: block;margin: 0 auto"><img alt="Forum Profile" src="/assets/caliper-profile_forum.png"></div>
+
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
 #### Minimum Conformance
