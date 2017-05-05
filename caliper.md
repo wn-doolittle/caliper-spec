@@ -353,6 +353,8 @@ All actions included in the Caliper [actions](#actions) vocabulary are supported
 <a name="annotationProfile" />
 
 ### 2.3.2 Annotation Profile
+<div style="design: block;margin: 0 auto"><img alt="Annotation Profile" src="/assets/caliper-profile_annotation.png"></div>
+
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 #### Minimum Conformance
