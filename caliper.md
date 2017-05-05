@@ -329,6 +329,8 @@ The following metric profiles are currently available and are summarized individ
 <a name="basicProfile" />
 
 ### 2.3.1 Basic Profile
+<div style="design: block;margin: 0 auto"><img alt="Basic Profile" src="/assets/caliper-profile_basic.png"></div>
+
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
 #### Minimum Conformance
@@ -353,6 +355,8 @@ All actions included in the Caliper [actions](#actions) vocabulary are supported
 <a name="annotationProfile" />
 
 ### 2.3.2 Annotation Profile
+<div style="design: block;margin: 0 auto"><img alt="Annotation Profile" src="/assets/caliper-profile_annotation.png"></div>
+
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 #### Minimum Conformance
@@ -387,6 +391,8 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 <a name="assessmentProfile" />
 
 ### 2.3.3 Assessment Profile
+<div style="design: block;margin: 0 auto"><img alt="Assessment Profile" src="/assets/caliper-profile_assessment.png"></div>
+
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities, as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.  _Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile._
 
 #### Minimum Conformance
@@ -404,8 +410,8 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Required |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Optional |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). | Optional |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
@@ -441,6 +447,8 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 <a name="assignableProfile" />
 
 ### 2.3.4 Assignable Profile
+<div style="design: block;margin: 0 auto"><img alt="Assignable Profile" src="/assets/caliper-profile_assignable.png"></div>
+
 The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.
 
 #### Minimum Conformance
@@ -491,6 +499,8 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 <a name="forumProfile" />
 
 ### 2.3.5 Forum Profile
+<div style="design: block;margin: 0 auto"><img alt="Forum Profile" src="/assets/caliper-profile_forum.png"></div>
+
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
 #### Minimum Conformance
@@ -518,8 +528,8 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 | [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | &nbsp; |
 | [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | &nbsp; |
 | [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsRead](#markedAsRead) | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [Message](#message) | [MarkedAsUnRead](#markedAsUnRead) | &nbsp; |
+| [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | &nbsp; |
+| [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Message](#message) | &nbsp; |
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | &nbsp; |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
@@ -537,9 +547,9 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 <a name="gradingProfile" />
 
 ### 2.3.6 Grading Profile
-The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
+<div style="design: block;margin: 0 auto"><img alt="Grading Profile" src="/assets/caliper-profile_grading.png"></div>
 
-![Grading Profile OutcomeEvent](/assets/caliper-outcome_event_graded-v2.png)
+The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
 
 #### Minimum Conformance
 Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
@@ -569,6 +579,8 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 <a name="mediaProfile" />
 
 ### 2.3.7 Media Profile
+<div style="design: block;margin: 0 auto"><img alt="Media Profile" src="/assets/caliper-profile_media.png"></div>
+
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
 #### Minimum Conformance
@@ -644,7 +656,9 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 <a name="readingProfile" />
 
 ### 2.3.8 Reading Profile
-The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage) and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
+<div style="design: block;margin: 0 auto"><img alt="Reading Profile" src="/assets/caliper-profile_reading.png"></div>
+
+The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Message](#message) and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
 
 #### Minimum Conformance
 Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
@@ -676,6 +690,8 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 <a name="sessionProfile" />
 
 ### 2.3.9 Session Profile
+<div style="design: block;margin: 0 auto"><img alt="Session Profile" src="/assets/caliper-profile_session.png"></div>
+
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
 #### Minimum Conformance
@@ -708,6 +724,8 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 <a name="toolUseProfile" />
 
 ### 2.3.10 Tool Use Profile
+<div style="design: block;margin: 0 auto"><img alt="Tool Use Profile" src="/assets/caliper-profile_tool_use.png"></div>
+
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
 #### Minimum Conformance
