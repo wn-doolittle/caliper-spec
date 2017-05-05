@@ -329,6 +329,8 @@ The following metric profiles are currently available and are summarized individ
 <a name="basicProfile" />
 
 ### 2.3.1 Basic Profile
+<div style="design: block;margin: 0 auto"><img alt="Basic Profile" src="/assets/caliper-profile_basic.png"></div>
+
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
 #### Minimum Conformance
