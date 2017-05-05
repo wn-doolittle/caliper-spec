@@ -678,6 +678,8 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 <a name="sessionProfile" />
 
 ### 2.3.9 Session Profile
+<div style="design: block;margin: 0 auto"><img alt="Session Profile" src="/assets/caliper-profile_session.png"></div>
+
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
 #### Minimum Conformance
