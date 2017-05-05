@@ -387,6 +387,8 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 <a name="assessmentProfile" />
 
 ### 2.3.3 Assessment Profile
+<div style="design: block;margin: 0 auto"><img alt="Assessment Profile" src="/assets/caliper-profile_assessment.png"></div>
+
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities, as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.  _Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile._
 
 #### Minimum Conformance
@@ -404,8 +406,8 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Required |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Optional |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). | Optional |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
