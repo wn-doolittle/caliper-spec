@@ -2798,7 +2798,7 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 <a name="toolUseEvent" />
 
 ### B.14 ToolUseEvent
-A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction. It's meant to be a fundamental [Event](#event) that tool creators can implement to demonstrate that users are using the tool in the way in which it's intended to be used.
+A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction.
 
 #### IRI
 http://purl.imsglobal.org/caliper/ToolUseEvent
