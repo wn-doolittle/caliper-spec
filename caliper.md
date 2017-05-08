@@ -4637,7 +4637,7 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes
-[AudioObject](#audioObject.md), [ImageObject](#imageObject.md), [VideoObject](#videoObject)
+[AudioObject](#audioObject), [ImageObject](#imageObject), [VideoObject](#videoObject)
 
 #### Example
 ```
