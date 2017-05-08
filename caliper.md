@@ -4546,7 +4546,7 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
 
 ### C.28 MediaLocation
 
-A Caliper [MediaLocation](#mediaLocation) provides the current playback position in an [AudioObject](#audioObject) or [VideoObject](#videoObject).
+A Caliper [MediaLocation](#mediaLocation) provides the current playback position in a [MediaObject](#mediaObject) such as an [AudioObject](#audioObject) or [VideoObject](#videoObject).
 
 #### IRI
 http://purl.imsglobal.org/caliper/MediaLocation
