@@ -4231,7 +4231,7 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
 <a name="group" />
 
 ### C.23 Group
-A Caliper [Group](#group) represents a ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
+A Caliper [Group](#group) represents an ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Group
