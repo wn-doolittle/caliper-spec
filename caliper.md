@@ -5465,7 +5465,7 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 <a name="tagAnnotation" />
 
 ### C.44 TagAnnotation
-A Caliper [TagAnnotation](#tagAnnotation) represents one or more labels or tags that are used to annotate a [DigitalResource](#digitalResource).
+A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
 
 #### IRI
 http://purl.imsglobal.org/caliper/TagAnnotation
