@@ -5785,7 +5785,7 @@ A Caliper Selector represents a fragment, selection or part of an [Entity](#enti
 <a name="textPositionSelector" />
 
 ### D.1 TextPositionSelector
-A Caliper TextPositionSelector represents a fragment or selection of textual content, the starting and ending positions of which are determined by the distance in characters from the initial character (position 0) of the enclosing full text.
+A Caliper [TextPositionSelector](#textPositionSelector) represents a fragment or selection of textual content, the starting and ending positions of which are determined by the distance in characters from the initial character (position 0) of the enclosing full text.
 
 #### IRI
 http://purl.imsglobal.org/caliper/TextPositionSelector
