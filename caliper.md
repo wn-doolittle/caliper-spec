@@ -4946,7 +4946,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Organization](#organization). | Optional |
 
 #### Subtypes 
-[CourseOffering](#CourseOffering), [CourseSection](#CourseSection), [Group](#group)
+[CourseOffering](#courseOffering), [CourseSection](#courseSection), [Group](#group)
 
 #### Example
 ```
