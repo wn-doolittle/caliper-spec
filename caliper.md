@@ -3424,7 +3424,7 @@ http://purl.imsglobal.org/caliper/AudioObject
 | volumeLevel | string | A string value indicating the current volume level MAY be specified. | Optional |
 | volumeMin | string | A string value indicating the minimum volume level MAY be specified. | Optional |
 | volumeMax | string | A string value indicating the maximum volume level MAY be specified. | Optional |
-| muted | Boolean | an optional boolean value indicating whether or not the AudioObject has been muted MAY be specified. | Optional |
+| muted | Boolean | An optional boolean value indicating whether or not the AudioObject has been muted MAY be specified. | Optional |
 | duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [AudioObject](#audioObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
