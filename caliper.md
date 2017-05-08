@@ -3137,6 +3137,7 @@ http://purl.imsglobal.org/caliper/Assessment
 | dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
 | maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
 | maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
@@ -3217,6 +3218,7 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 | dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
 | maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
 | maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
@@ -3297,6 +3299,7 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 | dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the resource was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the resource can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
 | maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
 | maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
