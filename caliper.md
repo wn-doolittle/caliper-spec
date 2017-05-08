@@ -4599,6 +4599,8 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
 ### C.29 MediaObject
 A Caliper [MediaObject](#mediaObject) represents a generic piece of media content.
 
+Utilize [MediaObject](#mediaObject) only if no suitable subtype exists to represent the resource being described.
+
 #### IRI
 http://purl.imsglobal.org/caliper/MediaObject
 
