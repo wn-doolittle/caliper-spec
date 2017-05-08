@@ -1218,8 +1218,8 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [Attempt](#attempt) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Attempt](#attempt) | duration | A time interval that represents the time taken to complete the [Attempt](#attempt).  The value MUST conform to the ISO-8601 duration format. | 64 |
 | [AudioObject](#audioObject) | volumeLevel | The current volume level. | 32 |
-| [AudioObject](#audioObject) | volumeMax | The maximum volume level. | 32 |
-| [AudioObject](#audioObject) | volumeMin | The minimum volume level.  | 32 |
+| [AudioObject](#audioObject) | volumeMax | The maximum volume level permitted. | 32 |
+| [AudioObject](#audioObject) | volumeMin | The minimum volume level permitted.  | 32 |
 | [BookmarkAnnotation](#bookmarkAnnotation) | BookmarkNotes | A plain text rendering of the note that accompanies the bookmark. | 1024 |
 | [CourseOffering](#courseOffering) | academicSession | A human-readable identifier of the designated period in which the course occurs. | 256 |
 | [CourseOffering](#courseOffering) | courseNumber | A human-readable identifier assigned to the course. | 128 |
@@ -3422,8 +3422,8 @@ http://purl.imsglobal.org/caliper/AudioObject
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AudioObject](#audioObject) MAY be specified. | Optional |
 | isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [AudioObject](#audioObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | volumeLevel | string | A string value indicating the current volume level MAY be specified. | Optional |
-| volumeMin | string | A string value indicating the minimum volume level MAY be specified. | Optional |
-| volumeMax | string | A string value indicating the maximum volume level MAY be specified. | Optional |
+| volumeMin | string | A string value indicating the minimum volume level permitted MAY be specified. | Optional |
+| volumeMax | string | A string value indicating the maximum volume level permitted MAY be specified. | Optional |
 | muted | Boolean | An optional boolean value indicating whether or not the AudioObject has been muted MAY be specified. | Optional |
 | duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [AudioObject](#audioObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -4321,7 +4321,7 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 | annotator | [Person](#person) | The [Person](#person) who created the [HighlightAnnotation](#highlightAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
 | annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified.  The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef).  | Recommended |
 | selection | [TextPositionSelector](#textPositionSelector) | The start and end positions of the highlighted text segment SHOULD be specified.  The first character in the full text is character position 0.  If a [TextPositionSelector](#textPositionSelector) is defined both its [start](#start) and [end](#end) positions MUST be specified. | Recommended |
-| selectionText | string | A string value representing a plain-text rendering of the highlighted segment of the annotated [DigitalResource](#digitalResource) MAY be specified | Optional |
+| selectionText | string | A string value representing a plain-text rendering of the highlighted segment of the annotated [DigitalResource](#digitalResource) MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [HighlightAnnotation](#highlightAnnotation). | Optional |
