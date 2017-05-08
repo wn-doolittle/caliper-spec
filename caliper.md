@@ -3575,7 +3575,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
 | name | string | A string value comprising a word or phrase by which the [CourseOffering](#courseOffering) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [CourseOffering](#courseOffering) MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseOffering](#courseOffering) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
-| members | [CourseSection](#courseSection), [Group](#group), [Person](#person) | An ordered collection of [CourseSection](#courseOffering), [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
+| members | Array | An ordered collection of [CourseSection](#courseOffering), [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseOffering](#courseOffering) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseOffering](#courseOffering) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [CourseOffering](#courseOffering). | Optional |
@@ -3621,7 +3621,7 @@ http://purl.imsglobal.org/caliper/CourseSection
 | description | string |  A string value comprising a brief, written representation of the [CourseSection](#courseSection) MAY be specified. | Optional |
 | category | string | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseSection](#courseSection) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
-| members | [Group](#group), [Person](#person) | An ordered collection of [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
+| members | Array | An ordered collection of [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [CourseSection](#courseSection). | Optional |
@@ -4249,7 +4249,7 @@ http://purl.imsglobal.org/caliper/Group
 | name | string | A string value comprising a word or phrase by which the [Group](#group) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Group](#group) MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [Group](#group) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
-| members | [Group](#group), [Person](#person) | An ordered collection of [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
+| members | Array | An ordered collection of [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Group](#group) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Group](#group) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Group](#group). | Optional |
@@ -4942,7 +4942,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 | name | string | A string value comprising a word or phrase by which the [Organization](#organization) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Organization](#organization) MAY be specified. | Optional |
 | subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [Organization](#organization) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
-| members | [Organization](#organization), [Person](#person) | An ordered collection of [Organization](#organization) and/or [Person](#person) members MAY be specified. | Optional |
+| members | Array | An ordered collection of [Agent](#agent) members MAY be specified. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Organization](#organization) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Organization](#organization) was last modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Organization](#organization). | Optional |
