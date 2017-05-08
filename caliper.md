@@ -1411,7 +1411,7 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
 <a name="annotationEvent" />
 
 ### B.2 AnnotationEvent
-The Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
+A Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 #### IRI
 http://purl.imsglobal.org/caliper/AnnotationEvent
@@ -1529,7 +1529,7 @@ The following actions are deprecated and targeted for removal from the [Annotati
 <a name="assessmentEvent" />
 
 ### B.3 AssessmentEvent
-The Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.
+A Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentEvent
@@ -1695,7 +1695,7 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 <a name="assessmentItemEvent" />
 
 ### B.4 AssessmentItemEvent
-The Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).
+A Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentItemEvent
@@ -1883,7 +1883,7 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 <a name="assignableEvent" />
 
 ### B.5 AssignableEvent
-The Assignable Profile models activities associated with the assignment of digital content assigned to a learner for completion.
+A Caliper [AssignableEvent](#assignableEvent) models activities associated with the assignment of digital content assigned to a learner for completion.
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssignableEvent
@@ -1991,7 +1991,7 @@ The following actions are deprecated and targeted for removal from the [Assignab
 <a name="forumEvent" />
 
 ### B.6 ForumEvent
-The Caliper [ForumEvent](#forumEvent) models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.
+A Caliper [ForumEvent](#forumEvent) models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.
 
 #### IRI
 http://purl.imsglobal.org/caliper/ForumEvent
@@ -2082,7 +2082,7 @@ http://purl.imsglobal.org/caliper/ForumEvent
 <a name="mediaEvent" />
 
 ### B.7 MediaEvent
-The Caliper [MediaEvent](#mediaEvent) models interactions between learners and rich content such as audio, images and video.
+A Caliper [MediaEvent](#mediaEvent) models interactions between learners and rich content such as audio, images and video.
 
 #### IRI
 http://purl.imsglobal.org/caliper/MediaEvent
@@ -2194,7 +2194,7 @@ The following actions are deprecated and targeted for removal from the [MediaEve
 <a name="messageEvent" />
 
 ### B.8 MessageEvent
-The Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
+A Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
 
 #### IRI
 http://purl.imsglobal.org/caliper/MessageEvent
@@ -2360,7 +2360,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
 <a name="navigationEvent" />
 
 ### B.9 NavigationEvent
-The Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
+A Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
 
 #### IRI
 http://purl.imsglobal.org/caliper/NavigationEvent
@@ -2453,7 +2453,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 <a name="outcomeEvent" />
 
 ### B.10 OutcomeEvent
-The Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
+A Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
 
 #### IRI
 http://purl.imsglobal.org/caliper/OutcomeEvent
@@ -2541,7 +2541,7 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 
 ### B.11 ReadingEvent DEPRECATED
 
-The Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### IRI
 http://purl.imsglobal.org/caliper/ReadingEvent
