@@ -4402,7 +4402,7 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
 <a name="learningObjective" />
 
 ### C.26 LearningObjective
-The Caliper [LearningObjective](#learningObjective) represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
+A Caliper [LearningObjective](#learningObjective) represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
 
 #### IRI
 http://purl.imsglobal.org/caliper/LearningObjective
