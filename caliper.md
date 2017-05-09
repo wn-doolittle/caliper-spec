@@ -389,7 +389,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 * Each [Entity](#entity) participating in the [AnnotationEvent](#annotationEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The `generated` [Annotation](#Annotation) SHOULD be specified.
+* The `generated` [Annotation](#annotation) SHOULD be specified.
 
 <a name="assessmentProfile" />
 
@@ -5928,7 +5928,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Removed](#removed) | New | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
 | [Reset](#reset) | New | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt] `count` value. |
 | [Retrieved](#retrieved) | New | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
-| [Unsubscribed](#Unsubscribed) | New | Inverse of [Subscribed](#Subscribed). |
+| [Unsubscribed](#unsubscribed) | New | Inverse of [Subscribed](#subscribed). |
 | [Used](#used) |  New | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
 
 <a name="changeLogEvents">
