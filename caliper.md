@@ -9,7 +9,7 @@ IMS takes no position regarding the validity or scope of any intellectual proper
 
 Copyright © 2017 IMS Global Learning Consortium. All Rights Reserved.
 
-Use of this specification to develop products or services is governed by the license with IMS found on the IMS website: [http://www.imsglobal.org/license.html](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
+Use of this specification to develop products or services is governed by the license with IMS found on the IMS website: http://www.imsglobal.org/speclicense.html.
 
 Permission is granted to all parties to use excerpts from this document as needed in producing requests for proposals.
 
@@ -126,6 +126,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * G.6 [JSON-LD Context](#changeLogJsonldContext)
 * [Contributors](#contributors)
 * [References](#references)
+* [About this Document](#aboutThisDoc)
 
 <a name="introduction" />
   
@@ -6095,3 +6096,28 @@ __RFC 7807__.  IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."
 __White paper__.  IMS Global Learning Consortium.  "Learning Measurement for Analytics Whitepaper \[sic\]."  August 2013.  URL: https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
 
 __WordNet__.  Princeton University.  WordNet®.  A lexical database for English. 2010.  URL: https://wordnet.princeton.edu/
+
+<a name="aboutThisDoc" />
+
+## About this Document
+
+IMS Global Learning Consortium, Inc. ("IMS Global") is publishing the information contained in this document ("Specification") for purposes of scientific, experimental, and scholarly collaboration only.
+
+IMS Global makes no warranty or representation regarding the accuracy or completeness of the Specification.
+
+This material is provided on an "As Is" and "As Available" basis.
+
+The Specification is at all times subject to change and revision without notice.
+
+It is your sole responsibility to evaluate the usefulness, accuracy, and completeness of the Specification as it relates to you.
+
+IMS Global would appreciate receiving your comments and suggestions.
+
+Please contact IMS Global through our website at http://www.imsglobal.org.
+
+Please refer to Document Name: IMS Caliper Analytics® 1.1
+Candidate Final Specification v1.1
+
+Date: 31 May 2017
+
+This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability® (LTI®), Accessible Portable Item Protocol® (APIP®), Question and Test Interoperability® (QTI®), Common Cartridge® (CC®), AccessForAll™, OneRoster®, Caliper Analytics® and SensorAPI™. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
