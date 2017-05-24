@@ -134,7 +134,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 
 The drive to deliver education at scale coupled with a demand for measurable accountability has spurred interest in the application of “big data” principles to the business of education.  Opportunities to tap new data sources, ask new questions and pursue new insights have grown as both the learning technology ecosystem has expanded and the definition of what constitutes learning has evolved beyond the formal classroom experience to include informal, social and experiential modes of acquiring knowledge and skills. The challenges inherent in describing, collecting and exchanging learning activity data originating from such diverse learning sources and context are now formidable.
 
-<div style="design: block;margin: 0 auto"><img alt=".edu Graph" src="/assets/caliper-edu_graph.png"></div>
+<div style="design: block;margin: 0 auto"><img alt=".edu Graph" src="assets/caliper-edu_graph.png"></div>
 
 The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities. Serialization of the model is performed using [JSON-LD](#jsonldDef).  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage, analysis and re-use.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
@@ -241,7 +241,7 @@ The Caliper information model defines a set of concepts, rules, and relationship
 <a name="infoModelEvent" />
 
 ### 2.1 The Caliper Event
-<div style="design: block;margin: 0 auto"><img alt="Event Model" src="/assets/caliper-event_model_no_title-v3.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Event Model" src="assets/caliper-event_model_no_title-v3.png"></div>
 
 A Caliper [Event](#event) ("event") is a generic type that describes the relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time and (optionally) within a given context.  The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video, or posting a message to a forum, are examples of learning activities that Caliper models as events.
 
@@ -281,7 +281,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 <a name="infoModelEntity" />
 
 ### 2.2 The Caliper Entity
-<div style="design: block;margin: 0 auto"><img alt="Caliper Entities" src="/assets/caliper-entities-v2.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Caliper Entities" src="assets/caliper-entities-v2.png"></div>
 
 A Caliper [Entity](#entity) is a generic type that represents objects that participate in learning-related activities.  A number of [Entity](#entity) subtypes have been defined in order to better describe people, groups, organizations, digital content, courses, software applications, and other objects that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of properties or attributes that support discovery and description.
 
@@ -315,7 +315,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 <a name="infoModelProfiles" />
 
 ### 2.3 Metric Profiles
-<div style="design: block;margin: 0 auto"><img alt="Metric Profiles" src="/assets/caliper-profiles-v3.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Metric Profiles" src="assets/caliper-profiles-v3.png"></div>
 
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test, or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
@@ -332,7 +332,7 @@ The following metric profiles are currently available and are summarized individ
 <a name="basicProfile" />
 
 ### 2.3.1 Basic Profile
-<div style="design: block;margin: 0 auto"><img alt="Basic Profile" src="/assets/caliper-profile_basic.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Basic Profile" src="assets/caliper-profile_basic.png"></div>
 
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
@@ -358,7 +358,7 @@ All actions included in the Caliper [actions](#actions) vocabulary are supported
 <a name="annotationProfile" />
 
 ### 2.3.2 Annotation Profile
-<div style="design: block;margin: 0 auto"><img alt="Annotation Profile" src="/assets/caliper-profile_annotation.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Annotation Profile" src="assets/caliper-profile_annotation.png"></div>
 
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
@@ -394,7 +394,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 <a name="assessmentProfile" />
 
 ### 2.3.3 Assessment Profile
-<div style="design: block;margin: 0 auto"><img alt="Assessment Profile" src="/assets/caliper-profile_assessment.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Assessment Profile" src="assets/caliper-profile_assessment.png"></div>
 
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities, as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.  _Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile._
 
@@ -450,7 +450,7 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 <a name="assignableProfile" />
 
 ### 2.3.4 Assignable Profile
-<div style="design: block;margin: 0 auto"><img alt="Assignable Profile" src="/assets/caliper-profile_assignable.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Assignable Profile" src="assets/caliper-profile_assignable.png"></div>
 
 The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.
 
@@ -502,7 +502,7 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 <a name="forumProfile" />
 
 ### 2.3.5 Forum Profile
-<div style="design: block;margin: 0 auto"><img alt="Forum Profile" src="/assets/caliper-profile_forum.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Forum Profile" src="assets/caliper-profile_forum.png"></div>
 
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
@@ -550,7 +550,7 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 <a name="gradingProfile" />
 
 ### 2.3.6 Grading Profile
-<div style="design: block;margin: 0 auto"><img alt="Grading Profile" src="/assets/caliper-profile_grading.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
 
 The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
 
@@ -582,7 +582,7 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 <a name="mediaProfile" />
 
 ### 2.3.7 Media Profile
-<div style="design: block;margin: 0 auto"><img alt="Media Profile" src="/assets/caliper-profile_media.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Media Profile" src="assets/caliper-profile_media.png"></div>
 
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
@@ -659,7 +659,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 <a name="readingProfile" />
 
 ### 2.3.8 Reading Profile
-<div style="design: block;margin: 0 auto"><img alt="Reading Profile" src="/assets/caliper-profile_reading.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
 
 The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Message](#message) and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
 
@@ -693,7 +693,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 <a name="sessionProfile" />
 
 ### 2.3.9 Session Profile
-<div style="design: block;margin: 0 auto"><img alt="Session Profile" src="/assets/caliper-profile_session.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Session Profile" src="assets/caliper-profile_session.png"></div>
 
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
@@ -727,7 +727,7 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 <a name="toolUseProfile" />
 
 ### 2.3.10 Tool Use Profile
-<div style="design: block;margin: 0 auto"><img alt="Tool Use Profile" src="/assets/caliper-profile_tool_use.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Tool Use Profile" src="assets/caliper-profile_tool_use.png"></div>
 
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
@@ -979,7 +979,7 @@ Analytical consumers require accurate [JSON-LD](#jsonldDef) context definitions 
 ## 4.0 The Sensor API™
 Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
-<div style="design: block;margin: 0 auto"><img alt="Caliper Sensor" src="/assets/caliper-sensor-v2.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Caliper Sensor" src="assets/caliper-sensor-v2.png"></div>
 
 <a name="sensorBehavior" />
 
@@ -1360,7 +1360,7 @@ A Caliper [Event](#event) is a generic type that describes a relationship establ
 #### IRI
 http://purl.imsglobal.org/caliper/Event
 
-![Event Created image](/assets/caliper-event_created-v2.png)
+![Event Created image](assets/caliper-event_created-v2.png)
 
 #### Properties
 | Property | Type | Description | Conformance |
@@ -1419,7 +1419,7 @@ A Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital c
 #### IRI
 http://purl.imsglobal.org/caliper/AnnotationEvent
 
-![AnnotationEvent Highlighted image](/assets/caliper-annotation_event_highlighted-v2.png)
+![AnnotationEvent Highlighted image](assets/caliper-annotation_event_highlighted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1537,8 +1537,8 @@ A Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with a
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentEvent
 
-![AssessmentEvent Started image](/assets/caliper-assessment_event_started-v2.png)
-![AssessmentEvent Submitted image](/assets/caliper-assessment_event_submitted-v2.png)
+![AssessmentEvent Started image](assets/caliper-assessment_event_started-v2.png)
+![AssessmentEvent Submitted image](assets/caliper-assessment_event_submitted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1703,8 +1703,8 @@ A Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interac
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentItemEvent
 
-![AssessmentItemEvent Started image](/assets/caliper-assessmentitem_event_started-v2.png)
-![AssessmentItemEvent Completed image](/assets/caliper-assessmentitem_event_completed-v2.png)
+![AssessmentItemEvent Started image](assets/caliper-assessmentitem_event_started-v2.png)
+![AssessmentItemEvent Completed image](assets/caliper-assessmentitem_event_completed-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1891,7 +1891,7 @@ A Caliper [AssignableEvent](#assignableEvent) models activities associated with 
 #### IRI
 http://purl.imsglobal.org/caliper/AssignableEvent
 
-![AssignableEvent Activated image](/assets/caliper-assignable_event_activated-v2.png)
+![AssignableEvent Activated image](assets/caliper-assignable_event_activated-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1999,7 +1999,7 @@ A Caliper [ForumEvent](#forumEvent) models learners and others participating in 
 #### IRI
 http://purl.imsglobal.org/caliper/ForumEvent
 
-![ForumEvent Subscribed image](/assets/caliper-forum_event_subscribed-v2.png)
+![ForumEvent Subscribed image](assets/caliper-forum_event_subscribed-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2090,7 +2090,7 @@ A Caliper [MediaEvent](#mediaEvent) models interactions between learners and ric
 #### IRI
 http://purl.imsglobal.org/caliper/MediaEvent
 
-![MediaEvent Paused image](/assets/caliper-media_event_paused-v2.png)
+![MediaEvent Paused image](assets/caliper-media_event_paused-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2202,7 +2202,7 @@ A Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a 
 #### IRI
 http://purl.imsglobal.org/caliper/MessageEvent
 
-![MessageEvent Posted image](/assets/caliper-message_event_posted-v2.png)
+![MessageEvent Posted image](assets/caliper-message_event_posted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2368,7 +2368,7 @@ A Caliper [NavigationEvent](#navigationEvent) models an actor traversing a netwo
 #### IRI
 http://purl.imsglobal.org/caliper/NavigationEvent
 
-![NavigationEvent NavigatedTo image](/assets/caliper-navigation_event_navigatedto-v2.png)
+![NavigationEvent NavigatedTo image](assets/caliper-navigation_event_navigatedto-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2461,7 +2461,7 @@ A Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by a
 #### IRI
 http://purl.imsglobal.org/caliper/OutcomeEvent
 
-![OutcomeEvent Graded image](/assets/caliper-outcome_event_graded-v2.png)
+![OutcomeEvent Graded image](assets/caliper-outcome_event_graded-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2588,9 +2588,9 @@ A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termi
 #### IRI
 http://purl.imsglobal.org/caliper/SessionEvent
 
-![SessionEvent LoggedIn image](/assets/caliper-session_event_loggedin-v2.png)
-![SessionEvent LoggedOut image](/assets/caliper-session_event_loggedout-v2.png)
-![SessionEvent TimedOut image](/assets/caliper-session_event_timedout-v2.png)
+![SessionEvent LoggedIn image](assets/caliper-session_event_loggedin-v2.png)
+![SessionEvent LoggedOut image](assets/caliper-session_event_loggedout-v2.png)
+![SessionEvent TimedOut image](assets/caliper-session_event_timedout-v2.png)
 
 #### Supported actions
 | Action | WordNet® Gloss |
@@ -2714,7 +2714,7 @@ A Caliper [ThreadEvent](#threadEvent) models an actor interacting with a [Forum]
 #### IRI
 http://purl.imsglobal.org/caliper/ThreadEvent
 
-![ThreadEvent MarkedAsRead image](/assets/caliper-thread_event_markedasread-v2.png)
+![ThreadEvent MarkedAsRead image](assets/caliper-thread_event_markedasread-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2806,7 +2806,7 @@ A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learn
 #### IRI
 http://purl.imsglobal.org/caliper/ToolUseEvent
 
-![ToolEvent Used image](/assets/caliper-tool_use_event_used-v2.png)
+![ToolEvent Used image](assets/caliper-tool_use_event_used-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2885,7 +2885,7 @@ A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital co
 #### IRI
 http://purl.imsglobal.org/caliper/ViewEvent
 
-![ViewEvent Viewed image](/assets/caliper-view_event_viewed-v2.png)
+![ViewEvent Viewed image](assets/caliper-view_event_viewed-v2.png)
 
 #### Supertype
 [Event](#event)
