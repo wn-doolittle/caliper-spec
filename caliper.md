@@ -6017,7 +6017,7 @@ A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document
 ## Contributors
 The following Caliper Working Group participants contributed to the writing of this specification:
 
-#### Specification Authors
+#### Authors
 | Name | Organization |
 | :--- | :----------- |
 | Anthony Whyte | University of Michigan |
@@ -6025,13 +6025,14 @@ The following Caliper Working Group participants contributed to the writing of t
 | Matt Ashbourne | McGraw-Hill Education |
 | Wes LaMarche | ACT |
 
-#### Specification Editors and Reviewers
+#### Editors and Reviewers
 | Name | Organization |
 | :--- | :----------- |
 | Steven Erickson | Unicon |
 | Daniel Green | VitalSource Technologies |
 | Yong-Sang Cho | KERIS |
 | Chris Ward | Instructure |
+| Ian Turgeon | University of Central Florida |
 
 #### Reference Implementation Contributors
 | Name | Organization |
