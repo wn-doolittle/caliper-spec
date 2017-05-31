@@ -27,8 +27,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 2.3 [Metric Profiles](#infoModelProfiles)
       * 2.3.1 [Basic Profile](#basicProfile)
       * 2.3.2 [Annotation Profile](#annotationProfile)
-      * 2.3.3 [Assignable Profile](#assignableProfile)
-      * 2.3.4 [Assessment Profile](#assessmentProfile)
+      * 2.3.3 [Assessment Profile](#assessmentProfile)
+      * 2.3.4 [Assignable Profile](#assignableProfile)
       * 2.3.5 [Forum Profile](#forumProfile)
       * 2.3.6 [Grading Profile](#gradingProfile)
       * 2.3.7 [Media Profile](#mediaProfile)
@@ -137,8 +137,6 @@ The drive to deliver education at scale coupled with a demand for measurable acc
 <div style="design: block;margin: 0 auto"><img alt=".edu Graph" src="assets/caliper-edu_graph.png"></div>
 
 The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities. Serialization of the model is performed using [JSON-LD](#jsonldDef).  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage, analysis and re-use.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
-
-[Placeholder Text Added by Linda]
 
 <a name="conventions" />
 
@@ -477,29 +475,29 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 #### Supported Entities
 | Event | Actor |	Action | Object |	Generated | Referrer |
 | :---- | :---- | :----- | :----- | :-------- | :------- |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [DigitalResource](#digitalResource) | [Attempt](#attempt) | &nbsp; |
+| [DigitalResource](#digitalResource) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the `annotator` and the `annotated` [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
+* The [Attempt](#attempt) SHOULD reference both the assignee and the assigned  [DigitalResource](#digitalResource).
 * For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
 * For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions the [Attempt](#attempt) `count` value MUST NOT be changed.
 * For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value MUST be incremented by 1.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
-* Parent-child relationships that exist between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
+* Parent-child relationships that exist between [DigitalResource](#digitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
-* When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* When navigating to a [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="forumProfile" />
 
