@@ -5151,20 +5151,20 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
   "type": "Response",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
+    "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5",
     "count": 1,
-    "startedAtTime": "2016-11-15T10:15:14.000Z",
-    "endedAtTime": "2016-11-15T10:15:20.000Z"
+    "startedAtTime": "2017-11-15T10:15:14.000Z",
+    "endedAtTime": "2017-11-15T10:15:20.000Z"
   },
-  "dateCreated": "2016-11-15T10:15:20.000Z",
-  "startedAtTime": "2016-11-15T10:15:14.000Z",
-  "endedAtTime": "2016-11-15T10:15:20.000Z",
+  "dateCreated": "2017-11-15T10:15:20.000Z",
+  "startedAtTime": "2017-11-15T10:15:14.000Z",
+  "endedAtTime": "2017-11-15T10:15:20.000Z",
   "extensions": [
     {
       "@context": {
