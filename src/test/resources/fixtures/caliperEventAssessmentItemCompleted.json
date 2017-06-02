@@ -8,32 +8,47 @@
   },
   "action": "Completed",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "type": "Attempt",
-    "assignee": "https://example.edu/users/554433",
-    "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "type": "AssessmentItem",
-      "name": "Assessment Item 3",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "Assessment"
-      }
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+    "type": "AssessmentItem",
+    "name": "Assessment Item 3",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "type": "Assessment"
     },
-    "isPartOf": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "count": 1,
-    "dateCreated": "2016-11-15T10:15:02.000Z",
-    "startedAtTime": "2016-11-15T10:15:02.000Z",
-    "endedAtTime": "2016-11-15T10:15:12.000Z"
+    "dateToStartOn": "2016-11-14T05:00:00.000Z",
+    "dateToSubmit": "2016-11-18T11:59:59.000Z",
+    "maxAttempts": 2,
+    "maxSubmits": 2,
+    "maxScore": 1,
+    "isTimeDependent": false,
+    "version": "1.0"
   },
   "generated": {
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
     "type": "FillinBlankResponse",
-    "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+    "attempt": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+      "type": "Attempt",
+      "assignee": "https://example.edu/users/554433",
+      "assignable": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+        "type": "AssessmentItem",
+        "name": "Assessment Item 3",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+          "type": "Assessment"
+        }
+      },
+      "isPartOf": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "count": 1,
+      "dateCreated": "2016-11-15T10:15:02.000Z",
+      "startedAtTime": "2016-11-15T10:15:02.000Z",
+      "endedAtTime": "2016-11-15T10:15:12.000Z"
+    },
     "dateCreated": "2016-11-15T10:15:12.000Z",
     "startedAtTime": "2016-11-15T10:15:02.000Z",
     "endedAtTime": "2016-11-15T10:15:12.000Z",
-    "values": [ "subject", "object", "predicate" ]
+    "values": ["subject", "object", "predicate"]
   },
   "eventTime": "2016-11-15T10:15:12.000Z",
   "edApp": {
@@ -52,7 +67,9 @@
     "type": "Membership",
     "member": "https://example.edu/users/554433",
     "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": [ "Learner" ],
+    "roles": [
+      "Learner"
+    ],
     "status": "Active",
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
