@@ -5151,13 +5151,13 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
   "type": "Response",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
+    "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5",
     "count": 1,
     "startedAtTime": "2017-11-15T10:15:14.000Z",
     "endedAtTime": "2017-11-15T10:15:20.000Z"
@@ -5168,13 +5168,26 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
   "extensions": [
     {
       "@context": {
-        "id": "@id",
-        "type": "@type",
-        "example": "http://example.edu/ctx/edu",
+        "example": "http://example.edu/ctx/edu/",
+        "options": "example:options#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "shortAnswerText": { "id": "example:shortAnswerText", "type": "xsd:string" }
+        "LikertScale": "example:LikertScale",
+        "likertScalePoints": {"@id": "example:likertScalePoints", "@type": "xsd:integer"},
+        "likertScaleOptions": {"@id": "example:likertScaleOptions", "@type": "@vocab", "@container": "@list"},
+        "scale": {"@id": "example:scale", "@type": "@id"},
+        "selectedOption": {"@id": "example:selectedOption","@type": "@vocab"},
+        "StronglyAgree": "options:StronglyAgree",
+        "Agree": "options:Agree",
+        "Neutral": "options:Neutral",
+        "Disagree": "options:Disagree",
+        "StronglyDisagree": "options:StronglyDisagree"
       },
-      "shortAnswerText": "A Caliper Event is a generic type that describes a relationship established between an actor and an object at a particular moment in time and (optionally) within a given context."
+      "scale": {
+        "type": "LikertScale",
+        "likertScalePoints": 5,
+        "likertScaleOptions": ["StronglyAgree", "Agree", "Neutral", "Disagree", "StronglyDisagree"]
+      },
+      "selectedOption": "StronglyAgree"
     }
   ]
 }
