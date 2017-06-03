@@ -102,16 +102,17 @@
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
       "action": "Submitted",
-      "object": {
+      "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+      "generated": {
         "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
         "count": 1,
         "dateCreated": "2016-11-15T10:15:00.000Z",
         "startedAtTime": "2016-11-15T10:15:00.000Z",
-        "endedAtTime": "2016-11-15T10:25:30.000Z",
-        "duration": "PT10M30S"
+        "endedAtTime": "2016-11-15T10:55:12.000Z",
+        "duration": "PT50M12S"
       },
       "eventTime": "2016-11-15T10:25:30.000Z",
       "edApp": "https://example.edu",
@@ -121,7 +122,7 @@
         "type": "Membership",
         "member": "https://example.edu/users/554433",
         "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-        "roles": [ "Learner" ],
+        "roles": ["Learner"],
         "status": "Active",
         "dateCreated": "2016-08-01T06:00:00.000Z"
       },
