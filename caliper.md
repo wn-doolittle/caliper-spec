@@ -389,7 +389,8 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 * Each [Entity](#entity) participating in the [AnnotationEvent](#annotationEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The `generated` [Annotation](#annotation) SHOULD be specified.
+* The `generated` [Annotation](#annotation) SHOULD be specified.  If expressed as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource) SHOULD be referenced.
+
 
 <a name="assessmentProfile" />
 
@@ -408,14 +409,14 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
-| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Optional |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Optional |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
 
@@ -423,14 +424,14 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | Event | Actor |	Action | Object |	Generated | Referrer |
 | :---- | :---- | :----- | :----- | :-------- | :------- |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | [Attempt](#attempt) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Resumed](#resumed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | &nbsp; | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Resumed](#resumed) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | [Attempt](#attempt) | [Assessment](#assessment) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | [Response](#response) | [AssessmentItem](#assessmentItem) |
-| [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [Attempt](#attempt) | &nbsp; | [AssessmentItem](#assessmentItem) |
+| [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [AssessmentItem](#assessmentItem) | &nbsp; | [AssessmentItem](#assessmentItem) |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [AssessmentItem](#assessmentItem) | [Response](#response) | [AssessmentItem](#assessmentItem) |
 | [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; |
 
@@ -439,12 +440,12 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 * Each [Entity](#entity) participating in the [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the `annotator` and the `annotated` [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions the [Attempt](#attempt) `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value MUST be incremented by 1.
+* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
+* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
+* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
+* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
+* For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
 <a name="assignableProfile" />
@@ -463,11 +464,11 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
-| [AssignableEvent](#assignableEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
-| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
-| [AssignableEvent](#assignableEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Recommended |
 | [AssignableEvent](#assignableEvent) | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). | Optional |
 | [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). | Optional |
+| [AssignableEvent](#assignableEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
+| [AssignableEvent](#assignableEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Recommended |
+| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssignableEvent](#assignableEvent) | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). | Optional |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
@@ -475,25 +476,25 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 #### Supported Entities
 | Event | Actor |	Action | Object |	Generated | Referrer |
 | :---- | :---- | :----- | :----- | :-------- | :------- |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [DigitalResource](#digitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Submitted](#submitted) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the assignee and the assigned  [DigitalResource](#digitalResource).
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions the [Attempt](#attempt) `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value MUST be incremented by 1.
-* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
+* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned  [AssignableDigitalResource](#assignableDigitalResource).
+* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
+* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
+* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
+* Parent-child relationships that exist between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * Parent-child relationships that exist between [DigitalResource](#digitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
@@ -1012,12 +1013,14 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2017-11-15T11:05:01.000Z",
-  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "data": [
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu/users/554433",
-      "type": "Person"
+      "type": "Person",
+      "dateCreated": "2017-08-01T06:00:00.000Z",
+      "dateModified": "2017-09-02T11:30:00.000Z"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1025,30 +1028,42 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "type": "Assessment",
       "name": "Quiz One",
       "items": [
-        "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
-        "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
-        "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3"
+        {
+          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
+          "type": "AssessmentItem"
+        },
+        {
+          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
+          "type": "AssessmentItem"
+        },
+        {
+          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+          "type": "AssessmentItem"
+        }
       ],
       "dateCreated": "2017-08-01T06:00:00.000Z",
+      "dateModified": "2017-09-02T11:30:00.000Z",
       "datePublished": "2017-08-15T09:30:00.000Z",
       "dateToActivate": "2017-08-16T05:00:00.000Z",
+      "dateToShow": "2017-08-16T05:00:00.000Z",
       "dateToStartOn": "2017-08-16T05:00:00.000Z",
       "dateToSubmit": "2017-09-28T11:59:59.000Z",
       "maxAttempts": 2,
-      "maxScore": 15,
+      "maxScore": 15.0,
       "maxSubmits": 2,
       "version": "1.0"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu",
-      "type": "SoftwareApplication"
+      "type": "SoftwareApplication",
+      "version": "v2"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu/terms/201701/courses/7/sections/1",
       "type": "CourseSection",
-      "academicSession": "Fall 2017",
+      "academicSession": "Fall 2016",
       "courseNumber": "CPS 435-01",
       "name": "CPS 435 Learning Analytics, Section 01",
       "category": "seminar",
@@ -1099,16 +1114,17 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
       "action": "Submitted",
-      "object": {
+      "object": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+      "generated": {
         "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
         "count": 1,
         "dateCreated": "2017-11-15T10:15:00.000Z",
         "startedAtTime": "2017-11-15T10:15:00.000Z",
-        "endedAtTime": "2017-11-15T10:25:30.000Z",
-        "duration": "PT10M30S"
+        "endedAtTime": "2017-11-15T10:55:12.000Z",
+        "duration": "PT50M12S"
       },
       "eventTime": "2017-11-15T10:25:30.000Z",
       "edApp": "https://example.edu",
@@ -1118,7 +1134,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
         "type": "Membership",
         "member": "https://example.edu/users/554433",
         "organization": "https://example.edu/terms/201701/courses/7/sections/1",
-        "roles": [ "Learner" ],
+        "roles": ["Learner"],
         "status": "Active",
         "dateCreated": "2017-08-01T06:00:00.000Z"
       },
@@ -1155,8 +1171,8 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
         "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/results/1",
         "type": "Result",
         "attempt": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
-        "normalScore": 15,
-        "totalScore": 15,
+        "normalScore": 15.0,
+        "totalScore": 15.0,
         "scoredBy": "https://example.edu/autograder",
         "dateCreated": "2017-11-15T10:55:05.000Z"
       },
@@ -1538,7 +1554,6 @@ A Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with a
 http://purl.imsglobal.org/caliper/AssessmentEvent
 
 ![AssessmentEvent Started image](assets/caliper-assessment_event_started-v2.png)
-![AssessmentEvent Submitted image](assets/caliper-assessment_event_submitted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1547,31 +1562,31 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 | Action | WordNet® Gloss |
 | :----- | :------------- |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
 | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
 | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
 | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. |
+| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 
 #### Properties
 [AssessmentEvent](#assessmentEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified.   The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused), [Reset](#reset) and [Restarted](#restarted) actions the [Assessment](#assessment) constitutes the `object` of the interaction and MUST be specified.  For a [Submitted](#submitted) action the actor's [Attempt](#attempt) is the `object` and MUST be specified.  In either case, the `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| object | [Assessment](#assessment) | The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Attempt](#attempt) | For a [Started](#started) action an [Attempt](#attempt) MUST be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| generated | [Attempt](#attempt) | The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentEvent (started)
@@ -1634,67 +1649,6 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 }
 ```
 
-#### Example: AssessmentEvent (submitted)
-```
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
-  "type": "AssessmentEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Submitted",
-  "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "type": "Attempt",
-    "assignee": "https://example.edu/users/554433",
-    "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
-      "type": "Assessment",
-      "name": "Quiz One",
-      "dateToStartOn": "2017-11-14T05:00:00.000Z",
-      "dateToSubmit": "2017-11-18T11:59:59.000Z",
-      "maxAttempts": 2,
-      "maxSubmits": 2,
-      "maxScore": 25.0,
-      "version": "1.0"
-    },
-    "count": 1,
-    "dateCreated": "2017-11-15T10:15:00.000Z",
-    "startedAtTime": "2017-11-15T10:15:00.000Z",
-    "endedAtTime": "2017-11-15T10:25:30.000Z",
-    "duration": "PT10M30S"
-  },
-  "eventTime": "2017-11-15T10:25:30.000Z",
-  "edApp": {
-    "id": "https://example.edu",
-    "type": "SoftwareApplication",
-    "version": "v2"
-  },
-  "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
-    "roles": [ "Learner" ],
-    "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
-  }
-}
-```
-
 <a name="assessmentItemEvent" />
 
 ### B.4 AssessmentItemEvent
@@ -1704,7 +1658,6 @@ A Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interac
 http://purl.imsglobal.org/caliper/AssessmentItemEvent
 
 ![AssessmentItemEvent Started image](assets/caliper-assessmentitem_event_started-v2.png)
-![AssessmentItemEvent Completed image](assets/caliper-assessmentitem_event_completed-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1716,8 +1669,8 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 | Action | WordNet® Gloss |
 | :----- | :------------- |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
 | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
+| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
 
 #### Deprecated Actions
 | Action | WordNet® Gloss |
@@ -1734,16 +1687,16 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentItemEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified.  In either case, the `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| object | [AssessmentItem](#assessmentItem) | The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  In either case, the `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| generated | [Response](#response) | For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.   The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.   The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentItem (started)
@@ -1815,74 +1768,6 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 }
 ```
 
-#### Example: AssessmentItem (completed)
-```
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "urn:uuid:e5891791-3d27-4df1-a272-091806a43dfb",
-  "type": "AssessmentItemEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Completed",
-  "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "type": "Attempt",
-    "assignee": "https://example.edu/users/554433",
-    "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
-      "type": "AssessmentItem",
-      "name": "Assessment Item 3",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
-        "type": "Assessment"
-      }
-    },
-    "isPartOf": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "count": 1,
-    "dateCreated": "2017-11-15T10:15:02.000Z",
-    "startedAtTime": "2017-11-15T10:15:02.000Z",
-    "endedAtTime": "2017-11-15T10:15:12.000Z"
-  },
-  "generated": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
-    "type": "FillinBlankResponse",
-    "attempt": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "dateCreated": "2017-11-15T10:15:12.000Z",
-    "startedAtTime": "2017-11-15T10:15:02.000Z",
-    "endedAtTime": "2017-11-15T10:15:12.000Z",
-    "values": [ "subject", "object", "predicate" ]
-  },
-  "eventTime": "2017-11-15T10:15:12.000Z",
-  "edApp": {
-    "id": "https://example.edu",
-    "type": "SoftwareApplication",
-    "version": "v2"
-  },
-  "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
-    "roles": [ "Learner" ],
-    "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
-  }
-}
-```
-
 <a name="assignableEvent" />
 
 ### B.5 AssignableEvent
@@ -1899,11 +1784,11 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 #### Supported Actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
-| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
-| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
 | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
 | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
+| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
+| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
+| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
 
 #### Deprecated Actions
@@ -1927,13 +1812,13 @@ The following actions are deprecated and targeted for removal from the [Assignab
 | object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| generated | [Attempt](#attempt) | For [Started](#started), [Completed](#completed) and [Reviewed](reviewed) actions, the actor's [Attempt](#attempt) SHOULD be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssignableEvent (activated)
