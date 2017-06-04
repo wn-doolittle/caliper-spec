@@ -5922,6 +5922,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | Viktor Haag | D2L |
 | Matt Ashbourne | McGraw-Hill Education |
 | Wes LaMarche | ACT |
+| Etienne Pelaprat | Unizin |
 
 #### Editors and Reviewers
 | Name | Organization |
