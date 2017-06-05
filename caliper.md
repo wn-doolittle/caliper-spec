@@ -411,7 +411,7 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
 | [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
-| [AssessmentEvent](#assessmentEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Optional |
@@ -432,8 +432,8 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | [Attempt](#attempt) | [Assessment](#assessment) |
 | [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [AssessmentItem](#assessmentItem) | &nbsp; | [AssessmentItem](#assessmentItem) |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [AssessmentItem](#assessmentItem) | [Response](#response) | [AssessmentItem](#assessmentItem) |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -482,8 +482,8 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Submitted](#submitted) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -498,7 +498,7 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * Parent-child relationships that exist between [DigitalResource](#digitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
-* When navigating to a [DigitalResource](#digitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* When navigating to a [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="forumProfile" />
 
@@ -534,10 +534,10 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 | [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | &nbsp; |
 | [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | &nbsp; |
 | [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Message](#message) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | &nbsp; |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; |
 
 #### Requirements
 * Certain [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -546,7 +546,7 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
 * Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by use of the `isPartOf` property.
-* When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. 
+* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. 
 
 <a name="gradingProfile" />
 
@@ -571,14 +571,13 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 | Event | Actor |	Action | Object | Generated |
 | :---- | :---- | :----- | :----- | :-------- |
 | [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Result](#result) | &nbsp; |
 
 #### Requirements
 * Certain [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [OutcomeEvent](#outcomeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* For [Graded](#graded) actions, the `generated` [Result](#result) SHOULD be specified.
+* For a [Graded](#graded) action, the `generated` [Result](#result) SHOULD be specified.
 
 <a name="mediaProfile" />
 
@@ -640,8 +639,8 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [ImageObject](#imageObject), [VideoObject](#videoObject). | &nbsp; | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -655,7 +654,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 * For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred.
 * For a [Ended](#ended) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the ending or closing location in the audio or video stream.
 * For other [MediaEvent](#mediaEvent) supported actions the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the action occurred.
-* When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* When navigating to a [MediaObject](#mediaObject) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="readingProfile" />
 
@@ -689,7 +688,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * A [DigitalResource](#digitalResource) or one of its subtypes MUST be specified as the `object` of the interaction.
 * A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
-* When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* When navigating to digital content the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="sessionProfile" />
 
@@ -2873,7 +2872,7 @@ The base set of [Entity](#entity) properties is listed below.  Each property MUS
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageObject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webPage)
+[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webPage)
 
 #### Deprecated subtypes
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
