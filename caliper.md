@@ -3025,9 +3025,9 @@ http://purl.imsglobal.org/caliper/Assessment
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
+| maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
 | version | string | A string value that designates the current form or version of the [Assessment](#assessment) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Assessment](#assessment). | Optional |
 
@@ -3106,9 +3106,9 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
+| maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
 | version | string | A string value that designates the current form or version of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssessmentItem](#assessmentItem). | Optional |
 
@@ -3187,9 +3187,9 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the resource can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
+| maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
 | version | string | A string value that designates the current form or version of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssignableDigitalResource](#assignableDigitalResource). | Optional |
 
