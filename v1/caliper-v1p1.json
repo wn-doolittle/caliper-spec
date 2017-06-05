@@ -151,7 +151,6 @@
     "volumeLevel": {"@id": "caliper:volumeLevel", "@type": "xsd:string"},
     "volumeMax": {"@id": "caliper:volumeMax", "@type": "xsd:string"},
     "volumeMin": {"@id": "caliper:volumeMin", "@type": "xsd:string"},
-    "uuid": {"@id": "caliper:uuid", "@type": "xsd:string"},
 
     "Active": "lisstatus:Active",
     "Inactive": "lisstatus:Inactive",
