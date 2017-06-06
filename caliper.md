@@ -27,8 +27,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 2.3 [Metric Profiles](#infoModelProfiles)
       * 2.3.1 [Basic Profile](#basicProfile)
       * 2.3.2 [Annotation Profile](#annotationProfile)
-      * 2.3.3 [Assignable Profile](#assignableProfile)
-      * 2.3.4 [Assessment Profile](#assessmentProfile)
+      * 2.3.3 [Assessment Profile](#assessmentProfile)
+      * 2.3.4 [Assignable Profile](#assignableProfile)
       * 2.3.5 [Forum Profile](#forumProfile)
       * 2.3.6 [Grading Profile](#gradingProfile)
       * 2.3.7 [Media Profile](#mediaProfile)
@@ -39,14 +39,17 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types and Type Coercion](#jsonldTypes)
-* 4.0 [Sensor API](#sensor)
+* 4.0 [The Sensor API](#sensor)
   * 4.1 [Behavior](#sensorBehavior)
   * 4.2 [Envelope](#sensorEnvelope)
   * 4.3 [Transport](#sensorTransport)
+      * 4.3.1 [HTTP Transport Requirements](#sensorHTTPTransportRequirements)
+      * 4.3.2 [Sensors Supporting Non-HTTP Protocols](#nonHttpSensors)
 * 5.0 [Endpoint](#endpoint)
   * 5.1 [Minimum Supported String Lengths](#endpointStringLengths)
-  * 5.2.1 [HTTP Endpoint](#httpEndpoint)
-  * 5.2.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
+  * 5.2 [Endpoint Requirements](#endpointRequirements)
+      * 5.2.1 [HTTP Endpoint Requirements](#httpEndpoint)
+      * 5.2.2 [Endpoints Supporting Non-HTTP Protocols](#nonHttpEndpoint)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Events](#events)
   * B.1 [Event](#event)
@@ -171,7 +174,7 @@ __Endpoint__: a receiver or consumer of Caliper data that is bound to a specific
 
 <a name="entityDef" />
 
-__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
+__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a linked data graph.
 
 <a name="eventDef" />
 
@@ -192,6 +195,8 @@ __ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the a
 <a name="linkedDataDef" /> 
  
 __Linked Data__: A set of design principles first articulated by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web.  The principles can be summarized as follows: use [IRIs](#iriDef)/[URIs](#uriDef) as names for things; use HTTP [IRIs](#iriDef)/[URIs](#uriDef) so that information about things (e.g., people, objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of their [IRIs](#iriDef)/[URIs](#uriDef) in order to promote discovery of new relationships between things.
+
+__Linked Data Graph__: As defined in the [JSON-LD specification](#jsonldSyntax): "A labeled directed graph, i.e., a set of nodes connected by edges, as specialized in the Data Model Section of the [JSON-LD specification](#jsonldSyntax). A linked data graph is a generalized representation of an RDF graph as defined in [RDF Concepts](#rdfConcepts)."
  
 <a name="ltiDef" />
  
@@ -391,7 +396,8 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 * Each [Entity](#entity) participating in the [AnnotationEvent](#annotationEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The `generated` [Annotation](#annotation) SHOULD be specified.
+* The `generated` [Annotation](#annotation) SHOULD be specified.  If expressed as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource) SHOULD be referenced.
+
 
 <a name="assessmentProfile" />
 
@@ -410,14 +416,14 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
-| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Optional |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Optional |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). | Optional |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Optional |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
 
@@ -425,28 +431,28 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | Event | Actor |	Action | Object |	Generated | Referrer |
 | :---- | :---- | :----- | :----- | :-------- | :------- |
 | [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | [Attempt](#attempt) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Resumed](#resumed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) | [Attempt](#attempt) | &nbsp; | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Resumed](#resumed) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
+| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | [Attempt](#attempt) | [Assessment](#assessment) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | [Response](#response) | [AssessmentItem](#assessmentItem) |
-| [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [Attempt](#attempt) | &nbsp; | [AssessmentItem](#assessmentItem) |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Assessment](#assessment), [AssessmentItem](#assessmentItem) | &nbsp; | &nbsp; |
+| [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [AssessmentItem](#assessmentItem) | &nbsp; | [AssessmentItem](#assessmentItem) |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [AssessmentItem](#assessmentItem) | [Response](#response) | [AssessmentItem](#assessmentItem) |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the `annotator` and the `annotated` [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions the [Attempt](#attempt) `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value MUST be incremented by 1.
+* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
+* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
+* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
+* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
+* For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
 <a name="assignableProfile" />
@@ -465,11 +471,11 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
-| [AssignableEvent](#assignableEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
-| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
-| [AssignableEvent](#assignableEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Recommended |
 | [AssignableEvent](#assignableEvent) | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). | Optional |
 | [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). | Optional |
+| [AssignableEvent](#assignableEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
+| [AssignableEvent](#assignableEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Recommended |
+| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssignableEvent](#assignableEvent) | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). | Optional |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
@@ -477,29 +483,29 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 #### Supported Entities
 | Event | Actor |	Action | Object |	Generated | Referrer |
 | :---- | :---- | :----- | :----- | :-------- | :------- |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Submitted](#submitted) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
 | [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [Attempt](#attempt) | &nbsp; | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Completed](#completed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Submitted](#submitted) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Person](#person) | [Reviewed](#reviewed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the `annotator` and the `annotated` [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions the [Attempt](#attempt) `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action the [Attempt](#attempt) `count` value MUST be incremented by 1.
-* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
+* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned  [AssignableDigitalResource](#assignableDigitalResource).
+* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
+* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
+* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
 * Parent-child relationships that exist between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
-* When navigating to an [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* Parent-child relationships that exist between [DigitalResource](#digitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
+* For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
+* When navigating to a [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="forumProfile" />
 
@@ -535,10 +541,10 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 | [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | &nbsp; |
 | [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | &nbsp; |
 | [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Message](#message) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [Forum](#forum), [Message](#message), [Thread](#thread) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | &nbsp; |
 | [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Forum](#forum), [Message](#message), [Thread](#thread) | &nbsp; |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; |
 
 #### Requirements
 * Certain [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -547,7 +553,7 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
 * Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by use of the `isPartOf` property.
-* When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. 
+* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. 
 
 <a name="gradingProfile" />
 
@@ -572,14 +578,13 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 | Event | Actor |	Action | Object | Generated |
 | :---- | :---- | :----- | :----- | :-------- |
 | [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Result](#result) | &nbsp; |
 
 #### Requirements
 * Certain [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [OutcomeEvent](#outcomeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* For [Graded](#graded) actions, the `generated` [Result](#result) SHOULD be specified.
+* For a [Graded](#graded) action, the `generated` [Result](#result) SHOULD be specified.
 
 <a name="mediaProfile" />
 
@@ -641,8 +646,8 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [MediaObject](#mediaObject) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [ImageObject](#imageObject), [VideoObject](#videoObject). | &nbsp; | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -656,7 +661,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 * For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred.
 * For a [Ended](#ended) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the ending or closing location in the audio or video stream.
 * For other [MediaEvent](#mediaEvent) supported actions the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the action occurred.
-* When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* When navigating to a [MediaObject](#mediaObject) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="readingProfile" />
 
@@ -690,7 +695,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * A [DigitalResource](#digitalResource) or one of its subtypes MUST be specified as the `object` of the interaction.
 * A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
-* When navigating to the `object` the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+* When navigating to digital content the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 <a name="sessionProfile" />
 
@@ -784,7 +789,7 @@ Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@con
   },
   "action": "Created",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/123",
     "type": "Document"
   },
   "eventTime": "2017-11-15T10:15:00.000Z"
@@ -797,7 +802,7 @@ A [JSON-LD](#jsonldDef) document can reference more than one context.  Additiona
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1",
   "type": "CourseSection",
   "academicSession": "Fall 2017",
   "courseNumber": "CPS 435-01",
@@ -850,7 +855,7 @@ Each [Event](#event) MUST be assigned an identifier in the form of a [UUID](#uui
   },
   . . .
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/pages/2",
     "type": "WebPage",
     . . .
   },
@@ -921,7 +926,7 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
   },
   "action": "Subscribed",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
     "type": "Forum",
     "name": "Caliper Forum",
     . . .
@@ -933,16 +938,16 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
     . . .
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     . . .
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     . . .
   },
@@ -953,7 +958,7 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
     "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
-````
+```
 
 Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if each referenced [Entity](#entity) is provisioned with a dereferenceable [IRI](#iriDef) that permits consumers to retrieve a more robust representation of the object if required.
 
@@ -965,11 +970,11 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
   "type": "ForumEvent",
   "actor": "https://example.edu/users/554433",
   "action": "Subscribed",
-  "object": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+  "object": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
   "eventTime": "2017-11-15T10:16:00.000Z",
   "edApp": "https://example.edu/forums",
-  "group": "https://example.edu/terms/201601/courses/7/sections/1",
-  "membership": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1"
+  "group": "https://example.edu/terms/201701/courses/7/sections/1",
+  "membership": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1"
   "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
 }
 ```
@@ -1014,48 +1019,62 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2017-11-15T11:05:01.000Z",
-  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "data": [
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu/users/554433",
-      "type": "Person"
+      "type": "Person",
+      "dateCreated": "2017-08-01T06:00:00.000Z",
+      "dateModified": "2017-09-02T11:30:00.000Z"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
       "type": "Assessment",
       "name": "Quiz One",
       "items": [
-        "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
-        "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
-        "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3"
+        {
+          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
+          "type": "AssessmentItem"
+        },
+        {
+          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
+          "type": "AssessmentItem"
+        },
+        {
+          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+          "type": "AssessmentItem"
+        }
       ],
       "dateCreated": "2017-08-01T06:00:00.000Z",
+      "dateModified": "2017-09-02T11:30:00.000Z",
       "datePublished": "2017-08-15T09:30:00.000Z",
       "dateToActivate": "2017-08-16T05:00:00.000Z",
+      "dateToShow": "2017-08-16T05:00:00.000Z",
       "dateToStartOn": "2017-08-16T05:00:00.000Z",
       "dateToSubmit": "2017-09-28T11:59:59.000Z",
       "maxAttempts": 2,
-      "maxScore": 15,
+      "maxScore": 15.0,
       "maxSubmits": 2,
       "version": "1.0"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu",
-      "type": "SoftwareApplication"
+      "type": "SoftwareApplication",
+      "version": "v2"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1",
       "type": "CourseSection",
-      "academicSession": "Fall 2017",
+      "academicSession": "Fall 2016",
       "courseNumber": "CPS 435-01",
       "name": "CPS 435 Learning Analytics, Section 01",
       "category": "seminar",
       "subOrganizationOf": {
-        "id": "https://example.edu/terms/201601/courses/7",
+        "id": "https://example.edu/terms/201701/courses/7",
         "type": "CourseOffering",
         "courseNumber": "CPS 435"
       },
@@ -1067,24 +1086,24 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
       "action": "Started",
-      "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+      "object": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
       "generated": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
         "count": 1,
         "dateCreated": "2017-11-15T10:15:00.000Z",
         "startedAtTime": "2017-11-15T10:15:00.000Z"
       },
       "eventTime": "2017-11-15T10:15:00.000Z",
       "edApp": "https://example.edu",
-      "group": "https://example.edu/terms/201601/courses/7/sections/1",
+      "group": "https://example.edu/terms/201701/courses/7/sections/1",
       "membership": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
         "type": "Membership",
         "member": "https://example.edu/users/554433",
-        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+        "organization": "https://example.edu/terms/201701/courses/7/sections/1",
         "roles": [ "Learner" ],
         "status": "Active",
         "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -1101,26 +1120,27 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
       "action": "Submitted",
-      "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "object": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+      "generated": {
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
         "count": 1,
         "dateCreated": "2017-11-15T10:15:00.000Z",
         "startedAtTime": "2017-11-15T10:15:00.000Z",
-        "endedAtTime": "2017-11-15T10:25:30.000Z",
-        "duration": "PT10M30S"
+        "endedAtTime": "2017-11-15T10:55:12.000Z",
+        "duration": "PT50M12S"
       },
       "eventTime": "2017-11-15T10:25:30.000Z",
       "edApp": "https://example.edu",
-      "group": "https://example.edu/terms/201601/courses/7/sections/1",
+      "group": "https://example.edu/terms/201701/courses/7/sections/1",
       "membership": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
         "type": "Membership",
         "member": "https://example.edu/users/554433",
-        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-        "roles": [ "Learner" ],
+        "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+        "roles": ["Learner"],
         "status": "Active",
         "dateCreated": "2017-08-01T06:00:00.000Z"
       },
@@ -1141,10 +1161,10 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       },
       "action": "Graded",
       "object": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
         "count": 1,
         "dateCreated": "2017-11-15T10:05:00.000Z",
         "startedAtTime": "2017-11-15T10:05:00.000Z",
@@ -1154,15 +1174,15 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "eventTime": "2017-11-15T10:57:06.000Z",
       "edApp": "https://example.edu",
       "generated": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/results/1",
         "type": "Result",
-        "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-        "normalScore": 15,
-        "totalScore": 15,
+        "attempt": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "normalScore": 15.0,
+        "totalScore": 15.0,
         "scoredBy": "https://example.edu/autograder",
         "dateCreated": "2017-11-15T10:55:05.000Z"
       },
-      "group": "https://example.edu/terms/201601/courses/7/sections/1"
+      "group": "https://example.edu/terms/201701/courses/7/sections/1"
     }
   ]
 }
@@ -1176,6 +1196,8 @@ Business requirements informed by industry best practices will determine the cho
 
 Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope). 
 
+<a name="sensorHTTPTransportRequirements">
+
 #### 4.3.1 HTTP Transport Requirements
  
 * A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS or SSL.
@@ -1188,15 +1210,21 @@ Irrespective of the chosen transport protocol, each message sent by a [Sensor](#
 * The following standard HTTP request headers SHOULD be set for use by the [Endpoint](#endpoint):
   * `Authorization`
   * `Content-Length`
-* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
+* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2), using the `Bearer` authorization type.  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
 * The `Content-Length` of the request body MUST be measured in octets (8-bit bytes).
+
+<a name="nonHttpSensors">
+
+#### 4.3.2 Sensors Supporting Non-HTTP Protocols
+
+Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Sensor](#sensor) include support for communicating with Caliper [Endpoints](#endpoint) over HTTP to ensure maximum interoperability.
 
 
 <a name="endpoint" />
 
 ## 5.0 Endpoint
 
-A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint) for recommendations.
+A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints Supporting Non-HTTP Protocols](#nonHttpEndpoint) for recommendations.
 
 <a name="endpointStringLengths" />
 
@@ -1252,14 +1280,16 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session).  The value MUST conform to the ISO-8601 duration format. | 64 |
 | [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
 
+<a name="endpointRequirements">
+
 ### 5.2 Endpoint Requirements
 
 <a name="httpEndpoint" />
 
 #### 5.2.1 HTTP Endpoint Requirements
 * An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
-* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
-* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers (see [Section 4.3.1 HTTP Endpoint Requirements](#sensorHTTPTransportRequirements) for the HTTP request header behaviour required of Sensors).
+* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2), using the `Bearer` authorization type.
 
 When communicating over HTTP an [Endpoint](#httpEndpoint) MUST exhibit the following response behaviour:
 
@@ -1273,7 +1303,7 @@ Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Cal
 
 <a name="nonHttpEndpoint" />
 
-#### 5.2.2 Endpoints supporting non-HTTP protocols
+#### 5.2.2 Endpoints Supporting Non-HTTP Protocols
 Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum interoperability.
 
 <a name="actions"/>
@@ -1403,7 +1433,7 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
   },
   "action": "Created",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/123",
     "type": "Document",
     "name": "Course Syllabus",
     "dateCreated": "2017-11-12T07:15:00.000Z",
@@ -1509,16 +1539,16 @@ The following actions are deprecated and targeted for removal from the [Annotati
     "version": "1.2.3"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -1540,7 +1570,6 @@ A Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with a
 http://purl.imsglobal.org/caliper/AssessmentEvent
 
 ![AssessmentEvent Started image](assets/caliper-assessment_event_started-v2.png)
-![AssessmentEvent Submitted image](assets/caliper-assessment_event_submitted-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1549,31 +1578,31 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 | Action | WordNet® Gloss |
 | :----- | :------------- |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
 | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
 | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
 | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. |
+| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 
 #### Properties
 [AssessmentEvent](#assessmentEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentEvent*. | Required |
 | actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified.   The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Assessment](#assessment), [Attempt](#attempt) | For [Started](#started), [Paused](#paused), [Reset](#reset) and [Restarted](#restarted) actions the [Assessment](#assessment) constitutes the `object` of the interaction and MUST be specified.  For a [Submitted](#submitted) action the actor's [Attempt](#attempt) is the `object` and MUST be specified.  In either case, the `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| object | [Assessment](#assessment) | The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Attempt](#attempt) | For a [Started](#started) action an [Attempt](#attempt) MUST be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| generated | [Attempt](#attempt) | The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentEvent (started)
@@ -1588,7 +1617,7 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
   },
   "action": "Started",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
     "type": "Assessment",
     "name": "Quiz One",
     "dateToStartOn": "2017-11-14T05:00:00.000Z",
@@ -1599,10 +1628,10 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
     "version": "1.0"
   },
   "generated": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
     "count": 1,
     "dateCreated": "2017-11-15T10:15:00.000Z",
     "startedAtTime": "2017-11-15T10:15:00.000Z"
@@ -1614,77 +1643,16 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": [ "Learner" ],
-    "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
-  }
-}
-```
-
-#### Example: AssessmentEvent (submitted)
-```
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
-  "type": "AssessmentEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Submitted",
-  "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "type": "Attempt",
-    "assignee": "https://example.edu/users/554433",
-    "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "Assessment",
-      "name": "Quiz One",
-      "dateToStartOn": "2017-11-14T05:00:00.000Z",
-      "dateToSubmit": "2017-11-18T11:59:59.000Z",
-      "maxAttempts": 2,
-      "maxSubmits": 2,
-      "maxScore": 25.0,
-      "version": "1.0"
-    },
-    "count": 1,
-    "dateCreated": "2017-11-15T10:15:00.000Z",
-    "startedAtTime": "2017-11-15T10:15:00.000Z",
-    "endedAtTime": "2017-11-15T10:25:30.000Z",
-    "duration": "PT10M30S"
-  },
-  "eventTime": "2017-11-15T10:25:30.000Z",
-  "edApp": {
-    "id": "https://example.edu",
-    "type": "SoftwareApplication",
-    "version": "v2"
-  },
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -1706,7 +1674,6 @@ A Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interac
 http://purl.imsglobal.org/caliper/AssessmentItemEvent
 
 ![AssessmentItemEvent Started image](assets/caliper-assessmentitem_event_started-v2.png)
-![AssessmentItemEvent Completed image](assets/caliper-assessmentitem_event_completed-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -1718,8 +1685,8 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 | Action | WordNet® Gloss |
 | :----- | :------------- |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
 | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
+| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
 
 #### Deprecated Actions
 | Action | WordNet® Gloss |
@@ -1736,16 +1703,16 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentItemEvent*. | Required |
 | actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [AssessmentItem](#assessmentItem), [Attempt](#attempt) | For [Started](#started) and [Skipped](#skipped) actions the [AssessmentItem](#assessmentItem) constitutes the `object` of the interaction and MUST be specified.  For a [Completed](#completed) action the actor's [Attempt](#attempt) is the `object` and MUST be specified.  In either case, the `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| object | [AssessmentItem](#assessmentItem) | The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Attempt](#attempt), [Response](#response) | For [Started](#started) and [Skipped](#skipped) actions, the [Attempt](#attempt) constitutes the `object` and SHOULD be specified.  For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  In either case, the `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| generated | [Response](#response) | For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.   The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.   The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentItem (started)
@@ -1760,11 +1727,11 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
   },
   "action": "Started",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
     "type": "AssessmentItem",
     "name": "Assessment Item 3",
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
     "dateToStartOn": "2017-11-14T05:00:00.000Z",
@@ -1776,12 +1743,12 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
     "version": "1.0"
     },
   "generated": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+    "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
       "type": "Attempt"
     },
     "count": 1,
@@ -1795,84 +1762,16 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": [ "Learner" ],
-    "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
-  }
-}
-```
-
-#### Example: AssessmentItem (completed)
-```
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "urn:uuid:e5891791-3d27-4df1-a272-091806a43dfb",
-  "type": "AssessmentItemEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Completed",
-  "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "type": "Attempt",
-    "assignee": "https://example.edu/users/554433",
-    "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
-      "type": "AssessmentItem",
-      "name": "Assessment Item 3",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-        "type": "Assessment"
-      }
-    },
-    "isPartOf": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "count": 1,
-    "dateCreated": "2017-11-15T10:15:02.000Z",
-    "startedAtTime": "2017-11-15T10:15:02.000Z",
-    "endedAtTime": "2017-11-15T10:15:12.000Z"
-  },
-  "generated": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
-    "type": "FillinBlankResponse",
-    "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-    "dateCreated": "2017-11-15T10:15:12.000Z",
-    "startedAtTime": "2017-11-15T10:15:02.000Z",
-    "endedAtTime": "2017-11-15T10:15:12.000Z",
-    "values": [ "subject", "object", "predicate" ]
-  },
-  "eventTime": "2017-11-15T10:15:12.000Z",
-  "edApp": {
-    "id": "https://example.edu",
-    "type": "SoftwareApplication",
-    "version": "v2"
-  },
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -1901,11 +1800,11 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 #### Supported Actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
-| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
-| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
 | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
 | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
+| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
+| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
+| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
 
 #### Deprecated Actions
@@ -1929,13 +1828,13 @@ The following actions are deprecated and targeted for removal from the [Assignab
 | object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| generated | [Attempt](#attempt) | For [Started](#started), [Completed](#completed) and [Reviewed](reviewed) actions, the actor's [Attempt](#attempt) SHOULD be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssignableEvent (activated)
@@ -1950,7 +1849,7 @@ The following actions are deprecated and targeted for removal from the [Assignab
   },
   "action": "Activated",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
     "type": "Assessment",
     "name": "Quiz One",
     "dateCreated": "2017-08-01T06:00:00.000Z",
@@ -1971,16 +1870,16 @@ The following actions are deprecated and targeted for removal from the [Assignab
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/112233",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Instructor" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2046,11 +1945,11 @@ http://purl.imsglobal.org/caliper/ForumEvent
   },
   "action": "Subscribed",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
     "type": "Forum",
     "name": "Caliper Forum",
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1",
       "type": "CourseSection"
     },
     "dateCreated": "2017-09-14T11:00:00.000Z"
@@ -2062,16 +1961,16 @@ http://purl.imsglobal.org/caliper/ForumEvent
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2174,16 +2073,16 @@ The following actions are deprecated and targeted for removal from the [MediaEve
   "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": "https://example.edu/player",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2249,7 +2148,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
   },
   "action": "Posted",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/2",
     "type": "Message",
     "creators": [
       {
@@ -2259,11 +2158,11 @@ http://purl.imsglobal.org/caliper/MessageEvent
     ],
     "body": "Are the Caliper Sensor reference implementations production-ready?",
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1",
       "type": "Thread",
       "name": "Caliper Adoption",
       "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2",
         "type": "Forum",
         "name": "Caliper Forum"
       }
@@ -2277,16 +2176,16 @@ http://purl.imsglobal.org/caliper/MessageEvent
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2311,7 +2210,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
   },
   "action": "Posted",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/3",
     "type": "Message",
     "creators": [
       {
@@ -2320,14 +2219,14 @@ http://purl.imsglobal.org/caliper/MessageEvent
       }
     ],
     "replyTo": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/2",
       "type": "Message"
     },
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1",
       "type": "Thread",
       "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2",
         "type": "Forum"
       }
     },
@@ -2340,16 +2239,16 @@ http://purl.imsglobal.org/caliper/MessageEvent
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/778899",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2420,7 +2319,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
   },
   "action": "NavigatedTo",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/pages/2",
     "type": "WebPage",
     "name": "Learning Analytics Specifications",
     "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
@@ -2428,21 +2327,21 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
   },
   "eventTime": "2017-11-15T10:15:00.000Z",
   "referrer": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/pages/1",
     "type": "WebPage"
   },
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2507,14 +2406,14 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
   },
   "action": "Graded",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
     "count": 1,
@@ -2526,16 +2425,16 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
   "eventTime": "2017-11-15T10:57:06.000Z",
   "edApp": "https://example.edu",
   "generated": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/results/1",
     "type": "Result",
-    "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "attempt": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "normalScore": 15.0,
     "totalScore": 15.0,
     "scoredBy": "https://example.edu/autograder",
     "dateCreated": "2017-11-15T10:55:05.000Z"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
@@ -2760,11 +2659,11 @@ http://purl.imsglobal.org/caliper/ThreadEvent
   },
   "action": "MarkedAsRead",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1",
     "type": "Thread",
     "name": "Caliper Information Model",
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
       "type": "Forum",
       "name": "Caliper Forum",
       "dateCreated": "2017-11-15T10:15:00.000Z"
@@ -2778,16 +2677,16 @@ http://purl.imsglobal.org/caliper/ThreadEvent
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2857,16 +2756,16 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
   "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -2940,16 +2839,16 @@ http://purl.imsglobal.org/caliper/ViewEvent
   "eventTime": "2017-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2017-08-01T06:00:00.000Z"
@@ -3143,9 +3042,9 @@ http://purl.imsglobal.org/caliper/Assessment
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
+| maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
 | version | string | A string value that designates the current form or version of the [Assessment](#assessment) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Assessment](#assessment). | Optional |
 
@@ -3161,20 +3060,20 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
   "type": "Assessment",
   "name": "Quiz One",
   "items": [
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
       "type": "AssessmentItem"
     },
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
       "type": "AssessmentItem"
     },
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
       "type": "AssessmentItem"
     }
   ],
@@ -3224,9 +3123,9 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
+| maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
 | version | string | A string value that designates the current form or version of the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssessmentItem](#assessmentItem). | Optional |
 
@@ -3242,10 +3141,10 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
   "type": "AssessmentItem",
   "isPartOf": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
     "type": "Assessment"
   },
   "dateCreated": "2017-08-01T06:00:00.000Z",
@@ -3305,9 +3204,9 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 | dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the resource can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| maxAttempts | integer | A non-negative integer indicating the number of permitted attempts MAY be specified. | Optional |
-| maxSubmits | integer | A non-negative integer indicating the number of permitted submissions MAY be specified. | Optional |
-| maxScore | integer | A non-negative integer indicating the maximum score permitted MAY be specified. | Optional |
+| maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
+| maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
+| maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
 | version | string | A string value that designates the current form or version of the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssignableDigitalResource](#assignableDigitalResource). | Optional |
 
@@ -3326,7 +3225,7 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assign/2",
   "type": "AssignableDigitalResource",
   "name": "Week 9 Reflection",
   "description": "3-5 page reflection on this week's assigned readings.",
@@ -3383,10 +3282,10 @@ The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT b
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
   "type": "Attempt",
   "assignable": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
     "type": "Assessment"
   },
   "assignee": {
@@ -3595,7 +3494,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7",
+  "id": "https://example.edu/terms/201701/courses/7",
   "type": "CourseOffering",
   "courseNumber": "CPS 435",
   "academicSession": "Fall 2017",
@@ -3638,14 +3537,14 @@ http://purl.imsglobal.org/caliper/CourseSection
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1",
   "type": "CourseSection",
   "academicSession": "Fall 2017",
   "courseNumber": "CPS 435-01",
   "name": "CPS 435 Learning Analytics, Section 01",
   "category": "seminar",
   "subOrganizationOf": {
-    "id": "https://example.edu/terms/201601/courses/7",
+    "id": "https://example.edu/terms/201701/courses/7",
     "type": "CourseOffering",
     "courseNumber": "CPS 435"
   },
@@ -3704,7 +3603,7 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/1/syllabus.pdf",
   "type": "DigitalResource",
   "name": "Course Syllabus",
   "mediaType": "application/pdf",
@@ -3715,11 +3614,11 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/1",
     "type": "DigitalResourceCollection",
     "name": "Course Assets",
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1",
       "type": "CourseSection"
     }
   },
@@ -3774,7 +3673,7 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/2",
   "type": "DigitalResourceCollection",
   "name": "Video Collection",
   "keywords": ["collection", "videos"],
@@ -3799,10 +3698,10 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201601/courses/7",
+      "id": "https://example.edu/terms/201701/courses/7",
       "type": "CourseOffering"
     }
   },
@@ -4071,20 +3970,20 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
   "type": "FillinBlankResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
@@ -4143,34 +4042,34 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
   "type": "Forum",
   "name": "Caliper Forum",
   "items": [
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1",
       "type": "Thread",
       "name": "Caliper Information Model",
       "dateCreated": "2017-11-01T09:30:00.000Z"
     },
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/2",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/2",
       "type": "Thread",
       "name": "Caliper Sensor API",
       "dateCreated": "2017-11-01T09:30:00.000Z"
     },
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/3",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/3",
       "type": "Thread",
       "name": "Caliper Certification",
       "dateCreated": "2017-11-01T09:30:00.000Z"
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201601/courses/7",
+      "id": "https://example.edu/terms/201701/courses/7",
       "type": "CourseOffering"
     }
   },
@@ -4266,14 +4165,14 @@ http://purl.imsglobal.org/caliper/Group
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/2",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/groups/2",
   "type": "Group",
   "name": "Discussion Group 2",
   "subOrganizationOf": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201601/courses/7",
+      "id": "https://example.edu/terms/201701/courses/7",
       "type": "CourseOffering"
     }
   },
@@ -4435,13 +4334,13 @@ http://purl.imsglobal.org/caliper/LearningObjective
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assign/2",
   "type": "AssignableDigitalResource",
   "name": "Caliper Profile Design",
   "description": "Choose a learning activity and describe the actions, entities and events that comprise it.",
   "learningObjectives": [
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/objectives/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/objectives/1",
       "type": "LearningObjective",
       "name": "Research techniques",
       "description": "Demonstrate ability to model a learning activity as a Caliper profile.",
@@ -4512,7 +4411,7 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
     "context_id": "8213060-006f-27b2066ac545",
     "launch_presentation_document_target": "iframe",
     "launch_presentation_height": 240,
-    "launch_presentation_return_url": "https://example.edu/terms/201601/courses/7/sections/1/pages/5",
+    "launch_presentation_return_url": "https://example.edu/terms/201701/courses/7/sections/1/pages/5",
     "launch_presentation_width": 320,
     "roles": "Learner,Student",
     "tool_consumer_instance_guid": "example.edu",
@@ -4691,17 +4590,17 @@ http://purl.imsglobal.org/caliper/Membership
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1/members/554433",
   "type": "Membership",
   "member": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "organization": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201601/courses/7",
+      "id": "https://example.edu/terms/201701/courses/7",
       "type": "CourseOffering"
     }
   },
@@ -4757,7 +4656,7 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/3",
   "type": "Message",
   "creators": [
     {
@@ -4767,14 +4666,14 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
   ],
   "body": "The Caliper working group provides a set of Caliper Sensor reference implementations for the purposes of education and experimentation.  They have not been tested for use in a production environment.  See the Caliper Implementation Guide for more details.",
   "replyTo": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/2",
     "type": "Message"
   },
   "isPartOf": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1",
     "type": "Thread",
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2",
       "type": "Forum"
     }
   },
@@ -4832,20 +4731,20 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
   "type": "MultipleChoiceResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
@@ -4901,20 +4800,20 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
   "type": "MultipleResponseResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
@@ -5153,13 +5052,13 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
   "type": "Response",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
+    "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5",
     "count": 1,
     "startedAtTime": "2017-11-15T10:15:14.000Z",
     "endedAtTime": "2017-11-15T10:15:20.000Z"
@@ -5170,13 +5069,26 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
   "extensions": [
     {
       "@context": {
-        "id": "@id",
-        "type": "@type",
-        "example": "http://example.edu/ctx/edu",
+        "example": "http://example.edu/ctx/edu/",
+        "options": "example:options#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "shortAnswerText": { "id": "example:shortAnswerText", "type": "xsd:string" }
+        "LikertScale": "example:LikertScale",
+        "likertScalePoints": {"@id": "example:likertScalePoints", "@type": "xsd:integer"},
+        "likertScaleOptions": {"@id": "example:likertScaleOptions", "@type": "@vocab", "@container": "@list"},
+        "scale": {"@id": "example:scale", "@type": "@id"},
+        "selectedOption": {"@id": "example:selectedOption","@type": "@vocab"},
+        "StronglyAgree": "options:StronglyAgree",
+        "Agree": "options:Agree",
+        "Neutral": "options:Neutral",
+        "Disagree": "options:Disagree",
+        "StronglyDisagree": "options:StronglyDisagree"
       },
-      "shortAnswerText": "A Caliper Event is a generic type that describes a relationship established between an actor and an object at a particular moment in time and (optionally) within a given context."
+      "scale": {
+        "type": "LikertScale",
+        "likertScalePoints": 5,
+        "likertScaleOptions": ["StronglyAgree", "Agree", "Neutral", "Disagree", "StronglyDisagree"]
+      },
+      "selectedOption": "StronglyAgree"
     }
   ]
 }
@@ -5203,12 +5115,12 @@ http://purl.imsglobal.org/caliper/Result
 | name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
-| normalScore | double | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
-| penaltyScore | double | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | Optional |
-| extraCreditScore | double | The number of extra credit points earned by the learner. | Optional |
-| totalScore | double | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
-| curvedTotalScore | double | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
-| curveFactor | double | A scale factor to be used in adjusting the `totalScore`. | Optional |
+| normalScore | decimal | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
+| penaltyScore | decimal | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | Optional |
+| extraCreditScore | decimal | The number of extra credit points earned by the learner. | Optional |
+| totalScore | decimal | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
+| curvedTotalScore | decimal | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
+| curveFactor | decimal | A scale factor to be used in adjusting the `totalScore`. | Optional |
 | scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
 | comment | string | Plain text feedback provided by the scorer. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -5227,17 +5139,17 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
   "type": "Result",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
     "count": 1,
@@ -5300,20 +5212,20 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
   "type": "SelectTextResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/4",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/4",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
@@ -5562,40 +5474,40 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1",
   "type": "Thread",
   "name": "Caliper Information Model",
   "items": [
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/1",
       "type": "Message"
     },
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/2",
       "type": "Message",
       "replyTo": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/1",
         "type": "Message"
       }
     },
     {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/3",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/3",
       "type": "Message",
       "replyTo": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/2",
         "type": "Message"
       }
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
     "type": "Forum",
     "name": "Caliper Forum",
     "isPartOf": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1",
       "type": "CourseSection",
       "subOrganizationOf": {
-        "id": "https://example.edu/terms/201601/courses/7",
+        "id": "https://example.edu/terms/201701/courses/7",
         "type": "CourseOffering"
       }
     }
@@ -5646,20 +5558,20 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
   "type": "TrueFalseResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
@@ -5772,12 +5684,12 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/index.html",
+  "id": "https://example.edu/terms/201701/courses/7/sections/1/pages/index.html",
   "type": "WebPage",
   "name": "CPS 435-01 Landing Page",
   "mediaType": "text/html",
   "isPartOf": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2017"
@@ -6026,6 +5938,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | Viktor Haag | D2L |
 | Matt Ashbourne | McGraw-Hill Education |
 | Wes LaMarche | ACT |
+| Etienne Pelaprat | Unizin |
 
 #### Editors and Reviewers
 | Name | Organization |
@@ -6069,6 +5982,10 @@ __LTI__.  IMS Global Learning Consortium.  Learning Tools Interoperability<sup>&
 <a name="rdf" />
 
 __RDF__.  W3C. Resource Description Framework (RDF).  URL: https://www.w3.org/RDF/
+
+<a name="rdfConcepts" />
+
+__RDF Concepts__. W3C. G. Klyne, J. Carroll. Resource Description Framework (RDF): Concepts and Abstract Syntax. 10 February 2004. W3C Recommendation. URL: https://www.w3.org/TR/rdf-concepts
 
 <a name="rfc2119" />
 
