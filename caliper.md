@@ -39,17 +39,14 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types and Type Coercion](#jsonldTypes)
-* 4.0 [The Sensor API](#sensor)
+* 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#sensorBehavior)
   * 4.2 [Envelope](#sensorEnvelope)
   * 4.3 [Transport](#sensorTransport)
-      * 4.3.1 [HTTP Transport Requirements](#sensorHTTPTransportRequirements)
-      * 4.3.2 [Sensors Supporting Non-HTTP Protocols](#nonHttpSensors)
 * 5.0 [Endpoint](#endpoint)
   * 5.1 [Minimum Supported String Lengths](#endpointStringLengths)
-  * 5.2 [Endpoint Requirements](#endpointRequirements)
-      * 5.2.1 [HTTP Endpoint Requirements](#httpEndpoint)
-      * 5.2.2 [Endpoints Supporting Non-HTTP Protocols](#nonHttpEndpoint)
+  * 5.2.1 [HTTP Endpoint](#httpEndpoint)
+  * 5.2.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Events](#events)
   * B.1 [Event](#event)
@@ -172,7 +169,7 @@ __Endpoint__: a receiver or consumer of Caliper data that is bound to a specific
 
 <a name="entityDef" />
 
-__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a linked data graph.
+__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
 
 <a name="eventDef" />
 
@@ -193,8 +190,6 @@ __ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the a
 <a name="linkedDataDef" /> 
  
 __Linked Data__: A set of design principles first articulated by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web.  The principles can be summarized as follows: use [IRIs](#iriDef)/[URIs](#uriDef) as names for things; use HTTP [IRIs](#iriDef)/[URIs](#uriDef) so that information about things (e.g., people, objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of their [IRIs](#iriDef)/[URIs](#uriDef) in order to promote discovery of new relationships between things.
-
-__Linked Data Graph__: As defined in the [JSON-LD specification](#jsonldSyntax): "A labeled directed graph, i.e., a set of nodes connected by edges, as specialized in the Data Model Section of the [JSON-LD specification](#jsonldSyntax). A linked data graph is a generalized representation of an RDF graph as defined in [RDF Concepts](#rdfConcepts)."
  
 <a name="ltiDef" />
  
@@ -416,7 +411,7 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
 | [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
-| [AssessmentEvent](#assessmentEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Optional |
@@ -592,7 +587,7 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
 
 #### Minimum Conformance
-Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started) and [Ended](#ended) actions are required and MUST be implemented.  The [Paused](#paused), [Resumed](#resumed) and [Restarted](#restared) actions SHOULD be implemented.  All other supported events and actions are considered optional.
+Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started) and [Ended](#ended) actions are required and MUST be implemented.  The [Paused](#paused), [Resumed](#resumed) and [Restarted](#restarted) actions SHOULD be implemented.  All other supported events and actions are considered optional.
 
 #### Supported Events
 [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
@@ -604,7 +599,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | [MediaEvent](#mediaEvent) | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). | Required |
 | [MediaEvent](#mediaEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. | Recommended |
 | [MediaEvent](#mediaEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. | Recommended |
-| [MediaEvent](#mediaEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. | Recommended |
+| [MediaEvent](#mediaEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. | Recommended |
 | [MediaEvent](#mediaEvent) | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). | Optional |
 | [MediaEvent](#mediaEvent) | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). | Optional |
 | [MediaEvent](#mediaEvent) | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). | Optional |
@@ -629,7 +624,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Restarted](#restared) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Restarted](#restarted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
@@ -956,7 +951,7 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
     "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
-```
+````
 
 Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if each referenced [Entity](#entity) is provisioned with a dereferenceable [IRI](#iriDef) that permits consumers to retrieve a more robust representation of the object if required.
 
@@ -1194,8 +1189,6 @@ Business requirements informed by industry best practices will determine the cho
 
 Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope). 
 
-<a name="sensorHTTPTransportRequirements">
-
 #### 4.3.1 HTTP Transport Requirements
  
 * A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS or SSL.
@@ -1208,21 +1201,15 @@ Irrespective of the chosen transport protocol, each message sent by a [Sensor](#
 * The following standard HTTP request headers SHOULD be set for use by the [Endpoint](#endpoint):
   * `Authorization`
   * `Content-Length`
-* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2), using the `Bearer` authorization type.  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
+* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
 * The `Content-Length` of the request body MUST be measured in octets (8-bit bytes).
-
-<a name="nonHttpSensors">
-
-#### 4.3.2 Sensors Supporting Non-HTTP Protocols
-
-Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Sensor](#sensor) include support for communicating with Caliper [Endpoints](#endpoint) over HTTP to ensure maximum interoperability.
 
 
 <a name="endpoint" />
 
 ## 5.0 Endpoint
 
-A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints Supporting Non-HTTP Protocols](#nonHttpEndpoint) for recommendations.
+A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint) for recommendations.
 
 <a name="endpointStringLengths" />
 
@@ -1278,16 +1265,14 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session).  The value MUST conform to the ISO-8601 duration format. | 64 |
 | [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
 
-<a name="endpointRequirements">
-
 ### 5.2 Endpoint Requirements
 
 <a name="httpEndpoint" />
 
 #### 5.2.1 HTTP Endpoint Requirements
 * An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
-* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers (see [Section 4.3.1 HTTP Endpoint Requirements](#sensorHTTPTransportRequirements) for the HTTP request header behaviour required of Sensors).
-* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2), using the `Bearer` authorization type.
+* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
+* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
 
 When communicating over HTTP an [Endpoint](#httpEndpoint) MUST exhibit the following response behaviour:
 
@@ -1301,7 +1286,7 @@ Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Cal
 
 <a name="nonHttpEndpoint" />
 
-#### 5.2.2 Endpoints Supporting Non-HTTP Protocols
+#### 5.2.2 Endpoints supporting non-HTTP protocols
 Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum interoperability.
 
 <a name="actions"/>
@@ -1578,7 +1563,7 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
 | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
 | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
+| [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
 | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. |
 | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 
@@ -2001,7 +1986,7 @@ http://purl.imsglobal.org/caliper/MediaEvent
 | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
 | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. |
 | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. |
-| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
+| [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
 | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
 | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
 | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
@@ -5980,10 +5965,6 @@ __LTI__.  IMS Global Learning Consortium.  Learning Tools Interoperability<sup>&
 <a name="rdf" />
 
 __RDF__.  W3C. Resource Description Framework (RDF).  URL: https://www.w3.org/RDF/
-
-<a name="rdfConcepts" />
-
-__RDF Concepts__. W3C. G. Klyne, J. Carroll. Resource Description Framework (RDF): Concepts and Abstract Syntax. 10 February 2004. W3C Recommendation. URL: https://www.w3.org/TR/rdf-concepts
 
 <a name="rfc2119" />
 
