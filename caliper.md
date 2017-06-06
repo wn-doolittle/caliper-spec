@@ -39,14 +39,17 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types and Type Coercion](#jsonldTypes)
-* 4.0 [Sensor API](#sensor)
+* 4.0 [The Sensor API](#sensor)
   * 4.1 [Behavior](#sensorBehavior)
   * 4.2 [Envelope](#sensorEnvelope)
   * 4.3 [Transport](#sensorTransport)
+      * 4.3.1 [HTTP Transport Requirements](#sensorHTTPTransportRequirements)
+      * 4.3.2 [Sensors Supporting Non-HTTP Protocols](#nonHttpSensors)
 * 5.0 [Endpoint](#endpoint)
   * 5.1 [Minimum Supported String Lengths](#endpointStringLengths)
-  * 5.2.1 [HTTP Endpoint](#httpEndpoint)
-  * 5.2.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
+  * 5.2 [Endpoint Requirements](#endpointRequirements)
+      * 5.2.1 [HTTP Endpoint Requirements](#httpEndpoint)
+      * 5.2.2 [Endpoints Supporting Non-HTTP Protocols](#nonHttpEndpoint)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Events](#events)
   * B.1 [Event](#event)
@@ -951,7 +954,7 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
     "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
-````
+```
 
 Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if each referenced [Entity](#entity) is provisioned with a dereferenceable [IRI](#iriDef) that permits consumers to retrieve a more robust representation of the object if required.
 
@@ -1189,6 +1192,8 @@ Business requirements informed by industry best practices will determine the cho
 
 Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope). 
 
+<a name="sensorHTTPTransportRequirements">
+
 #### 4.3.1 HTTP Transport Requirements
  
 * A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS or SSL.
@@ -1201,15 +1206,21 @@ Irrespective of the chosen transport protocol, each message sent by a [Sensor](#
 * The following standard HTTP request headers SHOULD be set for use by the [Endpoint](#endpoint):
   * `Authorization`
   * `Content-Length`
-* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
+* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2), using the `Bearer` authorization type.  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
 * The `Content-Length` of the request body MUST be measured in octets (8-bit bytes).
+
+<a name="nonHttpSensors">
+
+#### 4.3.2 Sensors Supporting Non-HTTP Protocols
+
+Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Sensor](#sensor) include support for communicating with Caliper [Endpoints](#endpoint) over HTTP to ensure maximum interoperability.
 
 
 <a name="endpoint" />
 
 ## 5.0 Endpoint
 
-A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint) for recommendations.
+A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints Supporting Non-HTTP Protocols](#nonHttpEndpoint) for recommendations.
 
 <a name="endpointStringLengths" />
 
@@ -1265,14 +1276,16 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session).  The value MUST conform to the ISO-8601 duration format. | 64 |
 | [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
 
+<a name="endpointRequirements">
+
 ### 5.2 Endpoint Requirements
 
 <a name="httpEndpoint" />
 
 #### 5.2.1 HTTP Endpoint Requirements
 * An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
-* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
-* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers (see [Section 4.3.1 HTTP Endpoint Requirements](#sensorHTTPTransportRequirements) for the HTTP request header behaviour required of Sensors).
+* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2), using the `Bearer` authorization type.
 
 When communicating over HTTP an [Endpoint](#httpEndpoint) MUST exhibit the following response behaviour:
 
@@ -1286,7 +1299,7 @@ Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Cal
 
 <a name="nonHttpEndpoint" />
 
-#### 5.2.2 Endpoints supporting non-HTTP protocols
+#### 5.2.2 Endpoints Supporting Non-HTTP Protocols
 Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum interoperability.
 
 <a name="actions"/>
