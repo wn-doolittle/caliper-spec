@@ -138,7 +138,15 @@ The drive to deliver education at scale coupled with a demand for measurable acc
 
 The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities. Serialization of the model is performed using [JSON-LD](#jsonldDef).  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage, analysis and re-use.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
-[Placeholder Text Added by lindafengsf]
+An instructor has decided to incorporate a video content player into their course.  The video content will be launched via LTI from the Learning Management System (LMS).  If the video player tool is instrumented to emit activity data via Caliper (specifically, via the Caliper Media Metric Profile), then the instructor will be able to view useful information about student viewing behaviour within the external tool, alongside other important information in the LMS, such as assignment and quiz results.  Using data collected via Caliper, instructors (and administrators) can answer key questions, such as:
+
+* Who is using the tool?
+* Which videos are being played the most?
+* How long are they spending on each video?
+* Where do they pause the video?
+* Are there instances of where students are replaying sections of the video?
+ 
+Another example: different departments within an institution might be using different discussion tools.  In order to eliminate redundancy, and in some cases possibly save costs, the university could track tool usage via Caliper in order to understand which of these tools might be used more often by students.
 
 <a name="conventions" />
 
