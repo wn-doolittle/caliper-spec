@@ -169,7 +169,7 @@ __Endpoint__: a receiver or consumer of Caliper data that is bound to a specific
 
 <a name="entityDef" />
 
-__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
+__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a linked data graph.
 
 <a name="eventDef" />
 
@@ -190,6 +190,8 @@ __ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the a
 <a name="linkedDataDef" /> 
  
 __Linked Data__: A set of design principles first articulated by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web.  The principles can be summarized as follows: use [IRIs](#iriDef)/[URIs](#uriDef) as names for things; use HTTP [IRIs](#iriDef)/[URIs](#uriDef) so that information about things (e.g., people, objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of their [IRIs](#iriDef)/[URIs](#uriDef) in order to promote discovery of new relationships between things.
+
+__Linked Data Graph__: As defined in the [JSON-LD specification](#jsonldSyntax): "A labeled directed graph, i.e., a set of nodes connected by edges, as specialized in the Data Model Section of the [JSON-LD specification](#jsonldSyntax). A linked data graph is a generalized representation of an RDF graph as defined in [RDF Concepts](#rdfConcepts)."
  
 <a name="ltiDef" />
  
@@ -5965,6 +5967,10 @@ __LTI__.  IMS Global Learning Consortium.  Learning Tools Interoperability<sup>&
 <a name="rdf" />
 
 __RDF__.  W3C. Resource Description Framework (RDF).  URL: https://www.w3.org/RDF/
+
+<a name="rdfConcepts" />
+
+__RDF Concepts__. W3C. G. Klyne, J. Carroll. Resource Description Framework (RDF): Concepts and Abstract Syntax. 10 February 2004. W3C Recommendation. URL: https://www.w3.org/TR/rdf-concepts
 
 <a name="rfc2119" />
 
