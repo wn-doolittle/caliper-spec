@@ -672,7 +672,9 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 ### 2.3.8 Reading Profile
 <div style="design: block;margin: 0 auto"><img alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
 
-The Caliper Reading Profile models activities associated with navigating to and viewing digital textual content.  Instructors and researchers can utilize data collected via the Reading Profile to answer questions such as:
+The Caliper Reading Profile models activities associated with navigating to and viewing digital textual content.  Caliper provides a number of entities representing digital content including a generic [DigitalResource](#digitalResource) and  [DigitalResourceCollection](#digitalResourceCollection) along with [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Message](#message) and [Frame](#frame).  
+
+Instructors and researchers can utilize data collected via the Reading Profile to answer questions such as:
 
 * Who is consuming the content?
 * What materials are being accessed?
@@ -681,8 +683,6 @@ The Caliper Reading Profile models activities associated with navigating to and 
 * What paths are taken to reach the content?
 
 When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.
-
-Caliper provides a number of entities representing digital content including a generic [DigitalResource](#digitalResource) and  [DigitalResourceCollection](#digitalResourceCollection) along with [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Message](#message) and [Frame](#frame).
 
 #### Minimum Conformance
 Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
