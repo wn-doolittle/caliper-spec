@@ -672,7 +672,17 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 ### 2.3.8 Reading Profile
 <div style="design: block;margin: 0 auto"><img alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
 
-The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Message](#message) and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
+The Caliper Reading Profile models activities associated with navigating to and viewing textual digital content.  Instructors and researchers can utilize data collected via the Reading Profile to answer questions such as:
+
+* Who is consuming the content?
+* What digital materials are being accessed?
+* When is it accessed?
+* How often is the content viewed?
+* What paths are taken to reach the content?
+
+When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.
+
+Caliper provides a number of entities representing digital content including a generic [DigitalResource](#digitalResource) and  [DigitalResourceCollection](#digitalResourceCollection) along with [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Message](#message) and [Frame](#frame).
 
 #### Minimum Conformance
 Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
@@ -836,13 +846,6 @@ A [JSON-LD](#jsonldDef) document can reference more than one context.  Additiona
   ]
 }
 ```
-
-#### 3.1.1 Context versions
-Each released version of the Caliper specification describes all the Caliper [Events](#event), [Entities](#entities), and vocabulary terms supported by that version and how they must appear for the purposes of certification and interoperability claims. The rules about the placement of the `@context` field described in the previous section mean that each [Event](#event) or [Entity](#entities) in and of itself can be entirely understood by using the version of the Caliper context referred to in the `@context` property.
-
-Sensors SHOULD avoid sending payloads that mix versions where some [Events](#event) use one version of the Caliper context and others use another version: the receiver of a set of [Events](#event) and [Entities](#entitites) should have an expectation that they can use a single set of rules to interpret the data they have received.
-
-Vendors that wish to support multiple versions of Caliper in production SHOULD provide a way for their customers to select one of the versions for use in their installations.
 
 <a name="jsonldIdentifiers" />
 
@@ -4220,7 +4223,7 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
-| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *HighlightAnnotation*. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [HighlightAnnotation](#highlightAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [HighlightAnnotation](#highlightAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [HighlightAnnotation](#highlightAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
@@ -5937,6 +5940,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | :--- | :----------- |
 | Anthony Whyte | University of Michigan |
 | Viktor Haag | D2L |
+| Linda Feng | Unicon |
 | Matt Ashbourne | McGraw-Hill Education |
 | Wes LaMarche | ACT |
 | Etienne Pelaprat | Unizin |
