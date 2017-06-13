@@ -365,6 +365,15 @@ All actions included in the Caliper [actions](#actions) vocabulary are supported
 
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
+As an example, instructors can use the places where students are making notes in the course material to determine whether they have the right idea about which material should be highlighted.  In addition, if there are students who are asking questions or making notes indicating confusion about a particular piece of content, this can also inform the instructor about the material which they have chosen to use.  
+
+Questions which can be answered using this profile are as follows:
+
+* Who is making the most annotations?
+* What content is most often annotated?
+* What types of annotations are applied most often?
+* Are annotations being read?
+
 #### Minimum Conformance
 Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported actions are considered optional.
 
