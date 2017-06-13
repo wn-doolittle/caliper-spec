@@ -837,6 +837,13 @@ A [JSON-LD](#jsonldDef) document can reference more than one context.  Additiona
 }
 ```
 
+#### 3.1.1 Context versions
+Each released version of the Caliper specification describes all the Caliper [Events](#event), [Entities](#entities), and vocabulary terms supported by that version and how they must appear for the purposes of certification and interoperability claims. The rules about the placement of the `@context` field described in the previous section mean that each [Event](#event) or [Entity](#entities) in and of itself can be entirely understood by using the version of the Caliper context referred to in the `@context` property.
+
+Sensors SHOULD avoid sending payloads that mix versions where some [Events](#event) use one version of the Caliper context and others use another version: the receiver of a set of [Events](#event) and [Entities](#entitites) should have an expectation that they can use a single set of rules to interpret the data they have received.
+
+Vendors that wish to support multiple versions of Caliper in production SHOULD provide a way for their customers to select one of the versions for use in their installations.
+
 <a name="jsonldIdentifiers" />
 
 ### 3.2 Identifiers
