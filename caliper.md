@@ -672,11 +672,11 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 ### 2.3.8 Reading Profile
 <div style="design: block;margin: 0 auto"><img alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
 
-The Caliper Reading Profile models activities associated with navigating to and viewing textual digital content.  Instructors and researchers can utilize data collected via the Reading Profile to answer questions such as:
+The Caliper Reading Profile models activities associated with navigating to and viewing digital textual content.  Instructors and researchers can utilize data collected via the Reading Profile to answer questions such as:
 
 * Who is consuming the content?
-* What digital materials are being accessed?
-* When is it accessed?
+* What materials are being accessed?
+* When are the resources accessed?
 * How often is the content viewed?
 * What paths are taken to reach the content?
 
