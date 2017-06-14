@@ -530,6 +530,13 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
+Tracking patterns using the forum profile will allow instructors to understand more about how students are engaged within discussion forums.  Using this profile, instructors can gain insight in the following areas:
+
+* Who is posting most often
+* Which posts create the most replies?
+* Compare graded vs. non-graded discussions
+
+
 #### Minimum Conformance
 Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint). The [Posted](#posted) action is required and MUST be implemented.  All other supported events and actions are considered optional.
 
