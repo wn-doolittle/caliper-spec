@@ -472,6 +472,12 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 
 The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.
 
+This profile would be useful for instructors to gather insight about the relationship between students and their assignments.  Answers to the following questions can be enabled using this profile:
+
+* Who is assigned what material?
+* How long does it take to complete something that has been assigned?
+* What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)
+
 #### Minimum Conformance
 Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#endpoint). The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  The [Completed](#completed) action SHOULD be implemented.  All other supported events and actions are considered optional.
 
