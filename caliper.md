@@ -740,6 +740,12 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
+The session profile can facilitate the capture of data about who is logging into the learning environment, and more importantly, which students are not logging in.   The following are examples of the information best captured using the session profile:
+
+* Session logins
+* Which students have not logged in for more than a week
+* Who logs in/logs out most/least
+
 #### Minimum Conformance
 Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint). The [LoggedIn](#loggedIn) action is required and MUST be implemented.
 
