@@ -585,6 +585,11 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 
 The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
 
+The grading profile allows information to be captured about grade changes for a given assessment or submission.  This may be useful to understand the way in which students and teachers may be interacting throughout the course.  For example, the grading profile can be used to answer questions such as:
+
+* How often are grades changed for an assessment?
+
+
 #### Minimum Conformance
 Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
 
