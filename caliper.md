@@ -780,6 +780,13 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
+The Tool Use Profile enables gathering basic usage information about learning apps. This is an easy way to get started with a base level of instrumentation and letting the learning tool make the determination of its own use.   Any learning app can be instrumented through this profile to detect when a student accesses the tool and uses it in the way it was intended.   Common questions that could be answered through the use of this profile are:
+
+* What tools are being used, and how much?
+* Who is the most active/least active user of tools?
+* Does tool usage help/hinder student performance?
+* Which tools have the greatest impact on student performance?
+
 #### Minimum Conformance
 Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#endpoint).  The [Used](#used) action is required and MUST be implemented.
 
