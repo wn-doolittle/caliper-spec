@@ -36,12 +36,12 @@
     "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
-    "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+    "id": "https://example.com/sessions/c25fd3da-87fa-45f5-8875-b682113fa5ee",
     "type": "Session",
     "startedAtTime": "2016-11-15T10:00:00.000Z"
   },
   "federatedSession": {
-    "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+    "id": "https://example.edu/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
     "type": "LtiSession",
     "user": "https://example.edu/users/554433",
     "launchParameters": {
