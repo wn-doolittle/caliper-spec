@@ -19,7 +19,7 @@
     "endedAtTime": "2016-11-15T10:55:30.000Z",
     "duration": "PT50M30S"
   },
-  "maxResult": 15.0,
+  "maxResultScore": 15.0,
   "resultScore": 10.0,
   "scoredBy": {
     "id": "https://example.edu/autograder",
