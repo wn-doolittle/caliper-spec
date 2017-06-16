@@ -15,7 +15,7 @@
   },
   "maxScore": 15.0,
   "scoreGiven": 10.0,
-  "gradedBy": {
+  "scoredBy": {
     "id": "https://example.edu/autograder",
     "type": "SoftwareApplication",
     "dateCreated": "2016-11-15T10:55:58.000Z"
