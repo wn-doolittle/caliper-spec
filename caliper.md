@@ -415,8 +415,11 @@ The Caliper Assessment Profile models assessment-related activities including in
 
 Tracking patterns using the assessment profile will allow instructors to understand more about how students are interacting with their assessments.  Typical ways to make use of this profile are to answer the following questions:
 
-* When are students taking assessments?
-* How long do students spend on portions of individual assessments?
+* How much time is required to complete and submit an assessment?
+* How much time is spent answering individual questions?
+* Which questions are completed?
+* Which questions are skipped?
+* If test-taking times are flexible, when do learners start their assessments?
 
 #### Minimum Conformance
 Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
