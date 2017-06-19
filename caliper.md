@@ -104,15 +104,16 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * C.37 [Reading](#reading) (deprecated)
   * C.38 [Response](#response)
   * C.39 [Result](#result)
-  * C.40 [Session](#session)
-  * C.41 [SharedAnnotation](#sharedAnnotation)
-  * C.42 [SelectTextResponse](#selectTextResponse)
-  * C.43 [SoftwareApplication](#softwareApplication)
-  * C.44 [TagAnnotation](#tagAnnotation)
-  * C.45 [TrueFalseResponse](#trueFalseResponse)
-  * C.46 [Thread](#thread)
-  * C.47 [VideoObject](#videoObject)
-  * C.48 [WebPage](#webPage)
+  * C.40 [Score](#score)
+  * C.41 [Session](#session)
+  * C.42 [SharedAnnotation](#sharedAnnotation)
+  * C.43 [SelectTextResponse](#selectTextResponse)
+  * C.44 [SoftwareApplication](#softwareApplication)
+  * C.45 [TagAnnotation](#tagAnnotation)
+  * C.46 [TrueFalseResponse](#trueFalseResponse)
+  * C.47 [Thread](#thread)
+  * C.48 [VideoObject](#videoObject)
+  * C.49 [WebPage](#webPage)
 * [Appendix D. Selectors](#selectors)
   * D.1 [TextPositionSelector](#textPositionSelector)
 * [Appendix E. Roles](#roles)
@@ -588,12 +589,11 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 ### 2.3.6 Grading Profile
 <div style="design: block;margin: 0 auto"><img alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
 
-The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
+he Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Score](#score) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
 
 The grading profile allows information to be captured about grade changes for a given assessment or submission.  This may be useful to understand the way in which students and teachers may be interacting throughout the course.  For example, the grading profile can be used to answer questions such as:
 
 * How often are grades changed for an assessment?
-
 
 #### Minimum Conformance
 Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
@@ -610,14 +610,15 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 #### Supported Entities
 | Event | Actor |	Action | Object | Generated |
 | :---- | :---- | :----- | :----- | :-------- |
-| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) |
+| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Score](#score) |
+| [ViewEvent](#viewEvent) | [Agent](#agent) | [Viewed](#viewed) | [Result](#result) | &nbsp; |
 
 #### Requirements
 * Certain [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [OutcomeEvent](#outcomeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* For a [Graded](#graded) action, the `generated` [Result](#result) SHOULD be specified.
+* For a [Graded](#graded) action, the `generated` [Score](#score) SHOULD be specified.
 
 <a name="mediaProfile" />
 
@@ -2411,7 +2412,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 <a name="outcomeEvent" />
 
 ### B.10 OutcomeEvent
-A Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
+A Caliper [OutcomeEvent](#outcomeEvent) models scoring or grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
 
 #### IRI
 http://purl.imsglobal.org/caliper/OutcomeEvent
@@ -2438,13 +2439,13 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 | object | [Attempt](#attempt) | The completed [Attempt](#attempt) MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Not Applicable |
-| generated | [Result](#result) | The generated [Result](#result) SHOULD be provided.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| generated | [Score](#score) | The generated [Score](#score) SHOULD be provided.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: OutcomeEvent (graded)
@@ -2460,41 +2461,48 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
   },
   "action": "Graded",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2017-11-15T10:05:00.000Z",
-    "startedAtTime": "2017-11-15T10:05:00.000Z",
-    "endedAtTime": "2017-11-15T10:55:12.000Z",
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:12.000Z",
     "duration": "PT50M12S"
   },
-  "eventTime": "2017-11-15T10:57:06.000Z",
+  "eventTime": "2016-11-15T10:57:06.000Z",
   "edApp": "https://example.edu",
   "generated": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/results/1",
-    "type": "Result",
-    "attempt": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "normalScore": 15.0,
-    "totalScore": 15.0,
-    "scoredBy": "https://example.edu/autograder",
-    "dateCreated": "2017-11-15T10:55:05.000Z"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+    "type": "Score",
+    "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "maxScore": 15.0,
+    "scoreGiven": 10.0,
+    "scoredBy": {
+      "id": "https://example.edu/autograder",
+      "type": "SoftwareApplication",
+      "dateCreated": "2016-11-15T10:55:58.000Z"
+    },
+    "comment": "auto-graded exam",
+    "dateCreated": "2016-11-15T10:56:00.000Z"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2016"
   }
 }
 ```
+
 <a name="readingEvent" />
 
 ### B.11 ReadingEvent DEPRECATED
@@ -5151,7 +5159,7 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 <a name="result" />
 
 ### C.39 Result
-A Caliper [Result](#result) represents a grade applied to an assignment submission.
+A Caliper [Result](#result) represents the current score or grade as recorded in a gradebook.  The [Result](#result) score value may represent an adjusted or scaled value and is considered mutable. 
 
 #### IRI
 http://purl.imsglobal.org/caliper/Result
@@ -5169,12 +5177,8 @@ http://purl.imsglobal.org/caliper/Result
 | name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
-| normalScore | decimal | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
-| penaltyScore | decimal | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | Optional |
-| extraCreditScore | decimal | The number of extra credit points earned by the learner. | Optional |
-| totalScore | decimal | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
-| curvedTotalScore | decimal | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
-| curveFactor | decimal | A scale factor to be used in adjusting the `totalScore`. | Optional |
+| maxResultScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum result score permitted MAY be specified. | Optional |
+| resultScore | decimal | A number with a fractional part denoted by a decimal separator that designates the actual result score awarded MAY be specified. | Optional |
 | scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
 | comment | string | Plain text feedback provided by the scorer. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -5188,46 +5192,109 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 | :------- | :--- | ----------- | :---------: |
 | ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Attempt](#attempt).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [DigitalResource](#digitalResource) | The assigned [DigitalResource](#digitalResource) associated with the [Result](#result). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~normalScore~~ | decimal | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
+| ~~penaltyScore~~ | decimal | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | Optional |
+| ~~extraCreditScore~~ | decimal | The number of extra credit points earned by the learner. | Optional |
+| ~~totalScore~~ | decimal | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
+| ~~curvedTotalScore~~ | decimal | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
+| ~~curveFactor~~ | decimal | A scale factor to be used in adjusting the `totalScore`. | Optional |
 
 #### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
   "type": "Result",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2017-11-15T10:05:00.000Z",
-    "startedAtTime": "2017-11-15T10:05:00.000Z",
-    "endedAtTime": "2017-11-15T10:55:30.000Z",
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:30.000Z",
     "duration": "PT50M30S"
   },
-  "comment": "Well done.",
-  "normalScore": 15.0,
-  "penaltyScore": 0.0,
-  "totalScore": 15.0,
+  "maxResultScore": 15.0,
+  "resultScore": 10.0,
   "scoredBy": {
     "id": "https://example.edu/autograder",
     "type": "SoftwareApplication",
-    "dateCreated": "2017-11-15T10:55:58.000Z"
+    "dateCreated": "2016-11-15T10:55:58.000Z"
   },
-  "dateCreated": "2017-11-15T10:56:00.000Z"
+  "comment": "Consider retaking the assessment.",
+  "dateCreated": "2016-11-15T10:56:00.000Z"
+}
+```
+
+<a name="score" />
+
+### C.40 Score
+A Caliper [Score](#score) represents a "raw" or unadjusted numeric score or grade awarded for a given assignment submission.  A gradebook SHOULD treat the `scoreGiven` value as read-only and preserve it.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Score
+
+#### Supertype 
+[Entity](#entity)
+
+#### Properties
+[Score](#score) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Score*. | Required |
+| name | string | A string value comprising a word or phrase by which the [Score](#score) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
+| maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
+| scoreGiven | decimal | A number with a fractional part denoted by a decimal separator that designates the actual score awarded MAY be specified. | Optional |
+| scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
+| comment | string | Plain text feedback provided by the scorer. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Result](#result). | Optional |
+
+#### Example
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+  "type": "Score",
+  "attempt": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "count": 1,
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:30.000Z",
+    "duration": "PT50M30S"
+  },
+  "maxScore": 15.0,
+  "scoreGiven": 10.0,
+  "scoredBy": {
+    "id": "https://example.edu/autograder",
+    "type": "SoftwareApplication",
+    "dateCreated": "2016-11-15T10:55:58.000Z"
+  },
+  "comment": "auto-graded exam",
+  "dateCreated": "2016-11-15T10:56:00.000Z"
 }
 ```
 
 <a name="selectTextResponse" />
 
-### C.40 SelectTextResponse
+### C.41 SelectTextResponse
 A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
 
 #### IRI
@@ -5296,7 +5363,7 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 
 <a name="session" />
 
-### C.41 Session
+### C.42 Session
 A Caliper [Session](#session) represents a web application user session.
 
 #### IRI
@@ -5348,7 +5415,7 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 
 <a name="sharedAnnotation" />
 
-### C.42 SharedAnnotation
+### C.43 SharedAnnotation
 A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
 
 #### IRI
@@ -5403,7 +5470,7 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 
 <a name="softwareApplication" />
 
-#### C.43 SoftwareApplication
+#### C.44 SoftwareApplication
 A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
 
 #### IRI
@@ -5440,7 +5507,7 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 
 <a name="tagAnnotation" />
 
-### C.44 TagAnnotation
+### C.45 TagAnnotation
 A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
 
 #### IRI
@@ -5486,7 +5553,7 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 
 <a name="thread" />
 
-### C.45 Thread
+### C.46 Thread
 A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
 #### IRI
@@ -5573,7 +5640,7 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 
 <a name="trueFalseResponse" />
 
-### C.46 TrueFalseResponse
+### C.47 TrueFalseResponse
 A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
 
 #### IRI
@@ -5642,7 +5709,7 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 
 <a name="videoObject" />
 
-### C.47 VideoObject
+### C.48 VideoObject
 A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
 
 #### IRI
@@ -5697,7 +5764,7 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 
 <a name="webPage" />
 
-### C.48 WebPage
+### C.49 WebPage
 A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
 
 #### IRI
@@ -5932,6 +5999,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Message](#message) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 | [Page](#page) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
 | [Reading](#reading) | Deprecated | Targeted for removal in a future version of the specification. |
+| [Score](#score) | New | Introduced as part of the revisions to the Caliper 1.1 [Grading Profile](#gradingProfile). |
 | [Thread](#thread) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 
 <a name="changeLogProperties">
@@ -5971,8 +6039,18 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Result](#result) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Result](#result) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Result](#result) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable` properties. |
+| [Result](#result) | curveFactor | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | curvedTotalScore | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | extraCreditScore | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | normalScore | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | maxresultScore | New | Maps to LTI Gradebook-services `Result.resultMaximum`. |
+| [Result](#result) | penaltyScore | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | resultScore | New | Maps to LTI Gradebook-services `Result.resultScore`. |
+| [Result](#result) | totalScore | Deprecated | Targeted for removal in a future version of the specification.  Use  `resultScore`. |
 | [Session](#session) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `user`. |
 | [Session](#session) | user | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
+| [Score](#score) | maxScore | New | The maximum permitted score value.  Maps to LTI Gradebook-services `Score.scoreMaximum`. |
+| [Score](#score) | scoreGiven | New | The score or grade awarded for a given assignment.  Maps to LTI Gradebook-services `Score.scoreGiven`. |
 | [SoftwareApplication](#softwareApplication) | version | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
 
 <a name="changeLogJsonldContext">
