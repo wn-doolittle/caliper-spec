@@ -1,0 +1,46 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
+  "type": "OutcomeEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Earned",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
+    "type": "Result",
+    "attempt": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "type": "Attempt",
+      "assignee": "https://example.edu/users/554433",
+      "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "count": 1,
+      "dateCreated": "2016-11-15T10:05:00.000Z",
+      "startedAtTime": "2016-11-15T10:05:00.000Z",
+      "endedAtTime": "2016-11-15T10:55:30.000Z",
+      "duration": "PT50M30S"
+    },
+    "maxResultScore": 15.0,
+    "resultScore": 10.0,
+    "scoredBy": "https://example.edu/autograder",
+    "comment": "Consider retaking the assessment.",
+    "dateCreated": "2016-11-15T10:56:00.000Z"
+  },
+  "eventTime": "2016-11-15T10:57:06.000Z",
+  "edApp": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2016-11-15T10:00:00.000Z"
+  }
+}
