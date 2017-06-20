@@ -8,7 +8,6 @@
   },
   "action": "Earned",
   "object": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
     "type": "Result",
     "attempt": {
