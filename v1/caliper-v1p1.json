@@ -83,7 +83,7 @@
     "action": {"@id": "caliper:action", "@type": "@vocab"},
     "creators": {"@id": "caliper:creators", "@type": "@id", "@container": "@list"},
     "edApp": {"@id": "caliper:edApp", "@type": "@id"},
-    "extensions": {"@id": "caliper:extensions", "@type": "@id", "@container": "@list"},
+    "extensions": {"@id": "caliper:extensions", "@type": "@id"},
     "federatedSession": {"@id": "caliper:federatedSession", "@type": "@id"},
     "generated": {"@id": "caliper:generated", "@type": "@id"},
     "group": {"@id": "caliper:group", "@type": "@id"},
