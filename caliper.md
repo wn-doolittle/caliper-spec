@@ -281,7 +281,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [GradeEvent](#gradeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Deprecated subtypes
-[ReadingEvent](#readingEvent)
+[OutcomeEvent](#outcomeEvent), [ReadingEvent](#readingEvent)
 
 <a name="infoModelEntity" />
 
