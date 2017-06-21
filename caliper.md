@@ -55,15 +55,16 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * B.4 [AssessmentItemEvent](#assessmentItemEvent)
   * B.5 [AssignableEvent](#assignableEvent)
   * B.6 [ForumEvent](#forumEvent)
-  * B.7 [MediaEvent](#mediaEvent)
-  * B.8 [MessageEvent](#messageEvent)
-  * B.9 [NavigationEvent](#navigationEvent)
-  * B.10 [OutcomeEvent](#outcomeEvent)
-  * B.11 [ReadingEvent](#readingEvent) (deprecated)
-  * B.12 [SessionEvent](#sessionEvent)
-  * B.13 [ThreadEvent](#threadEvent)
-  * B.14 [ToolUseEvent](#toolUseEvent)
-  * B.15 [ViewEvent](#viewEvent)
+  * B.7 [GradeEvent](#gradeEvent)
+  * B.8 [MediaEvent](#mediaEvent)
+  * B.9 [MessageEvent](#messageEvent)
+  * B.10 [NavigationEvent](#navigationEvent)
+  * B.11 [~~OutcomeEvent~~](#outcomeEvent)
+  * B.12 [~~ReadingEvent~~](#readingEvent)
+  * B.13 [SessionEvent](#sessionEvent)
+  * B.14 [ThreadEvent](#threadEvent)
+  * B.15 [ToolUseEvent](#toolUseEvent)
+  * B.16 [ViewEvent](#viewEvent)
 * [Appendix C. Entities](#entities)
   * C.1 [Entity](#entity)
   * C.2 [Agent](#agent)
@@ -80,10 +81,10 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * C.13 [DigitalResource](#digitalResource)
   * C.14 [DigitalResourceCollection](#digitalResourceCollection)
   * C.15 [Document](#document)
-  * C.16 [EpubChapter](#epubChapter) (deprecated)
-  * C.17 [EpubPart](#epubPart) (deprecated)
-  * C.18 [EpubSubChapter](#epubSubChapter) (deprecated)
-  * C.19 [EpubVolume](#epubVolume) (deprecated)
+  * C.16 [~~EpubChapter~~](#epubChapter)
+  * C.17 [~~EpubPart~~](#epubPart)
+  * C.18 [~~EpubSubChapter~~](#epubSubChapter)
+  * C.19 [~~EpubVolume~~](#epubVolume)
   * C.20 [FillinBlankResponse](#fillinBlankResponse)
   * C.21 [Forum](#forum)
   * C.22 [Frame](#frame)
@@ -101,7 +102,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * C.34 [Organization](#organization)
   * C.35 [Page](#page)
   * C.36 [Person](#person)
-  * C.37 [Reading](#reading) (deprecated)
+  * C.37 [~~Reading~~](#reading)
   * C.38 [Response](#response)
   * C.39 [Result](#result)
   * C.40 [Score](#score)
@@ -277,7 +278,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Subtypes
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [GradeEvent](#gradeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Deprecated subtypes
 [ReadingEvent](#readingEvent)
@@ -596,26 +597,26 @@ The grading profile allows information to be captured about grade changes for a 
 * How often are grades changed for an assessment?
 
 #### Minimum Conformance
-Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
+Create and send a Caliper [GradeEvent](#gradeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
 
 #### Supported Events
-[OutcomeEvent](#outcomeEvent)
+[GradeEvent](#gradeEvent)
 
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
-| [OutcomeEvent](#outcomeEvent) | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). | Required |
+| [GradeEvent](#gradeEvent) | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). | Required |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
 
 #### Supported Entities
 | Event | Actor |	Action | Object | Generated |
 | :---- | :---- | :----- | :----- | :-------- |
-| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Score](#score) |
+| [GradeEvent](#gradeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Score](#score) |
 | [ViewEvent](#viewEvent) | [Agent](#agent) | [Viewed](#viewed) | [Result](#result) | &nbsp; |
 
 #### Requirements
-* Certain [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [OutcomeEvent](#outcomeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* Certain [GradeEvent](#gradeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [GradeEvent](#gradeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
+* Each [Entity](#entity) participating in the [GradeEvent](#gradeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * For a [Graded](#graded) action, the `generated` [Score](#score) SHOULD be specified.
@@ -1083,42 +1084,42 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 ```
 {
   "sensor": "https://example.edu/sensors/1",
-  "sendTime": "2017-11-15T11:05:01.000Z",
-  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "sendTime": "2016-11-15T11:05:01.000Z",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "data": [
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu/users/554433",
       "type": "Person",
-      "dateCreated": "2017-08-01T06:00:00.000Z",
-      "dateModified": "2017-09-02T11:30:00.000Z"
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "dateModified": "2016-09-02T11:30:00.000Z"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
       "type": "Assessment",
       "name": "Quiz One",
       "items": [
         {
-          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
+          "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1",
           "type": "AssessmentItem"
         },
         {
-          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
+          "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2",
           "type": "AssessmentItem"
         },
         {
-          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+          "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
           "type": "AssessmentItem"
         }
       ],
-      "dateCreated": "2017-08-01T06:00:00.000Z",
-      "dateModified": "2017-09-02T11:30:00.000Z",
-      "datePublished": "2017-08-15T09:30:00.000Z",
-      "dateToActivate": "2017-08-16T05:00:00.000Z",
-      "dateToShow": "2017-08-16T05:00:00.000Z",
-      "dateToStartOn": "2017-08-16T05:00:00.000Z",
-      "dateToSubmit": "2017-09-28T11:59:59.000Z",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "dateModified": "2016-09-02T11:30:00.000Z",
+      "datePublished": "2016-08-15T09:30:00.000Z",
+      "dateToActivate": "2016-08-16T05:00:00.000Z",
+      "dateToShow": "2016-08-16T05:00:00.000Z",
+      "dateToStartOn": "2016-08-16T05:00:00.000Z",
+      "dateToSubmit": "2016-09-28T11:59:59.000Z",
       "maxAttempts": 2,
       "maxScore": 15.0,
       "maxSubmits": 2,
@@ -1132,18 +1133,18 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "id": "https://example.edu/terms/201701/courses/7/sections/1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection",
       "academicSession": "Fall 2016",
       "courseNumber": "CPS 435-01",
       "name": "CPS 435 Learning Analytics, Section 01",
       "category": "seminar",
       "subOrganizationOf": {
-        "id": "https://example.edu/terms/201701/courses/7",
+        "id": "https://example.edu/terms/201601/courses/7",
         "type": "CourseOffering",
         "courseNumber": "CPS 435"
       },
-      "dateCreated": "2017-08-01T06:00:00.000Z"
+      "dateCreated": "2016-08-01T06:00:00.000Z"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1151,32 +1152,32 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
       "action": "Started",
-      "object": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+      "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
       "generated": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
         "count": 1,
-        "dateCreated": "2017-11-15T10:15:00.000Z",
-        "startedAtTime": "2017-11-15T10:15:00.000Z"
+        "dateCreated": "2016-11-15T10:15:00.000Z",
+        "startedAtTime": "2016-11-15T10:15:00.000Z"
       },
-      "eventTime": "2017-11-15T10:15:00.000Z",
+      "eventTime": "2016-11-15T10:15:00.000Z",
       "edApp": "https://example.edu",
-      "group": "https://example.edu/terms/201701/courses/7/sections/1",
+      "group": "https://example.edu/terms/201601/courses/7/sections/1",
       "membership": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
         "type": "Membership",
         "member": "https://example.edu/users/554433",
-        "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
         "roles": [ "Learner" ],
         "status": "Active",
-        "dateCreated": "2017-08-01T06:00:00.000Z"
+        "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
         "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session",
-        "startedAtTime": "2017-11-15T10:00:00.000Z"
+        "startedAtTime": "2016-11-15T10:00:00.000Z"
       }
     },
     {
@@ -1185,40 +1186,40 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
       "action": "Submitted",
-      "object": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+      "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
       "generated": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
         "count": 1,
-        "dateCreated": "2017-11-15T10:15:00.000Z",
-        "startedAtTime": "2017-11-15T10:15:00.000Z",
-        "endedAtTime": "2017-11-15T10:55:12.000Z",
-        "duration": "PT50M12S"
+        "dateCreated": "2016-11-15T10:15:00.000Z",
+        "startedAtTime": "2016-11-15T10:15:00.000Z",
+        "endedAtTime": "2016-11-15T10:55:12.000Z",
+        "duration": "PT40M12S"
       },
-      "eventTime": "2017-11-15T10:25:30.000Z",
+      "eventTime": "2016-11-15T10:25:30.000Z",
       "edApp": "https://example.edu",
-      "group": "https://example.edu/terms/201701/courses/7/sections/1",
+      "group": "https://example.edu/terms/201601/courses/7/sections/1",
       "membership": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
         "type": "Membership",
         "member": "https://example.edu/users/554433",
-        "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+        "organization": "https://example.edu/terms/201601/courses/7/sections/1",
         "roles": ["Learner"],
         "status": "Active",
-        "dateCreated": "2017-08-01T06:00:00.000Z"
+        "dateCreated": "2016-08-01T06:00:00.000Z"
       },
       "session": {
         "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session",
-        "startedAtTime": "2017-11-15T10:00:00.000Z"
+        "startedAtTime": "2016-11-15T10:00:00.000Z"
       }
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
-      "type": "OutcomeEvent",
+      "type": "GradeEvent",
       "actor": {
         "id": "https://example.edu/autograder",
         "type": "SoftwareApplication",
@@ -1226,28 +1227,29 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       },
       "action": "Graded",
       "object": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
         "count": 1,
-        "dateCreated": "2017-11-15T10:05:00.000Z",
-        "startedAtTime": "2017-11-15T10:05:00.000Z",
-        "endedAtTime": "2017-11-15T10:55:12.000Z",
-        "duration": "PT50M12S"
+        "dateCreated": "2016-11-15T10:15:00.000Z",
+        "startedAtTime": "2016-11-15T10:15:00.000Z",
+        "endedAtTime": "2016-11-15T10:55:12.000Z",
+        "duration": "PT40M12S"
       },
-      "eventTime": "2017-11-15T10:57:06.000Z",
+      "eventTime": "2016-11-15T10:57:06.000Z",
       "edApp": "https://example.edu",
       "generated": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/results/1",
-        "type": "Result",
-        "attempt": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
-        "normalScore": 15.0,
-        "totalScore": 15.0,
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+        "type": "Score",
+        "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "maxScore": 15.0,
+        "scoreGiven": 10.0,
         "scoredBy": "https://example.edu/autograder",
-        "dateCreated": "2017-11-15T10:55:05.000Z"
+        "comment": "auto-graded exam",
+        "dateCreated": "2016-11-15T10:56:00.000Z"
       },
-      "group": "https://example.edu/terms/201701/courses/7/sections/1"
+      "group": "https://example.edu/terms/201601/courses/7/sections/1"
     }
   ]
 }
@@ -1469,7 +1471,7 @@ http://purl.imsglobal.org/caliper/Event
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Subtypes
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [GradeEvent](#gradeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Deprecated subtypes
 [ReadingEvent](#readingEvent)
@@ -2038,9 +2040,98 @@ http://purl.imsglobal.org/caliper/ForumEvent
 }
 ```
 
+<a name="gradeEvent" />
+
+### B.7 GradeEvent
+A Caliper [GradeEvent](#gradeEvent) models scoring or grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  The Caliper [GradeEvent](#gradeEvent) replaces the deprecated [OutcomeEvent](#outcomeEvent).
+
+#### IRI
+http://purl.imsglobal.org/caliper/GradeEvent
+
+![GradeEvent Graded image](assets/caliper-grade_event_graded-v2.png)
+
+#### Supertype
+[Event](#event)
+
+#### Supported Actions
+| Action | WordNet® Gloss |
+| :----- | :------------- |
+| [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
+
+#### Properties
+[GradeEvent](#gradeEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *GradeEvent*. | Required |
+| actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Attempt](#attempt) | The completed [Attempt](#attempt) MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Not Applicable |
+| generated | [Score](#score) | The generated [Score](#score) SHOULD be provided.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
+| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
+
+#### Example: GradeEvent (graded)
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
+  "type": "GradeEvent",
+  "actor": {
+    "id": "https://example.edu/autograder",
+    "type": "SoftwareApplication",
+    "version": "v2"
+  },
+  "action": "Graded",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "assignable": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+      "type": "Assessment"
+    },
+    "count": 1,
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:12.000Z",
+    "duration": "PT50M12S"
+  },
+  "eventTime": "2016-11-15T10:57:06.000Z",
+  "edApp": "https://example.edu",
+  "generated": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+    "type": "Score",
+    "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "maxScore": 15.0,
+    "scoreGiven": 10.0,
+    "scoredBy": "https://example.edu/autograder",
+    "comment": "auto-graded exam",
+    "dateCreated": "2016-11-15T10:56:00.000Z"
+  },
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  }
+}
+```
+
 <a name="mediaEvent" />
 
-### B.7 MediaEvent
+### B.8 MediaEvent
 A Caliper [MediaEvent](#mediaEvent) models interactions between learners and rich content such as audio, images and video.
 
 #### IRI
@@ -2152,7 +2243,7 @@ The following actions are deprecated and targeted for removal from the [MediaEve
 
 <a name="messageEvent" />
 
-### B.8 MessageEvent
+### B.9 MessageEvent
 A Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
 
 #### IRI
@@ -2318,7 +2409,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
 
 <a name="navigationEvent" />
 
-### B.9 NavigationEvent
+### B.10 NavigationEvent
 A Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
 
 #### IRI
@@ -2411,13 +2502,11 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 
 <a name="outcomeEvent" />
 
-### B.10 OutcomeEvent
-A Caliper [OutcomeEvent](#outcomeEvent) models scoring or grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
+### B.11 OutcomeEvent DEPRECATED
+A Caliper [OutcomeEvent](#outcomeEvent) models scoring or grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  [OutcomeEvent](#outcomeEvent) is DEPRECATED and will be removed in a future version of the specification.  Use [GradeEvent](#gradeEvent) instead.
 
 #### IRI
 http://purl.imsglobal.org/caliper/OutcomeEvent
-
-![OutcomeEvent Graded image](assets/caliper-outcome_event_graded-v2.png)
 
 #### Supertype
 [Event](#event)
@@ -2448,66 +2537,12 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 | federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
-#### Example: OutcomeEvent (graded)
-```
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
-  "type": "OutcomeEvent",
-  "actor": {
-    "id": "https://example.edu/autograder",
-    "type": "SoftwareApplication",
-    "version": "v2"
-  },
-  "action": "Graded",
-  "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "type": "Attempt",
-    "assignee": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "assignable": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
-      "type": "Assessment"
-    },
-    "count": 1,
-    "dateCreated": "2016-11-15T10:05:00.000Z",
-    "startedAtTime": "2016-11-15T10:05:00.000Z",
-    "endedAtTime": "2016-11-15T10:55:12.000Z",
-    "duration": "PT50M12S"
-  },
-  "eventTime": "2016-11-15T10:57:06.000Z",
-  "edApp": "https://example.edu",
-  "generated": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
-    "type": "Score",
-    "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "maxScore": 15.0,
-    "scoreGiven": 10.0,
-    "scoredBy": {
-      "id": "https://example.edu/autograder",
-      "type": "SoftwareApplication",
-      "dateCreated": "2016-11-15T10:55:58.000Z"
-    },
-    "comment": "auto-graded exam",
-    "dateCreated": "2016-11-15T10:56:00.000Z"
-  },
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
-  }
-}
-```
 
 <a name="readingEvent" />
 
-### B.11 ReadingEvent DEPRECATED
+### B.12 ReadingEvent DEPRECATED
 
-A Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  [ReadingEvent](#readingEvent) is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### IRI
 http://purl.imsglobal.org/caliper/ReadingEvent
@@ -2545,7 +2580,7 @@ http://purl.imsglobal.org/caliper/ReadingEvent
 
 <a name="sessionEvent" />
 
-### B.12 SessionEvent
+### B.13 SessionEvent
 A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).
 
 #### IRI
@@ -2671,7 +2706,7 @@ http://purl.imsglobal.org/caliper/SessionEvent
 
 <a name="threadEvent" />
 
-### B.13 ThreadEvent
+### B.14 ThreadEvent
 A Caliper [ThreadEvent](#threadEvent) models an actor interacting with a [Forum](#forum) thread or topic. 
  
 #### IRI
@@ -2763,7 +2798,7 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 
 <a name="toolUseEvent" />
 
-### B.14 ToolUseEvent
+### B.15 ToolUseEvent
 A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction.
 
 #### IRI
@@ -2842,7 +2877,7 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
 
 <a name="viewEvent" />
 
-### B.15 ViewEvent
+### B.16 ViewEvent
 A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.
 
 #### IRI
@@ -5976,8 +6011,10 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [AssessmentItemEvent](#assessmentItemEvent) | Revised | The following actions have been deprecated and are targeted for removal from the list of supported [AssessmentItemEvent](#assessmentItemEvent) actions: [Reviewed](#reviewed), [Viewed](#viewed). |
 | [AssignableEvent](#assignableEvent) | Revised | [Submitted](#submitted) added to the list of supported actions.  The following actions have been deprecated and are targeted for removal from the list of supported [AssignableEvent](#assignableEvent) actions: [Abandoned](#abandoned), [Hid](#hid), [Showed](#showed). |
 | [ForumEvent](#forumEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Subscribed](#subscribed), [Unsubscribed](#unsubscribed). |
+| [GradeEvent](#gradeEvent) | New | Replaces [OutcomeEvent](#outcomeEvent).  [Score](#score) replaces [Result](#result) as the `generated` object. |
 | [MediaEvent](#mediaEvent) | Revised | [Restarted](#restarted) added to the list of supported actions.  The following actions have been deprecated and are targeted for removal from the list of supported [MediaEvent](#mediaEvent) actions: [Rewound](#rewound). |
 | [MessageEvent](#messageEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
+| [OutcomeEvent](#outcomeEvent) | Deprecated | Use [GradeEvent](#gradeEvent). |
 | [ReadingEvent](#readingEvent) | Deprecated | Targeted for removal in a future version of the specification. |
 | [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
 | [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile).  Supported actions: [Used](#used). |
