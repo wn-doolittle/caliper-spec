@@ -19,7 +19,7 @@
     "MediaEvent": "caliper:MediaEvent",
     "MessageEvent": "caliper:MessageEvent",
     "NavigationEvent": "caliper:NavigationEvent",
-    "OutcomeEvent": "caliper:OutcomeEvent",
+    "GradeEvent": "caliper:GradeEvent",
     "ReadingEvent": "caliper:ReadingEvent",
     "SessionEvent": "caliper:SessionEvent",
     "ThreadEvent": "caliper:ThreadEvent",
