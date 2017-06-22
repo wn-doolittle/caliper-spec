@@ -1,4 +1,4 @@
-# IMS G201620211lobal Learning Consortium, Inc.
+# IMS Global Learning Consortium, Inc.
 
 # Caliper Analytics® Specification, version 1.1
 
