@@ -1143,7 +1143,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu/terms/201701/courses/7/sections/1",
       "type": "CourseSection",
-      "academicSession": "Fall 2016",
+      "academicSession": "Fall 2017",
       "courseNumber": "CPS 435-01",
       "name": "CPS 435 Learning Analytics, Section 01",
       "category": "seminar",
@@ -1393,7 +1393,7 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 | <a name="closedPopout" />ClosedPopout (http://purl.imsglobal.org/vocab/caliper/action#ClosedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). |
 | <a name="commented" />Commented (http://purl.imsglobal.org/vocab/caliper/action#Commented) | [Make or write a comment on](http://wordnet-rdf.princeton.edu/wn31/201060446-v). |
 | <a name="completed" />Completed (http://purl.imsglobal.org/vocab/caliper/action#Completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
-| <a name="created" />Created (http://purl.imsglobal.org/vocab/caliper/action#Created) | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v).  Inverse of [Deleted](#deleted). |
+| <a name="created" />Created (http://purl.imsglobal.org/vocab/caliper/action#Created) | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201720211-v).  Inverse of [Deleted](#deleted). |
 | <a name="deactivated" />Deactivated (http://purl.imsglobal.org/vocab/caliper/action#Deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
 | <a name="deleted" />Deleted (http://purl.imsglobal.org/vocab/caliper/action#Deleted) | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v).  Inverse of [Created](#created). |
 | <a name="described" />Described (http://purl.imsglobal.org/vocab/caliper/action#Described) | [Give a description of](http://wordnet-rdf.princeton.edu/wn31/200989103-v). |
@@ -1844,7 +1844,7 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
     "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   },
   "membership": {
     "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
@@ -2148,7 +2148,7 @@ http://purl.imsglobal.org/caliper/GradeEvent
     "id": "https://example.edu/terms/201701/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "academicSession": "Fall 2017"
   }
 }
 ```
@@ -5998,7 +5998,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | Actions | Status | WordNet® Gloss |
 | :------ | :----: | :------------- |
 | [Added](#added) | New | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
-| [Created](#created) | New | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v).  Inverse of [Deleted](#deleted). |
+| [Created](#created) | New | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201720211-v).  Inverse of [Deleted](#deleted). |
 | [Deleted](#deleted) | New | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v).  Inverse of [Created](#created). |
 | [MarkedAsRead](#markedAsRead) | New | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [Read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread). |
 | [MarkedAsUnread](#markedAsUnread) | New | Inverse of [MarkedAsRead](#markedAsRead). |
