@@ -90,6 +90,7 @@
     "isPartOf": {"@id": "caliper:isPartOf", "@type": "@id"},
     "items": {"@id": "caliper:items", "@container": "@list"},
     "keywords": {"@id": "caliper:keywords", "@type": "@id", "@container": "@list"},
+    "launchParameters": {"@id": "caliper:launchParameters", "@type": "@id"},
     "learningObjectives": {"@id": "caliper:learningObjectives", "@type": "@id", "@container": "@list"},
     "member": {"@id": "caliper:member", "@type": "@id"},
     "members": {"@id": "caliper:members", "@type": "@id", "@container": "@list"},
