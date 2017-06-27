@@ -6124,6 +6124,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | :--- | :----------- |
 | Steven Erickson | Unicon |
 | Daniel Green | VitalSource Technologies |
+| Jeff Longland | UBC |
 | Yong-Sang Cho | KERIS |
 | Ian Turgeon | University of Central Florida |
 | Chris Ward | Instructure |
