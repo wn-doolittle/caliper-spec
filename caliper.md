@@ -590,7 +590,7 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 ### 2.3.6 Grading Profile
 <div style="design: block;margin: 0 auto"><img alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
 
-he Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Score](#score) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
+The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Score](#score) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
 
 The grading profile allows information to be captured about grade changes for a given assessment or submission.  This may be useful to understand the way in which students and teachers may be interacting throughout the course.  For example, the grading profile can be used to answer questions such as:
 
@@ -6124,6 +6124,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | :--- | :----------- |
 | Steven Erickson | Unicon |
 | Daniel Green | VitalSource Technologies |
+| Jeff Longland | UBC |
 | Yong-Sang Cho | KERIS |
 | Ian Turgeon | University of Central Florida |
 | Chris Ward | Instructure |
