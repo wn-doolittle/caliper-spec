@@ -216,7 +216,7 @@ __Sensor API™__: Application programming interface for marshalling and transmi
 __Sensor__: Software assets deployed within a learning application for marshalling and transmitting Caliper data to a target endpoint that implement the [Sensor API™](#sensorAPIDef).
 
 <a name="sensorAPIDef" />
-__Sensor API™__: The standard set of methods, and entity and event data structures, that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable manner.
+__Sensor API™__: The standard set of methods and supported parameters that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable manner.
 
 <a name="termDef" />
 
