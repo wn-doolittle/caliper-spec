@@ -210,11 +210,11 @@ __Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that bec
 
 <a name="sensorDef" />
 
-__Sensor__: Software assets deployed within a learning application for marshalling and transmitting Caliper data to a target endpoint that implement the [Sensor API™](#sensorAPIDef).
+__Sensor__: Software assets deployed within a learning application that implement the [Sensor API™](#sensorAPIDef) for marshalling and transmitting Caliper data to a target endpoint.
 
 <a name="sensorAPIDef" />
 
-__Sensor API™__: The standard set of methods and supported parameters that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable manner.
+__Sensor API™__: The standard set of methods and supported parameters that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable way.
 
 <a name="termDef" />
 
