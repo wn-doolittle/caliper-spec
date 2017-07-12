@@ -212,6 +212,12 @@ __Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that bec
 
 __Sensor API™__: Application programming interface for marshalling and transmitting Caliper data to a target endpoint.
 
+<a name="sensorDef" />
+__Sensor__: Software assets deployed within a learning application for marshalling and transmitting Caliper data to a target endpoint that implement the [Sensor API™](#sensorAPIDef).
+
+<a name="sensorAPIDef" />
+__Sensor API™__: The standard set of methods, and entity and event data structures, that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable manner.
+
 <a name="termDef" />
 
 __Term__: a word or short expression that expands to an [IRI](#iriDef) when mapped to a JSON-LD [context](#contextDef) document. Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
