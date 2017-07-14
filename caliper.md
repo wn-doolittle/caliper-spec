@@ -958,7 +958,7 @@ Both node types and typed values are specified in the external IMS Caliper JSON-
     "id": "@id",
     "type": "@type",
     "caliper": "http://purl.imsglobal.org/caliper/",
-    "verb": "http://purl.imsglobal.org/vocab/caliper/action#",
+    "verb": "http://purl.imsglobal.org/caliper/actions/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "MessageEvent": "caliper:MessageEvent",
     "Message": "caliper:Message",
@@ -1384,70 +1384,70 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 
 | Term (IRI) | WordNet® Gloss |
 | :--------- | :------------- |
-| <a name="abandoned" />Abandoned (http://purl.imsglobal.org/vocab/caliper/action#Abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
-| <a name="activated" />Activated (http://purl.imsglobal.org/vocab/caliper/action#Activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
-| <a name="added" />Added (http://purl.imsglobal.org/vocab/caliper/action#Added) | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
-| <a name="attached" />Attached (http://purl.imsglobal.org/vocab/caliper/action#Attached) | [Cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v). |
-| <a name="bookmarked" />Bookmarked (http://purl.imsglobal.org/vocab/caliper/action#Bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. |
-| <a name="changedResolution" />ChangedResolution (http://purl.imsglobal.org/vocab/caliper/action#ChangedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
-| <a name="changedSize" />ChangedSize (http://purl.imsglobal.org/vocab/caliper/action#ChangedSize) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n). |
-| <a name="changedSpeed" />ChangedSpeed (http://purl.imsglobal.org/vocab/caliper/action#ChangedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). |
-| <a name="changedVolume" />ChangedVolume (http://purl.imsglobal.org/vocab/caliper/action#ChangedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). |
-| <a name="classified" />Classified (http://purl.imsglobal.org/vocab/caliper/action#Classified) | [Assign to a class or kind](http://wordnet-rdf.princeton.edu/wn31/200741667-v). |
-| <a name="closedPopout" />ClosedPopout (http://purl.imsglobal.org/vocab/caliper/action#ClosedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). |
-| <a name="commented" />Commented (http://purl.imsglobal.org/vocab/caliper/action#Commented) | [Make or write a comment on](http://wordnet-rdf.princeton.edu/wn31/201060446-v). |
-| <a name="completed" />Completed (http://purl.imsglobal.org/vocab/caliper/action#Completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
-| <a name="created" />Created (http://purl.imsglobal.org/vocab/caliper/action#Created) | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v).  Inverse of [Deleted](#deleted). |
-| <a name="deactivated" />Deactivated (http://purl.imsglobal.org/vocab/caliper/action#Deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
-| <a name="deleted" />Deleted (http://purl.imsglobal.org/vocab/caliper/action#Deleted) | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v).  Inverse of [Created](#created). |
-| <a name="described" />Described (http://purl.imsglobal.org/vocab/caliper/action#Described) | [Give a description of](http://wordnet-rdf.princeton.edu/wn31/200989103-v). |
-| <a name="disabledClosedCaptioning" />DisabledClosedCaptioning (http://purl.imsglobal.org/vocab/caliper/action#DisabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
-| <a name="disliked" />Disliked (http://purl.imsglobal.org/vocab/caliper/action#Disliked) | [Have or feel a dislike or distaste for](http://wordnet-rdf.princeton.edu/wn31/201780648-v). Inverse of [Liked](#liked). |
-| <a name="enabledClosedCaptioning" />EnabledClosedCaptioning (http://purl.imsglobal.org/vocab/caliper/action#EnabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
-| <a name="ended" />Ended (http://purl.imsglobal.org/vocab/caliper/action#Ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
-| <a name="enteredFullscreen" />EnteredFullScreen (http://purl.imsglobal.org/vocab/caliper/action#EnteredFullscreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). |
-| <a name="exitedFullscreen" />ExitedFullScreen (http://purl.imsglobal.org/vocab/caliper/action#ExitedFullscreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). |
-| <a name="forwardedTo" />ForwardedTo (http://purl.imsglobal.org/vocab/caliper/action#ForwardedTo) | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
-| <a name="graded" />Graded (http://purl.imsglobal.org/vocab/caliper/action#Graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
-| <a name="hid" />Hid ([http://purl.imsglobal.org/vocab/caliper/action#Hid](http://purl.imsglobal.org/vocab/caliper/action#Hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v).  Inverse of [Showed](#showed). |
-| <a name="highlighted" />Highlighted (http://purl.imsglobal.org/vocab/caliper/action#Highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). |
-| <a name="identified" />Identified (http://purl.imsglobal.org/vocab/caliper/action#Identified) | [Recognize as being; establish the identity of someone or something](http://wordnet-rdf.princeton.edu/wn31/200620568-v). |
-| <a name="jumpedTo" />JumpedTo (http://purl.imsglobal.org/vocab/caliper/action#JumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
-| <a name="liked" />Liked (http://purl.imsglobal.org/vocab/caliper/action#Liked) | [Be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v).  Inverse of [Disliked](#disliked). |
-| <a name="linked" />Linked (http://purl.imsglobal.org/vocab/caliper/action#Linked) | [Connect, fasten, or put together two or more pieces](http://wordnet-rdf.princeton.edu/wn31/201357376-v). |
-| <a name="loggedIn" />LoggedIn (http://purl.imsglobal.org/vocab/caliper/action#LoggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). |
-| <a name="loggedOut" />LoggedOut (http://purl.imsglobal.org/vocab/caliper/action#LoggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). |
-| <a name="markedAsRead" />MarkedAsRead (http://purl.imsglobal.org/vocab/caliper/action#MarkedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
-| <a name="markedAsUnread" />MarkedAsUnread (http://purl.imsglobal.org/vocab/caliper/action#MarkedAsUnread) | Inverse of [MarkedAsRead](#markedAsRead). |
-| <a name="modified" />Modified (http://purl.imsglobal.org/vocab/caliper/action#Modified) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v). |
-| <a name="muted" />Muted (http://purl.imsglobal.org/vocab/caliper/action#Muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). |
-| <a name="navigated to" />NavigatedTo (http://purl.imsglobal.org/vocab/caliper/action#NavigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
-| <a name="openedPopout" />OpenedPopout (http://purl.imsglobal.org/vocab/caliper/action#OpenedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). |
-| <a name="paused" />Paused (http://purl.imsglobal.org/vocab/caliper/action#Paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed). |
-| <a name="posted" />Posted (http://purl.imsglobal.org/vocab/caliper/action#Posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
-| <a name="questioned" />Questioned (http://purl.imsglobal.org/vocab/caliper/action#Questioned) | [Pose a question](http://wordnet-rdf.princeton.edu/wn31/200786670-v). |
-| <a name="ranked" />Ranked (http://purl.imsglobal.org/vocab/caliper/action#Ranked) | [Assign a rank or rating to](http://wordnet-rdf.princeton.edu/wn31/200659723-v). |
-| <a name="recommended" />Recommended (http://purl.imsglobal.org/vocab/caliper/action#Recommended) | [Express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v). |
-| <a name="removed" />Removed (http://purl.imsglobal.org/vocab/caliper/action#Removed) | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
-| <a name="reset" />Reset (http://purl.imsglobal.org/vocab/caliper/action#Reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v). |
-| <a name="restarted" />Restarted (http://purl.imsglobal.org/vocab/caliper/action#Restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again. |
-| <a name="resumed" />Resumed (http://purl.imsglobal.org/vocab/caliper/action#Resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused). |
-| <a name="retrieved" />Retrieved (http://purl.imsglobal.org/vocab/caliper/action#Retrieved) | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
-| <a name="reviewed" />Reviewed (http://purl.imsglobal.org/vocab/caliper/action#Reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
-| <a name="rewound" />Rewound (http://purl.imsglobal.org/vocab/caliper/action#Rewound) | [Wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v). |
-| <a name="searched" />Searched (http://purl.imsglobal.org/vocab/caliper/action#Searched) | [Try to locate or discover, or try to establish the existence of](http://wordnet-rdf.princeton.edu/wn31/201318273-v). |
-| <a name="shared" />Shared (http://purl.imsglobal.org/vocab/caliper/action#Shared) | [Communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v). |
-| <a name="showed" />Showed (http://purl.imsglobal.org/vocab/caliper/action#Showed) | [Make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v).  Inverse of [Hid](#hid). |
-| <a name="skipped" />Skipped (http://purl.imsglobal.org/vocab/caliper/action#Skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
-| <a name="started" />Started (http://purl.imsglobal.org/vocab/caliper/action#Started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
-| <a name="submitted" />Submitted (http://purl.imsglobal.org/vocab/caliper/action#Submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
-| <a name="subscribed" />Subscribed (http://purl.imsglobal.org/vocab/caliper/action#Subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
-| <a name="tagged" />Tagged (http://purl.imsglobal.org/vocab/caliper/action#Tagged) | [Attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v). |
-| <a name="timedOut" />TimedOut (http://purl.imsglobal.org/vocab/caliper/action#TimedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
-| <a name="unmuted" />Unmuted (http://purl.imsglobal.org/vocab/caliper/action#Unmuted) | Inverse of [Muted](#muted). |
-| <a name="unsubscribed" />Unsubscribed (http://purl.imsglobal.org/vocab/caliper/action#Unsubscribed) | Inverse of [Subscribed](#subscribed). |
-| <a name="used" />Used (http://purl.imsglobal.org/vocab/caliper/action#Used) | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
-| <a name="viewed" />Viewed (http://purl.imsglobal.org/vocab/caliper/action#Viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+| <a name="abandoned" />Abandoned (http://purl.imsglobal.org/caliper/actions/Abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
+| <a name="activated" />Activated (http://purl.imsglobal.org/caliper/actions/Activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
+| <a name="added" />Added (http://purl.imsglobal.org/caliper/actions/Added) | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
+| <a name="attached" />Attached (http://purl.imsglobal.org/caliper/actions/Attached) | [Cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v). |
+| <a name="bookmarked" />Bookmarked (http://purl.imsglobal.org/caliper/actions/Bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. |
+| <a name="changedResolution" />ChangedResolution (http://purl.imsglobal.org/caliper/actions/ChangedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
+| <a name="changedSize" />ChangedSize (http://purl.imsglobal.org/caliper/actions/ChangedSize) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n). |
+| <a name="changedSpeed" />ChangedSpeed (http://purl.imsglobal.org/caliper/actions/ChangedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). |
+| <a name="changedVolume" />ChangedVolume (http://purl.imsglobal.org/caliper/actions/ChangedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). |
+| <a name="classified" />Classified (http://purl.imsglobal.org/caliper/actions/Classified) | [Assign to a class or kind](http://wordnet-rdf.princeton.edu/wn31/200741667-v). |
+| <a name="closedPopout" />ClosedPopout (http://purl.imsglobal.org/caliper/actions/ClosedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). |
+| <a name="commented" />Commented (http://purl.imsglobal.org/caliper/actions/Commented) | [Make or write a comment on](http://wordnet-rdf.princeton.edu/wn31/201060446-v). |
+| <a name="completed" />Completed (http://purl.imsglobal.org/caliper/actions/Completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
+| <a name="created" />Created (http://purl.imsglobal.org/caliper/actions/Created) | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v).  Inverse of [Deleted](#deleted). |
+| <a name="deactivated" />Deactivated (http://purl.imsglobal.org/caliper/actions/Deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
+| <a name="deleted" />Deleted (http://purl.imsglobal.org/caliper/actions/Deleted) | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v).  Inverse of [Created](#created). |
+| <a name="described" />Described (http://purl.imsglobal.org/caliper/actions/Described) | [Give a description of](http://wordnet-rdf.princeton.edu/wn31/200989103-v). |
+| <a name="disabledClosedCaptioning" />DisabledClosedCaptioning (http://purl.imsglobal.org/caliper/actions/DisabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
+| <a name="disliked" />Disliked (http://purl.imsglobal.org/caliper/actions/Disliked) | [Have or feel a dislike or distaste for](http://wordnet-rdf.princeton.edu/wn31/201780648-v). Inverse of [Liked](#liked). |
+| <a name="enabledClosedCaptioning" />EnabledClosedCaptioning (http://purl.imsglobal.org/caliper/actions/EnabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
+| <a name="ended" />Ended (http://purl.imsglobal.org/caliper/actions/Ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
+| <a name="enteredFullscreen" />EnteredFullScreen (http://purl.imsglobal.org/caliper/actions/EnteredFullscreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). |
+| <a name="exitedFullscreen" />ExitedFullScreen (http://purl.imsglobal.org/caliper/actions/ExitedFullscreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). |
+| <a name="forwardedTo" />ForwardedTo (http://purl.imsglobal.org/caliper/actions/ForwardedTo) | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
+| <a name="graded" />Graded (http://purl.imsglobal.org/caliper/actions/Graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
+| <a name="hid" />Hid ([http://purl.imsglobal.org/caliper/actions/Hid](http://purl.imsglobal.org/caliper/actions/Hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v).  Inverse of [Showed](#showed). |
+| <a name="highlighted" />Highlighted (http://purl.imsglobal.org/caliper/actions/Highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). |
+| <a name="identified" />Identified (http://purl.imsglobal.org/caliper/actions/Identified) | [Recognize as being; establish the identity of someone or something](http://wordnet-rdf.princeton.edu/wn31/200620568-v). |
+| <a name="jumpedTo" />JumpedTo (http://purl.imsglobal.org/caliper/actions/JumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
+| <a name="liked" />Liked (http://purl.imsglobal.org/caliper/actions/Liked) | [Be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v).  Inverse of [Disliked](#disliked). |
+| <a name="linked" />Linked (http://purl.imsglobal.org/caliper/actions/Linked) | [Connect, fasten, or put together two or more pieces](http://wordnet-rdf.princeton.edu/wn31/201357376-v). |
+| <a name="loggedIn" />LoggedIn (http://purl.imsglobal.org/caliper/actions/LoggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). |
+| <a name="loggedOut" />LoggedOut (http://purl.imsglobal.org/caliper/actions/LoggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). |
+| <a name="markedAsRead" />MarkedAsRead (http://purl.imsglobal.org/caliper/actions/MarkedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
+| <a name="markedAsUnread" />MarkedAsUnread (http://purl.imsglobal.org/caliper/actions/MarkedAsUnread) | Inverse of [MarkedAsRead](#markedAsRead). |
+| <a name="modified" />Modified (http://purl.imsglobal.org/caliper/actions/Modified) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v). |
+| <a name="muted" />Muted (http://purl.imsglobal.org/caliper/actions/Muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). |
+| <a name="navigated to" />NavigatedTo (http://purl.imsglobal.org/caliper/actions/NavigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
+| <a name="openedPopout" />OpenedPopout (http://purl.imsglobal.org/caliper/actions/OpenedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). |
+| <a name="paused" />Paused (http://purl.imsglobal.org/caliper/actions/Paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed). |
+| <a name="posted" />Posted (http://purl.imsglobal.org/caliper/actions/Posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
+| <a name="questioned" />Questioned (http://purl.imsglobal.org/caliper/actions/Questioned) | [Pose a question](http://wordnet-rdf.princeton.edu/wn31/200786670-v). |
+| <a name="ranked" />Ranked (http://purl.imsglobal.org/caliper/actions/Ranked) | [Assign a rank or rating to](http://wordnet-rdf.princeton.edu/wn31/200659723-v). |
+| <a name="recommended" />Recommended (http://purl.imsglobal.org/caliper/actions/Recommended) | [Express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v). |
+| <a name="removed" />Removed (http://purl.imsglobal.org/caliper/actions/Removed) | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
+| <a name="reset" />Reset (http://purl.imsglobal.org/caliper/actions/Reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v). |
+| <a name="restarted" />Restarted (http://purl.imsglobal.org/caliper/actions/Restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again. |
+| <a name="resumed" />Resumed (http://purl.imsglobal.org/caliper/actions/Resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused). |
+| <a name="retrieved" />Retrieved (http://purl.imsglobal.org/caliper/actions/Retrieved) | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
+| <a name="reviewed" />Reviewed (http://purl.imsglobal.org/caliper/actions/Reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
+| <a name="rewound" />Rewound (http://purl.imsglobal.org/caliper/actions/Rewound) | [Wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v). |
+| <a name="searched" />Searched (http://purl.imsglobal.org/caliper/actions/Searched) | [Try to locate or discover, or try to establish the existence of](http://wordnet-rdf.princeton.edu/wn31/201318273-v). |
+| <a name="shared" />Shared (http://purl.imsglobal.org/caliper/actions/Shared) | [Communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v). |
+| <a name="showed" />Showed (http://purl.imsglobal.org/caliper/actions/Showed) | [Make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v).  Inverse of [Hid](#hid). |
+| <a name="skipped" />Skipped (http://purl.imsglobal.org/caliper/actions/Skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
+| <a name="started" />Started (http://purl.imsglobal.org/caliper/actions/Started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
+| <a name="submitted" />Submitted (http://purl.imsglobal.org/caliper/actions/Submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
+| <a name="subscribed" />Subscribed (http://purl.imsglobal.org/caliper/actions/Subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
+| <a name="tagged" />Tagged (http://purl.imsglobal.org/caliper/actions/Tagged) | [Attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v). |
+| <a name="timedOut" />TimedOut (http://purl.imsglobal.org/caliper/actions/TimedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
+| <a name="unmuted" />Unmuted (http://purl.imsglobal.org/caliper/actions/Unmuted) | Inverse of [Muted](#muted). |
+| <a name="unsubscribed" />Unsubscribed (http://purl.imsglobal.org/caliper/actions/Unsubscribed) | Inverse of [Subscribed](#subscribed). |
+| <a name="used" />Used (http://purl.imsglobal.org/caliper/actions/Used) | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
+| <a name="viewed" />Viewed (http://purl.imsglobal.org/caliper/actions/Viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 <a name="events" />
 
