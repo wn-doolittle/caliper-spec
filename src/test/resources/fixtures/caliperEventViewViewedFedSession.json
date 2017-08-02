@@ -35,7 +35,7 @@
   "federatedSession": {
     "id": "urn:uuid:1c519ff7-3dfa-4764-be48-d2fb35a2925a",
     "type": "LtiSession",
-    "user": "urn:uuid:0ae836b9-7fc9-4060-006f-27b2066ac545",
+    "user": "https://example.edu/users/554433",
     "messageParameters": {
       "lti_message_type": "basic-lti-launch-request",
       "lti_version": "LTI-2p0",
