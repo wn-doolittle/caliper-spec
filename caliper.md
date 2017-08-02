@@ -4494,7 +4494,7 @@ http://purl.imsglobal.org/caliper/LtiSession
 | name | string | A string value comprising a word or phrase by which the [LtiSession](#ltiSession) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [LtiSession](#ltiSession) MAY be specified. | Optional |
 | user | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession) SHOULD be specified. | Optional |
-| messageParameters | Object | An object comprising LTI-specified launch parameters that provide Tool Consumer-related contextual information MAY be specified.  LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced. | Optional |
+| messageParameters | Object | A map of LTI-specified message parameters that provide Tool Consumer-related contextual information MAY be specified.  LTI message parameters of whatever type (i.e., required, recommended, optional, custom and extension) MAY be referenced. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
@@ -6196,4 +6196,3 @@ Candidate Final Specification v1.1
 Date: 31 May 2017
 
 This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability® (LTI®), Accessible Portable Item Protocol® (APIP®), Question and Test Interoperability® (QTI®), Common Cartridge® (CC®), AccessForAll™, OneRoster®, Caliper Analytics® and SensorAPI™. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
-messageParameters
