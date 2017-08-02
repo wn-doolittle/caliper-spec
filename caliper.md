@@ -6193,6 +6193,6 @@ Please contact IMS Global through our website at http://www.imsglobal.org.
 Please refer to Document Name: IMS Caliper Analytics® 1.1
 Candidate Final Specification v1.1
 
-Date: 31 May 2017
+Date: 14 August 2017
 
 This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability® (LTI®), Accessible Portable Item Protocol® (APIP®), Question and Test Interoperability® (QTI®), Common Cartridge® (CC®), AccessForAll™, OneRoster®, Caliper Analytics® and SensorAPI™. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
