@@ -45,6 +45,7 @@
       "roles": [ "Learner" ],
       "user_id": "0ae836b9-7fc9-4060-006f-27b2066ac545",
       "custom": {
+        "caliper_profile_url": "https://example.edu/lti/tc/cps",
         "caliper_session_id": "1c519ff7-3dfa-4764-be48-d2fb35a2925a",
         "tool_consumer_instance_url": "https://example.edu"
       },
