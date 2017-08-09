@@ -510,14 +510,14 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 #### Supported Entities
 | Event | Actor |	Action | Object |	Generated | Referrer |
 | :---- | :---- | :----- | :----- | :-------- | :------- |
-| [AssignableEvent](#assignableEvent) | [Person](#person)&#124;[Group](#group) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person)&#124;[Group](#group) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person)&#124;[Group](#group) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person)&#124;[Group](#group) | [Completed](#completed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person)&#124;[Group](#group) | [Submitted](#submitted) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person)&#124;[Group](#group) | [Reviewed](#reviewed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person)&#124;[Group](#group) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person)&#124;[Group](#group) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Agent](#agent) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Agent](#agent) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Agent](#agent) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Agent](#agent) | [Completed](#completed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Agent](#agent) | [Submitted](#submitted) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [AssignableEvent](#assignableEvent) | [Agent](#agent) | [Reviewed](#reviewed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
+| [NavigationEvent](#navigationEvent) | [Agent](#agent) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
+| [ViewEvent](#viewEvent) | [Agent](#agent) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
 * Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -1908,7 +1908,7 @@ The following actions are deprecated and targeted for removal from the [Assignab
 | :------- | :--- | ----------- | :---------: |
 | id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssignableEvent*. | Required |
-| actor | [Person](#person)&#124;[Group](#group) | The [Person](#person) or [Group](#group) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| actor | [Agent](#agent) | The [Agent](#agent), typically a [Person](#person) or [Group](#group), who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required | 
 | object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
