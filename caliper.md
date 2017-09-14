@@ -866,50 +866,36 @@ Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@con
 }
 ```
 
-A [JSON-LD](#jsonldDef) document can reference more than one context.  Additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *describe* in order to ascribe meaning to terms not defined by the model.  However, Caliper-defined terms MUST NOT be overridden by additional contexts added to the document ([JSON-LD](#jsonldDef) relies on a "most-recently-defined-wins" approach when parsing duplicate terms).  Defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing the object.  
+A [JSON-LD](#jsonldDef) document can reference more than one context.  Additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *describe* in order to ascribe meaning to terms not defined by the model.  However, Caliper-defined terms MUST NOT be overridden by additional contexts referenced in the document.  Note that [JSON-LD](#jsonldDef) relies on a "most-recently-defined-wins" approach when parsing duplicate terms.  Accordingly, if multiple contexts are combined using an array the Caliper [JSON-LD](#jsonldDef) context MUST be listed last in order to ensure that Caliper terms retain their primacy.  
 
-#### Example: using multiple contexts in an Entity describe (external and in-line)
+#### Example: Positioning a Caliper JSON-LD context in an array of contexts (order matters)
 ```
 {
-  "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", {
-    "@context": {
-      "example": "http://example.org/",
-      "instructor": {"@id": "example:instructor", "@type": "@id"},
-      "location": {"@id": "example:location", "@type": "@id"}
-    }
-  }],
-  "id": "https://example.edu/terms/201701/courses/7/sections/1",
-  "type": "CourseSection",
-  "academicSession": "Fall 2017",
-  "courseNumber": "CPS 435-01",
-  "name": "CPS 435 Learning Analytics, Section 01",
-  "category": "seminar",
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "extensions": {
-    "instructor": {
-      "@context": "https://schema.org/docs/jsonldcontext.json",
-      "id": "https://example.edu/faculty/trighaversine",
-      "type": "Person",
-      "jobTitle": "Professor",
-      "givenName": "Trig",
-      "familyName": "Haversine",
-      "email": "trighaversine@example.edu",
-      "url": "https://example.edu/faculty/trighaversine"
+  "@context": [
+    {
+      "query": "http://schema.org/query"
     },
-    "location": {
-      "@context": "https://schema.org/docs/jsonldcontext.json",
-      "id": "https://example.com/maps/@42.280767,-83.740196,17z",
-      "type": "Place",
-      "name": "North Quad",
-      "geo": {
-        "type": "GeoCoordinates",
-        "latitude": 42.280767,
-        "longitude": -83.740196
-      }
-    }
+    "http://purl.imsglobal.org/ctx/caliper/v1p1"
+  ],
+  "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
+  "type": "Event",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Searched",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "type": "Document"
+  },
+  "eventTime": "2017-11-15T10:15:00.000Z",
+  "extensions": {
+    "query": "Event or Entity"
   }
 }
 ```
+
+Defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing the object.  
 
 <a name="jsonldIdentifiers" />
 
