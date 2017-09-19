@@ -845,9 +845,9 @@ Exchanging data linked to other data distributed across a wide network requires 
 ### 3.1 Context
 Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@context` keyword, a property employed to map document [Terms](#termDef) to [IRIs](#iriDef) to one or more published vocabularies.  Inclusion of a [JSON-LD](#jsonldDef) context provides an economical way for Caliper to communicate document semantics to services interested in consuming Caliper event data.
 
-[JSON-LD](#jsonldDef) contexts can be inserted in-line or located in a file external to the document and referenced.  In the case of Caliper an external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) is available and MUST be referenced in Caliper [JSON-LD](#jsonldDef) documents.  Each Caliper [Event](#event) and [Entity](#entity) *describe* emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that provides a context definition and that `@context` field MUST appear at the "top level" of the Event or Entity sent by the Sensor (in the following example, note that `@context` is a field on the Event, and not on the composed `Person` that is the `Event.actor` field's value -- that `Person` object will inherit the context mappings found in the containing event's `@context` document).
+[JSON-LD](#jsonldDef) contexts can be embedded inline or referenced externally.  Caliper provides an external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) that MUST be referenced in Caliper [JSON-LD](#jsonldDef) documents.  Each Caliper [Event](#event) and [Entity](#entity) *describe* emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that provides a context definition and that `@context` field MUST appear at the "top level" of the Event or Entity sent by the Sensor.  In the following example, note that `@context` is a field on the [Event](#event), and not on the composed [Person](#person) that is the `Event.actor` field's value -- that [Person](#person) object will inherit the context mappings found in the containing event's `@context` document).
 
-#### Example: referencing an external JSON-LD context
+#### Example: referencing the Caliper JSON-LD context
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -866,50 +866,56 @@ Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@con
 }
 ```
 
-A [JSON-LD](#jsonldDef) document can reference more than one context.  Additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *describe* in order to ascribe meaning to terms not defined by the model.  However, Caliper-defined terms MUST NOT be overridden by additional contexts added to the document ([JSON-LD](#jsonldDef) relies on a "most-recently-defined-wins" approach when parsing duplicate terms).  Defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing the object.  
+A [JSON-LD](#jsonldDef) document can reference more than one context.  Additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *describe* in order to ascribe meaning to terms not defined by the model.  However, Caliper-defined terms MUST NOT be overridden by additional contexts referenced in the document.  Note that [JSON-LD](#jsonldDef) relies on a "most-recently-defined-wins" approach when parsing duplicate terms.  Accordingly, if multiple contexts are combined using an array the Caliper [JSON-LD](#jsonldDef) context MUST be listed last in order to ensure that Caliper terms retain their primacy.  
 
-#### Example: using multiple contexts in an Entity describe (external and in-line)
+#### Example: Referencing multiple contexts (order matters)
+
+##### Correct order
 ```
 {
-  "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", {
-    "@context": {
-      "example": "http://example.org/",
-      "instructor": {"@id": "example:instructor", "@type": "@id"},
-      "location": {"@id": "example:location", "@type": "@id"}
-    }
-  }],
-  "id": "https://example.edu/terms/201701/courses/7/sections/1",
-  "type": "CourseSection",
-  "academicSession": "Fall 2017",
-  "courseNumber": "CPS 435-01",
-  "name": "CPS 435 Learning Analytics, Section 01",
-  "category": "seminar",
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "extensions": {
-    "instructor": {
-      "@context": "https://schema.org/docs/jsonldcontext.json",
-      "id": "https://example.edu/faculty/trighaversine",
-      "type": "Person",
-      "jobTitle": "Professor",
-      "givenName": "Trig",
-      "familyName": "Haversine",
-      "email": "trighaversine@example.edu",
-      "url": "https://example.edu/faculty/trighaversine"
+  "@context": ["https://schema.org/docs/jsonldcontext.json", "http://purl.imsglobal.org/ctx/caliper/v1p1"]
+  . . .
+}
+```
+
+##### Incorrect order
+```
+{
+  "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", "https://schema.org/docs/jsonldcontext.json"]
+  . . .
+}
+```
+
+Contexts embedded inline can be combinded with externally referenced contexts.  Again, order matters.
+
+#### Example: Combining inline and referenced contexts
+```
+{
+  "@context": [
+    {
+      "query": "http://schema.org/query"
     },
-    "location": {
-      "@context": "https://schema.org/docs/jsonldcontext.json",
-      "id": "https://example.com/maps/@42.280767,-83.740196,17z",
-      "type": "Place",
-      "name": "North Quad",
-      "geo": {
-        "type": "GeoCoordinates",
-        "latitude": 42.280767,
-        "longitude": -83.740196
-      }
-    }
+    "http://purl.imsglobal.org/ctx/caliper/v1p1"
+  ],
+  "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
+  "type": "Event",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Searched",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "type": "Document"
+  },
+  "eventTime": "2017-11-15T10:15:00.000Z",
+  "extensions": {
+    "query": "Event or Entity"
   }
 }
 ```
+
+Defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing the object.  
 
 <a name="jsonldIdentifiers" />
 
