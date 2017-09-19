@@ -17,7 +17,6 @@
     "MessageEvent": "caliper:MessageEvent",
     "NavigationEvent": "caliper:NavigationEvent",
     "GradeEvent": "caliper:GradeEvent",
-    "ReadingEvent": "caliper:ReadingEvent",
     "SessionEvent": "caliper:SessionEvent",
     "ThreadEvent": "caliper:ThreadEvent",
     "ToolUseEvent": "caliper:ToolUseEvent",
