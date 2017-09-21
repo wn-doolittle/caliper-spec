@@ -1,0 +1,21 @@
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2017-11-15T10:15:01.000Z",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [
+      {
+        "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+        "id": "urn:uuid:71657137-8e6e-44f8-8499-e1c3df6810d2",
+        "type": "NavigationEvent",
+        "actor": "https://example.edu/users/554433",
+        "action": "NavigatedTo",
+        "object": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
+        "eventTime": "2017-11-15T10:15:00.000Z",
+        "referrer": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
+        "edApp": "https://example.edu",
+        "group": "https://example.edu/terms/201601/courses/7/sections/1",
+        "membership": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+        "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
+      }
+  ]
+}
