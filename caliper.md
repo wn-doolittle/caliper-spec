@@ -5935,11 +5935,10 @@ When storing normalized or "flattened" Caliper [Event](#event) data, the followi
 
 | Domain(s) | Property | Description | Minimum Length |
 | :------| :------- | :---------- | ---------: |
-| [Event](#event) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>`. | 2048 |
+| [Event](#event), [Entity](#entity) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>` or the [IRI](#iriDef) assigned to the [Entity](#entity). | 2048 |
 | [Event](#event), [Entity](#entity) | type | The Caliper [Term](termDef) designated for the [Event](#event) or [Entity](#entity). | 256 |
 | [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 256 |
 | [Event](#event) | eventTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Entity](#entity) | id | The [IRI](#iriDef) assigned to the [Entity](#entity). | 2048 |
 | [Entity](#entity) | name | A word or phrase by which the [Entity](#entity) is known. | 256 |
 | [Entity](#entity) | description | A human-readable plain text representation of the [Entity](#entity). | 1024 |
 | [Entity](#entity) | dateCreated | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
