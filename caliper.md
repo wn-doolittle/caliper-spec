@@ -5933,14 +5933,13 @@ The status of a [member](#member) within an organization can be set to one of th
 
 When storing normalized or "flattened" Caliper [Event](#event) data, the following *minimum* character lengths SHOULD be assumed in order to accommodate Caliper data expressed as strings of variable length. 
 
-| Domain | Property | Description | Minimum Length |
+| Domain(s) | Property | Description | Minimum Length |
 | :------| :------- | :---------- | ---------: |
 | [Event](#event) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>`. | 2048 |
-| [Event](#event) | type | The Caliper [Term](termDef) designated for the [Event](#event). | 256 |
+| [Event](#event), [Entity](#entity) | type | The Caliper [Term](termDef) designated for the [Event](#event) or [Entity](#entity). | 256 |
 | [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 256 |
 | [Event](#event) | eventTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Entity](#entity) | id | The [IRI](#iriDef) assigned to the [Entity](#entity). | 2048 |
-| [Entity](#entity) | type | The Caliper designated [Term](termDef) for the [Entity](#entity). | 256 |
 | [Entity](#entity) | name | A word or phrase by which the [Entity](#entity) is known. | 256 |
 | [Entity](#entity) | description | A human-readable plain text representation of the [Entity](#entity). | 1024 |
 | [Entity](#entity) | dateCreated | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
@@ -5949,38 +5948,28 @@ When storing normalized or "flattened" Caliper [Event](#event) data, the followi
 | [AssignableDigitalResource](#assignableDigitalResource) | dateToShow | A date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [AssignableDigitalResource](#assignableDigitalResource) | dateToStartOn | A date and time value expressed with millisecond precision that describes when the resource can be started. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [AssignableDigitalResource](#assignableDigitalResource) | dateToSubmit | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Attempt](#attempt) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Attempt](#attempt) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Attempt](#attempt) | duration | A time interval that represents the time taken to complete the [Attempt](#attempt).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [Attempt](#attempt), [Response](#response), [Session](#session) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) being described commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Attempt](#attempt), [Response](#response), [Session](#session) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) being described was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Attempt](#attempt), [Response](#response), [Session](#session) | duration | A time interval that represents the time taken to complete the [Entity](#entity) being described.  The value MUST conform to the ISO-8601 duration format. | 64 |
 | [AudioObject](#audioObject) | volumeLevel | The current volume level. | 32 |
 | [AudioObject](#audioObject) | volumeMax | The maximum volume level permitted. | 32 |
 | [AudioObject](#audioObject) | volumeMin | The minimum volume level permitted.  | 32 |
 | [BookmarkAnnotation](#bookmarkAnnotation) | BookmarkNotes | A plain text rendering of the note that accompanies the bookmark. | 1024 |
-| [CourseOffering](#courseOffering) | academicSession | A human-readable identifier of the designated period in which the course occurs. | 256 |
-| [CourseOffering](#courseOffering) | courseNumber | A human-readable identifier assigned to the course. | 128 |
+| [CourseOffering](#courseOffering), [CourseSection](#courseSection) | academicSession | A human-readable identifier of the designated period in which the course occurs. | 256 |
+| [CourseOffering](#courseOffering), [CourseSection](#courseSection) | courseNumber | A human-readable identifier assigned to the course. | 128 |
 | [CourseSection](#courseSection) | category | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | 128 |
 | [DigitalResource](#digitalResource) | mediaType | IANA approved media type or subtype that identifies the file format of the resource. | 128 |
 | [DigitalResource](#digitalResource) | datePublished | A date and time value expressed with millisecond precision that provides the publication date of the resource. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [DigitalResource](#digitalResource) | version | Designates the current form or version of the resource. | 64 |
-| [FillinBlankResponse](#fillinBlankResponse) | values\<value\> | Minimum supported length applies to each plain text response included in the `values` array. | 256 |
+| [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | version | Designates the current form or version of the [Entity](#entity) being described. | 64 |
+| [FillinBlankResponse](#fillinBlankResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse) | values\<value\> | Minimum supported length applies to each response included in the `values` array. | 256 |
 | [HighlightAnnotation](#highlightAnnotation) | selectionText | A plain text rendering of the highlighted segment of the annotated resource. | 2048 |
 | [MediaLocation](#mediaLocation) | currentTime | A time interval or duration that represents the current playback position measured from the beginning of a [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [MediaObject](#mediaObject) | duration | A time interval that represents the time taken to complete the [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [MediaObject](#mediaObject) | duration | A time interval that represents the total length in time of the [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
 | [Membership](#membership) | roles\<role\> | Minimum supported length applies to each Caliper designated role [Term](#termDef) included in the `roles` array. | 256 |
 | [Membership](#membership) | status | The Caliper [Term](termDef) designated for the selected status. | 256 | 
 | [Message](#message) | body | A plain-text rendering of the body content of the [Message](#message). | 4096 | 
-| [MultipleChoiceResponse](#multipleChoiceResponse) | value | Plain text representation of the selected option | 256 |
-| [MultipleResponseResponse](#multipleResponseResponse) | values\<value\> | Minimum supported length applies to each selected option included in the `values` array. | 256 |
-| [Response](#response) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Response](#response) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Response](#response) | duration | A time interval that represents the time taken to complete the [Response](#response).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [MultipleChoiceResponse](#multipleChoiceResponse), [TrueFalseResponse](#trueFalseResponse) | value | Plain text representation of the selected option | 256 |
 | [Result](#result) | comment | Plain text feedback provided by the scorer. | 1024 |
-| [SelectTextResponse](#selectTextResponse) | values\<value\> | Minimum supported length applies to each selected response included in the `values` array. | 256 |
-| [SoftwareApplication](#softwareApplication) | version | Designates the current form or version of the [SoftwareApplication](#softwareApplication). | 64 |
-| [Session](#session) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Session](#session) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
 
 <a name="changeLog">
 
