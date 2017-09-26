@@ -25,16 +25,16 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 2.1 [Event](#infoModelEvent)
   * 2.2 [Entity](#infoModelEntity)
   * 2.3 [Metric Profiles](#infoModelProfiles)
-      * 2.3.1 [Basic Profile](#basicProfile)
-      * 2.3.2 [Annotation Profile](#annotationProfile)
-      * 2.3.3 [Assessment Profile](#assessmentProfile)
-      * 2.3.4 [Assignable Profile](#assignableProfile)
-      * 2.3.5 [Forum Profile](#forumProfile)
-      * 2.3.6 [Grading Profile](#gradingProfile)
-      * 2.3.7 [Media Profile](#mediaProfile)
-      * 2.3.8 [Reading Profile](#readingProfile)
-      * 2.3.9 [Session Profile](#sessionProfile)
-      * 2.3.10 [Tool Use Profile](#toolUseProfile)
+    * 2.3.1 [Basic Profile](#basicProfile)
+    * 2.3.2 [Annotation Profile](#annotationProfile)
+    * 2.3.3 [Assessment Profile](#assessmentProfile)
+    * 2.3.4 [Assignable Profile](#assignableProfile)
+    * 2.3.5 [Forum Profile](#forumProfile)
+    * 2.3.6 [Grading Profile](#gradingProfile)
+    * 2.3.7 [Media Profile](#mediaProfile)
+    * 2.3.8 [Reading Profile](#readingProfile)
+    * 2.3.9 [Session Profile](#sessionProfile)
+    * 2.3.10 [Tool Use Profile](#toolUseProfile)
 * 3.0 [Serialization of the Model](#dataSerialization)
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
@@ -44,9 +44,10 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 4.2 [Envelope](#sensorEnvelope)
   * 4.3 [Transport](#sensorTransport)
 * 5.0 [Endpoint](#endpoint)
-  * 5.1 [Minimum Supported String Lengths](#endpointStringLengths)
-  * 5.2.1 [HTTP Endpoint](#httpEndpoint)
-  * 5.2.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
+  * [5.1 Endpoint Requirements](#endpointRequirements)
+    * 5.1.1 [HTTP Endpoint](#httpEndpoint)
+    * 5.1.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
+  * 5.2 [String Lengths and Storage](#stringLengths)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Events](#events)
   * B.1 [Event](#event)
@@ -119,13 +120,14 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * D.1 [TextPositionSelector](#textPositionSelector)
 * [Appendix E. Roles](#roles)
 * [Appendix F. Status](#status)
-* [Appendix G. Change Log](#changeLog)
-  * G.1 [Profiles](#changeLogProfiles)
-  * G.2 [Actions](#changeLogActions)
-  * G.3 [Events](#changeLogEvents)
-  * G.4 [Entities](#changeLogEntities)
-  * G.5 [Properties](#changeLogProperties)
-  * G.6 [JSON-LD Context](#changeLogJsonldContext)
+* [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths)
+* [Appendix H. Change Log](#changeLog)
+  * H.1 [Profiles](#changeLogProfiles)
+  * H.2 [Actions](#changeLogActions)
+  * H.3 [Events](#changeLogEvents)
+  * H.4 [Entities](#changeLogEntities)
+  * H.5 [Properties](#changeLogProperties)
+  * H.6 [JSON-LD Context](#changeLogJsonldContext)
 * [Contributors](#contributors)
 * [References](#references)
 * [About this Document](#aboutThisDoc)
@@ -1303,65 +1305,13 @@ Irrespective of the chosen transport protocol, each message sent by a [Sensor](#
 
 A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint) for recommendations.
 
-<a name="endpointStringLengths" />
+<a name="endpointRequirements" />   
 
-### 5.1 Minimum Supported String Lengths
-Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementers will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, the following *minimum* character lengths SHOULD be adopted for the Caliper string properties listed below.  
-
-| Domain | Property | Description | Minimum Length |
-| :------| :------- | :---------- | ---------: |
-| [Event](#event) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>`. | 2048 |
-| [Event](#event) | type | The Caliper [Term](termDef) designated for the [Event](#event). | 256 |
-| [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 256 |
-| [Event](#event) | eventTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Entity](#entity) | id | The [IRI](#iriDef) assigned to the [Entity](#entity). | 2048 |
-| [Entity](#entity) | type | The Caliper designated [Term](termDef) for the [Entity](#entity). | 256 |
-| [Entity](#entity) | name | A word or phrase by which the [Entity](#entity) is known. | 256 |
-| [Entity](#entity) | description | A human-readable plain text representation of the [Entity](#entity). | 1024 |
-| [Entity](#entity) | dateCreated | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Entity](#entity) | dateModified | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [AssignableDigitalResource](#assignableDigitalResource) | dateToActivate | A date and time value expressed with millisecond precision that describes when the resource was activated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [AssignableDigitalResource](#assignableDigitalResource) | dateToShow | A date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [AssignableDigitalResource](#assignableDigitalResource) | dateToStartOn | A date and time value expressed with millisecond precision that describes when the resource can be started. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [AssignableDigitalResource](#assignableDigitalResource) | dateToSubmit | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Attempt](#attempt) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Attempt](#attempt) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Attempt](#attempt) | duration | A time interval that represents the time taken to complete the [Attempt](#attempt).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [AudioObject](#audioObject) | volumeLevel | The current volume level. | 32 |
-| [AudioObject](#audioObject) | volumeMax | The maximum volume level permitted. | 32 |
-| [AudioObject](#audioObject) | volumeMin | The minimum volume level permitted.  | 32 |
-| [BookmarkAnnotation](#bookmarkAnnotation) | BookmarkNotes | A plain text rendering of the note that accompanies the bookmark. | 1024 |
-| [CourseOffering](#courseOffering) | academicSession | A human-readable identifier of the designated period in which the course occurs. | 256 |
-| [CourseOffering](#courseOffering) | courseNumber | A human-readable identifier assigned to the course. | 128 |
-| [CourseSection](#courseSection) | category | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | 128 |
-| [DigitalResource](#digitalResource) | mediaType | IANA approved media type or subtype that identifies the file format of the resource. | 128 |
-| [DigitalResource](#digitalResource) | datePublished | A date and time value expressed with millisecond precision that provides the publication date of the resource. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [DigitalResource](#digitalResource) | version | Designates the current form or version of the resource. | 64 |
-| [FillinBlankResponse](#fillinBlankResponse) | values\<value\> | Minimum supported length applies to each plain text response included in the `values` array. | 256 |
-| [HighlightAnnotation](#highlightAnnotation) | selectionText | A plain text rendering of the highlighted segment of the annotated resource. | 2048 |
-| [MediaLocation](#mediaLocation) | currentTime | A time interval or duration that represents the current playback position measured from the beginning of a [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [MediaObject](#mediaObject) | duration | A time interval that represents the time taken to complete the [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [Membership](#membership) | roles\<role\> | Minimum supported length applies to each Caliper designated role [Term](#termDef) included in the `roles` array. | 256 |
-| [Membership](#membership) | status | The Caliper [Term](termDef) designated for the selected status. | 256 | 
-| [Message](#message) | body | A plain-text rendering of the body content of the [Message](#message). | 4096 | 
-| [MultipleChoiceResponse](#multipleChoiceResponse) | value | Plain text representation of the selected option | 256 |
-| [MultipleResponseResponse](#multipleResponseResponse) | values\<value\> | Minimum supported length applies to each selected option included in the `values` array. | 256 |
-| [Response](#response) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Response](#response) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Response](#response) | duration | A time interval that represents the time taken to complete the [Response](#response).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [Result](#result) | comment | Plain text feedback provided by the scorer. | 1024 |
-| [SelectTextResponse](#selectTextResponse) | values\<value\> | Minimum supported length applies to each selected response included in the `values` array. | 256 |
-| [SoftwareApplication](#softwareApplication) | version | Designates the current form or version of the [SoftwareApplication](#softwareApplication). | 64 |
-| [Session](#session) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Session](#session) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
-
-### 5.2 Endpoint Requirements
+### 5.1 Endpoint Requirements
 
 <a name="httpEndpoint" />
 
-#### 5.2.1 HTTP Endpoint Requirements
+#### 5.1.1 HTTP Endpoint Requirements
 * An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
 * An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
 * An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
@@ -1379,8 +1329,13 @@ Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Cal
 
 <a name="nonHttpEndpoint" />
 
-#### 5.2.2 Endpoints supporting non-HTTP protocols
-Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum interoperability.
+#### 5.1.2 Endpoints supporting non-HTTP protocols
+Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations.  It is RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum interoperability.
+
+<a name="stringLengths" />
+
+### 5.2 String Lengths and Storage
+Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementers will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, care should be taken to ensure that strings of character data can be stored without truncation.  See [Appendix G. Minimum Supported String Lengths](#minimumSupportedStringLengths) for a list of Caliper data properties and recommended *minimum* string lengths.
 
 <a name="actions"/>
    
@@ -5972,14 +5927,69 @@ The status of a [member](#member) within an organization can be set to one of th
 | Active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
 | Inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
+<a name="minSupportedStringLengths">
+
+## Appendix G. Minimum Supported String Lengths
+
+When storing normalized or "flattened" Caliper [Event](#event) data, the following *minimum* character lengths SHOULD be assumed in order to accommodate Caliper data expressed as strings of variable length. 
+
+| Domain | Property | Description | Minimum Length |
+| :------| :------- | :---------- | ---------: |
+| [Event](#event) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>`. | 2048 |
+| [Event](#event) | type | The Caliper [Term](termDef) designated for the [Event](#event). | 256 |
+| [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 256 |
+| [Event](#event) | eventTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Entity](#entity) | id | The [IRI](#iriDef) assigned to the [Entity](#entity). | 2048 |
+| [Entity](#entity) | type | The Caliper designated [Term](termDef) for the [Entity](#entity). | 256 |
+| [Entity](#entity) | name | A word or phrase by which the [Entity](#entity) is known. | 256 |
+| [Entity](#entity) | description | A human-readable plain text representation of the [Entity](#entity). | 1024 |
+| [Entity](#entity) | dateCreated | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Entity](#entity) | dateModified | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [AssignableDigitalResource](#assignableDigitalResource) | dateToActivate | A date and time value expressed with millisecond precision that describes when the resource was activated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [AssignableDigitalResource](#assignableDigitalResource) | dateToShow | A date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [AssignableDigitalResource](#assignableDigitalResource) | dateToStartOn | A date and time value expressed with millisecond precision that describes when the resource can be started. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [AssignableDigitalResource](#assignableDigitalResource) | dateToSubmit | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Attempt](#attempt) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Attempt](#attempt) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Attempt](#attempt) | duration | A time interval that represents the time taken to complete the [Attempt](#attempt).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [AudioObject](#audioObject) | volumeLevel | The current volume level. | 32 |
+| [AudioObject](#audioObject) | volumeMax | The maximum volume level permitted. | 32 |
+| [AudioObject](#audioObject) | volumeMin | The minimum volume level permitted.  | 32 |
+| [BookmarkAnnotation](#bookmarkAnnotation) | BookmarkNotes | A plain text rendering of the note that accompanies the bookmark. | 1024 |
+| [CourseOffering](#courseOffering) | academicSession | A human-readable identifier of the designated period in which the course occurs. | 256 |
+| [CourseOffering](#courseOffering) | courseNumber | A human-readable identifier assigned to the course. | 128 |
+| [CourseSection](#courseSection) | category | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | 128 |
+| [DigitalResource](#digitalResource) | mediaType | IANA approved media type or subtype that identifies the file format of the resource. | 128 |
+| [DigitalResource](#digitalResource) | datePublished | A date and time value expressed with millisecond precision that provides the publication date of the resource. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [DigitalResource](#digitalResource) | version | Designates the current form or version of the resource. | 64 |
+| [FillinBlankResponse](#fillinBlankResponse) | values\<value\> | Minimum supported length applies to each plain text response included in the `values` array. | 256 |
+| [HighlightAnnotation](#highlightAnnotation) | selectionText | A plain text rendering of the highlighted segment of the annotated resource. | 2048 |
+| [MediaLocation](#mediaLocation) | currentTime | A time interval or duration that represents the current playback position measured from the beginning of a [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [MediaObject](#mediaObject) | duration | A time interval that represents the time taken to complete the [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [Membership](#membership) | roles\<role\> | Minimum supported length applies to each Caliper designated role [Term](#termDef) included in the `roles` array. | 256 |
+| [Membership](#membership) | status | The Caliper [Term](termDef) designated for the selected status. | 256 | 
+| [Message](#message) | body | A plain-text rendering of the body content of the [Message](#message). | 4096 | 
+| [MultipleChoiceResponse](#multipleChoiceResponse) | value | Plain text representation of the selected option | 256 |
+| [MultipleResponseResponse](#multipleResponseResponse) | values\<value\> | Minimum supported length applies to each selected option included in the `values` array. | 256 |
+| [Response](#response) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Response](#response) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Response](#response) | duration | A time interval that represents the time taken to complete the [Response](#response).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [Result](#result) | comment | Plain text feedback provided by the scorer. | 1024 |
+| [SelectTextResponse](#selectTextResponse) | values\<value\> | Minimum supported length applies to each selected response included in the `values` array. | 256 |
+| [SoftwareApplication](#softwareApplication) | version | Designates the current form or version of the [SoftwareApplication](#softwareApplication). | 64 |
+| [Session](#session) | startedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Session](#session) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
+| [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
+
 <a name="changeLog">
 
-##  Appendix G. Change Log
+## Appendix H. Change Log
 Caliper 1.1 additions and deprecations are summarized below.
 
 <a name="changeLogProfiles">
 
-### G.1 Profiles
+### H.1 Profiles
 | Profile | Status | Disposition |
 | :------ | :----: | :---------- |
 | [AssessmentItem](#assessmentItemProfile) | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
@@ -5989,7 +5999,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 
 <a name="changeLogActions">
 
-### G.2 Actions
+### H.2 Actions
 | Actions | Status | WordNet® Gloss |
 | :------ | :----: | :------------- |
 | [Added](#added) | New | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
@@ -6007,7 +6017,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 
 <a name="changeLogEvents">
 
-### G.3 Events
+### H.3 Events
 | Event | Status | Disposition |
 | :---- | :----: | :---------- |
 | [AnnotationEvent](#annotationEvent) | Revised | The following actions have been deprecated and are targeted for removal from the list of supported [AnnotationEvent](#annotationEvent) actions: [Attached](#attached), [Classified](#classified),  [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended) and [Subscribed](#subscribed). |
@@ -6025,7 +6035,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 
 <a name="changeLogEntities">
 
-### G.4 Entities
+### H.4 Entities
 | Entity | Status | Disposition |
 | :----- | :----: | :---------- |
 | [Chapter](#chapter) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
@@ -6045,7 +6055,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 
 <a name="changeLogProperties">
 
-### G.5 Properties
+### H.5 Properties
 | Domain | Property | Status | Disposition |
 | :------| :------- | :----: | :---------- |
 | [Event](#event) | id | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is RECOMMENDED. | 
@@ -6096,7 +6106,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 
 <a name="changeLogJsonldContext">
 
-### G.6 JSON-LD context
+### H.6 JSON-LD context
 A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document has been created.  See http://purl.imsglobal.org/ctx/caliper/v1p1.
 
 <a name="contributors" />
