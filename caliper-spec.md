@@ -1,6 +1,6 @@
 # IMS Global Learning Consortium, Inc.
 
-# Caliper Analytics® Specification, version 1.1
+# Caliper Analytics&reg; Specification, version 1.1
 
 ## IPR and Distribution Notices
 
@@ -8,7 +8,7 @@ Recipients of this document are requested to submit, with their comments, notifi
 
 IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
 
-Copyright © 2017 IMS Global Learning Consortium. All Rights Reserved.
+Copyright&copy; 2017 IMS Global Learning Consortium. All Rights Reserved.
 
 Use of this specification to develop products or services is governed by the license with IMS found on the IMS website: http://www.imsglobal.org/speclicense.html.
 
@@ -142,9 +142,9 @@ Consider the enterprising instructor seeking to augment if not transform the cla
 
 Analyzing the viewing behavior of her students in relation to the questions they pose about her course content is vital to understanding student comprehension and performance.  Yet exploring such relationships is all too often a challenging exercise.  Likely there are significant barriers to overcome.  Is the data required for analysis actually collected?  If it exists, who owns it?  If ownership is not an issue what about privacy concerns?  If privacy protocols are in place is the data easy to retrieve?  If retrievable how difficult is it to combine data sourced from multiple platforms?
 
-The Caliper Analytics® specification seeks to address a number of the issues outlined above by providing a structured approach to describing, collecting and exchanging learning activity data.  Establishing a common vocabulary for describing learning interactions is a central objective.  Promoting data interoperability, data sharing and data-informed decision making are also important goals.
+The Caliper Analytics&reg; specification seeks to address a number of the issues outlined above by providing a structured approach to describing, collecting and exchanging learning activity data.  Establishing a common vocabulary for describing learning interactions is a central objective.  Promoting data interoperability, data sharing and data-informed decision making are also important goals.
 
-Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting event data from instrumented applications to target endpoints for storage, analysis and use.  Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
+Caliper also defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting event data from instrumented applications to target endpoints for storage, analysis and use.  Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
 ### <a name="conventions"></a>1.1 Conventions
 
@@ -180,9 +180,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 <a name="objectDef"></a>__Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that becomes the focus, target or object of an interaction.  A Caliper [Event](#event) includes an `object` attribute for representing the resource.
 
-<a name="sensorDef"></a>__Sensor__: Software assets deployed within a learning application that implement the [Sensor API™](#sensorAPIDef) for marshalling and transmitting Caliper data to a target endpoint.
+<a name="sensorDef"></a>__Sensor__: Software assets deployed within a learning application that implement the [Sensor API&trade;](#sensorAPIDef) for marshalling and transmitting Caliper data to a target endpoint.
 
-<a name="sensorAPIDef"></a>__Sensor API™__: The standard set of methods and supported parameters that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable way.
+<a name="sensorAPIDef"></a>__Sensor API&trade;__: The standard set of methods and supported parameters that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable way.
 
 <a name="termDef"></a>__Term__: a word or short expression that expands to an [IRI](#iriDef) when mapped to a JSON-LD [context](#contextDef) document. Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
 
@@ -337,7 +337,7 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 [AnnotationEvent](#annotationEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. | Required |
 | [AnnotationEvent](#annotationEvent) | [Highlighted](#highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). | Optional |
@@ -380,7 +380,7 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
 | [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
@@ -441,7 +441,7 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [AssignableEvent](#assignableEvent) | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). | Optional |
 | [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). | Optional |
@@ -499,7 +499,7 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). | Optional |
 | [ForumEvent](#forumEvent) | [Unsubscribed](#unsubscribed) | Inverse of [Subscribed](#subscribed). | Optional |
@@ -550,7 +550,7 @@ Create and send a Caliper [GradeEvent](#gradeEvent) to a target [Endpoint](#endp
 [GradeEvent](#gradeEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [GradeEvent](#gradeEvent) | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). | Required |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
@@ -589,7 +589,7 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [MediaEvent](#mediaEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). | Required |
 | [MediaEvent](#mediaEvent) | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). | Required |
@@ -675,7 +675,7 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Required |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Required |
@@ -714,7 +714,7 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 [SessionEvent](#sessionEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). | Required |
 | [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). | Optional |
@@ -754,7 +754,7 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 [ToolUseEvent](#toolUseEvent)
 
 #### Supported Actions
-| Event | Action | WordNet® Gloss | Conformance |
+| Event | Action | WordNet&reg; Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [ToolUseEvent](#toolUseEvent) | Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). | Required |
 
@@ -1000,9 +1000,9 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
 
 Analytical consumers require accurate [JSON-LD](#jsonldDef) context definitions to be capable of interpreting coerced values.  For Caliper defined [Terms](#terms) implementers need only reference the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) in their [Event](#event) or [Entity](#entity) *describe* [JSON-LD](#jsonldDef) documents in order to link to the associated term definitions.  A Caliper [Event](#event) or [Entity](#entity) containing coerced values that do not map to an explicit context declaration will be considered nonconformant.
 
-## <a name="sensor"></a>4.0 The Sensor API™
+## <a name="sensor"></a>4.0 The Sensor API&trade;
 
-Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
+Caliper defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
 <div style="design: block;margin: 0 auto"><img alt="Caliper Sensor" src="assets/caliper-sensor-v2.png"></div>
 
@@ -1027,7 +1027,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | :------- | :--- | ----------- | :---------: |
 | sensor | string | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
 | sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| dataVersion | string | A string value indicating which version of the IMS Caliper Analytics® specification governs the form of the Caliper entities and events contained in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
+| dataVersion | string | A string value indicating which version of the IMS Caliper Analytics&reg; specification governs the form of the Caliper entities and events contained in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
 | data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
 
 #### Example: Mixed payload
@@ -1259,11 +1259,11 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
    
 ## <a name="actions"></a>Appendix A. Actions
 
-Caliper includes a vocabulary of actions for describing learning interactions. Each action [Term](#termdef) is based on the past-tense form of an English (en-US) verb.  An action [Term](#termdef) can also indicate a change in a particular characteristic of the `object` (e.g., resolution, size, speed, volume).  Each action [Term](#termdef) is mapped to a persistent [IRI](#iriDef) listed in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Each action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton University's WordNet® project in order to eliminate ambiguity and aid natural language processing.
+Caliper includes a vocabulary of actions for describing learning interactions. Each action [Term](#termdef) is based on the past-tense form of an English (en-US) verb.  An action [Term](#termdef) can also indicate a change in a particular characteristic of the `object` (e.g., resolution, size, speed, volume).  Each action [Term](#termdef) is mapped to a persistent [IRI](#iriDef) listed in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Each action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton University's WordNet&reg; project in order to eliminate ambiguity and aid natural language processing.
  
  Each Caliper [Event](#event) type supports one or more of the actions listed below.  The [Event](#event) `action` property string value MUST be set to the appropriate [Term](#termDef). Only one action may be specified per [Event](#event).
 
-| Term (IRI) | WordNet® Gloss |
+| Term (IRI) | WordNet&reg; Gloss |
 | :--------- | :------------- |
 | <a name="abandoned"></a>Abandoned (http://purl.imsglobal.org/caliper/actions/Abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
 | <a name="activated"></a>Activated (http://purl.imsglobal.org/caliper/actions/Activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
@@ -1406,7 +1406,7 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
 [Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Bookmarked](#bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. |
 | [Highlighted](#highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). |
@@ -1416,7 +1416,7 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
 #### Deprecated Actions
 The following actions are deprecated and targeted for removal from the [AnnotationEvent](#annotationEvent) list of supported actions.  The actions will be retained as entries in the Caliper [actions](#actions) vocabulary as many are likely to appear in future Metric Profiles.  
 
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Attached](#attached) | [Cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v). |
 | [Classified](#classified) | [Assign to a class or kind](http://wordnet-rdf.princeton.edu/wn31/200741667-v). | 
@@ -1520,7 +1520,7 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
 | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
@@ -1626,14 +1626,14 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 [Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
  
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
 | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
 | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
 
 #### Deprecated Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
 | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
@@ -1757,7 +1757,7 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
 | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
@@ -1769,7 +1769,7 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 #### Deprecated Actions
 The following actions are deprecated and targeted for removal from the [AssignableEvent](#assignableEvent) list of supported actions.
 
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Abandoned](#abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
 | [Hid](#hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v).  Inverse of [Showed](#showed). |
@@ -1864,7 +1864,7 @@ http://purl.imsglobal.org/caliper/ForumEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
 | [Unsubscribed](#unsubscribed) | Inverse of [Subscribed](#subscribed). |
@@ -1954,7 +1954,7 @@ http://purl.imsglobal.org/caliper/GradeEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
 
@@ -2042,7 +2042,7 @@ http://purl.imsglobal.org/caliper/MediaEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
 | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
@@ -2067,7 +2067,7 @@ http://purl.imsglobal.org/caliper/MediaEvent
 #### Deprecated Actions
 The following actions are deprecated and targeted for removal from the [MediaEvent](#mediaEvent) list of supported actions.
 
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Rewound](#rewound) | [Wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v). |
 
@@ -2153,7 +2153,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Posted](#posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
 | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
@@ -2318,7 +2318,7 @@ http://purl.imsglobal.org/caliper/NavigationEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
 
@@ -2408,7 +2408,7 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
 
@@ -2445,7 +2445,7 @@ http://purl.imsglobal.org/caliper/ReadingEvent
 [Event](#event)
 
 #### Deprecated actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
 | [Searched](#searched) | [Try to locate or discover, or try to establish the existence of](http://wordnet-rdf.princeton.edu/wn31/201318273-v). |
@@ -2484,7 +2484,7 @@ http://purl.imsglobal.org/caliper/SessionEvent
 ![SessionEvent TimedOut image](assets/caliper-session_event_timedout-v2.png)
 
 #### Supported actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). |
 | [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). |
@@ -2610,7 +2610,7 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
 | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). | 
@@ -2701,7 +2701,7 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
 [Event](#event)
 
 #### Supported actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
 
@@ -2779,7 +2779,7 @@ http://purl.imsglobal.org/caliper/ViewEvent
 [Event](#event)
 
 #### Supported Actions
-| Action | WordNet® Gloss |
+| Action | WordNet&reg; Gloss |
 | :----- | :------------- |
 | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
@@ -5827,7 +5827,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 
 ### <a name="changeLogActions"></a>H.2 Actions
 
-| Actions | Status | WordNet® Gloss |
+| Actions | Status | WordNet&reg; Gloss |
 | :------ | :----: | :------------- |
 | [Added](#added) | New | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
 | [Created](#created) | New | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v).  Inverse of [Deleted](#deleted). |
@@ -5976,7 +5976,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="linkedData"></a>__Linked Data__.  Tim Berners-Lee.  "Linked Data."  W3C internal document.  July 2006, rev. June 2009.  URL: https://www.w3.org/DesignIssues/LinkedData.html
 
-<a name="lti"></a>__LTI__.  IMS Global Learning Consortium.  Learning Tools Interoperability<sup>&reg;</sup> 2.1.  30 March 2017.  URL: https://www.imsglobal.org/specs/ltiv2p1
+<a name="lti"></a>__LTI__.  IMS Global Learning Consortium.  Learning Tools Interoperability&reg; 2.1.  30 March 2017.  URL: https://www.imsglobal.org/specs/ltiv2p1
 
 <a name="rdf"></a>__RDF__.  W3C. Resource Description Framework (RDF).  URL: https://www.w3.org/RDF/
 
@@ -5994,7 +5994,7 @@ The following Caliper Working Group participants contributed to the writing of t
 
 <a name="caliperWhitepaper"></a>__White paper__.  IMS Global Learning Consortium.  "Learning Measurement for Analytics Whitepaper \[sic\]."  August 2013.  URL: https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
 
-<a name="wordnet"></a>__WordNet__.  Princeton University.  WordNet®.  A lexical database for English. 2010.  URL: https://wordnet.princeton.edu/
+<a name="wordnet"></a>__WordNet__.  Princeton University.  WordNet&reg;.  A lexical database for English. 2010.  URL: https://wordnet.princeton.edu/
 
 ## <a name="aboutThisDoc"></a>About this Document
 
@@ -6012,9 +6012,9 @@ IMS Global would appreciate receiving your comments and suggestions.
 
 Please contact IMS Global through our website at http://www.imsglobal.org.
 
-Please refer to Document Name: IMS Caliper Analytics® 1.1
+Please refer to Document Name: IMS Caliper Analytics&reg; 1.1
 Candidate Final Specification v1.1
 
-Date: 14 August 2017
+Date: 28 September 2017
 
-This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability® (LTI®), Accessible Portable Item Protocol® (APIP®), Question and Test Interoperability® (QTI®), Common Cartridge® (CC®), AccessForAll™, OneRoster®, Caliper Analytics® and SensorAPI™. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
+This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability&reg; (LTI&reg;), Accessible Portable Item Protocol&reg; (APIP&reg;), Question and Test Interoperability&reg; (QTI&reg;), Common Cartridge&reg; (CC&reg;), AccessForAll&trade;, OneRoster&reg;, Caliper Analytics&reg; and SensorAPI&trade;. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
