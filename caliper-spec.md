@@ -1,4 +1,4 @@
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="IMS Global Learning Consortium, Inc. Logo" src="assets/IMSGlobalreg-h170w600.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="IMS Global Learning Consortium, Inc. Logo" src="assets/ims-logo-h170w600.png"></div>
 
 # IMS Global Learning Consortium, Inc.
 
