@@ -5826,7 +5826,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | :------ | :----: | :---------- |
 | AssessmentItem Profile | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
 | [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. |
-| [Grading Profile](#gradingProfile) | New | Replaces deprecated [Outcome Profile](#outcomeProfile). |
+| [Grading Profile](#gradingProfile) | New | Replaces [Outcome Profile](#outcomeProfile).  Adds [Score](#score). |
 | Outcome Profile | Removed | Replaced by [Grading Profile](#gradingProfile). |
 | [Reading Profile](#readingProfile) | Revised | [ReadingEvent](#readingEvent) has been deprecated and targeted for removal while [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) have been added to the profile. [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume) have been deprecated in favor of [Document](#document), [Chapter](#chapter) and [Page](#page). |
 | [Tool Use Profile](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) and a [SoftwareApplication](#softwareApplication). |
