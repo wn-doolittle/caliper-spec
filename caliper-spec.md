@@ -5825,7 +5825,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | Profile | Status | Disposition |
 | :------ | :----: | :---------- |
 | AssessmentItem Profile | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
-| [Basic Profile](#basicProfile) | New | Provides a generic (Event)(#event) for describing learning or supporting activities that have yet to be modeled by Caliper. |
+| [Basic Profile](#basicProfile) | New | Utilize the generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper. |
 | [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. |
 | [Grading Profile](#gradingProfile) | New | Replaces [Outcome Profile](#outcomeProfile).  Adds [Score](#score). |
 | Outcome Profile | Removed | Replaced by [Grading Profile](#gradingProfile). |
