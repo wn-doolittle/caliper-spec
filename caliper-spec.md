@@ -4873,6 +4873,9 @@ http://purl.imsglobal.org/caliper/Person
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Person](#person) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Person](#person). | Optional |
 
+#### Warning
+Sensors SHOULD NOT send personally identifiable information within the [Person](#person) entity without due consideration. This applies especially to the _name_ and _description_ properties; Sensors SHOULD NOT put personally identifiable information into these properties without due consideration.
+
 #### Example
 ```
 {
