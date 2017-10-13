@@ -3460,7 +3460,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
 [CourseSection](#courseSection)
 
 #### Warning
-Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
 
 #### Example
 ```
@@ -3505,7 +3505,7 @@ http://purl.imsglobal.org/caliper/CourseSection
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [CourseSection](#courseSection). | Optional |
 
 #### Warning
-Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
 
 #### Example
 ```
@@ -4123,7 +4123,7 @@ http://purl.imsglobal.org/caliper/Group
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Group](#group). | Optional |
 
 #### Warning
-Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
 
 #### Example
 ```
@@ -4518,7 +4518,7 @@ http://purl.imsglobal.org/caliper/Membership
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Membership](#membership). | Optional |
 
 #### Warning
-Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
 
 #### Example
 ```
@@ -4788,7 +4788,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 [CourseOffering](#courseOffering), [CourseSection](#courseSection), [Group](#group)
 
 #### Warning
-Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
 
 #### Example
 ```
