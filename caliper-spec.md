@@ -182,6 +182,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 <a name="objectDef"></a>__Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that becomes the focus, target or object of an interaction.  A Caliper [Event](#event) includes an `object` attribute for representing the resource.
 
+<a name="pii"></a>__PII__: information that can be used on its own, or with other information, to identify, locate, or contact a single person, or to identify a single person within a context.
+
 <a name="sensorDef"></a>__Sensor__: Software assets deployed within a learning application that implement the [Sensor API&trade;](#sensorAPIDef) for marshalling and transmitting Caliper data to a target endpoint.
 
 <a name="sensorAPIDef"></a>__Sensor API&trade;__: The standard set of methods and supported parameters that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable way.
@@ -3459,8 +3461,8 @@ http://purl.imsglobal.org/caliper/CourseOffering
 #### Subtypes 
 [CourseSection](#courseSection)
 
-#### Warning
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+#### Privacy
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -3504,8 +3506,8 @@ http://purl.imsglobal.org/caliper/CourseSection
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [CourseSection](#courseSection). | Optional |
 
-#### Warning
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+#### Privacy
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4122,8 +4124,8 @@ http://purl.imsglobal.org/caliper/Group
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Group](#group) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Group](#group). | Optional |
 
-#### Warning
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+#### Privacy
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4517,8 +4519,8 @@ http://purl.imsglobal.org/caliper/Membership
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Membership](#membership) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Membership](#membership). | Optional |
 
-#### Warning
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+#### Privacy
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4787,8 +4789,8 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 #### Subtypes 
 [CourseOffering](#courseOffering), [CourseSection](#courseSection), [Group](#group)
 
-#### Warning
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+#### Privacy
+Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4888,8 +4890,8 @@ http://purl.imsglobal.org/caliper/Person
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Person](#person) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Person](#person). | Optional |
 
-#### Warning
-Sensors SHOULD NOT send personally identifiable information within the [Person](#person) entity without due consideration. This applies especially to the `name` and `description` properties; Sensors SHOULD NOT put personally identifiable information into these properties without due consideration.
+#### Privacy
+Sensors SHOULD NOT send [personally identifiable information](#pii) within the [Person](#person) entity without due consideration. This applies especially to the `name` and `description` properties; Sensors SHOULD NOT put [personally identifiable information](#pii) into these properties without due consideration.
 
 #### Example
 ```
