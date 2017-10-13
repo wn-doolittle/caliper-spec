@@ -3459,6 +3459,9 @@ http://purl.imsglobal.org/caliper/CourseOffering
 #### Subtypes 
 [CourseSection](#courseSection)
 
+#### Warning
+Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+
 #### Example
 ```
 {
@@ -3500,6 +3503,9 @@ http://purl.imsglobal.org/caliper/CourseSection
 | dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was created MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [CourseSection](#courseSection). | Optional |
+
+#### Warning
+Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
 
 #### Example
 ```
@@ -4116,6 +4122,9 @@ http://purl.imsglobal.org/caliper/Group
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Group](#group) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Group](#group). | Optional |
 
+#### Warning
+Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+
 #### Example
 ```
 {
@@ -4508,6 +4517,9 @@ http://purl.imsglobal.org/caliper/Membership
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Membership](#membership) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Membership](#membership). | Optional |
 
+#### Warning
+Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
+
 #### Example
 ```
 {
@@ -4774,6 +4786,9 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 
 #### Subtypes 
 [CourseOffering](#courseOffering), [CourseSection](#courseSection), [Group](#group)
+
+#### Warning
+Sensors SHOULD NOT send membership information that associate [Persons](#person) with an organization without due consideration, as membership can potentially be considered personally identifiable information.
 
 #### Example
 ```
