@@ -4349,6 +4349,9 @@ http://purl.imsglobal.org/caliper/LtiSession
 | duration | Duration | A time interval that represents the time taken to complete the [LtiSession](#ltiSession) MAY be specified.  If a duration is specified the value MUST conform to the ISO 8601 duration format. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [LtiSession](#ltiSession). | Optional |
 
+#### Privacy
+Sensors SHOULD NOT send LTI message parameter information that [identifies](#pii) a [Person](#person) without due consideration; additionally, Sensors SHOULD not send LTI message parameter information that contains secret or sensitive information that should reasonably be bound to the relationship between the LTI Tool Consumer and LTI Tool Provider.
+
 #### Deprecated Properties
 The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
  
