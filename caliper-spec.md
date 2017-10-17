@@ -3462,7 +3462,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
 [CourseSection](#courseSection)
 
 #### Privacy
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -3507,7 +3507,7 @@ http://purl.imsglobal.org/caliper/CourseSection
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [CourseSection](#courseSection). | Optional |
 
 #### Privacy
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4125,7 +4125,7 @@ http://purl.imsglobal.org/caliper/Group
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Group](#group). | Optional |
 
 #### Privacy
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4520,7 +4520,7 @@ http://purl.imsglobal.org/caliper/Membership
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Membership](#membership). | Optional |
 
 #### Privacy
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4790,7 +4790,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 [CourseOffering](#courseOffering), [CourseSection](#courseSection), [Group](#group)
 
 #### Privacy
-Sensors SHOULD NOT send membership information that associates [Persons](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
