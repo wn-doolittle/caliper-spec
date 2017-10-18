@@ -5916,6 +5916,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Event](#event) | @type | Deprecated | Use `type`. |
 | [Event](#event) | action | Revised | `action` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Started*. |
 | [Event](#event) | referrer | New | Adds the ability to specify a referring context.  In the case of [NavigationEvent](#navigationEvent) `referrer` supersedes the deprecated `navigatedFrom` property. |
+| [Event](#event) | session | New | Adds the ability to specify the [Session](#session) to which this event belongs. |
 | [Event](#event) | extensions | New | Adds the ability to include custom attributes not defined by the model. |
 | [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
 | [Entity](#entity) | id | New | Replaces use of the [JSON-LD](#jsonldDef) keyword `@id` which is now aliased as `id` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
@@ -5986,6 +5987,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | Yong-Sang Cho | KERIS |
 | Ian Turgeon | University of Central Florida |
 | Chris Ward | Instructure |
+| Lance E Sloan | University of Michigan |
 
 #### Reference Implementation Contributors
 
@@ -5995,7 +5997,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | Viktor Haag | D2L |
 | Sophiann Hayet | Explorance |
 | Paul Kerschen | UC Berkeley |
-| Lance Sloan | University of Michigan |
+| Lance E Sloan | University of Michigan |
 | Anthony Whyte | University of Michigan |
 
 ## <a name="reference"></a>References
