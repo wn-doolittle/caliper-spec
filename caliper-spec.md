@@ -182,6 +182,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 <a name="objectDef"></a>__Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that becomes the focus, target or object of an interaction.  A Caliper [Event](#event) includes an `object` attribute for representing the resource.
 
+<a name="pii"></a>__Personally Identifiable Information (PII)__: information that can be used on its own, or with other information, to identify, locate, or contact a single person, or to identify a single person within a context.
+
 <a name="sensorDef"></a>__Sensor__: Software assets deployed within a learning application that implement the [Sensor API&trade;](#sensorAPIDef) for marshalling and transmitting Caliper data to a target endpoint.
 
 <a name="sensorAPIDef"></a>__Sensor API&trade;__: The standard set of methods and supported parameters that a [Sensor](#sensorDef) implements according to this specification in order to transmit Caliper data in an interoperable way.
@@ -3459,6 +3461,9 @@ http://purl.imsglobal.org/caliper/CourseOffering
 #### Subtypes 
 [CourseSection](#courseSection)
 
+#### Privacy
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
+
 #### Example
 ```
 {
@@ -3500,6 +3505,9 @@ http://purl.imsglobal.org/caliper/CourseSection
 | dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was created MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [CourseSection](#courseSection). | Optional |
+
+#### Privacy
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4116,6 +4124,9 @@ http://purl.imsglobal.org/caliper/Group
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Group](#group) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Group](#group). | Optional |
 
+#### Privacy
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
+
 #### Example
 ```
 {
@@ -4338,6 +4349,9 @@ http://purl.imsglobal.org/caliper/LtiSession
 | duration | Duration | A time interval that represents the time taken to complete the [LtiSession](#ltiSession) MAY be specified.  If a duration is specified the value MUST conform to the ISO 8601 duration format. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [LtiSession](#ltiSession). | Optional |
 
+#### Privacy
+Sensors SHOULD NOT send LTI message parameter information that [identifies](#pii) a [Person](#person) without due consideration; additionally, Sensors SHOULD NOT send LTI message parameter information that contains secret or sensitive information that should reasonably be bound to the relationship between the LTI Tool Consumer and LTI Tool Provider.
+
 #### Deprecated Properties
 The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
  
@@ -4507,6 +4521,9 @@ http://purl.imsglobal.org/caliper/Membership
 | dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Membership](#membership) was created MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Membership](#membership) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Membership](#membership). | Optional |
+
+#### Privacy
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
 
 #### Example
 ```
@@ -4775,6 +4792,9 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 #### Subtypes 
 [CourseOffering](#courseOffering), [CourseSection](#courseSection), [Group](#group)
 
+#### Privacy
+Sensors SHOULD NOT send membership information that associates a [Person](#person) with an organization without due consideration, as membership can potentially be considered [personally identifiable information](#pii).
+
 #### Example
 ```
 {
@@ -4872,6 +4892,9 @@ http://purl.imsglobal.org/caliper/Person
 | dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Person](#person) was created MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Person](#person) was last changed or modified MAY be specified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Person](#person). | Optional |
+
+#### Privacy
+Sensors SHOULD NOT send [personally identifiable information](#pii) within the [Person](#person) entity without due consideration. This applies especially to the `name` and `description` properties; Sensors SHOULD NOT put [personally identifiable information](#pii) into these properties without due consideration.
 
 #### Example
 ```
