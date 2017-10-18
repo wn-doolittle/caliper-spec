@@ -4350,7 +4350,7 @@ http://purl.imsglobal.org/caliper/LtiSession
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [LtiSession](#ltiSession). | Optional |
 
 #### Privacy
-Sensors SHOULD NOT send LTI message parameter information that [identifies](#pii) a [Person](#person) without due consideration; additionally, Sensors SHOULD not send LTI message parameter information that contains secret or sensitive information that should reasonably be bound to the relationship between the LTI Tool Consumer and LTI Tool Provider.
+Sensors SHOULD NOT send LTI message parameter information that [identifies](#pii) a [Person](#person) without due consideration; additionally, Sensors SHOULD NOT send LTI message parameter information that contains secret or sensitive information that should reasonably be bound to the relationship between the LTI Tool Consumer and LTI Tool Provider.
 
 #### Deprecated Properties
 The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
