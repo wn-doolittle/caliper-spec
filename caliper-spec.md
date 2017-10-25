@@ -5807,18 +5807,8 @@ When storing normalized or "flattened" Caliper [Event](#event) data, the followi
 | [Event](#event), [Entity](#entity) | id | A [UUID](#uuidDef) assigned to the [Event](#event) that is expressed as a [URN](#urnDef) in the form `urn:uuid:<UUID>` or the [IRI](#iriDef) assigned to the [Entity](#entity). | 2048 |
 | [Event](#event), [Entity](#entity) | type | The Caliper [Term](termDef) designated for the [Event](#event) or [Entity](#entity). | 256 |
 | [Event](#event) | action | The Caliper [Term](termDef) designated for the supported action. | 256 |
-| [Event](#event) | eventTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
 | [Entity](#entity) | name | A word or phrase by which the [Entity](#entity) is known. | 256 |
 | [Entity](#entity) | description | A human-readable plain text representation of the [Entity](#entity). | 1024 |
-| [Entity](#entity) | dateCreated | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
-| [Entity](#entity) | dateModified | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last modified. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
-| [AssignableDigitalResource](#assignableDigitalResource) | dateToActivate | An ISO 8601 date and time value expressed with millisecond precision that describes when the resource was activated. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
-| [AssignableDigitalResource](#assignableDigitalResource) | dateToShow | An ISO 8601 date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
-| [AssignableDigitalResource](#assignableDigitalResource) | dateToStartOn | An ISO 8601 date and time value expressed with millisecond precision that describes when the resource can be started. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
-| [AssignableDigitalResource](#assignableDigitalResource) | dateToSubmit | An ISO 8601 date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
-| [Attempt](#attempt), [Response](#response), [Session](#session) | startedAtTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Entity](#entity) being described commenced. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
-| [Attempt](#attempt), [Response](#response), [Session](#session) | endedAtTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Entity](#entity) being described was completed or terminated. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
-| [Attempt](#attempt), [Response](#response), [Session](#session) | duration | A time interval that represents the time taken to complete the [Entity](#entity) being described.  The value MUST conform to the ISO 8601 duration format. | 64 |
 | [AudioObject](#audioObject) | volumeLevel | The current volume level. | 32 |
 | [AudioObject](#audioObject) | volumeMax | The maximum volume level permitted. | 32 |
 | [AudioObject](#audioObject) | volumeMin | The minimum volume level permitted.  | 32 |
@@ -5827,12 +5817,9 @@ When storing normalized or "flattened" Caliper [Event](#event) data, the followi
 | [CourseOffering](#courseOffering), [CourseSection](#courseSection) | courseNumber | A human-readable identifier assigned to the course. | 128 |
 | [CourseSection](#courseSection) | category | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | 128 |
 | [DigitalResource](#digitalResource) | mediaType | IANA approved media type or subtype that identifies the file format of the resource. | 128 |
-| [DigitalResource](#digitalResource) | datePublished | An ISO 8601 date and time value expressed with millisecond precision that provides the publication date of the resource. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | 64 |
 | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | version | Designates the current form or version of the [Entity](#entity) being described. | 64 |
 | [FillinBlankResponse](#fillinBlankResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse) | values\<value\> | Minimum supported length applies to each response included in the `values` array. | 256 |
 | [HighlightAnnotation](#highlightAnnotation) | selectionText | A plain text rendering of the highlighted segment of the annotated resource. | 2048 |
-| [MediaLocation](#mediaLocation) | currentTime | A time interval or duration that represents the current playback position measured from the beginning of a [MediaObject](#mediaObject).  The value MUST conform to the ISO 8601 duration format. | 64 |
-| [MediaObject](#mediaObject) | duration | A time interval that represents the total length in time of the [MediaObject](#mediaObject).  The value MUST conform to the ISO 8601 duration format. | 64 |
 | [Membership](#membership) | roles\<role\> | Minimum supported length applies to each Caliper designated role [Term](#termDef) included in the `roles` array. | 256 |
 | [Membership](#membership) | status | The Caliper [Term](termDef) designated for the selected status. | 256 | 
 | [Message](#message) | body | A plain-text rendering of the body content of the [Message](#message). | 4096 | 
@@ -5916,7 +5903,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Event](#event) | @type | Deprecated | Use `type`. |
 | [Event](#event) | action | Revised | `action` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Started*. |
 | [Event](#event) | referrer | New | Adds the ability to specify a referring context.  In the case of [NavigationEvent](#navigationEvent) `referrer` supersedes the deprecated `navigatedFrom` property. |
-| [Event](#event) | session | New | Adds the ability to specify the [Session](#session) to which this event belongs. |
+| [Event](#event) | session | New | Adds the ability to specify the user [Session](#session) context. |
 | [Event](#event) | extensions | New | Adds the ability to include custom attributes not defined by the model. |
 | [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
 | [Entity](#entity) | id | New | Replaces use of the [JSON-LD](#jsonldDef) keyword `@id` which is now aliased as `id` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
