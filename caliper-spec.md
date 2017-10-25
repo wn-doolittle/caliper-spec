@@ -1217,7 +1217,7 @@ Irrespective of the chosen transport protocol, each message sent by a [Sensor](#
 
 #### 4.3.1 HTTP Transport Requirements
  
-* A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS or SSL.
+* A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS.
 * Messages MUST be sent using the POST request method.
 * The following standard HTTP request headers MUST be set for use by the [Endpoint](#endpoint):
   * `Accept`
@@ -1238,7 +1238,7 @@ A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Senso
 
 #### <a name="httpEndpoint"></a>5.1.1 HTTP Endpoint Requirements
 
-* An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
+* An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS Certificate MUST be provided.
 * An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
 * An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
 
