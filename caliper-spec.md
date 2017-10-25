@@ -2353,7 +2353,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~navigatedFrom~~ | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context. `navigatedFrom` has been DEPRECATED and replaced by `referrer`. | Deprecated |
+| ~~navigatedFrom~~ | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context. `navigatedFrom` has been DEPRECATED and replaced by `referrer`. | \[0..1\] |
 
 #### Example: NavigationEvent (navigated to)
 ```
@@ -3041,8 +3041,8 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -3122,8 +3122,8 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -3192,8 +3192,8 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Subtypes 
 [Assessment](#assessment), [AssessmentItem](#assessmentItem)
@@ -3252,7 +3252,7 @@ The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT b
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt) SHOULD be specified. `actor` has been DEPRECATED and replaced by  `assignee`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt) SHOULD be specified. `actor` has been DEPRECATED and replaced by  `assignee`. | \[0..1\] |
 
 #### Example
 ```
@@ -3316,8 +3316,8 @@ The following [AudioObject](#audioObject) properties have been DEPRECATED and MU
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -3412,8 +3412,8 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -3566,8 +3566,8 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Subtypes
 [AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Forum](#forum), [Frame](#frame), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Page](#page), [Thread](#thread), [WebPage](#webPage)
@@ -3638,8 +3638,8 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Subtypes 
 [Assessment](#assessment), [Forum](#forum), [Thread](#thread)
@@ -3720,8 +3720,8 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -3782,8 +3782,8 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] | 
 
 ### <a name="epubPart"></a>C.17 EpubPart (DEPRECATED)
 A Caliper [EpubPart](#epubPart) represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  [EpubPart](#epubPart) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
@@ -3819,8 +3819,8 @@ The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST NOT
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |   
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |   
 
 ### <a name="epubSubChapter"></a>C.18 EpubSubChapter (DEPRECATED)
 A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of an [EpubChapter](#epubChapter).  [EpubSubChapter](#epubSubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
@@ -3856,8 +3856,8 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] | 
 
 ### <a name="epubVolume"></a>C.19 EpubVolume (DEPRECATED)
 
@@ -3894,8 +3894,8 @@ The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |  
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |  
 
 ### <a name="fillinBlankResponse"></a>C.20 FillinBlankResponse
 
@@ -3930,8 +3930,8 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Agent](#agent) | The [Agent](#agent) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
-| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Agent](#agent) | The [Agent](#agent) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
 
 #### Example
 ```
@@ -4001,8 +4001,8 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
  
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] | 
   
 #### Example
 ```
@@ -4080,8 +4080,8 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
  
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] | 
 
 #### Example
 ```
@@ -4256,8 +4256,8 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
  
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -4426,8 +4426,8 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
  
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -4478,8 +4478,8 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
  
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Subtypes
 [AudioObject](#audioObject), [ImageObject](#imageObject), [VideoObject](#videoObject)
@@ -4588,8 +4588,8 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
  
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -4662,8 +4662,8 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
-| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
 
 #### Example
 ```
@@ -4730,8 +4730,8 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
-| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
 
 #### Example
 ```
@@ -4846,8 +4846,8 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
  
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -4943,8 +4943,8 @@ The following [Reading](#reading) properties have been DEPRECATED and MUST NOT b
  
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 ### <a name="response"></a>C.38 Response
 
@@ -4980,8 +4980,8 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
-| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
 
 #### Subtypes
 [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
@@ -5060,8 +5060,8 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Attempt](#attempt).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
-| ~~assignable~~ | [DigitalResource](#digitalResource) | The assigned [DigitalResource](#digitalResource) associated with the [Result](#result). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Attempt](#attempt).  `actor` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
+| ~~assignable~~ | [DigitalResource](#digitalResource) | The assigned [DigitalResource](#digitalResource) associated with the [Result](#result). `assignable` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
 | ~~normalScore~~ | decimal | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | \[0..1\] |
 | ~~penaltyScore~~ | decimal | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | \[0..1\] |
 | ~~extraCreditScore~~ | decimal | The number of extra credit points earned by the learner. | \[0..1\] |
@@ -5194,8 +5194,8 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
-| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
 
 #### Example
 ```
@@ -5451,8 +5451,8 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
   
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -5534,8 +5534,8 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
-| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
+| ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | \[0..1\] |
 
 #### Example
 ```
@@ -5605,8 +5605,8 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
   
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -5658,8 +5658,8 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
   
 | Property | Type | Description | Multiplicity |
 | :------- | :--- | ----------- | :---------: |
-| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | \[0..1\] |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | \[0..1\] |
 
 #### Example
 ```
@@ -5872,8 +5872,8 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [GradeEvent](#gradeEvent) | New | Replaces [OutcomeEvent](#outcomeEvent).  [Score](#score) replaces [Result](#result) as the `generated` object. |
 | [MediaEvent](#mediaEvent) | Revised | [Restarted](#restarted) added to the list of supported actions.  The following actions have been deprecated and are targeted for removal from the list of supported [MediaEvent](#mediaEvent) actions: [Rewound](#rewound). |
 | [MessageEvent](#messageEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
-| [OutcomeEvent](#outcomeEvent) | Deprecated | Use [GradeEvent](#gradeEvent). |
-| [ReadingEvent](#readingEvent) | Deprecated | Targeted for removal in a future version of the specification. |
+| [OutcomeEvent](#outcomeEvent) | \[0..1\] | Use [GradeEvent](#gradeEvent). |
+| [ReadingEvent](#readingEvent) | \[0..1\] | Targeted for removal in a future version of the specification. |
 | [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
 | [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile).  Supported actions: [Used](#used). |
 
@@ -5883,15 +5883,15 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Chapter](#chapter) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
 | [DigitalResourceCollection](#digitalResourceCollection) | New | Provides a means of representing a collection of items of type [DigitalResource](#digitalResource). |
 | [Document](#document) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
-| [EpubChapter](#epubChapter) | Deprecated | Targeted for removal in a future version of the specification. |
-| [EpubPart](#epubPart) | Deprecated | Targeted for removal in a future version of the specification. |
-| [EpubSubChapter](#epubSubChapter) | Deprecated | Targeted for removal in a future version of the specification. | 
-| [EpubVolume](#epubVolume) | Deprecated | Targeted for removal in a future version of the specification. |
+| [EpubChapter](#epubChapter) | \[0..1\] | Targeted for removal in a future version of the specification. |
+| [EpubPart](#epubPart) | \[0..1\] | Targeted for removal in a future version of the specification. |
+| [EpubSubChapter](#epubSubChapter) | \[0..1\] | Targeted for removal in a future version of the specification. | 
+| [EpubVolume](#epubVolume) | \[0..1\] | Targeted for removal in a future version of the specification. |
 | [Forum](#forum) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 | [LtiSession](#ltiSession) | New | Extends [Session](#session) with the addition of an [LTI](#litDef)-related `messageParameters` property. | 
 | [Message](#message) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 | [Page](#page) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
-| [Reading](#reading) | Deprecated | Targeted for removal in a future version of the specification. |
+| [Reading](#reading) | \[0..1\] | Targeted for removal in a future version of the specification. |
 | [Score](#score) | New | Introduced as part of the revisions to the Caliper 1.1 [Grading Profile](#gradingProfile). |
 | [Thread](#thread) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 
@@ -5901,46 +5901,46 @@ Caliper 1.1 additions and deprecations are summarized below.
 | :------| :------- | :----: | :---------- |
 | [Event](#event) | id | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is RECOMMENDED. | 
 | [Event](#event) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *MessageEvent*. |
-| [Event](#event) | @type | Deprecated | Use `type`. |
+| [Event](#event) | @type | \[0..1\] | Use `type`. |
 | [Event](#event) | action | Revised | `action` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Started*. |
 | [Event](#event) | referrer | New | Adds the ability to specify a referring context.  In the case of [NavigationEvent](#navigationEvent) `referrer` supersedes the deprecated `navigatedFrom` property. |
 | [Event](#event) | session | New | Adds the ability to specify the user [Session](#session) context. |
 | [Event](#event) | extensions | New | Adds the ability to include custom attributes not defined by the model. |
-| [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
+| [NavigationEvent](#navigationEvent) | navigatedFrom | \[0..1\] | Targeted for removal in a future version of the specification.  Use `referrer`. |
 | [Entity](#entity) | id | New | Replaces use of the [JSON-LD](#jsonldDef) keyword `@id` which is now aliased as `id` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
-| [Entity](#entity) | @id | Deprecated | Use `id`. |
+| [Entity](#entity) | @id | \[0..1\] | Use `id`. |
 | [Entity](#entity) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Person*. |
-| [Entity](#entity) | @type | Deprecated | Use `type`. |
+| [Entity](#entity) | @type | \[0..1\] | Use `type`. |
 | [Annotation](#annotation) | annotator | New | Adds the ability to specify the [Agent](#agent) who created the [Annotation](#annotation). |
-| [Attempt](#attempt) | actor | Deprecated | Targeted for removal in a future version of the specification. Use `assignee`. |
+| [Attempt](#attempt) | actor | \[0..1\] | Targeted for removal in a future version of the specification. Use `assignee`. |
 | [Attempt](#attempt) | assignee | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [Attempt](#attempt) | isPartOf | New | Adds the ability to reference the parent [Attempt](#attempt), if any. |
-| [DigitalResource](#digitalResource) | alignedLearningObjective | Deprecated | Targeted for removal in a future version of the specification.  Use `learningObjectives`. |
+| [DigitalResource](#digitalResource) | alignedLearningObjective | \[0..1\] | Targeted for removal in a future version of the specification.  Use `learningObjectives`. |
 | [DigitalResource](#digitalResource) | creators | New | Adds the ability to specify the authors of the resource. |
 | [DigitalResource](#digitalResource) | learningObjectives | New | Replaces the deprecated `alignedLearningObjective` property with a plural term that adheres to the naming format adopted for collections and lists. |
 | [DigitalResource](#digitalResource) | mediaType | New | Adds the ability to specify the IANA media type that identifies the file format of the resource. |
-| [DigitalResource](#digitalResource) | objectType | Deprecated | Targeted for removal in a future version of the specification.  Use `type`. |
+| [DigitalResource](#digitalResource) | objectType | \[0..1\] | Targeted for removal in a future version of the specification.  Use `type`. |
 | [DigitalResourceCollection](#digitalResourceCollection) | items | New | Adds the ability to specify the individual resources that comprise the collection. |
 | [LtiSession](#ltiSession) | messageParameters | New | Adds the ability to specify [LTI](#ltiDef) message parameters. |
 | [MediaLocation](#mediaLocation) | currentTime | Revised | Datatype changed to an ISO 8601 formatted duration string set to UTC. | 
 | [Membership](#membership) | roles | Revised | Individual role values changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Learner*. |
 | [Membership](#membership) | status | Revised | `status` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Active*. |
 | [Organization](#organization) | members | New | Adds the ability to specify the collection of members that comprise the [Organization](#organization). |
-| [Response](#response)| actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Response](#response) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| [Response](#response)| actor | \[0..1\] | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| [Response](#response) | assignable | \[0..1\] | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Response](#response) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable`. |
-| [Result](#result) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Result](#result) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| [Result](#result) | actor | \[0..1\] | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| [Result](#result) | assignable | \[0..1\] | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Result](#result) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable` properties. |
-| [Result](#result) | curveFactor | Deprecated | Targeted for removal in a future version of the specification. |
-| [Result](#result) | curvedTotalScore | Deprecated | Targeted for removal in a future version of the specification. |
-| [Result](#result) | extraCreditScore | Deprecated | Targeted for removal in a future version of the specification. |
-| [Result](#result) | normalScore | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | curveFactor | \[0..1\] | Targeted for removal in a future version of the specification. |
+| [Result](#result) | curvedTotalScore | \[0..1\] | Targeted for removal in a future version of the specification. |
+| [Result](#result) | extraCreditScore | \[0..1\] | Targeted for removal in a future version of the specification. |
+| [Result](#result) | normalScore | \[0..1\] | Targeted for removal in a future version of the specification. |
 | [Result](#result) | maxresultScore | New | Maps to LTI Gradebook-services `Result.resultMaximum`. |
-| [Result](#result) | penaltyScore | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | penaltyScore | \[0..1\] | Targeted for removal in a future version of the specification. |
 | [Result](#result) | resultScore | New | Maps to [LTI](#ltiDef) Gradebook-services `Result.resultScore`. |
-| [Result](#result) | totalScore | Deprecated | Targeted for removal in a future version of the specification.  Use  `resultScore`. |
-| [Session](#session) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `user`. |
+| [Result](#result) | totalScore | \[0..1\] | Targeted for removal in a future version of the specification.  Use  `resultScore`. |
+| [Session](#session) | actor | \[0..1\] | Targeted for removal in a future version of the specification.  Use `user`. |
 | [Session](#session) | user | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [Score](#score) | maxScore | New | The maximum permitted score value.  Maps to [LTI](#ltiDef) Gradebook-services `Score.scoreMaximum`. |
 | [Score](#score) | scoreGiven | New | The score or grade awarded for a given assignment.  Maps to [LTI](#ltiDef) Gradebook-services `Score.scoreGiven`. |
