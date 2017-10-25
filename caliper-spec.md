@@ -300,9 +300,6 @@ The following metric profiles are currently available and are summarized individ
 
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
-#### Minimum Conformance
-Create and send a generic Caliper [Event](#event) to a target [Endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
-
 #### Supported Events
 [Event](#event)
 
@@ -318,6 +315,9 @@ All actions included in the Caliper [actions](#actions) vocabulary are supported
 * Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * The `action` vocabulary is limited to the supported actions described in this specification and no other.
+
+#### Minimum Conformance
+Create and send a generic Caliper [Event](#event) to a target [Endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
 
 ### <a name="annotationProfile"></a>2.3.2 Annotation Profile
 
@@ -336,22 +336,19 @@ Questions which can be answered using this profile are as follows:
 * What tags are being used?
 * What notes are being added?
 
-#### Minimum Conformance
-Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported actions are considered optional.
-
 #### Supported Events
 [AnnotationEvent](#annotationEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. | \[1\] |
-| [AnnotationEvent](#annotationEvent) | [Highlighted](#highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). | \[0..1\] |
-| [AnnotationEvent](#annotationEvent) | [Shared](#shared) | [Communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v). | \[0..1\] |
-| [AnnotationEvent](#annotationEvent) | [Tagged](#tagged) | [Attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v). | \[0..1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. |
+| [AnnotationEvent](#annotationEvent) | [Highlighted](#highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). |
+| [AnnotationEvent](#annotationEvent) | [Shared](#shared) | [Communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v). |
+| [AnnotationEvent](#annotationEvent) | [Tagged](#tagged) | [Attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v). |
 
 #### Supported Entities
-| Event | Actor |	Action | Object |	Generated |
+| Event | Actor | Action | Object | Generated |
 | :---- | :---- | :----- | :----- | :-------- |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | [BookmarkAnnotation](#bookmarkAnnotation) |
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | [HighlightAnnotation](#highlightAnnotation) |
@@ -364,6 +361,9 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * The `generated` [Annotation](#annotation) SHOULD be specified.  If expressed as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource) SHOULD be referenced.
+
+#### Minimum Conformance
+Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported actions are considered optional.
 
 ### <a name="assessmentProfile"></a>2.3.3 Assessment Profile
 
@@ -379,26 +379,23 @@ Tracking patterns using the assessment profile will allow instructors to underst
 * Which questions are skipped?
 * If test-taking times are flexible, when do learners start their assessments?
 
-#### Minimum Conformance
-Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
-
 #### Supported Events
 [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | \[1\] |
-| [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. | \[0..1\] |
-| [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. | \[0..1\] |
-| [AssessmentEvent](#assessmentEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | \[0..1\] |
-| [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. | \[0..1\] |
-| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | \[1\] |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | \[0..1\] |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). | \[0..1\] |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | \[0..1\] |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | \[0..1\] |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | \[0..1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
+| [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
+| [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
+| [AssessmentEvent](#assessmentEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
+| [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. |
+| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |	Generated | Referrer |
@@ -428,6 +425,9 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 * For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
+#### Minimum Conformance
+Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
+
 ### <a name="assignableProfile"></a>2.3.4 Assignable Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assignable Profile" src="assets/caliper-profile_assignable.png"></div>
@@ -440,23 +440,20 @@ This profile would be useful for instructors to gather insight about the relatio
 * How long does it take to complete something that has been assigned?
 * What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)
 
-#### Minimum Conformance
-Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#endpoint). The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  The [Completed](#completed) action SHOULD be implemented.  All other supported events and actions are considered optional.
-
 #### Supported Events
 [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [AssignableEvent](#assignableEvent) | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). | \[0..1\] |
-| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). | \[0..1\] |
-| [AssignableEvent](#assignableEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | \[1\] |
-| [AssignableEvent](#assignableEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | \[0..1\] |
-| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | \[1\] |
-| [AssignableEvent](#assignableEvent) | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). | \[0..1\] |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | \[0..1\] |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | \[0..1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [AssignableEvent](#assignableEvent) | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
+| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
+| [AssignableEvent](#assignableEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
+| [AssignableEvent](#assignableEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
+| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
+| [AssignableEvent](#assignableEvent) | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |	Generated | Referrer |
@@ -485,6 +482,9 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to a [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
+#### Minimum Conformance
+Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#endpoint). The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  The [Completed](#completed) action SHOULD be implemented.  All other supported events and actions are considered optional.
+
 ### <a name="forumProfile"></a>2.3.5 Forum Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Forum Profile" src="assets/caliper-profile_forum.png"></div>
@@ -497,25 +497,21 @@ Tracking patterns using the forum profile will allow instructors to understand m
 * Which posts create the most replies?
 * Compare graded vs. non-graded discussions
 
-
-#### Minimum Conformance
-Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint). The [Posted](#posted) action is required and MUST be implemented.  All other supported events and actions are considered optional.
-
 #### Supported Events
 [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). | \[0..1\] |
-| [ForumEvent](#forumEvent) | [Unsubscribed](#unsubscribed) | Inverse of [Subscribed](#subscribed). | \[0..1\] |
-| [MessageEvent](#messageEvent) | [Posted](#posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). | \[1\] |
-| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  | \[0..1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
+| [ForumEvent](#forumEvent) | [Unsubscribed](#unsubscribed) | Inverse of [Subscribed](#subscribed). |
+| [MessageEvent](#messageEvent) | [Posted](#posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
+| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
 | [MessageEvent](#messageEvent) | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). |  Optional |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | \[0..1\] |
-| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  | \[0..1\] |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
+| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
 | [ThreadEvent](#threadEvent) | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). |  Optional |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | \[0..1\] |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 #### Supported Entities
 | Event | Actor |	Action | Object | Referrer |
@@ -537,7 +533,10 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
 * Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by use of the `isPartOf` property.
-* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. 
+* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+
+#### Minimum Conformance
+Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint). The [Posted](#posted) action is required and MUST be implemented.  All other supported events and actions are considered optional. 
 
 ### <a name="gradingProfile"></a>2.3.6 Grading Profile
 
@@ -549,17 +548,14 @@ The grading profile allows information to be captured about grade changes for a 
 
 * How often are grades changed for an assessment?
 
-#### Minimum Conformance
-Create and send a Caliper [GradeEvent](#gradeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
-
 #### Supported Events
 [GradeEvent](#gradeEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [GradeEvent](#gradeEvent) | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). | \[1\] |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | \[0..1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [GradeEvent](#gradeEvent) | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 #### Supported Entities
 | Event | Actor |	Action | Object | Generated |
@@ -573,6 +569,9 @@ Create and send a Caliper [GradeEvent](#gradeEvent) to a target [Endpoint](#endp
 * For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * For a [Graded](#graded) action, the `generated` [Score](#score) SHOULD be specified.
+
+#### Minimum Conformance
+Create and send a Caliper [GradeEvent](#gradeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
 
 ### <a name="mediaProfile"></a>2.3.7 Media Profile
 
@@ -588,36 +587,33 @@ As an example of how this profile could be used, consider the following scenario
 * Where do they pause the video?
 * Are there instances of where students are replaying sections of the video?
 
-#### Minimum Conformance
-Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started) and [Ended](#ended) actions are required and MUST be implemented.  The [Paused](#paused), [Resumed](#resumed) and [Restarted](#restarted) actions SHOULD be implemented.  All other supported events and actions are considered optional.
-
 #### Supported Events
 [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [MediaEvent](#mediaEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). | \[1\] |
-| [MediaEvent](#mediaEvent) | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). | \[1\] |
-| [MediaEvent](#mediaEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [ChangedSize](#changedSize) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [ChangedSpeed](#changedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [ChangedVolume](#changedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [EnteredFullScreen](#enteredFullScreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [ExitedFullScreen](#exitedFullScreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [Muted](#muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [Unmuted](#unmuted) | Inverse of [Muted](#muted). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [OpenedPopout](#openedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). | \[0..1\] |
-| [MediaEvent](#mediaEvent) | [ClosedPopout](#closedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). | \[0..1\] |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | \[0..1\] |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | \[0..1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [MediaEvent](#mediaEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
+| [MediaEvent](#mediaEvent) | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
+| [MediaEvent](#mediaEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. |
+| [MediaEvent](#mediaEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. |
+| [MediaEvent](#mediaEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
+| [MediaEvent](#mediaEvent) | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
+| [MediaEvent](#mediaEvent) | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
+| [MediaEvent](#mediaEvent) | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
+| [MediaEvent](#mediaEvent) | [ChangedSize](#changedSize) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n). |
+| [MediaEvent](#mediaEvent) | [ChangedSpeed](#changedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). |
+| [MediaEvent](#mediaEvent) | [ChangedVolume](#changedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). |
+| [MediaEvent](#mediaEvent) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
+| [MediaEvent](#mediaEvent) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
+| [MediaEvent](#mediaEvent) | [EnteredFullScreen](#enteredFullScreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). |
+| [MediaEvent](#mediaEvent) | [ExitedFullScreen](#exitedFullScreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). |
+| [MediaEvent](#mediaEvent) | [Muted](#muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). |
+| [MediaEvent](#mediaEvent) | [Unmuted](#unmuted) | Inverse of [Muted](#muted). |
+| [MediaEvent](#mediaEvent) | [OpenedPopout](#openedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). |
+| [MediaEvent](#mediaEvent) | [ClosedPopout](#closedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
  
 #### Supported Entities
 | Event | Actor |	Action | Object |	Target | Referrer |
@@ -658,6 +654,9 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 * For other [MediaEvent](#mediaEvent) supported actions the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the action occurred.
 * When navigating to a [MediaObject](#mediaObject) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
+#### Minimum Conformance
+Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started) and [Ended](#ended) actions are required and MUST be implemented.  The [Paused](#paused), [Resumed](#resumed) and [Restarted](#restarted) actions SHOULD be implemented.  All other supported events and actions are considered optional.
+
 ### <a name="readingProfile"></a>2.3.8 Reading Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
@@ -674,17 +673,14 @@ Instructors and researchers can utilize data collected via the Reading Profile t
 
 When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.
 
-#### Minimum Conformance
-Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
-
 #### Supported Events
 [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | \[1\] |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | \[1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |	Target | Referrer |
@@ -701,6 +697,9 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 * A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
 * When navigating to digital content the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
+#### Minimum Conformance
+Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
+
 ### <a name="sessionProfile"></a>2.3.9 Session Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="assets/caliper-profile_session.png"></div>
@@ -713,18 +712,15 @@ The session profile can facilitate the capture of data about who is logging into
 * Which students have not logged in for more than a week
 * Who logs in/logs out most/least
 
-#### Minimum Conformance
-Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint). The [LoggedIn](#loggedIn) action is required and MUST be implemented.
-
 #### Supported Events
 [SessionEvent](#sessionEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). | \[1\] |
-| [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). | \[0..1\] |
-| [SessionEvent](#sessionEvent) | [TimedOut](#timedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. | \[0..1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). |
+| [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). |
+| [SessionEvent](#sessionEvent) | [TimedOut](#timedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |	Target | Session |
@@ -740,6 +736,9 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 * Although optional, the relevant user `session` SHOULD be specified.
 * For a [LoggedIn](#loggedIn) action, if the `actor` is attempting to access a particular [DigitalResource](#digitalResource) the resource MAY be designated as the `target` of the interaction.
 
+#### Minimum Conformance
+Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint). The [LoggedIn](#loggedIn) action is required and MUST be implemented.
+
 ### <a name="toolUseProfile"></a>2.3.10 Tool Use Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Tool Use Profile" src="assets/caliper-profile_tool_use.png"></div>
@@ -753,16 +752,13 @@ The Tool Use Profile enables gathering basic usage information about learning ap
 * Does tool usage help/hinder student performance?
 * Which tools have the greatest impact on student performance?
 
-#### Minimum Conformance
-Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#endpoint).  The [Used](#used) action is required and MUST be implemented.
-
 #### Supported Events
 [ToolUseEvent](#toolUseEvent)
 
 #### Supported Actions
-| Event | Action | WordNet&reg; Gloss | Multiplicity |
-| :---- | :----- | :------------- | :---------- |
-| [ToolUseEvent](#toolUseEvent) | Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). | \[1\] |
+| Event | Action | WordNet&reg; Gloss |
+| :---- | :----- | :------------- |
+| [ToolUseEvent](#toolUseEvent) | Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |
@@ -775,6 +771,9 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
+
+#### Minimum Conformance
+Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#endpoint).  The [Used](#used) action is required and MUST be implemented.
 
 ## <a name="dataSerialization"></a>3.0 Serialization of the Model
 
