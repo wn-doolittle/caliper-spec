@@ -151,17 +151,17 @@ Caliper also defines an application programming interface (the Sensor API&trade;
 
 ### <a name="changes"></a>1.1 Summary of Changes
 
-Caliper 1.1 seeks to both extend as well as refine . . .
+Caliper 1.1 extends as well as refines the Caliper information model and further describes the ways in which Events and Entities can be expressed as [Linked Data](#linkedDataDef) when authoring documents using [JSON-LD](#jsonldDef).
 
-Three new profiles are provided: the Basic Profile, Forum Profile and ToolUse Profile.  The AssessmentItem Profile has been merged into the Assessment Profile.  The Outcome Profile has been renamed the Grading Profile and a new Score entity has been added.  Both the Forum Profile and the ToolUse Profile add new Event types to the Caliper vocabulary: ForumEvent, ThreadEvent, MessageEvent, ToolUseEvent.  New entities and actions are also provided to better describe forum activities and tool use. 
+Three new profiles are provided: the [Basic Profile](#basicProfile), [Forum Profile](#forumProfile) and [ToolUse Profile](#toolUseProfile).  The AssessmentItem Profile has been merged into the [Assessment Profile](#assessmentProfile].  The [Outcome Profile](#outcomeProfile) has been renamed the [Grading Profile](#gradingProfile) and a new [Score](#score) entity has been added.  Both the [Forum Profile](#forumProfile) and the [ToolUse Profile](#toolUseProfile) add new event types to the Caliper event model: [ForumEvent](#forumEvent), [ThreadEvent](#threadEvent), [MessageEvent](#messageEvent), [ToolUseEvent](#toolUseEvent).  New entities and actions are also provided to better describe forum activities and tool use. 
 
-Both the OutcomeEvent and ReadingEvent have been deprecated.  Certain Event types action vocabularies have been adjusted as a result of additions and/or removals.  These include AnnotationEvent, AssessmentEvent, AssessmentItemEvent, AssignableEvent and MediaEvent.   A number of entities have also been deprecated.  The list includes EpubChapter, EpubPart, EpubSubChapter, EpubVolume and Reading.  
+The [ReadingEvent](#readingEvent) has been deprecated while the [OutcomeEvent](#outcomeEvent) has been replaced by the [GradeEvent](#gradeEvent).  Certain action vocabularies have been adjusted as a result of additions and/or removals.  These include actions associated with the [AnnotationEvent](#annotationEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [AssignableEvent](#assignableEvent) and [MediaEvent](#mediaEvent).  A number of entities have also been deprecated.  The list includes [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume) and [Reading](#reading). 
 
-Regarding property changes, use of JSON-LD @id and @type keywords have been deprecated in favor of id and type.  The Caliper Event now includes an id property as well as new referrer, session and extensions properties.  Entity property additions, name changes and deprecations also feature in this new release.
+Regarding property changes, use of the [JSON-LD](#jsonldDef) `@id` and `@type` keywords have been deprecated in favor of `id` and `type`.  The Caliper [Event](#event) now includes an identifier `id` property  as well as new `referrer`, `session` and `extensions` attributes.  [Entity](#entity) property additions, name changes and deprecations also feature in this new release.
 
-Sensor and endpoint behaviors are more fully described and the new specification also clarifies how to express Caliper events and entities as JSON-LD.   A new Caliper JSON-LD context document is also provided to map Caliper terms to their respective IRIs.
+[Sensor](#sensor) and [endpoint](#endpoint) behaviors are more fully described and the new specification also clarifies how to express Caliper events and entities in a [JSON-LD](#jsonldDef) document.   A new Caliper [JSON-LD](#jsonldDef) context document is also provided to map Caliper terms to their respective [IRIs](iriDef).
 
-All these changes are described in more detail in Appendix H. Change Log.  
+All these changes are described in more detail in [Appendix H. Change Log](#changeLog).  
 
 ### <a name="conventions"></a>1.2 Conventions
 
