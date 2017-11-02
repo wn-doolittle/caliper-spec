@@ -5872,8 +5872,8 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [GradeEvent](#gradeEvent) | New | Replaces [OutcomeEvent](#outcomeEvent).  [Score](#score) replaces [Result](#result) as the `generated` object. |
 | [MediaEvent](#mediaEvent) | Revised | [Restarted](#restarted) added to the list of supported actions.  The following actions have been deprecated and are targeted for removal from the list of supported [MediaEvent](#mediaEvent) actions: [Rewound](#rewound). |
 | [MessageEvent](#messageEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
-| [OutcomeEvent](#outcomeEvent) | Optional | Use [GradeEvent](#gradeEvent). |
-| [ReadingEvent](#readingEvent) | Optional | Targeted for removal in a future version of the specification. |
+| [OutcomeEvent](#outcomeEvent) | Deprecated | Use [GradeEvent](#gradeEvent). |
+| [ReadingEvent](#readingEvent) | Deprecated | Targeted for removal in a future version of the specification. |
 | [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
 | [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile).  Supported actions: [Used](#used). |
 
@@ -5883,15 +5883,15 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Chapter](#chapter) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
 | [DigitalResourceCollection](#digitalResourceCollection) | New | Provides a means of representing a collection of items of type [DigitalResource](#digitalResource). |
 | [Document](#document) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
-| [EpubChapter](#epubChapter) | Optional | Targeted for removal in a future version of the specification. |
-| [EpubPart](#epubPart) | Optional | Targeted for removal in a future version of the specification. |
-| [EpubSubChapter](#epubSubChapter) | Optional | Targeted for removal in a future version of the specification. | 
-| [EpubVolume](#epubVolume) | Optional | Targeted for removal in a future version of the specification. |
+| [EpubChapter](#epubChapter) | Deprecated | Targeted for removal in a future version of the specification. |
+| [EpubPart](#epubPart) | Deprecated | Targeted for removal in a future version of the specification. |
+| [EpubSubChapter](#epubSubChapter) | Deprecated | Targeted for removal in a future version of the specification. | 
+| [EpubVolume](#epubVolume) | Deprecated | Targeted for removal in a future version of the specification. |
 | [Forum](#forum) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 | [LtiSession](#ltiSession) | New | Extends [Session](#session) with the addition of an [LTI](#litDef)-related `messageParameters` property. | 
 | [Message](#message) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 | [Page](#page) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
-| [Reading](#reading) | Optional | Targeted for removal in a future version of the specification. |
+| [Reading](#reading) | Deprecated | Targeted for removal in a future version of the specification. |
 | [Score](#score) | New | Introduced as part of the revisions to the Caliper 1.1 [Grading Profile](#gradingProfile). |
 | [Thread](#thread) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 
@@ -5901,46 +5901,46 @@ Caliper 1.1 additions and deprecations are summarized below.
 | :------| :------- | :----: | :---------- |
 | [Event](#event) | id | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is RECOMMENDED. | 
 | [Event](#event) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *MessageEvent*. |
-| [Event](#event) | @type | Optional | Use `type`. |
+| [Event](#event) | @type | Deprecated | Use `type`. |
 | [Event](#event) | action | Revised | `action` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Started*. |
 | [Event](#event) | referrer | New | Adds the ability to specify a referring context.  In the case of [NavigationEvent](#navigationEvent) `referrer` supersedes the deprecated `navigatedFrom` property. |
 | [Event](#event) | session | New | Adds the ability to specify the user [Session](#session) context. |
 | [Event](#event) | extensions | New | Adds the ability to include custom attributes not defined by the model. |
-| [NavigationEvent](#navigationEvent) | navigatedFrom | Optional | Targeted for removal in a future version of the specification.  Use `referrer`. |
+| [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
 | [Entity](#entity) | id | New | Replaces use of the [JSON-LD](#jsonldDef) keyword `@id` which is now aliased as `id` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
-| [Entity](#entity) | @id | Optional | Use `id`. |
+| [Entity](#entity) | @id | Deprecated | Use `id`. |
 | [Entity](#entity) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Person*. |
-| [Entity](#entity) | @type | Optional | Use `type`. |
+| [Entity](#entity) | @type | Deprecated | Use `type`. |
 | [Annotation](#annotation) | annotator | New | Adds the ability to specify the [Agent](#agent) who created the [Annotation](#annotation). |
-| [Attempt](#attempt) | actor | Optional | Targeted for removal in a future version of the specification. Use `assignee`. |
+| [Attempt](#attempt) | actor | Deprecated | Targeted for removal in a future version of the specification. Use `assignee`. |
 | [Attempt](#attempt) | assignee | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [Attempt](#attempt) | isPartOf | New | Adds the ability to reference the parent [Attempt](#attempt), if any. |
-| [DigitalResource](#digitalResource) | alignedLearningObjective | Optional | Targeted for removal in a future version of the specification.  Use `learningObjectives`. |
+| [DigitalResource](#digitalResource) | alignedLearningObjective | Deprecated | Targeted for removal in a future version of the specification.  Use `learningObjectives`. |
 | [DigitalResource](#digitalResource) | creators | New | Adds the ability to specify the authors of the resource. |
 | [DigitalResource](#digitalResource) | learningObjectives | New | Replaces the deprecated `alignedLearningObjective` property with a plural term that adheres to the naming format adopted for collections and lists. |
 | [DigitalResource](#digitalResource) | mediaType | New | Adds the ability to specify the IANA media type that identifies the file format of the resource. |
-| [DigitalResource](#digitalResource) | objectType | Optional | Targeted for removal in a future version of the specification.  Use `type`. |
+| [DigitalResource](#digitalResource) | objectType | Deprecated | Targeted for removal in a future version of the specification.  Use `type`. |
 | [DigitalResourceCollection](#digitalResourceCollection) | items | New | Adds the ability to specify the individual resources that comprise the collection. |
 | [LtiSession](#ltiSession) | messageParameters | New | Adds the ability to specify [LTI](#ltiDef) message parameters. |
 | [MediaLocation](#mediaLocation) | currentTime | Revised | Datatype changed to an ISO 8601 formatted duration string set to UTC. | 
 | [Membership](#membership) | roles | Revised | Individual role values changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Learner*. |
 | [Membership](#membership) | status | Revised | `status` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Active*. |
 | [Organization](#organization) | members | New | Adds the ability to specify the collection of members that comprise the [Organization](#organization). |
-| [Response](#response)| actor | Optional | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Response](#response) | assignable | Optional | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| [Response](#response)| actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| [Response](#response) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Response](#response) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable`. |
-| [Result](#result) | actor | Optional | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Result](#result) | assignable | Optional | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| [Result](#result) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
+| [Result](#result) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Result](#result) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable` properties. |
-| [Result](#result) | curveFactor | Optional | Targeted for removal in a future version of the specification. |
-| [Result](#result) | curvedTotalScore | Optional | Targeted for removal in a future version of the specification. |
-| [Result](#result) | extraCreditScore | Optional | Targeted for removal in a future version of the specification. |
-| [Result](#result) | normalScore | Optional | Targeted for removal in a future version of the specification. |
+| [Result](#result) | curveFactor | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | curvedTotalScore | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | extraCreditScore | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | normalScore | Deprecated | Targeted for removal in a future version of the specification. |
 | [Result](#result) | maxresultScore | New | Maps to LTI Gradebook-services `Result.resultMaximum`. |
-| [Result](#result) | penaltyScore | Optional | Targeted for removal in a future version of the specification. |
+| [Result](#result) | penaltyScore | Deprecated | Targeted for removal in a future version of the specification. |
 | [Result](#result) | resultScore | New | Maps to [LTI](#ltiDef) Gradebook-services `Result.resultScore`. |
-| [Result](#result) | totalScore | Optional | Targeted for removal in a future version of the specification.  Use  `resultScore`. |
-| [Session](#session) | actor | Optional | Targeted for removal in a future version of the specification.  Use `user`. |
+| [Result](#result) | totalScore | Deprecated | Targeted for removal in a future version of the specification.  Use  `resultScore`. |
+| [Session](#session) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `user`. |
 | [Session](#session) | user | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [Score](#score) | maxScore | New | The maximum permitted score value.  Maps to [LTI](#ltiDef) Gradebook-services `Score.scoreMaximum`. |
 | [Score](#score) | scoreGiven | New | The score or grade awarded for a given assignment.  Maps to [LTI](#ltiDef) Gradebook-services `Score.scoreGiven`. |
