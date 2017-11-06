@@ -949,56 +949,7 @@ Both node types and typed values are specified in the external IMS Caliper JSON-
 }
 ```
 
-As noted above the values of certain Caliper [Terms](#termDef) are coerced to the `@id` keyword, which signals that string values are to be interpreted as [IRIs](#iriDef).  In other words, certain [Event](#event) and [Entity](#entity) attributes MAY be expressed either as a JSON object or as a string that corresponds to its identifier.  Type coercion of this sort provides representational flexibility that implementers are encouraged to leverage.  
-
-The following [Event](#event) property values can be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-
-#### Coercible Event Properties
-| Property | Type | Description |
-| :------- | :--- | ----------- |
-| actor | [Agent](#agent) &#124; [IRI](#iriDef) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person](#person), [Organization](#organization) or [SoftwareApplication](#softwareApplication).  The `actor` value MUST be expressed either as an object or as a string corresponding to the actor's [IRI](#iriDef). |
-| object | [Entity](#entity) &#124; [IRI](#iriDef) | The [Entity](#entity) that comprises the object of the interaction.  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). |
-| target | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or as a string corresponding to the target entity's [IRI](#iriDef). |
-| generated | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or as a string corresponding to the generated entity's [IRI](#iriDef). |
-| edApp | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | A [SoftwareApplication](#softwareApplication) that constitutes the application context.  The `edApp` value MUST be expressed either as an object or as a string corresponding to the edApp's [IRI](#iriDef). |
-| referrer | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents the referring context. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or as a string corresponding to the referrer's [IRI](#iriDef). |
-| group | [Organization](#organization) &#124; [IRI](#iriDef) | An [Organization](#organization) that represents the group context.  The `group` value MUST be expressed either as an object or as a string corresponding to the group's [IRI](#iriDef). |
-| membership | [Membership](#membership) &#124; [IRI](#iriDef) | The relationship between the `actor` and the `group` in terms of roles assigned and current status.  The `membership` value MUST be expressed either as an object or as a string corresponding to the membership entity's [IRI](#iriDef). |
-| session | [Session](#session) &#124; [IRI](#iriDef) | The current user [Session](#session).  The `session` value MUST be expressed either as an object or as a string corresponding to the session's [IRI](#iriDef). | 
-| federatedSession | [LtiSession](#ltiSession) &#124; [IRI](#iriDef) | If the [Event](#event) occurs within the context of an [LTI](#ltiDef) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or as a string corresponding to the federatedSession's [IRI](#iriDef). |
-
-The following [Entity](#entity) property values can be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).  Note that certain entities (e.g., [Annotation](#annotation), [DigitalResource](#digitalResource)) include one or more subtypes that inherit the coercible properties described below.
-
-#### Coercible Entity Properties
-| Entity | Property | Type | Description |
-| :------| :------- | :--- | ----------- |
-| [Annotation](#annotation) | annotated | [DigitalResource](#digitalResource) &#124; [IRI](#iriDef) | The [DigitalResource](#digitalResource) that was annotated by the annotator. The `annotated` value MUST be expressed either as an object or as a string corresponding to the annotated resource's IRI. |
-| [Annotation](#annotation) | annotator | [Person](#person) &#124; [IRI](#iriDef) | The [Person](#person) who created the [Annotation](#annotation). The `annotator` value MUST be expressed either as an object or as a string corresponding to the annotator's [IRI](#iriDef). |
-| [Attempt](#attempt) | assignable | [DigitalResource](#digitalResource) &#124; [IRI](#iriDef) | The [DigitalResource](#digitalResource) that constitutes the object of the assignment. The `assignable` value MUST be expressed either as an object or as a string corresponding to the assigned resource's [IRI](#iriDef) |
-| [Attempt](#attempt) | assignee | [Person](#person) &#124; [IRI](#iriDef) | The [Person](#person) who initiated the [Attempt](#attempt). The `assignee` value MUST be expressed either as an object or as a string corresponding to the assignee's [IRI](#iriDef) |
-| [Attempt](#attempt) | isPartOf| [Attempt](#attempt) &#124; [IRI](#iriDef) | The parent [Attempt](#attempt), if one exists. The `isPartOf` value MUST be expressed either as an object or as a string corresponding to the associated attempt's [IRI](#iriDef). |
-| [DigitalResource](#digitalResource) | isPartOf | [Entity](#entity) &#124; [IRI](#iriDef) | A related [Entity](#entity) that includes or incorporates the resource as a part of its whole. The `isPartOf` value MUST be expressed either as an object or as a string corresponding to the associated entity's [IRI](#iriDef). |
-| [Membership](#membership)| member | [Person](#person) &#124; [IRI](#iriDef) | The [Person](#person) associated with this [Membership](#membership).  The `member` value MUST be expressed either as an object or as a string corresponding to the member's [IRI](#iriDef). |
-| [Membership](#membership)| organization | [Organization](#organization) &#124; [IRI](#iriDef) | The [Organization](#organization) associated with the [Membership](#membership).  The `organization` value MUST be expressed either as an object or as a string corresponding to the organization's [IRI](#iriDef). |
-| [Message](#message) | replyTo | [Message](#message) &#124; [IRI](#iriDef) | A [Message](#message) that represents the post to which this [Message](#message) is directed in reply.  The `replyTo` value MUST be expressed either as an object or as a string corresponding to the associated message's [IRI](#iriDef). |
-| [Organization](#organization) | subOrganizationOf | [Organization](#organization) &#124; [IRI](#iriDef) | The parent [Organization](#organization).  The `subOrganizationOf` value MUST be expressed either as an object or as a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
-| [Response](#response) | attempt | [Attempt](#attempt) &#124; [IRI](#iriDef) |  The associated [Attempt](#attempt). The attempt value MUST be expressed either as an object or as a string corresponding to the attempt's [IRI](#iriDef). |
-| [Result](#result) | attempt | [Attempt](#attempt) &#124; [IRI](#iriDef) |  The associated [Attempt](#attempt). The attempt value MUST be expressed either as an object or as a string corresponding to the attempt's [IRI](#iriDef). |
-| [Result](#result) | scoredBy | [Agent](#agent) &#124; [IRI](#iriDef) | The [Agent](#agent) who scored or graded the [Attempt](#attempt). The `scoredBy` value MUST be expressed either as an object or as a string corresponding to the scorer's [IRI](#iriDef). |
-| [Score](#score) | scoredBy | [Agent](#agent) &#124; [IRI](#iriDef) | The [Agent](#agent) who scored or graded the [Attempt](#attempt). The `scoredBy` value MUST be expressed either as an object or as a string corresponding to the scorer's [IRI](#iriDef). |
-| [Session](#session) | user | [Person](#person) &#124; [IRI](#iriDef) | The [Person](#person) who initiated the [Session](#session). |
-
-The following [Entity](#entity) properties with a value type of Array can include [Entity](#entity) items expressed either as an object or as a string corresponding to the item's [IRI](#iriDef).
-
-#### Coercible Array Items
-| Entity | Property | Type | Description |
-| :------| :------- | :--- | ----------- |
-| [DigitalResource](#digitalResource) | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing the [DigitalResource](#digitalResource) into being.  Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). |
-| [DigitalResource](#digitalResource) | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with the resource.  Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). |
-| [DigitalResourceCollection](#digitalResourceCollection) | items | Array | An ordered collection of [DigitalResource](#digitalResource) entities.  Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). |
-| [Message](#message) | attachments | Array | An ordered collection of one or more [DigitalResource](#digitalResource) entities attached to the [Message](#message).  Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). |
-| [Organization](#organization) | members | Array | An ordered collection of [Agent](#agent) entities, typically of type [Group](#group) and/or [Person](#person).  Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). |
-| [SharedAnnotation](#sharedAnnotation) | withAgents | Array | An ordered collection of one or more [Agent](#agent) entities, typically of type [Person](#person), with whom the annotated [DigitalResource](#digitalResource) has been shared.  Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). |
+As noted above the values of certain Caliper [Terms](#termDef) are coerced to the `@id` keyword, which signals that string values are to be interpreted as [IRIs](#iriDef).  In other words, certain [Event](#event) and [Entity](#entity) attributes MAY be expressed either as a JSON object or as a string that corresponds to its identifier.  Type coercion of this sort provides representational flexibility that implementers are encouraged to leverage.
 
 As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in cases where an [Event](#event) references the same [Entity](#entity) more than once (e.g., `actor`, `member`, `user`; `group`, `organization`), or a property is associated with a specific type (e.g., `edApp`) or an [Entity](#entity) possesses an [IRI](#iriDef) that is dereferenceable, consider expressing the value as a string corresponding to the entity's [IRI](#iriDef).
 
