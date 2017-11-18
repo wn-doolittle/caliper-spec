@@ -329,9 +329,6 @@ All actions included in the Caliper [actions](#actions) vocabulary are supported
 * Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
 * The `action` vocabulary is limited to the supported actions described in this specification and no other.
 
-#### Minimum Conformance
-Create and send a generic Caliper [Event](#event) to a target [Endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
-
 ### <a name="annotationProfile"></a>2.3.2 Annotation Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Annotation Profile" src="assets/caliper-profile_annotation.png"></div>
@@ -374,9 +371,6 @@ Questions which can be answered using this profile are as follows:
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * The `generated` [Annotation](#annotation) SHOULD be specified.  If expressed as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource) SHOULD be referenced.
-
-#### Minimum Conformance
-Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported actions are considered optional.
 
 ### <a name="assessmentProfile"></a>2.3.3 Assessment Profile
 
@@ -438,9 +432,6 @@ Tracking patterns using the assessment profile will allow instructors to underst
 * For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
-#### Minimum Conformance
-Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
-
 ### <a name="assignableProfile"></a>2.3.4 Assignable Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assignable Profile" src="assets/caliper-profile_assignable.png"></div>
@@ -495,9 +486,6 @@ This profile would be useful for instructors to gather insight about the relatio
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to a [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
-#### Minimum Conformance
-Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#endpoint). The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  The [Completed](#completed) action SHOULD be implemented.  All other supported events and actions are considered optional.
-
 ### <a name="forumProfile"></a>2.3.5 Forum Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Forum Profile" src="assets/caliper-profile_forum.png"></div>
@@ -548,9 +536,6 @@ Tracking patterns using the forum profile will allow instructors to understand m
 * Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by use of the `isPartOf` property.
 * When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
-#### Minimum Conformance
-Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint). The [Posted](#posted) action is required and MUST be implemented.  All other supported events and actions are considered optional. 
-
 ### <a name="gradingProfile"></a>2.3.6 Grading Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
@@ -582,9 +567,6 @@ The grading profile allows information to be captured about grade changes for a 
 * For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * For a [Graded](#graded) action, the `generated` [Score](#score) SHOULD be specified.
-
-#### Minimum Conformance
-Create and send a Caliper [GradeEvent](#gradeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
 
 ### <a name="mediaProfile"></a>2.3.7 Media Profile
 
@@ -667,9 +649,6 @@ As an example of how this profile could be used, consider the following scenario
 * For other [MediaEvent](#mediaEvent) supported actions the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the action occurred.
 * When navigating to a [MediaObject](#mediaObject) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
-#### Minimum Conformance
-Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started) and [Ended](#ended) actions are required and MUST be implemented.  The [Paused](#paused), [Resumed](#resumed) and [Restarted](#restarted) actions SHOULD be implemented.  All other supported events and actions are considered optional.
-
 ### <a name="readingProfile"></a>2.3.8 Reading Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
@@ -710,9 +689,6 @@ When used in conjunction with the Assessment Profile viewing patterns can be cor
 * A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
 * When navigating to digital content the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
-#### Minimum Conformance
-Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
-
 ### <a name="sessionProfile"></a>2.3.9 Session Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="assets/caliper-profile_session.png"></div>
@@ -749,9 +725,6 @@ The session profile can facilitate the capture of data about who is logging into
 * Although optional, the relevant user `session` SHOULD be specified.
 * For a [LoggedIn](#loggedIn) action, if the `actor` is attempting to access a particular [DigitalResource](#digitalResource) the resource MAY be designated as the `target` of the interaction.
 
-#### Minimum Conformance
-Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint). The [LoggedIn](#loggedIn) action is required and MUST be implemented.
-
 ### <a name="toolUseProfile"></a>2.3.10 Tool Use Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Tool Use Profile" src="assets/caliper-profile_tool_use.png"></div>
@@ -784,9 +757,6 @@ The Tool Use Profile enables gathering basic usage information about learning ap
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
 * A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
-
-#### Minimum Conformance
-Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#endpoint).  The [Used](#used) action is required and MUST be implemented.
 
 ## <a name="dataSerialization"></a>3.0 Serialization of the Model
 
