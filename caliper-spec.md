@@ -1206,7 +1206,7 @@ A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint]
 | Authorization | A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. | Recommended |
 | Content-Length | The `Content-Length` MUST be measured in octets (8-bit bytes). | Optional |
 | Content-Type | Set the value to the IANA media type "application/json". | Required |
-| Host | set the value to the Internet host and port number of the resource being requested. | Required |
+| Host | Set the value to the Internet host and port number of the resource being requested. | Required |
 
 ## <a name="endpoint"></a>5.0 Endpoint
 
