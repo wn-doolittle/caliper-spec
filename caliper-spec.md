@@ -1198,19 +1198,15 @@ Business requirements informed by industry best practices will determine the cho
 Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope). 
 
 #### 4.3.1 HTTP Transport Requirements
- 
-* A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS.
-* Messages MUST be sent using the POST request method.
-* The following standard HTTP request headers MUST be set for use by the [Endpoint](#endpoint):
-  * `Accept`
-  * `Content-Type`
-  * `Host`
-* The `Content-Type` value MUST be set to the IANA media type "application/json".
-* The following standard HTTP request headers SHOULD be set for use by the [Endpoint](#endpoint):
-  * `Authorization`
-  * `Content-Length`
-* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
-* The `Content-Length` of the request body MUST be measured in octets (8-bit bytes).
+
+A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS.  Messages MUST be sent using the POST request method with, minimally, the `Host` and `Content-Type` message header fields specified.
+
+| Request Header | Description | Disposition |
+| :------------- | :---------- | :---------- |
+| Authorization | A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. | Recommended |
+| Content-Length | The `Content-Length` MUST be measured in octets (8-bit bytes). | Optional |
+| Content-Type | Set the value to the IANA media type "application/json". | Required |
+| Host | set to the Internet host and port number of the resource being requested. | Required |
 
 ## <a name="endpoint"></a>5.0 Endpoint
 
