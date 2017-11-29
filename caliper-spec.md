@@ -322,16 +322,11 @@ Questions which can be answered using this profile are as follows:
 * What tags are being used?
 * What notes are being added?
 
-#### Supported Events
-[AnnotationEvent](#annotationEvent)
+#### Supported Events and Actions
 
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. |
-| [AnnotationEvent](#annotationEvent) | [Highlighted](#highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). |
-| [AnnotationEvent](#annotationEvent) | [Shared](#shared) | [Communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v). |
-| [AnnotationEvent](#annotationEvent) | [Tagged](#tagged) | [Attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v). |
+| Event | Action(s) |
+| :---- | :-------- |
+| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged) |
 
 #### Supported Entities
 | Event | Actor | Action | Object | Generated |
@@ -362,23 +357,13 @@ Tracking patterns using the assessment profile will allow instructors to underst
 * Which questions are skipped?
 * If test-taking times are flexible, when do learners start their assessments?
 
-#### Supported Events
-[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
-
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [AssessmentEvent](#assessmentEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
-| [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. |
-| [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [AssessmentEvent](#assessmentEvent) | [Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted) |
+| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started), [Skipped](#skipped), [Completed](#completed) |
+| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |	Generated | Referrer |
@@ -420,20 +405,12 @@ This profile would be useful for instructors to gather insight about the relatio
 * How long does it take to complete something that has been assigned?
 * What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)
 
-#### Supported Events
-[AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
-
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [AssignableEvent](#assignableEvent) | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
-| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
-| [AssignableEvent](#assignableEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [AssignableEvent](#assignableEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
-| [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
-| [AssignableEvent](#assignableEvent) | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [AssignableEvent](#assignableEvent) | [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed) |
+| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |	Generated | Referrer |
@@ -474,21 +451,14 @@ Tracking patterns using the forum profile will allow instructors to understand m
 * Which posts create the most replies?
 * Compare graded vs. non-graded discussions
 
-#### Supported Events
-[ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
-
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
-| [ForumEvent](#forumEvent) | [Unsubscribed](#unsubscribed) | Inverse of [Subscribed](#subscribed). |
-| [MessageEvent](#messageEvent) | [Posted](#posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
-| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
-| [MessageEvent](#messageEvent) | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). |  Optional |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
-| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
-| [ThreadEvent](#threadEvent) | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). |  Optional |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [ForumEvent](#forumEvent) | [Subscribed](#subscribed), [Unsubscribed](#unsubscribed) |
+| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead), [Posted](#posted) |
+| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
+| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead) |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
 
 #### Supported Entities
 | Event | Actor |	Action | Object | Referrer |
@@ -522,14 +492,11 @@ The grading profile allows information to be captured about grade changes for a 
 
 * How often are grades changed for an assessment?
 
-#### Supported Events
-[GradeEvent](#gradeEvent)
-
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [GradeEvent](#gradeEvent) | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [GradeEvent](#gradeEvent) | [Graded](#graded) |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
 
 #### Supported Entities
 | Event | Actor |	Action | Object | Generated |
@@ -558,33 +525,12 @@ As an example of how this profile could be used, consider the following scenario
 * Where do they pause the video?
 * Are there instances of where students are replaying sections of the video?
 
-#### Supported Events
-[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
-
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [MediaEvent](#mediaEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
-| [MediaEvent](#mediaEvent) | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
-| [MediaEvent](#mediaEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. |
-| [MediaEvent](#mediaEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. |
-| [MediaEvent](#mediaEvent) | [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
-| [MediaEvent](#mediaEvent) | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
-| [MediaEvent](#mediaEvent) | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
-| [MediaEvent](#mediaEvent) | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
-| [MediaEvent](#mediaEvent) | [ChangedSize](#changedSize) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n). |
-| [MediaEvent](#mediaEvent) | [ChangedSpeed](#changedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). |
-| [MediaEvent](#mediaEvent) | [ChangedVolume](#changedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). |
-| [MediaEvent](#mediaEvent) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
-| [MediaEvent](#mediaEvent) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
-| [MediaEvent](#mediaEvent) | [EnteredFullScreen](#enteredFullScreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). |
-| [MediaEvent](#mediaEvent) | [ExitedFullScreen](#exitedFullScreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). |
-| [MediaEvent](#mediaEvent) | [Muted](#muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). |
-| [MediaEvent](#mediaEvent) | [Unmuted](#unmuted) | Inverse of [Muted](#muted). |
-| [MediaEvent](#mediaEvent) | [OpenedPopout](#openedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). |
-| [MediaEvent](#mediaEvent) | [ClosedPopout](#closedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [MediaEvent](#mediaEvent) | [Started](#started), [Ended](#ended), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout) |
+| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
  
 #### Supported Entities
 | Event | Actor |	Action | Object |	Target | Referrer |
@@ -641,14 +587,11 @@ Instructors and researchers can utilize data collected via the Reading Profile t
 
 When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.
 
-#### Supported Events
-[NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
-
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
+| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |	Target | Referrer |
@@ -677,15 +620,10 @@ The session profile can facilitate the capture of data about who is logging into
 * Which students have not logged in for more than a week
 * Who logs in/logs out most/least
 
-#### Supported Events
-[SessionEvent](#sessionEvent)
-
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). |
-| [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). |
-| [SessionEvent](#sessionEvent) | [TimedOut](#timedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut) |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |	Target | Session |
@@ -714,13 +652,10 @@ The Tool Use Profile enables gathering basic usage information about learning ap
 * Does tool usage help/hinder student performance?
 * Which tools have the greatest impact on student performance?
 
-#### Supported Events
-[ToolUseEvent](#toolUseEvent)
-
-#### Supported Actions
-| Event | Action | WordNet&reg; Gloss |
-| :---- | :----- | :------------- |
-| [ToolUseEvent](#toolUseEvent) | Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [ToolUseEvent](#toolUseEvent) | [Used](#used) |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |
@@ -740,11 +675,12 @@ The Tool Use Profile enables gathering basic usage information about learning ap
 
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
-#### Supported Events
-[Event](#event)
+Use of the Basic Profile is limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
 
-#### Supported Actions
-All actions included in the Caliper [actions](#actions) vocabulary are supported.  However, it is RECOMMENDED that implementers look first to an existing Metric Profile that models the activity domain of interest before choosing to craft a generic [Event](#event).
+#### Supported Events and Actions
+| Event | Action(s) |
+| :---- | :-------- |
+| [Event](#event) | Any Caliper defined action included in the Caliper [actions](#actions) vocabulary MAY be used to describe the interaction. |
 
 #### Supported Entities
 | Event | Actor |	Action | Object |
