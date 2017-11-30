@@ -322,26 +322,27 @@ Questions which can be answered using this profile are as follows:
 * What tags are being used?
 * What notes are being added?
 
-#### Supported Events and Actions
+#### Supported Events
+[AnnotationEvent](#annotationEvent)
 
-| Event | Action(s) |
-| :---- | :-------- |
-| [AnnotationEvent](#annotationEvent) | [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged) |
+#### Supported Actors
+[Person](#person)
 
-#### Supported Entities
-| Event | Actor | Action | Object | Generated |
-| :---- | :---- | :----- | :----- | :-------- |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Bookmarked](#bookmarked) | [DigitalResource](#digitalResource) | [BookmarkAnnotation](#bookmarkAnnotation) |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Highlighted](#highlighted) | [DigitalResource](#digitalResource) | [HighlightAnnotation](#highlightAnnotation) |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Shared](#shared) | [DigitalResource](#digitalResource) | [SharedAnnotation](#sharedAnnotation) |
-| [AnnotationEvent](#annotationEvent) | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) |  [TaggedAnnotation](#taggedAnnotation) |
+#### Supported Actions
+[Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
+
+#### Supported Objects
+[DigitalResource](#digitalResource)
+
+#### Supported Generated Entities
+[BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Requirements
 * Certain [AnnotationEvent](#annotationEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AnnotationEvent](#annotationEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [AnnotationEvent](#annotationEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The `generated` [Annotation](#annotation) SHOULD be specified.  If expressed as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource) SHOULD be referenced.
+* The `generated` [Annotation](#annotation) SHOULD be specified.  Pair the `action` to the appropriated [Annotation](#annotation) subtype (e.g., [Bookmarked](#bookmarked) with [BookmarkAnnotation](#bookmarkAnnotation)).  If expressed as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource) SHOULD be referenced.
 
 ### <a name="assessmentProfile"></a>2.3.2 Assessment Profile
 
@@ -357,28 +358,27 @@ Tracking patterns using the assessment profile will allow instructors to underst
 * Which questions are skipped?
 * If test-taking times are flexible, when do learners start their assessments?
 
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [AssessmentEvent](#assessmentEvent) | [Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started), [Skipped](#skipped), [Completed](#completed) |
-| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
+#### Supported Events
+[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Supported Entities
-| Event | Actor |	Action | Object |	Generated | Referrer |
-| :---- | :---- | :----- | :----- | :-------- | :------- |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Started](#started) | [Assessment](#assessment) | [Attempt](#attempt) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Paused](#paused) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Resumed](#resumed) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Restarted](#restarted) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Reset](#reset) |  [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
-| [AssessmentEvent](#assessmentEvent) | [Person](#person) | [Submitted](#submitted) | [Assessment](#assessment) | [Attempt](#attempt) | &nbsp; |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Started](#started) | [AssessmentItem](#assessmentItem) | [Attempt](#attempt) | [Assessment](#assessment) |
-| [AssessmentItemEvent](#assessmentItemEvent) |[Person](#person) | [Skipped](#skipped) | [AssessmentItem](#assessmentItem) | &nbsp; | [AssessmentItem](#assessmentItem) |
-| [AssessmentItemEvent](#assessmentItemEvent) | [Person](#person) | [Completed](#completed) | [AssessmentItem](#assessmentItem) | [Response](#response) | [AssessmentItem](#assessmentItem) |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+AssessmentEvent: [Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)
+AssessmentItemEvent: [Started](#started), [Skipped](#skipped), [Completed](#completed)
+NavigationEvent: [NavigatedTo](#navigatedTo)
+ViewEvent: [Viewed](#viewed)
+
+#### Supported Objects
+AssessmentEvent: [Assessment](#assessment)
+AssessmentItemEvent: [AssessmentItem](#assessmentItem)
+NavigationEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)
+ViewEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)
+
+#### Supported Generated Entities
+AssessmentEvent: [Attempt](#attempt)
+AssessmentItemEvent: [Attempt](#attempt) ([Started](#started) action only), [Response](#response) ([Completed](#completed) action only)
 
 #### Requirements
 * Certain [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -405,24 +405,22 @@ This profile would be useful for instructors to gather insight about the relatio
 * How long does it take to complete something that has been assigned?
 * What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)
 
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [AssignableEvent](#assignableEvent) | [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed) |
-| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
+#### Supported Events
+[AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Supported Entities
-| Event | Actor |	Action | Object |	Generated | Referrer |
-| :---- | :---- | :----- | :----- | :-------- | :------- |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Activated](#activated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Deactivated](#deactivated) | [AssignableDigitalResource](#assignableDigitalResource) | &nbsp; | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person) | [Started](#started) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person)  | [Completed](#completed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person)  | [Submitted](#submitted) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [AssignableEvent](#assignableEvent) | [Person](#person)  | [Reviewed](#reviewed) | [AssignableDigitalResource](#assignableDigitalResource) | [Attempt](#attempt) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+* AssignableEvent: [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)
+* NavigationEvent: [NavigatedTo](#navigatedTo)
+* ViewEvent: [Viewed](#viewed)
+
+#### Supported Objects
+[AssignableDigitalResource](#assignableDigitalResource)
+
+#### Supported Generated Entities
+* AssignableEvent: [Attempt](#attempt) ([Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed) actions only)
 
 #### Requirements
 * Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -436,7 +434,6 @@ This profile would be useful for instructors to gather insight about the relatio
 * Parent-child relationships that exist between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * Parent-child relationships that exist between [DigitalResource](#digitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to a [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 ### <a name="forumProfile"></a>2.3.4 Forum Profile
@@ -450,6 +447,18 @@ Tracking patterns using the forum profile will allow instructors to understand m
 * Who is posting most often
 * Which posts create the most replies?
 * Compare graded vs. non-graded discussions
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### Supported Events and Actions
 | Event | Action(s) |
@@ -492,17 +501,24 @@ The grading profile allows information to be captured about grade changes for a 
 
 * How often are grades changed for an assessment?
 
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [GradeEvent](#gradeEvent) | [Graded](#graded) |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
+#### Supported Events
+[GradeEvent](#gradeEvent), [ViewEvent](#viewEvent)
 
-#### Supported Entities
-| Event | Actor |	Action | Object | Generated |
-| :---- | :---- | :----- | :----- | :-------- |
-| [GradeEvent](#gradeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Score](#score) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [Result](#result) | &nbsp; |
+#### Supported Actors
+* GradeEvent: [Person](#person), [SoftwareApplication](#softwareApplication)
+* ViewEvent: [Person](#person)
+
+#### Supported Actions
+* GradeEvent: [Graded](#graded)
+* ViewEvent: [Viewed](#viewed)
+
+#### Supported Objects
+* GradeEvent: [Attempt](#attempt)
+* ViewEvent: [Result](#result)
+
+#### Supported Generated Entities
+* GradeEvent: [Score](#score)
+* ViewEvent: NA
 
 #### Requirements
 * Certain [GradeEvent](#gradeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [GradeEvent](#gradeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
@@ -652,15 +668,17 @@ The Tool Use Profile enables gathering basic usage information about learning ap
 * Does tool usage help/hinder student performance?
 * Which tools have the greatest impact on student performance?
 
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [ToolUseEvent](#toolUseEvent) | [Used](#used) |
+#### Supported Events
+[ToolUseEvent](#toolUseEvent)
 
-#### Supported Entities
-| Event | Actor |	Action | Object |
-| :---- | :---- | :----- | :----- |
-| ToolUseEvent | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) |
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+[Used](#used)
+
+#### Supported Objects
+[SoftwareApplication](#softwareApplication)
 
 #### Requirements
 * Certain [ToolUseEvent](#toolUseEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ToolUseEvent](#toolUseEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
