@@ -365,20 +365,20 @@ Tracking patterns using the assessment profile will allow instructors to underst
 [Person](#person)
 
 #### Supported Actions
-AssessmentEvent: [Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)
-AssessmentItemEvent: [Started](#started), [Skipped](#skipped), [Completed](#completed)
-NavigationEvent: [NavigatedTo](#navigatedTo)
-ViewEvent: [Viewed](#viewed)
+AssessmentEvent: [Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)<br />
+AssessmentItemEvent: [Started](#started), [Skipped](#skipped), [Completed](#completed)<br />
+NavigationEvent: [NavigatedTo](#navigatedTo)<br />
+ViewEvent: [Viewed](#viewed)<br />
 
 #### Supported Objects
-AssessmentEvent: [Assessment](#assessment)
-AssessmentItemEvent: [AssessmentItem](#assessmentItem)
-NavigationEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)
-ViewEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)
+AssessmentEvent: [Assessment](#assessment)<br />
+AssessmentItemEvent: [AssessmentItem](#assessmentItem)<br />
+NavigationEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)<br />
+ViewEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)<br />
 
 #### Supported Generated Entities
-AssessmentEvent: [Attempt](#attempt)
-AssessmentItemEvent: [Attempt](#attempt) ([Started](#started) action only), [Response](#response) ([Completed](#completed) action only)
+AssessmentEvent: [Attempt](#attempt)<br />
+AssessmentItemEvent: [Attempt](#attempt) ([Started](#started) action only), [Response](#response) ([Completed](#completed) action only)<br />
 
 #### Requirements
 * Certain [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
