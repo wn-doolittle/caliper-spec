@@ -598,7 +598,7 @@ The session profile can facilitate the capture of data about who is logging into
 [SessionEvent](#sessionEvent)
 
 #### Supported Actors
-[Person](#person), [SoftwareApplication](#softwareApplication)
+[Person](#person), [SoftwareApplication](#softwareApplication) ([TimedOut](#timedOut) action only)
 
 #### Supported Actions
 [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
@@ -612,7 +612,7 @@ The session profile can facilitate the capture of data about who is logging into
 #### Other Requirements
 * Although optional, the relevant user `session` SHOULD be specified.
 * For a [LoggedIn](#loggedIn) action, if the `actor` is attempting to access a particular [DigitalResource](#digitalResource) the resource MAY be designated as the `target` of the interaction.
-* For a [TimedOut](#timedOut) action, the [Session](#session) MUST be specified as the `object`.
+* For a [TimedOut](#timedOut) action, the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor` and the [Session](#session) MUST be specified as the `object`.
 
 ### <a name="toolUseProfile"></a>3.9 Tool Use Profile
 
