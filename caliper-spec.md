@@ -29,30 +29,30 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 2.0 [The Information Model](#infoModel)
   * 2.1 [Event](#event)
   * 2.2 [Entity](#entity)
-  * 2.3 [Metric Profiles](#infoModelProfiles)
-    * 2.3.1 [Annotation Profile](#annotationProfile)
-    * 2.3.2 [Assessment Profile](#assessmentProfile)
-    * 2.3.3 [Assignable Profile](#assignableProfile)
-    * 2.3.4 [Forum Profile](#forumProfile)
-    * 2.3.5 [Grading Profile](#gradingProfile)
-    * 2.3.6 [Media Profile](#mediaProfile)
-    * 2.3.7 [Reading Profile](#readingProfile)
-    * 2.3.8 [Session Profile](#sessionProfile)
-    * 2.3.9 [Tool Use Profile](#toolUseProfile)
-    * 2.3.10 [Basic Profile](#basicProfile)
-* 3.0 [Serialization of the Model](#dataSerialization)
-  * 3.1 [JSON-LD Context](#jsonldContext)
-  * 3.2 [Identifiers](#jsonldIdentifiers)
-  * 3.3 [Types and Type Coercion](#jsonldTypes)
-* 4.0 [Sensor API](#sensor)
-  * 4.1 [Behavior](#sensorBehavior)
-  * 4.2 [Envelope](#sensorEnvelope)
-  * 4.3 [Transport](#sensorTransport)
-* 5.0 [Endpoint](#endpoint)
-  * [5.1 Endpoint Requirements](#endpointRequirements)
-    * 5.1.1 [HTTP Endpoint](#httpEndpoint)
-    * 5.1.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
-  * 5.2 [String Lengths and Storage](#stringLengths)
+* 3.0 [Metric Profiles](#infoModelProfiles)
+  * 3.1 [Annotation Profile](#annotationProfile)
+  * 3.2 [Assessment Profile](#assessmentProfile)
+  * 3.3 [Assignable Profile](#assignableProfile)
+  * 3.4 [Forum Profile](#forumProfile)
+  * 3.5 [Grading Profile](#gradingProfile)
+  * 3.6 [Media Profile](#mediaProfile)
+  * 3.7 [Reading Profile](#readingProfile)
+  * 3.8 [Session Profile](#sessionProfile)
+  * 3.9 [Tool Use Profile](#toolUseProfile)
+  * 3.10 [Basic Profile](#basicProfile)
+* 4.0 [Serialization of the Model](#dataSerialization)
+  * 4.1 [JSON-LD Context](#jsonldContext)
+  * 4.2 [Identifiers](#jsonldIdentifiers)
+  * 4.3 [Types and Type Coercion](#jsonldTypes)
+* 5.0 [Sensor API](#sensor)
+  * 5.1 [Behavior](#sensorBehavior)
+  * 5.2 [Envelope](#sensorEnvelope)
+  * 5.3 [Transport](#sensorTransport)
+* 6.0 [Endpoint](#endpoint)
+  * 6.1 [Endpoint Requirements](#endpointRequirements)
+    * 6.1.1 [HTTP Endpoint](#httpEndpoint)
+    * 6.1.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
+  * 6.2 [String Lengths and Storage](#stringLengths)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Event Subtypes](#events)
   * B.1 [AnnotationEvent](#annotationEvent)
@@ -289,13 +289,20 @@ Like an [Event](#event), an [Entity](#entity) is considered semi-structured data
 #### Deprecated subtypes
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
 
-### <a name="infoModelProfiles"></a>2.3 Metric Profiles
+## <a name="infoModelProfiles"></a>3.0 Metric Profiles
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Metric Profiles" src="assets/caliper-profiles-v3.png"></div>
 
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test, or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
-Think of each metric profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
+Think of each metric profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) type included in a metric profile place constraints on the entities and actions that can be utilized to describe a learning activity.  Restrictions are outlined as follows:
+
+* supported events
+* supported actors
+* supported actions
+* supported objects
+* supported generated and/or target entities
+* other requirements
 
 As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
      
@@ -305,7 +312,7 @@ The following metric profiles are currently available and are summarized individ
 
 [Annotation Profile](#annotationProfile), [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Forum Profile](#forumProfile), [Media Profile](#mediaProfile), [Grading Profile](#gradingProfile), [Reading Profile](#readingProfile), [Session Profile](#sessionProfile), [Tool Use Profile](#toolUseProfile), [Basic Profile](#basicProfile)
 
-### <a name="annotationProfile"></a>2.3.1 Annotation Profile
+### <a name="annotationProfile"></a>3.1 Annotation Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Annotation Profile" src="assets/caliper-profile_annotation.png"></div>
 
@@ -337,14 +344,11 @@ Questions which can be answered using this profile are as follows:
 #### Supported Generated Entities
 [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
-#### Requirements
-* Certain [AnnotationEvent](#annotationEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AnnotationEvent](#annotationEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [AnnotationEvent](#annotationEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* The `generated` [Annotation](#annotation) SHOULD be specified.  Pair the `action` to the appropriated [Annotation](#annotation) subtype (e.g., [Bookmarked](#bookmarked) with [BookmarkAnnotation](#bookmarkAnnotation)).  If expressed as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource) SHOULD be referenced.
+#### Other Requirements
+* The `generated` [Annotation](#annotation) SHOULD be specified.  Pair the `action` with the appropriate [Annotation](#annotation) subtype (e.g., [Bookmarked](#bookmarked) with [BookmarkAnnotation](#bookmarkAnnotation)).
+* If the generated [Annotation](#annotation) is expressed as an object both the `annotator` and `annotated` entities SHOULD be referenced.
 
-### <a name="assessmentProfile"></a>2.3.2 Assessment Profile
+### <a name="assessmentProfile"></a>3.2 Assessment Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assessment Profile" src="assets/caliper-profile_assessment.png"></div>
 
@@ -368,32 +372,28 @@ Tracking patterns using the assessment profile will allow instructors to underst
 AssessmentEvent: [Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)<br />
 AssessmentItemEvent: [Started](#started), [Skipped](#skipped), [Completed](#completed)<br />
 NavigationEvent: [NavigatedTo](#navigatedTo)<br />
-ViewEvent: [Viewed](#viewed)<br />
+ViewEvent: [Viewed](#viewed)
 
 #### Supported Objects
 AssessmentEvent: [Assessment](#assessment)<br />
 AssessmentItemEvent: [AssessmentItem](#assessmentItem)<br />
 NavigationEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)<br />
-ViewEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)<br />
+ViewEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)
 
 #### Supported Generated Entities
 AssessmentEvent: [Attempt](#attempt)<br />
-AssessmentItemEvent: [Attempt](#attempt) ([Started](#started) action only), [Response](#response) ([Completed](#completed) action only)<br />
+AssessmentItemEvent: [Attempt](#attempt) ([Started](#started) action only), [Response](#response) ([Completed](#completed) action only)
 
-#### Requirements
-* Certain [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
+#### Other Requirements
+* The generated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem) `assignable`.
+* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
 * For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
 * For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
-### <a name="assignableProfile"></a>2.3.3 Assignable Profile
+### <a name="assignableProfile"></a>3.3 Assignable Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assignable Profile" src="assets/caliper-profile_assignable.png"></div>
 
@@ -412,22 +412,18 @@ This profile would be useful for instructors to gather insight about the relatio
 [Person](#person)
 
 #### Supported Actions
-* AssignableEvent: [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)
-* NavigationEvent: [NavigatedTo](#navigatedTo)
-* ViewEvent: [Viewed](#viewed)
+AssignableEvent: [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)<br />
+NavigationEvent: [NavigatedTo](#navigatedTo)<br />
+ViewEvent: [Viewed](#viewed)
 
 #### Supported Objects
 [AssignableDigitalResource](#assignableDigitalResource)
 
 #### Supported Generated Entities
-* AssignableEvent: [Attempt](#attempt) ([Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed) actions only)
+AssignableEvent: [Attempt](#attempt) ([Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed) actions only)
 
-#### Requirements
-* Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* For the [AssignableEvent](#assignableEvent), a [Person](#person) or [Group](#group) MUST be specified as the `actor` of the interaction; For the [NavigationEvent](#navigationEvent) and [ViewEvent](#navigationEvent), a [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned  [AssignableDigitalResource](#assignableDigitalResource).
+#### Other Requirements
+* The generated [Attempt](#attempt) SHOULD be specified. The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned  [AssignableDigitalResource](#assignableDigitalResource) `assignable`.
 * For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
 * For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
 * For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
@@ -436,7 +432,7 @@ This profile would be useful for instructors to gather insight about the relatio
 * Parent-child relationships that exist between [DigitalResource](#digitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * When navigating to a [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
-### <a name="forumProfile"></a>2.3.4 Forum Profile
+### <a name="forumProfile"></a>3.4 Forum Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Forum Profile" src="assets/caliper-profile_forum.png"></div>
 
@@ -448,50 +444,32 @@ Tracking patterns using the forum profile will allow instructors to understand m
 * Which posts create the most replies?
 * Compare graded vs. non-graded discussions
 
+#### Supported Events
+[ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
+#### Supported Actors
+[Person](#person)
 
+#### Supported Actions
+ForumEvent: [Subscribed](#subscribed), [Unsubscribed](#unsubscribed)<br />
+MessageEvent: [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead), [Posted](#posted)<br />
+NavigationEvent: [NavigatedTo](#navigatedTo)<br />
+ThreadEvent: [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead)<br />
+ViewEvent: [Viewed](#viewed)
 
+#### Supported Objects
+ForumEvent: [Forum](#forum) <br />
+MessageEvent: [Message](#message)<br />
+NavigationEvent: [Forum](#forum), [Message](#message), [Thread](#thread)<br />
+ThreadEvent: [Thread](#thread)<br />
+ViewEvent: [Forum](#forum), [Message](#message), [Thread](#thread)
 
-
-
-
-
-
-
-
-
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [ForumEvent](#forumEvent) | [Subscribed](#subscribed), [Unsubscribed](#unsubscribed) |
-| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead), [Posted](#posted) |
-| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
-| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead) |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
-
-#### Supported Entities
-| Event | Actor |	Action | Object | Referrer |
-| :---- | :---- | :----- | :----- | :------- |
-| [ForumEvent](#forumEvent) | [Person](#person) | [Subscribed](#subscribed) | [Forum](#forum) | &nbsp; |
-| [ForumEvent](#forumEvent) | [Person](#person) | [Unsubscribed](#unsubscribed) | [Forum](#forum) | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [Posted](#posted) | [Message](#message) | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Message](#message) | &nbsp; |
-| [MessageEvent](#messageEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Message](#message) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsRead](#markedAsRead) | [Thread](#thread) | &nbsp; |
-| [ThreadEvent](#threadEvent) | [Person](#person) | [MarkedAsUnRead](#markedAsUnRead) | [Thread](#thread) | &nbsp; |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; |
-
-#### Requirements
-* Certain [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
+#### Other Requirements
 * When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
 * Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by use of the `isPartOf` property.
 * When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
-### <a name="gradingProfile"></a>2.3.5 Grading Profile
+### <a name="gradingProfile"></a>3.5 Grading Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
 
@@ -505,29 +483,26 @@ The grading profile allows information to be captured about grade changes for a 
 [GradeEvent](#gradeEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-* GradeEvent: [Person](#person), [SoftwareApplication](#softwareApplication)
-* ViewEvent: [Person](#person)
+GradeEvent: [Person](#person), [SoftwareApplication](#softwareApplication)<br />
+ViewEvent: [Person](#person)
 
 #### Supported Actions
-* GradeEvent: [Graded](#graded)
-* ViewEvent: [Viewed](#viewed)
+GradeEvent: [Graded](#graded)<br />
+ViewEvent: [Viewed](#viewed)
 
 #### Supported Objects
-* GradeEvent: [Attempt](#attempt)
-* ViewEvent: [Result](#result)
+GradeEvent: [Attempt](#attempt)<br />
+ViewEvent: [Result](#result)
 
 #### Supported Generated Entities
-* GradeEvent: [Score](#score)
-* ViewEvent: NA
+GradeEvent: [Score](#score)<br />
+ViewEvent: NA
 
-#### Requirements
-* Certain [GradeEvent](#gradeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [GradeEvent](#gradeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [GradeEvent](#gradeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
+#### Other Requirements
 * For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
-* The `action` vocabulary is limited to the supported actions described in the profile.
 * For a [Graded](#graded) action, the `generated` [Score](#score) SHOULD be specified.
 
-### <a name="mediaProfile"></a>2.3.6 Media Profile
+### <a name="mediaProfile"></a>3.6 Media Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Media Profile" src="assets/caliper-profile_media.png"></div>
 
@@ -541,44 +516,24 @@ As an example of how this profile could be used, consider the following scenario
 * Where do they pause the video?
 * Are there instances of where students are replaying sections of the video?
 
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [MediaEvent](#mediaEvent) | [Started](#started), [Ended](#ended), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout) |
-| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
- 
-#### Supported Entities
-| Event | Actor |	Action | Object |	Target | Referrer |
-| :---- | :---- | :----- | :----- | :----- | :------- |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Started](#started) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Restarted](#restarted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSize](#changedSize) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedSpeed](#changedSpeed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedVolume](#changedVolume) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [EnteredFullScreen](#enteredFullScreen) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ExitedFullScreen](#exitedFullScreen) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Muted](#muted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Unmuted](#unmuted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [OpenedPopout](#openedPopout) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [ClosedPopout](#closedPopout) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | &nbsp; | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
+#### Supported Events
+[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Requirements
-* Certain [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* A [MediaObject](#mediaObject) or one of its subtypes MUST be specified as the `object` of the interaction.
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+MediaEvent: [Started](#started), [Ended](#ended), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout))<br />
+NavigationEvent: [NavigatedTo](#navigatedTo)<br />
+ViewEvent: [Viewed](#viewed)
+
+#### Supported Objects
+[AudioObject](#audioObject), [ImageObject](#imageObject), [MediaObject](#mediaObject), [VideoObject](#videoObject)
+
+#### Supported Targets
+[MediaLocation](#mediaLocation)
+
+#### Other Requirements
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
 * For a [Started](#started) or [Restarted](#restarted) action, the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream.
 * For a [Paused](#paused) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred.
@@ -587,7 +542,7 @@ As an example of how this profile could be used, consider the following scenario
 * For other [MediaEvent](#mediaEvent) supported actions the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the action occurred.
 * When navigating to a [MediaObject](#mediaObject) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
-### <a name="readingProfile"></a>2.3.7 Reading Profile
+### <a name="readingProfile"></a>3.7 Reading Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
 
@@ -603,28 +558,27 @@ Instructors and researchers can utilize data collected via the Reading Profile t
 
 When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.
 
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [NavigationEvent](#navigationEvent)| [NavigatedTo](#navigatedTo) |
-| [ViewEvent](#viewEvent) | [Viewed](#viewed) |
+#### Supported Events
+[NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
-#### Supported Entities
-| Event | Actor |	Action | Object |	Target | Referrer |
-| :---- | :---- | :----- | :----- | :----- | :------- |
-| [NavigationEvent](#navigationEvent) | [Person](#person) | [NavigatedTo](#navigatedTo) | [DigitalResource](#digitalResource) | [Frame](#frame) | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) |
-| [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | [Frame](#frame) | &nbsp; |
+#### Supported Actors
+[Person](#person)
 
-#### Requirements
-* Certain [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* A [DigitalResource](#digitalResource) or one of its subtypes MUST be specified as the `object` of the interaction.
+#### Supported Actions
+NavigationEvent: [NavigatedTo](#navigatedTo)<br />
+ViewEvent: [Viewed](#viewed)
+
+#### Supported Objects
+[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Page](#page), [WebPage](#webPage)
+
+#### Supported Targets
+[Frame](#frame)
+
+#### Other Requirements
 * A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
 * When navigating to digital content the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
-### <a name="sessionProfile"></a>2.3.8 Session Profile
+### <a name="sessionProfile"></a>3.8 Session Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="assets/caliper-profile_session.png"></div>
 
@@ -636,32 +590,33 @@ The session profile can facilitate the capture of data about who is logging into
 * Which students have not logged in for more than a week
 * Who logs in/logs out most/least
 
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut) |
+#### Supported Events
+[SessionEvent](#sessionEvent)
 
-#### Supported Entities
-| Event | Actor |	Action | Object |	Target | Session |
-| :---- | :---- | :----- | :----- | :----- | :------ |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedIn](#loggedIn) | [SoftwareApplication](#softwareApplication) | [DigitalResource](#digitalResource) | [Session](#session) |
-| [SessionEvent](#sessionEvent) | [Person](#person) | [LoggedOut](#loggedOut) | [SoftwareApplication](#softwareApplication) | &nbsp; | [Session](#session) |
-| [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | &nbsp; |
+#### Supported Actors
+[Person](#person), [SoftwareApplication](#softwareApplication)
 
-#### Requirements
-* Certain [SessionEvent](#sessionEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [SessionEvent](#sessionEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [SessionEvent](#sessionEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* The `action` vocabulary is limited to the supported actions described in the profile.
+#### Supported Actions
+[LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
+
+#### Supported Objects
+[SoftwareApplication](#softwareApplication), [Session](#session) ([TimedOut](#timedOut) action only)
+
+#### Supported Targets
+[DigitalResource](#digitalResource)
+
+#### Other Requirements
 * Although optional, the relevant user `session` SHOULD be specified.
 * For a [LoggedIn](#loggedIn) action, if the `actor` is attempting to access a particular [DigitalResource](#digitalResource) the resource MAY be designated as the `target` of the interaction.
+* For a [TimedOut](#timedOut) action, the [Session](#session) MUST be specified as the `object`.
 
-### <a name="toolUseProfile"></a>2.3.9 Tool Use Profile
+### <a name="toolUseProfile"></a>3.9 Tool Use Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Tool Use Profile" src="assets/caliper-profile_tool_use.png"></div>
 
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
 
-The Tool Use Profile enables gathering basic usage information about learning apps. This is an easy way to get started with a base level of instrumentation and letting the learning tool make the determination of its own use.   Any learning app can be instrumented through this profile to detect when a student accesses the tool and uses it in the way it was intended.   Common questions that could be answered through the use of this profile are:
+The Tool Use Profile enables the gathering of basic usage information. It provides an easy way to get started with a base level of instrumentation by allowing the learning tool to make the determination of its own use.   Any learning app can be instrumented using this profile to detect when a student accesses the tool and uses it in the way it was intended.   Common questions that can be answered by using this profile include:
 
 * What tools are being used, and how much?
 * Who is the most active/least active user of tools?
@@ -680,14 +635,8 @@ The Tool Use Profile enables gathering basic usage information about learning ap
 #### Supported Objects
 [SoftwareApplication](#softwareApplication)
 
-#### Requirements
-* Certain [ToolUseEvent](#toolUseEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ToolUseEvent](#toolUseEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
-* Each [Entity](#entity) participating in the [ToolUseEvent](#toolUseEvent) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
 
-### <a name="basicProfile"></a>2.3.10 Basic Profile
+### <a name="basicProfile"></a>3.10 Basic Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Basic Profile" src="assets/caliper-profile_basic.png"></div>
 
@@ -695,22 +644,19 @@ The Caliper Basic Profile provides a generic [Event](#event) for describing lear
 
 Use of the Basic Profile is limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
 
-#### Supported Events and Actions
-| Event | Action(s) |
-| :---- | :-------- |
-| [Event](#event) | Any Caliper defined action included in the Caliper [actions](#actions) vocabulary MAY be used to describe the interaction. |
+#### Supported Events
+[Event](#event)
 
-#### Supported Entities
-| Event | Actor |	Action | Object |
-| :---- | :---- | :----- | :----- |
-| [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) |
+#### Supported Actors
+[Agent](#agent) or subtypes
 
-#### Requirements
-* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an object or as a string corresponding to the [Entity](#entity) [IRI](#iriDef).
-* The `action` vocabulary is limited to the supported actions described in this specification and no other.
+#### Supported Actions
+Any Caliper defined action included in the Caliper [actions](#actions) vocabulary MAY be used to describe the interaction.
 
-## <a name="dataSerialization"></a>3.0 Serialization of the Model
+#### Supported Objects
+[Entity](#entity) or subtypes
+
+## <a name="dataSerialization"></a>4.0 Serialization of the Model
 
 Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course roster, or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) can link to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data, and so on, the sources of which are likely diverse and the opportunities for discovering new relationships between the entities represented therein both numerous as well as enlightening.
 
@@ -718,7 +664,7 @@ Exchanging data linked to other data distributed across a wide network requires 
   
 [JSON-LD](#jsonldDef) defines an economical syntax for representing learning activity data as [Linked Data](#linkedData) using [JSON](#jsonDef) as the underlying data-interchange format.  [JSON-LD](#jsonldDef) also provides an API and set of processing algorithms for working with [JSON-LD](#jsonldDef) documents that are based on different contexts.  Algorithms have also been developed to serialize [RDF](#rdf) as [JSON-LD](#jsonldDef) and deserialize a [JSON-LD](#jsonldDef) document to an [RDF](#rdf) data set.
 
-### <a name="jsonldContext"></a>3.1 JSON-LD Context
+### <a name="jsonldContext"></a>4.1 JSON-LD Context
 
 [JSON-LD](#jsonldDef) documents require inclusion of a *context*, denoted by the `@context` keyword, a property employed to map document [Terms](#termDef) to [IRIs](#iriDef).  [JSON-LD](#jsonldDef) contexts can be embedded inline or referenced externally in a document.  Inclusion of a [JSON-LD](#jsonldDef) context provides an economical way for Caliper to communicate document semantics to services interested in consuming Caliper event data.
 
@@ -794,7 +740,7 @@ Contexts embedded inline can be combined with externally referenced contexts.  A
 }
 ```  
 
-### <a name="jsonldIdentifiers"></a>3.2 Identifiers
+### <a name="jsonldIdentifiers"></a>4.2 Identifiers
 
 [Linked Data](#linkedData) relies on [IRIs](#iriDef)/[URIs](#uriDefs) for the identification and retrieval of resources.  Likewise, [JSON-LD](#jsonldDef) specifies the use of [IRIs](#iriDef)/[URIs](#uriDefs) for identifying most nodes (i.e., JSON objects) and their attributes.  Caliper too specifies the use of [IRIs](#iriDef) for identifying nodes (i.e., the things or entities being described) and their attributes.  
 
@@ -826,7 +772,7 @@ Unlike Entities, each [Event](#event) MUST be assigned a 128-bit long universall
 }
 ```
 
-### <a name="jsonldTypes"></a>3.3 Types and Type Coercion
+### <a name="jsonldTypes"></a>4.3 Types and Type Coercion
 
 [JSON-LD](#jsonldDef) employs the `@type` keyword in two ways.  Individual *nodes* (i.e., the thing being described) can be assigned a type.  Values can also be associated with or *coerced* to a particular type.  Both node types and typed values are specified in the Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  As with the aliasing of `@id` as `id`, the `@type` keyword is aliased as `type` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.
 
@@ -940,13 +886,13 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
 }
 ```
 
-## <a name="sensor"></a>4.0 The Sensor API&trade;
+## <a name="sensor"></a>5.0 The Sensor API&trade;
 
 Caliper defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Caliper Sensor" src="assets/caliper-sensor-v2.png"></div>
 
-### <a name="sensorBehavior"></a>4.1 Behavior
+### <a name="sensorBehavior"></a>5.1 Behavior
 
 A Caliper [Sensor](#sensor) MUST be capable of serializing and sending a Caliper [Envelope](#envelope) containing the following payloads to one or more target [Endpoints](#endpoint).
 
@@ -956,7 +902,7 @@ A Caliper [Sensor](#sensor) MUST be capable of serializing and sending a Caliper
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
 
-### <a name="sensorEnvelope"></a>4.2 Envelope
+### <a name="sensorEnvelope"></a>5.2 Envelope
 
 Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) "describe" included in an envelope's `data` array MUST be expressed as a [JSON-LD](#jsonld) document. 
 
@@ -1145,7 +1091,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 }
 ```
 
-### <a name="sensorTransport"></a>4.3 Transport
+### <a name="sensorTransport"></a>5.3 Transport
 
 Business requirements informed by industry best practices will determine the choice of transport protocol for Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementers.  _Note that the IMS Caliper certification suite currently requires implementers seeking certification to send data to the certification test [Endpoint](#endpoint) using HTTPS with a bearer token credential consistent with [RFC 6750](#rfc6750)._  Where an alternate transport protocol is preferred for performance or other considerations, it is recommended to add that support in addition to HTTP transport for maximum interoperability.
 
@@ -1162,13 +1108,13 @@ A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint]
 | Content-Type | Set the value to the IANA media type "application/json". | Required |
 | Host | Set the value to the Internet host and port number of the resource being requested. | Required |
 
-## <a name="endpoint"></a>5.0 Endpoint
+## <a name="endpoint"></a>6.0 Endpoint
 
 A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint) for recommendations.   
 
-### <a name="endpointRequirements"></a>5.1 Endpoint Requirements
+### <a name="endpointRequirements"></a>6.1 Endpoint Requirements
 
-#### <a name="httpEndpoint"></a>5.1.1 HTTP Endpoint Requirements
+#### <a name="httpEndpoint"></a>6.1.1 HTTP Endpoint Requirements
 
 * An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS Certificate MUST be provided.
 * An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
@@ -1185,11 +1131,11 @@ When communicating over HTTP an [Endpoint](#httpEndpoint) MUST exhibit the follo
 
 Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Caliper [Sensor](#sensor) implementations may lack sophisticated error handling.
 
-#### <a name="nonHttpEndpoint"></a>5.1.2 Endpoints supporting non-HTTP protocols
+#### <a name="nonHttpEndpoint"></a>6.1.2 Endpoints supporting non-HTTP protocols
 
 Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations.  It is RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum interoperability.
 
-### <a name="stringLengths"></a>5.2 String Lengths and Storage
+### <a name="stringLengths"></a>6.2 String Lengths and Storage
 
 Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementers will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, care should be taken to ensure that strings of character data can be stored without truncation.  See [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths) for a list of Caliper data properties and recommended *minimum* string lengths.
    
