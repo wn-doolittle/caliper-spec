@@ -385,12 +385,14 @@ AssessmentEvent: [Attempt](#attempt)<br />
 AssessmentItemEvent: [Attempt](#attempt) ([Started](#started) action only), [Response](#response) ([Completed](#completed) action only)
 
 #### Other Requirements
-* The generated [Attempt](#attempt) SHOULD be specified.  The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem) `assignable`.
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
+* The generated [Attempt](#attempt) SHOULD be specified.
+* If the [Attempt](#attempt) is expressed as an object:
+  * The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem) `assignable`.
+  * For a [Started](#started) action, the [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
+  * For [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, the [Attempt](#attempt) current `count` value MUST NOT be changed.
+  * For a [Restarted](#restarted) action, the [Attempt](#attempt) `count` value MUST be incremented by 1.
+* For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  If the [Response](#response) is expressed as an object it SHOULD reference the associated `attempt`.
 * Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
 ### <a name="assignableProfile"></a>3.3 Assignable Profile
@@ -423,13 +425,14 @@ ViewEvent: [Viewed](#viewed)
 AssignableEvent: [Attempt](#attempt) ([Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed) actions only)
 
 #### Other Requirements
-* The generated [Attempt](#attempt) SHOULD be specified. The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned  [AssignableDigitalResource](#assignableDigitalResource) `assignable`.
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
+* The generated [Attempt](#attempt) SHOULD be specified.
+* If the [Attempt](#attempt) is expressed as an object:
+  * The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem) `assignable`.
+  * Tor a [Started](#started) action, the [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
+  * For [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, the [Attempt](#attempt) current `count` value MUST NOT be changed.
+  * For a [Restarted](#restarted) action, the [Attempt](#attempt) `count` value MUST be incremented by 1.
+* For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  If the [Response](#response) is expressed as an object it SHOULD reference the associated `attempt`.
 * Parent-child relationships that exist between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
-* Parent-child relationships that exist between [DigitalResource](#digitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * When navigating to a [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 ### <a name="forumProfile"></a>3.4 Forum Profile
@@ -465,7 +468,7 @@ ThreadEvent: [Thread](#thread)<br />
 ViewEvent: [Forum](#forum), [Message](#message), [Thread](#thread)
 
 #### Other Requirements
-* When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
+* If the [Message](#message) is expressed as an object and is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
 * Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by use of the `isPartOf` property.
 * When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
@@ -535,11 +538,12 @@ ViewEvent: [Viewed](#viewed)
 
 #### Other Requirements
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
-* For a [Started](#started) or [Restarted](#restarted) action, the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream.
-* For a [Paused](#paused) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred.
-* For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred.
-* For a [Ended](#ended) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the ending or closing location in the audio or video stream.
-* For other [MediaEvent](#mediaEvent) supported actions the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the action occurred.
+* If the [MediaLocation](#mediaLocation) is expressed as an object:
+  * For a [Started](#started) or [Restarted](#restarted) action, the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream.
+  * For a [Paused](#paused) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred.
+  * For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred.
+  * For a [Ended](#ended) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the ending or closing location in the audio or video stream.
+  * For other [MediaEvent](#mediaEvent) supported actions the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the action occurred.
 * When navigating to a [MediaObject](#mediaObject) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
 
 ### <a name="readingProfile"></a>3.7 Reading Profile
@@ -634,7 +638,6 @@ The Tool Use Profile enables the gathering of basic usage information. It provid
 
 #### Supported Objects
 [SoftwareApplication](#softwareApplication)
-
 
 ### <a name="basicProfile"></a>3.10 Basic Profile
 
