@@ -317,7 +317,7 @@ The following metric profiles are currently available and are summarized individ
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Annotation Profile" src="assets/caliper-profile_annotation.png"></div>
 
-The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also describThe following [Agent](#agent) types are supported:ed and is subtyped for greater type specificity.
+The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity..
 
 As an example, instructors can use the places where students are making notes in the course material to determine whether they have the right idea about which material should be highlighted.  In addition, if there are students who are asking questions or making notes indicating confusion about a particular piece of content, this can also inform the instructor about the suitability or quality of the material which they have chosen to use.  
 
