@@ -366,33 +366,68 @@ Tracking patterns using the assessment profile will allow instructors to underst
 [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-[Person](#person)
+The range of supported `actor` values is limited to:
+
+* [Person](#person) &#124; [IRI](#iriDef) 
 
 #### Supported Actions
-AssessmentEvent: [Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)<br />
-AssessmentItemEvent: [Started](#started), [Skipped](#skipped), [Completed](#completed)<br />
-NavigationEvent: [NavigatedTo](#navigatedTo)<br />
-ViewEvent: [Viewed](#viewed)
+The range of supported `action` values is restricted by [Event](#event) type.
+
+* AssessmentEvent
+  * [Started](#started)
+  * [Paused](#paused)
+  * [Resumed](#resumed)
+  * [Restarted](#restarted)
+  * [Reset](#reset)
+  * [Submitted](#submitted)
+* AssessmentItemEvent
+  * [Started](#started)
+  * [Skipped](#skipped)
+  * [Completed](#completed)
+* NavigationEvent
+  * [NavigatedTo](#navigatedTo)
+* ViewEvent
+  * [Viewed](#viewed)
 
 #### Supported Objects
-AssessmentEvent: [Assessment](#assessment)<br />
-AssessmentItemEvent: [AssessmentItem](#assessmentItem)<br />
-NavigationEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)<br />
-ViewEvent: [Assessment](#assessment), [AssessmentItem](#assessmentItem)
+The range of supported `object` values is restricted by [Event](#event) type.
+
+* AssessmentEvent
+  * [Assessment](#assessment) &#124; [IRI](#iriDef) 
+* AssessmentItemEvent
+  * [AssessmentItem](#assessmentItem) &#124; [IRI](#iriDef) 
+* NavigationEvent
+  * [Assessment](#assessment) &#124; [IRI](#iriDef) 
+  * [AssessmentItem](#assessmentItem) &#124; [IRI](#iriDef) 
+* ViewEvent: 
+  * [Assessment](#assessment) &#124; [IRI](#iriDef) 
+  * [AssessmentItem](#assessmentItem) &#124; [IRI](#iriDef) 
 
 #### Supported Generated Entities
-AssessmentEvent: [Attempt](#attempt)<br />
-AssessmentItemEvent: [Attempt](#attempt) ([Started](#started) action only), [Response](#response) ([Completed](#completed) action only)
+The range of supported `generated` values is restricted by [Event](#event) type.
 
+* AssessmentEvent:
+  * [Attempt](#attempt) &#124; [IRI](#iriDef) 
+* AssessmentItemEvent
+  * [Attempt](#attempt) &#124; [IRI](#iriDef)
+  * [Response](#response) &#124; [IRI](#iriDef) ([Completed](#completed) action only)
+
+The generated [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is expressed as an object the [Attempt](#attempt) SHOULD define, at a minimum, the `assignee`, the `assignable`, and the `count`.
+
+Set the [Attempt](#attempt) `count` values as follows (per action):
+
+* AssessmentEvent
+  * [Started](#started): set the `count` value to 1 for a first attempt and increment by 1 for each subsequent attempt.
+  * [Paused](#paused), [Resumed](#resumed), [Reset](#reset): do not change the current `count` value.
+  * [Restarted](#restarted): increment the `count` value by 1.
+* AssesssmentItemEvent
+  * [Started](#started): set the `count` value to 1 for a first attempt and increment by 1 for each subsequent attempt.
+  * [Skipped](#skipped): do not specify an [Attempt](#attempt).
+  * [Completed](#completed): the learner's `generated` [Response](#response) MAY be specified.  If the [Response](#response) is expressed as an object it SHOULD reference the associated [Attempt](#attempt) via the `attempt` property.  The current `count` value MUST remain unchanged.
+
+Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented by use of the [Attempt](#attempt) `isPartOf` property.  
+  
 #### Other Requirements
-* The generated [Attempt](#attempt) SHOULD be specified.
-* If the [Attempt](#attempt) is expressed as an object:
-  * The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem) `assignable`.
-  * For a [Started](#started) action, the [Attempt](#attempt) MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-  * For [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, the [Attempt](#attempt) current `count` value MUST NOT be changed.
-  * For a [Restarted](#restarted) action, the [Attempt](#attempt) `count` value MUST be incremented by 1.
-* For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  If the [Response](#response) is expressed as an object it SHOULD reference the associated `attempt`.
-* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
 * When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
 
 ### <a name="assignableProfile"></a>3.3 Assignable Profile
