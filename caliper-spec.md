@@ -335,12 +335,12 @@ The following [Event](#event) types are supported:
 
 * [AnnotationEvent](#annotationEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * [Bookmarked](#bookmarked)
@@ -348,11 +348,11 @@ The following [actions](#actions) are supported:
 * [Shared](#shared)
 * [Tagged](#tagged)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 * [DigitalResource](#digitalResource) or subtype
 
-#### Supported Event `generated` Entities
+#### Supported Generated Entities
 The following [Entity](#entity) types are supported:
 
 * [BookmarkAnnotation](#bookmarkAnnotation)
@@ -385,12 +385,12 @@ The following [Event](#event) types are supported:
 * [NavigationEvent](#navigationEvent)
 * [ViewEvent](#viewEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * AssessmentEvent
@@ -409,7 +409,7 @@ The following [actions](#actions) are supported:
 * ViewEvent
   * [Viewed](#viewed)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * AssessmentEvent
@@ -423,7 +423,7 @@ The following [Entity](#entity) types are supported:
   * [Assessment](#assessment) 
   * [AssessmentItem](#assessmentItem) 
 
-#### Supported Event `generated` Entities
+#### Supported Generated Entities
 The following [Entity](#entity) types are supported:
 
 * AssessmentEvent:
@@ -463,12 +463,12 @@ The following [Event](#event) types are supported:
 * [NavigationEvent](#navigationEvent)
 * [ViewEvent](#viewEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * AssignableEvent
@@ -483,12 +483,12 @@ The following [actions](#actions) are supported:
 * ViewEvent
   * [Viewed](#viewed)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * [AssignableDigitalResource](#assignableDigitalResource)
 
-#### Supported Event `generated` Entities
+#### Supported Generated Entities
 The following [Entity](#entity) types are supported:
 
 * AssignableEvent
@@ -524,12 +524,12 @@ The following [Event](#event) types are supported:
 * [ThreadEvent](#threadEvent)
 * [ViewEvent](#viewEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * ForumEvent
@@ -547,7 +547,7 @@ The following [actions](#actions) are supported:
 * ViewEvent
   * [Viewed](#viewed)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * ForumEvent
@@ -585,7 +585,7 @@ The following [Event](#event) types are supported:
 * [GradeEvent](#gradeEvent)
 * [ViewEvent](#viewEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * GradeEvent
@@ -594,7 +594,7 @@ The following [Agent](#agent) types are supported:
 * ViewEvent
   * [Person](#person) 
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * GradeEvent
@@ -602,7 +602,7 @@ The following [actions](#actions) are supported:
 * ViewEvent
   * [Viewed](#viewed)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * GradeEvent
@@ -610,7 +610,7 @@ The following [Entity](#entity) types are supported:
 * ViewEvent
   * [Result](#result)
 
-#### Supported Event `generated` Entities
+#### Supported Generated Entities
 The following [Entity](#entity) types are supported:
 
 * GradeEvent
@@ -641,12 +641,12 @@ The following [Event](#event) types are supported:
 * [NavigationEvent](#navigationEvent)
 * [ViewEvent](#viewEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person) &#124; [IRI](#iriDef)
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * MediaEvent 
@@ -674,7 +674,7 @@ The following [actions](#actions) are supported:
 * ViewEvent
   * [Viewed](#viewed)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * [AudioObject](#audioObject)
@@ -682,7 +682,7 @@ The following [Entity](#entity) types are supported:
 * [MediaObject](#mediaObject)
 * [VideoObject](#videoObject)
 
-#### Supported Event `target` Entities
+#### Supported Target Entities
 The following [Entity](#entity) types are supported:
 
 * [MediaLocation](#mediaLocation)
@@ -718,12 +718,12 @@ The following [Event](#event) types are supported:
 * [NavigationEvent](#navigationEvent)
 * [ViewEvent](#viewEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person) &#124; [IRI](#iriDef)
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * NavigationEvent
@@ -731,7 +731,7 @@ The following [actions](#actions) are supported:
 * ViewEvent
   * [Viewed](#viewed)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * [AssignableDigitalResource](#assignableDigitalResource)
@@ -742,7 +742,7 @@ The following [Entity](#entity) types are supported:
 * [Page](#page) 
 * [WebPage](#webPage)
 
-#### Supported Event `target` Entities
+#### Supported Target Entities
 The following [Entity](#entity) types are supported:
 
 * [Frame](#frame)
@@ -767,26 +767,26 @@ The following [Event](#event) types are supported:
 
 * [SessionEvent](#sessionEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
 * [SoftwareApplication](#softwareApplication) ([TimedOut](#timedOut) action only)
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * [LoggedIn](#loggedIn)
 * [LoggedOut](#loggedOut)
 * [TimedOut](#timedOut)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * [SoftwareApplication](#softwareApplication)
 * [Session](#session) ([TimedOut](#timedOut) action only)
 
-#### Supported Event `target` Entities
+#### Supported Target Entities
 The following [Entity](#entity) types are supported:
 
 [DigitalResource](#digitalResource) or subtype
@@ -814,17 +814,17 @@ The following [Event](#event) types are supported:
 
 * [ToolUseEvent](#toolUseEvent)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
 
-#### Supported Event `action` Values
+#### Supported Actions
 The following [actions](#actions) are supported:
 
 * [Used](#used)
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * [SoftwareApplication](#softwareApplication)
@@ -840,15 +840,15 @@ The following [Event](#event) types are supported:
 
 * [Event](#event) (supertype only)
 
-#### Supported Event `actor` Entities
+#### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Agent](#agent) or subtype
 
-#### Supported Event `action` Values
+#### Supported Actions
 Any action included in the Caliper [actions](#actions) vocabulary MAY be used to describe the interaction.
 
-#### Supported Event `object` Entities
+#### Supported Objects
 The following [Entity](#entity) types are supported:
 
 * [Entity](#entity) or subtype
