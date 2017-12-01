@@ -350,10 +350,11 @@ The following [actions](#actions) are supported:
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
+
 * [DigitalResource](#digitalResource) or subtype
 
 #### Supported Generated Entities
-The following [Entity](#entity) types are supported:
+The following [Annotation](#annotation) subtypes are supported:
 
 * [BookmarkAnnotation](#bookmarkAnnotation)
 * [HighlightAnnotation](#highlightAnnotation)
