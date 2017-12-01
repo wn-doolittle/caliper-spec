@@ -295,13 +295,14 @@ Like an [Event](#event), an [Entity](#entity) is considered semi-structured data
 
 The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test, or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
     
-Think of each metric profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) type included in a metric profile place constraints on the entities and actions that can be utilized to describe a learning activity.  Restrictions are outlined as follows:
+Think of each metric profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) type included in a metric profile place constraints on the entities and actions that can be utilized to describe a learning activity.  Restrictions are outlined in each profile description under the following headings:
 
 * supported events
 * supported actors
 * supported actions
 * supported objects
-* supported generated and/or target entities
+* supported generated entities
+* supported target entities
 * other requirements
 
 As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
@@ -363,15 +364,20 @@ Tracking patterns using the assessment profile will allow instructors to underst
 * If test-taking times are flexible, when do learners start their assessments?
 
 #### Supported Events
-[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
+The following [Event](#event) types are available for use:
+
+* [AssessmentEvent](#assessmentEvent)
+* [AssessmentItemEvent](#assessmentItemEvent)
+* [NavigationEvent](#navigationEvent)
+* [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The range of supported `actor` values is limited to:
+The range of supported [Event](#event) `actor` values is limited to the following [Agent](#agent) types:
 
 * [Person](#person) &#124; [IRI](#iriDef) 
 
 #### Supported Actions
-The range of supported `action` values is restricted by [Event](#event) type.
+The range of supported [Event](#event) `action` values is restricted by [Event](#event) type:
 
 * AssessmentEvent
   * [Started](#started)
@@ -390,7 +396,7 @@ The range of supported `action` values is restricted by [Event](#event) type.
   * [Viewed](#viewed)
 
 #### Supported Objects
-The range of supported `object` values is restricted by [Event](#event) type.
+The range of supported [Event](#event) `object` values is is restricted by [Event](#event) type:
 
 * AssessmentEvent
   * [Assessment](#assessment) &#124; [IRI](#iriDef) 
@@ -404,7 +410,7 @@ The range of supported `object` values is restricted by [Event](#event) type.
   * [AssessmentItem](#assessmentItem) &#124; [IRI](#iriDef) 
 
 #### Supported Generated Entities
-The range of supported `generated` values is restricted by [Event](#event) type.
+The range of supported [Event](#event) `generated` values is restricted by [Event](#event) type:
 
 * AssessmentEvent:
   * [Attempt](#attempt) &#124; [IRI](#iriDef) 
@@ -412,18 +418,21 @@ The range of supported `generated` values is restricted by [Event](#event) type.
   * [Attempt](#attempt) &#124; [IRI](#iriDef)
   * [Response](#response) &#124; [IRI](#iriDef) ([Completed](#completed) action only)
 
-The generated [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is expressed as an object the [Attempt](#attempt) SHOULD define, at a minimum, the `assignee`, the `assignable`, and the `count`.
+For each [AssessmentEvent](#assessmentEvent) described, the `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is expressed as an object the [Attempt](#attempt) SHOULD define, at a minimum, the `assignee`, the `assignable`, and the `count`.
 
 Set the [Attempt](#attempt) `count` values as follows (per action):
 
-* AssessmentEvent
-  * [Started](#started): set the `count` value to 1 for a first attempt and increment by 1 for each subsequent attempt.
-  * [Paused](#paused), [Resumed](#resumed), [Reset](#reset): do not change the current `count` value.
-  * [Restarted](#restarted): increment the `count` value by 1.
-* AssesssmentItemEvent
-  * [Started](#started): set the `count` value to 1 for a first attempt and increment by 1 for each subsequent attempt.
-  * [Skipped](#skipped): do not specify an [Attempt](#attempt).
-  * [Completed](#completed): the learner's `generated` [Response](#response) MAY be specified.  If the [Response](#response) is expressed as an object it SHOULD reference the associated [Attempt](#attempt) via the `attempt` property.  The current `count` value MUST remain unchanged.
+* [Started](#started): set the `count` value to 1 for a first attempt and increment by 1 for each subsequent attempt.
+* [Paused](#paused), [Resumed](#resumed), [Reset](#reset): do not change the current `count` value.
+* [Restarted](#restarted): increment the `count` value by 1.
+
+For each [AssessmentItemEvent](#assessmentItemEvent) described, referencing a `generated` Attempt](#attempt) or [Response](#response) depends on the `action` value specified.
+
+Set the [Attempt](#attempt) `count` values as follows (per action):
+  
+* [Started](#started): set the `count` value to 1 for a first attempt and increment by 1 for each subsequent attempt.
+* [Skipped](#skipped): do not specify an [Attempt](#attempt).
+* [Completed](#completed): if desired, specify the learner's [Response](#response) and reference the associated [Attempt](#attempt) via the `attempt` property.  The current `count` value MUST remain unchanged.
 
 Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented by use of the [Attempt](#attempt) `isPartOf` property.  
   
