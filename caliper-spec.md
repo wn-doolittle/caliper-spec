@@ -797,7 +797,7 @@ The following [Entity](#entity) types are supported:
 * [Entity](#entity) or subtype
 
 #### Other Requirements
-Use of the Basic Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
+* Use of the Basic Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
 
 ## <a name="dataSerialization"></a>4.0 Serialization of the Model
 
