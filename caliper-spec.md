@@ -299,7 +299,6 @@ Think of each metric profile as a stand-alone, logical container, or collection 
 
 * supported events
 * supported event actors
-* supported event actions
 * supported event objects
 * supported event generated entities
 * supported event target entities
@@ -331,22 +330,18 @@ Questions which can be answered using this profile are as follows:
 * What notes are being added?
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [AnnotationEvent](#annotationEvent)
+  * [Bookmarked](#bookmarked)
+  * [Highlighted](#highlighted)
+  * [Shared](#shared)
+  * [Tagged](#tagged)
 
 #### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
-
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* [Bookmarked](#bookmarked)
-* [Highlighted](#highlighted)
-* [Shared](#shared)
-* [Tagged](#tagged)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
@@ -379,57 +374,49 @@ Tracking patterns using the assessment profile will allow instructors to underst
 * If test-taking times are flexible, when do learners start their assessments?
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [AssessmentEvent](#assessmentEvent)
-* [AssessmentItemEvent](#assessmentItemEvent)
-* [NavigationEvent](#navigationEvent)
-* [ViewEvent](#viewEvent)
-
-#### Supported Actors
-The following [Agent](#agent) types are supported:
-
-* [Person](#person)
-
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* AssessmentEvent
   * [Started](#started)
   * [Paused](#paused)
   * [Resumed](#resumed)
   * [Restarted](#restarted)
   * [Reset](#reset)
   * [Submitted](#submitted)
-* AssessmentItemEvent
+* [AssessmentItemEvent](#assessmentItemEvent)
   * [Started](#started)
   * [Skipped](#skipped)
   * [Completed](#completed)
-* NavigationEvent
+* [NavigationEvent](#navigationEvent)
   * [NavigatedTo](#navigatedTo)
-* ViewEvent
+* [ViewEvent](#viewEvent)
   * [Viewed](#viewed)
+
+#### Supported Actors
+The following [Agent](#agent) types are supported:
+
+* [Person](#person)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
 
-* AssessmentEvent
+* [AssessmentEvent](#assessmentEvent)
   * [Assessment](#assessment) 
-* AssessmentItemEvent
+* [AssessmentItemEvent](#assessmentItemEvent)
   * [AssessmentItem](#assessmentItem) 
-* NavigationEvent
+* [NavigationEvent](#navigationEvent)
   * [Assessment](#assessment)
   * [AssessmentItem](#assessmentItem)
-* ViewEvent: 
+* [ViewEvent](#viewEvent)
   * [Assessment](#assessment) 
-  * [AssessmentItem](#assessmentItem) 
+  * [AssessmentItem](#assessmentItem)
 
 #### Supported Generated Entities
 The following [Entity](#entity) types are supported:
 
-* AssessmentEvent:
+* [AssessmentEvent](#assessmentEvent)
   * [Attempt](#attempt) 
-* AssessmentItemEvent
+* [AssessmentItemEvent](#assessmentItemEvent)
   * [Attempt](#attempt)
   * [Response](#response) ([Completed](#completed) action only)
 
@@ -458,31 +445,24 @@ This profile would be useful for instructors to gather insight about the relatio
 * What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [AssignableEvent](#assignableEvent)
-* [NavigationEvent](#navigationEvent)
-* [ViewEvent](#viewEvent)
-
-#### Supported Actors
-The following [Agent](#agent) types are supported:
-
-* [Person](#person)
-
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* AssignableEvent
   * [Activated](#activated)
   * [Deactivated](#deactivated)
   * [Started](#started)
   * [Completed](#completed)
   * [Submitted](#submitted)
   * [Reviewed](#reviewed)
-* NavigationEvent
+* [NavigationEvent](#navigationEvent)
   * [NavigatedTo](#navigatedTo)
-* ViewEvent
+* [ViewEvent](#viewEvent)
   * [Viewed](#viewed)
+
+#### Supported Actors
+The following [Agent](#agent) types are supported:
+
+* [Person](#person)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
@@ -517,51 +497,42 @@ Tracking patterns using the forum profile will allow instructors to understand m
 * Compare graded vs. non-graded discussions
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [ForumEvent](#forumEvent)
+  * [Subscribed](#subscribed)
+  * [Unsubscribed](#unsubscribed)
 * [MessageEvent](#messageEvent)
+  * [MarkedAsRead](#markedAsRead)
+  * [MarkedAsUnRead](#markedAsUnRead)
+  * [Posted](#posted)
 * [NavigationEvent](#navigationEvent)
+  * [NavigatedTo](#navigatedTo)
 * [ThreadEvent](#threadEvent)
+  * [MarkedAsRead](#markedAsRead)
+  * [MarkedAsUnRead](#markedAsUnRead)
 * [ViewEvent](#viewEvent)
+  * [Viewed](#viewed)
 
 #### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
 
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* ForumEvent
-  * [Subscribed](#subscribed)
-  * [Unsubscribed](#unsubscribed)
-* MessageEvent
-  * [MarkedAsRead](#markedAsRead)
-  * [MarkedAsUnRead](#markedAsUnRead)
-  * [Posted](#posted)
-* NavigationEvent
-  * [NavigatedTo](#navigatedTo)
-* ThreadEvent
-  * [MarkedAsRead](#markedAsRead)
-  * [MarkedAsUnRead](#markedAsUnRead)
-* ViewEvent
-  * [Viewed](#viewed)
-
 #### Supported Objects
 The following [Entity](#entity) types are supported:
 
-* ForumEvent
+* [ForumEvent](#forumEvent)
   * [Forum](#forum)
-* MessageEvent
+* [MessageEvent](#messageEvent)
   * [Message](#message)
-* NavigationEvent
+* [NavigationEvent](#navigationEvent)
   * [Forum](#forum)
   * [Message](#message)
   * [Thread](#thread)
-* ThreadEvent
+* [ThreadEvent](#threadEvent)
   * [Thread](#thread)
-* ViewEvent
+* [ViewEvent](#viewEvent)
   * [Forum](#forum)
   * [Message](#message)
   * [Thread](#thread)
@@ -581,40 +552,42 @@ The grading profile allows information to be captured about grade changes for a 
 * How often are grades changed for an assessment?
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [GradeEvent](#gradeEvent)
+  * [Graded](#graded)
 * [ViewEvent](#viewEvent)
+  * [Viewed](#viewed)
 
 #### Supported Actors
 The following [Agent](#agent) types are supported:
 
-* GradeEvent
+* [GradeEvent](#gradeEvent)
   * [Person](#person)
   * [SoftwareApplication](#softwareApplication)
-* ViewEvent
+* [ViewEvent](#viewEvent)
   * [Person](#person) 
 
 #### Supported Actions
 The following [actions](#actions) are supported:
 
-* GradeEvent
+* [GradeEvent](#gradeEvent)
   * [Graded](#graded)
-* ViewEvent
+* [ViewEvent](#viewEvent)
   * [Viewed](#viewed)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
 
-* GradeEvent
+* [GradeEvent](#gradeEvent)
   * [Attempt](#attempt)
-* ViewEvent
+* [ViewEvent](#viewEvent)
   * [Result](#result)
 
 #### Supported Generated Entities
 The following [Entity](#entity) types are supported:
 
-* GradeEvent
+* [GradeEvent](#gradeEvent)
   * [Score](#score)
 
 #### Other Requirements
@@ -636,21 +609,9 @@ As an example of how this profile could be used, consider the following scenario
 * Are there instances of where students are replaying sections of the video?
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [MediaEvent](#mediaEvent)
-* [NavigationEvent](#navigationEvent)
-* [ViewEvent](#viewEvent)
-
-#### Supported Actors
-The following [Agent](#agent) types are supported:
-
-* [Person](#person) &#124; [IRI](#iriDef)
-
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* MediaEvent 
   * [Started](#started)
   * [Ended](#ended)
   * [Paused](#paused)
@@ -670,10 +631,15 @@ The following [actions](#actions) are supported:
   * [Unmuted](#unmuted)
   * [OpenedPopout](#openedPopout)
   * [ClosedPopout](#closedPopout))
-* NavigationEvent
+* [NavigationEvent](#navigationEvent)
   * [NavigatedTo](#navigatedTo)
-* ViewEvent
+* [ViewEvent](#viewEvent)
   * [Viewed](#viewed)
+
+#### Supported Actors
+The following [Agent](#agent) types are supported:
+
+* [Person](#person) &#124; [IRI](#iriDef)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
@@ -714,23 +680,17 @@ Instructors and researchers can utilize data collected via the Reading Profile t
 When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [NavigationEvent](#navigationEvent)
+  * [NavigatedTo](#navigatedTo)
 * [ViewEvent](#viewEvent)
+  * [Viewed](#viewed)
 
 #### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person) &#124; [IRI](#iriDef)
-
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* NavigationEvent
-  * [NavigatedTo](#navigatedTo)
-* ViewEvent
-  * [Viewed](#viewed)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
@@ -764,22 +724,18 @@ The session profile can facilitate the capture of data about who is logging into
 * Who logs in/logs out most/least
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [SessionEvent](#sessionEvent)
+  * [LoggedIn](#loggedIn)
+  * [LoggedOut](#loggedOut)
+  * [TimedOut](#timedOut)
 
 #### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
 * [SoftwareApplication](#softwareApplication) ([TimedOut](#timedOut) action only)
-
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* [LoggedIn](#loggedIn)
-* [LoggedOut](#loggedOut)
-* [TimedOut](#timedOut)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
@@ -811,19 +767,15 @@ The Tool Use Profile enables the gathering of basic usage information. It provid
 * Which tools have the greatest impact on student performance?
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [ToolUseEvent](#toolUseEvent)
+  * [Used](#used)
 
 #### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Person](#person)
-
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* [Used](#used)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
