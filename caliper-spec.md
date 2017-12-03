@@ -400,23 +400,23 @@ The following [Agent](#agent) types are supported:
 #### Supported Objects
 The following [Entity](#entity) types are supported:
 
-* [AssessmentEvent](#assessmentEvent)
+* AssessmentEvent
   * [Assessment](#assessment) 
-* [AssessmentItemEvent](#assessmentItemEvent)
+* AssessmentItemEvent
   * [AssessmentItem](#assessmentItem) 
-* [NavigationEvent](#navigationEvent)
+* NavigationEvent
   * [Assessment](#assessment)
   * [AssessmentItem](#assessmentItem)
-* [ViewEvent](#viewEvent)
+* ViewEvent
   * [Assessment](#assessment) 
   * [AssessmentItem](#assessmentItem)
 
 #### Supported Generated Entities
 The following [Entity](#entity) types are supported:
 
-* [AssessmentEvent](#assessmentEvent)
+* AssessmentEvent
   * [Attempt](#attempt) 
-* [AssessmentItemEvent](#assessmentItemEvent)
+* AssessmentItemEvent
   * [Attempt](#attempt)
   * [Response](#response) ([Completed](#completed) action only)
 
@@ -522,17 +522,17 @@ The following [Agent](#agent) types are supported:
 #### Supported Objects
 The following [Entity](#entity) types are supported:
 
-* [ForumEvent](#forumEvent)
+* ForumEvent
   * [Forum](#forum)
-* [MessageEvent](#messageEvent)
+* MessageEvent
   * [Message](#message)
-* [NavigationEvent](#navigationEvent)
+* NavigationEvent
   * [Forum](#forum)
   * [Message](#message)
   * [Thread](#thread)
-* [ThreadEvent](#threadEvent)
+* ThreadEvent
   * [Thread](#thread)
-* [ViewEvent](#viewEvent)
+* ViewEvent
   * [Forum](#forum)
   * [Message](#message)
   * [Thread](#thread)
@@ -562,32 +562,24 @@ The following [Event](#event) types and [actions](#actions) are supported:
 #### Supported Actors
 The following [Agent](#agent) types are supported:
 
-* [GradeEvent](#gradeEvent)
+* GradeEvent
   * [Person](#person)
   * [SoftwareApplication](#softwareApplication)
-* [ViewEvent](#viewEvent)
-  * [Person](#person) 
-
-#### Supported Actions
-The following [actions](#actions) are supported:
-
-* [GradeEvent](#gradeEvent)
-  * [Graded](#graded)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+* ViewEvent
+  * [Person](#person)
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
 
-* [GradeEvent](#gradeEvent)
+* GradeEvent
   * [Attempt](#attempt)
-* [ViewEvent](#viewEvent)
+* ViewEvent
   * [Result](#result)
 
 #### Supported Generated Entities
 The following [Entity](#entity) types are supported:
 
-* [GradeEvent](#gradeEvent)
+* GradeEvent
   * [Score](#score)
 
 #### Other Requirements
@@ -789,17 +781,15 @@ The following [Entity](#entity) types are supported:
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
 #### Supported Events
-The following [Event](#event) types are supported:
+The following [Event](#event) types and [actions](#actions) are supported:
 
 * [Event](#event) (supertype only)
+  * Any Caliper action MAY be used to describe the interaction.
 
 #### Supported Actors
 The following [Agent](#agent) types are supported:
 
 * [Agent](#agent) or subtype
-
-#### Supported Actions
-Any action included in the Caliper [actions](#actions) vocabulary MAY be used to describe the interaction.
 
 #### Supported Objects
 The following [Entity](#entity) types are supported:
