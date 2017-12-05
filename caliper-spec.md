@@ -842,7 +842,7 @@ In the following example, `@context` is a top-level [Event](#event) property wit
 }
 ```
 
-As noted above, a [JSON-LD](#jsonldDef) document can reference more than one context.  Subject to the requirements listed above additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *describe* in order to map non-Caliper vocabulary terms to their respective [IRIs](#iriDef).
+As noted above, a [JSON-LD](#jsonldDef) document can reference more than one context.  Subject to the requirements listed above additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *[describe](#describeDef)* in order to map non-Caliper vocabulary terms to their respective [IRIs](#iriDef).
 
 #### Example: Referencing multiple contexts
 
@@ -1040,14 +1040,14 @@ Caliper defines an application programming interface (the Sensor API&trade;) for
 A Caliper [Sensor](#sensor) MUST be capable of serializing and sending a Caliper [Envelope](#envelope) containing the following payloads to one or more target [Endpoints](#endpoint).
 
 * A JSON array consisting of one or more Caliper [Event](#event) documents, each expressed as JSON-LD.
-* A JSON array consisting of one or more Caliper [Entity](#entity) "describe" documents, each expressed as JSON-LD.
-* A JSON array consisting of a mix of one or more Caliper [Event](#event) and [Entity](#entity) describe documents, each expressed as JSON-LD.
+* A JSON array consisting of one or more Caliper [Entity](#entity) *[describe](#describeDef)* documents, each expressed as JSON-LD.
+* A JSON array consisting of a mix of one or more Caliper [Event](#event) and [Entity](#entity) *[describe](#describeDef)* documents, each expressed as JSON-LD.
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
 
 ### <a name="sensorEnvelope"></a>5.2 Envelope
 
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) "describe" included in an envelope's `data` array MUST be expressed as a [JSON-LD](#jsonld) document. 
+Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* included in an envelope's `data` array MUST be expressed as a [JSON-LD](#jsonld) document. 
 
 #### Properties
 Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST be referenced only once.  No custom properties are permitted.
@@ -1057,7 +1057,7 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | sensor | string | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor).  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
 | sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 | dataVersion | string | A string value indicating which version of the IMS Caliper Analytics&reg; specification governs the form of the Caliper entities and events contained in the `data` payload. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
-| data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
+| data | Array | An ordered collection of one or more Caliper [Entity](#entity) *[describes](#describeDef)* and/or [Event](#event) types.  The Sensor MAY mix *[describes](#describeDef)* and events in the same [Envelope](#envelope). | Required |
 
 #### Example: Mixed payload
 ```
@@ -1280,7 +1280,7 @@ Support for non-HTTP transport protocols involves a negotiation between the Cali
 
 ### <a name="stringLengths"></a>6.2 String Lengths and Storage
 
-Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementers will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, care should be taken to ensure that strings of character data can be stored without truncation.  See [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths) for a list of Caliper data properties and recommended *minimum* string lengths.
+Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementers will choose to store each incoming [Event](#event) and [Entity](#entity) *[describe](#describeDef)* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, care should be taken to ensure that strings of character data can be stored without truncation.  See [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths) for a list of Caliper data properties and recommended *minimum* string lengths.
    
 ## <a name="actions"></a>Appendix A. Actions
 
