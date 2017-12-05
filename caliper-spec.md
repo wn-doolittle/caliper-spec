@@ -1237,8 +1237,6 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 A Caliper [Sensor](#sensor) MUST be capable of transmitting Caliper data successfully to a Caliper [Endpoint](#endpoint). Conformance is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).
 
 Each message sent MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).  Messages MUST be sent using the POST request method.  The HTTP `Host` and `Content-Type` request header fields MUST be set.  The `Authorization` request header field SHOULD be set.  
- 
-~~The following standard HTTP request headers MUST be set for each message sent to an [Endpoint](#endpoint):~~
 
 | Request Header | Description | Disposition |
 | :------------- | :---------- | :---------- |
