@@ -47,7 +47,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 5.0 [Sensor API](#sensor)
   * 5.1 [Behavior](#sensorBehavior)
   * 5.2 [Envelope](#sensorEnvelope)
-  * 5.3 [HTTP Transport](#sensorTransport)
+  * 5.3 [JSON-LD Payload](#jsonldPayload)
+  * 5.4 [HTTP Transport](#sensorTransport)
 * 6.0 [Endpoint](#endpoint)
   * 6.1 [HTTP Endpoint Requirements](#httpEndpoint)
   * 6.2 [String Lengths and Storage](#stringLengths)
@@ -1035,18 +1036,18 @@ Caliper defines an application programming interface (the Sensor API&trade;) for
 
 ### <a name="sensorBehavior"></a>5.1 Behavior
 
-A Caliper [Sensor](#sensor) MUST be capable of serializing and transmitting the following Caliper data payloads to a target [endpoint](#endpoint).
+A [Sensor](#sensor) MUST implement the following behaviors:
 
-* A JSON array consisting of one or more Caliper [Event](#event) documents, each expressed as JSON-LD.
-* A JSON array consisting of one or more Caliper [Entity](#entity) *[describe](#describeDef)* documents, each expressed as JSON-LD.
-* A JSON array consisting of a mix of one or more Caliper [Event](#event) and [Entity](#entity) *[describe](#describeDef)* documents, each expressed as JSON-LD.
+* create in-memory object representations of Caliper [Event](#event), [Entity](#entity) and [Envelope](#envelope) types.  The particular [Event](#event) and [Entity](#entity) types that the  [Sensor](#sensor) must be capable of expressing is determined by the [Metric Profiles](#profileDef) implemented.    
+* express [Entity](#entity) values as either an object or a string corresponding to the resource's [IRI](#iriDef).
+* serialize in-memory Caliper [Envelope](#envelope) objects as JSON and [Event](#event) and [Entity](#entity) objects as [JSON-LD](#jsonldDef).  Serialized [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data must be transmitted inside an [Envelope](#envelope) as described in Section [5.2](#sensorEnvelope) below.
+* transmit serialized Caliper [Envelopes](#envelope) containing [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* data to a target [Endpoint](#endpoint) over HTTP as described in Section [5.3](#sensorTransport) below.
 
-A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
+A [Sensor](#sensor) MAY be assigned other responsibilities such validating Caliper [Event](#event) and [Entity](#entity) data but such capabilities need not be exposed to learning data providers.  
 
 ### <a name="sensorEnvelope"></a>5.2 Envelope
 
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* included in an envelope's `data` array property MUST be expressed as a [JSON-LD](#jsonld) document. 
-
+Caliper [Event](#event) and [Entity](#entity) data MUST be transmitted inside a Caliper [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.
 #### Properties
 Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST be referenced only once.  No custom properties are permitted.
 
@@ -1055,7 +1056,11 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | sensor | string | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor).  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
 | sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 | dataVersion | string | A string value indicating which version of the IMS Caliper Analytics&reg; specification governs the form of the Caliper entities and events contained in the `data` payload. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
-| data | Array | An ordered collection of one or more Caliper [Entity](#entity) *[describes](#describeDef)* and/or [Event](#event) types.  The Sensor MAY mix events and *[describes](#describeDef)* in the same [Envelope](#envelope). | Required |
+| data | Array | An ordered collection of one or more Caliper [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* objects.  The Sensor MAY mix [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data in the same [Envelope](#envelope). | Required |
+
+### <a name="jsonldPayload"></a>5.3 JSON-LD Payload
+
+Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitted inside an [Envelope](#envelope) MUST be serialized as a [JSON-LD](#jsonld) document. 
 
 #### Example: Mixed payload
 ```
@@ -1232,9 +1237,9 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 }
 ```
 
-### <a name="sensorTransport"></a>5.3 HTTP Transport
+### <a name="sensorTransport"></a>5.4 HTTP Transport
 
-A Caliper [Sensor](#sensor) MUST be capable of transmitting Caliper data successfully to a Caliper [Endpoint](#endpoint). Conformance is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).
+A Caliper [Sensor](#sensor) MUST be capable of transmitting Caliper data successfully to a Caliper [Endpoint](#endpoint). Communication is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).
 
 Each message sent MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).  Messages MUST be sent using the POST request method.  The HTTP `Host` and `Content-Type` request header fields MUST be set.  The `Authorization` request header field SHOULD be set.  
 
