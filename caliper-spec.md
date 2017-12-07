@@ -48,9 +48,9 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 5.1 [Behavior](#sensorBehavior)
   * 5.2 [Envelope](#sensorEnvelope)
   * 5.3 [JSON-LD Payload](#jsonldPayload)
-  * 5.4 [HTTP Transport](#sensorTransport)
+  * 5.4 [HTTP Requests](#httpRequest)
 * 6.0 [Endpoint](#endpoint)
-  * 6.1 [HTTP Endpoint Requirements](#httpEndpoint)
+  * 6.1 [HTTP Responses](#httpResponse)
   * 6.2 [String Lengths and Storage](#stringLengths)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Event Subtypes](#events)
@@ -872,7 +872,7 @@ Contexts embedded inline can be combined with externally referenced contexts.  A
   },
   "action": "Searched",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/123",
     "type": "Document"
   },
   "eventTime": "2017-11-15T10:15:00.000Z",
@@ -1048,6 +1048,7 @@ A [Sensor](#sensor) MAY be assigned other responsibilities such as validating Ca
 ### <a name="sensorEnvelope"></a>5.2 Envelope
 
 Caliper [Event](#event) and [Entity](#entity) data MUST be transmitted inside a Caliper [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.
+
 #### Properties
 Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST be referenced only once.  No custom properties are permitted.
 
@@ -1062,7 +1063,52 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 
 Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitted inside an [Envelope](#envelope) MUST be serialized as a [JSON-LD](#jsonld) document. 
 
-#### Example: Mixed payload
+### Example: Single Event Payload
+```
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2017-11-15T11:05:01.000Z",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
+    "type": "ToolUseEvent",
+    "actor": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "action": "Used",
+    "object": {
+      "id": "https://example.edu",
+      "type": "SoftwareApplication"
+    },
+    "eventTime": "2017-11-15T10:15:00.000Z",
+    "edApp": "https://example.edu",
+    "group": {
+      "id": "https://example.edu/terms/201701/courses/7/sections/1",
+      "type": "CourseSection",
+      "courseNumber": "CPS 435-01",
+      "academicSession": "Fall 2017"
+    },
+    "membership": {
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+      "type": "Membership",
+      "member": "https://example.edu/users/554433",
+      "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+      "roles": ["Learner"],
+      "status": "Active",
+      "dateCreated": "2017-08-01T06:00:00.000Z"
+    },
+    "session": {
+      "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+      "type": "Session",
+      "startedAtTime": "2017-11-15T10:00:00.000Z"
+    }
+  }]
+}
+```
+
+#### Example: Mixed Payload
 ```
 {
   "sensor": "https://example.edu/sensors/1",
@@ -1237,29 +1283,25 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
 }
 ```
 
-### <a name="sensorTransport"></a>5.4 HTTP Transport
+### <a name="httpRequest"></a>5.4 HTTP Requests
 
-A Caliper [Sensor](#sensor) MUST be capable of transmitting Caliper data successfully to a Caliper [Endpoint](#endpoint). Communication is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).
+A Caliper [Sensor](#sensor) MUST be capable of transmitting Caliper data successfully to a Caliper [Endpoint](#endpoint).  Communication with an [Endpoint](#endpoint) is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).
 
-Each message sent MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).  Messages MUST be sent using the POST request method.  The HTTP `Host` and `Content-Type` request header fields MUST be set.  A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+Each message request MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).  Messages MUST be sent using the POST request method.  The HTTP `Host` and `Content-Type` request header fields MUST be set.  
+
+A [Sensor](#sensor) SHOULD also set the `Authorization` request header field using the "Bearer" authentication scheme described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself.
 
 | Request Header | Description | Disposition |
 | :------------- | :---------- | :---------- |
-| Authorization | Set the string value to the request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2) (e.g., Authorization: Bearer \<token value\>).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. | Recommended |
+| Authorization | Set the string value to a bearer token using the "Bearer" authentication scheme described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2) (e.g., Authorization: Bearer \<token value\>). | Recommended |
 | Content-Type | Set the string value to the IANA media type "application/json". | Required |
 | Host | Set the string value to the Internet host and port number of the resource being requested. | Required |
 
 ## <a name="endpoint"></a>6.0 Endpoint
 
-A Caliper [Endpoint](#endpoint) MUST be capable of receiving Caliper data sent over HTTPS by a Caliper [Sensor](#sensor) using the standard POST request method with the connection encrypted with Transport Layer Security (TLS). 
+A Caliper [Endpoint](#endpoint) MUST be capable of receiving Caliper data sent over HTTP by a Caliper [Sensor](#sensor) using the standard POST request method.  The connection MUST be secured with Transport Layer Security (TLS) and a valid TLS certificate provided. The [Endpoint](#endpoint) MUST be capable of accessing standard HTTP request headers and support message authentication that utilizes the HTTP `Authorization` request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
 
-### <a name="httpEndpoint"></a>6.1 HTTP Endpoint Requirements
-
-At a minimum, the [Endpoint](#endpoint) MUST support the following capabilities:
-
-* use HTTPS to secure the connection between the [Sensor](#sensor) and itself and provide a valid TLS Certificate.
-* be capable of accessing standard HTTP request headers.
-* support message authentication that utilizes the HTTP `Authorization` request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+### <a name="httpResponse"></a>6.1 HTTP Responses
 
 Following receipt of a [Sensor](#sensor) request message the [Endpoint](#endpoint) MUST reply with a response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
 
@@ -4270,14 +4312,14 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
         "tool_consumer_instance_url": "https://example.edu"
       },
       "ext": {
-        "edu_example_course_section": "https://example.edu/terms/201601/courses/7/sections/1",
-        "edu_example_course_section_roster": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+        "edu_example_course_section": "https://example.edu/terms/201701/courses/7/sections/1",
+        "edu_example_course_section_roster": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
         "edu_example_course_section_learner": "https://example.edu/users/554433",
         "edu_example_course_section_instructor": "https://example.edu/faculty/1234"
       }
     },
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z"
   }
 ```
 
