@@ -1041,9 +1041,9 @@ A [Sensor](#sensor) MUST implement the following behaviors:
 * create in-memory object representations of Caliper [Event](#event) and [Entity](#entity) types as described in Section [2.0](#infoModel).  The particular [Event](#event) and [Entity](#entity) types that a [Sensor](#sensor) must be capable of expressing are determined by the [Metric Profiles](#profileDef) implemented as described in Section [3.0](#profiles).    
 * express [Entity](#entity) values as either an object or a string corresponding to the resource's [IRI](#iriDef) as described in Section [2.2](#entity).
 * serialize in-memory [Event](#event) and [Entity](#entity) objects as [JSON-LD](#jsonldDef) as described in Section [4.0](#dataSerialization).  
-* create in-memory object representations of a Caliper [Envelope](#envelope) as described in Section [5.2](#sensorEnvelope).
-* serialize in-memory Caliper [Envelope](#envelope) objects as JSON as described in Section [5.2].  Serialized [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data must be transmitted inside an [Envelope](#envelope) as described in Section [5.3](#jsonldPayload).
-* transmit over HTTP serialized Caliper [Envelopes](#envelope) containing [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* data to a target [Endpoint](#endpoint) as described in Section [5.4](#httpRequest).
+* create an in-memory object representation of a Caliper [Envelope](#envelope) as described in Section [5.2](#sensorEnvelope).
+* serialize in-memory Caliper [Envelope](#envelope) objects as JSON as described in Section [5.2](#sensorEnvelope).  [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data serialized as JSON-LD MUST be transmitted inside an [Envelope](#envelope) as described in Sections [5.2](#sensorEnvelope) and [5.3](#jsonldPayload).
+* transmit serialized Caliper [Envelopes](#envelope) containing [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* data to a target [Endpoint](#endpoint) over HTTP as described in Section [5.4](#httpRequest).
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as validating Caliper [Event](#event) and [Entity](#entity) data but such capabilities need not be exposed to learning data providers.  
 
