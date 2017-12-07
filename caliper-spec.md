@@ -1245,7 +1245,7 @@ Each message sent MUST consist of a single JSON representation of a Caliper [Env
 
 | Request Header | Description | Disposition |
 | :------------- | :---------- | :---------- |
-| Authorization | Set the string value to the request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2) (e.g., Authorization: Bearer <token value>).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. | Recommended |
+| Authorization | Set the string value to the request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2) (e.g., Authorization: Bearer \<token value\>).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. | Recommended |
 | Content-Type | Set the string value to the IANA media type "application/json". | Required |
 | Host | Set the string value to the Internet host and port number of the resource being requested. | Required |
 
