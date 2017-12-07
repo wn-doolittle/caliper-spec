@@ -1038,12 +1038,12 @@ Caliper defines an application programming interface (the Sensor API&trade;) for
 
 A [Sensor](#sensor) MUST implement the following behaviors:
 
-* create in-memory object representations of Caliper [Event](#event), [Entity](#entity) and [Envelope](#envelope) types.  The particular [Event](#event) and [Entity](#entity) types that the  [Sensor](#sensor) must be capable of expressing is determined by the [Metric Profiles](#profileDef) implemented.    
+* create in-memory object representations of Caliper [Event](#event), [Entity](#entity) and [Envelope](#envelope) types.  The particular [Event](#event) and [Entity](#entity) types that a [Sensor](#sensor) must be capable of expressing are determined by the [Metric Profiles](#profileDef) implemented.    
 * express [Entity](#entity) values as either an object or a string corresponding to the resource's [IRI](#iriDef).
 * serialize in-memory Caliper [Envelope](#envelope) objects as JSON and [Event](#event) and [Entity](#entity) objects as [JSON-LD](#jsonldDef).  Serialized [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data must be transmitted inside an [Envelope](#envelope) as described in Section [5.2](#sensorEnvelope) below.
 * transmit serialized Caliper [Envelopes](#envelope) containing [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* data to a target [Endpoint](#endpoint) over HTTP as described in Section [5.3](#sensorTransport) below.
 
-A [Sensor](#sensor) MAY be assigned other responsibilities such validating Caliper [Event](#event) and [Entity](#entity) data but such capabilities need not be exposed to learning data providers.  
+A [Sensor](#sensor) MAY be assigned other responsibilities such as validating Caliper [Event](#event) and [Entity](#entity) data but such capabilities need not be exposed to learning data providers.  
 
 ### <a name="sensorEnvelope"></a>5.2 Envelope
 
@@ -1241,13 +1241,13 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
 
 A Caliper [Sensor](#sensor) MUST be capable of transmitting Caliper data successfully to a Caliper [Endpoint](#endpoint). Communication is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).
 
-Each message sent MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).  Messages MUST be sent using the POST request method.  The HTTP `Host` and `Content-Type` request header fields MUST be set.  The `Authorization` request header field SHOULD be set.  
+Each message sent MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).  Messages MUST be sent using the POST request method.  The HTTP `Host` and `Content-Type` request header fields MUST be set.  A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
 
 | Request Header | Description | Disposition |
 | :------------- | :---------- | :---------- |
-| Authorization | A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. | Recommended |
-| Content-Type | Set the value to the IANA media type "application/json". | Required |
-| Host | Set the value to the Internet host and port number of the resource being requested. | Required |
+| Authorization | Set the string value to the request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2) (e.g., Authorization: Bearer <token value>).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. | Recommended |
+| Content-Type | Set the string value to the IANA media type "application/json". | Required |
+| Host | Set the string value to the Internet host and port number of the resource being requested. | Required |
 
 ## <a name="endpoint"></a>6.0 Endpoint
 
