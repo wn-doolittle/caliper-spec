@@ -46,7 +46,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 4.3 [Types and Type Coercion](#jsonldTypes)
 * 5.0 [Sensor API](#sensor)
   * 5.1 [Behavior](#sensorBehavior)
-  * 5.2 [Envelope](#sensorEnvelope)
+  * 5.2 [Envelope](#envelope)
   * 5.3 [JSON-LD Payload](#jsonldPayload)
   * 5.4 [HTTP Requests](#httpRequest)
 * 6.0 [Endpoint](#endpoint)
@@ -179,6 +179,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 <a name="endpointDef"></a>__Endpoint__: a receiver or consumer of Caliper data that is bound to a specific network protocol.  
 
 <a name="entityDef"></a>__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide coarsed-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
+
+<a name="envelopeDef"></a>__Envelope__: a data structure that serves as a transport container of Caliper [Event](#eventDef) and [Entity](#entityDef) data.  The envelope also includes metadata about the emitting [Sensor](#sensor) and the data payload.
 
 <a name="eventDef"></a>__Event__: describes a relationship established between an [Agent](#agent) (the `actor`) and an [Entity](#entity) (the `object`) formed as a result of a purposeful `action` undertaken by the `actor` in connection to the `object` at a particular moment in time.
 
@@ -1038,16 +1040,16 @@ Caliper defines an application programming interface (the Sensor API&trade;) for
 
 A [Sensor](#sensor) MUST implement the following behaviors:
 
-* create in-memory object representations of Caliper [Event](#event) and [Entity](#entity) types as described in Section [2.0](#infoModel).  The particular [Event](#event) and [Entity](#entity) types that a [Sensor](#sensor) must be capable of expressing are determined by the [Metric Profiles](#profileDef) implemented as described in Section [3.0](#profiles).    
+* create in-memory object representations of Caliper [Event](#event) and [Entity](#entity) types as described in Section [2.0](#infoModel).  The particular [Event](#event) and [Entity](#entity) types that a [Sensor](#sensor) must be capable of expressing are determined by the [Metric Profiles](#metricProfileDef) implemented as described in Section [3.0](#profiles).    
 * express [Entity](#entity) values as either an object or a string corresponding to the resource's [IRI](#iriDef) as described in Section [2.2](#entity).
 * serialize in-memory [Event](#event) and [Entity](#entity) objects as [JSON-LD](#jsonldDef) as described in Section [4.0](#dataSerialization).  
-* create an in-memory object representation of a Caliper [Envelope](#envelope) as described in Section [5.2](#sensorEnvelope).
-* serialize in-memory Caliper [Envelope](#envelope) objects as JSON as described in Section [5.2](#sensorEnvelope).  [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data serialized as JSON-LD MUST be transmitted inside an [Envelope](#envelope) as described in Sections [5.2](#sensorEnvelope) and [5.3](#jsonldPayload).
+* create an in-memory object representation of a Caliper [Envelope](#envelope) as described in Section [5.2](#envelope).
+* serialize in-memory Caliper [Envelope](#envelope) objects as JSON as described in Section [5.2](#envelope).  [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data serialized as JSON-LD MUST be transmitted inside an [Envelope](#envelope) as described in Sections [5.2](#envelope) and [5.3](#jsonldPayload).
 * transmit serialized Caliper [Envelopes](#envelope) containing [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* data to a target [Endpoint](#endpoint) over HTTP as described in Section [5.4](#httpRequest).
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as validating Caliper [Event](#event) and [Entity](#entity) data but such capabilities need not be exposed to learning data providers.  
 
-### <a name="sensorEnvelope"></a>5.2 Envelope
+### <a name="envelope"></a>5.2 Envelope
 
 Caliper [Event](#event) and [Entity](#entity) data MUST be transmitted inside a Caliper [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.
 
