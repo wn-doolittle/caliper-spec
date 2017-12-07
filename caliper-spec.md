@@ -1299,7 +1299,7 @@ A [Sensor](#sensor) SHOULD also set the `Authorization` request header field usi
 
 ## <a name="endpoint"></a>6.0 Endpoint
 
-A Caliper [Endpoint](#endpoint) MUST be capable of receiving Caliper data sent over HTTP by a Caliper [Sensor](#sensor) using the standard POST request method.  The connection MUST be secured with Transport Layer Security (TLS) and a valid TLS certificate provided. The [Endpoint](#endpoint) MUST be capable of accessing standard HTTP request headers and support message authentication that utilizes the HTTP `Authorization` request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+A Caliper [Endpoint](#endpoint) MUST be capable of receiving Caliper data sent over HTTP by a Caliper [Sensor](#sensor) using the standard POST request method.  The connection MUST be secured with Transport Layer Security (TLS) and a valid TLS certificate provided. The [Endpoint](#endpoint) MUST be capable of accessing standard HTTP request headers and support message authentication that utilizes the HTTP `Authorization` request header "Bearer" authentication scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
 
 ### <a name="httpResponse"></a>6.1 HTTP Responses
 
