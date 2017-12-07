@@ -29,7 +29,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * 2.0 [The Information Model](#infoModel)
   * 2.1 [Event](#event)
   * 2.2 [Entity](#entity)
-* 3.0 [Metric Profiles](#infoModelProfiles)
+* 3.0 [Metric Profiles](#profiles)
   * 3.1 [Annotation Profile](#annotationProfile)
   * 3.2 [Assessment Profile](#assessmentProfile)
   * 3.3 [Assignable Profile](#assignableProfile)
@@ -288,7 +288,7 @@ Like an [Event](#event), an [Entity](#entity) is considered semi-structured data
 #### Deprecated subtypes
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
 
-## <a name="infoModelProfiles"></a>3.0 Metric Profiles
+## <a name="profiles"></a>3.0 Metric Profiles
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Metric Profiles" src="assets/caliper-profiles-v3.png"></div>
 
@@ -1038,10 +1038,10 @@ Caliper defines an application programming interface (the Sensor API&trade;) for
 
 A [Sensor](#sensor) MUST implement the following behaviors:
 
-* create in-memory object representations of Caliper [Event](#event), [Entity](#entity) and [Envelope](#envelope) types.  The particular [Event](#event) and [Entity](#entity) types that a [Sensor](#sensor) must be capable of expressing are determined by the [Metric Profiles](#profileDef) implemented.    
-* express [Entity](#entity) values as either an object or a string corresponding to the resource's [IRI](#iriDef).
-* serialize in-memory Caliper [Envelope](#envelope) objects as JSON and [Event](#event) and [Entity](#entity) objects as [JSON-LD](#jsonldDef).  Serialized [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data must be transmitted inside an [Envelope](#envelope) as described in Section [5.2](#sensorEnvelope) below.
-* transmit serialized Caliper [Envelopes](#envelope) containing [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* data to a target [Endpoint](#endpoint) over HTTP as described in Section [5.3](#sensorTransport) below.
+* create in-memory object representations of Caliper [Event](#event), [Entity](#entity) and [Envelope](#envelope) types.  The particular [Event](#event) and [Entity](#entity) types that a [Sensor](#sensor) must be capable of expressing are determined by the [Metric Profiles](#profileDef) implemented as described in Section [3.0](#profiles).    
+* express [Entity](#entity) values as either an object or a string corresponding to the resource's [IRI](#iriDef) as described in Section [2.2](#entity).
+* serialize in-memory Caliper [Envelope](#envelope) objects as JSON and [Event](#event) and [Entity](#entity) objects as [JSON-LD](#jsonldDef) as described in Section [4.0](#dataSerialization).  Serialized [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data must be transmitted inside an [Envelope](#envelope) as described in Section [5.2](#sensorEnvelope).
+* transmit serialized Caliper [Envelopes](#envelope) containing [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* data to a target [Endpoint](#endpoint) over HTTP as described in Section [5.3](#sensorTransport).
 
 A [Sensor](#sensor) MAY be assigned other responsibilities such as validating Caliper [Event](#event) and [Entity](#entity) data but such capabilities need not be exposed to learning data providers.  
 
