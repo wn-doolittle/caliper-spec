@@ -23,9 +23,10 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 ## Table of Contents
 
 * 1.0 [Introduction](#introduction)
-  * 1.1 [Summary of Changes](#changes)
-  * 1.2 [Conventions](#conventions)
-  * 1.3 [Terminology](#terminology)
+  * 1.1 [Status of this Document](#docStatus)
+  * 1.2 [Summary of Changes](#changes)
+  * 1.3 [Conventions](#conventions)
+  * 1.4 [Terminology](#terminology)
 * 2.0 [The Information Model](#infoModel)
   * 2.1 [Event](#event)
   * 2.2 [Entity](#entity)
@@ -146,7 +147,14 @@ The Caliper Analytics&reg; specification seeks to address a number of the issues
 
 Caliper also defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting event data from instrumented applications to target endpoints for storage, analysis and use.  Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
-### <a name="changes"></a>1.1 Summary of Changes
+### <a name="docStatus"></a>1.1 Status of this Document
+This document is the Final Release, meaning the technical solution is now made available as a public document and as such several IMS Members have successfully completed conformance certification at the time of the release of this document.
+    
+IMS strongly encourages its members and the community to provide feedback to continue the evolution and improvement of the Caliper specification. To join the IMS developer and conformance certification community focused on Caliper please visit https://www.imsglobal.org/activity/caliper.
+    
+Public comments and questions can be posted at the Caliper Analytics&reg; [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
+
+### <a name="changes"></a>1.2 Summary of Changes
 
 Caliper 1.1 extends as well as refines the Caliper information model and further describes the ways in which Events and Entities can be expressed as [Linked Data](#linkedDataDef) when authoring documents using [JSON-LD](#jsonldDef).
 
@@ -160,11 +168,11 @@ Regarding property changes, use of the [JSON-LD](#jsonldDef) `@id` and `@type` k
 
 All these changes are described in more detail in [Appendix H. Change Log](#changeLog).  
 
-### <a name="conventions"></a>1.2 Conventions
+### <a name="conventions"></a>1.3 Conventions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered by implementers.  MAY/OPTIONAL statements indicate that implementers are entirely free to choose whether or not to implement the option.
 
-### <a name="terminology"></a>1.3 Terminology
+### <a name="terminology"></a>1.4 Terminology
 
 <a name="actorDef"></a>__Actor__: An actor is an [Agent](#agent) capable of initiating or performing an [action](#actionDef) on a thing or as part of a process.  A Caliper [Event](#event) includes an `actor` attribute for representing the [Agent](#agent). 
 
