@@ -1259,7 +1259,7 @@ At a minimum, the [Endpoint](#endpoint) MUST support the following capabilities:
 
 * use HTTPS to secure the connection between the [Sensor](#sensor) and itself and provide a valid TLS Certificate.
 * be capable of accessing standard HTTP request headers.
-* support message authentication using the HTTP `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+* support message authentication that utilizes the HTTP `Authorization` request header scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
 
 Following receipt of a [Sensor](#sensor) request message the [Endpoint](#endpoint) MUST reply with a response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
 
