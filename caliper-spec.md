@@ -1960,7 +1960,7 @@ http://purl.imsglobal.org/caliper/GradeEvent
 [Event](#event)
 
 #### Supported Actors
-[Person](#person), [SoftwareApplication](#softwareApplication)
+[Agent](#agent)
 
 #### Supported Actions
 [Graded](#graded)
@@ -2414,7 +2414,7 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 [Event](#event)
 
 #### Supported Actors
-[Person](#person), [SoftwareApplication](#softwareApplication)
+[Agent](#agent)
 
 #### Supported Actions
 [Graded](#graded)
