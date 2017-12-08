@@ -672,13 +672,13 @@ The session profile can facilitate the capture of data about who is logging into
 [SessionEvent](#sessionEvent)
 
 #### Supported Actors
-[Person](#person), [SoftwareApplication](#softwareApplication) ([TimedOut](#timedOut) action only)
+[Person](#person), [SoftwareApplication](#softwareApplication)
 
 #### Supported Actions
 [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
 
 #### Supported Objects
-[SoftwareApplication](#softwareApplication), [Session](#session) ([TimedOut](#timedOut) action only)
+[SoftwareApplication](#softwareApplication), [Session](#session)
 
 #### Supported Target Entities
 [DigitalResource](#digitalResource)
