@@ -23,13 +23,14 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 ## Table of Contents
 
 * 1.0 [Introduction](#introduction)
-  * 1.1 [Summary of Changes](#changes)
-  * 1.2 [Conventions](#conventions)
-  * 1.3 [Terminology](#terminology)
+  * 1.1 [Status of this Document](#docStatus)
+  * 1.2 [Summary of Changes](#changes)
+  * 1.3 [Conventions](#conventions)
+  * 1.4 [Terminology](#terminology)
 * 2.0 [The Information Model](#infoModel)
   * 2.1 [Event](#event)
   * 2.2 [Entity](#entity)
-* 3.0 [Metric Profiles](#infoModelProfiles)
+* 3.0 [Metric Profiles](#profiles)
   * 3.1 [Annotation Profile](#annotationProfile)
   * 3.2 [Assessment Profile](#assessmentProfile)
   * 3.3 [Assignable Profile](#assignableProfile)
@@ -46,12 +47,11 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 4.3 [Types and Type Coercion](#jsonldTypes)
 * 5.0 [Sensor API](#sensor)
   * 5.1 [Behavior](#sensorBehavior)
-  * 5.2 [Envelope](#sensorEnvelope)
-  * 5.3 [Transport](#sensorTransport)
+  * 5.2 [Envelope](#envelope)
+  * 5.3 [JSON-LD Payload](#jsonldPayload)
+  * 5.4 [HTTP Requests](#httpRequest)
 * 6.0 [Endpoint](#endpoint)
-  * 6.1 [Endpoint Requirements](#endpointRequirements)
-    * 6.1.1 [HTTP Endpoint](#httpEndpoint)
-    * 6.1.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
+  * 6.1 [HTTP Responses](#httpResponse)
   * 6.2 [String Lengths and Storage](#stringLengths)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Event Subtypes](#events)
@@ -139,15 +139,22 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 
 Delivering teaching and learning at scale is encouraging adoption of “big data” practices.  Cloud computing and machine learning are changing both the learning technology landscape and the business of education.  The definition of what constitutes learning is also evolving beyond the formal classroom experience to include informal, social and experiential modes of acquiring knowledge and skills.  Opportunities exist to leverage new tools, tap new data sources, ask new questions and pursue new insights. 
 
-Consider the enterprising instructor seeking to augment if not transform the classroom environment for her students.  She utilizes a video platform to create and post video assignments.  Class discussions and Q&A sessions are conducted online using another service.  She administers her course using a learning management system.  Three services, three vendors, three potential sources of data.  
+Consider the enterprising instructor seeking to augment if not transform the classroom environment for her students.  She utilizes a video platform to create and post video assignments.  Class discussions and Q&A sessions are conducted online using another service.  She administers her course using a learning management system.  Three services, three vendors, three potential sources of learning data.  
 
-Analyzing the viewing behavior of her students in relation to the questions they pose about her course content is vital to understanding student comprehension and performance.  Yet exploring such relationships is all too often a challenging exercise.  Likely there are significant barriers to overcome.  Is the data required for analysis actually collected?  If it exists, who owns it?  If ownership is not an issue what about privacy concerns?  If privacy protocols are in place is the data easy to retrieve?  If retrievable how difficult is it to combine data sourced from multiple platforms?
+Analyzing the viewing behavior of her students in relation to the questions they pose about her course content is vital to understanding student comprehension and performance.  Yet exploring such relationships is all too often a challenging exercise.  Likely there are significant barriers to overcome.  Is the data required for analysis actually collected?  If it exists, who owns it?  If ownership is not an issue what about privacy concerns?  If privacy protocols are in place is the data easy to retrieve?  If retrievable how difficult is it to combine with data sourced from other platforms?
 
 The Caliper Analytics&reg; specification seeks to address a number of the issues outlined above by providing a structured approach to describing, collecting and exchanging learning activity data.  Establishing a common vocabulary for describing learning interactions is a central objective.  Promoting data interoperability, data sharing and data-informed decision making are also important goals.
 
 Caliper also defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting event data from instrumented applications to target endpoints for storage, analysis and use.  Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
-### <a name="changes"></a>1.1 Summary of Changes
+### <a name="docStatus"></a>1.1 Status of this Document
+This document is considered the _Final Release_.  This means that the Caliper Analytics&reg; Specification, version 1.1, is now made available as a public document following acceptance by IMS Global member organizations, a number of whom have successfully achieved conformance certification at the time of the release of this document.
+    
+IMS Global strongly encourages its members and the greater public to provide feedback that focuses on improving the Caliper specification. To join the IMS developer and conformance certification community focused on Caliper please visit https://www.imsglobal.org/activity/caliper.
+    
+Public comments and questions can be posted at the Caliper Analytics&reg; [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
+
+### <a name="changes"></a>1.2 Summary of Changes
 
 Caliper 1.1 extends as well as refines the Caliper information model and further describes the ways in which Events and Entities can be expressed as [Linked Data](#linkedDataDef) when authoring documents using [JSON-LD](#jsonldDef).
 
@@ -161,11 +168,11 @@ Regarding property changes, use of the [JSON-LD](#jsonldDef) `@id` and `@type` k
 
 All these changes are described in more detail in [Appendix H. Change Log](#changeLog).  
 
-### <a name="conventions"></a>1.2 Conventions
+### <a name="conventions"></a>1.3 Conventions
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementers are entirely free to choose whether or not to implement the option.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered by implementers.  MAY/OPTIONAL statements indicate that implementers are entirely free to choose whether or not to implement the option.
 
-### <a name="terminology"></a>1.3 Terminology
+### <a name="terminology"></a>1.4 Terminology
 
 <a name="actorDef"></a>__Actor__: An actor is an [Agent](#agent) capable of initiating or performing an [action](#actionDef) on a thing or as part of a process.  A Caliper [Event](#event) includes an `actor` attribute for representing the [Agent](#agent). 
 
@@ -175,11 +182,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 <a name="contextDef"></a>__Context__: a special [JSON-LD](http://json-ld.org/spec/latest/json-ld/) keyword that maps the terms employed in a JSON document to [IRIs](https://www.ietf.org/rfc/rfc3987.txt) that link to one or more published vocabularies.  Inclusion of a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context provides an economical way of communicating document semantics to services interested in consuming Caliper event data.
 
-<a name="describeDef"></a>__Describe__: a Caliper message containing an [Entity](#entity) that is not directly associated with an Event. Entities can be sent asynchronously from Events using `Describe` messages in order to reduce verbosity (e.g. sending a Person entity as a `Describe` avoids having to repeat the Person object in each Event that includes it). For more information, refer to  [Sensor API&trade;](#sensorAPIDef).
+<a name="describeDef"></a>__Describe__: a Caliper message containing an [Entity](#entity) that is not directly associated with an [Event](#event). Entities can be sent asynchronously from events using `Describe` messages in order to reduce verbosity (e.g. sending a [Person](#person) entity as a `Describe` avoids having to repeat the [Person](#person) object in each [Event](#event) that includes it).
 
 <a name="endpointDef"></a>__Endpoint__: a receiver or consumer of Caliper data that is bound to a specific network protocol.  
 
-<a name="entityDef"></a>__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
+<a name="entityDef"></a>__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide coarsed-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
+
+<a name="envelopeDef"></a>__Envelope__: a data structure that serves as a transport container of Caliper [Event](#eventDef) and [Entity](#entityDef) data.  The envelope also includes metadata about the emitting [Sensor](#sensor) and the data payload.
 
 <a name="eventDef"></a>__Event__: describes a relationship established between an [Agent](#agent) (the `actor`) and an [Entity](#entity) (the `object`) formed as a result of a purposeful `action` undertaken by the `actor` in connection to the `object` at a particular moment in time.
 
@@ -227,7 +236,7 @@ A Caliper [Event](#event) is a generic type that describes the relationship esta
 
 Caliper defines a number of [Event](#event) subtypes, each scoped to a particular activity domain and distinguishable by a `type` attribute.  The `type` value is a string that MUST match the [Term](#termDef) specified for the [Event](#event) by the Caliper information model (e.g. "MessageEvent").  Each [Event](#event) instance is assigned a 128-bit long universally unique identifier (UUID) formatted as a [URN](#urnDef) per [RFC 4122](#rfc4122), which describes a [URN](#urnDef) namespace for [UUIDs](#uuidDef).  
 
-The information model also seeks to describe the learning environment or context in which a learning activity is situated.  Group affiliation, membership roles, and status, recent navigation history, supporting technology and session information can all be optionally represented.  An [Entity](#entity) generated as a result of the interaction between an `actor` and an `object` can also be described; annotating a piece of digital content and producing an [Annotation](#annotation) is one such example.  An `extensions` property is also provided so that implementers can add custom attributes not described by the model.  
+The information model also seeks to describe the learning environment or context in which a learning activity is situated.  Group affiliation, membership roles and status, recent navigation history, supporting technology and session information can all be optionally represented.  An [Entity](#entity) generated as a result of the interaction between an `actor` and an `object` can also be described; annotating a piece of digital content and producing an [Annotation](#annotation) is one such example.  An `extensions` property is also provided so that implementers can add custom attributes not described by the model.  
 
 #### Properties
 Considered as a data structure an [Event](#event) constitutes an unordered set of key:value pairs that is semi-structured by design.  Optional attributes can be ignored when describing an [Event](#event).  An [Entity](#entity) participating in an [Event](#event) can be represented as an object or as a string that corresponds to the [IRI](#iriDef) defined for the [Entity](#entity).
@@ -264,11 +273,11 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 
 A Caliper [Entity](#entity) is a generic type that represents objects that participate in learning-related activities.  A variety of [Entity](#entity) subtypes have been defined in order to better describe people, groups, organizations, digital content, courses, software applications, and other objects that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of properties or attributes that support discovery and description.
 
-Caliper permits [Entity](#entity) values to be expressed either as an object or as a string corresponding to its [IRI](#iriDef).
+Caliper permits [Entity](#entity) values to be expressed either as an object or as a string corresponding to the resource's [IRI](#iriDef).
   
 If the [Entity](#entity) is expressed as an object, both the `id` and `type` properties MUST be specified.  The `type` value is a string that MUST match the term specified for the [Entity](#entity) by the Caliper information model (e.g. "Person").  The `id` value is a string that MUST be expressed as an [IRI](#iriDef).  The [IRI](#iriDef) MUST be valid and unique.  The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource assuming authorization to access the resource is granted.  A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of utilizing it to retrieve machine-readable data over HTTP. 
 
-Other [Entity](#entity) properties are descriptive in nature, or link the [Entity](#entity) to other related entities.  Certain [Entity](#entity) types like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties that allow for a more complete representation of the object.  An `extensions` property is also defined so that implementers can add custom attributes not described by the model.  Optional properties can be ignored when describing an [Entity](#entity).    
+Other [Entity](#entity) properties are descriptive in nature, or link the [Entity](#entity) to other related entities.  Certain [Entity](#entity) subtypes like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties that allow for a more complete representation of the object.  An `extensions` property is also defined so that implementers can add custom attributes not described by the model.  Optional properties can be ignored when describing an [Entity](#entity).    
 
 #### Properties
 Like an [Event](#event), an [Entity](#entity) is considered semi-structured data consisting of an unordered set of key:value pairs.  The base set of [Entity](#entity) properties is listed below.  Each property MUST be referenced only once.  When representing an [Entity](#entity) as an object the `id` and `type` properties are required; all other properties are optional and need not be referenced when describing an [Entity](#entity).  Custom attributes not described by the model MAY be included but MUST be added to the `extensions` property as a map of key:value pairs.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
@@ -289,7 +298,7 @@ Like an [Event](#event), an [Entity](#entity) is considered semi-structured data
 #### Deprecated subtypes
 [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
 
-## <a name="infoModelProfiles"></a>3.0 Metric Profiles
+## <a name="profiles"></a>3.0 Metric Profiles
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Metric Profiles" src="assets/caliper-profiles-v3.png"></div>
 
@@ -298,10 +307,11 @@ The Caliper information model defines a number of metric profiles, each of which
 Think of each metric profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) type included in a metric profile place constraints on the various entities and actions that can be utilized to describe a learning activity.  Vocabulary restrictions are outlined in each profile description under the following headings:
 
 * supported events
-* supported event actors
-* supported event objects
-* supported event generated entities
-* supported event target entities
+* supported actors
+* supported actions
+* supported objects
+* supported generated entities
+* supported target entities
 * other requirements
 
 As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
@@ -316,7 +326,7 @@ The following metric profiles are currently available and are summarized individ
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Annotation Profile" src="assets/caliper-profile_annotation.png"></div>
 
-The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity..
+The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
 As an example, instructors can use the places where students are making notes in the course material to determine whether they have the right idea about which material should be highlighted.  In addition, if there are students who are asking questions or making notes indicating confusion about a particular piece of content, this can also inform the instructor about the suitability or quality of the material which they have chosen to use.  
 
@@ -330,31 +340,19 @@ Questions which can be answered using this profile are as follows:
 * What notes are being added?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [AnnotationEvent](#annotationEvent)
-  * [Bookmarked](#bookmarked)
-  * [Highlighted](#highlighted)
-  * [Shared](#shared)
-  * [Tagged](#tagged)
+[AnnotationEvent](#annotationEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+[Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [DigitalResource](#digitalResource) or subtype
+[DigitalResource](#digitalResource)
 
 #### Supported Generated Entities
-The following [Annotation](#annotation) subtypes are supported:
-
-* [BookmarkAnnotation](#bookmarkAnnotation)
-* [HighlightAnnotation](#highlightAnnotation)
-* [SharedAnnotation](#sharedAnnotation)
-* [TaggedAnnotation](#taggedAnnotation)
+[BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation),[SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Other Requirements
 * For each [AnnotationEvent](#annotationEvent) described, the `generated` [Annotation](#annotation) subtype SHOULD be specified.  Pair the `action` with the appropriate [Annotation](#annotation) subtype (e.g., [Bookmarked](#bookmarked) with [BookmarkAnnotation](#bookmarkAnnotation)).  If the generated [Annotation](#annotation) is expressed as an object both the `annotator` and `annotated` entities SHOULD be referenced.
@@ -374,51 +372,46 @@ Tracking patterns using the assessment profile will allow instructors to underst
 * If test-taking times are flexible, when do learners start their assessments?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [AssessmentEvent](#assessmentEvent)
-  * [Started](#started)
-  * [Paused](#paused)
-  * [Resumed](#resumed)
-  * [Restarted](#restarted)
-  * [Reset](#reset)
-  * [Submitted](#submitted)
-* [AssessmentItemEvent](#assessmentItemEvent)
-  * [Started](#started)
-  * [Skipped](#skipped)
-  * [Completed](#completed)
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+
+##### AssessmentEvent
+[Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)
+
+##### AssessmentItemEvent
+[Started](#started), [Skipped](#skipped), [Completed](#completed)
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
 
-* AssessmentEvent
-  * [Assessment](#assessment) 
-* AssessmentItemEvent
-  * [AssessmentItem](#assessmentItem) 
-* NavigationEvent
-  * [Assessment](#assessment)
-  * [AssessmentItem](#assessmentItem)
-* ViewEvent
-  * [Assessment](#assessment) 
-  * [AssessmentItem](#assessmentItem)
+##### AssessmentEvent
+[Assessment](#assessment)
+
+##### AssessmentItemEvent
+[AssessmentItem](#assessmentItem)
+
+##### NavigationEvent
+[Assessment](#assessment), [AssessmentItem](#assessmentItem)
+
+##### ViewEvent
+[Assessment](#assessment), [AssessmentItem](#assessmentItem)
 
 #### Supported Generated Entities
-The following [Entity](#entity) types are supported:
 
-* AssessmentEvent
-  * [Attempt](#attempt) 
-* AssessmentItemEvent
-  * [Attempt](#attempt)
-  * [Response](#response) ([Completed](#completed) action only)
+##### AssessmentEvent
+[Attempt](#attempt) 
+
+##### AssessmentItemEvent
+[Attempt](#attempt), [Response](#response)
 
 #### Other Requirements
 * For each [AssessmentEvent](#assessmentEvent) described, the `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is expressed as an object the [Attempt](#attempt) SHOULD define, at a minimum, the `assignee`, the `assignable`, and the `count`.  Set the [Attempt](#attempt) `count` values as follows (per action):
@@ -445,42 +438,32 @@ This profile would be useful for instructors to gather insight about the relatio
 * What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [AssignableEvent](#assignableEvent)
-  * [Activated](#activated)
-  * [Deactivated](#deactivated)
-  * [Started](#started)
-  * [Completed](#completed)
-  * [Submitted](#submitted)
-  * [Reviewed](#reviewed)
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+
+##### AssignableEvent
+[Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [AssignableDigitalResource](#assignableDigitalResource)
+[AssignableDigitalResource](#assignableDigitalResource)
 
 #### Supported Generated Entities
-The following [Entity](#entity) types are supported:
 
-* AssignableEvent
-  * [Attempt](#attempt) 
+##### AssignableEvent
+[Attempt](#attempt) 
 
 #### Other Requirements
-* A `generated` [Attempt](#attempt) SHOULD be specified for the following [AssignableEvent](#assignableEvent) actions:
-  * [Started](#started)
-  * [Completed](#completed)
-  * [Submitted](#submitted)
-  * [Reviewed](#reviewed)
+* A `generated` [Attempt](#attempt) SHOULD be specified for the following [AssignableEvent](#assignableEvent) actions: [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)
 * If the [Attempt](#attempt) is expressed as an object the [Attempt](#attempt) SHOULD define, at a minimum, the `assignee`, the `assignable`, and the `count`.  Set the `count` value to 1 for a first attempt and increment by 1 for each subsequent attempt.
 * Parent-child relationships that exist between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY be represented by use of the [Attempt](#attempt) `isPartOf` property.
 
@@ -497,45 +480,44 @@ Tracking patterns using the forum profile will allow instructors to understand m
 * Compare graded vs. non-graded discussions
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [ForumEvent](#forumEvent)
-  * [Subscribed](#subscribed)
-  * [Unsubscribed](#unsubscribed)
-* [MessageEvent](#messageEvent)
-  * [MarkedAsRead](#markedAsRead)
-  * [MarkedAsUnRead](#markedAsUnRead)
-  * [Posted](#posted)
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ThreadEvent](#threadEvent)
-  * [MarkedAsRead](#markedAsRead)
-  * [MarkedAsUnRead](#markedAsUnRead)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+
+##### ForumEvent
+[Subscribed](#subscribed), [Unsubscribed](#unsubscribed)
+
+##### MessageEvent
+[MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead), [Posted](#posted)
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ThreadEvent
+[MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
 
-* ForumEvent
-  * [Forum](#forum)
-* MessageEvent
-  * [Message](#message)
-* NavigationEvent
-  * [Forum](#forum)
-  * [Message](#message)
-  * [Thread](#thread)
-* ThreadEvent
-  * [Thread](#thread)
-* ViewEvent
-  * [Forum](#forum)
-  * [Message](#message)
-  * [Thread](#thread)
+##### ForumEvent
+[Forum](#forum)
+
+##### MessageEvent
+[Message](#message)
+
+##### NavigationEvent
+[Forum](#forum), [Message](#message), [Thread](#thread)
+
+##### ThreadEvent
+[Thread](#thread)
+
+##### ViewEvent
+[Forum](#forum), [Message](#message), [Thread](#thread)
 
 #### Other Requirements
 * If a [Message](#message) is expressed as an object and is in the form of a reply, the previous [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
@@ -552,35 +534,36 @@ The grading profile allows information to be captured about grade changes for a 
 * How often are grades changed for an assessment?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [GradeEvent](#gradeEvent)
-  * [Graded](#graded)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[GradeEvent](#gradeEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
 
-* GradeEvent
-  * [Person](#person)
-  * [SoftwareApplication](#softwareApplication)
-* ViewEvent
-  * [Person](#person)
+##### GradeEvent
+[Agent](#agent)
+
+##### ViewEvent
+[Person](#person)
+
+#### Supported Actions
+
+##### GradeEvent
+[Graded](#graded)
+
+##### ViewEvent
+[Viewed](#viewed) 
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
 
-* GradeEvent
-  * [Attempt](#attempt)
-* ViewEvent
-  * [Result](#result)
+##### GradeEvent
+[Attempt](#attempt)
+
+##### ViewEvent
+[Result](#result)
 
 #### Supported Generated Entities
-The following [Entity](#entity) types are supported:
 
-* GradeEvent
-  * [Score](#score)
+##### GradeEvent
+[Score](#score)
 
 #### Other Requirements
 * When describing a [GradeEvent](#gradeEvent), the `generated` [Score](#score) SHOULD be specified.
@@ -601,50 +584,27 @@ As an example of how this profile could be used, consider the following scenario
 * Are there instances of where students are replaying sections of the video?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [MediaEvent](#mediaEvent)
-  * [Started](#started)
-  * [Ended](#ended)
-  * [Paused](#paused)
-  * [Resumed](#resumed)
-  * [Restarted](#restarted)
-  * [ForwardedTo](#forwardedTo)
-  * [JumpedTo](#jumpedTo)
-  * [ChangedResolution](#changedResolution)
-  * [ChangedSize](#changedSize)
-  * [ChangedSpeed](#changedSpeed)
-  * [ChangedVolume](#changedVolume)
-  * [EnabledClosedCaptioning](#enabledClosedCaptioning)
-  * [DisabledClosedCaptioning](#disabledClosedCaptioning)
-  * [EnteredFullScreen](#enteredFullScreen)
-  * [ExitedFullScreen](#exitedFullScreen)
-  * [Muted](#muted)
-  * [Unmuted](#unmuted)
-  * [OpenedPopout](#openedPopout)
-  * [ClosedPopout](#closedPopout))
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person) &#124; [IRI](#iriDef)
+#### Supported Actions
+
+##### MediaEvent
+[Started](#started), [Ended](#ended), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [AudioObject](#audioObject)
-* [ImageObject](#imageObject)
-* [MediaObject](#mediaObject)
-* [VideoObject](#videoObject)
+[AudioObject](#audioObject), [ImageObject](#imageObject), [MediaObject](#mediaObject), [VideoObject](#videoObject)
 
 #### Supported Target Entities
-The following [Entity](#entity) types are supported:
-
-* [MediaLocation](#mediaLocation)
+[MediaLocation](#mediaLocation)
 
 #### Other Requirements
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
@@ -672,28 +632,21 @@ Instructors and researchers can utilize data collected via the Reading Profile t
 When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person) &#124; [IRI](#iriDef)
+#### Supported Actions
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [AssignableDigitalResource](#assignableDigitalResource)
-* [Chapter](#chapter)
-* [DigitalResource](#digitalResource)
-* [DigitalResourceCollection](#digitalResourceCollection)
-* [Document](#document)
-* [Page](#page) 
-* [WebPage](#webPage)
+[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Page](#page), [WebPage](#webPage)
 
 #### Supported Target Entities
 The following [Entity](#entity) types are supported:
@@ -716,29 +669,19 @@ The session profile can facilitate the capture of data about who is logging into
 * Who logs in/logs out most/least
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [SessionEvent](#sessionEvent)
-  * [LoggedIn](#loggedIn)
-  * [LoggedOut](#loggedOut)
-  * [TimedOut](#timedOut)
+[SessionEvent](#sessionEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person), [SoftwareApplication](#softwareApplication)
 
-* [Person](#person)
-* [SoftwareApplication](#softwareApplication) ([TimedOut](#timedOut) action only)
+#### Supported Actions
+[LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [SoftwareApplication](#softwareApplication)
-* [Session](#session) ([TimedOut](#timedOut) action only)
+[SoftwareApplication](#softwareApplication), [Session](#session)
 
 #### Supported Target Entities
-The following [Entity](#entity) types are supported:
-
-[DigitalResource](#digitalResource) or subtype
+[DigitalResource](#digitalResource)
 
 #### Other Requirements
 * Although optional, the relevant user `session` SHOULD be specified.
@@ -759,20 +702,16 @@ The Tool Use Profile enables the gathering of basic usage information. It provid
 * Which tools have the greatest impact on student performance?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [ToolUseEvent](#toolUseEvent)
-  * [Used](#used)
+[ToolUseEvent](#toolUseEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+[Used](#used)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [SoftwareApplication](#softwareApplication)
+[SoftwareApplication](#softwareApplication)
 
 ### <a name="basicProfile"></a>3.10 Basic Profile
 
@@ -781,20 +720,16 @@ The following [Entity](#entity) types are supported:
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [Event](#event) (supertype only)
-  * Any Caliper action MAY be used to describe the interaction.
+[Event](#event) (supertype only)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Agent](#agent)
 
-* [Agent](#agent) or subtype
+### Supported Actions
+Any Caliper action MAY be used to describe the interaction.
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [Entity](#entity) or subtype
+[Entity](#entity)
 
 #### Other Requirements
 * Use of the Basic Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
@@ -873,7 +808,7 @@ Contexts embedded inline can be combined with externally referenced contexts.  A
   },
   "action": "Searched",
   "object": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+    "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/123",
     "type": "Document"
   },
   "eventTime": "2017-11-15T10:15:00.000Z",
@@ -1031,23 +966,26 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
 
 ## <a name="sensor"></a>5.0 The Sensor API&trade;
 
-Caliper defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
-
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Caliper Sensor" src="assets/caliper-sensor-v2.png"></div>
+
+Caliper defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
 
 ### <a name="sensorBehavior"></a>5.1 Behavior
 
-A Caliper [Sensor](#sensor) MUST be capable of serializing and sending a Caliper [Envelope](#envelope) containing the following payloads to one or more target [Endpoints](#endpoint).
+A [Sensor](#sensor) MUST implement the following behaviors:
 
-* A JSON array consisting of one or more Caliper [Event](#event) documents, each expressed as JSON-LD.
-* A JSON array consisting of one or more Caliper [Entity](#entity) *[describe](#describeDef)* documents, each expressed as JSON-LD.
-* A JSON array consisting of a mix of one or more Caliper [Event](#event) and [Entity](#entity) *[describe](#describeDef)* documents, each expressed as JSON-LD.
+* create in-memory object representations of Caliper [Event](#event) and [Entity](#entity) types as described in Section [2.0](#infoModel).  The particular [Event](#event) and [Entity](#entity) types that a [Sensor](#sensor) must be capable of expressing are determined by the [Metric Profiles](#metricProfileDef) implemented as described in Section [3.0](#profiles).    
+* express [Entity](#entity) values as either an object or a string corresponding to the resource's [IRI](#iriDef) as described in Section [2.2](#entity).
+* serialize in-memory [Event](#event) and [Entity](#entity) objects as [JSON-LD](#jsonldDef) as described in Section [4.0](#dataSerialization).  
+* create an in-memory object representation of a Caliper [Envelope](#envelope) as described in Section [5.2](#envelope).
+* serialize in-memory Caliper [Envelope](#envelope) objects as JSON as described in Section [5.2](#envelope).  [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data serialized as JSON-LD MUST be transmitted inside an [Envelope](#envelope) as described in Sections [5.2](#envelope) and [5.3](#jsonldPayload).
+* transmit serialized Caliper [Envelopes](#envelope) containing [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* data to a target [Endpoint](#endpoint) over HTTP as described in Section [5.4](#httpRequest).
 
-A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
+A [Sensor](#sensor) MAY be assigned other responsibilities such as validating Caliper [Event](#event) and [Entity](#entity) data but such capabilities need not be exposed to learning data providers.  
 
-### <a name="sensorEnvelope"></a>5.2 Envelope
+### <a name="envelope"></a>5.2 Envelope
 
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* included in an envelope's `data` array MUST be expressed as a [JSON-LD](#jsonld) document. 
+Caliper [Event](#event) and [Entity](#entity) data MUST be transmitted inside a Caliper [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.
 
 #### Properties
 Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST be referenced only once.  No custom properties are permitted.
@@ -1057,9 +995,58 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 | sensor | string | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor).  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
 | sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 | dataVersion | string | A string value indicating which version of the IMS Caliper Analytics&reg; specification governs the form of the Caliper entities and events contained in the `data` payload. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
-| data | Array | An ordered collection of one or more Caliper [Entity](#entity) *[describes](#describeDef)* and/or [Event](#event) types.  The Sensor MAY mix *[describes](#describeDef)* and events in the same [Envelope](#envelope). | Required |
+| data | Array | An ordered collection of one or more Caliper [Event](#event) and/or [Entity](#entity) *[describe](#describeDef)* objects.  The Sensor MAY mix [Event](#event) and [Entity](#entity) *[describe](#describeDef)* data in the same [Envelope](#envelope). | Required |
 
-#### Example: Mixed payload
+### <a name="jsonldPayload"></a>5.3 JSON-LD Payload
+
+Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitted inside an [Envelope](#envelope) MUST be serialized as a [JSON-LD](#jsonld) document. 
+
+### Example: Single Event Payload
+```
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2017-11-15T11:05:01.000Z",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
+    "type": "ToolUseEvent",
+    "actor": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "action": "Used",
+    "object": {
+      "id": "https://example.edu",
+      "type": "SoftwareApplication"
+    },
+    "eventTime": "2017-11-15T10:15:00.000Z",
+    "edApp": "https://example.edu",
+    "group": {
+      "id": "https://example.edu/terms/201701/courses/7/sections/1",
+      "type": "CourseSection",
+      "courseNumber": "CPS 435-01",
+      "academicSession": "Fall 2017"
+    },
+    "membership": {
+      "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+      "type": "Membership",
+      "member": "https://example.edu/users/554433",
+      "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+      "roles": ["Learner"],
+      "status": "Active",
+      "dateCreated": "2017-08-01T06:00:00.000Z"
+    },
+    "session": {
+      "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+      "type": "Session",
+      "startedAtTime": "2017-11-15T10:00:00.000Z"
+    }
+  }]
+}
+```
+
+#### Example: Mixed Payload
 ```
 {
   "sensor": "https://example.edu/sensors/1",
@@ -1234,49 +1221,37 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 }
 ```
 
-### <a name="sensorTransport"></a>5.3 Transport
+### <a name="httpRequest"></a>5.4 HTTP Requests
 
-Business requirements informed by industry best practices will determine the choice of transport protocol for Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementers.  _Note that the IMS Caliper certification suite currently requires implementers seeking certification to send data to the certification test [Endpoint](#endpoint) using HTTPS with a bearer token credential consistent with [RFC 6750](#rfc6750)._  Where an alternate transport protocol is preferred for performance or other considerations, it is recommended to add that support in addition to HTTP transport for maximum interoperability.
+A Caliper [Sensor](#sensor) MUST be capable of transmitting Caliper data successfully to a Caliper [Endpoint](#endpoint).  Communication with an [Endpoint](#endpoint) is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).
 
-Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope). 
+Each message request MUST consist of a single JSON representation of a Caliper [Envelope](#envelope).  Messages MUST be sent using the POST request method.  The HTTP `Host` and `Content-Type` request header fields MUST be set.  
 
-#### 4.3.1 HTTP Transport Requirements
-
-A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS.  Messages MUST be sent using the POST request method with, minimally, the `Host` and `Content-Type` message header fields specified.
+A [Sensor](#sensor) SHOULD also set the `Authorization` request header field using the "Bearer" authentication scheme described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself.
 
 | Request Header | Description | Disposition |
 | :------------- | :---------- | :---------- |
-| Authorization | A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. | Recommended |
-| Content-Length | The `Content-Length` MUST be measured in octets (8-bit bytes). | Optional |
-| Content-Type | Set the value to the IANA media type "application/json". | Required |
-| Host | Set the value to the Internet host and port number of the resource being requested. | Required |
+| Authorization | Set the string value to a bearer token using the "Bearer" authentication scheme described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2) (e.g., Authorization: Bearer \<token value\>). | Recommended |
+| Content-Type | Set the string value to the IANA media type "application/json". | Required |
+| Host | Set the string value to the Internet host and port number of the resource being requested. | Required |
 
 ## <a name="endpoint"></a>6.0 Endpoint
 
-A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint) for recommendations.   
+A Caliper [Endpoint](#endpoint) MUST be capable of receiving Caliper data sent over HTTP by a Caliper [Sensor](#sensor) using the standard POST request method.  The connection MUST be secured with Transport Layer Security (TLS) and a valid TLS certificate provided. The [Endpoint](#endpoint) MUST be capable of accessing standard HTTP request headers and support message authentication that utilizes the HTTP `Authorization` request header "Bearer" authentication scheme as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
 
-### <a name="endpointRequirements"></a>6.1 Endpoint Requirements
+### <a name="httpResponse"></a>6.1 HTTP Responses
 
-#### <a name="httpEndpoint"></a>6.1.1 HTTP Endpoint Requirements
+Following receipt of a [Sensor](#sensor) request message the [Endpoint](#endpoint) MUST reply with a response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
 
-* An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS Certificate MUST be provided.
-* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
-* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+* To signal a [Sensor](#sensor) that it has successfully received an emitted [Envelope](#envelope) an [Endpoint](#endpoint) MUST reply with a `2xx` class status code. The [Endpoint](#endpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
+* If the [Sensor](#sensor) sends a message containing events and or entities without an enclosing [Envelope](#envelope), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.
+* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#endpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint) SHOULD send a `422 Unprocessable Entity` response instead.
+* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#endpoint) SHOULD reply with a `415 Unsupported Media Type` response.
+* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#endpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
 
-When communicating over HTTP an [Endpoint](#httpEndpoint) MUST exhibit the following response behavior:
+The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions that vary from the cases described above.  The [Endpoint](#endpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
 
-* To signal to a [Sensor](#sensor) that it has successfully received an emitted [Envelope](#envelope) an [Endpoint](#httpEndpoint) MUST reply with a `2xx` class status code. The [Endpoint](#httpEndpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
-* If the [Sensor](#sensor) sends a message containing events and or entities without an enclosing [Envelope](#envelope), the [Endpoint](#httpEndpoint) SHOULD reply with a `400 Bad Request` response.
-* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#httpEndpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#httpEndpoint) cannot support; in this case, the [Endpoint](#httpEndpoint) SHOULD send a `422 Unprocessable Entity` response instead.
-* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#httpEndpoint) SHOULD reply with a `415 Unsupported Media Type` response.
-* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#httpEndpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#httpEndpoint) SHOULD reply with a `401 Unauthorized` response.
-* The [Endpoint](#httpEndpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions of varying kinds.  The [Endpoint](#httpEndpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
-
-Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Caliper [Sensor](#sensor) implementations may lack sophisticated error handling.
-
-#### <a name="nonHttpEndpoint"></a>6.1.2 Endpoints supporting non-HTTP protocols
-
-Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations.  It is RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum interoperability.
+Caliper [Endpoint](#endpoint) implementers should bear in mind that some Caliper [Sensor](#sensor) implementations may lack sophisticated error handling.
 
 ### <a name="stringLengths"></a>6.2 String Lengths and Storage
 
@@ -1369,34 +1344,22 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
 #### Supertype
 [Event](#event)
 
-#### Generated annotations
-[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
+#### Supported Actors
+[Person](#person)
 
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Bookmarked](#bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. |
-| [Highlighted](#highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). |
-| [Shared](#shared) | [Communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v). |
-| [Tagged](#tagged) | [Attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v). |
+[Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
 
 #### Deprecated Actions
-The following actions are deprecated and targeted for removal from the [AnnotationEvent](#annotationEvent) list of supported actions.  The actions will be retained as entries in the Caliper [actions](#actions) vocabulary as many are likely to appear in future Metric Profiles.  
+The following actions are deprecated and targeted for removal from the [AnnotationEvent](#annotationEvent) list of supported actions.  The actions will be retained as entries in the Caliper [actions](#actions) vocabulary as many are likely to appear in future Metric Profiles.
 
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Attached](#attached) | [Cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v). |
-| [Classified](#classified) | [Assign to a class or kind](http://wordnet-rdf.princeton.edu/wn31/200741667-v). | 
-| [Commented](#commented) | [Make or write a comment on](http://wordnet-rdf.princeton.edu/wn31/201060446-v). |
-| [Described](#described) | [Give a description of](http://wordnet-rdf.princeton.edu/wn31/200989103-v). ||
-| [Disliked](#disliked) | [Have or feel a dislike or distaste for](http://wordnet-rdf.princeton.edu/wn31/201780648-v). Inverse of [Liked](#liked). |
-| [Identified](#identified) | [Recognize as being; establish the identity of someone or something](http://wordnet-rdf.princeton.edu/wn31/200620568-v). |
-| [Liked](#liked) | [Be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v).  Inverse of [Disliked](#disliked). |
-| [Linked](#linked) | [Connect, fasten, or put together two or more pieces](http://wordnet-rdf.princeton.edu/wn31/201357376-v). |
-| [Questioned](#questioned) | [Pose a question](http://wordnet-rdf.princeton.edu/wn31/200786670-v). |
-| [Ranked](#ranked) | [Assign a rank or rating to](http://wordnet-rdf.princeton.edu/wn31/200659723-v). |
-| [Recommended](#recommended) | [Express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v). |
-| [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
+[Attached](#attached), [Classified](#classified), [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended), [Subscribed](#subscribed)
+
+#### Supported Objects
+[DigitalResource](#digitalResource)
+
+#### Supported Generated Entities
+[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
  
 #### Properties
 [AnnotationEvent](#annotationEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -1486,15 +1449,17 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
-| [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. |
-| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
+[Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)
+
+#### Supported Objects
+[Assessment](#assessment)
+
+#### Supported Generated Entities
+[Attempt](#attempt) 
 
 #### Properties
 [AssessmentEvent](#assessmentEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -1589,21 +1554,20 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 #### Supertype
 [Event](#event)
 
-#### Generated responses
-[Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+#### Supported Actors
+[Person](#person)
  
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Skipped](#skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
-| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
+[Started](#started), [Skipped](#skipped), [Completed](#completed)
 
 #### Deprecated Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
-| [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+[Reviewed](#reviewed), [Viewed](#viewed)
+
+#### Supported Objects
+[AssessmentItem](#assessmentItem)
+
+#### Supported Generated Entities
+[Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Properties
 [AssessmentItemEvent](#assessmentItemEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -1723,24 +1687,22 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
-| [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
-| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
-| [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
-| [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
+[Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)
 
 #### Deprecated Actions
 The following actions are deprecated and targeted for removal from the [AssignableEvent](#assignableEvent) list of supported actions.
 
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Abandoned](#abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
-| [Hid](#hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v).  Inverse of [Showed](#showed). |
-| [Showed](#showed) | [Make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v).  Inverse of [Hid](#hid). |
+[Abandoned](#abandoned), [Hid](#hid), [Showed](#showed)
+
+#### Supported Objects
+[AssignableDigitalResource](#assignableDigitalResource)
+
+#### Supported Generated Entities
+[Attempt](#attempt) 
 
 #### Properties
 [AssignableEvent](#assignableEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -1830,11 +1792,14 @@ http://purl.imsglobal.org/caliper/ForumEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
-| [Unsubscribed](#unsubscribed) | Inverse of [Subscribed](#subscribed). |
+[Subscribed](#subscribed), [Unsubscribed](#unsubscribed)
+
+#### Supported Objects
+[Forum](#forum)
 
 #### Properties
 [ForumEvent](#forumEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -1920,10 +1885,17 @@ http://purl.imsglobal.org/caliper/GradeEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Agent](#agent)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
+[Graded](#graded)
+
+#### Supported Objects
+[Attempt](#attempt)
+
+#### Supported Generated Entities
+[Score](#score)
 
 #### Properties
 [GradeEvent](#gradeEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2008,35 +1980,22 @@ http://purl.imsglobal.org/caliper/MediaEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
-| [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
-| [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. |
-| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. |
-| [Restarted](#restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
-| [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
-| [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
-| [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
-| [ChangedSize](#changedSize) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n). |
-| [ChangedSpeed](#changedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). |
-| [ChangedVolume](#changedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). |
-| [EnabledClosedCaptioning](#enabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
-| [DisabledClosedCaptioning](#disabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
-| [EnteredFullScreen](#enteredFullScreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). |
-| [ExitedFullScreen](#exitedFullScreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). |
-| [Muted](#muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). |
-| [Unmuted](#unmuted) | Inverse of [Muted](#muted). |
-| [OpenedPopout](#openedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). |
-| [ClosedPopout](#closedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). |
+[Started](#started), [Ended](#ended), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
 
 #### Deprecated Actions
 The following actions are deprecated and targeted for removal from the [MediaEvent](#mediaEvent) list of supported actions.
 
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Rewound](#rewound) | [Wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v). |
+[Rewound](#rewound)
+
+#### Supported Objects
+[AudioObject](#audioObject), [ImageObject](#imageObject), [MediaObject](#mediaObject), [VideoObject](#videoObject)
+
+#### Supported Target Entities
+[MediaLocation](#mediaLocation)
 
 #### Properties
 [MediaEvent](#mediaEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2119,12 +2078,14 @@ http://purl.imsglobal.org/caliper/MessageEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Posted](#posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
-| [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
-| [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). |
+[MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead), [Posted](#posted)
+
+#### Supported Objects
+[Message](#message)
 
 #### Properties
 [MessageEvent](#messageEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2284,10 +2245,17 @@ http://purl.imsglobal.org/caliper/NavigationEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
+[NavigatedTo](#navigatedTo)
+
+#### Supported Objects
+[DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)
+
+#### Supported Target Entities
+[Frame](#frame)
 
 #### Properties
 [NavigationEvent](#navigationEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2374,10 +2342,17 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Agent](#agent)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
+[Graded](#graded)
+
+#### Supported Objects
+[Attempt](#attempt)
+
+#### Supported Generated Entities
+[Result](#result)
 
 #### Properties
 [OutcomeEvent](#outcomeEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2391,7 +2366,7 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 | object | [Attempt](#attempt) &#124; [IRI](#iriDef) | The completed [Attempt](#attempt).  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 | target | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or as a string corresponding to the target entity's [IRI](#iriDef). | Not Applicable |
-| generated | [Score](#score) &#124; [IRI](#iriDef) | The generated [Score](#score) SHOULD be provided.  The `generated` value MUST be expressed either as an object or as a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| generated | [Result](#result) &#124; [IRI](#iriDef) | The generated [Result](#result) SHOULD be provided.  The `generated` value MUST be expressed either as an object or as a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
 | edApp | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | A [SoftwareApplication](#softwareApplication) that constitutes the application context.  The `edApp` value MUST be expressed either as an object or as a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents the referring context. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or as a string corresponding to the referrer's [IRI](#iriDef). | Optional |
 | group | [Organization](#organization) &#124; [IRI](#iriDef) | An [Organization](#organization) that represents the group context.  The `group` value MUST be expressed either as an object or as a string corresponding to the group's [IRI](#iriDef). | Optional |
@@ -2411,12 +2386,17 @@ http://purl.imsglobal.org/caliper/ReadingEvent
 #### Supertype
 [Event](#event)
 
-#### Deprecated actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
-| [Searched](#searched) | [Try to locate or discover, or try to establish the existence of](http://wordnet-rdf.princeton.edu/wn31/201318273-v). |
-| [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+[NavigatedTo](#navigatedTo), [Searched](#searched), [Viewed](#viewed)
+
+#### Supported Objects
+[DigitalResource](#digitalResource)
+
+#### Supported Target Entities
+[Frame](#frame)
 
 #### Properties
 [ReadingEvent](#readingEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2452,12 +2432,17 @@ A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termi
 #### IRI
 http://purl.imsglobal.org/caliper/SessionEvent
 
-#### Supported actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). |
-| [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). |
-| [TimedOut](#timedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
+#### Supertype
+[Event](#event)
+
+#### Supported Actors
+[Person](#person), [SoftwareApplication](#softwareApplication)
+
+#### Supported Actions
+[LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
+
+#### Supported Objects
+[Session](#session), [SoftwareApplication](#softwareApplication)
 
 #### Properties
 [SessionEvent](#sessionEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2466,7 +2451,7 @@ http://purl.imsglobal.org/caliper/SessionEvent
 | :------- | :--- | ----------- | :---------: |
 | id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SessionEvent*. | Required |
-| actor | [Agent](#agent) &#124; [IRI](#iriDef) | The [Agent](#agent) who initiated the `action`.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.  The `actor` value MUST be expressed either as an object or as a string corresponding to the actor's [IRI](#iriDef). | Required |
+| actor | [Person](#person) &#124; [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | The [Agent](#agent) who initiated the `action`.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.  The `actor` value MUST be expressed either as an object or as a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object`.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [Session](#session) &#124; [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) MUST be specified as the `object`.  For a [TimedOut](#timedOut) action the [Session](#session) MUST be specified as the object.  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
@@ -2578,11 +2563,14 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
-| [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). | 
+[MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead)
+
+#### Supported Objects
+[Thread](#thread)
 
 #### Properties
 [ThreadEvent](#threadEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2669,10 +2657,14 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
 #### Supertype
 [Event](#event)
 
-#### Supported actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+[Used](#used)
+
+#### Supported Objects
+[SoftwareApplication](#softwareApplication)
 
 #### Properties
 [ToolUseEvent](#toolUseEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2747,10 +2739,17 @@ http://purl.imsglobal.org/caliper/ViewEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
-| Action | WordNet&reg; Gloss |
-| :----- | :------------- |
-| [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
+[Viewed](#viewed)
+
+#### Supported Objects
+[DigitalResource](#digitalResource)
+
+#### Supported Target Entities
+[Frame](#frame)
 
 #### Properties
 [ViewEvent](#viewEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -4275,14 +4274,14 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
         "tool_consumer_instance_url": "https://example.edu"
       },
       "ext": {
-        "edu_example_course_section": "https://example.edu/terms/201601/courses/7/sections/1",
-        "edu_example_course_section_roster": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+        "edu_example_course_section": "https://example.edu/terms/201701/courses/7/sections/1",
+        "edu_example_course_section_roster": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
         "edu_example_course_section_learner": "https://example.edu/users/554433",
         "edu_example_course_section_instructor": "https://example.edu/faculty/1234"
       }
     },
-    "dateCreated": "2016-11-15T10:15:00.000Z",
-    "startedAtTime": "2016-11-15T10:15:00.000Z"
+    "dateCreated": "2017-11-15T10:15:00.000Z",
+    "startedAtTime": "2017-11-15T10:15:00.000Z"
   }
 ```
 
@@ -5895,6 +5894,8 @@ The following Caliper Working Group participants contributed to the writing of t
 <a name="rfc4122"></a>__RFC 4122__.  IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
 
 <a name="rfc6750"></a>__RFC 6750__.  IETF.  M. Jones and D. Hardt.  "The OAuth 2.0 Authorization Framework: Bearer Token Usage."  October 2012.  URL: https://tools.ietf.org/html/rfc6750
+
+<a name="rfc7231"></a>__RFC 7231__.  IETF.  R. Fielding and J. Reschke, eds.  Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content.  June 2014.  URL: https://tools.ietf.org/html/rfc7231.
 
 <a name="rfc7807"></a>__RFC 7807__.  IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2017.  URL: https://tools.ietf.org/html/rfc7807
 
