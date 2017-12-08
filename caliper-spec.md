@@ -2328,6 +2328,9 @@ http://purl.imsglobal.org/caliper/NavigationEvent
 #### Supported Objects
 [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)
 
+#### Supported Target Entities
+[Frame](#frame)
+
 #### Properties
 [NavigationEvent](#navigationEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
 
@@ -2465,6 +2468,9 @@ http://purl.imsglobal.org/caliper/ReadingEvent
 
 #### Supported Objects
 [DigitalResource](#digitalResource)
+
+#### Supported Target Entities
+[Frame](#frame)
 
 #### Properties
 [ReadingEvent](#readingEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2815,6 +2821,9 @@ http://purl.imsglobal.org/caliper/ViewEvent
 
 #### Supported Objects
 [DigitalResource](#digitalResource)
+
+#### Supported Target Entities
+[Frame](#frame)
 
 #### Properties
 [ViewEvent](#viewEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
