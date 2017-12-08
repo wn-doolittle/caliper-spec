@@ -1418,6 +1418,9 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
 
@@ -1426,7 +1429,10 @@ The following actions are deprecated and targeted for removal from the [Annotati
 
 [Attached](#attached), [Classified](#classified), [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended), [Subscribed](#subscribed)
 
-#### Generated Entities
+#### Supported Objects
+[DigitalResource](#digitalResource)
+
+#### Supported Generated Entities
 [Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
  
 #### Properties
@@ -1517,10 +1523,16 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)
 
-#### Generated Entities
+#### Supported Objects
+[Assessment](#assessment)
+
+#### Supported Generated Entities
 [Attempt](#attempt) 
 
 #### Properties
@@ -1615,6 +1627,9 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 
 #### Supertype
 [Event](#event)
+
+#### Supported Actors
+[Person](#person)
  
 #### Supported Actions
 [Started](#started), [Skipped](#skipped), [Completed](#completed)
@@ -1622,7 +1637,10 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 #### Deprecated Actions
 [Reviewed](#reviewed), [Viewed](#viewed)
 
-#### Generated Entities
+#### Supported Objects
+[AssessmentItem](#assessmentItem)
+
+#### Supported Generated Entities
 [Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
 
 #### Properties
@@ -1743,6 +1761,9 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)
 
@@ -1751,7 +1772,10 @@ The following actions are deprecated and targeted for removal from the [Assignab
 
 [Abandoned](#abandoned), [Hid](#hid), [Showed](#showed)
 
-#### Generated Entities
+#### Supported Objects
+[AssignableDigitalResource](#assignableDigitalResource)
+
+#### Supported Generated Entities
 [Attempt](#attempt) 
 
 #### Properties
@@ -1842,8 +1866,14 @@ http://purl.imsglobal.org/caliper/ForumEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [Subscribed](#subscribed), [Unsubscribed](#unsubscribed)
+
+#### Supported Objects
+[Forum](#forum)
 
 #### Properties
 [ForumEvent](#forumEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -1929,10 +1959,16 @@ http://purl.imsglobal.org/caliper/GradeEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person), [SoftwareApplication](#softwareApplication)
+
 #### Supported Actions
 [Graded](#graded)
 
-#### Generated Entities
+#### Supported Objects
+[Attempt](#attempt)
+
+#### Supported Generated Entities
 [Score](#score)
 
 #### Properties
@@ -2018,6 +2054,9 @@ http://purl.imsglobal.org/caliper/MediaEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [Started](#started), [Ended](#ended), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [ChangedResolution](#changedResolution), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
 
@@ -2025,6 +2064,12 @@ http://purl.imsglobal.org/caliper/MediaEvent
 The following actions are deprecated and targeted for removal from the [MediaEvent](#mediaEvent) list of supported actions.
 
 [Rewound](#rewound)
+
+#### Supported Objects
+[AudioObject](#audioObject), [ImageObject](#imageObject), [MediaObject](#mediaObject), [VideoObject](#videoObject)
+
+#### Supported Target Entities
+[MediaLocation](#mediaLocation)
 
 #### Properties
 [MediaEvent](#mediaEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2107,8 +2152,14 @@ http://purl.imsglobal.org/caliper/MessageEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead), [Posted](#posted)
+
+#### Supported Objects
+[Message](#message)
 
 #### Properties
 [MessageEvent](#messageEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2268,8 +2319,14 @@ http://purl.imsglobal.org/caliper/NavigationEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [NavigatedTo](#navigatedTo)
+
+#### Supported Objects
+[DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)
 
 #### Properties
 [NavigationEvent](#navigationEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2356,8 +2413,17 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person), [SoftwareApplication](#softwareApplication)
+
 #### Supported Actions
 [Graded](#graded)
+
+#### Supported Objects
+[Attempt](#attempt)
+
+#### Supported Generated Entities
+[Result](#result)
 
 #### Properties
 [OutcomeEvent](#outcomeEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2371,7 +2437,7 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 | object | [Attempt](#attempt) &#124; [IRI](#iriDef) | The completed [Attempt](#attempt).  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 | target | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or as a string corresponding to the target entity's [IRI](#iriDef). | Not Applicable |
-| generated | [Score](#score) &#124; [IRI](#iriDef) | The generated [Score](#score) SHOULD be provided.  The `generated` value MUST be expressed either as an object or as a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| generated | [Result](#result) &#124; [IRI](#iriDef) | The generated [Result](#result) SHOULD be provided.  The `generated` value MUST be expressed either as an object or as a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
 | edApp | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | A [SoftwareApplication](#softwareApplication) that constitutes the application context.  The `edApp` value MUST be expressed either as an object or as a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents the referring context. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or as a string corresponding to the referrer's [IRI](#iriDef). | Optional |
 | group | [Organization](#organization) &#124; [IRI](#iriDef) | An [Organization](#organization) that represents the group context.  The `group` value MUST be expressed either as an object or as a string corresponding to the group's [IRI](#iriDef). | Optional |
@@ -2391,8 +2457,14 @@ http://purl.imsglobal.org/caliper/ReadingEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [NavigatedTo](#navigatedTo), [Searched](#searched), [Viewed](#viewed)
+
+#### Supported Objects
+[DigitalResource](#digitalResource)
 
 #### Properties
 [ReadingEvent](#readingEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2428,8 +2500,17 @@ A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termi
 #### IRI
 http://purl.imsglobal.org/caliper/SessionEvent
 
-#### Supported actions
+#### Supertype
+[Event](#event)
+
+#### Supported Actors
+[Person](#person), [SoftwareApplication](#softwareApplication)
+
+#### Supported Actions
 [LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
+
+#### Supported Objects
+[Session](#session), [SoftwareApplication](#softwareApplication)
 
 #### Properties
 [SessionEvent](#sessionEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2550,8 +2631,14 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead)
+
+#### Supported Objects
+[Thread](#thread)
 
 #### Properties
 [ThreadEvent](#threadEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2638,8 +2725,14 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
 #### Supertype
 [Event](#event)
 
-#### Supported actions
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
 [Used](#used)
+
+#### Supported Objects
+[SoftwareApplication](#softwareApplication)
 
 #### Properties
 [ToolUseEvent](#toolUseEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
@@ -2714,8 +2807,14 @@ http://purl.imsglobal.org/caliper/ViewEvent
 #### Supertype
 [Event](#event)
 
+#### Supported Actors
+[Person](#person)
+
 #### Supported Actions
 [Viewed](#viewed)
+
+#### Supported Objects
+[DigitalResource](#digitalResource)
 
 #### Properties
 [ViewEvent](#viewEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
