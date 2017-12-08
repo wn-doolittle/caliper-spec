@@ -308,6 +308,7 @@ Think of each metric profile as a stand-alone, logical container, or collection 
 
 * supported events
 * supported actors
+* supported actions
 * supported objects
 * supported generated entities
 * supported target entities
@@ -339,31 +340,19 @@ Questions which can be answered using this profile are as follows:
 * What notes are being added?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [AnnotationEvent](#annotationEvent)
-  * [Bookmarked](#bookmarked)
-  * [Highlighted](#highlighted)
-  * [Shared](#shared)
-  * [Tagged](#tagged)
+[AnnotationEvent](#annotationEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+[Bookmarked](#bookmarked), [Highlighted](#highlighted), [Shared](#shared), [Tagged](#tagged)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [DigitalResource](#digitalResource) or subtype
+[DigitalResource](#digitalResource)
 
 #### Supported Generated Entities
-The following [Annotation](#annotation) subtypes are supported:
-
-* [BookmarkAnnotation](#bookmarkAnnotation)
-* [HighlightAnnotation](#highlightAnnotation)
-* [SharedAnnotation](#sharedAnnotation)
-* [TaggedAnnotation](#taggedAnnotation)
+[BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation),[SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Other Requirements
 * For each [AnnotationEvent](#annotationEvent) described, the `generated` [Annotation](#annotation) subtype SHOULD be specified.  Pair the `action` with the appropriate [Annotation](#annotation) subtype (e.g., [Bookmarked](#bookmarked) with [BookmarkAnnotation](#bookmarkAnnotation)).  If the generated [Annotation](#annotation) is expressed as an object both the `annotator` and `annotated` entities SHOULD be referenced.
@@ -383,51 +372,46 @@ Tracking patterns using the assessment profile will allow instructors to underst
 * If test-taking times are flexible, when do learners start their assessments?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [AssessmentEvent](#assessmentEvent)
-  * [Started](#started)
-  * [Paused](#paused)
-  * [Resumed](#resumed)
-  * [Restarted](#restarted)
-  * [Reset](#reset)
-  * [Submitted](#submitted)
-* [AssessmentItemEvent](#assessmentItemEvent)
-  * [Started](#started)
-  * [Skipped](#skipped)
-  * [Completed](#completed)
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+
+##### AssessmentEvent
+[Started](#started), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [Reset](#reset), [Submitted](#submitted)
+
+##### AssessmentItemEvent
+[Started](#started), [Skipped](#skipped), [Completed](#completed)
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
 
-* AssessmentEvent
-  * [Assessment](#assessment) 
-* AssessmentItemEvent
-  * [AssessmentItem](#assessmentItem) 
-* NavigationEvent
-  * [Assessment](#assessment)
-  * [AssessmentItem](#assessmentItem)
-* ViewEvent
-  * [Assessment](#assessment) 
-  * [AssessmentItem](#assessmentItem)
+##### AssessmentEvent
+[Assessment](#assessment)
+
+##### AssessmentItemEvent
+[AssessmentItem](#assessmentItem)
+
+##### NavigationEvent
+[Assessment](#assessment), [AssessmentItem](#assessmentItem)
+
+##### ViewEvent
+[Assessment](#assessment), [AssessmentItem](#assessmentItem)
 
 #### Supported Generated Entities
-The following [Entity](#entity) types are supported:
 
-* AssessmentEvent
-  * [Attempt](#attempt) 
-* AssessmentItemEvent
-  * [Attempt](#attempt)
-  * [Response](#response) ([Completed](#completed) action only)
+##### AssessmentEvent
+[Attempt](#attempt) 
+
+##### AssessmentItemEvent
+[Attempt](#attempt), [Response](#response)
 
 #### Other Requirements
 * For each [AssessmentEvent](#assessmentEvent) described, the `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is expressed as an object the [Attempt](#attempt) SHOULD define, at a minimum, the `assignee`, the `assignable`, and the `count`.  Set the [Attempt](#attempt) `count` values as follows (per action):
@@ -454,42 +438,32 @@ This profile would be useful for instructors to gather insight about the relatio
 * What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [AssignableEvent](#assignableEvent)
-  * [Activated](#activated)
-  * [Deactivated](#deactivated)
-  * [Started](#started)
-  * [Completed](#completed)
-  * [Submitted](#submitted)
-  * [Reviewed](#reviewed)
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+
+##### AssignableEvent
+[Activated](#activated), [Deactivated](#deactivated), [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [AssignableDigitalResource](#assignableDigitalResource)
+[AssignableDigitalResource](#assignableDigitalResource)
 
 #### Supported Generated Entities
-The following [Entity](#entity) types are supported:
 
-* AssignableEvent
-  * [Attempt](#attempt) 
+##### AssignableEvent
+[Attempt](#attempt) 
 
 #### Other Requirements
-* A `generated` [Attempt](#attempt) SHOULD be specified for the following [AssignableEvent](#assignableEvent) actions:
-  * [Started](#started)
-  * [Completed](#completed)
-  * [Submitted](#submitted)
-  * [Reviewed](#reviewed)
+* A `generated` [Attempt](#attempt) SHOULD be specified for the following [AssignableEvent](#assignableEvent) actions: [Started](#started), [Completed](#completed), [Submitted](#submitted), [Reviewed](#reviewed)
 * If the [Attempt](#attempt) is expressed as an object the [Attempt](#attempt) SHOULD define, at a minimum, the `assignee`, the `assignable`, and the `count`.  Set the `count` value to 1 for a first attempt and increment by 1 for each subsequent attempt.
 * Parent-child relationships that exist between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY be represented by use of the [Attempt](#attempt) `isPartOf` property.
 
@@ -506,45 +480,44 @@ Tracking patterns using the forum profile will allow instructors to understand m
 * Compare graded vs. non-graded discussions
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [ForumEvent](#forumEvent)
-  * [Subscribed](#subscribed)
-  * [Unsubscribed](#unsubscribed)
-* [MessageEvent](#messageEvent)
-  * [MarkedAsRead](#markedAsRead)
-  * [MarkedAsUnRead](#markedAsUnRead)
-  * [Posted](#posted)
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ThreadEvent](#threadEvent)
-  * [MarkedAsRead](#markedAsRead)
-  * [MarkedAsUnRead](#markedAsUnRead)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+
+##### ForumEvent
+[Subscribed](#subscribed), [Unsubscribed](#unsubscribed)
+
+##### MessageEvent
+[MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead), [Posted](#posted)
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ThreadEvent
+[MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
 
-* ForumEvent
-  * [Forum](#forum)
-* MessageEvent
-  * [Message](#message)
-* NavigationEvent
-  * [Forum](#forum)
-  * [Message](#message)
-  * [Thread](#thread)
-* ThreadEvent
-  * [Thread](#thread)
-* ViewEvent
-  * [Forum](#forum)
-  * [Message](#message)
-  * [Thread](#thread)
+##### ForumEvent
+[Forum](#forum)
+
+##### MessageEvent
+[Message](#message)
+
+##### NavigationEvent
+[Forum](#forum), [Message](#message), [Thread](#thread)
+
+##### ThreadEvent
+[Thread](#thread)
+
+##### ViewEvent
+[Forum](#forum), [Message](#message), [Thread](#thread)
 
 #### Other Requirements
 * If a [Message](#message) is expressed as an object and is in the form of a reply, the previous [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
@@ -561,35 +534,36 @@ The grading profile allows information to be captured about grade changes for a 
 * How often are grades changed for an assessment?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [GradeEvent](#gradeEvent)
-  * [Graded](#graded)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[GradeEvent](#gradeEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
 
-* GradeEvent
-  * [Person](#person)
-  * [SoftwareApplication](#softwareApplication)
-* ViewEvent
-  * [Person](#person)
+##### GradeEvent
+[Agent](#agent)
+
+##### ViewEvent
+[Person](#person)
+
+#### Supported Actions
+
+##### GradeEvent
+[Graded](#graded)
+
+##### ViewEvent
+[Viewed](#viewed) 
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
 
-* GradeEvent
-  * [Attempt](#attempt)
-* ViewEvent
-  * [Result](#result)
+##### GradeEvent
+[Attempt](#attempt)
+
+##### ViewEvent
+[Result](#result)
 
 #### Supported Generated Entities
-The following [Entity](#entity) types are supported:
 
-* GradeEvent
-  * [Score](#score)
+##### GradeEvent
+[Score](#score)
 
 #### Other Requirements
 * When describing a [GradeEvent](#gradeEvent), the `generated` [Score](#score) SHOULD be specified.
@@ -610,50 +584,27 @@ As an example of how this profile could be used, consider the following scenario
 * Are there instances of where students are replaying sections of the video?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [MediaEvent](#mediaEvent)
-  * [Started](#started)
-  * [Ended](#ended)
-  * [Paused](#paused)
-  * [Resumed](#resumed)
-  * [Restarted](#restarted)
-  * [ForwardedTo](#forwardedTo)
-  * [JumpedTo](#jumpedTo)
-  * [ChangedResolution](#changedResolution)
-  * [ChangedSize](#changedSize)
-  * [ChangedSpeed](#changedSpeed)
-  * [ChangedVolume](#changedVolume)
-  * [EnabledClosedCaptioning](#enabledClosedCaptioning)
-  * [DisabledClosedCaptioning](#disabledClosedCaptioning)
-  * [EnteredFullScreen](#enteredFullScreen)
-  * [ExitedFullScreen](#exitedFullScreen)
-  * [Muted](#muted)
-  * [Unmuted](#unmuted)
-  * [OpenedPopout](#openedPopout)
-  * [ClosedPopout](#closedPopout))
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person) &#124; [IRI](#iriDef)
+#### Supported Actions
+
+##### MediaEvent
+[Started](#started), [Ended](#ended), [Paused](#paused), [Resumed](#resumed), [Restarted](#restarted), [ForwardedTo](#forwardedTo), [JumpedTo](#jumpedTo), [ChangedResolution](#changedResolution), [ChangedSize](#changedSize), [ChangedSpeed](#changedSpeed), [ChangedVolume](#changedVolume), [EnabledClosedCaptioning](#enabledClosedCaptioning), [DisabledClosedCaptioning](#disabledClosedCaptioning), [EnteredFullScreen](#enteredFullScreen), [ExitedFullScreen](#exitedFullScreen), [Muted](#muted), [Unmuted](#unmuted), [OpenedPopout](#openedPopout), [ClosedPopout](#closedPopout)
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [AudioObject](#audioObject)
-* [ImageObject](#imageObject)
-* [MediaObject](#mediaObject)
-* [VideoObject](#videoObject)
+[AudioObject](#audioObject), [ImageObject](#imageObject), [MediaObject](#mediaObject), [VideoObject](#videoObject)
 
 #### Supported Target Entities
-The following [Entity](#entity) types are supported:
-
-* [MediaLocation](#mediaLocation)
+[MediaLocation](#mediaLocation)
 
 #### Other Requirements
 * A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
@@ -681,28 +632,21 @@ Instructors and researchers can utilize data collected via the Reading Profile t
 When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [NavigationEvent](#navigationEvent)
-  * [NavigatedTo](#navigatedTo)
-* [ViewEvent](#viewEvent)
-  * [Viewed](#viewed)
+[NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person) &#124; [IRI](#iriDef)
+#### Supported Actions
+
+##### NavigationEvent
+[NavigatedTo](#navigatedTo)
+
+##### ViewEvent
+[Viewed](#viewed)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [AssignableDigitalResource](#assignableDigitalResource)
-* [Chapter](#chapter)
-* [DigitalResource](#digitalResource)
-* [DigitalResourceCollection](#digitalResourceCollection)
-* [Document](#document)
-* [Page](#page) 
-* [WebPage](#webPage)
+[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Page](#page), [WebPage](#webPage)
 
 #### Supported Target Entities
 The following [Entity](#entity) types are supported:
@@ -725,29 +669,19 @@ The session profile can facilitate the capture of data about who is logging into
 * Who logs in/logs out most/least
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [SessionEvent](#sessionEvent)
-  * [LoggedIn](#loggedIn)
-  * [LoggedOut](#loggedOut)
-  * [TimedOut](#timedOut)
+[SessionEvent](#sessionEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person), [SoftwareApplication](#softwareApplication) ([TimedOut](#timedOut) action only)
 
-* [Person](#person)
-* [SoftwareApplication](#softwareApplication) ([TimedOut](#timedOut) action only)
+#### Supported Actions
+[LoggedIn](#loggedIn), [LoggedOut](#loggedOut), [TimedOut](#timedOut)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [SoftwareApplication](#softwareApplication)
-* [Session](#session) ([TimedOut](#timedOut) action only)
+[SoftwareApplication](#softwareApplication), [Session](#session) ([TimedOut](#timedOut) action only)
 
 #### Supported Target Entities
-The following [Entity](#entity) types are supported:
-
-[DigitalResource](#digitalResource) or subtype
+[DigitalResource](#digitalResource)
 
 #### Other Requirements
 * Although optional, the relevant user `session` SHOULD be specified.
@@ -768,20 +702,16 @@ The Tool Use Profile enables the gathering of basic usage information. It provid
 * Which tools have the greatest impact on student performance?
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [ToolUseEvent](#toolUseEvent)
-  * [Used](#used)
+[ToolUseEvent](#toolUseEvent)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Person](#person)
 
-* [Person](#person)
+#### Supported Actions
+[Used](#used)
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [SoftwareApplication](#softwareApplication)
+[SoftwareApplication](#softwareApplication)
 
 ### <a name="basicProfile"></a>3.10 Basic Profile
 
@@ -790,20 +720,16 @@ The following [Entity](#entity) types are supported:
 The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
 #### Supported Events
-The following [Event](#event) types and [actions](#actions) are supported:
-
-* [Event](#event) (supertype only)
-  * Any Caliper action MAY be used to describe the interaction.
+[Event](#event) (supertype only)
 
 #### Supported Actors
-The following [Agent](#agent) types are supported:
+[Agent](#agent)
 
-* [Agent](#agent) or subtype
+### Supported Actions
+Any Caliper action MAY be used to describe the interaction.
 
 #### Supported Objects
-The following [Entity](#entity) types are supported:
-
-* [Entity](#entity) or subtype
+[Entity](#entity)
 
 #### Other Requirements
 * Use of the Basic Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
