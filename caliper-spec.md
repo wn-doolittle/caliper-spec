@@ -352,7 +352,7 @@ Questions which can be answered using this profile are as follows:
 [DigitalResource](#digitalResource)
 
 #### Supported Generated Entities
-[BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation),[SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
+[BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TaggedAnnotation](#taggedAnnotation)
 
 #### Other Requirements
 * For each [AnnotationEvent](#annotationEvent) described, the `generated` [Annotation](#annotation) subtype SHOULD be specified.  Pair the `action` with the appropriate [Annotation](#annotation) subtype (e.g., [Bookmarked](#bookmarked) with [BookmarkAnnotation](#bookmarkAnnotation)).  If the generated [Annotation](#annotation) is expressed as an object both the `annotator` and `annotated` entities SHOULD be referenced.
