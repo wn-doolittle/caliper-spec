@@ -10,7 +10,7 @@ Recipients of this document are requested to submit, with their comments, notifi
 
 IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
 
-Copyright &copy; 2017 IMS Global Learning Consortium. All Rights Reserved.
+Copyright &copy; 2018 IMS Global Learning Consortium. All Rights Reserved.
 
 Use of this specification to develop products or services is governed by the license with IMS found on the IMS website: http://www.imsglobal.org/speclicense.html.
 
@@ -2986,7 +2986,7 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 }
 ```
 
-### <a name="assessmentItem"></a>C.4 AssessmentItem
+*### <a name="assessmentItem"></a>C.4 AssessmentItem
 
 A Caliper [AssessmentItem](#assessmentItem) represents a single test question.
 
@@ -3035,7 +3035,7 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 #### Example
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+*  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
   "type": "AssessmentItem",
   "isPartOf": {
