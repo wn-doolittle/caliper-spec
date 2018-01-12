@@ -770,10 +770,10 @@ In the following example, `@context` is a top-level [Event](#event) property wit
   },
   "action": "Created",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/123",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/123",
     "type": "Document"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z"
+  "eventTime": "2018-11-15T10:15:00.000Z"
 }
 ```
 
@@ -808,10 +808,10 @@ Contexts embedded inline can be combined with externally referenced contexts.  A
   },
   "action": "Searched",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/123",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/123",
     "type": "Document"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "extensions": {
     "query": "Event OR Entity"
   }
@@ -842,7 +842,7 @@ Unlike Entities, each [Event](#event) MUST be assigned a 128-bit long universall
   },
   . . .
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/pages/2",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/2",
     "type": "WebPage",
     . . .
   },
@@ -890,9 +890,9 @@ The following [MessageEvent](#messageEvent) example utilizes an inline context t
     "id": "https://example.edu/sections/1/forums/2/topics/1/messages/2",
     "type": "Message",
     "body": "What does Caliper Event JSON-LD look like?",
-    "dateCreated": "2017-12-15T10:15:00.000Z"
+    "dateCreated": "2018-12-15T10:15:00.000Z"
   },
-  "eventTime": "2017-12-15T10:15:00.000Z",
+  "eventTime": "2018-12-15T10:15:00.000Z",
   "edApp": "https://example.edu"
 }
 ```
@@ -911,28 +911,28 @@ As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in case
   },
   "action": "Subscribed",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
     "type": "Forum",
     "name": "Caliper Forum",
     . . .
   },
-  "eventTime": "2017-11-15T10:16:00.000Z",
+  "eventTime": "2018-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
     . . .
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     . . .
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     . . .
   },
@@ -940,7 +940,7 @@ As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in case
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "user": "https://example.edu/users/554433",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -955,11 +955,11 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
   "type": "ForumEvent",
   "actor": "https://example.edu/users/554433",
   "action": "Subscribed",
-  "object": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
-  "eventTime": "2017-11-15T10:16:00.000Z",
+  "object": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
+  "eventTime": "2018-11-15T10:16:00.000Z",
   "edApp": "https://example.edu/forums",
-  "group": "https://example.edu/terms/201701/courses/7/sections/1",
-  "membership": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1"
+  "group": "https://example.edu/terms/201801/courses/7/sections/1",
+  "membership": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1"
   "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
 }
 ```
@@ -1005,7 +1005,7 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
 ```
 {
   "sensor": "https://example.edu/sensors/1",
-  "sendTime": "2017-11-15T11:05:01.000Z",
+  "sendTime": "2018-11-15T11:05:01.000Z",
   "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "data": [{
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1020,27 +1020,27 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
       "id": "https://example.edu",
       "type": "SoftwareApplication"
     },
-    "eventTime": "2017-11-15T10:15:00.000Z",
+    "eventTime": "2018-11-15T10:15:00.000Z",
     "edApp": "https://example.edu",
     "group": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
       "type": "CourseSection",
       "courseNumber": "CPS 435-01",
-      "academicSession": "Fall 2017"
+      "academicSession": "Fall 2018"
     },
     "membership": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
       "type": "Membership",
       "member": "https://example.edu/users/554433",
-      "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+      "organization": "https://example.edu/terms/201801/courses/7/sections/1",
       "roles": ["Learner"],
       "status": "Active",
-      "dateCreated": "2017-08-01T06:00:00.000Z"
+      "dateCreated": "2018-08-01T06:00:00.000Z"
     },
     "session": {
       "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
       "type": "Session",
-      "startedAtTime": "2017-11-15T10:00:00.000Z"
+      "startedAtTime": "2018-11-15T10:00:00.000Z"
     }
   }]
 }
@@ -1050,42 +1050,42 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
 ```
 {
   "sensor": "https://example.edu/sensors/1",
-  "sendTime": "2017-11-15T11:05:01.000Z",
+  "sendTime": "2018-11-15T11:05:01.000Z",
   "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "data": [
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "https://example.edu/users/554433",
       "type": "Person",
-      "dateCreated": "2017-08-01T06:00:00.000Z",
-      "dateModified": "2017-09-02T11:30:00.000Z"
+      "dateCreated": "2018-08-01T06:00:00.000Z",
+      "dateModified": "2018-09-02T11:30:00.000Z"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
       "type": "Assessment",
       "name": "Quiz One",
       "items": [
         {
-          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
+          "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1",
           "type": "AssessmentItem"
         },
         {
-          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
+          "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2",
           "type": "AssessmentItem"
         },
         {
-          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+          "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
           "type": "AssessmentItem"
         }
       ],
-      "dateCreated": "2017-08-01T06:00:00.000Z",
-      "dateModified": "2017-09-02T11:30:00.000Z",
-      "datePublished": "2017-08-15T09:30:00.000Z",
-      "dateToActivate": "2017-08-16T05:00:00.000Z",
-      "dateToShow": "2017-08-16T05:00:00.000Z",
-      "dateToStartOn": "2017-08-16T05:00:00.000Z",
-      "dateToSubmit": "2017-09-28T11:59:59.000Z",
+      "dateCreated": "2018-08-01T06:00:00.000Z",
+      "dateModified": "2018-09-02T11:30:00.000Z",
+      "datePublished": "2018-08-15T09:30:00.000Z",
+      "dateToActivate": "2018-08-16T05:00:00.000Z",
+      "dateToShow": "2018-08-16T05:00:00.000Z",
+      "dateToStartOn": "2018-08-16T05:00:00.000Z",
+      "dateToSubmit": "2018-09-28T11:59:59.000Z",
       "maxAttempts": 2,
       "maxScore": 15.0,
       "maxSubmits": 2,
@@ -1099,18 +1099,18 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "id": "https://example.edu/terms/201701/courses/7/sections/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
       "type": "CourseSection",
-      "academicSession": "Fall 2017",
+      "academicSession": "Fall 2018",
       "courseNumber": "CPS 435-01",
       "name": "CPS 435 Learning Analytics, Section 01",
       "category": "seminar",
       "subOrganizationOf": {
-        "id": "https://example.edu/terms/201701/courses/7",
+        "id": "https://example.edu/terms/201801/courses/7",
         "type": "CourseOffering",
         "courseNumber": "CPS 435"
       },
-      "dateCreated": "2017-08-01T06:00:00.000Z"
+      "dateCreated": "2018-08-01T06:00:00.000Z"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
@@ -1118,32 +1118,32 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
       "action": "Started",
-      "object": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+      "object": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
       "generated": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
         "count": 1,
-        "dateCreated": "2017-11-15T10:15:00.000Z",
-        "startedAtTime": "2017-11-15T10:15:00.000Z"
+        "dateCreated": "2018-11-15T10:15:00.000Z",
+        "startedAtTime": "2018-11-15T10:15:00.000Z"
       },
-      "eventTime": "2017-11-15T10:15:00.000Z",
+      "eventTime": "2018-11-15T10:15:00.000Z",
       "edApp": "https://example.edu",
-      "group": "https://example.edu/terms/201701/courses/7/sections/1",
+      "group": "https://example.edu/terms/201801/courses/7/sections/1",
       "membership": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
         "type": "Membership",
         "member": "https://example.edu/users/554433",
-        "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+        "organization": "https://example.edu/terms/201801/courses/7/sections/1",
         "roles": [ "Learner" ],
         "status": "Active",
-        "dateCreated": "2017-08-01T06:00:00.000Z"
+        "dateCreated": "2018-08-01T06:00:00.000Z"
       },
       "session": {
         "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session",
-        "startedAtTime": "2017-11-15T10:00:00.000Z"
+        "startedAtTime": "2018-11-15T10:00:00.000Z"
       }
     },
     {
@@ -1152,34 +1152,34 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
       "action": "Submitted",
-      "object": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+      "object": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
       "generated": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
         "count": 1,
-        "dateCreated": "2017-11-15T10:15:00.000Z",
-        "startedAtTime": "2017-11-15T10:15:00.000Z",
-        "endedAtTime": "2017-11-15T10:55:12.000Z",
+        "dateCreated": "2018-11-15T10:15:00.000Z",
+        "startedAtTime": "2018-11-15T10:15:00.000Z",
+        "endedAtTime": "2018-11-15T10:55:12.000Z",
         "duration": "PT40M12S"
       },
-      "eventTime": "2017-11-15T10:25:30.000Z",
+      "eventTime": "2018-11-15T10:25:30.000Z",
       "edApp": "https://example.edu",
-      "group": "https://example.edu/terms/201701/courses/7/sections/1",
+      "group": "https://example.edu/terms/201801/courses/7/sections/1",
       "membership": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
         "type": "Membership",
         "member": "https://example.edu/users/554433",
-        "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+        "organization": "https://example.edu/terms/201801/courses/7/sections/1",
         "roles": ["Learner"],
         "status": "Active",
-        "dateCreated": "2017-08-01T06:00:00.000Z"
+        "dateCreated": "2018-08-01T06:00:00.000Z"
       },
       "session": {
         "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
         "type": "Session",
-        "startedAtTime": "2017-11-15T10:00:00.000Z"
+        "startedAtTime": "2018-11-15T10:00:00.000Z"
       }
     },
     {
@@ -1193,29 +1193,29 @@ Each [Event](#event) and [Entity](#entity) *[describe](#describeDef)* transmitte
       },
       "action": "Graded",
       "object": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "type": "Attempt",
         "assignee": "https://example.edu/users/554433",
-        "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1?ver=v1p0",
+        "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
         "count": 1,
-        "dateCreated": "2017-11-15T10:15:00.000Z",
-        "startedAtTime": "2017-11-15T10:15:00.000Z",
-        "endedAtTime": "2017-11-15T10:55:12.000Z",
+        "dateCreated": "2018-11-15T10:15:00.000Z",
+        "startedAtTime": "2018-11-15T10:15:00.000Z",
+        "endedAtTime": "2018-11-15T10:55:12.000Z",
         "duration": "PT40M12S"
       },
-      "eventTime": "2017-11-15T10:57:06.000Z",
+      "eventTime": "2018-11-15T10:57:06.000Z",
       "edApp": "https://example.edu",
       "generated": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
         "type": "Score",
-        "attempt": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "attempt": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
         "maxScore": 15.0,
         "scoreGiven": 10.0,
         "scoredBy": "https://example.edu/autograder",
         "comment": "auto-graded exam",
-        "dateCreated": "2017-11-15T10:56:00.000Z"
+        "dateCreated": "2018-11-15T10:56:00.000Z"
       },
-      "group": "https://example.edu/terms/201701/courses/7/sections/1"
+      "group": "https://example.edu/terms/201801/courses/7/sections/1"
     }
   ]
 }
@@ -1405,9 +1405,9 @@ The following actions are deprecated and targeted for removal from the [Annotati
     "annotator": "https://example.edu/users/554433",
     "annotated": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
     "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
-    "dateCreated": "2017-11-15T10:15:00.000Z"
+    "dateCreated": "2018-11-15T10:15:00.000Z"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.com/reader",
     "type": "SoftwareApplication",
@@ -1415,24 +1415,24 @@ The following actions are deprecated and targeted for removal from the [Annotati
     "version": "1.2.3"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.com/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1494,50 +1494,50 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
   },
   "action": "Started",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
     "type": "Assessment",
     "name": "Quiz One",
-    "dateToStartOn": "2017-11-14T05:00:00.000Z",
-    "dateToSubmit": "2017-11-18T11:59:59.000Z",
+    "dateToStartOn": "2018-11-14T05:00:00.000Z",
+    "dateToSubmit": "2018-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 25.0,
     "version": "1.0"
   },
   "generated": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+    "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
     "count": 1,
-    "dateCreated": "2017-11-15T10:15:00.000Z",
-    "startedAtTime": "2017-11-15T10:15:00.000Z"
+    "dateCreated": "2018-11-15T10:15:00.000Z",
+    "startedAtTime": "2018-11-15T10:15:00.000Z"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1602,15 +1602,15 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
   },
   "action": "Completed",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
     "type": "AssessmentItem",
     "name": "Assessment Item 3",
     "isPartOf": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
-    "dateToStartOn": "2017-11-14T05:00:00.000Z",
-    "dateToSubmit": "2017-11-18T11:59:59.000Z",
+    "dateToStartOn": "2018-11-14T05:00:00.000Z",
+    "dateToSubmit": "2018-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 1.0,
@@ -1618,59 +1618,59 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
     "version": "1.0"
   },
   "generated": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
     "type": "FillinBlankResponse",
     "attempt": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
       "type": "Attempt",
       "assignee": "https://example.edu/users/554433",
       "assignable": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
         "type": "AssessmentItem",
         "name": "Assessment Item 3",
         "isPartOf": {
-          "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+          "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
           "type": "Assessment"
         }
       },
-      "isPartOf": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+      "isPartOf": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
       "count": 1,
-      "dateCreated": "2017-11-15T10:15:02.000Z",
-      "startedAtTime": "2017-11-15T10:15:02.000Z",
-      "endedAtTime": "2017-11-15T10:15:12.000Z"
+      "dateCreated": "2018-11-15T10:15:02.000Z",
+      "startedAtTime": "2018-11-15T10:15:02.000Z",
+      "endedAtTime": "2018-11-15T10:15:12.000Z"
     },
-    "dateCreated": "2017-11-15T10:15:12.000Z",
-    "startedAtTime": "2017-11-15T10:15:02.000Z",
-    "endedAtTime": "2017-11-15T10:15:12.000Z",
+    "dateCreated": "2018-11-15T10:15:12.000Z",
+    "startedAtTime": "2018-11-15T10:15:02.000Z",
+    "endedAtTime": "2018-11-15T10:15:12.000Z",
     "values": ["subject", "object", "predicate"]
   },
-  "eventTime": "2017-11-15T10:15:12.000Z",
+  "eventTime": "2018-11-15T10:15:12.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [
       "Learner"
     ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1737,45 +1737,45 @@ The following actions are deprecated and targeted for removal from the [Assignab
   },
   "action": "Activated",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
     "type": "Assessment",
     "name": "Quiz One",
-    "dateCreated": "2017-08-01T06:00:00.000Z",
-    "dateModified": "2017-09-02T11:30:00.000Z",
-    "datePublished": "2017-11-12T10:10:00.000Z",
-    "dateToActivate": "2017-11-12T10:15:00.000Z",
-    "dateToStartOn": "2017-11-14T05:00:00.000Z",
-    "dateToSubmit": "2017-11-18T11:59:59.000Z",
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "dateModified": "2018-09-02T11:30:00.000Z",
+    "datePublished": "2018-11-12T10:10:00.000Z",
+    "dateToActivate": "2018-11-12T10:15:00.000Z",
+    "dateToStartOn": "2018-11-14T05:00:00.000Z",
+    "dateToSubmit": "2018-11-18T11:59:59.000Z",
     "maxAttempts": 2,
     "maxSubmits": 2,
     "maxScore": 25.0,
     "version": "1.0"
   },
-  "eventTime": "2017-11-12T10:15:00.000Z",
+  "eventTime": "2018-11-12T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu",
     "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/112233",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Instructor" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
     "type": "Session",
-    "startedAtTime": "2017-11-12T10:00:00.000Z"
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
   }
 }
 ```
@@ -1835,40 +1835,40 @@ http://purl.imsglobal.org/caliper/ForumEvent
   },
   "action": "Subscribed",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
     "type": "Forum",
     "name": "Caliper Forum",
     "isPartOf": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
       "type": "CourseSection"
     },
-    "dateCreated": "2017-09-14T11:00:00.000Z"
+    "dateCreated": "2018-09-14T11:00:00.000Z"
   },
-  "eventTime": "2017-11-15T10:16:00.000Z",
+  "eventTime": "2018-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -1931,39 +1931,39 @@ http://purl.imsglobal.org/caliper/GradeEvent
   },
   "action": "Graded",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2017-11-15T10:05:00.000Z",
-    "startedAtTime": "2017-11-15T10:05:00.000Z",
-    "endedAtTime": "2017-11-15T10:55:12.000Z",
+    "dateCreated": "2018-11-15T10:05:00.000Z",
+    "startedAtTime": "2018-11-15T10:05:00.000Z",
+    "endedAtTime": "2018-11-15T10:55:12.000Z",
     "duration": "PT50M12S"
   },
-  "eventTime": "2017-11-15T10:57:06.000Z",
+  "eventTime": "2018-11-15T10:57:06.000Z",
   "edApp": "https://example.edu",
   "generated": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
     "type": "Score",
-    "attempt": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "attempt": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "maxScore": 15.0,
     "scoreGiven": 10.0,
     "scoredBy": "https://example.edu/autograder",
     "comment": "auto-graded exam",
-    "dateCreated": "2017-11-15T10:56:00.000Z"
+    "dateCreated": "2018-11-15T10:56:00.000Z"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   }
 }
 ```
@@ -2041,27 +2041,27 @@ The following actions are deprecated and targeted for removal from the [MediaEve
     "type": "MediaLocation",
     "currentTime": "PT05M21S"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": "https://example.edu/player",
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2120,7 +2120,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
   },
   "action": "Posted",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2/topics/1/messages/2",
     "type": "Message",
     "creators": [
       {
@@ -2130,42 +2130,42 @@ http://purl.imsglobal.org/caliper/MessageEvent
     ],
     "body": "Are the Caliper Sensor reference implementations production-ready?",
     "isPartOf": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2/topics/1",
       "type": "Thread",
       "name": "Caliper Adoption",
       "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2",
         "type": "Forum",
         "name": "Caliper Forum"
       }
     },
-    "dateCreated": "2017-11-15T10:15:00.000Z"
+    "dateCreated": "2018-11-15T10:15:00.000Z"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2182,7 +2182,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
   },
   "action": "Posted",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/3",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2/topics/1/messages/3",
     "type": "Message",
     "creators": [
       {
@@ -2191,44 +2191,44 @@ http://purl.imsglobal.org/caliper/MessageEvent
       }
     ],
     "replyTo": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/2",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2/topics/1/messages/2",
       "type": "Message"
     },
     "isPartOf": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2/topics/1",
       "type": "Thread",
       "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2",
         "type": "Forum"
       }
     },
-    "dateCreated": "2017-11-15T10:15:30.000Z"
+    "dateCreated": "2018-11-15T10:15:30.000Z"
   },
-  "eventTime": "2017-11-15T10:15:30.000Z",
+  "eventTime": "2018-11-15T10:15:30.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/778899",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:12:00.000Z"
+    "startedAtTime": "2018-11-15T10:12:00.000Z"
   }
 }
 ```
@@ -2297,37 +2297,37 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
   },
   "action": "NavigatedTo",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/pages/2",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/2",
     "type": "WebPage",
     "name": "Learning Analytics Specifications",
     "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
-    "dateCreated": "2017-08-01T09:00:00.000Z"
+    "dateCreated": "2018-08-01T09:00:00.000Z"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "referrer": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/pages/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
     "type": "WebPage"
   },
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2481,14 +2481,14 @@ http://purl.imsglobal.org/caliper/SessionEvent
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "user": "https://example.edu/users/554433",
-    "dateCreated": "2017-11-15T10:00:00.000Z",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "dateCreated": "2018-11-15T10:00:00.000Z",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2509,15 +2509,15 @@ http://purl.imsglobal.org/caliper/SessionEvent
     "type": "SoftwareApplication",
     "version": "v2"
   },
-  "eventTime": "2017-11-15T11:05:00.000Z",
+  "eventTime": "2018-11-15T11:05:00.000Z",
   "edApp": "https://example.edu",
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "user": "https://example.edu/users/554433",
-    "dateCreated": "2017-11-15T10:00:00.000Z",
-    "startedAtTime": "2017-11-15T10:00:00.000Z",
-    "endedAtTime": "2017-11-15T11:05:00.000Z",
+    "dateCreated": "2018-11-15T10:00:00.000Z",
+    "startedAtTime": "2018-11-15T10:00:00.000Z",
+    "endedAtTime": "2018-11-15T11:05:00.000Z",
     "duration": "PT3000S"
   }
 }
@@ -2541,12 +2541,12 @@ http://purl.imsglobal.org/caliper/SessionEvent
       "id": "https://example.edu/users/112233",
       "type": "Person"
     },
-    "dateCreated": "2017-11-15T10:15:00.000Z",
-    "startedAtTime": "2017-11-15T10:15:00.000Z",
-    "endedAtTime": "2017-11-15T11:15:00.000Z",
+    "dateCreated": "2018-11-15T10:15:00.000Z",
+    "startedAtTime": "2018-11-15T10:15:00.000Z",
+    "endedAtTime": "2018-11-15T11:15:00.000Z",
     "duration": "PT3600S"
   },
-  "eventTime": "2017-11-15T11:15:00.000Z",
+  "eventTime": "2018-11-15T11:15:00.000Z",
   "edApp": "https://example.edu"
 }
 ```
@@ -2605,42 +2605,42 @@ http://purl.imsglobal.org/caliper/ThreadEvent
   },
   "action": "MarkedAsRead",
   "object": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/1",
     "type": "Thread",
     "name": "Caliper Information Model",
     "isPartOf": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
       "type": "Forum",
       "name": "Caliper Forum",
-      "dateCreated": "2017-11-15T10:15:00.000Z"
+      "dateCreated": "2018-11-15T10:15:00.000Z"
     },
-    "dateCreated": "2017-11-15T10:16:00.000Z"
+    "dateCreated": "2018-11-15T10:16:00.000Z"
   },
-  "eventTime": "2017-11-15T10:16:00.000Z",
+  "eventTime": "2018-11-15T10:16:00.000Z",
   "edApp": {
     "id": "https://example.edu/forums",
     "type": "SoftwareApplication",
     "version": "v2"
   },
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2702,27 +2702,27 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
     "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2787,31 +2787,31 @@ http://purl.imsglobal.org/caliper/ViewEvent
     "id": "https://example.edu/etexts/201.epub",
     "type": "Document",
     "name": "IMS Caliper Implementation Guide",
-    "dateCreated": "2017-08-01T06:00:00.000Z",
-    "datePublished": "2017-10-01T06:00:00.000Z",
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "datePublished": "2018-10-01T06:00:00.000Z",
     "version": "1.1"
   },
-  "eventTime": "2017-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201701/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2017-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2017-11-15T10:00:00.000Z"
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
 ```
@@ -2852,8 +2852,8 @@ http://purl.imsglobal.org/caliper/Agent
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/agents/99999",
   "type": "Agent",
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z"
 }
 ```
 
@@ -2901,7 +2901,7 @@ http://purl.imsglobal.org/caliper/Annotation
     "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
     "type": "Page"
   },
-  "dateCreated": "2017-08-01T06:00:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }
 ```
 
@@ -2955,30 +2955,30 @@ The following [Assessment](#assessment) properties have been DEPRECATED and MUST
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
   "type": "Assessment",
   "name": "Quiz One",
   "items": [
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1",
       "type": "AssessmentItem"
     },
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2",
       "type": "AssessmentItem"
     },
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
       "type": "AssessmentItem"
     }
   ],
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z",
-  "datePublished": "2017-08-15T09:30:00.000Z",
-  "dateToActivate": "2017-08-16T05:00:00.000Z",
-  "dateToShow": "2017-08-16T05:00:00.000Z",
-  "dateToStartOn": "2017-08-16T05:00:00.000Z",
-  "dateToSubmit": "2017-09-28T11:59:59.000Z",
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z",
+  "datePublished": "2018-08-15T09:30:00.000Z",
+  "dateToActivate": "2018-08-16T05:00:00.000Z",
+  "dateToShow": "2018-08-16T05:00:00.000Z",
+  "dateToStartOn": "2018-08-16T05:00:00.000Z",
+  "dateToSubmit": "2018-09-28T11:59:59.000Z",
   "maxAttempts": 2,
   "maxScore": 15.0,
   "maxSubmits": 2,
@@ -3036,14 +3036,14 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 ```
 {
 *  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
   "type": "AssessmentItem",
   "isPartOf": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
     "type": "Assessment"
   },
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "datePublished": "2017-08-15T09:30:00.000Z",
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "datePublished": "2018-08-15T09:30:00.000Z",
   "isTimeDependent": false,
   "maxScore": 1.0,
   "maxSubmits": 2,
@@ -3109,15 +3109,15 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assign/2",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assign/2",
   "type": "AssignableDigitalResource",
   "name": "Week 9 Reflection",
   "description": "3-5 page reflection on this week's assigned readings.",
-  "dateCreated": "2017-11-01T06:00:00.000Z",
-  "dateToActivate": "2017-11-10T11:59:59.000Z",
-  "dateToShow": "2017-11-10T11:59:59.000Z",
-  "dateToStartOn": "2017-11-10T11:59:59.000Z",
-  "dateToSubmit": "2017-11-14T11:59:59.000Z",
+  "dateCreated": "2018-11-01T06:00:00.000Z",
+  "dateToActivate": "2018-11-10T11:59:59.000Z",
+  "dateToShow": "2018-11-10T11:59:59.000Z",
+  "dateToStartOn": "2018-11-10T11:59:59.000Z",
+  "dateToSubmit": "2018-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,
   "maxScore": 50.0
@@ -3165,10 +3165,10 @@ The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT b
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
   "type": "Attempt",
   "assignable": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
     "type": "Assessment"
   },
   "assignee": {
@@ -3176,9 +3176,9 @@ The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT b
     "type": "Person"
   },
   "count": 1,
-  "dateCreated": "2017-11-15T10:05:00.000Z",
-  "startedAtTime": "2017-11-15T10:05:00.000Z",
-  "endedAtTime": "2017-11-15T10:55:30.000Z",
+  "dateCreated": "2018-11-15T10:05:00.000Z",
+  "startedAtTime": "2018-11-15T10:05:00.000Z",
+  "endedAtTime": "2018-11-15T10:55:30.000Z",
   "duration": "PT50M30S"
 }
 ```
@@ -3234,7 +3234,7 @@ The following [AudioObject](#audioObject) properties have been DEPRECATED and MU
   "type": "AudioObject",
   "name": "Audio Recording: IMS Caliper Sensor API Q&A.",
   "mediaType": "audio/ogg",
-  "datePublished": "2017-12-01T06:00:00.000Z",
+  "datePublished": "2018-12-01T06:00:00.000Z",
   "duration": "PT55M13S"
 }
 ```
@@ -3280,7 +3280,7 @@ http://purl.imsglobal.org/caliper/BookmarkAnnotation
     "type": "Page"
   },
   "bookmarkNotes": "Caliper profiles model discrete learning activities or supporting activities that facilitate learning.",
-  "dateCreated": "2017-08-01T06:00:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }
 ```
 
@@ -3332,7 +3332,7 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
   "isPartOf": {
     "id": "https://example.com/#/texts/imscaliperimplguide",
     "type": "Document",
-    "dateCreated": "2017-10-01T06:00:00.000Z",
+    "dateCreated": "2018-10-01T06:00:00.000Z",
     "name": "IMS Caliper Implementation Guide",
     "version": "1.1"
   }
@@ -3373,13 +3373,13 @@ http://purl.imsglobal.org/caliper/CourseOffering
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7",
+  "id": "https://example.edu/terms/201801/courses/7",
   "type": "CourseOffering",
   "courseNumber": "CPS 435",
-  "academicSession": "Fall 2017",
+  "academicSession": "Fall 2018",
   "name": "CPS 435 Learning Analytics",
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z"
 }
 ```
 
@@ -3415,18 +3415,18 @@ http://purl.imsglobal.org/caliper/CourseSection
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1",
   "type": "CourseSection",
-  "academicSession": "Fall 2017",
+  "academicSession": "Fall 2018",
   "courseNumber": "CPS 435-01",
   "name": "CPS 435 Learning Analytics, Section 01",
   "category": "seminar",
   "subOrganizationOf": {
-    "id": "https://example.edu/terms/201701/courses/7",
+    "id": "https://example.edu/terms/201801/courses/7",
     "type": "CourseOffering",
     "courseNumber": "CPS 435"
   },
-  "dateCreated": "2017-08-01T06:00:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }
 ```
 
@@ -3480,7 +3480,7 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/1/syllabus.pdf",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
   "type": "DigitalResource",
   "name": "Course Syllabus",
   "mediaType": "application/pdf",
@@ -3491,15 +3491,15 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
     "type": "DigitalResourceCollection",
     "name": "Course Assets",
     "isPartOf": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
       "type": "CourseSection"
     }
   },
-  "dateCreated": "2017-08-02T11:32:00.000Z"
+  "dateCreated": "2018-08-02T11:32:00.000Z"
 }
 ```
 
@@ -3549,7 +3549,7 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/resources/2",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/2",
   "type": "DigitalResourceCollection",
   "name": "Video Collection",
   "keywords": ["collection", "videos"],
@@ -3559,7 +3559,7 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
       "type": "VideoObject",
       "mediaType": "video/ogg",
       "name": "Introduction to IMS Caliper",
-      "dateCreated": "2017-08-01T06:00:00.000Z",
+      "dateCreated": "2018-08-01T06:00:00.000Z",
       "duration": "PT1H12M27S",
       "version": "1.1"
     },
@@ -3568,21 +3568,21 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
       "type": "VideoObject",
       "mediaType": "video/ogg",
       "name": "IMS Caliper Activity Profiles",
-      "dateCreated": "2017-08-01T06:00:00.000Z",
+      "dateCreated": "2018-08-01T06:00:00.000Z",
       "duration": "PT55M13S",
       "version": "1.1.1"
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201701/courses/7",
+      "id": "https://example.edu/terms/201801/courses/7",
       "type": "CourseOffering"
     }
   },
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z"
 }
 ```
 
@@ -3642,8 +3642,8 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
       "type": "Person"
     }
   ],
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "datePublished": "2017-10-01T06:00:00.000Z",
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "datePublished": "2018-10-01T06:00:00.000Z",
   "version": "1.1"
 }
 ```
@@ -3838,30 +3838,30 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1/users/554433/responses/1",
   "type": "FillinBlankResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
     "count": 1,
-    "startedAtTime": "2017-11-15T10:15:02.000Z",
-    "endedAtTime": "2017-11-15T10:15:12.000Z"
+    "startedAtTime": "2018-11-15T10:15:02.000Z",
+    "endedAtTime": "2018-11-15T10:15:12.000Z"
   },
-  "dateCreated": "2017-11-15T10:15:12.000Z",
-  "startedAtTime": "2017-11-15T10:15:02.000Z",
-  "endedAtTime": "2017-11-15T10:15:12.000Z",
+  "dateCreated": "2018-11-15T10:15:12.000Z",
+  "startedAtTime": "2018-11-15T10:15:02.000Z",
+  "endedAtTime": "2018-11-15T10:15:12.000Z",
   "values": [ "data interoperability", "semantic interoperability" ]
 }
 ```
@@ -3909,39 +3909,39 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
   "type": "Forum",
   "name": "Caliper Forum",
   "items": [
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/1",
       "type": "Thread",
       "name": "Caliper Information Model",
-      "dateCreated": "2017-11-01T09:30:00.000Z"
+      "dateCreated": "2018-11-01T09:30:00.000Z"
     },
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/2",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/2",
       "type": "Thread",
       "name": "Caliper Sensor API",
-      "dateCreated": "2017-11-01T09:30:00.000Z"
+      "dateCreated": "2018-11-01T09:30:00.000Z"
     },
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/3",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/3",
       "type": "Thread",
       "name": "Caliper Certification",
-      "dateCreated": "2017-11-01T09:30:00.000Z"
+      "dateCreated": "2018-11-01T09:30:00.000Z"
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201701/courses/7",
+      "id": "https://example.edu/terms/201801/courses/7",
       "type": "CourseOffering"
     }
   },
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z"
 }
 ```
 
@@ -3990,7 +3990,7 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/etexts/201?index=2502",
   "type": "Frame",
-  "dateCreated": "2017-08-01T06:00:00.000Z",
+  "dateCreated": "2018-08-01T06:00:00.000Z",
   "index": 2502,
   "isPartOf": {
     "id": "https://example.edu/etexts/201",
@@ -4030,14 +4030,14 @@ http://purl.imsglobal.org/caliper/Group
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/groups/2",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/groups/2",
   "type": "Group",
   "name": "Discussion Group 2",
   "subOrganizationOf": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201701/courses/7",
+      "id": "https://example.edu/terms/201801/courses/7",
       "type": "CourseOffering"
     }
   },
@@ -4063,7 +4063,7 @@ http://purl.imsglobal.org/caliper/Group
       "type": "Person"
     }
   ],
-  "dateCreated": "2017-11-01T06:00:00.000Z"
+  "dateCreated": "2018-11-01T06:00:00.000Z"
 }
 ```
 
@@ -4114,7 +4114,7 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
     "end": 2370
   },
   "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
-  "dateCreated": "2017-08-01T06:00:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }
 ```
 
@@ -4165,7 +4165,7 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
   "type": "ImageObject",
   "name": "IMS Caliper/LTI Integration Work Flow",
   "mediaType": "image/jpeg",
-  "dateCreated": "2017-09-01T06:00:00.000Z"
+  "dateCreated": "2018-09-01T06:00:00.000Z"
 }
 ```
 
@@ -4196,24 +4196,24 @@ http://purl.imsglobal.org/caliper/LearningObjective
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assign/2",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assign/2",
   "type": "AssignableDigitalResource",
   "name": "Caliper Profile Design",
   "description": "Choose a learning activity and describe the actions, entities and events that comprise it.",
   "learningObjectives": [
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/objectives/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/objectives/1",
       "type": "LearningObjective",
       "name": "Research techniques",
       "description": "Demonstrate ability to model a learning activity as a Caliper profile.",
-      "dateCreated": "2017-08-01T06:00:00.000Z"
+      "dateCreated": "2018-08-01T06:00:00.000Z"
     }
   ],
-  "dateToActivate": "2017-11-10T11:59:59.000Z",
-  "dateToShow": "2017-11-10T11:59:59.000Z",
-  "dateCreated": "2017-11-01T06:00:00.000Z",
-  "dateToStartOn": "2017-11-15T11:59:59.000Z",
-  "dateToSubmit": "2017-11-14T11:59:59.000Z",
+  "dateToActivate": "2018-11-10T11:59:59.000Z",
+  "dateToShow": "2018-11-10T11:59:59.000Z",
+  "dateCreated": "2018-11-01T06:00:00.000Z",
+  "dateToStartOn": "2018-11-15T11:59:59.000Z",
+  "dateToSubmit": "2018-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,
   "maxScore": 50.0
@@ -4274,14 +4274,14 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
         "tool_consumer_instance_url": "https://example.edu"
       },
       "ext": {
-        "edu_example_course_section": "https://example.edu/terms/201701/courses/7/sections/1",
-        "edu_example_course_section_roster": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1",
+        "edu_example_course_section": "https://example.edu/terms/201801/courses/7/sections/1",
+        "edu_example_course_section_roster": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
         "edu_example_course_section_learner": "https://example.edu/users/554433",
         "edu_example_course_section_instructor": "https://example.edu/faculty/1234"
       }
     },
-    "dateCreated": "2017-11-15T10:15:00.000Z",
-    "startedAtTime": "2017-11-15T10:15:00.000Z"
+    "dateCreated": "2018-11-15T10:15:00.000Z",
+    "startedAtTime": "2018-11-15T10:15:00.000Z"
   }
 ```
 
@@ -4331,7 +4331,7 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
   "id": "https://example.edu/videos/1225",
   "type": "MediaLocation",
   "currentTime": "PT30M54S",
-  "dateCreated": "2017-08-01T06:00:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }
 ```
 
@@ -4385,8 +4385,8 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/media/54321",
   "type": "MediaObject",
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z",
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z",
   "duration": "PT1H17M50S"
 }
 ```
@@ -4422,23 +4422,23 @@ http://purl.imsglobal.org/caliper/Membership
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/rosters/1/members/554433",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1/members/554433",
   "type": "Membership",
   "member": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "organization": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201701/courses/7",
+      "id": "https://example.edu/terms/201801/courses/7",
       "type": "CourseOffering"
     }
   },
   "roles": [ "Learner" ],
   "status": "Active",
-  "dateCreated": "2017-11-01T06:00:00.000Z"
+  "dateCreated": "2018-11-01T06:00:00.000Z"
 }
 ```
 
@@ -4487,7 +4487,7 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/3",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2/topics/1/messages/3",
   "type": "Message",
   "creators": [
     {
@@ -4497,14 +4497,14 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
   ],
   "body": "The Caliper working group provides a set of Caliper Sensor reference implementations for the purposes of education and experimentation.  They have not been tested for use in a production environment.  See the Caliper Implementation Guide for more details.",
   "replyTo": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2/topics/1/messages/2",
     "type": "Message"
   },
   "isPartOf": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2/topics/1",
     "type": "Thread",
     "isPartOf": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/2",
       "type": "Forum"
     }
   },
@@ -4513,11 +4513,11 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
       "id": "https://example.edu/etexts/201.epub",
       "type": "Document",
       "name": "IMS Caliper Implementation Guide",
-      "dateCreated": "2017-10-01T06:00:00.000Z",
+      "dateCreated": "2018-10-01T06:00:00.000Z",
       "version": "1.1"
     }
   ],
-  "dateCreated": "2017-11-15T10:15:30.000Z"
+  "dateCreated": "2018-11-15T10:15:30.000Z"
 }
  ```
 
@@ -4561,30 +4561,30 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2/users/554433/responses/1",
   "type": "MultipleChoiceResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/2",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
     "count": 1,
-    "startedAtTime": "2017-11-15T10:15:14.000Z",
-    "endedAtTime": "2017-11-15T10:15:20.000Z"
+    "startedAtTime": "2018-11-15T10:15:14.000Z",
+    "endedAtTime": "2018-11-15T10:15:20.000Z"
   },
-  "dateCreated": "2017-11-15T10:15:20.000Z",
-  "startedAtTime": "2017-11-15T10:15:14.000Z",
-  "endedAtTime": "2017-11-15T10:15:20.000Z",
+  "dateCreated": "2018-11-15T10:15:20.000Z",
+  "startedAtTime": "2018-11-15T10:15:14.000Z",
+  "endedAtTime": "2018-11-15T10:15:20.000Z",
   "value": "C"
 }
 ```
@@ -4629,30 +4629,30 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
   "type": "MultipleResponseResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/3",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
     "count": 1,
-    "startedAtTime": "2017-11-15T10:15:22.000Z",
-    "endedAtTime": "2017-11-15T10:15:30.000Z"
+    "startedAtTime": "2018-11-15T10:15:22.000Z",
+    "endedAtTime": "2018-11-15T10:15:30.000Z"
   },
-  "dateCreated": "2017-11-15T10:15:22.000Z",
-  "startedAtTime": "2017-11-15T10:15:22.000Z",
-  "endedAtTime": "2017-11-15T10:15:30.000Z",
+  "dateCreated": "2018-11-15T10:15:22.000Z",
+  "startedAtTime": "2018-11-15T10:15:22.000Z",
+  "endedAtTime": "2018-11-15T10:15:30.000Z",
   "values": [ "A", "D", "E" ]
 }
 ```
@@ -4753,7 +4753,7 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
       "id": "https://example.com/#/texts/imscaliperimplguide",
       "type": "Document",
       "name": "IMS Caliper Implementation Guide",
-      "dateCreated": "2017-10-01T06:00:00.000Z",
+      "dateCreated": "2018-10-01T06:00:00.000Z",
       "version": "1.1"
     }
   }
@@ -4789,8 +4789,8 @@ http://purl.imsglobal.org/caliper/Person
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "id": "https://example.edu/users/554433",
   "type": "Person",
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z"
 }
 ```
 
@@ -4876,21 +4876,21 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/6/users/554433/responses/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/554433/responses/1",
   "type": "Response",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/6/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/6",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
         "type": "Assessment"
       },
-      "dateCreated": "2017-08-01T06:00:00.000Z",
-      "datePublished": "2017-08-15T09:30:00.000Z",
+      "dateCreated": "2018-08-01T06:00:00.000Z",
+      "datePublished": "2018-08-15T09:30:00.000Z",
       "isTimeDependent": false,
       "maxAttempts": 2,
       "maxScore": 5.0,
@@ -4901,12 +4901,12 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
       }
     },
     "count": 1,
-    "startedAtTime": "2017-11-15T10:15:46.000Z",
-    "endedAtTime": "2017-11-15T10:17:20.000Z"
+    "startedAtTime": "2018-11-15T10:15:46.000Z",
+    "endedAtTime": "2018-11-15T10:17:20.000Z"
   },
-  "dateCreated": "2017-11-15T10:15:46.000Z",
-  "startedAtTime": "2017-11-15T10:15:46.000Z",
-  "endedAtTime": "2017-11-15T10:17:20.000Z",
+  "dateCreated": "2018-11-15T10:15:46.000Z",
+  "startedAtTime": "2018-11-15T10:15:46.000Z",
+  "endedAtTime": "2018-11-15T10:17:20.000Z",
   "extensions": {
       "value": "A Caliper Event describes a relationship established between an actor and an object.  The relationship is formed as a result of a purposeful action undertaken by the actor in connection to the object at a particular moment. A learner starting an assessment, annotating a reading, pausing a video, or posting a message to a forum, are examples of learning activities that Caliper models as events."
     }
@@ -4959,23 +4959,23 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
   "type": "Result",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2017-11-15T10:05:00.000Z",
-    "startedAtTime": "2017-11-15T10:05:00.000Z",
-    "endedAtTime": "2017-11-15T10:55:30.000Z",
+    "dateCreated": "2018-11-15T10:05:00.000Z",
+    "startedAtTime": "2018-11-15T10:05:00.000Z",
+    "endedAtTime": "2018-11-15T10:55:30.000Z",
     "duration": "PT50M30S"
   },
   "maxResultScore": 15.0,
@@ -4983,10 +4983,10 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
   "scoredBy": {
     "id": "https://example.edu/autograder",
     "type": "SoftwareApplication",
-    "dateCreated": "2017-11-15T10:55:58.000Z"
+    "dateCreated": "2018-11-15T10:55:58.000Z"
   },
   "comment": "Consider retaking the assessment.",
-  "dateCreated": "2017-11-15T10:56:00.000Z"
+  "dateCreated": "2018-11-15T10:56:00.000Z"
 }
 ```
 
@@ -5022,17 +5022,17 @@ http://purl.imsglobal.org/caliper/Score
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
   "type": "Score",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+    "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
     "count": 1,
-    "dateCreated": "2017-11-15T10:05:00.000Z",
-    "startedAtTime": "2017-11-15T10:05:00.000Z",
-    "endedAtTime": "2017-11-15T10:55:30.000Z",
+    "dateCreated": "2018-11-15T10:05:00.000Z",
+    "startedAtTime": "2018-11-15T10:05:00.000Z",
+    "endedAtTime": "2018-11-15T10:55:30.000Z",
     "duration": "PT50M30S"
   },
   "maxScore": 15.0,
@@ -5040,10 +5040,10 @@ http://purl.imsglobal.org/caliper/Score
   "scoredBy": {
     "id": "https://example.edu/autograder",
     "type": "SoftwareApplication",
-    "dateCreated": "2017-11-15T10:55:58.000Z"
+    "dateCreated": "2018-11-15T10:55:58.000Z"
   },
   "comment": "auto-graded exam",
-  "dateCreated": "2017-11-15T10:56:00.000Z"
+  "dateCreated": "2018-11-15T10:56:00.000Z"
 }
 ```
 
@@ -5087,30 +5087,30 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/4/users/554433/responses/1",
   "type": "SelectTextResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/4/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/4",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/4",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
     "count": 1,
-    "startedAtTime": "2017-11-15T10:15:32.000Z",
-    "endedAtTime": "2017-11-15T10:15:38.000Z"
+    "startedAtTime": "2018-11-15T10:15:32.000Z",
+    "endedAtTime": "2018-11-15T10:15:38.000Z"
   },
-  "dateCreated": "2017-11-15T10:15:32.000Z",
-  "startedAtTime": "2017-11-15T10:15:32.000Z",
-  "endedAtTime": "2017-11-15T10:15:38.000Z",
+  "dateCreated": "2018-11-15T10:15:32.000Z",
+  "startedAtTime": "2018-11-15T10:15:32.000Z",
+  "endedAtTime": "2018-11-15T10:15:38.000Z",
   "values": [ "Information Model", "Sensor API", "Profiles" ]
 }
 ```
@@ -5162,7 +5162,7 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "startedAtTime": "2017-09-15T10:00:00.000Z"
+  "startedAtTime": "2018-09-15T10:00:00.000Z"
 }
 ```
 
@@ -5216,7 +5216,7 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
       "type": "Person"
     }
   ],
-  "dateCreated": "2017-08-01T09:00:00.000Z"
+  "dateCreated": "2018-08-01T09:00:00.000Z"
 }
 ```
 
@@ -5297,7 +5297,7 @@ http://purl.imsglobal.org/caliper/TagAnnotation
     "type": "Page"
   },
   "tags": [ "profile", "event", "entity" ],
-  "dateCreated": "2017-08-01T09:00:00.000Z"
+  "dateCreated": "2018-08-01T09:00:00.000Z"
 }
 ```
 
@@ -5344,46 +5344,46 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/1",
   "type": "Thread",
   "name": "Caliper Information Model",
   "items": [
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/1/messages/1",
       "type": "Message"
     },
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/2",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/1/messages/2",
       "type": "Message",
       "replyTo": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/1/messages/1",
         "type": "Message"
       }
     },
     {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/3",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/1/messages/3",
       "type": "Message",
       "replyTo": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1/topics/1/messages/2",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1/topics/1/messages/2",
         "type": "Message"
       }
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
     "type": "Forum",
     "name": "Caliper Forum",
     "isPartOf": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
       "type": "CourseSection",
       "subOrganizationOf": {
-        "id": "https://example.edu/terms/201701/courses/7",
+        "id": "https://example.edu/terms/201801/courses/7",
         "type": "CourseOffering"
       }
     }
   },
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z"
 }
 ```
 
@@ -5427,30 +5427,30 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
   "type": "TrueFalseResponse",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/items/5",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/5",
       "type": "AssessmentItem",
       "isPartOf": {
-        "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
         "type": "Assessment"
       }
     },
     "count": 1,
-    "startedAtTime": "2017-11-15T10:15:40.000Z",
-    "endedAtTime": "2017-11-15T10:15:45.000Z"
+    "startedAtTime": "2018-11-15T10:15:40.000Z",
+    "endedAtTime": "2018-11-15T10:15:45.000Z"
   },
-  "dateCreated": "2017-11-15T10:15:45.000Z",
-  "startedAtTime": "2017-11-15T10:15:40.000Z",
-  "endedAtTime": "2017-11-15T10:15:45.000Z",
+  "dateCreated": "2018-11-15T10:15:45.000Z",
+  "startedAtTime": "2018-11-15T10:15:40.000Z",
+  "endedAtTime": "2018-11-15T10:15:45.000Z",
   "value": "true"
 }
 ```
@@ -5503,8 +5503,8 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
   "mediaType": "video/ogg",
   "name": "Introduction to IMS Caliper",
   "version": "1.1",
-  "dateCreated": "2017-08-01T06:00:00.000Z",
-  "dateModified": "2017-09-02T11:30:00.000Z",
+  "dateCreated": "2018-08-01T06:00:00.000Z",
+  "dateModified": "2018-09-02T11:30:00.000Z",
   "duration": "PT1H12M27S"
 }
 ```
@@ -5551,15 +5551,15 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/pages/index.html",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/index.html",
   "type": "WebPage",
   "name": "CPS 435-01 Landing Page",
   "mediaType": "text/html",
   "isPartOf": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2017"
+    "academicSession": "Fall 2018"
   }
 }
 ```
@@ -5601,7 +5601,7 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
     "end": 2370
   },
   "selectionText": "ISO 8601 formatted date and time expressed with millisecond precision.",
-  "dateCreated": "2017-08-01T06:00:00.000Z"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }
 ```
 
@@ -5922,6 +5922,6 @@ Please contact IMS Global through our website at http://www.imsglobal.org.
 Please refer to Document Name: IMS Caliper Analytics&reg; 1.1
 Candidate Final Specification v1.1
 
-Date: 28 September 2017
+Date: 12 January 2018
 
 This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability&reg; (LTI&reg;), Accessible Portable Item Protocol&reg; (APIP&reg;), Question and Test Interoperability&reg; (QTI&reg;), Common Cartridge&reg; (CC&reg;), AccessForAll&trade;, OneRoster&reg;, Caliper Analytics&reg; and SensorAPI&trade;. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
