@@ -7,7 +7,7 @@ The [Caliper Analytics&reg; Specification](./caliper-spec.md) provides a structu
 Caliper also defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting event data from instrumented applications to target endpoints for storage, analysis and use.
 
 ## Document markup
-The Caliper specification is written using [Github-Flavored Markdown](https://github.github.com/gfm/) (GFM), a dialect of Markdown that provides a lightweight  markup language for structuring plain-text documents.  
+The [Caliper Analytics&reg; Specification](./caliper-spec.md) is written using [Github-Flavored Markdown](https://github.github.com/gfm/) (GFM), a dialect of Markdown that provides a lightweight  markup language for structuring plain-text documents.  
 
 ## Branches
 * __master__: stable, deployable branch that stores the official release history.  
