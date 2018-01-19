@@ -20,7 +20,7 @@ The [Caliper Analytics&reg; Specification](./caliper-spec.md) is written using [
 For the list of authors and other contributors see the [Contributors](./caliper-spec.md#contributors) section included in the specification document.
 
 ## IPR and Distribution Notice
-The [Caliper Analytics&reg; Specification](./caliper-spec.md) is made available to the public subject to the terms of the IPR and distribution notice that appear in the body of the document:
+The [Caliper Analytics&reg; Specification](./caliper-spec.md) is made available to the public subject to the terms of the IPR and distribution notice that appears in the body of the document:
 
 > Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
 
