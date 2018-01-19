@@ -1,13 +1,22 @@
-IMS Global caliper-contexts
-================
+# IMS Global Learning Consortium, Inc.
 
-caliper-contexts provides a JSON-LD remote context that provides a dereferenceable mapping of Caliper terms to IRIs.  The Caliper Context document also links object properties to concepts derived from well-known ontologies such as FOAF, W3C Open Annotation, W3C Organization and schema.org.
+# Caliper JSON-LD Context
 
-## Documentation
+JSON-LD documents require inclusion of a *context*, denoted by the `@context` keyword, a property employed to map document 
+terms to IRIs.  JSON-LD contexts can be embedded inline or referenced externally in a document.  Inclusion of a JSON-LD 
+context provides an economical way for Caliper to communicate document semantics to services interested in consuming 
+Caliper event data.
 
-See the JSON-LD specification for more information on the JSON-LD concept of the Context: http://www.w3.org/TR/json-ld/#dfn-context
+IMS Global provides a remote Caliper 1.1 JSON-LD context document for mapping Caliper terms to IRIs.  Implementers are 
+encouraged to familiarize themselves with the term definitions described therein. 
 
-©2015 IMS Global Learning Consortium, Inc. All Rights Reserved.
-Trademark Information- http://www.imsglobal.org/copyright.html
+## Branches
+* __master__: stable, deployable branch that stores the official release history.  
+* __develop__: unstable development branch.  Current work that targets a future release is merged to this branch.
 
-For license information contact, info@imsglobal.org and read the license file contained in the repository.
+## Tags
+Caliper JSON-LD context releases are tagged and versioned MAJOR.MINOR.PATCH\[-label\] (e.g., 1.1.0).  Pre-release tags 
+are indentified with an extensions label (e.g., "1.2.0-RC01").  The [tags](https://github.com/IMSGlobal/caliper-spec/tags) 
+are stored in this repository.
+
+Copyright &copy; 2018 IMS Global Learning Consortium. All Rights Reserved.
