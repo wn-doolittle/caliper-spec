@@ -19,11 +19,8 @@ The [Caliper Analytics&reg; Specification](./caliper-spec.md) is written using [
 ## Authors
 For the list of authors and other contributors see the [Contributors](./caliper-spec.md#contributors) section included in the specification document.
 
-## Contributing
-IMS contributing and affiliate members who wish to contribute changes to the [Caliper Analytics&reg; Specification](./caliper-spec.md) are subject to the terms of the [IMS GLC IPR Policy](https://www.imsglobal.org/sites/default/files/ipr/imsipr_policyFinal.pdf). 
-
-## IPR and Distribution Notices
-The [Caliper Analytics&reg; Specification](./caliper-spec.md) is made available to the public subject to the terms of the IPR and distribution notices that appear in the document:
+## IPR and Distribution Notice
+The [Caliper Analytics&reg; Specification](./caliper-spec.md) is made available to the public subject to the terms of the IPR and distribution notice that appears in the body of the document:
 
 > Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
 
