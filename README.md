@@ -16,7 +16,7 @@ encouraged to familiarize themselves with the term definitions described therein
 
 ## Tags
 Caliper JSON-LD context releases are tagged and versioned MAJOR.MINOR.PATCH\[-label\] (e.g., 1.1.0).  Pre-release tags 
-are indentified with an extensions label (e.g., "1.2.0-RC01").  The [tags](https://github.com/IMSGlobal/caliper-spec/tags) 
+are indentified with an extensions label (e.g., "1.2.0-RC01").  The [tags](https://github.com/IMSGlobal/caliper-contexts/tags) 
 are stored in this repository.
 
 Copyright &copy; 2018 IMS Global Learning Consortium. All Rights Reserved.
