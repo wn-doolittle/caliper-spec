@@ -1,0 +1,25 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+  "type": "Score",
+  "attempt": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "count": 1,
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:30.000Z",
+    "duration": "PT50M30S"
+  },
+  "maxScore": 15.0,
+  "scoreGiven": 10.0,
+  "scoredBy": {
+    "id": "https://example.edu/autograder",
+    "type": "SoftwareApplication",
+    "dateCreated": "2016-11-15T10:55:58.000Z"
+  },
+  "comment": "auto-graded exam",
+  "dateCreated": "2016-11-15T10:56:00.000Z"
+}

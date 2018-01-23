@@ -1,0 +1,43 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f",
+  "type": "NavigationEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "NavigatedTo",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
+    "type": "WebPage",
+    "name": "Learning Analytics Specifications",
+    "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
+    "dateCreated": "2016-08-01T09:00:00.000Z"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "referrer": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/1",
+    "type": "WebPage"
+  },
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2016-11-15T10:00:00.000Z"
+  }
+}

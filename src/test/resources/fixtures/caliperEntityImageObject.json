@@ -1,0 +1,8 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/images/caliper_lti.jpg",
+  "type": "ImageObject",
+  "name": "IMS Caliper/LTI Integration Work Flow",
+  "mediaType": "image/jpeg",
+  "dateCreated": "2016-09-01T06:00:00.000Z"
+}

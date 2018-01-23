@@ -1,0 +1,13 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10",
+  "type": "Chapter",
+  "name": "The Caliper Information Model",
+  "isPartOf": {
+    "id": "https://example.com/#/texts/imscaliperimplguide",
+    "type": "Document",
+    "dateCreated": "2016-10-01T06:00:00.000Z",
+    "name": "IMS Caliper Implementation Guide",
+    "version": "1.1"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/groups/2",
+  "type": "Group",
+  "name": "Discussion Group 2",
+  "subOrganizationOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "subOrganizationOf": {
+      "id": "https://example.edu/terms/201601/courses/7",
+      "type": "CourseOffering"
+    }
+  },
+  "members": [
+    {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/778899",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/445566",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/667788",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/889900",
+      "type": "Person"
+    }
+  ],
+  "dateCreated": "2016-11-01T06:00:00.000Z"
+}

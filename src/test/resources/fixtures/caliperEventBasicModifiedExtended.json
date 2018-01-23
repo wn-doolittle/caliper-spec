@@ -1,0 +1,36 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:5973dcd9-3126-4dcc-8fd8-8153a155361c",
+  "type": "Event",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Modified",
+  "object": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=3",
+    "type": "Document",
+    "name": "Course Syllabus",
+    "dateCreated": "2016-11-12T07:15:00.000Z",
+    "dateModified": "2016-11-15T10:15:00.000Z",
+    "version": "3"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "extensions": {
+    "archive": [
+      {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=2",
+        "type": "Document",
+        "dateCreated": "2016-11-12T07:15:00.000Z",
+        "dateModified": "2016-11-13T11:00:00.000Z",
+        "version": "2"
+      },
+      {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1",
+        "type": "Document",
+        "dateCreated": "2016-11-12T07:15:00.000Z",
+        "version": "1"
+      }
+    ]
+  }
+}

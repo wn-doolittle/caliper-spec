@@ -1,0 +1,19 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+  "type": "AssessmentItem",
+  "isPartOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "type": "Assessment"
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "datePublished": "2016-08-15T09:30:00.000Z",
+  "isTimeDependent": false,
+  "maxScore": 1.0,
+  "maxSubmits": 2,
+  "extensions": {
+    "questionType": "Dichotomous",
+    "questionText": "Is a Caliper SoftwareApplication a subtype of Caliper Agent?",
+    "correctResponse": "yes"
+  }
+}

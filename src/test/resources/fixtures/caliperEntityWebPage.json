@@ -1,0 +1,13 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/pages/index.html",
+  "type": "WebPage",
+  "name": "CPS 435-01 Landing Page",
+  "mediaType": "text/html",
+  "isPartOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
+  "type": "AssignableDigitalResource",
+  "name": "Caliper Profile Design",
+  "description": "Choose a learning activity and describe the actions, entities and events that comprise it.",
+  "learningObjectives": [
+    {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/objectives/1",
+      "type": "LearningObjective",
+      "name": "Research techniques",
+      "description": "Demonstrate ability to model a learning activity as a Caliper profile.",
+      "dateCreated": "2016-08-01T06:00:00.000Z"
+    }
+  ],
+  "dateToActivate": "2016-11-10T11:59:59.000Z",
+  "dateToShow": "2016-11-10T11:59:59.000Z",
+  "dateCreated": "2016-11-01T06:00:00.000Z",
+  "dateToStartOn": "2016-11-15T11:59:59.000Z",
+  "dateToSubmit": "2016-11-14T11:59:59.000Z",
+  "maxAttempts": 2,
+  "maxSubmits": 2,
+  "maxScore": 50.0
+}

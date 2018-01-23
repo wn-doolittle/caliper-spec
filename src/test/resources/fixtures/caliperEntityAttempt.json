@@ -1,0 +1,18 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+  "type": "Attempt",
+  "assignable": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "type": "Assessment"
+  },
+  "assignee": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "count": 1,
+  "dateCreated": "2016-11-15T10:05:00.000Z",
+  "startedAtTime": "2016-11-15T10:05:00.000Z",
+  "endedAtTime": "2016-11-15T10:55:30.000Z",
+  "duration": "PT50M30S"
+}

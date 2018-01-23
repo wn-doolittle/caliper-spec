@@ -1,0 +1,30 @@
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2017-11-15T10:15:01.000Z",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [
+    {
+      "@context": [
+        {
+          "query": "http://schema.org/query"
+        },
+        "http://purl.imsglobal.org/ctx/caliper/v1p1"
+      ],
+      "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
+      "type": "Event",
+      "actor": {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      },
+      "action": "Searched",
+      "object": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/123",
+        "type": "Document"
+      },
+      "eventTime": "2017-11-15T10:15:00.000Z",
+      "extensions": {
+        "query": "Event or Entity"
+      }
+    }
+  ]
+}

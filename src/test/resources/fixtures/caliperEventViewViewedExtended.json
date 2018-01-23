@@ -1,0 +1,45 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:3a9bd869-addc-48b1-80f6-a14b2ff591ed",
+  "type": "ViewEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Viewed",
+  "object": {
+    "id": "https://example.edu/etexts/200.epub",
+    "type": "Document",
+    "name": "IMS Caliper Specification",
+    "version": "1.1"
+  },
+  "eventTime": "2016-11-15T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2016"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2016-11-15T10:00:00.000Z"
+  },
+  "extensions": {
+    "job": {
+      "id": "08c1233d-9ba3-40ac-952f-004c47a50ff7",
+      "jobTag": "caliper_batch_job",
+      "jobDate": "2016-11-16T01:01:00.000Z"
+    }
+  }
+}

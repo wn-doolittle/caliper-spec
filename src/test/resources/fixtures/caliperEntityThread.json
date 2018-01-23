@@ -1,0 +1,43 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1",
+  "type": "Thread",
+  "name": "Caliper Information Model",
+  "items": [
+    {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+      "type": "Message"
+    },
+    {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+      "type": "Message",
+      "replyTo": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/1",
+        "type": "Message"
+      }
+    },
+    {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/3",
+      "type": "Message",
+      "replyTo": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1/topics/1/messages/2",
+        "type": "Message"
+      }
+    }
+  ],
+  "isPartOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+    "type": "Forum",
+    "name": "Caliper Forum",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "CourseSection",
+      "subOrganizationOf": {
+        "id": "https://example.edu/terms/201601/courses/7",
+        "type": "CourseOffering"
+      }
+    }
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
+}
