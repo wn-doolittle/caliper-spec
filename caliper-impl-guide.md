@@ -51,7 +51,7 @@ Revision: 15 October 2015
   * 3.4 [SSL/HTTPS](#httpBestPractices)
   * 3.5 [How do I transmit additional information that is not included in the Metric Profiles?](#extensionsBestPractices)
     * 3.5.1 [You can add additional key/value pairs to an Entity’s extensions property](#extensionsKeyValuePairs)
-  * 3.6 [Envelope for the Metric ](#envelope)
+  * 3.6 [Envelope for the Metric Profile](#envelope)
 * [About This Document](#aboutDoc)
 * [List of Contributors](#contributors)
 * [Revision History](#revisionHistory)
