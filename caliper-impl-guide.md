@@ -1,37 +1,27 @@
-# IMS Caliper Analytics&reg; Best Practice Guide, Version 1.0
-
-Date Issued: 15 October 2015
-
-Latest version: http://www.imsglobal.org/caliper
+# IMS Caliper Analytics&reg; Implementation Guide, version 1.1
 
 ## IPR and Distribution Notices
-Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the guidance set forth in this document, and to provide supporting documentation.
 
-IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf.
+Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
 
-Copyright &copy; 2015 IMS Global Learning Consortium. All Rights Reserved.
+IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
 
-Use of this guide to develop products or services is governed by the license with IMS found on the IMS website: http://www.imsglobal.org/license.html.
+Copyright &copy; 2018 IMS Global Learning Consortium. All Rights Reserved.
+
+Use of this guide to develop products or services is governed by the license with IMS found on the IMS website: http://www.imsglobal.org/speclicense.html.
 
 Permission is granted to all parties to use excerpts from this document as needed in producing requests for proposals.
 
 The limited permissions granted above are perpetual and will not be revoked by IMS or its successors or assigns.
 
-THIS GUIDE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NON-INFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS GUIDE SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS GUIDE.
-
-&copy; 2015 IMS Global Learning Consortium, Inc.  All Rights Reserved.
-
-Trademark information: http://www.imsglobal.org/copyright.html
-
-Document Name: IMS Global Caliper Analytics&reg; Best Practice Guide, Version 1.0
-
-Revision: 15 October 2015
+THIS GUIDE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NON INFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS GUIDE SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS GUIDE.
 
 ## Table of Contents
 * 1.0 [Introduction](#introduction)
-  * 1.1 [Terminology](#terminology)
-  * 1.2 [Metric Profiles](#profiles)
-  * 1.3 [Engagement Scenario](#engagementScenario)
+  * 1.1 [Status of this Document](#docStatus)
+  * 1.2 [Terminology](#terminology)
+  * 1.3 [Metric Profiles](#profiles)
+  * 1.4 [Engagement Scenario](#engagementScenario)
 * 2.0 [Quick Start Guide](#quickStartGuide)
   * 2.1 [Download the reference Caliper Sensor implementation](#download)
   * 2.2 [Build sensor project, run unit tests and deploy](#build)
@@ -63,7 +53,14 @@ The purpose of this document is to provide you with a detailed exploration of ho
 
 Please provide feedback based on your own experiences to help improve the quality of the recommendations included here.
 
-### <a name="terminology"></a>1.1  Terminology
+### <a name="docStatus"></a>1.1 Status of this Document
+This document is considered the _Final Release_.  This means that the Caliper Analytics&reg; Implementation Guide, version 1.1, is now made available as a public document following acceptance by IMS Global member organizations, a number of whom have successfully achieved conformance certification at the time of the release of this document.
+    
+IMS Global strongly encourages its members and the greater public to provide feedback that focuses on improving the Caliper specification. To join the IMS developer and conformance certification community focused on Caliper please visit https://www.imsglobal.org/activity/caliper.
+    
+Public comments and questions can be posted at the Caliper Analytics&reg; [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
+
+### <a name="terminology"></a>1.2  Terminology
 We will start with a bit of terminology to help make the descriptions that follow more precise.  The Caliper specification uses the following terms:
 
 <a name="caliperDef"></a>__Caliper__: the name of the IMS Caliper Analytics&reg; Learning Measurement Framework which provides a standard for representing, capturing, and marshalling metrics generated by learning activity and targeted for consumption by any conforming analytics store or service.
@@ -78,7 +75,7 @@ We will start with a bit of terminology to help make the descriptions that follo
 
 <a name="eventStoreDef"></a>__Event Store__: System or software service that stores event data emitted by the Caliper Sensors.
  
-### <a name="profiles"></a>1.2 Metric Profiles
+### <a name="profiles"></a>1.3 Metric Profiles
 The Metric Profiles represent the Information Model and are organized by Learning Activity type.  When you begin implementing Caliper you should compare your application’s features with the metric profiles and implement the ones necessary to capture the user’s activities based on your features.  For example a Quizzing tool would want to implement base, session, assessment, assessment item and outcome metric profiles. An eReader would at a minimum implement base, session and reading metric profiles.
 
 A complete list of the metric profiles and detailed information about each including properties and their data types, description, source and whether they are required are included in the [Implementation Guide](https://www.imsglobal.org/caliper/caliperv1p0/ims-caliper-analytics-implementation-guide).
@@ -95,7 +92,7 @@ A complete list of the metric profiles and detailed information about each inclu
 | Outcomes | Track outcomes (Results) on assignable objects.  Leverages LIS Outcomes vocabulary |
 | Engagement Scenario | Not a metric profile per se, but one common scenario / applied use case that applies a blended collection of metrics and context derived from other metric profile elements to explicitly collect engagement activity/usage associated data across a wide spectrum of learning activities |
 
-### <a name="engagementScenario"></a>1.3  Engagement Scenario
+### <a name="engagementScenario"></a>1.4  Engagement Scenario
 This scenario contains a list of Events and corresponding actions from the current set of Caliper Metric Profiles that indicate minimum student engagement with Learning Activities.
 
 In order to quantify engagement, three elements can be measured:
@@ -266,43 +263,31 @@ The method envelope standard for all Caliper `Event` sequences includes:
 }
 ```
 
-## <a name="aboutDoc"></a>About This Document
-
-| Title | Editor | Co-chairs | Version | Version Date | Release | Status | Purpose | Location |
-| :---- | :----- | :-------- | :------ | :----------- | :------ | :----- | :------ | :------- |
-| IMS Caliper Analytics&reg; Best Practice Guide, Version 1.0 | Caliper Work Group | Chris Vento, Chris Millet | 1.0 | 15 October 2015 | Final 1.0 | Final Release | This document provides best practice for using Caliper Analytics&reg; | http://www.imsglobal.org/caliper |
-
 ## <a name="contributors"></a>List of Contributors
 The following individuals contributed to the development of this document:
 
 | Contributor | Affiliation |
 | :---------- | :---------- |
-| Viktor Haag | D2L |
-| Mary Millar | Elsevier |
-| Prashant Nayak | Intellify Learning |
-| Chris Vento | Intellify Learning |
 | Anthony Whyte | University of Michigan |
+| Viktor Haag | D2L |
  
-## <a name="revisionHistory"></a>Revision History
- 
-| Version No. | Release Date | Comments |
-| :---------- | :----------- | :------- | 
-| Final v1.0 | 15 October 2015 | Final formal release of this guide. |
+<a name="aboutThisDoc"></a>About this Document
+IMS Global Learning Consortium, Inc. ("IMS Global") is publishing the information contained in this document ("Guide") for purposes of scientific, experimental, and scholarly collaboration only.
 
-IMS Global Learning Consortium, Inc. (“IMS Global”) is publishing the information contained in this document (“guide”) for purposes of scientific, experimental, and scholarly collaboration only.
+IMS Global makes no warranty or representation regarding the accuracy or completeness of the Guide.
 
-IMS Global makes no warranty or representation regarding the accuracy or completeness of the guide.
+This material is provided on an "As Is" and "As Available" basis.
 
-This material is provided on an “As Is” and “As Available” basis.
+The Guide is at all times subject to change and revision without notice.
 
-The guide is at all times subject to change and revision without notice. 
-
-It is your sole responsibility to evaluate the usefulness, accuracy, and completeness of the guide as it relates to you.
+It is your sole responsibility to evaluate the usefulness, accuracy, and completeness of the Guide as it relates to you.
 
 IMS Global would appreciate receiving your comments and suggestions.
 
-Please contact IMS Global through our website at http://www.imsglobal.org.
+Please contact IMS Global through our website at [http://www.imsglobal.org](http://www.imsglobal.org).
 
-Please refer to Document Name: IMS Global Caliper Analytics Best Practice Guide v1.0 Final
+Please refer to Document Name: IMS Caliper Analytics&reg; Implementation Guide, version 1.1
 
-Date: 15 October 2015
+Date: XX MONTH 2018
+
+This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability&reg; (LTI&reg;), Accessible Portable Item Protocol&reg; (APIP&reg;), Question and Test Interoperability&reg; (QTI&reg;), Common Cartridge&reg; (CC&reg;), AccessForAll&trade;, OneRoster&reg;, Caliper Analytics&reg; and SensorAPI&trade;. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
