@@ -19,6 +19,7 @@
     "GradeEvent": "caliper:GradeEvent",
     "SessionEvent": "caliper:SessionEvent",
     "ThreadEvent": "caliper:ThreadEvent",
+    "ToolLaunchEvent": "caliper:ToolLaunchEvent",
     "ToolUseEvent": "caliper:ToolUseEvent",
     "ViewEvent": "caliper:ViewEvent",
 
@@ -176,6 +177,7 @@
     "Highlighted": "caliper:actions/Highlighted",
     "Identified": "caliper:actions/Identified",
     "JumpedTo": "caliper:actions/JumpedTo",
+    "Launched": "caliper:actions/Launched",
     "Liked": "caliper:actions/Liked",
     "Linked": "caliper:actions/Linked",
     "LoggedIn": "caliper:actions/LoggedIn",
