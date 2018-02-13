@@ -13,7 +13,7 @@
   },
   "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": {
-    "id": "https://example.edu/",
+    "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
   "referrer": {
