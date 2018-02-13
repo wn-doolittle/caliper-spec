@@ -1,5 +1,5 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:12c05c4e-253f-4073-9f29-5786f3ff3f36",
   "type": "GradeEvent",
   "actor": {
