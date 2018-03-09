@@ -1,5 +1,5 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/",
   "id": "https://example.edu/etexts/201.epub",
   "type": "Document",
   "name": "IMS Caliper Implementation Guide",

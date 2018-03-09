@@ -1,5 +1,5 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
   "type": "AssignableDigitalResource",
   "name": "Week 9 Reflection",

@@ -1,5 +1,5 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/",
   "id": "https://example.edu/images/caliper_lti.jpg",
   "type": "ImageObject",
   "name": "IMS Caliper/LTI Integration Work Flow",
