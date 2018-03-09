@@ -1,9 +1,9 @@
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2016-11-15T11:05:01.000Z",
-  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
   "data": [{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
     "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
     "actor": {
