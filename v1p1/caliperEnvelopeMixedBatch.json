@@ -1,17 +1,17 @@
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2016-11-15T11:05:01.000Z",
-  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "data": [
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "https://example.edu/users/554433",
       "type": "Person",
       "dateCreated": "2016-08-01T06:00:00.000Z",
       "dateModified": "2016-09-02T11:30:00.000Z"
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
       "type": "Assessment",
       "name": "Quiz One",
@@ -42,13 +42,13 @@
       "version": "1.0"
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "https://example.edu",
       "type": "SoftwareApplication",
       "version": "v2"
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection",
       "academicSession": "Fall 2016",
@@ -63,7 +63,7 @@
       "dateCreated": "2016-08-01T06:00:00.000Z"
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
@@ -97,7 +97,7 @@
       }
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
       "type": "AssessmentEvent",
       "actor": "https://example.edu/users/554433",
@@ -133,7 +133,7 @@
       }
     },
     {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
       "type": "GradeEvent",
       "actor": {

@@ -1,5 +1,5 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "https://example.com/users/554433/texts/imscaliperimplguide/bookmarks/1",
   "type": "BookmarkAnnotation",
   "annotator": {
