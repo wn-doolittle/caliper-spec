@@ -1,0 +1,10 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7",
+  "type": "CourseOffering",
+  "courseNumber": "CPS 435",
+  "academicSession": "Fall 2016",
+  "name": "CPS 435 Learning Analytics",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
+}

@@ -1,8 +1,0 @@
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/autograder",
-  "type": "SoftwareApplication",
-  "name": "Auto Grader",
-  "description": "Automates assignment scoring.",
-  "version": "2.5.2"
-}

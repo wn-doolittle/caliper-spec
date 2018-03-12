@@ -1,0 +1,34 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3",
+  "type": "Message",
+  "creators": [
+    {
+      "id": "https://example.edu/users/778899",
+      "type": "Person"
+    }
+  ],
+  "body": "The Caliper working group provides a set of Caliper Sensor reference implementations for the purposes of education and experimentation.  They have not been tested for use in a production environment.  See the Caliper Implementation Guide for more details.",
+  "replyTo": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2",
+    "type": "Message"
+  },
+  "isPartOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1",
+    "type": "Thread",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/2",
+      "type": "Forum"
+    }
+  },
+  "attachments": [
+    {
+      "id": "https://example.edu/etexts/201.epub",
+      "type": "Document",
+      "name": "IMS Caliper Implementation Guide",
+      "dateCreated": "2016-10-01T06:00:00.000Z",
+      "version": "1.1"
+    }
+  ],
+  "dateCreated": "2016-11-15T10:15:30.000Z"
+}

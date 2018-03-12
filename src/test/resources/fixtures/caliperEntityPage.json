@@ -1,0 +1,18 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
+  "type": "Page",
+  "name": "Page 5",
+  "isPartOf": {
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10",
+    "type": "Chapter",
+    "name": "Chapter 1",
+    "isPartOf": {
+      "id": "https://example.com/#/texts/imscaliperimplguide",
+      "type": "Document",
+      "name": "IMS Caliper Implementation Guide",
+      "dateCreated": "2016-10-01T06:00:00.000Z",
+      "version": "1.1"
+    }
+  }
+}

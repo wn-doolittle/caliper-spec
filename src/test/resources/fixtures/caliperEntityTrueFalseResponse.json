@@ -1,0 +1,28 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/responses/1",
+  "type": "TrueFalseResponse",
+  "attempt": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "assignable": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/5",
+      "type": "AssessmentItem",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+        "type": "Assessment"
+      }
+    },
+    "count": 1,
+    "startedAtTime": "2016-11-15T10:15:40.000Z",
+    "endedAtTime": "2016-11-15T10:15:45.000Z"
+  },
+  "dateCreated": "2016-11-15T10:15:45.000Z",
+  "startedAtTime": "2016-11-15T10:15:40.000Z",
+  "endedAtTime": "2016-11-15T10:15:45.000Z",
+  "value": "true"
+}
