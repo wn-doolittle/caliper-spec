@@ -1,0 +1,11 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/colleges/1/depts/1",
+  "type": "Organization",
+  "name": "Computer Science Department",
+  "subOrganizationOf": {
+    "id": "https://example.edu/colleges/1",
+    "type": "Organization",
+    "name": "College of Engineering"
+  }
+}
