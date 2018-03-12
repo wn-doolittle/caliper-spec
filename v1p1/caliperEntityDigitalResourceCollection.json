@@ -1,0 +1,37 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+  "type": "DigitalResourceCollection",
+  "name": "Video Collection",
+  "keywords": ["collection", "videos"],
+  "items": [
+    {
+      "id": "https://example.edu/videos/1225",
+      "type": "VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Introduction to IMS Caliper",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "duration": "PT1H12M27S",
+      "version": "1.1"
+    },
+    {
+      "id": "https://example.edu/videos/5629",
+      "type": "VideoObject",
+      "mediaType": "video/ogg",
+      "name": "IMS Caliper Activity Profiles",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
+      "duration": "PT55M13S",
+      "version": "1.1.1"
+    }
+  ],
+  "isPartOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "subOrganizationOf": {
+      "id": "https://example.edu/terms/201601/courses/7",
+      "type": "CourseOffering"
+    }
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
+}
