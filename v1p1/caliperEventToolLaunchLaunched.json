@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p1/ToolLaunchProfile-extended",
+  "@context": "https://purl.imsglobal.org/caliper/v1p1/ToolLaunchProfile-extension",
   "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
   "type": "ToolLaunchEvent",
   "actor": {
