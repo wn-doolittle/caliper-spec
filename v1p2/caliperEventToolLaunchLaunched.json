@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "@context": "https://purl.imsglobal.org/caliper/v1p2/context/ToolLaunchProfile",
+=======
+  "@context": "https://purl.imsglobal.org/caliper/v1p1/extended/toollaunchprofile",
+>>>>>>> Update @context value to reference the tool launch profile.
   "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
   "type": "ToolLaunchEvent",
   "actor": {
