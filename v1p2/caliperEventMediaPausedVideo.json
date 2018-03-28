@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/contexts/Core",
   "id": "urn:uuid:956b4a02-8de0-4991-b8c5-b6eebb6b4cab",
   "type": "MediaEvent",
   "actor": {

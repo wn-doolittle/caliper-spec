@@ -1,10 +1,10 @@
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2016-11-15T11:05:01.000Z",
-  "dataVersion":  "https://purl.imsglobal.org/caliper/v1p2/context/",
+  "dataVersion":  "https://purl.imsglobal.org/caliper/v1p2/contexts/Core",
   "data": [
     {
-      "@context": "https://purl.imsglobal.org/caliper/v1p2/context/",
+      "@context": "https://purl.imsglobal.org/caliper/v1p2/contexts/Core",
       "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
       "type": "AssessmentEvent",
       "actor": {

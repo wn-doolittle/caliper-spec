@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/contexts/Core",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
   "type": "Membership",
   "member": {

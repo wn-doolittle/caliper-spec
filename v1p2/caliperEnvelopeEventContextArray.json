@@ -1,14 +1,14 @@
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2017-11-15T10:15:01.000Z",
-  "dataVersion":  "https://purl.imsglobal.org/caliper/v1p2/context/",
+  "dataVersion":  "https://purl.imsglobal.org/caliper/v1p2/contexts/Core",
   "data": [
     {
       "@context": [
         {
           "query": "http://schema.org/query"
         },
-        "https://purl.imsglobal.org/caliper/v1p2/context/"
+        "https://purl.imsglobal.org/caliper/v1p2/contexts/Core"
       ],
       "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
       "type": "Event",
