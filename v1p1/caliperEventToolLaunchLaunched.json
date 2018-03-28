@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+=======
+  "@context": "https://purl.imsglobal.org/caliper/v1p1/extended/toollaunchprofile",
+>>>>>>> Add v1p1 extended and v1p2 versions of the ToolLaunch fixture.
   "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
   "type": "ToolLaunchEvent",
   "actor": {
@@ -39,6 +43,7 @@
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
     "startedAtTime": "2018-11-15T10:00:00.000Z"
+<<<<<<< HEAD
   },
   "federatedSession": {
     "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
@@ -68,3 +73,7 @@
     "startedAtTime": "2018-11-15T10:15:00.000Z"
   }
 }
+=======
+  }
+}
+>>>>>>> Add v1p1 extended and v1p2 versions of the ToolLaunch fixture.
