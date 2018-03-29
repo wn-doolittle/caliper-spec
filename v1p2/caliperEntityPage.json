@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p2/contexts/Core",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
   "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
   "type": "Page",
   "name": "Page 5",

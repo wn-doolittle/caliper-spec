@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p2/contexts/Core",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
   "id": "https://example.edu/videos/1225",
   "type": "VideoObject",
   "mediaType": "video/ogg",
