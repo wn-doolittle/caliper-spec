@@ -263,6 +263,45 @@ The method envelope standard for all Caliper `Event` sequences includes:
 }
 ```
 
+## Purdue’s use of Caliper
+### Storage Platform
+#### Data store design choices
+Because Caliper data is transmitted as JSON, our initial implementation of the physical store, based on our intuition, used a document database similar to MongoDB (Microsoft Azure’s DocumentDB). As we dug deeper into the design of our data store, we found that a document database would make analysis and reporting difficult due to the highly relational nature of Caliper data. Thus, we initiated a proof of concept using a graph database for the physical store. We investigated several graph databases and chose Neo4j due to its open source license as well as its feature set and ability to scale. We were pleased with the results of the proof of concept, finding that Neo4j’s Cypher query language allowed us to have a great deal of flexibility in analyzing and visualizing Caliper data. Its enterprise-level capabilities and its maturity were also strong considerations. Because Caliper data is highly time-correlated, we leveraged the advantages of a graph database to use the “GraphAware Neo4j TimeTree” to make time-based queries more efficient.
+
+While the advantages to using a graph database are many for highly relational data like Caliper, a design trade-off we had to consider was the fact that a graph database has much higher memory requirements to be performant. In addition, the technology is newer and may have some rough edges. Additionally, inserts into Neo4j (and probably other graph databases) are relatively slow vs. a document database. Finally, we found cloud-based Neo4j providers to be uncommon and fairly expensive, so we elected to host our own. Thus the tradeoff of having to sysadmin a VM running Neo4j.
+
+In order to mitigate the costs of some of these tradeoffs, we intend to move to a more traditional OLTP/ODS model in the future where the Caliper requests are stored as documents in a document database. There will be a separate, asynchronous process that deserializes the documents from the document database into the graph database which will be used for analysis and reporting.
+
+#### Collection endpoint
+Because we are using a graph database, every request to our event store results in the Caliper payload being deserialized into an object graph that gets persisted to the Neo4j database. Because the distinction between entities and events is a semantic distinction, we found no technical reason to host both /entities and /events endpoints. We ended up choosing to implement a /collector endpoint that receives both entities and events, delegating validation and deserialization to the appropriate services.
+
+###  Authorization
+#### Authorizing tools
+Our Caliper datastore uses OAuth bearer tokens, as specified in the Caliper documentation, to restrict access to the /collector endpoint.
+
+In the process of designing our datastore, we asserted that identity management was a feature better served by tool providers than by the Caliper data store itself. As such, we chose to delegate identity management and bearer token issuance to each of the tool providers. The Caliper data store maintains a set of trusted tool providers that are authorized to act as a proxy for the issuance of OAuth bearer tokens. The trusted clients authenticate via the OAuth client credentials flow. In order to obtain a bearer token that can be used by the Caliper sensor within each of the tool providers, the user must authenticate to the tool provider first. After that, the sensor can request an OAuth token for use with the Caliper data store from the tool provider.
+
+### Validation
+From the initial conception of our Caliper Event Store we wanted to treat it as an authoritative source for reporting and analysis to drive technology decisions. In order to trust the data in the Event Store, we came to the conclusion that we must validate the data as it streams in. This provided a non-trivial challenge, since the Caliper 1.0 spec contains a multitude of Events, Entities, and relations between them. Taking into consideration the nature of the JSON-LD payloads, we wrote a JSON Schema from scratch that could be used to easily validate the incoming Caliper Events and Entities. This allowed us to persist the data with confidence, and ensure our tool sensors were correctly implemented.
+
+### Lifecycle Management
+The initial use case for our Caliper sensor and endpoint/data store implementations was the storage of session data in order to determine usage of our tools. To this end, we conform to the Caliper Session Profile by tracking session starts and ends. We knew from the beginning that once we added the Caliper sensor into one of our tools, the other tools would follow shortly after. In the process of implementing Caliper in our first tool, we learned there would be a large amount of logic that could be shared from tool to tool. For this reason we created common library services for JavaScript, iOS, and Android, in order to encapsulate the common lifecycle logic shared across applications. Creating these shared libraries allowed us to implement cross-cutting features such as a persistent queue, session keep-alive, and session timeout logic.
+
+#### Persistent Queue
+As users interact with our tools, we want to ensure that we minimize the possibility of lost data. For web-based tools, Events and Entities are saved to a queue that is persisted to localStorage on web and to disk on mobile. This queue is periodically sent to the Event Store. Implementing this queue allowed for reduced load on the Event Store APIs, as well as persisting data across browser sessions and reducing the risk of intermittent network errors. In the case of a failed HTTP request to the Event Store, the data remains in the queue to be retried later.
+
+#### Sessions on web
+One issue we encountered when adding Caliper to our web-based tools was how to handle the session lifecycle. We wanted to more accurately capture when a user was actually active in each tool versus when their tokens were refreshed, or when they navigated between pages. Additional complexity was encountered when updating our legacy .NET MVC applications. We still wanted to re-use our JavaScript based library for managing the Caliper tracking and persisting sessions across page refreshes. The solution we developed was to leverage the browser’s localStorage to track a “last active date”, automatically updating this based on user interactions. As long as the user continues to interact with the site their session remains active. We send a periodic “keep-alive” to the Event Store, updating the Session entity’s dateModified property. Once a user is idle for a period of time, their session is ended at the last known active date once they return to the tool. Adding the session keep-alive and timeout features  allowed us to use our library to instrument all of our apps built in .NET MVC, Angular, or React.
+
+#### Sessions on mobile
+While web sessions were complex to track, sessions on mobile are more straightforward. We consider a session started when the app comes to the foreground and ended when it moves to the background.
+
+### Mobile
+We’ve added Caliper to three different platforms: native iOS, native Android, and React Native. After implementing Caliper, when looking at our tool usage we found that for several of our apps, more than 70% of our users have used the corresponding mobile app. The percentage of sessions coming from our mobile apps is even higher than the percentage of users. It’s worth noting that the reason for the high percentage of sessions coming from mobile isn’t solely usage. Mobile sessions tend to be shorter. For one of our mobile apps, 75% of sessions are less than a minute long. Moving forward we may consider measures to add minimum session limits.
+
+### Reporting
+The driving force behind adding Caliper 1.0 to our learning tools was to be able to use the data for reporting and analysis. To this end we designed and created Scope, a dashboard built in React. We added reporting endpoints to our EventStore API that the dashboard can access to pull data about apps, users, and sessions over time.
+
 ## <a name="contributors"></a>List of Contributors
 The following individuals contributed to the development of this document:
 
@@ -270,6 +309,9 @@ The following individuals contributed to the development of this document:
 | :---------- | :---------- |
 | Anthony Whyte | University of Michigan |
 | Viktor Haag | D2L |
+| Gavin Brown | Purdue University |
+| Jason Dufair | Purdue University |
+| Will Grauvogel | Purdue University |
  
 <a name="aboutThisDoc"></a>About this Document
 IMS Global Learning Consortium, Inc. ("IMS Global") is publishing the information contained in this document ("Guide") for purposes of scientific, experimental, and scholarly collaboration only.
