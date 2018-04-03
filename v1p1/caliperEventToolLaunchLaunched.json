@@ -1,6 +1,7 @@
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
 =======
   "@context": "https://purl.imsglobal.org/caliper/v1p1/extended/toollaunchprofile",
@@ -8,6 +9,9 @@
 =======
   "@context": "https://purl.imsglobal.org/caliper/v1p1/ToolLaunchProfile-extended",
 >>>>>>> Revise context IRI to /ToolLaunchProfile-extended
+=======
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+>>>>>>> Add missing /ctx/ path.
   "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
   "type": "ToolLaunchEvent",
   "actor": {
