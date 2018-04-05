@@ -3,7 +3,7 @@
     "id": "@id",
     "type": "@type",
 
-    "caliper": "http://purl.imsglobal.org/caliper/vocab/",
+    "caliper": "http://purl.imsglobal.org/caliper/",
     "lis": "http://purl.imsglobal.org/vocab/lis/v2/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
 
