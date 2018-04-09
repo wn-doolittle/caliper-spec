@@ -41,7 +41,7 @@
     "startedAtTime": "2018-11-15T10:00:00.000Z"
   },
   "federatedSession": {
-    "id": "https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+    "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
     "type": "LtiSession",
     "user": {
       "id": "https://example.edu/users/554433",
@@ -50,9 +50,9 @@
     "messageParameters": {
       "lti_message_type": "basic-lti-launch-request",
       "lti_version": "LTI-1p0",
-      "context_id": "4f1a161f-59c3-43e5-be37-445ad09e3f76",
+      "context_id": "https://example.edu/terms/201801/courses/7/sections/1",
       "context_type": "urn:lti:context-type:ims/lis/CourseSection",
-      "context_label": "SI182",
+      "context_label": "CPS 435-01",
       "context_title": "Design of Personal Environments",
       "resource_link_id": "6b37a950-42c9-4117-8f4f-03e6e5c88d24",
       "roles": [ "urn:lti:role:ims/lis/Learner" ],
