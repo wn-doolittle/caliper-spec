@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
   "id": "urn:uuid:4ec2c31e-3ec0-4fe1-a017-b81561b075d7",
   "type": "SessionEvent",
   "actor": {

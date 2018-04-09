@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/",
+  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
   "id": "https://example.edu/colleges/1/depts/1",
   "type": "Organization",
   "name": "Computer Science Department",
