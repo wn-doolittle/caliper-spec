@@ -12,7 +12,7 @@
     "context_id": "https://example.edu/terms/201801/courses/7/sections/1",
     "context_type": "urn:lti:context-type:ims/lis/CourseSection",
     "context_label": "CPS 435-01",
-    "context_title": "Design of Personal Environments",
+    "context_title": "CPS 435 Learning Analytics, Section 01",
     "resource_link_id": "6b37a950-42c9-4117-8f4f-03e6e5c88d24",
     "roles": [ "urn:lti:role:ims/lis/Learner" ],
     "tool_consumer_instance_guid": "SomeLMS.example.edu",
