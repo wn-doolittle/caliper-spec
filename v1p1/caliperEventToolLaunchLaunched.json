@@ -79,9 +79,12 @@
     },
     "dateCreated": "2018-11-15T10:15:00.000Z",
     "startedAtTime": "2018-11-15T10:15:00.000Z"
+<<<<<<< HEAD
   }
 }
 =======
+=======
+>>>>>>> updated federated session timestamps to be line with event timestamp
   }
 }
 >>>>>>> Add v1p1 extended and v1p2 versions of the ToolLaunch fixture.
