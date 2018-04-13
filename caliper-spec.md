@@ -5608,22 +5608,21 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 
 ### Roles
 
-[Membership](#membership) includes an optional `roles` property for assigning one or more roles to an [Event](#event) `actor` described as a `member` of an `organization`.  Role values are limited to the list of Caliper role terms derived from the IMS [LIS](#lisDef) specification.  Assigning core context roles should prove sufficient in most cases.  Whenever a subrole is specified, the related context role SHOULD also be included. For example, a role of `Instructor#TeachingAssistant` SHOULD always be accompanied by the `Instructor` role. 
+[Membership](#membership) includes an optional `roles` property for assigning one or more roles to an [Event](#event) `actor` described as a `member` of an `organization`.  Role values are limited to the list of Caliper role terms derived from the IMS [LIS](#lisDef) specification.  Assigning context roles should prove sufficient in most cases.  Whenever a subrole is specified, the related context role SHOULD also be included. For example, a role of `Instructor#TeachingAssistant` SHOULD always be accompanied by the `Instructor` role. 
 
 #### Context Roles
+| Term | IRI |
+| :--- | :-- |
+| Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
+| ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
+| Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
+| Learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner |
+| Manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
+| Member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
+| Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
+| Officer | http://purl.imsglobal.org/vocab/lis/v2/membership#Officer |
 
-| Term | IRI | Core |
-| :--- | :-- | :--- |
-| Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator | Yes |
-| ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper | Yes |
-| Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor | Yes |
-| Learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner | Yes |
-| Manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager | No |
-| Member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member | No |
-| Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor | Yes |
-| Officer | http://purl.imsglobal.org/vocab/lis/v2/membership#Officer | No |
-
-#### SubRoles
+#### Sub-roles
 | Term | IRI |
 | :--- | :-- | 
 | Administrator#Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
@@ -5655,8 +5654,9 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 | Learner#NonCreditLearner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
 | Manager#AreaManager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
 | Manager#CourseCoordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
-| Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
 | Manager#ExternalObserver | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
+| Manager#Manager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager |
+| Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
 | Member#Member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
 | Mentor#Advisor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor |
 | Mentor#Auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor |
