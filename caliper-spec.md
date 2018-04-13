@@ -5656,7 +5656,7 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 | Manager#CourseCoordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
 | Manager#ExternalObserver | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
 | Manager#Manager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager |
-| Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
+| Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer" |
 | Member#Member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
 | Mentor#Advisor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor |
 | Mentor#Auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor |
