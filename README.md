@@ -14,7 +14,7 @@ The [Caliper Analytics&reg; Specification](./caliper-spec.md) is written using [
 * __develop__: unstable development branch.  Current work that targets a future release is merged to this branch.
 
 ## Tags
-[Caliper Analytics&reg; Specification](./caliper-spec.md) releases are tagged and versioned MAJOR.MINOR.PATCH\[-label\] (e.g., 1.1.0).  Pre-release tags are indentified with an extensions label (e.g., "1.2.0-RC01").  The [tags](https://github.com/IMSGlobal/caliper-spec/tags) are stored in this repository.
+[Caliper Analytics&reg; Specification](./caliper-spec.md) releases are tagged and versioned MAJOR.MINOR.PATCH\[-label\] (e.g., 1.1.1).  Pre-release tags are indentified with an extensions label (e.g., "1.2.0-RC01").  The [tags](https://github.com/IMSGlobal/caliper-spec/tags) are stored in this repository.
 
 ## Authors
 For the list of authors and other contributors see the [Contributors](./caliper-spec.md#contributors) section included in the specification document.
