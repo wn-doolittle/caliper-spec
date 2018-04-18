@@ -157,7 +157,9 @@ Public comments and questions can be posted at the Caliper Analytics&reg; [publi
 
 ### <a name="changes"></a>1.2 Summary of Changes
 
-Caliper 1.1.1 extends as well as refines the Caliper information model and further describes the ways in which Events and Entities can be expressed as [Linked Data](#linkedDataDef) when authoring documents using [JSON-LD](#jsonldDef).
+Caliper 1.1.1 is a patch release that corrects a number of minor textual errors that were uncovered when the specification was being translated into Korean. 
+
+Caliper 1.1 extends as well as refines the Caliper information model and further describes the ways in which Events and Entities can be expressed as [Linked Data](#linkedDataDef) when authoring documents using [JSON-LD](#jsonldDef).
 
 Three new profiles are provided: the [Basic Profile](#basicProfile), [Forum Profile](#forumProfile) and [ToolUse Profile](#toolUseProfile).  The AssessmentItem Profile has been merged into the [Assessment Profile](#assessmentProfile).  The Outcome Profile has been renamed the [Grading Profile](#gradingProfile) and a new [Score](#score) entity has been added.  Both the [Forum Profile](#forumProfile) and the [ToolUse Profile](#toolUseProfile) add new event types to the Caliper event model: [ForumEvent](#forumEvent), [ThreadEvent](#threadEvent), [MessageEvent](#messageEvent), [ToolUseEvent](#toolUseEvent).  New entities and actions are also provided to better describe forum activities and tool use. 
 
@@ -5926,9 +5928,9 @@ IMS Global would appreciate receiving your comments and suggestions.
 
 Please contact IMS Global through our website at http://www.imsglobal.org.
 
-Please refer to Document Name: IMS Caliper Analytics&reg; 1.1
-Candidate Final Specification v1.1
+Please refer to Document Name: IMS Caliper Analytics&reg; 1.1.1
+Candidate Final Specification v1.1.1
 
-Date: 12 January 2018
+Date: 30 April 2018
 
 This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability&reg; (LTI&reg;), Accessible Portable Item Protocol&reg; (APIP&reg;), Question and Test Interoperability&reg; (QTI&reg;), Common Cartridge&reg; (CC&reg;), AccessForAll&trade;, OneRoster&reg;, Caliper Analytics&reg; and SensorAPI&trade;. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
