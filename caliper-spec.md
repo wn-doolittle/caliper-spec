@@ -5831,7 +5831,7 @@ Caliper 1.x additions and deprecations are summarized below.
 | 1.1.0 | [Result](#result) | curvedTotalScore | Deprecated | Targeted for removal in a future version of the specification. |
 | 1.1.0 | [Result](#result) | extraCreditScore | Deprecated | Targeted for removal in a future version of the specification. |
 | 1.1.0 | [Result](#result) | normalScore | Deprecated | Targeted for removal in a future version of the specification. |
-| 1.1.0 | [Result](#result) | maxresultScore | New | Maps to LTI Gradebook-services `Result.resultMaximum`. |
+| 1.1.0 | [Result](#result) | maxResultScore | New | Maps to LTI Gradebook-services `Result.resultMaximum`. |
 | 1.1.0 | [Result](#result) | penaltyScore | Deprecated | Targeted for removal in a future version of the specification. |
 | 1.1.0 | [Result](#result) | resultScore | New | Maps to [LTI](#ltiDef) Gradebook-services `Result.resultScore`. |
 | 1.1.0 | [Result](#result) | totalScore | Deprecated | Targeted for removal in a future version of the specification.  Use  `resultScore`. |
