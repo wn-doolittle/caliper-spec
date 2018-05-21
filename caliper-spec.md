@@ -166,7 +166,9 @@ Regarding property changes, use of the [JSON-LD](#jsonldDef) `@id` and `@type` k
 
 [Sensor](#sensor) and [endpoint](#endpoint) behaviors are more fully described and the new specification also clarifies how to express Caliper events and entities in a [JSON-LD](#jsonldDef) document.   A new Caliper [JSON-LD](#jsonldDef) context document is also provided to map Caliper terms to their respective [IRIs](iriDef).
 
-All these changes are described in more detail in [Appendix H. Change Log](#changeLog).  
+This version of the specification (1.1-errata.01) also includes a number of minor typographical and text duplication errors uncovered when the document was translated into Korean.
+
+All these changes are described in more detail in [Appendix H. Change Log](#changeLog).
 
 ### <a name="conventions"></a>1.3 Conventions
 
