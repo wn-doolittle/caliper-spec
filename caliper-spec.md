@@ -5722,8 +5722,7 @@ Caliper 1.x additions and deprecations are summarized below.
 
 | Version | Item | Status | Disposition |
 | :-----: | :--- | :----- | :---------- |
-| 1.1-errata.01 | [ForumEvent](#forumEvent) | Correction | Eliminated duplicate `referrer` property 
-entry. |
+| 1.1-errata.01 | [ForumEvent](#forumEvent) | Correction | Eliminated duplicate `referrer` property entry. |
 | 1.1-errata.01 | [MessageEvent](#messageEvent) | Correction | `membership` property description incorrectly referenced the `session` property value.  Updated to reference the `membership` value. | 
 | 1.1-errata.01 | [Roles](#roles) | Correction | Added missing sub-role http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager. |
 
