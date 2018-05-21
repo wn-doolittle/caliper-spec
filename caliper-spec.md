@@ -3,6 +3,7 @@
 # IMS Global Learning Consortium, Inc.
 
 # Caliper Analytics&reg; Specification, version 1.1
+current version: 1.1-errata.01
 
 ## IPR and Distribution Notices
 
@@ -165,8 +166,8 @@ The [ReadingEvent](#readingEvent) has been deprecated while the [OutcomeEvent](#
 Regarding property changes, use of the [JSON-LD](#jsonldDef) `@id` and `@type` keywords have been deprecated in favor of `id` and `type`.  The Caliper [Event](#event) now includes an identifier `id` property  as well as new `referrer`, `session` and `extensions` attributes.  [Entity](#entity) property additions, name changes and deprecations also feature in this new release.
 
 [Sensor](#sensor) and [endpoint](#endpoint) behaviors are more fully described and the new specification also clarifies how to express Caliper events and entities in a [JSON-LD](#jsonldDef) document.   A new Caliper [JSON-LD](#jsonldDef) context document is also provided to map Caliper terms to their respective [IRIs](iriDef).
-
-This version of the specification (1.1-errata.01) also includes a number of minor typographical and text duplication errors uncovered when the document was translated into Korean.
+ 
+This version of the specification is versioned 1.1-errata.01.  It includes a number of minor typographical and text duplication errors uncovered when the document was translated into Korean.
 
 All these changes are described in more detail in [Appendix H. Change Log](#changeLog).
 
