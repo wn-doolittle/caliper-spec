@@ -126,7 +126,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths)
 * [Appendix H. Change Log](#changeLog)
   * H.1 [In-place Corrections 24 May 2018](#changeLogCorrections20180524)
-  * H.2 [Caliper 1.1](changeLogCaliperv1p1)
+  * H.2 [Caliper 1.1](#changeLogCaliperv1p1)
     * H.2.1 [Profiles](#changeLogProfiles)
     * H.2.2 [Actions](#changeLogActions)
     * H.2.3 [Events](#changeLogEvents)
