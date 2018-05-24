@@ -125,8 +125,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [Appendix F. Status](#status)
 * [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths)
 * [Appendix H. Change Log](#changeLog)
-  * H.1 [In-place Corrections 24 May 2018](#changeLogCorrections)
-  * H.2 [Caliper 1.1]
+  * H.1 [In-place Corrections 24 May 2018](#changeLogCorrections20180524)
+  * H.2 [Caliper 1.1](changeLogCaliperv1p1)
     * H.2.1 [Profiles](#changeLogProfiles)
     * H.2.2 [Actions](#changeLogActions)
     * H.2.3 [Events](#changeLogEvents)
@@ -5718,7 +5718,7 @@ When storing normalized or "flattened" Caliper [Event](#event) data, the followi
 ## <a name="changeLog"></a>Appendix H. Change Log
 
 Caliper 1.x additions, deprecations and corrections are summarized below.
-### <a name="changeLogProfiles"></a>H.1 In-place Corrections 24 May 2018
+### <a name="changeLogCorrections20180524"></a>H.1 In-place Corrections 24 May 2018
 
 | Item | Status | Disposition |
 | :--- | :----- | :---------- |
@@ -5726,7 +5726,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [MessageEvent](#messageEvent) | Correction | `membership` property description incorrectly referenced the `session` property value.  Updated to reference the `membership` value. | 
 | [Roles](#roles) | Correction | Added missing sub-role http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager. |
 
-### <a name="changeLogProfiles"></a>H.2 Caliper 1.1
+### <a name="changeLogCaliperv1p1"></a>H.2 Caliper 1.1
 
 #### <a name="changeLogProfiles"></a>H.2.1 Profiles
 
