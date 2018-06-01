@@ -239,55 +239,53 @@
     <section class="informative" id="event-search-jsonld">
         <h3>Example</h3>
         <figure class="example">
-          <pre>
-              <code>
-                {
-                  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-                  "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
-                  "type": "SearchEvent",
-                  "actor": {
-                    "id": "https://example.edu/users/554433",
-                    "type": "Person"
-                  },
-                  "action": "Searched",
-                  "object": {
-                    "id": "https://example.edu",
-                    "type": "SofwareApplication"
-                  },
-                  "eventTime": "2018-11-15T10:05:00.000Z",
-                  "target": {
-                    "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-                    "type": "Query",
-                    "author": "https://example.edu/users/554433",
-                    "searched": "https://example.edu",
-                    "searchString": "IMS AND (Caliper OR Analytics)",
-                    "dateCreated": "2018-11-15T10:05:00.000Z"
-                  },
-                  "edApp": "https://example.edu",
-                  "group": {
-                    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-                    "type": "CourseSection",
-                    "courseNumber": "CPS 435-01",
-                    "academicSession": "Fall 2018"
-                  },
-                  "membership": {
-                    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-                    "type": "Membership",
-                    "member": "https://example.edu/users/554433",
-                    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-                    "roles": ["Learner"],
-                    "status": "Active",
-                    "dateCreated": "2018-08-01T06:00:00.000Z"
-                  },
-                  "session": {
-                    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-                    "type": "Session",
-                    "startedAtTime": "2018-11-15T10:00:00.000Z"
-                  }
-                }
-            </code>
-          </pre>
-            <figcaption>Query entity example</figcaption>
+          <pre><code>
+            {
+              "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+              "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
+              "type": "SearchEvent",
+              "actor": {
+                "id": "https://example.edu/users/554433",
+                "type": "Person"
+              },
+              "action": "Searched",
+              "object": {
+                "id": "https://example.edu",
+                "type": "SofwareApplication"
+              },
+              "eventTime": "2018-11-15T10:05:00.000Z",
+              "target": {
+                "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+                "type": "Query",
+                "author": "https://example.edu/users/554433",
+                "searched": "https://example.edu",
+                "searchString": "IMS AND (Caliper OR Analytics)",
+                "dateCreated": "2018-11-15T10:05:00.000Z"
+              },
+              "edApp": "https://example.edu",
+              "group": {
+                "id": "https://example.edu/terms/201601/courses/7/sections/1",
+                "type": "CourseSection",
+                "courseNumber": "CPS 435-01",
+                "academicSession": "Fall 2018"
+              },
+              "membership": {
+                "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+                "type": "Membership",
+                "member": "https://example.edu/users/554433",
+                "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+                "roles": ["Learner"],
+                "status": "Active",
+                "dateCreated": "2018-08-01T06:00:00.000Z"
+              },
+              "session": {
+                "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+                "type": "Session",
+                "startedAtTime": "2018-11-15T10:00:00.000Z"
+              }
+            }
+          </code></pre>
+          <figcaption>Query entity example</figcaption>
         </figure>
     </section>
 </section>
@@ -361,16 +359,15 @@
                 <td>Required</td>
             </tr>
             <tr>
-                <td>*TODO*: searched | resourceSearched | queried</td>
+                <td>searched</td>
                 <td><a href=
                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
                 >DigitalResource</a> | <a
                 href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
                 >IRI</a></td>
-                <td>The <code>DigitalResource</code> searched by a user with this <code>Query
-                </code>/. The <code>*TODO*: searched | resourceSearched | queried</code> value MUST
-                    be expressed either as an object or as a string corresponding to the resources's
-                    IRI.</td>
+                <td>The <code>DigitalResource</code> searched by a user with this <code>Query</code>.
+                    The <code>searched</code> value MUST be expressed either as an object or as a
+                    string corresponding to the resources's IRI.</td>
                 <td>Required</td>
             </tr>
             <tr>
@@ -386,25 +383,23 @@
     <section class="informative" id="entity-query-jsonld">
         <h3>Example</h3>
         <figure class="example">
-          <pre>
-              <code>
-                {
-                  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-                  "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-                  "type": "Query",
-                  "author": {
-                    "id": "https://example.edu/users/554433",
-                    "type": "Person"
-                  },
-                  "searched": {
-                    "id": "https://example.edu",
-                    "type": "SoftwareApplication"
-                  },
-                  "searchString": "IMS AND (Caliper OR Analytics)",
-                  "dateCreated": "2018-11-15T10:05:00.000Z"
-                }
-            </code>
-          </pre>
+          <pre><code>
+            {
+              "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+              "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+              "type": "Query",
+              "author": {
+                "id": "https://example.edu/users/554433",
+                "type": "Person"
+              },
+              "searched": {
+                "id": "https://example.edu",
+                "type": "SoftwareApplication"
+              },
+              "searchString": "IMS AND (Caliper OR Analytics)",
+              "dateCreated": "2018-11-15T10:05:00.000Z"
+            }
+          </code></pre>
           <figcaption>Query entity example</figcaption>
         </figure>
     </section>
