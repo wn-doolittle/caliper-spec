@@ -170,8 +170,8 @@
             <dd><a href="action-Searched">Searched</a></dd>
             <dt>Supported objects</dt>
             <dd><a href=
-                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-            >DigitalResource</a></dd>
+                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+            >Entity</a></dd>
             <dt>Properties</dt>
             <dd><code>SearchEvent</code> inherits all properties defined by its supertype
                 <code>Event</code>. Profile-scoped property type restrictions are described below:
@@ -218,10 +218,10 @@
                 <td>object</td>
                 <td><a href=
                                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-                >Entitye</a> | <a href=
+                >Entity</a> | <a href=
                                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
                 >IRI</a></td>
-                <td>The <code>Entity</code>Entity, typically a <code>DigitalResource</code> or
+                <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
                     <code>SoftwareApplication</code>, that is the target of the author's search.
                     The <code>searched</code> value MUST be expressed either as an object or as a
                     string corresponding to the resources's IRI.</td>
@@ -324,8 +324,7 @@
     <h2>Entities</h2>
 
     <p>The Search Profile includes a <code>Query</code> entity for describing the
-        <code>searchString</code> authored by a <code>Person</code> searching a
-        <code>DigitalResource</code> or <code>SoftwareApplication</code>.
+        <code>searchString</code> authored by the <code>Person</code> conducting the search.
 
     <section id="entity-query">
         <h3>Query entity</h3>
@@ -379,7 +378,7 @@
                 >Entity</a> | <a
                 href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
                 >IRI</a></td>
-                <td>The <code>Entity</code>Entity, typically a <code>DigitalResource</code> or
+                <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
                     <code>SoftwareApplication</code>, that is the target of the author's search.
                     The <code>searched</code> value MUST be expressed either as an object or as a
                     string corresponding to the resources's IRI.</td>
