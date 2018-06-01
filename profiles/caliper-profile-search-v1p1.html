@@ -38,7 +38,7 @@
 </head>
 <body>
 <section id="abstract">
-    <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Search profile that
+    <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Search Profile that
     describes search-related learning activities.
 </section>
 
@@ -136,8 +136,8 @@
         <li>TBD</li>
     </ul>
 
-    <p>When used in conjunction with the
-        <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#readingProfile">
+    <p>When used in conjunction with the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#readingProfile">
         Reading Profile</a>, the collected data provide insights into . . . **TODO**.
     <dl>
         <dt>Supported Events</dt>
@@ -147,6 +147,10 @@
 
 <section id="events">
     <h2>Events</h2>
+
+    <p>The Search Profile provides a single <code>SearchEvent</code> for describing information
+        retrieval activities undertaken by a <code>Person</code>.</p>
+
     <section id="event-search">
         <h3>Search Event</h3>
         <p>A Caliper <code>SearchEvent</code> models a <code>Person</code> defining a <code>Query
@@ -213,19 +217,20 @@
             <tr>
                 <td>object</td>
                 <td><a href=
-                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-                >DigitalResource</a> | <a
-                        href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+                >Entitye</a> | <a href=
+                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
                 >IRI</a></td>
-                <td>The <code>DigitalResource</code> searched by the <code>actor</code>. The
-                    <code>object</code> value MUST be expressed either as an object or as a string
-                    corresponding to the object's IRI.</td>
+                <td>The <code>Entity</code>Entity, typically a <code>DigitalResource</code> or
+                    <code>SoftwareApplication</code>, that is the target of the author's search.
+                    The <code>searched</code> value MUST be expressed either as an object or as a
+                    string corresponding to the resources's IRI.</td>
                 <td>Required</td>
             </tr>
             <tr>
                 <td>target</td>
-                <td><a href="#query">Query</a> | <a
-                href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                <td><a href="#query">Query</a> | <a href=
+                                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
                 >IRI</a></td>
                 <td>A <code>Query</code> defined by the <code>actor</code> that constitutes the search
                     criteria. The <code>Query</code> value MUST be expressed either as an object or
@@ -287,7 +292,7 @@
 }
             </code>
           </pre>
-          <figcaption>Query entity example</figcaption>
+          <figcaption>SearchEvent example</figcaption>
         </figure>
     </section>
 </section>
@@ -317,6 +322,11 @@
 
 <section id="entities">
     <h2>Entities</h2>
+
+    <p>The Search Profile includes a <code>Query</code> entity for describing the
+        <code>searchString</code> authored by a <code>Person</code> searching a
+        <code>DigitalResource</code> or <code>SoftwareApplication</code>.
+
     <section id="entity-query">
         <h3>Query entity</h3>
         <p>A Caliper <code>Query</code> models a . . . **TODO** .</p>
@@ -365,11 +375,12 @@
             <tr>
                 <td>searched</td>
                 <td><a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-                >DigitalResource</a> | <a
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+                >Entity</a> | <a
                 href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
                 >IRI</a></td>
-                <td>The <code>DigitalResource</code> searched by a user with this <code>Query</code>.
+                <td>The <code>Entity</code>Entity, typically a <code>DigitalResource</code> or
+                    <code>SoftwareApplication</code>, that is the target of the author's search.
                     The <code>searched</code> value MUST be expressed either as an object or as a
                     string corresponding to the resources's IRI.</td>
                 <td>Required</td>
@@ -377,7 +388,7 @@
             <tr>
                 <td>searchString</td>
                 <td><a href="#string">string</a></td>
-                <td>The search string authored or submitted by the <code>author</code>.</td>
+                <td>The search string created or submitted by the <code>author</code>.</td>
                 <td>Optional</td>
             </tr>
             </tbody>
