@@ -29,7 +29,7 @@ var _localBiblio = {
         "@@@, TBD"
       ]                  
   },
-  "CALIPER-TL-11": {
+  "CALIPER-TOOLLAUNCH-11": {
     title: "Caliper Analytics® Tool Launch Profile 1.1",
     href: "https://www.imsglobal.org/spec/caliper-tl/v1p1/",
     publisher: "IMS Global Learning Consortium",
@@ -38,12 +38,12 @@ var _localBiblio = {
       "Whyte, Anthony"
     ]
   },
-  "CALIPER-TL-11-CONTEXT": {
+  "CALIPER-TOOLLAUNCH-11-CONTEXT": {
     title: "Caliper Analytics® Tool Launch Profile Context 1.1",
     href: "https://purl.imsglobal.org/spec/caliper-tl/v1p1/context/",
     publisher: "IMS Global Learning Consortium"
   },        
-  "CALIPER-TL-11-ERRATA": {
+  "CALIPER-TOOLLAUNCH-11-ERRATA": {
     title: "Caliper Analytics® Tool Launch Profile 1.1 Errata",
     href: "https://www.imsglobal.org/spec/caliper-tl/v1p1/errata/",
     publisher: "IMS Global Learning Consortium",
