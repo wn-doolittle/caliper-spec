@@ -2,7 +2,7 @@
   "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", {
     "SearchEvent": "caliper:SearchEvent",
     "Query": "caliper:Query",
-    "author": {"@id": "caliper:author", "@type": "@id"},
+    "creator": {"@id": "caliper:creator", "@type": "@id"},
     "searched": {"@id": "caliper:searched", "@type": "@id"},
     "searchString": {"@id": "caliper:searchString", "@type": "xsd:string"}
   }]

@@ -80,7 +80,7 @@
     "assignee": {"@id": "caliper:assignee", "@type": "@id"},
     "attachments": {"@id": "caliper:attachments", "@type": "@id", "@container": "@list"},
     "attempt": {"@id": "caliper:attempt", "@type": "@id"},
-    "author": {"@id": "caliper:author", "@type": "@id"},
+    "creator": {"@id": "caliper:creator", "@type": "@id"},
     "creators": {"@id": "caliper:creators", "@type": "@id", "@container": "@list"},
     "edApp": {"@id": "caliper:edApp", "@type": "@id"},
     "extensions": {"@id": "caliper:extensions", "@type": "@id"},
