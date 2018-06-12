@@ -418,6 +418,35 @@
 
 </section>
 
+<section class="informative" id="jsonld-context">
+  <h3>JSON-LD Context</h3>
+  <p>individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
+    provides a remote Search Profile JSON-LD <a href=
+    "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension">context</a> for mapping
+    <code>SearchEvent</code> terms to IRIs. Caliper message producers MUST reference this
+    context in every Caliper 1.1 <code>SearchEvent</code> and/or <code>Query</code> describe created
+    and serialized for transmission to a target endpoint.</p>
+
+  <h3>Example</h3>
+  <figure class="example">
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+  . . .
+}
+          </code>
+        </pre>
+    <figcaption>JSON-LD Context example</figcaption>
+  </figure>
+
+  <p>See the Caliper 1.1 specification [[!CALIPER-11]] for additional examples of JSON-LD
+    <code>@context</code> values.</p>
+
+</section>
+
+</section>
+
 <section class="appendix informative" id="revisionhistory">
   <h2>Revision History</h2>
   <section>
