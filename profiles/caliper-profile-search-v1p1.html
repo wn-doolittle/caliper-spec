@@ -216,7 +216,7 @@
                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
             >IRI</a></td>
             <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
-              <code>SoftwareApplication</code>, that is the target of the author's search. The
+              <code>SoftwareApplication</code>, that is the target of the actor's search. The
               <code>object</code> value MUST be expressed either as an object or as a string
               corresponding to the resources's IRI.</td>
             <td>Required</td>
@@ -257,7 +257,7 @@
   "target": {
     "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
     "type": "Query",
-    "author": "https://example.edu/users/554433",
+    "creator": "https://example.edu/users/554433",
     "searched": "https://example.edu",
     "searchString": "IMS AND (Caliper OR Analytics)",
     "dateCreated": "2018-11-15T10:05:00.000Z"
@@ -333,7 +333,7 @@
         <dt>Properties</dt>
         <dd><code>Query</code> inherits all properties defined by its supertype
             <code>Entity</code>.  <code>Query</code> is also provisioned with three additional
-            properties: <code>author</code>, <code>searched</code>, and <code>searchString</code>.
+            properties: <code>creator</code>, <code>searched</code>, and <code>searchString</code>.
             Profile specific property type restrictions are described below:
         </dd>
       </dl>
@@ -356,15 +356,15 @@
           <td>Required</td>
         </tr>
         <tr>
-          <td>author</td>
+          <td>creator</td>
           <td><a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
           >Person</a> | <a href=
               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>Person</code> who authored or submitted the <code>Query</code>. The
-            <code>author</code> value MUST be expressed either as an object or as a string
-            corresponding to the author's IRI.</td>
+            <code>creator</code> value MUST be expressed either as an object or as a string
+            corresponding to the creator's IRI.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -375,7 +375,7 @@
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
-            <code>SoftwareApplication</code>, that is the target of the author's search. The
+            <code>SoftwareApplication</code>, that is the target of the search. The
             <code>searched</code> value MUST be expressed either as an object or as a string
             corresponding to the resources's IRI.</td>
           <td>Required</td>
@@ -383,7 +383,7 @@
         <tr>
           <td>searchString</td>
           <td><a href="#string">string</a></td>
-          <td>The search string created or submitted by the <code>author</code>.</td>
+          <td>The search string created or submitted by the <code>creator</code>.</td>
           <td>Optional</td>
         </tr>
         </tbody>
@@ -399,7 +399,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
   "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
   "type": "Query",
-  "author": {
+  "creator": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
@@ -412,7 +412,7 @@
 }
           </code>
         </pre>
-        <figcaption>Query entity example</figcaption>
+        <figcaption>Query describe example</figcaption>
       </figure>
   </section>
 </section>
