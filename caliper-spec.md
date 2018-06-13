@@ -1244,13 +1244,21 @@ A Caliper [Endpoint](#endpoint) MUST be capable of receiving Caliper data sent o
 
 ### <a name="httpResponse"></a>6.1 HTTP Responses
 
-Following receipt of a [Sensor](#sensor) request message the [Endpoint](#endpoint) MUST reply with a response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
+Following receipt of a [Sensor](#sensor) HTTP request message, the [Endpoint](#endpoint) MUST reply with an HTTP response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request, as defined by [RFC 7231](#rfc7231).
 
-* To signal a [Sensor](#sensor) that it has successfully received an emitted [Envelope](#envelope) an [Endpoint](#endpoint) MUST reply with a `2xx` class status code. The [Endpoint](#endpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
-* If the [Sensor](#sensor) sends a message containing events and or entities without an enclosing [Envelope](#envelope), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.
-* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#endpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint) SHOULD send a `422 Unprocessable Entity` response instead.
-* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#endpoint) SHOULD reply with a `415 Unsupported Media Type` response.
-* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#endpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
+When signalling to a [Sensor](#sensor) that the endpoint has successfully received the request message, the [Endpoint](#endpoint) MUST reply with a `2xx` class status code. By best practice, the [Endpoint](#endpoint) SHOULD use the `200 OK` response but might instead choose to send a `201 Created` (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` (to indicate successful receipt of the message and queueing for further processing). By best practice, the [Endpoint](#endpoint) SHOULD send back successful responses with an empty body.
+
+An [Endpoint](#endpoint) MAY send back responses other than those with `2xx` class indicating success; if so, it MUST adhere to these response status codes for these specific cases (for other cases, the [Endpoint](#endpoint) may offer other responses):
+
+* If the request message has no enclosing Caliper [Envelope](#envelope), reply with a `400 Bad Request` status code.
+
+* If the request message's Caliper [Envelope](#envelope) is malformed (for example, missing fields required by the Envelop's version), reply with a `400 Bad Request` status code.
+
+* If the [Sensor](#sensor) sends an unauthorized request, or the [Endpoint](#endpoint) is unable to validate the authorization, or the [Endpoint](#endpoint) cannot determine that the [Sensor](#senor) has sufficient privilege to send such a message, reply with a `401 Unauthorized`.
+
+* If the request message has a content-type other than `application/json`, reply with a `415 Unsupported Media Type`.
+
+* If the [Endpoint](#endpoint) cannot support the version of Caliper data indicated by the Caliper [Envelope](#envelope)'s `dataVersion` field, reply with a `422 Unprocessable Entity` status code.
 
 The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions that vary from the cases described above.  The [Endpoint](#endpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
 
