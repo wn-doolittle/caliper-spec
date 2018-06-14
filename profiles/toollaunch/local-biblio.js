@@ -46,6 +46,12 @@ var _localBiblio = {
   "CALIPER-TOOLLAUNCH-11-ERRATA": {
     title: "Caliper Analytics® Tool Launch Profile 1.1 Errata",
     href: "https://www.imsglobal.org/spec/caliper-tl/v1p1/errata/",
-    publisher: "IMS Global Learning Consortium",
+    publisher: "IMS Global Learning Consortium"
+  }
+  ,        
+  "LTI-DL": {
+    title: "LTI Deep Linking @@@ FIXME",
+    href: "https://www.imsglobal.org/spec/lti-dl/v1p1/",
+    publisher: "IMS Global Learning Consortium"
   }  
 };

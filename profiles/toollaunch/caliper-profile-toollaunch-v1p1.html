@@ -79,7 +79,10 @@
         <img src="assets/tl-conceptual.png" alt="Deployment pattern"/>
         <figcaption>Graph of the intended deployment pattern for the Tool Launch
         Profile. A Caliper sensor is deployed in the LMS and intercepts tool launch
-        events, and emits these to a Caliper endpoint. </figcaption>
+        events, and emits these to a Caliper endpoint. In the cases where the tool
+        performs an explicit action to return to the platform, those are captured
+        too. 
+        </figcaption>
       </figure>
 
     </section>
@@ -128,7 +131,7 @@
           <dt>JSON-LD Context</dt>
           <dd>The JSON-LD Context for this profile defines all relevant 
             term-IRI mappings [[!CALIPER-TOOLLAUNCH-11-CONTEXT]]. The context IRI
-            <code>https://purl.imsglobal.org/spec/caliper-toollaunch/v1p1/context/</code>
+            <code>http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension</code>
             MUST be used in JSON-LD payloads representing this Caliper profile.             
           </dd>          
           <dt>Errata</dt>
@@ -168,8 +171,13 @@
         src="assets/tl-model.png" alt="Overview of Tool Launch Profile"/>
                 
         <p>The Tool Launch Profile models a Person launching a SoftwareApplication 
-          at a given time and in a given context.</p>
-        
+          at a given time and in a given context. It also provides the ability to 
+          model a "return response", which in the context of LTI [[LTI-13]] 
+          typically consists of a <a href="https://www.imsglobal.org/spec/lti/v1p3/#lis-message-variables">
+          redirect URL</a> or a specific resonse message, as defined in LTI Deep
+          Linking [[LTI-DL]].
+        </p>
+                
         <dl>
           <dt>IRI</dt>
           <dd>https://purl.imsglobal.org/caliper/ToolLaunchEvent</dd>
@@ -181,7 +189,8 @@
           <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
             >Person</a></dd>
           <dt>Supported Actions</dt>
-          <dd><a href="action-launched">Launched</a></dd>
+          <dd><a href="#action-launched">Launched</a></dd>
+          <dd><a href="#action-returned">Returned</a></dd>
           <dt>Supported Objects</dt>
           <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareApplication"
             >SoftwareApplication</a></dd>
@@ -200,6 +209,18 @@
             </tr>
           </thead>
             <tbody>  
+              <tr>
+                <td>id</td>
+                <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef">UUID</a></td>                
+                <td>The emitting application <em class="rfc2119" title="MUST">MUST</em> 
+                  provision the <code>ToolLaunchEvent</code> with a UUID. A version 4 
+                  UUID <em class="rfc2119" title="SHOULD">SHOULD</em> be generated.  
+                  The UUID <em class="rfc2119" title="MUST">MUST</em> be expressed 
+                  as a <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef">
+                    URN</a> using the form 'urn:uuid:&lt;UUID&gt;' per
+                <a href="https://tools.ietf.org/html/rfc4122">RFC 4222</a>.</td>
+                <td>Required</td>
+              </tr>
               <tr>
               <td>type</td>
               <td><a href=
@@ -222,13 +243,13 @@
                 <td>Required</td>
               </tr>
               <tr>
-              <td>action</td>
+              <td id="action">action</td>
               <td><a href=
                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
               >Term</a></td>
               <td>The action or predicate that binds the <code>actor</code> or 
                 subject to the <code>object</code>. The value range MUST be limited 
-                to the 'Launched' action only.</td>
+                to one of the 'Launched' or 'Returned' actions only.</td>
               <td>Required</td>
             </tr>
             <tr>
@@ -264,7 +285,12 @@
                 tool launch context. The <code>federatedSession</code> 
                 value MUST be expressed either as an object or as a string 
                 corresponding to the federatedSession’s IRI.</td>
-              <td>Required</td>
+              <td>Required when the <a href="#action">action</a> is 'Launched', 
+                otherwise optional. Workflows that have a specific "return message" 
+                component (i.e LTI Deep Linking response messages) SHOULD provide 
+                the <code>federatedSession</code> property and SHOULD populate 
+                it's messageParameters field with the message parameters in the 
+                response message.</td>
             </tr>
             </tbody>
         </table>
@@ -272,16 +298,9 @@
     </section>    
   </section> <!-- /events -->
 
-  
-    
-    
-    
-    
-  
-
   <section>
     <h2>Actions</h2>
-    <p>The Caliper <a href="#toolLaunchEvent">ToolLaunchEvent</a> supports a single "Launched" action.</p>
+    <p>The Caliper <a href="#toolLaunchEvent">ToolLaunchEvent</a> supports the "Launched" and "Returned" actions.</p>
     <table class="data">
       <thead>
         <tr>
@@ -296,8 +315,38 @@
           <td><a href="http://purl.imsglobal.org/caliper/actions/Launched" rel="nofollow">http://purl.imsglobal.org/caliper/actions/Launched</a></td>
           <td><a href="http://wordnet-rdf.princeton.edu/wn31/01515196-v" rel="nofollow">Get going; give impetus to</a>.</td>
           </tr>
+          <tr>
+          <td id="action-Returned">Returned</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Returned" rel="nofollow">http://purl.imsglobal.org/caliper/actions/Returned</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/01515196-v" rel="nofollow">Go or come back to place, condition, or activity where one has been before</a>.</td>
+          </tr>
       </tbody>
     </table>
+  </section>
+
+  <section id="jsonld">
+    <h2 id="json-ld">JSON-LD</h2>
+    <p>Individual Caliper events and entity describes are serialized as JSON-LD. 
+      IMS Global provides a remote ToolLaunch Profile JSON-LD 
+      <a href="http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension">context</a> 
+      for mapping <code>ToolLaunchEvent</code> terms to IRIs. Caliper message producers 
+      <em class="rfc2119" title="MUST">MUST</em> reference this context in every 
+      Caliper 1.1 <code>SearchEvent</code> and/or <code>Query</code> describe 
+      created and serialized for transmission to a target endpoint.</p>
+
+    <p>See the Caliper 1.1 specification [[!CALIPER-11]] for detailed requirements 
+      regarding of JSON-LD and JSON-LD context handling.</p>
+
+    <section class="informative" id="jsonld-context">
+      <h3>Example</h3>
+      <figure class="example">
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+  …
+}</code></pre>
+        <figcaption>JSON-LD Context example</figcaption>
+      </figure>
+    </section>
   </section>
 
   <section class="appendix informative">
@@ -375,7 +424,66 @@
   }
 }        
       </code></pre>  
-      <figcaption>Example of Tool Launch Event</figcaption>          
+      <figcaption>Example of Tool Launch Event (Launched)</figcaption>          
+    </figure>
+    
+    <figure class="example">
+      <pre><code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+  "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
+  "type": "ToolLaunchEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Returned",
+  "object": {   
+    "id": "https://example.com/lti/tool",
+    "type": "SoftwareApplication"
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z",
+  "edApp": {   
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"    
+  },
+  "referrer": {   
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
+    "type": "WebPage"
+  },
+  "group": {   
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {   
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {   
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  },
+  "federatedSession": {   
+    "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+    "type": "LtiSession",
+    "user": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "dateCreated": "2018-11-15T10:15:00.000Z",
+    "startedAtTime": "2018-11-15T10:15:00.000Z"
+  }
+}
+      </code></pre>  
+      <figcaption>Example of Tool Launch Event (Returned)</figcaption>          
     </figure>  
   </section>
   <!-- /examples -->
