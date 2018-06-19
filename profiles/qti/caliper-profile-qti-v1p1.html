@@ -260,7 +260,7 @@
           <pre>
             <code>
 {
-  "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "urn:uuid:27734504-068d-4596-861c-2315be33a2a2",
   "type": "AssessmentEvent",
   "actor": {
@@ -271,7 +271,7 @@
   "object": {
     "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
     "type": "Assessment",
-    "name": "Quiz One",
+    "name": "Quiz 1",
     "dateToStartOn": "2018-11-14T05:00:00.000Z",
     "dateToSubmit": "2018-11-18T11:59:59.000Z",
     "maxAttempts": 2,
@@ -899,7 +899,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
   "type": "Assessment",
-  "name": "Quiz One",
+  "name": "Quiz 1",
   "items": [
     {
       "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1",
@@ -1007,7 +1007,21 @@
               <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  . . .
+  "id": "https://example.edu/assess/1/parts/1",
+  "type": "AssessmentPart",
+  "name": "Part 1",
+  "isPartOf": "https://example.edu/assess/1",
+  "items": [{
+      "id": "https://example.edu/assess/1/parts/1/sec/1/sub/1",
+      "type": "AssessmentSection",
+      "name": "Section 1.1"
+    },
+    {
+      "id": "https://example.edu/assess/1/parts/1/sec/1/sub/2",
+      "type": "AssessmentSection",
+      "name": "Section 1.2"
+    }
+  ]
 }
               </code>
             </pre>
@@ -1090,11 +1104,62 @@
               <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  . . .
+  "id": "https://example.edu/assess/1/parts/1/sec/1",
+  "type": "AssessmentSection",
+  "name": "Section 1",
+  "isPartOf": {
+    "id": "https://example.edu/assess/1/parts/1",
+    "type": "AssessmentPart",
+    "isPartOf": {
+      "id": "https://example.edu/assess/1",
+      "type": "Assessment"
+    }
+  },
+  "items": [{
+      "id": "https://example.edu/assess/1/parts/1/sec/1/sub/1",
+      "type": "AssessmentSection",
+      "name": "Section 1.1",
+      "isPartOf": "https://example.edu/assess/1/parts/1/sec/1",
+
+      "items": [{
+          "id": "https://example.edu/assess/1/parts/1/sec/1/sub/1/items/1",
+          "type": "AssessmentItem"
+        },
+        {
+          "id": "https://example.edu/assess/1/parts/1/sec/1/sub/1/items/2",
+          "type": "AssessmentItem"
+        },
+        {
+          "id": "https://example.edu/assess/1/parts/1/sec/1/sub/1/items/3",
+          "type": "AssessmentItem"
+        }
+      ]
+    },
+    {
+      "id": "https://example.edu/assess/1/parts/1/sec/1/sub/2",
+      "type": "AssessmentSection",
+      "name": "Section 1.2",
+      "isPartOf": "https://example.edu/assess/1/parts/1/sec/1",
+      "items": [{
+          "id": "https://example.edu/assess/1/parts/1/sec/1/sub/2/items/4",
+          "type": "AssessmentItem"
+        },
+        {
+          "id": "https://example.edu/assess/1/parts/1/sec/1/sub/2/items/5",
+          "type": "AssessmentItem"
+        },
+        {
+          "id": "https://example.edu/assess/1/parts/1/sec/1/sub/2/items/6",
+          "type": "AssessmentItem"
+        }
+      ]
+    }
+  ]
 }
               </code>
             </pre>
-        <figcaption>AssessmentSection describe example</figcaption>
+        <figcaption>AssessmentSection describe referencing child sections and items
+          example</figcaption>
       </figure>
     </section>
 
