@@ -934,7 +934,8 @@
 
     <section id="entity-assessmentpart">
       <h3>AssessmentPart</h3>
-      <p>A Caliper <code>AssessmentPart</code> represents . . . TODO.</p>
+      <p>A Caliper <code>AssessmentPart</code> represents a segment of an
+        <code>Assessment</code> that is normally undertaken in separate test sessions.</p>
       <dl>
         <dt>IRI</dt>
         <dd>http://purl.imsglobal.org/caliper/AssessmentPart</dd>
@@ -991,9 +992,8 @@
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
-          <td>An ordered collection of <code>AssessmentSection</code> or
-            <code>AssessmentItem</code> entities. Each array item MUST be expressed either as an
-            object or as a string corresponding to the item's IRI.</td>
+          <td>An ordered collection of <code>AssessmentSection</code> entities. Each array item
+            MUST be expressed either as an object or as a string corresponding to the item's IRI.</td>
           <td>Optional</td>
         </tr>
         </tbody>
@@ -1025,13 +1025,14 @@
 }
               </code>
             </pre>
-        <figcaption>AssessmentPart describe referencing two child sections example</figcaption>
+        <figcaption>Example: AssessmentPart describe referencing two child sections.</figcaption>
       </figure>
     </section>
 
     <section id="entity-assessmentsection">
       <h3>AssessmentSection</h3>
-      <p>A Caliper <code>AssessmentSection</code> represents . . . TODO.</p>
+      <p>A Caliper <code>AssessmentSection</code> represents child<code>AssessmentSection</code>
+       or <code>AssessmentItem</code> groupings that share a common pedagogic testing objective.</p>
       <dl>
         <dt>IRI</dt>
         <dd>http://purl.imsglobal.org/caliper/AssessmentSection</dd>
@@ -1158,8 +1159,8 @@
 }
               </code>
             </pre>
-        <figcaption>AssessmentSection describe referencing child sections and items
-          example</figcaption>
+        <figcaption>Example: AssessmentSection describe referencing child sections and
+          items</figcaption>
       </figure>
     </section>
 
@@ -1247,7 +1248,7 @@
 }
               </code>
             </pre>
-        <figcaption>AssessmentItem describe example</figcaption>
+        <figcaption>Example: AssessmentItem describe</figcaption>
       </figure>
     </section>
 
@@ -1376,7 +1377,7 @@
 }
               </code>
             </pre>
-        <figcaption>Attempt describe example</figcaption>
+        <figcaption>Example: Attempt describe</figcaption>
       </figure>
     </section>
   </section>
@@ -1404,7 +1405,7 @@
 }
               </code>
             </pre>
-        <figcaption>JSON-LD Context example</figcaption>
+        <figcaption>Example: JSON-LD Context</figcaption>
       </figure>
     </section>
   </section>
