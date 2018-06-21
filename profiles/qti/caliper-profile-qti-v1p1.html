@@ -135,7 +135,7 @@
       <h3>AssessmentEvent</h3>
 
       <img height="100%" width="100%"
-           src="../assets/caliper-assessment_event_started-v1p1.png" alt="AssessmentEvent"/>
+           src="./assets/caliper-assessment_event_started-v1p1.png" alt="AssessmentEvent"/>
 
       <p>A Caliper <code>AssessmentEvent</code> models learner interactions with assessment
       instruments such as online tests or quizzes.</p>
@@ -313,7 +313,7 @@
       <h3>AssessmentPartEvent</h3>
 
       <img height="100%" width="100%"
-           src="../assets/caliper-assessmentpart_event_started.png" alt="AssessmentPartEvent"/>
+           src="./assets/caliper-assessmentpart_event_started.png" alt="AssessmentPartEvent"/>
 
       <p>A Caliper <code>AssessmentPartEvent</code> models a learner's interaction with an
         individual <code>AssessmentPart</code>.</p>
@@ -436,7 +436,7 @@
       <h3>AssessmentSectionEvent</h3>
 
       <img height="100%" width="100%"
-           src="../assets/caliper-assessmentsection_event_completed.png"
+           src="./assets/caliper-assessmentsection_event_completed.png"
            alt="AssessmentSectionEvent"/>
 
       <p>A Caliper <code>AssessmentSectionEvent</code> models a learner's interaction with an
@@ -560,7 +560,7 @@
       <h3>AssessmentItemEvent</h3>
 
       <img height="100%" width="100%"
-           src="../assets/caliper-assessmentitem_event_completed-v2.png" alt="AssessmentItemEvent"/>
+           src="./assets/caliper-assessmentitem_event_completed-v2.png" alt="AssessmentItemEvent"/>
 
       <p>A Caliper <code>AssessmentItemEvent</code> models a learner's interaction with an
         individual <code>AssessmentItem</code>.</p>
@@ -773,26 +773,110 @@
 
   <section id="actions">
     <h2>Actions</h2>
-    <p>The Caliper <a href="#AssessmentEvent">AssessmentEvent</a> supports the following
-      actions:</p>
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Term</th>
-        <th>IRI</th>
-        <th>WordNet® Gloss</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td id="action-started">Started</td>
-        <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
-          http://purl.imsglobal.org/caliper/actions/Started</a></td>
-        <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
-          start</a>.</td>
-      </tr>
-      </tbody>
-    </table>
+
+    <p>Intro TODO</p>
+
+    Started, Skipped, Completed
+
+    <section id="actions-assessmentEvent">
+      <p>The Caliper <a href="#AssessmentEvent">AssessmentEvent</a> supports the following
+        actions:</p>
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Term</th>
+          <th>IRI</th>
+          <th>WordNet® Gloss</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="action-started">Started</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Started</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
+              start</a>.</td>
+          </tr>
+          <tr>
+            <td id="action-paused">Paused</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Paused" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Paused</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200781106-v">Cease an action
+              temporarily</a>. Inverse of <a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#resumed"
+            >Resumed</a>.</td>
+          </tr>
+          <tr>
+            <td id="action-resumed">Resumed</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Resumed" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Resumed</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
+              as in to start something, pause and then begin again at the location where the pause in
+              action occurred. Inverse of <a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#paused"
+              >Paused</a>.</td>
+          </tr>
+          <tr>
+            <td id="action-restarted">Restarted</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Restarted" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Restarted</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
+              as in to start something, make progress but then stop and return to the beginning in
+              order to start again.</td>
+          </tr>
+          <tr>
+            <td id="action-reset">Reset</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Reset" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Reset</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200949623-v">Set anew.</a></td>
+          </tr>
+          <tr>
+            <td id="action-submitted">Submitted</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Submitted" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Submitted</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/202267560-v">Hand over formally.</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="actions-assessmentItemEvent">
+      <p>The Caliper <a href="#AssessmentItemEvent">AssessmentItemEvent</a> supports the following
+        actions:</p>
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Term</th>
+          <th>IRI</th>
+          <th>WordNet® Gloss</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td id="action-started">Started</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/Started</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
+            start</a>.</td>
+        </tr>
+        <tr>
+          <td id="action-skipped">Skipped</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Skipped" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/Skipped</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200618188-v">Bypass</a>.</td>
+        </tr>
+        <tr>
+          <td id="action-completed">Completed</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Completed" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/Completed</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200485097-v">Come or bring to a
+            finish or an end</a>.</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
   </section>
 
   <section id="entities">
