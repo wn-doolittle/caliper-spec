@@ -6,10 +6,10 @@
   <script src='local-biblio.js' class='remove'></script>
   <script class='remove'>
     var respecConfig = {
-      specTitle: "Caliper Analytics® Question & Test Interoperability (QTI) Profile",
+      specTitle: "Caliper Analytics® QTI Profile",
       shortName: "caliper-search",
       specStatus: "IMS Base Document",
-      specDate: "June 30th, 2018",
+      specDate: "August 31, 2018",
       specVersion: "1.1",
       specNature: "normative",
       specType: "spec",
@@ -50,6 +50,7 @@
 
     <section class="informative" id="usecases">
       <h3>Use cases</h3>
+
       <p>The QTI Profile supports the following learner-centric use cases:</p>
       <table>
         <tr>
@@ -72,16 +73,9 @@
 
     <section id="terminology">
       <h3>Terminology</h3>
+
       <p>All terminology used in this specification is concordant with the term
-        definitions in the Caliper 1.1 Specification [[!CALIPER-11]].
-        <!--
-        <dl class="termlist" data-sort id="terms">
-          <dt><dfn data-lt="term1">term1</dfn></dt>
-          <dd>Definition</dd>
-          <dt><dfn data-lt="term2">term2</dfn></dt>
-          <dd>Definition</dd>
-        </dl>
-      -->
+        definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
     </section>
 
     <section id="conformance">
@@ -90,8 +84,10 @@
 
     <section id="documentset">
       <h3>Document Set</h3>
+
       <section>
         <h4>Normative Documents</h4>
+
         <dl>
           <dt>Caliper 1.1</dt>
           <dd>This profile is an extension to the Caliper 1.1 specification [[!CALIPER-11]].
@@ -113,6 +109,7 @@
 
       <section class="informative">
         <h4>Informative Documents</h4>
+
         <dl>
           <dt>Caliper 1.1 Implementation Guide</dt>
           <dd>The implementation guide that accompanies the Caliper 1.1 specification provides
@@ -122,7 +119,6 @@
       </section>
     </section>
   </section>
-  <!-- /overview -->
 
   <section id="events">
     <h2>Events</h2>
@@ -142,8 +138,7 @@
            src="../assets/caliper-assessment_event_started-v1p1.png" alt="AssessmentEvent"/>
 
       <p>A Caliper <code>AssessmentEvent</code> models learner interactions with assessment
-      instruments such as online tests or quizzes.
-      </p>
+      instruments such as online tests or quizzes.</p>
 
       <dl>
         <dt>IRI</dt>
@@ -176,6 +171,7 @@
           <code>Event</code>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -194,8 +190,7 @@
           <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
             version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per
-            <a href="https://tools.ietf.org/html/rfc4122">RFC 4222</a>.</td>
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[rfc4122]].</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -252,11 +247,9 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="event-assessment-jsonld">
-      <h3>Example</h3>
       <figure class="example">
+        <figcaption><code>AssessmentEvent</code> JSON-LD.</figcaption>
           <pre>
             <code>
 {
@@ -313,7 +306,6 @@
 }
             </code>
           </pre>
-        <figcaption>AssessmentEvent example</figcaption>
       </figure>
     </section>
 
@@ -324,8 +316,7 @@
            src="../assets/caliper-assessmentpart_event_started.png" alt="AssessmentPartEvent"/>
 
       <p>A Caliper <code>AssessmentPartEvent</code> models a learner's interaction with an
-        individual <code>AssessmentPart</code>.
-      </p>
+        individual <code>AssessmentPart</code>.</p>
 
       <dl>
         <dt>IRI</dt>
@@ -353,6 +344,7 @@
           <code>Event</code>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -370,9 +362,8 @@
           >UUID</a></td>
           <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
             version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
-                                                                                      "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per
-            <a href="https://tools.ietf.org/html/rfc4122">RFC 4222</a>.</td>
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[RFC 4122]].</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -388,7 +379,7 @@
           <td><a href=
                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
           >Person</a> | <a href=
-                             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
             be expressed either as an object or as a string corresponding to the actor's IRI.</td>
@@ -427,20 +418,17 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="event-assessmentpart-jsonld">
-      <h3>Example</h3>
       <figure class="example">
-            <pre>
-              <code>
+        <figcaption><code>AssessmentPartEvent</code> JSON-LD.</figcaption>
+        <pre>
+          <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   ... TODO
 }
-              </code>
-            </pre>
-        <figcaption>AssessmentPartEvent example</figcaption>
+          </code>
+        </pre>
       </figure>
     </section>
 
@@ -452,8 +440,7 @@
            alt="AssessmentSectionEvent"/>
 
       <p>A Caliper <code>AssessmentSectionEvent</code> models a learner's interaction with an
-        individual <code>AssessmentSection</code>.
-      </p>
+        individual <code>AssessmentSection</code>.</p>
 
       <dl>
         <dt>IRI</dt>
@@ -481,6 +468,7 @@
           <code>Event</code>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -494,13 +482,12 @@
         <tr>
           <td>id</td>
           <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
           >UUID</a></td>
           <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
             version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per
-            <a href="https://tools.ietf.org/html/rfc4122">RFC 4222</a>.</td>
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[RFC 4122]].</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -555,20 +542,17 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="event-assessmentsection-jsonld">
-      <h3>Example</h3>
       <figure class="example">
-            <pre>
-              <code>
+        <figcaption><code>AssessmentPartEvent</code> JSON-LD.</figcaption>
+        <pre>
+          <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   ... TODO
 }
-              </code>
-            </pre>
-        <figcaption>AssessmentPartEvent example</figcaption>
+          </code>
+        </pre>
       </figure>
     </section>
 
@@ -579,8 +563,7 @@
            src="../assets/caliper-assessmentitem_event_completed-v2.png" alt="AssessmentItemEvent"/>
 
       <p>A Caliper <code>AssessmentItemEvent</code> models a learner's interaction with an
-        individual <code>AssessmentItem</code>.
-      </p>
+        individual <code>AssessmentItem</code>.</p>
 
       <dl>
         <dt>IRI</dt>
@@ -625,6 +608,7 @@
           <code>Event</code>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -638,13 +622,12 @@
         <tr>
           <td>id</td>
           <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
           >UUID</a></td>
           <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
             version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per
-            <a href="https://tools.ietf.org/html/rfc4122">RFC 4222</a>.</td>
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[RFC 4122]].</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -700,13 +683,11 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="event-assessmentitem-jsonld">
-      <h3>Example</h3>
       <figure class="example">
-            <pre>
-              <code>
+        <figcaption><code>AssessmentItemEvent</code> JSON-LD.</figcaption>
+        <pre>
+          <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "urn:uuid:e5891791-3d27-4df1-a272-091806a43dfb",
@@ -784,9 +765,8 @@
     "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }
-              </code>
-            </pre>
-        <figcaption>AssessmentItemEvent example</figcaption>
+          </code>
+        </pre>
       </figure>
     </section>
   </section>
@@ -823,8 +803,10 @@
 
     <section id="entity-assessment">
       <h3>Assessment</h3>
+
       <p>A Caliper <code>Assessment</code> represents an assessment instrument such as a test or
         quiz.</p>
+
       <dl>
         <dt>IRI</dt>
         <dd>http://purl.imsglobal.org/caliper/Assessment</dd>
@@ -842,6 +824,7 @@
           below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -888,13 +871,11 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="entity-assessment-jsonld">
-      <h3>Example</h3>
       <figure class="example">
-            <pre>
-              <code>
+        <figcaption><code>Assessment</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
@@ -926,16 +907,17 @@
   "maxSubmits": 2,
   "version": "1.0"
 }
-              </code>
-            </pre>
-        <figcaption>Assessment describe example</figcaption>
+          </code>
+        </pre>
       </figure>
     </section>
 
     <section id="entity-assessmentpart">
       <h3>AssessmentPart</h3>
+
       <p>A Caliper <code>AssessmentPart</code> represents a segment of an
         <code>Assessment</code> that is normally undertaken in separate test sessions.</p>
+
       <dl>
         <dt>IRI</dt>
         <dd>http://purl.imsglobal.org/caliper/AssessmentPart</dd>
@@ -953,6 +935,7 @@
           below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -998,13 +981,12 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="entity-assessmentpart-jsonld">
-      <h3>Example</h3>
       <figure class="example">
-            <pre>
-              <code>
+        <figcaption><code>AssessmentPart</code> JSON-LD describe that references two child
+          sections.</figcaption>
+        <pre>
+          <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "https://example.edu/assess/1/parts/1",
@@ -1023,16 +1005,17 @@
     }
   ]
 }
-              </code>
-            </pre>
-        <figcaption>Example: AssessmentPart describe referencing two child sections.</figcaption>
+          </code>
+        </pre>
       </figure>
     </section>
 
     <section id="entity-assessmentsection">
       <h3>AssessmentSection</h3>
-      <p>A Caliper <code>AssessmentSection</code> represents child<code>AssessmentSection</code>
+
+      <p>A Caliper <code>AssessmentSection</code> represents child <code>AssessmentSection</code>
        or <code>AssessmentItem</code> groupings that share a common pedagogic testing objective.</p>
+
       <dl>
         <dt>IRI</dt>
         <dd>http://purl.imsglobal.org/caliper/AssessmentSection</dd>
@@ -1050,6 +1033,7 @@
           below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -1096,13 +1080,12 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="entity-assessmentsection-jsonld">
-      <h3>Example</h3>
       <figure class="example">
-            <pre>
-              <code>
+        <figcaption><code>AssessmentSection</code> JSON-LD describe that references child sections
+          and items.</figcaption>
+        <pre>
+          <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "https://example.edu/assess/1/parts/1/sec/1",
@@ -1157,16 +1140,16 @@
     }
   ]
 }
-              </code>
-            </pre>
-        <figcaption>Example: AssessmentSection describe referencing child sections and
-          items</figcaption>
+          </code>
+        </pre>
       </figure>
     </section>
 
     <section id="entity-assessmentitem">
       <h3>AssessmentItem</h3>
+
       <p>A Caliper <code>AssessmentItem</code> represents a single test question.</p>
+
       <dl>
         <dt>IRI</dt>
         <dd>http://purl.imsglobal.org/caliper/AssessmentItem</dd>
@@ -1180,6 +1163,7 @@
           below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -1193,23 +1177,23 @@
         <tr>
           <td>id</td>
           <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
             also be dereferenceable, i.e., capable of returning a representation of the resource.
             A <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
             >URI</a> employing the <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
             >URN</a> scheme MAY be provided in cases where a <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
             >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>type</td>
           <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The string value MUST be set to the Term 'AssessmentItem'.</td>
           <td>Required</td>
@@ -1217,7 +1201,7 @@
         <tr>
           <td>isTimeDependent</td>
           <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#booleanDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#booleanDef"
           >Boolean</a></td>
           <td>A boolean value indicating whether or not interacting with the
             <code>AssessmentItem</code> is time dependent.</td>
@@ -1225,13 +1209,11 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="entity-assessmentitem-jsonld">
-      <h3>Example</h3>
       <figure class="example">
-            <pre>
-              <code>
+        <figcaption><code>AssessmentItem</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
@@ -1246,18 +1228,19 @@
   "maxScore": 1.0,
   "maxSubmits": 2
 }
-              </code>
-            </pre>
-        <figcaption>Example: AssessmentItem describe</figcaption>
+          </code>
+        </pre>
       </figure>
     </section>
 
     <section id="entity-attempt">
       <h3>Attempt</h3>
+
       <p>A Caliper <code>Attempt</code> provides a count of the number of times an <code>actor</code>
         has interacted with an <code>AssignableDigitalResource</code> along with start time, end time
         and duration information. An <code>Attempt</code> is generated as the result of an action
         such as starting an <code>Assessment</code>.</p>
+
       <dl>
         <dt>IRI</dt>
         <dd>http://purl.imsglobal.org/caliper/Attempt</dd>
@@ -1271,6 +1254,7 @@
           below:
         </dd>
       </dl>
+
       <table class="data">
         <thead>
         <tr>
@@ -1332,7 +1316,7 @@
         <tr>
           <td>isPartOf</td>
           <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#attempt"
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#attempt"
           >Attempt</a></td>
           <td>The parent <code>Attempt</code>, if one exists. The <code>isPartOf</code> value MUST
             be expressed either as an object or as a string corresponding to the associated
@@ -1350,13 +1334,11 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="informative" id="entity-attempt-jsonld">
-      <h3>Example</h3>
       <figure class="example">
-            <pre>
-              <code>
+        <figcaption><code>Attempt</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
@@ -1375,9 +1357,8 @@
   "endedAtTime": "2018-11-15T10:55:30.000Z",
   "duration": "PT50M30S"
 }
-              </code>
-            </pre>
-        <figcaption>Example: Attempt describe</figcaption>
+          </code>
+        </pre>
       </figure>
     </section>
   </section>
@@ -1394,20 +1375,17 @@
     <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
       context handling.</p>
 
-    <section class="informative" id="jsonld-context">
-      <h3>Example</h3>
-      <figure class="example">
-            <pre>
-              <code>
+    <figure class="example">
+      <figcaption>JSON-LD Context.</figcaption>
+      <pre>
+        <code>
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QTIProfile-extension",
-  . . .
+"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QTIProfile-extension",
+. . .
 }
-              </code>
-            </pre>
-        <figcaption>Example: JSON-LD Context</figcaption>
-      </figure>
-    </section>
+        </code>
+      </pre>
+    </figure>
   </section>
 
   <section class="appendix informative" id="revisionhistory">
@@ -1425,7 +1403,7 @@
         <tbody>
         <tr>
           <td>IMS Base Document 1.0</td>
-          <td>Month Day, 2018</td>
+          <td>August 31, 2018</td>
           <td>The first internal draft release.</td>
         </tr>
         </tbody>
