@@ -1254,7 +1254,7 @@ An [Endpoint](#endpoint) MAY send back responses other than those with `2xx` cla
 
 * If the request message's Caliper [Envelope](#envelope) is malformed (for example, missing fields required by the Envelop's version), reply with a `400 Bad Request` status code.
 
-* If the [Sensor](#sensor) sends an unauthorized request, or the [Endpoint](#endpoint) is unable to validate the authorization, or the [Endpoint](#endpoint) cannot determine that the [Sensor](#senor) has sufficient privilege to send such a message, reply with a `401 Unauthorized`.
+* If the [Sensor](#sensor) sends an unauthorized request, or the [Endpoint](#endpoint) is unable to validate the authorization, or the [Endpoint](#endpoint) cannot determine that the [Sensor](#sensor) has sufficient privilege to send such a message, reply with a `401 Unauthorized`.
 
 * If the request message has a content-type other than `application/json`, reply with a `415 Unsupported Media Type`.
 
