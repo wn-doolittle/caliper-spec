@@ -1296,7 +1296,7 @@
       </figure>
     </section>
 
-    <section id="assessmentpart">
+    <section id="assessmentPart">
       <h3>AssessmentPart</h3>
 
       <p>A Caliper <code>AssessmentPart</code> represents a segment of an
@@ -1394,7 +1394,7 @@
       </figure>
     </section>
 
-    <section id="assessmentsection">
+    <section id="assessmentSection">
       <h3>AssessmentSection</h3>
 
       <p>A Caliper <code>AssessmentSection</code> represents child <code>AssessmentSection</code>
@@ -1532,7 +1532,7 @@
       </figure>
     </section>
 
-    <section id="assessmentitem">
+    <section id="assessmentItem">
       <h3>AssessmentItem</h3>
 
       <p>A Caliper <code>AssessmentItem</code> represents a single test question.</p>
@@ -1622,6 +1622,83 @@
   "isTimeDependent": false,
   "maxScore": 1.0,
   "maxSubmits": 2
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="assessmentItemInteraction">
+      <h3>AssessmentItemInteraction</h3>
+
+      <p>A Caliper <code>AssessmentItemInteraction</code> represents a ... TODO.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentItemInteraction</dd>
+        <dt>Supertypes</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#assignableDigitalResource"
+        >AssignableDigitalResource</a></dd>
+        <dt>Properties</dt>
+        <dd><code>AssessmentItemInteraction</code> inherits all the properties and requirements
+          defined by its supertype <code>AssignableDigitalResource</code>. Profile-specific type
+          restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+                                        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+                                                                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'AssessmentItemInteraction'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>TODO -- ADD ADDITIONAL PROPERTY CONSTRAINTS AS REQUIRED (OR NOT).</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentItemInteraction</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  ...
+  TODO
+  ...
 }
           </code>
         </pre>
