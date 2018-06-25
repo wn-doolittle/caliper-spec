@@ -131,7 +131,7 @@
       attempted. A <code>Response</code> is also modeled for capturing individual item responses.
     </p>
 
-    <section id="assessment">
+    <section id="assessmentEvent">
       <h3>AssessmentEvent</h3>
 
       <img height="100%" width="100%"
@@ -164,7 +164,9 @@
         <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
         <dd><code>AssessmentEvent</code> inherits all properties defined by its supertype
-          <code>Event</code>. Profile-specific type restrictions are described below:
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
 
@@ -305,7 +307,7 @@
       </figure>
     </section>
 
-    <section id="assessmentpart">
+    <section id="assessmentPartEvent">
       <h3>AssessmentPartEvent</h3>
 
       <img height="100%" width="100%"
@@ -335,7 +337,9 @@
         <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
         <dd><code>AssessmentPartEvent</code> inherits all properties defined by its supertype
-          <code>Event</code>. Profile-specific type restrictions are described below:
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
 
@@ -426,7 +430,7 @@
       </figure>
     </section>
 
-    <section id="assessmentsection">
+    <section id="assessmentSectionEvent">
       <h3>AssessmentSectionEvent</h3>
 
       <img height="100%" width="100%"
@@ -457,7 +461,9 @@
         <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
         <dd><code>AssessmentSectionEvent</code> inherits all properties defined by its supertype
-          <code>Event</code>. Profile-specific type restrictions are described below:
+          <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
 
@@ -548,7 +554,7 @@
       </figure>
     </section>
 
-    <section id="assessmentitem">
+    <section id="assessmentItemEvent">
       <h3>AssessmentItemEvent</h3>
 
       <img height="100%" width="100%"
@@ -593,7 +599,9 @@
         >TrueFalseResponse DEPRECATE?</a></dd>
         <dt>Properties</dt>
         <dd><code>AssessmentItemEvent</code> inherits all properties defined by its supertype
-          <code>Event</code>. Profile-specific type restrictions are described below:
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
 
@@ -708,6 +716,309 @@
     ...
     TODO RESPONSE
     ...
+  },
+  "eventTime": "2018-11-15T10:15:12.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [
+      "Learner"
+    ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="navigationEvent">
+      <h3>NavigationEvent</h3>
+
+      <img height="100%" width="100%"
+           src="./assets/caliper-navigation_event_navigatedto-v2.png" alt="NavigationEvent"/>
+
+      <p>A Caliper <code>NavigationEvent</code> models an actor traversing a network of digital
+        resources.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/NavigationEvent</dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a></dd>
+        <dt>Supported actors</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a></dd>
+        <dt>Supported actions</dt>
+        <dd><a href="action-viewed">Viewed</a></dd>
+        <dt>Supported objects</dt>
+        <dd><a href="#assessment">Assessment</a></dd>
+        <dd><a href="#assessmentPart">AssessmentPart</a></dd>
+        <dd><a href="#assessmentSection">AssessmentSection</a></dd>
+        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
+        <dt>Properties</dt>
+        <dd><code>NavigationEvent</code> inherits all properties defined by its supertype
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+          >UUID</a></td>
+          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
+            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[RFC 4122]].</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'ViewEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The string value MUST be set to 'NavigatedTo'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href="#assessment">Assessment</a> | <a href="#assessmentPart">AssessmentPart</a> |
+            <a href="#assessmentSection">AssessmentSection</a> |
+            <a href="#assessmentItem">AssessmentItem</a> | <a href=
+                                                                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            >IRI</a></td>
+          <td>The <a href="#assessment">Assessment</a>, <a href="#assessmentPart">AssessmentPart
+          </a>, <a href="#assessmentSection">AssessmentSection</a>, or
+            <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
+            <code>object</code> value MUST be expressed either as an object or as a string
+            corresponding to the resources's IRI.</td>
+          <td>Required</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>ViewEvent</code> JSON-LD.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:77bcfcad-e5d7-477f-b8aa-6fd953244f69",
+  "type": "NavigationEvent",
+  "actor": "https://example.edu/users/554433",
+  "action": "NavigatedTo",
+  "object": {
+    "id": "https://example.edu/assess/1",
+    "type": "Assessment",
+    "name": "Quiz 1",
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "dateModified": "2018-09-02T11:30:00.000Z",
+    "datePublished": "2018-08-15T09:30:00.000Z",
+    "version": "1.0"
+  },
+  "eventTime": "2018-11-15T10:15:12.000Z",
+  "referrer": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
+    "type": "WebPage"
+  },
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [
+      "Learner"
+    ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}
+            </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="viewEvent">
+      <h3>ViewEvent</h3>
+
+      <img height="100%" width="100%"
+           src="./assets/caliper-view_event_viewed-v2.png" alt="ViewEvent"/>
+
+      <p>A Caliper <code>ViewEvent</code> describes an actor's examination of digital
+        content whenever the activity emphasizes thoughtful observation or study as opposed to
+        the mere retrieval of a resource.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/ViewEvent</dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a></dd>
+        <dt>Supported actors</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a></dd>
+        <dt>Supported actions</dt>
+        <dd><a href="action-viewed">Viewed</a></dd>
+        <dt>Supported objects</dt>
+        <dd><a href="#assessment">Assessment</a></dd>
+        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
+        <dt>Properties</dt>
+        <dd><code>ViewEvent</code> inherits all properties defined by its supertype
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+          >UUID</a></td>
+          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
+            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[RFC 4122]].</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'ViewEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The string value MUST be set to 'Viewed'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href="#assessment">Assessment</a> | <a href="#assessmentPart">AssessmentPart</a> |
+            <a href="#assessmentSection">AssessmentSection</a> |
+            <a href="#assessmentItem">AssessmentItem</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <a href="#assessment">Assessment</a>, <a href="#assessmentPart">AssessmentPart
+          </a>, <a href="#assessmentSection">AssessmentSection</a>, or
+            <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
+            <code>object</code> value MUST be expressed either as an object or as a string
+            corresponding to the resources's IRI.</td>
+          <td>Required</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>ViewEvent</code> JSON-LD.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:13d0830e-ef93-4cd6-8aa4-80eeca90f0a9",
+  "type": "ViewEvent",
+  "actor": "https://example.edu/users/554433",
+  "action": "Viewed",
+  "object": {
+    "id": "https://example.edu/assess/1",
+    "type": "Assessment",
+    "name": "Quiz 1",
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "dateModified": "2018-09-02T11:30:00.000Z",
+    "datePublished": "2018-08-15T09:30:00.000Z",
+    "version": "1.0"
   },
   "eventTime": "2018-11-15T10:15:12.000Z",
   "edApp": "https://example.edu",
