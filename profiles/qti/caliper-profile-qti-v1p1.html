@@ -145,7 +145,7 @@
         <dd>http://purl.imsglobal.org/caliper/AssessmentEvent</dd>
         <dt>Supertype</dt>
         <dd><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
         >Event</a></dd>
         <dt>Supported actors</dt>
         <dd><a href=
@@ -159,13 +159,9 @@
         <dd><a href="action-reset">Reset</a></dd>
         <dd><a href="action-submitted">Submitted</a></dd>
         <dt>Supported objects</dt>
-        <dd><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#assessment"
-        >Assessment</a></dd>
+        <dd><a href="#assessment">Assessment</a></dd>
         <dt>Supported generated entities</dt>
-        <dd><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#attempt"
-        >Attempt</a></dd>
+        <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
         <dd><code>AssessmentEvent</code> inherits all properties defined by its supertype
           <code>Event</code>. Profile-specific type restrictions are described below:
@@ -262,7 +258,7 @@
   },
   "action": "Started",
   "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/assess/1",
     "type": "Assessment",
     "name": "Quiz 1",
     "dateToStartOn": "2018-11-14T05:00:00.000Z",
@@ -273,10 +269,10 @@
     "version": "1.0"
   },
   "generated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
+    "assignable": "https://example.edu/assess/1",
     "count": 1,
     "dateCreated": "2018-11-15T10:15:00.000Z",
     "startedAtTime": "2018-11-15T10:15:00.000Z"
@@ -323,7 +319,7 @@
         <dd>http://purl.imsglobal.org/caliper/AssessmentPartEvent</dd>
         <dt>Supertype</dt>
         <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
         >Event</a></dd>
         <dt>Supported actors</dt>
         <dd><a href=
@@ -336,9 +332,7 @@
         <dt>Supported objects</dt>
         <dd><a href="#assessmentPart">AssessmentPart</a></dd>
         <dt>Supported generated entities</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#attempt"
-        >Attempt</a></dd>
+        <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
         <dd><code>AssessmentPartEvent</code> inherits all properties defined by its supertype
           <code>Event</code>. Profile-specific type restrictions are described below:
@@ -460,9 +454,7 @@
         <dt>Supported objects</dt>
         <dd><a href="#assessmentSection">AssessmentSection</a></dd>
         <dt>Supported generated entities</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#attempt"
-        >Attempt</a></dd>
+        <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
         <dd><code>AssessmentSectionEvent</code> inherits all properties defined by its supertype
           <code>Event</code>. Profile-specific type restrictions are described below:
@@ -570,7 +562,7 @@
         <dd>http://purl.imsglobal.org/caliper/AssessmentItemEvent</dd>
         <dt>Supertype</dt>
         <dd><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
         >Event</a></dd>
         <dt>Supported actors</dt>
         <dd><a href=
@@ -581,13 +573,9 @@
         <dd><a href="action-skipped">Skipped</a></dd>
         <dd><a href="action-completed">Completed</a></dd>
         <dt>Supported objects</dt>
-        <dd><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#assessmentItem"
-        >AssessmentItem</a></dd>
+        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
         <dt>Supported generated entities</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
-        >Response</a></dd>
+        <dd><a href="#response">Response</a></dd>
         <dd><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#fillinBlankResponse"
         >FillinBlankResponse DEPRECATE?</a></dd>
@@ -661,9 +649,7 @@
         </tr>
         <tr>
           <td>object</td>
-          <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#assessmentItem"
-          >AssessmentItem</a> | <a href=
+          <td><a href="#assessmentItem">AssessmentItem</a> | <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>AssessmentItem</code> presented to the <code>actor</code>. The
@@ -698,47 +684,30 @@
   },
   "action": "Completed",
   "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
+    "id": "https://example.edu/assess/1/parts/1/sec/1/items/3",
     "type": "AssessmentItem",
-    "name": "Assessment Item 3",
     "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
-      "type": "Assessment"
-    },
-    "dateToStartOn": "2018-11-14T05:00:00.000Z",
-    "dateToSubmit": "2018-11-18T11:59:59.000Z",
-    "maxAttempts": 2,
-    "maxSubmits": 2,
-    "maxScore": 1.0,
-    "isTimeDependent": false,
-    "version": "1.0"
-  },
-  "generated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3/users/554433/responses/1",
-    "type": "FillinBlankResponse",
-    "attempt": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1",
-      "type": "Attempt",
-      "assignee": "https://example.edu/users/554433",
-      "assignable": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
-        "type": "AssessmentItem",
-        "name": "Assessment Item 3",
+      "id": "https://example.edu/assess/1/parts/1/sec/1",
+      "type": "AssessmentSection",
+      "isPartOf": {
+        "id": "https://example.edu/assess/1/parts/1",
+        "type": "AssessmentPart",
         "isPartOf": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
+          "id": "https://example.edu/assess/1",
           "type": "Assessment"
         }
-      },
-      "isPartOf": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-      "count": 1,
-      "dateCreated": "2018-11-15T10:15:02.000Z",
-      "startedAtTime": "2018-11-15T10:15:02.000Z",
-      "endedAtTime": "2018-11-15T10:15:12.000Z"
+      }
     },
-    "dateCreated": "2018-11-15T10:15:12.000Z",
-    "startedAtTime": "2018-11-15T10:15:02.000Z",
-    "endedAtTime": "2018-11-15T10:15:12.000Z",
-    "values": ["subject", "object", "predicate"]
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "datePublished": "2018-08-15T09:30:00.000Z",
+    "isTimeDependent": false,
+    "maxScore": 1.0,
+    "maxSubmits": 2
+  },
+  "generated": {
+    ...
+    TODO RESPONSE
+    ...
   },
   "eventTime": "2018-11-15T10:15:12.000Z",
   "edApp": "https://example.edu",
@@ -788,8 +757,9 @@
     <section id="actions-assessmentEvent-and-assessmentPartEvent">
       <h2>AssessmentEvent and AssessmentPartEvent</h2>
 
-      <p><a href="#AssessmentEvent">AssessmentEvent</a> and
-        <a href="#AssessmentPartEvent">AssessmentPartEvent</a> support the following actions:</p>
+      <p><a href="#assessmentEvent">AssessmentEvent</a> and
+        <a href="#assessmentPartEvent">AssessmentPartEvent</a> support the following
+        actions:</p>
 
       <table class="data">
         <thead>
@@ -854,8 +824,9 @@
     <section id="actions-assessmentSectionEvent-and-assessmentItemEvent">
       <h2>AssessmentSectionEvent and AssessmentItemEvent</h2>
 
-      <p><a href="#AssessmentSectionEvent">AssessmentSectionEvent</a> and
-        <a href="#AssessmentItemEvent">AssessmentItemEvent</a> support the following actions:</p>
+      <p><a href="#assessmentSectionEvent">AssessmentSectionEvent</a> and
+        <a href="#assessmentItemEvent">AssessmentItemEvent</a> support the following
+        actions:</p>
 
       <table class="data">
         <thead>
@@ -975,21 +946,26 @@
           <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
+  "id": "https://example.edu/assess/1",
   "type": "Assessment",
   "name": "Quiz 1",
   "items": [
     {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1",
-      "type": "AssessmentItem"
-    },
-    {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2",
-      "type": "AssessmentItem"
-    },
-    {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
-      "type": "AssessmentItem"
+      "id": "https://example.edu/assess/1/parts/1",
+      "type": "AssessmentPart",
+      "name": "Part 1",
+      "items": [
+        {
+          "id": "https://example.edu/assess/1/parts/1/sec/1",
+          "type": "AssessmentSection",
+          "name": "Section 1"
+        },
+        {
+           "id": "https://example.edu/assess/1/parts/1/sec/2",
+           "type": "AssessmentSection",
+           "name": "Section 2"
+        }
+      ]
     }
   ],
   "dateCreated": "2018-08-01T06:00:00.000Z",
@@ -1046,7 +1022,7 @@
         <tr>
           <td>id</td>
           <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
             also be dereferenceable, i.e., capable of returning a representation of the resource.
@@ -1149,11 +1125,11 @@
           <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
             also be dereferenceable, i.e., capable of returning a representation of the resource.
             A <a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
             >URI</a> employing the <a href=
-                                        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
             >URN</a> scheme MAY be provided in cases where a <a href=
-                                                                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
             >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
           <td>Required</td>
         </tr>
@@ -1196,13 +1172,15 @@
       "type": "Assessment"
     }
   },
-  "items": [{
+  "items": [
+    {
       "id": "https://example.edu/assess/1/parts/1/sec/1/sub/1",
       "type": "AssessmentSection",
       "name": "Section 1.1",
       "isPartOf": "https://example.edu/assess/1/parts/1/sec/1",
 
-      "items": [{
+      "items": [
+        {
           "id": "https://example.edu/assess/1/parts/1/sec/1/sub/1/items/1",
           "type": "AssessmentItem"
         },
@@ -1221,7 +1199,8 @@
       "type": "AssessmentSection",
       "name": "Section 1.2",
       "isPartOf": "https://example.edu/assess/1/parts/1/sec/1",
-      "items": [{
+      "items": [
+        {
           "id": "https://example.edu/assess/1/parts/1/sec/1/sub/2/items/4",
           "type": "AssessmentItem"
         },
@@ -1313,11 +1292,19 @@
           <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
+  "id": "https://example.edu/assess/1/parts/1/sec/1/items/3",
   "type": "AssessmentItem",
   "isPartOf": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
-    "type": "Assessment"
+    "id": "https://example.edu/assess/1/parts/1/sec/1",
+    "type": "AssessmentSection",
+    "isPartOf": {
+      "id": "https://example.edu/assess/1/parts/1",
+      "type": "AssessmentPart",
+      "isPartOf": {
+        "id": "https://example.edu/assess/1",
+        "type": "Assessment"
+      }
+    }
   },
   "dateCreated": "2018-08-01T06:00:00.000Z",
   "datePublished": "2018-08-15T09:30:00.000Z",
@@ -1412,9 +1399,7 @@
         </tr>
         <tr>
           <td>isPartOf</td>
-          <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#attempt"
-          >Attempt</a></td>
+          <td><a href="#attempt">Attempt</a></td>
           <td>The parent <code>Attempt</code>, if one exists. The <code>isPartOf</code> value MUST
             be expressed either as an object or as a string corresponding to the associated
             attempt's IRI.</td>
@@ -1438,10 +1423,10 @@
           <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
+  "id": "https://https://example.edu/assess/1/users/554433/attempts/1",
   "type": "Attempt",
   "assignable": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
+    "id": "https://example.edu/assess/1",
     "type": "Assessment"
   },
   "assignee": {
@@ -1453,6 +1438,126 @@
   "startedAtTime": "2018-11-15T10:05:00.000Z",
   "endedAtTime": "2018-11-15T10:55:30.000Z",
   "duration": "PT50M30S"
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="entity-response">
+      <h3>Response</h3>
+
+      <p>A Caliper <code>Response</code> represents the selected option generated by a
+        <a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a> interacting with an <a href="#assessmentItem">AssessmentItem</a>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/Response</dd>
+        <dt>Supertypes</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+        >Entity</a></dd>
+        <dt>Properties</dt>
+        <dd><code>Response</code> inherits all the properties and requirements defined by
+          its supertype <code>Entity</code>. Profile-specific type restrictions are described
+          below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'Response'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>attempt</td>
+          <td><a href="#attempt">Attempt</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The associated <a href="#attempt">Attempt</a>. The <code>attempt</code> value
+            MUST be expressed either as an object or as a string corresponding to the attempt's IRI.
+            If an object representation is provided, the <a href="#attempt">Attempt</a> SHOULD
+            reference both the Person who initiated the <a href="entity-response">Response</a> and
+            the relevant <a href="entity-assessmentItem">AssessmentItem</a>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>TODO</td>
+          <td>TODO -- REFERENCE THE SELECTED OPTION, PERHAPS AS AN ARRAY OF ONE OR MORE VALUES?</td>
+          <td>Required</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>Response</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "https://example.edu/assess/1/parts/1/sec/2/items/6/users/554433/responses/1",
+  "type": "Response",
+  "attempt": {
+    "id": "https://example.edu/assess/1/parts/1/sec/2/items/6/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": {
+      "id": "https://example.edu/assess/1/parts/1/sec/2/items/6",
+      "type": "AssessmentItem",
+      "isPartOf": {
+        "id": "https://example.edu/assess/1/parts/1/sec/1",
+        "type": "AssessmentSection",
+        "isPartOf": {
+          "id": "https://example.edu/assess/1/parts/1",
+          "type": "AssessmentPart",
+          "isPartOf": {
+            "id": "https://example.edu/assess/1",
+            "type": "Assessment"
+          }
+        }
+      }
+    },
+    "count": 1,
+    "startedAtTime": "2018-11-15T10:15:46.000Z",
+    "endedAtTime": "2018-11-15T10:17:20.000Z"
+  },
+  ...
+  TODO REFERENCE OPTION SELECTED
+  ...
+  "dateCreated": "2018-11-15T10:15:46.000Z",
+  "startedAtTime": "2018-11-15T10:15:46.000Z",
+  "endedAtTime": "2018-11-15T10:17:20.000Z"
 }
           </code>
         </pre>
