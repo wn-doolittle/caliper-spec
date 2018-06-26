@@ -49,9 +49,13 @@ var _localBiblio = {
     publisher: "IMS Global Learning Consortium"
   }
   ,        
-  "LTI-DL": {
-    title: "LTI Deep Linking @@@ FIXME",
-    href: "https://www.imsglobal.org/spec/lti-dl/v1p1/",
-    publisher: "IMS Global Learning Consortium"
+  "LTI-DL-20": {
+    title: "Learning Tools Interoperability® (LTI) Deep Linking Specification 2.0",
+    href: "https://www.imsglobal.org/spec/lti-dl/v2p0/",
+    publisher: "IMS Global Learning Consortium",
+    "authors": [
+      "Preston, Eric",
+      "Vervoort, Claude"
+    ]
   }  
 };
