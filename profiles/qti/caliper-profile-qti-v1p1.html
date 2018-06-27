@@ -125,7 +125,7 @@
 
     <p>The QTI Profile models assessment-related activities including interactions with
       individual assessment parts, sections and items. Caliper provides <code>Assessment</code>,
-      <code>AssessmentPart</code>, <code>AssessmentSection</code> and <code>AssessmentItem</code>
+      <code>AssessmentTestPart</code>, <code>AssessmentSection</code> and <code>AssessmentItem</code>
       entities for describing the object of these activities, as well as a learner's
       <code>Attempt</code> for recording a count of the number of times an assigned resource has been
       attempted. A <code>Response</code> is also modeled for capturing individual item responses.
@@ -307,18 +307,18 @@
       </figure>
     </section>
 
-    <section id="assessmentPartEvent">
-      <h3>AssessmentPartEvent</h3>
+    <section id="assessmentTestPartEvent">
+      <h3>AssessmentTestPartEvent</h3>
 
       <img height="100%" width="100%"
-           src="./assets/caliper-assessmentpart_event_started.png" alt="AssessmentPartEvent"/>
+           src="./assets/caliper-assessmentpart_event_started.png" alt="AssessmentTestPartEvent"/>
 
-      <p>A Caliper <code>AssessmentPartEvent</code> models a learner's interaction with an
-        individual <code>AssessmentPart</code>.</p>
+      <p>A Caliper <code>AssessmentTestPartEvent</code> models a learner's interaction with an
+        individual <code>AssessmentTestPart</code>.</p>
 
       <dl>
         <dt>IRI</dt>
-        <dd>http://purl.imsglobal.org/caliper/AssessmentPartEvent</dd>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentTestPartEvent</dd>
         <dt>Supertype</dt>
         <dd><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
@@ -332,11 +332,11 @@
         <dd><a href="action-skipped">Skipped</a></dd>
         <dd><a href="action-completed">Completed</a></dd>
         <dt>Supported objects</dt>
-        <dd><a href="#assessmentPart">AssessmentPart</a></dd>
+        <dd><a href="#assessmentTestPart">AssessmentTestPart</a></dd>
         <dt>Supported generated entities</dt>
         <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
-        <dd><code>AssessmentPartEvent</code> inherits all properties defined by its supertype
+        <dd><code>AssessmentTestPartEvent</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
           >Event</a>. Profile-specific type restrictions are described below:
@@ -369,7 +369,7 @@
           <td><a href=
                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to 'AssessmentPartEvent'.</td>
+          <td>The string value MUST be set to 'AssessmentTestPartEvent'.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -390,15 +390,15 @@
           >Term</a></td>
           <td>The action or predicate that binds the <code>actor</code> or subject to the
             <code>object</code>. The value range is limited to the supported actions listed
-            above. Only one action may be specified per <code>AssessmentPartEvent</code>.</td>
+            above. Only one action may be specified per <code>AssessmentTestPartEvent</code>.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#assessmentPart">AssessmentPart</a> | <a href=
+          <td><a href="#assessmentTestPart">AssessmentTestPart</a> | <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>AssessmentPart</code> presented to the <code>actor</code>. The
+          <td>The <code>AssessmentTestPart</code> presented to the <code>actor</code>. The
             <code>object</code> value MUST be expressed either as an object or as a string
             corresponding to the resources's IRI.</td>
           <td>Required</td>
@@ -418,7 +418,7 @@
       </table>
 
       <figure class="example">
-        <figcaption><code>AssessmentPartEvent</code> JSON-LD.</figcaption>
+        <figcaption><code>AssessmentTestPartEvent</code> JSON-LD.</figcaption>
         <pre>
           <code>
 {
@@ -542,7 +542,7 @@
       </table>
 
       <figure class="example">
-        <figcaption><code>AssessmentPartEvent</code> JSON-LD.</figcaption>
+        <figcaption><code>AssessmentTestPartEvent</code> JSON-LD.</figcaption>
         <pre>
           <code>
 {
@@ -699,7 +699,7 @@
       "type": "AssessmentSection",
       "isPartOf": {
         "id": "https://example.edu/assess/1/parts/1",
-        "type": "AssessmentPart",
+        "type": "AssessmentTestPart",
         "isPartOf": {
           "id": "https://example.edu/assess/1",
           "type": "Assessment"
@@ -771,7 +771,7 @@
         <dd><a href="action-viewed">Viewed</a></dd>
         <dt>Supported objects</dt>
         <dd><a href="#assessment">Assessment</a></dd>
-        <dd><a href="#assessmentPart">AssessmentPart</a></dd>
+        <dd><a href="#assessmentTestPart">AssessmentTestPart</a></dd>
         <dd><a href="#assessmentSection">AssessmentSection</a></dd>
         <dd><a href="#assessmentItem">AssessmentItem</a></dd>
         <dt>Properties</dt>
@@ -833,12 +833,12 @@
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#assessment">Assessment</a> | <a href="#assessmentPart">AssessmentPart</a> |
+          <td><a href="#assessment">Assessment</a> | <a href="#assessmentTestPart">AssessmentTestPart</a> |
             <a href="#assessmentSection">AssessmentSection</a> |
             <a href="#assessmentItem">AssessmentItem</a> | <a href=
                                                                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
             >IRI</a></td>
-          <td>The <a href="#assessment">Assessment</a>, <a href="#assessmentPart">AssessmentPart
+          <td>The <a href="#assessment">Assessment</a>, <a href="#assessmentTestPart">AssessmentTestPart
           </a>, <a href="#assessmentSection">AssessmentSection</a>, or
             <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
             <code>object</code> value MUST be expressed either as an object or as a string
@@ -986,12 +986,12 @@
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#assessment">Assessment</a> | <a href="#assessmentPart">AssessmentPart</a> |
+          <td><a href="#assessment">Assessment</a> | <a href="#assessmentTestPart">AssessmentTestPart</a> |
             <a href="#assessmentSection">AssessmentSection</a> |
             <a href="#assessmentItem">AssessmentItem</a> | <a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <a href="#assessment">Assessment</a>, <a href="#assessmentPart">AssessmentPart
+          <td>The <a href="#assessment">Assessment</a>, <a href="#assessmentTestPart">AssessmentTestPart
           </a>, <a href="#assessmentSection">AssessmentSection</a>, or
             <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
             <code>object</code> value MUST be expressed either as an object or as a string
@@ -1065,11 +1065,11 @@
       Princeton University's WordNet® project in order to eliminate ambiguity and aid natural
       language processing.</p>
 
-    <section id="actions-assessmentEvent-and-assessmentPartEvent">
-      <h2>AssessmentEvent and AssessmentPartEvent</h2>
+    <section id="actions-assessmentEvent-and-assessmentTestPartEvent">
+      <h2>AssessmentEvent and AssessmentTestPartEvent</h2>
 
       <p><a href="#assessmentEvent">AssessmentEvent</a> and
-        <a href="#assessmentPartEvent">AssessmentPartEvent</a> support the following
+        <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a> support the following
         actions:</p>
 
       <table class="data">
@@ -1243,7 +1243,7 @@
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
-          <td>An ordered collection of <code>AssessmentPart</code>, <code>AssessmentSection</code>,
+          <td>An ordered collection of <code>AssessmentTestPart</code>, <code>AssessmentSection</code>,
             or <code>AssessmentItem</code> entities. Each array item MUST be expressed either as an
             object or as a string corresponding to the item's IRI.</td>
           <td>Optional</td>
@@ -1263,7 +1263,7 @@
   "items": [
     {
       "id": "https://example.edu/assess/1/parts/1",
-      "type": "AssessmentPart",
+      "type": "AssessmentTestPart",
       "name": "Part 1",
       "items": [
         {
@@ -1296,15 +1296,15 @@
       </figure>
     </section>
 
-    <section id="assessmentPart">
-      <h3>AssessmentPart</h3>
+    <section id="assessmentTestPart">
+      <h3>AssessmentTestPart</h3>
 
-      <p>A Caliper <code>AssessmentPart</code> represents a segment of an
+      <p>A Caliper <code>AssessmentTestPart</code> represents a segment of an
         <code>Assessment</code> that is normally undertaken in separate test sessions.</p>
 
       <dl>
         <dt>IRI</dt>
-        <dd>http://purl.imsglobal.org/caliper/AssessmentPart</dd>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentTestPart</dd>
         <dt>Supertypes</dt>
         <dd><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResourceCollection"
@@ -1313,7 +1313,7 @@
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#assignableDigitalResource"
         >AssignableDigitalResource</a></dd>
         <dt>Properties</dt>
-        <dd><code>AssessmentPart</code> inherits all the properties and requirements defined by its
+        <dd><code>AssessmentTestPart</code> inherits all the properties and requirements defined by its
           supertypes <code>DigitalResourceCollection</code> and
           <code>AssignableDigitalResource</code>. Profile-specific type restrictions are described
           below:
@@ -1351,7 +1351,7 @@
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to the Term 'AssessmentPart'.</td>
+          <td>The string value MUST be set to the Term 'AssessmentTestPart'.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -1367,14 +1367,14 @@
       </table>
 
       <figure class="example">
-        <figcaption><code>AssessmentPart</code> JSON-LD describe that references two child
+        <figcaption><code>AssessmentTestPart</code> JSON-LD describe that references two child
           sections.</figcaption>
         <pre>
           <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "https://example.edu/assess/1/parts/1",
-  "type": "AssessmentPart",
+  "type": "AssessmentTestPart",
   "name": "Part 1",
   "isPartOf": "https://example.edu/assess/1",
   "items": [{
@@ -1477,7 +1477,7 @@
   "name": "Section 1",
   "isPartOf": {
     "id": "https://example.edu/assess/1/parts/1",
-    "type": "AssessmentPart",
+    "type": "AssessmentTestPart",
     "isPartOf": {
       "id": "https://example.edu/assess/1",
       "type": "Assessment"
@@ -1610,7 +1610,7 @@
     "type": "AssessmentSection",
     "isPartOf": {
       "id": "https://example.edu/assess/1/parts/1",
-      "type": "AssessmentPart",
+      "type": "AssessmentTestPart",
       "isPartOf": {
         "id": "https://example.edu/assess/1",
         "type": "Assessment"
@@ -1931,7 +1931,7 @@
         "type": "AssessmentSection",
         "isPartOf": {
           "id": "https://example.edu/assess/1/parts/1",
-          "type": "AssessmentPart",
+          "type": "AssessmentTestPart",
           "isPartOf": {
             "id": "https://example.edu/assess/1",
             "type": "Assessment"
