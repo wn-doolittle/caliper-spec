@@ -805,12 +805,11 @@
       Princeton University's WordNet® project in order to eliminate ambiguity and aid natural
       language processing.</p>
 
-    <section id="actions-assessmentEvent-and-assessmentTestPartEvent">
-      <h2>AssessmentEvent and AssessmentTestPartEvent</h2>
+    <section id="action-assessmentEvent">
+      <h2>AssessmentEvent actions</h2>
 
-      <p><a href="#assessmentEvent">AssessmentEvent</a> and
-        <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a> support the following
-        actions:</p>
+      <p>The Caliper <a href="#assessmentEvent">AssessmentEvent</a> supports the following
+        actions: Started, Paused, Resumed, Restarted, Reset, Submitted, Abandoned, TimedOut.</p>
 
       <table class="data">
         <thead>
@@ -822,14 +821,14 @@
         </thead>
         <tbody>
           <tr>
-            <td id="action-started">Started</td>
+            <td id="action-assessmentEvent-started">Started</td>
             <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
               http://purl.imsglobal.org/caliper/actions/Started</a></td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
               start</a>.</td>
           </tr>
           <tr>
-            <td id="action-paused">Paused</td>
+            <td id="action-assessmentEvent-paused">Paused</td>
             <td><a href="http://purl.imsglobal.org/caliper/actions/Paused" rel="nofollow">
               http://purl.imsglobal.org/caliper/actions/Paused</a></td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200781106-v">Cease an action
@@ -838,7 +837,7 @@
             >Resumed</a>.</td>
           </tr>
           <tr>
-            <td id="action-resumed">Resumed</td>
+            <td id="action-assessmentEvent-resumed">Resumed</td>
             <td><a href="http://purl.imsglobal.org/caliper/actions/Resumed" rel="nofollow">
               http://purl.imsglobal.org/caliper/actions/Resumed</a></td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
@@ -848,7 +847,7 @@
               >Paused</a>.</td>
           </tr>
           <tr>
-            <td id="action-restarted">Restarted</td>
+            <td id="action-assessmentEvent-restarted">Restarted</td>
             <td><a href="http://purl.imsglobal.org/caliper/actions/Restarted" rel="nofollow">
               http://purl.imsglobal.org/caliper/actions/Restarted</a></td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
@@ -856,28 +855,42 @@
               order to start again.</td>
           </tr>
           <tr>
-            <td id="action-reset">Reset</td>
+            <td id="action-assessmentEvent-reset">Reset</td>
             <td><a href="http://purl.imsglobal.org/caliper/actions/Reset" rel="nofollow">
               http://purl.imsglobal.org/caliper/actions/Reset</a></td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200949623-v">Set anew.</a></td>
           </tr>
           <tr>
-            <td id="action-submitted">Submitted</td>
+            <td id="action-assessmentEvent-submitted">Submitted</td>
             <td><a href="http://purl.imsglobal.org/caliper/actions/Submitted" rel="nofollow">
               http://purl.imsglobal.org/caliper/actions/Submitted</a></td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/202267560-v">Hand over formally.</a>
+            </td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-abandoned">Abandoned</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Abandoned" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Abandoned</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/202232813-v">Forsake, leave behind.</a>
+            </td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-timedOut">TimedOut</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/TimedOut" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/TimedOut</a></td>
+            <td>Cancellation of a user session after a predetermined time interval has occurred
+              without activity.</a>
             </td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <section id="actions-assessmentSectionEvent-and-assessmentItemEvent">
-      <h2>AssessmentSectionEvent and AssessmentItemEvent</h2>
+    <section id="action-assessmentItemEvent">
+      <h2>AssessmentItemEvent actions</h2>
 
-      <p><a href="#assessmentSectionEvent">AssessmentSectionEvent</a> and
-        <a href="#assessmentItemEvent">AssessmentItemEvent</a> support the following
-        actions:</p>
+      <p>The Caliper <a href="#assessmentItemEvent">AssessmentItemEvent</a> supports the following
+        actions: Started, Skipped, Completed, TimedOut.</p>
 
       <table class="data">
         <thead>
@@ -889,29 +902,36 @@
         </thead>
         <tbody>
         <tr>
-          <td id="action-started">Started</td>
+          <td id="action-assessmentItemEvent-started">Started</td>
           <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
             http://purl.imsglobal.org/caliper/actions/Started</a></td>
           <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
             start</a>.</td>
         </tr>
         <tr>
-          <td id="action-skipped">Skipped</td>
+          <td id="action-assessmentItemEvent-skipped">Skipped</td>
           <td><a href="http://purl.imsglobal.org/caliper/actions/Skipped" rel="nofollow">
             http://purl.imsglobal.org/caliper/actions/Skipped</a></td>
           <td><a href="http://wordnet-rdf.princeton.edu/wn31/200618188-v">Bypass</a>.</td>
         </tr>
         <tr>
-          <td id="action-completed">Completed</td>
+          <td id="action-assessmentItemEvent-completed">Completed</td>
           <td><a href="http://purl.imsglobal.org/caliper/actions/Completed" rel="nofollow">
             http://purl.imsglobal.org/caliper/actions/Completed</a></td>
           <td><a href="http://wordnet-rdf.princeton.edu/wn31/200485097-v">Come or bring to a
             finish or an end</a>.</td>
         </tr>
+        <tr>
+          <td id="action-assessmentItemEvent-timedOut">TimedOut</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/TimedOut" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/TimedOut</a></td>
+          <td>Cancellation of a user session after a predetermined time interval has occurred
+            without activity.</a>
+          </td>
+        </tr>
         </tbody>
       </table>
     </section>
-
   </section>
 
   <section id="entities">
