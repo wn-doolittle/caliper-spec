@@ -454,7 +454,7 @@
   },
   "generated": {
     ...
-    TODO RESPONSE
+    TODO RESPONSES/INTERACTIONS
     ...
   },
   "eventTime": "2018-11-15T10:15:12.000Z",
@@ -915,6 +915,13 @@
           <td><a href="http://wordnet-rdf.princeton.edu/wn31/200618188-v">Bypass</a>.</td>
         </tr>
         <tr>
+          <td id="action-assessmentItemEvent-changed">Changed</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Changed" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/Changed</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/00126072-v">Cause to change; make
+            different; cause a transformation</a>.</td>
+        </tr>
+        <tr>
           <td id="action-assessmentItemEvent-completed">Completed</td>
           <td><a href="http://purl.imsglobal.org/caliper/actions/Completed" rel="nofollow">
             http://purl.imsglobal.org/caliper/actions/Completed</a></td>
@@ -1340,7 +1347,7 @@
         <tr>
           <td>type</td>
           <td><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The string value MUST be set to the Term 'AssessmentItem'.</td>
           <td>Required</td>
@@ -1348,7 +1355,7 @@
         <tr>
           <td>isTimeDependent</td>
           <td><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#booleanDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#booleanDef"
           >Boolean</a></td>
           <td>A boolean value indicating whether or not interacting with the
             <code>AssessmentItem</code> is time dependent.</td>
@@ -1459,6 +1466,561 @@
   ...
   TODO
   ...
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="assessmentResult">
+      <h3>AssessmentResult</h3>
+
+      <p>A Caliper <code>AssessmentResult</code> represents a ... TODO.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentResult</dd>
+        <dt>Supertypes</dt>
+        <dd><a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#result"
+        >Result</a></dd>
+        <dt>Properties</dt>
+        <dd><code>AssessmentResult</code> inherits all the properties and requirements
+          defined by its supertype <code>Result</code>. Profile-specific type
+          restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'AssessmentResult'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>TODO -- ADD ADDITIONAL PROPERTY CONSTRAINTS AS REQUIRED.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <ul>
+        <li>WARN: AssessmentResult JSON-LD below is currently speculative in nature.</li>
+        <li>NOTE: Caliper <code>Score</code> (mutable); Caliper <code>Result</code> (immutable).
+          Aligns with LTI definitions.</li>
+      </ul>
+
+      <figure class="example">
+        <figcaption><code>AssessmentResult</code> with testResult property JSON-LD describe
+          .</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+	"id": "IRI",
+	"type": "AssessmentResult",
+	"attempt": {
+		"id": "IRI",
+		"type": "Attempt",
+		"assignee": {
+			"id": "IRI",
+			"type": "Person"
+		},
+		"assignable": {
+			"id": "IRI",
+			"type": "Assessment"
+		},
+		"count": 1,
+		"duration": "ISO 8601 duration"
+	},
+	"testResult": {
+		"type": "TestResult",
+		"score": {
+			"attempt": {
+				"id": "IRI",
+				"type": "Attempt"
+			},
+			"maxScore": 3.0,
+			"scoreGiven": 1.0
+		},
+		"testDuration": {                               <-- id not required
+			"type": "TestDuration",
+			"assessment": {
+				"id": "IRI",
+				"type": "Assessment"
+			},
+			"startedAtTime": "ISO 8601 datetime",
+			"endedAtTime": "ISO 8601 datetime",
+			"duration": "ISO 8601 duration",
+			"sections": [{                                <-- id not required
+				"type": "SectionDuration",
+				"section": {
+					"id": "IRI",
+					"type": "AssessmentSection"
+				},
+				"startedAtTime": "ISO 8601 datetime",
+				"endedAtTime": "ISO 8601 datetime",
+				"duration": "ISO 8601 duration"
+			}, {                                          <-- id not required
+				"type": "SectionDuration",
+				"section": {
+					"id": "IRI",
+					"type": "AssessmentSection"
+				},
+				"startedAtTime": "ISO 8601 datetime",
+				"endedAtTime": "ISO 8601 datetime",
+				"duration": "ISO 8601 duration"
+			}, {                                           <-- id not required
+				"type": "SectionDuration",
+				"section": {
+					"id": "IRI",
+					"type": "AssessmentSection"
+				},
+				"startedAtTime": "ISO 8601 datetime",
+				"endedAtTime": "ISO 8601 datetime",
+				"duration": "ISO 8601 duration"
+			}]
+		}
+	},
+	"itemResults": [{
+			"id": "IRI",
+			"type": "AssessmentItemResult",
+			"attempt": {
+				"id": "IRI",
+				"type": "Attempt",
+				"assignee": {
+					"id": "IRI",
+					"type": "Person"
+				},
+				"assignable": {
+					"id": "IRI",
+					"type": "AssessmentItem"
+				},
+				"count": 1,
+				"duration": "ISO 8601 duration"
+			},
+			"sequenceIndex": 1,
+			"response": {
+				"id": "IRI",
+				"type": "Response",
+				"baseType": "identifier",
+				"choiceSequence": ["D", "B", "C", "A"],
+				"correctResponse": "A",
+				"candidateResponse": "B"
+			},
+			"completionStatus": "Unknown",
+			"score": {
+				"id": "IRI",
+				"type": "Score",
+				"attempt": {},
+				"maxScore": 1.0,
+				"scoreGiven": 0.0,
+				"scoredBy": {}
+			},
+			"sessionStatus": "Final"
+		},
+		{
+			"id": "IRI",
+			"type": "AssessmentItemResult",
+			"attempt": {
+				"id": "IRI",
+				"type": "Attempt",
+				"assignee": {
+					"id": "IRI",
+					"type": "Person"
+				},
+				"assignable": {
+					"id": "IRI",
+					"type": "AssessmentItem"
+				},
+				"count": 1,
+				"duration": "ISO 8601 duration"
+			},
+			"sequenceIndex": 2,
+			"response": {
+				"id": "IRI",
+				"type": "Response",
+				"baseType": "Point",
+				"choiceSequence": [
+					[125, 300],
+					[402, 500],
+					[700, 821]
+				],
+				"correctResponse": "[402, 500]",
+				"candidateResponse": "[700, 821]"
+			},
+			"completionStatus": "Unknown",
+			"score": {
+				"id": "IRI",
+				"type": "Score",
+				"attempt": {},
+				"maxScore": 1.0,
+				"scoreGiven": 0.0,
+				"scoredBy": {}
+			},
+			"sessionStatus": "Final"
+		},
+		{
+			"id": "IRI",
+			"type": "AssessmentItemResult",
+			"attempt": {
+				"id": "IRI",
+				"type": "Attempt",
+				"assignee": {
+					"id": "IRI",
+					"type": "Person"
+				},
+				"assignable": {
+					"id": "IRI",
+					"type": "Assessment"
+				},
+				"count": 1,
+				"duration": "ISO 8601 duration"
+			},
+			"sequenceIndex": 3,
+			"response": {
+				"id": "IRI",
+				"type": "Response",
+				"baseType": "Boolean",
+				"choiceSequence": [true, false],
+				"correctResponse": "true",
+				"candidateResponse": "true"
+			},
+			"completionStatus": "Unknown",
+			"score": {
+				"id": "IRI",
+				"type": "Score",
+				"attempt": {},
+				"maxScore": 1.0,
+				"scoreGiven": 1.0,
+				"scoredBy": {}
+			},
+			"sessionStatus": "Final"
+		}
+	]
+}
+          </code>
+        </pre>
+      </figure>
+
+      <figure class="example">
+        <figcaption><code>AssessmentResult</code> (subtype of Result) JSON-LD describe
+          .</figcaption>
+        <pre>
+          <code>
+{
+	"id": "IRI",
+	"type": "AssessmentResult",
+	"attempt": {
+		"id": "IRI",
+		"type": "Attempt",
+		"assignee": {
+			"id": "IRI",
+			"type": "Person"
+		},
+		"assignable": {
+			"id": "IRI",
+			"type": "Assessment"
+		},
+		"count": 1,
+		"duration": "ISO 8601 duration"
+	},
+	"maxResultScore": 3.0,
+	"resultScore": 1.0,
+	"testDuration": {                               <-- id not required
+		"type": "TestDuration",
+		"assessment": {
+			"id": "IRI",
+			"type": "Assessment"
+		},
+		"startedAtTime": "ISO 8601 datetime",
+		"endedAtTime": "ISO 8601 datetime",
+		"duration": "ISO 8601 duration",
+		"sections": [{                                <-- id not required
+			"type": "SectionDuration",
+			"section": {
+				"id": "IRI",
+				"type": "AssessmentSection"
+			},
+			"startedAtTime": "ISO 8601 datetime",
+			"endedAtTime": "ISO 8601 datetime",
+			"duration": "ISO 8601 duration"
+		}, {                                           <-- id not required
+			"type": "SectionDuration",
+			"section": {
+				"id": "IRI",
+				"type": "AssessmentSection"
+			},
+			"startedAtTime": "ISO 8601 datetime",
+			"endedAtTime": "ISO 8601 datetime",
+			"duration": "ISO 8601 duration"
+		}, {                                           <-- id not required
+			"type": "SectionDuration",
+			"section": {
+				"id": "IRI",
+				"type": "AssessmentSection"
+			},
+			"startedAtTime": "ISO 8601 datetime",
+			"endedAtTime": "ISO 8601 datetime",
+			"duration": "ISO 8601 duration"
+		}]
+	},
+	"itemResults": [{
+			"id": "IRI",
+			"type": "AssessmentItemResult",
+			"attempt": {
+				"id": "IRI",
+				"type": "Attempt",
+				"assignee": {
+					"id": "IRI",
+					"type": "Person"
+				},
+				"assignable": {
+					"id": "IRI",
+					"type": "AssessmentItem"
+				},
+				"count": 1,
+				"duration": "ISO 8601 duration"
+			},
+			"sequenceIndex": 1,
+			"response": {
+				"id": "IRI",
+				"type": "Response",
+				"baseType": "identifier",
+				"choiceSequence": ["D", "B", "C", "A"],
+				"correctResponse": "A",
+				"candidateResponse": "B"
+			},
+			"completionStatus": "Unknown",
+			"score": {                                 <-- Should this be a Result (immutable)?
+				"id": "IRI",
+				"type": "Score",
+				"attempt": {},
+				"maxScore": 1.0,
+				"scoreGiven": 0.0
+			},
+			"sessionStatus": "Final"
+		},
+		{
+			"id": "IRI",
+			"type": "AssessmentItemResult",
+			"attempt": {
+				"id": "IRI",
+				"type": "Attempt",
+				"assignee": {
+					"id": "IRI",
+					"type": "Person"
+				},
+				"assignable": {
+					"id": "IRI",
+					"type": "AssessmentItem"
+				},
+				"count": 1,
+				"duration": "ISO 8601 duration"
+			},
+			"sequenceIndex": 2,
+			"response": {
+				"id": "IRI",
+				"type": "Response",
+				"baseType": "Point",
+				"choiceSequence": [
+					[125, 300],
+					[402, 500],
+					[700, 821]
+				],
+				"correctResponse": "[402, 500]",
+				"candidateResponse": "[700, 821]"
+			},
+			"completionStatus": "Unknown",
+			"score": {                                 <-- Should this be a Result (immutable)?
+				"id": "IRI",
+				"type": "Score",
+				"attempt": {},
+				"maxScore": 1.0,
+				"scoreGiven": 0.0
+			},
+			"sessionStatus": "Final"
+		},
+		{
+			"id": "IRI",
+			"type": "AssessmentItemResult",
+			"attempt": {
+				"id": "IRI",
+				"type": "Attempt",
+				"assignee": {
+					"id": "IRI",
+					"type": "Person"
+				},
+				"assignable": {
+					"id": "IRI",
+					"type": "Assessment"
+				},
+				"count": 1,
+				"duration": "ISO 8601 duration"
+			},
+			"sequenceIndex": 3,
+			"response": {
+				"id": "IRI",
+				"type": "Response",
+				"baseType": "Boolean",
+				"choiceSequence": [true, false],
+				"correctResponse": "true",
+				"candidateResponse": "true"
+			},
+			"completionStatus": "Unknown",
+			"score": {                                 <-- Should this be a Result (immutable)?
+				"id": "IRI",
+				"type": "Score",
+				"attempt": {},
+				"maxScore": 1.0,
+				"scoreGiven": 1.0
+			},
+			"sessionStatus": "Final"
+		}
+	]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="assessmentItemResult">
+      <h3>AssessmentItemResult</h3>
+
+      <p>A Caliper <code>AssessmentItemResult</code> represents a ... TODO.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentItemResult</dd>
+        <dt>Supertypes</dt>
+        <dd><a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#result"
+        >Result</a></dd>
+        <dt>Properties</dt>
+        <dd><code>AssessmentItemResult</code> inherits all the properties and requirements
+          defined by its supertype <code>Result</code>. Profile-specific type
+          restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+                                        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+                                                                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'AssessmentItemResult'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>TODO -- ADD ADDITIONAL PROPERTY CONSTRAINTS AS REQUIRED.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentItemResult</code> JSON-LD describe
+          .</figcaption>
+        <pre>
+          <code>
+{
+  "id": "IRI",
+  "type": "AssessmentItemResult",
+  "attempt": {
+    "id": "IRI",
+    "type": "Attempt",
+    "assignee": {
+      "id": "IRI",
+      "type": "Person"
+    },
+    "assignable": {
+      "id": "IRI",
+      "type": "AssessmentItem"
+    },
+    "count": 1,
+    "duration": "ISO 8601 duration"
+  },
+  "sequenceIndex": 2,
+  "response": {
+    "id": "IRI",
+    "type": "Response",
+    "baseType": "Point",
+    "choiceSequence": [
+      [125, 300],
+      [402, 500],
+      [700, 821]
+    ],
+    "correctResponse": "[402, 500]",
+    "candidateResponse": "[700, 821]"
+  },
+  "completionStatus": "Unknown",
+  "score": {
+    "id": "IRI",
+    "type": "Score",
+    "attempt": {},
+    "maxScore": 1.0,
+    "scoreGiven": 0.0,
+    "scoredBy": {}
+  },
+  "sessionStatus": "Final"
 }
           </code>
         </pre>
