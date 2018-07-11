@@ -46,6 +46,16 @@ var _localBiblio = {
   "CALIPER-TOOLLAUNCH-11-ERRATA": {
     title: "Caliper Analytics® Tool Launch Profile 1.1 Errata",
     href: "https://www.imsglobal.org/spec/caliper-tl/v1p1/errata/",
+    publisher: "IMS Global Learning Consortium"
+  }
+  ,        
+  "LTI-DL-20": {
+    title: "Learning Tools Interoperability® (LTI) Deep Linking Specification 2.0",
+    href: "https://www.imsglobal.org/spec/lti-dl/v2p0/",
     publisher: "IMS Global Learning Consortium",
+    "authors": [
+      "Preston, Eric",
+      "Vervoort, Claude"
+    ]
   }  
 };
