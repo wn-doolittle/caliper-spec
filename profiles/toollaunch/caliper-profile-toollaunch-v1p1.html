@@ -15,14 +15,15 @@
       specNature: "normative",
       specType: "spec",
       contributors: [{
-          name: "Markus Gylling",
-          company: "IMS Global (Sweden)",
-          companyURL: "www.imsglobal.org",
-          role: "Author"
-        },
+        name: "Markus Gylling",
+        company: "IMS Global (Sweden)",
+        companyURL: "www.imsglobal.org",
+        role: "Author"
+      },
         {
           name: "Anthony Whyte",
           company: "University of Michigan (USA)",
+          companyURL: "www.umich.edu/",
           role: "Editor"
         },
         {
@@ -37,47 +38,51 @@
 </head>
 
 <body>
-  <section id="abstract">
-    <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Tool 
-    Launch profile, allowing users to track learning tool utilization from a 
-    central location (e.g. an LMS).
-  </section>
+<section id="abstract">
+  <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Tool
+  Launch profile, allowing users to track learning tool utilization from a
+  central location (e.g. an LMS).
+</section>
 
-  <section>
-    <h2>Overview</h2>
-    <section class="informative">
-      <h3>Design Goals and Rationale</h3>
-      <p>The Caliper Tool Launch Profile is intended to capture the utilization 
-        of learning tools from a centralized location, such as an LMS. As such, 
-        it is distinct from the Caliper Tool Usage profile as defined in the 
-        Caliper 1.1 specification [[!CALIPER-11]], which captures tool usage as 
-        reported by the individual tools themselves (i.e. decentralized capture).
-      </p>
-      <p>The Tool Launch and Tool Usage profile have their own unique 
-        set of advantages; the primary advantage of the Tool Launch profile is that it 
-        only requires a single sensor to be deployed (typically in an LMS), whereas
-        the Tool Usage profile requires all tools being measured to implement the 
-        Caliper sensor API.</p>
-         
-      <p>Data captured using the Tool Launch profile can be used to determine 
-        which tools were launched within a given timeframe, by whom and in what 
-        context. It however can not, as opposed to the Tool Usage profile, 
-        provide a measure of whether the user actually interacted with the tool in
-        a manner that the application determines to be its “intended use for learning”.
-      </p>   
-      
-      <p>In certain deployment contexts, using both the Tool Launch and the Tool 
-        Usage Profile may be advantageous, as it e.g. allows the tracking of the 
-        number of tool launches that do <em>not</em> lead to interactions 
-        corresponding to the "intended use for learning".
-      </p>  
+<section>
+  <h2>Overview</h2>
+  <section class="informative">
+    <h3>Design Goals and Rationale</h3>
 
-      <p>The following graph shows the intended deployment pattern for the Tool
-        Launch Profile.</p>
-        
-      <figure>
-        <img src="assets/tl-conceptual.png" alt="Deployment pattern"/>
-        <figcaption>Graph of the intended deployment pattern for the Tool Launch
+    <img height="100%" width="100%"
+         src="assets/caliper-profile_tool_launch.png" alt="ToolLaunchEvent"/>
+
+    <p>The Caliper Tool Launch Profile is intended to capture the utilization
+      of learning tools from a centralized location, such as an LMS. As such,
+      it is distinct from the Caliper Tool Usage profile as defined in the
+      Caliper 1.1 specification [[!CALIPER-11]], which captures tool usage as
+      reported by the individual tools themselves (i.e. decentralized capture).
+    </p>
+    <p>The Tool Launch and Tool Usage profile have their own unique
+      set of advantages; the primary advantage of the Tool Launch profile is that it 
+      only requires a single sensor to be deployed (typically in an LMS), whereas
+      the Tool Usage profile requires all tools being measured to implement the
+      Caliper sensor API.</p>
+
+    <p>Data captured using the Tool Launch profile can be used to determine
+      which tools were launched within a given timeframe, by whom and in what
+      context. It however can not, as opposed to the Tool Usage profile,
+      provide a measure of whether the user actually interacted with the tool in
+      a manner that the application determines to be its “intended use for learning”.
+    </p>
+
+    <p>In certain deployment contexts, using both the Tool Launch and the Tool
+      Usage Profile may be advantageous, as it e.g. allows the tracking of the
+      number of tool launches that do <em>not</em> lead to interactions
+      corresponding to the "intended use for learning".
+    </p>
+
+    <p>The following graph shows the intended deployment pattern for the Tool
+      Launch Profile.</p>
+
+    <figure>
+      <img src="assets/tl-conceptual.png" alt="Deployment pattern"/>
+      <figcaption>Graph of the intended deployment pattern for the Tool Launch
         Profile. A Caliper sensor is deployed in the LMS and intercepts tool launch
         events, and emits these to a Caliper endpoint. In the cases where the tool
         performs an explicit action to return to the platform, those are captured
@@ -85,25 +90,25 @@
         </figcaption>
       </figure>
 
-    </section>
+  </section>
 
-    <section class="informative" id="usecases">
-      <h3>Use cases</h3>      
-      <p>Administrators, instructors and researchers can utilize data collected 
-        via the Tool Launch Profile to answer questions such as: </p>
-      <ul>
-        <li>Which of the available tools are launched the most or the least?</li>      
-        <li>Which courses utilize certain tools the most or the least?</li>
-        <li>Are there demographic variances in the utilization of the available tools?</li>
-        <li>Are there temporal variances in the utilization of the available tools?</li>
-      </ul>
-    </section>
+  <section class="informative" id="usecases">
+    <h3>Use cases</h3>
+    <p>Administrators, instructors and researchers can utilize data collected
+      via the Tool Launch Profile to answer questions such as: </p>
+    <ul>
+      <li>Which of the available tools are launched the most or the least?</li>
+      <li>Which courses utilize certain tools the most or the least?</li>
+      <li>Are there demographic variances in the utilization of the available tools?</li>
+      <li>Are there temporal variances in the utilization of the available tools?</li>
+    </ul>
+  </section>
 
-    <section id="terminology">
-      <h3>Terminology</h3>
-      <p>All terminology used in this specification is concordant with the term 
-        definitions in the Caliper 1.1 Specification [[!CALIPER-11]].        
-      <!--      
+  <section id="terminology">
+    <h3>Terminology</h3>
+    <p>All terminology used in this specification is concordant with the term
+      definitions in the Caliper 1.1 Specification [[!CALIPER-11]].
+      <!--
       <dl class="termlist" data-sort id="terms">
         <dt><dfn data-lt="term1">term1</dfn></dt>
         <dd>Definition</dd>
@@ -111,11 +116,38 @@
         <dd>Definition</dd>
       </dl>
     -->
-    </section>
+  </section>
 
-    <section id="conformance">
-      <h3>Conformance Statements</h3>
+  <section id="conformance">
+    <h3>Conformance Statements</h3>
 
+  </section>
+
+  <section id="documentset">
+    <h3>Document Set</h3>
+    <section>
+      <h4>Normative Documents</h4>
+      <dl>
+        <dt>Caliper 1.1</dt>
+        <dd>This profile is an extension to the Caliper 1.1 specification
+          [[!CALIPER-11]]. All requirements in the Caliper 1.1 specification
+          also apply to implementations of this specification.
+        </dd>
+        <dt>JSON-LD Context</dt>
+        <dd>The JSON-LD Context for this profile defines all relevant
+          term-IRI mappings [[!CALIPER-TOOLLAUNCH-11-CONTEXT]]. The context IRI
+          <code>https://purl.imsglobal.org/spec/caliper-toollaunch/v1p1/context/</code>
+          MUST be used in JSON-LD payloads representing this Caliper profile.
+        </dd>
+        <dt>Errata</dt>
+        <dd>The errata [[!CALIPER-TOOLLAUNCH-11-ERRATA]] details any errata registered
+          for this version of this specification since its publication.</dd>
+        <dt>Conformance and Certification guide</dt>
+        <dd>The conformance and certification guide that accompanies the Caliper
+          1.1 specification defines the conformance requirements for Caliper
+          Sensors [[!CALIPER-CERT-11]].
+        </dd>
+      </dl>
     </section>
 
     <section id="documentset">
@@ -157,8 +189,10 @@
         </section>  
       
     </section>
+
   </section>
-  <!-- /overview -->
+</section>
+<!-- /overview -->
 
   <section id="events">
     <h2>Events</h2>
@@ -303,11 +337,12 @@
     <p>The Caliper <a href="#toolLaunchEvent">ToolLaunchEvent</a> supports the "Launched" and "Returned" actions.</p>
     <table class="data">
       <thead>
-        <tr>
-        <th>Term</th>
-        <th>IRI</th>
-        <th>WordNet® Gloss</th>
-        </tr>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
       </thead>
       <tbody>
           <tr>
@@ -322,7 +357,9 @@
           </tr>
       </tbody>
     </table>
+
   </section>
+</section> <!-- /events -->
 
   <section id="jsonld">
     <h2 id="json-ld">JSON-LD</h2>
@@ -486,32 +523,32 @@
   </section>
   <!-- /examples -->
 
-  <section class="appendix informative" id="revisionhistory">
-    <h2>Revision History</h2>
-    <section>
-      <h3>Version History</h3>
-      <table title="Revision History" summary="Publication history and revision details for this specification.">
-        <thead>
-          <tr>
-            <th>Version No.</th>
-            <th>Release Date</th>
-            <th>Comments</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>IMS Base Document 1.0</td>
-            <td>June 5th, 2018</td>
-            <td>The second internal draft release.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    <section>
-      <h3>Changes from previous version</h3>
-      <p>As this is the first version of this document, no previous version change log exists.</p> 
-    </section>  
+<section class="appendix informative" id="revisionhistory">
+  <h2>Revision History</h2>
+  <section>
+    <h3>Version History</h3>
+    <table title="Revision History" summary="Publication history and revision details for this specification.">
+      <thead>
+      <tr>
+        <th>Version No.</th>
+        <th>Release Date</th>
+        <th>Comments</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>IMS Base Document 1.0</td>
+        <td>June 5th, 2018</td>
+        <td>The second internal draft release.</td>
+      </tr>
+      </tbody>
+    </table>
   </section>
+  <section>
+    <h3>Changes from previous version</h3>
+    <p>As this is the first version of this document, no previous version change log exists.</p>
+  </section>
+</section>
 
 </body>
 </html>
