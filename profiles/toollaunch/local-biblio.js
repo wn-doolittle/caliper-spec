@@ -22,12 +22,9 @@ var _localBiblio = {
       ]                  
   },
   "CALIPER-IMPL-11": {
-      title: "Caliper Analytics® Implementation Guide 1.1 @@@ TBD URL",
+      title: "Caliper Analytics® Implementation Guide 1.1",
       href: "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-implementation-guide-v1p1/caliper-implementation-guide-v1p1.html",
       publisher: "IMS Global Learning Consortium",
-      "authors": [
-        "@@@, TBD"
-      ]                  
   },
   "CALIPER-TOOLLAUNCH-11": {
     title: "Caliper Analytics® Tool Launch Profile 1.1",
@@ -40,7 +37,7 @@ var _localBiblio = {
   },
   "CALIPER-TOOLLAUNCH-11-CONTEXT": {
     title: "Caliper Analytics® Tool Launch Profile Context 1.1",
-    href: "https://purl.imsglobal.org/spec/caliper-tl/v1p1/context/",
+    href: "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
     publisher: "IMS Global Learning Consortium"
   },        
   "CALIPER-TOOLLAUNCH-11-ERRATA": {
