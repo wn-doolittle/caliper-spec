@@ -337,13 +337,12 @@
 </section> <!-- /events -->
 
   <section id="jsonld">
-    <h2 id="json-ld">JSON-LD</h2>
+    <h2 id="json-ld">Representing Caliper as JSON-LD</h2>
     <p>Individual Caliper events and entity describes are serialized as JSON-LD. 
       IMS Global provides a remote ToolLaunch Profile JSON-LD 
       <a href="http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension">context</a> 
       for mapping <code>ToolLaunchEvent</code> terms to IRIs. Caliper message producers 
-      <em class="rfc2119" title="MUST">MUST</em> reference this context in every 
-      Caliper 1.1 <code>SearchEvent</code> and/or <code>Query</code> describe 
+      MUST reference this context in every Caliper 1.1 <code>ToolLaunchEvent</code>
       created and serialized for transmission to a target endpoint.</p>
 
     <p>See the Caliper 1.1 specification [[!CALIPER-11]] for detailed requirements 
@@ -357,13 +356,18 @@
         <figcaption>JSON-LD Context example</figcaption>
       </figure>
 
-  </section>
-
-  <section class="appendix informative">
-    <h2>Examples</h2>
-    <figure class="example">
-      <pre><code>
-{
+      <section class="informative">
+        <h2>Tool Launch Profile JSON-LD Examples</h2>
+        <p>The below is an example of a full JSON-LD payload for a Tool Launch event 
+          using the <code>Launched</code> action. The <code>Person</code> launches 
+          the tool (represented by the <code>object</code> property) from the 
+          <a>Platform</a> (represented by the <code>edApp</code> property). A 
+          <code>federeratedSession</code> property is included, as is required by 
+          this profile, and contains the full set of message parameters used in 
+          the LTI launch.</p> 
+        </p>
+        <figure class="example">          
+          <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension,
   "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
   "type": "ToolLaunchEvent",
@@ -432,71 +436,81 @@
     "dateCreated": "2018-11-15T10:15:00.000Z",
     "startedAtTime": "2018-11-15T10:15:00.000Z"
   }
-}        
-      </code></pre>  
-      <figcaption>Example of Tool Launch Event (Launched)</figcaption>          
-    </figure>
-    
-    <figure class="example">
-      <pre><code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
-  "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
-  "type": "ToolLaunchEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Returned",
-  "object": {   
-    "id": "https://example.com/lti/tool",
-    "type": "SoftwareApplication"
-  },
-  "eventTime": "2018-11-15T10:15:00.000Z",
-  "edApp": {   
-    "id": "https://example.edu",
-    "type": "SoftwareApplication"    
-  },
-  "referrer": {   
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
-    "type": "WebPage"
-  },
-  "group": {   
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {   
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [ "Learner" ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {   
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  },
-  "federatedSession": {   
-    "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
-    "type": "LtiSession",
-    "user": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "dateCreated": "2018-11-15T10:15:00.000Z",
-    "startedAtTime": "2018-11-15T10:15:00.000Z"
-  }
-}
-      </code></pre>  
-      <figcaption>Example of Tool Launch Event (Returned)</figcaption>          
-    </figure>  
+}</code></pre>  
+          <figcaption>Example of Tool Launch Event (Launched)</figcaption>          
+        </figure>
+        
+        <p>The below is an example of a full JSON-LD payload for a Tool Launch event 
+          using the <code>Returned</code> action. The <a>Platform</a> is still 
+          represented by the <code>edApp</code> property, and the tool being 
+          returned from is still represented by the <code>object</code> property. 
+          The <code>federatedSession</code> property is also retained, and corresponds
+          to the <code>federatedSession</code> referenced in the event that 
+          represented the <code>Launched</code> action.
+        </p> 
+        
+        <figure class="example">
+          <pre><code>
+      {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+      "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
+      "type": "ToolLaunchEvent",
+      "actor": {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      },
+      "action": "Returned",
+      "object": {   
+        "id": "https://example.com/lti/tool",
+        "type": "SoftwareApplication"
+      },
+      "eventTime": "2018-11-15T10:15:00.000Z",
+      "edApp": {   
+        "id": "https://example.edu",
+        "type": "SoftwareApplication"    
+      },
+      "referrer": {   
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
+        "type": "WebPage"
+      },
+      "group": {   
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection",
+        "courseNumber": "CPS 435-01",
+        "academicSession": "Fall 2018"
+      },
+      "membership": {   
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+        "type": "Membership",
+        "member": "https://example.edu/users/554433",
+        "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+        "roles": [ "Learner" ],
+        "status": "Active",
+        "dateCreated": "2018-08-01T06:00:00.000Z"
+      },
+      "session": {   
+        "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+        "type": "Session",
+        "startedAtTime": "2018-11-15T10:00:00.000Z"
+      },
+      "federatedSession": {   
+        "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+        "type": "LtiSession",
+        "user": {
+          "id": "https://example.edu/users/554433",
+          "type": "Person"
+        },
+        "dateCreated": "2018-11-15T10:15:00.000Z",
+        "startedAtTime": "2018-11-15T10:15:00.000Z"
+      }
+      }
+          </code></pre>  
+          <figcaption>Example of Tool Launch Event (Returned)</figcaption>          
+        </figure>  
+      </section>
+      <!-- /examples -->
+
   </section>
-  <!-- /examples -->
 
 <section class="appendix informative" id="revisionhistory">
   <h2>Revision History</h2>
