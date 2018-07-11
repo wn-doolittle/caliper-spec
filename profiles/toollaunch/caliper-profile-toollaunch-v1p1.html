@@ -85,7 +85,7 @@
       <figcaption>Graph of the intended deployment pattern for the Tool Launch
         Profile. A Caliper sensor is deployed in the LMS and intercepts tool launch
         events, and emits these to a Caliper endpoint. In the cases where the tool
-        performs an explicit action to return to the platform, those are captured
+        performs an explicit action to return to the <a>Platform</a>, those are captured
         too. 
         </figcaption>
       </figure>
@@ -107,15 +107,15 @@
   <section id="terminology">
     <h3>Terminology</h3>
     <p>All terminology used in this specification is concordant with the term
-      definitions in the Caliper 1.1 Specification [[!CALIPER-11]].
-      <!--
+      definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
+      
+      <p>In addition, the following terms from other specifications are used:</p>
+      
       <dl class="termlist" data-sort id="terms">
-        <dt><dfn data-lt="term1">term1</dfn></dt>
-        <dd>Definition</dd>
-        <dt><dfn data-lt="term2">term2</dfn></dt>
-        <dd>Definition</dd>
+        <dt><dfn data-lt="Platform|Platforms|Platform's">Platform</dfn></dt>
+        <dd>As defined in LTI 1.3 [[!LTI-13]].</dd>        
       </dl>
-    -->
+    
   </section>
 
   <section id="conformance">
@@ -290,7 +290,7 @@
             <tr>
               <td>federatedSession</td>
               <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#ltiSession">LtiSession</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a></td>
-              <td>The platform's session, constituting part of the 
+              <td>The <a>Platform's</a> session, constituting part of the 
                 tool launch context. The <code>federatedSession</code> 
                 value MUST be expressed either as an object or as a string 
                 corresponding to the federatedSession’s IRI.</td>
