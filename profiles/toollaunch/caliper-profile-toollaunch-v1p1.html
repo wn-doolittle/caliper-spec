@@ -51,7 +51,7 @@
     <h3>Design Goals and Rationale</h3>
 
     <img height="100%" width="100%"
-         src="assets/caliper-profile_tool_launch.png" alt="ToolLaunchEvent"/>
+         src="assets/caliper-profile_tool_launch-with_name.png" alt="Tool Launch Profile"/>
 
     <p>The Caliper Tool Launch Profile is intended to capture the utilization
       of learning tools from a centralized location, such as an LMS. As such,
@@ -82,7 +82,7 @@
       Launch Profile.</p>
 
     <figure>
-      <img src="assets/tl-conceptual.png" alt="Deployment pattern"/>
+      <img src="assets/caliper-tool_launch-conceptual.png" alt="Deployment pattern"/>
       <figcaption>Graph of the intended deployment pattern for the Tool Launch
         Profile. A Caliper sensor is deployed in the LMS and intercepts tool launch
         events, and emits these to a Caliper endpoint. In the cases where the tool
@@ -174,9 +174,10 @@
         for describing tool launches, typically occuring in the context of an LMS.</p>
         
       <img height="100%" width="100%" 
-        src="assets/tl-model.png" alt="Overview of Tool Launch Profile"/>
+        src="assets/caliper-tool_launched_event_launched.png"
+           alt="ToolLaunchEvent"/>
                 
-        <p>The Tool Launch Profile models a Person launching a SoftwareApplication 
+        <p>The <code>ToolLaunchEvent</code> models a Person launching a SoftwareApplication
           at a given time and in a given context. It also provides the ability to 
           model a "return response", which in the context of LTI [[LTI-13]] 
           typically consists of a <a href="https://www.imsglobal.org/spec/lti/v1p3/#lis-message-variables">
@@ -352,11 +353,11 @@
 
       <section class="informative">
         <h2>Tool Launch Profile JSON-LD Examples</h2>
-        <p>The below is an example of a full JSON-LD payload for a Tool Launch event 
+        <p>Below is an example of a full JSON-LD payload for a Tool Launch event
           using the <code>Launched</code> action. The <code>Person</code> launches 
           the tool (represented by the <code>object</code> property) from the 
           <a>Platform</a> (represented by the <code>edApp</code> property). A 
-          <code>federeratedSession</code> property is included, as is required by 
+          <code>federatedSession</code> property is included, as is required by
           this profile, and contains the full set of message parameters used in 
           the LTI launch.
         </p>
@@ -434,7 +435,7 @@
           <figcaption>Example of Tool Launch Event (Launched)</figcaption>          
         </figure>
         
-        <p>The below is an example of a full JSON-LD payload for a Tool Launch event 
+        <p>Below is an example of a full JSON-LD payload for a Tool Launch event
           using the <code>Returned</code> action. The <a>Platform</a> is still 
           represented by the <code>edApp</code> property, and the tool being 
           returned from is still represented by the <code>object</code> property. 
