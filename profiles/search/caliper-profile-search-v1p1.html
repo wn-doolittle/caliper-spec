@@ -9,7 +9,7 @@
       specTitle: "Caliper Analytics® Search Profile",
       shortName: "caliper-search",
       specStatus: "IMS Base Document",
-      specDate: "May 29th, 2018",
+      specDate: "July 30th, 2018",
       specVersion: "1.1",
       specNature: "normative",
       specType: "spec",
@@ -237,59 +237,6 @@
         </tr>
       </tbody>
     </table>
-
-    <figure class="example">
-      <figcaption><code>SearchEvent</code> JSON-LD</figcaption>
-      <pre>
-        <code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-  "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
-  "type": "SearchEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Searched",
-  "object": {
-    "id": "https://example.edu",
-    "type": "SofwareApplication"
-  },
-  "eventTime": "2018-11-15T10:05:00.000Z",
-  "target": {
-    "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-    "type": "Query",
-    "creator": "https://example.edu/users/554433",
-    "searched": "https://example.edu",
-    "searchString": "IMS AND (Caliper OR Analytics)",
-    "dateCreated": "2018-11-15T10:05:00.000Z"
-  },
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": ["Learner"],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}
-          </code>
-        </pre>
-    </figure>
-  </section>
 </section>
 
 <section id="actions">
@@ -409,12 +356,90 @@
         </tr>
         </tbody>
     </table>
+  </section>
+</section>
+
+<section id="jsonld">
+  <h2>Representing Caliper as JSON-LD</h2>
+  <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
+    provides a remote Search Profile JSON-LD <a href=
+    "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension">context</a> for mapping
+    <code>SearchEvent</code> terms to IRIs. Caliper message producers MUST reference this
+    context in every Caliper 1.1 <code>SearchEvent</code> and/or <code>Query</code> describe created
+    and serialized for transmission to a target endpoint.</p>
+
+  <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
+    context handling.</p>
+
+  <figure class="example">
+    <figcaption>JSON-LD Context</figcaption>
+    <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+  . . .
+}</code></pre>
+  </figure>
+
+  <section class="informative">
+    <h2>Search Profile JSON-LD Examples</h2>
+    <p>Below is an example of expressing a Caliper <code>SearchEvent</code> as JSON-LD.  The
+      <code>SearchEvent</code> records a <code>Person</code> searching a
+      <code>SoftwareApplication</code> by issuing a <code>Query</code> with a particular search
+      string.
+    </p>
 
     <figure class="example">
-      <figcaption><code>Query</code> describe JSON-LD</figcaption>
-      <pre>
-        <code>
-{
+      <figcaption><code>SearchEvent</code> JSON-LD</figcaption>
+      <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+  "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
+  "type": "SearchEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Searched",
+  "object": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "target": {
+    "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+    "type": "Query",
+    "creator": "https://example.edu/users/554433",
+    "searched": "https://example.edu",
+    "searchString": "IMS AND (Caliper OR Analytics)",
+    "dateCreated": "2018-11-15T10:05:00.000Z"
+  },
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": ["Learner"],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+
+    <p>Below is an example of a <code>Query</code> describe that can be sent to an endpoint.</p>
+
+    <figure class="example">
+    <figcaption><code>Query</code> describe JSON-LD</figcaption>
+    <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
   "id": "https://example.edu/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
   "type": "Query",
@@ -428,36 +453,10 @@
   },
   "searchString": "IMS AND (Caliper OR Analytics)",
   "dateCreated": "2018-11-15T10:05:00.000Z"
-}
-        </code>
-      </pre>
-    </figure>
-  </section>
-</section>
-
-<section id="jsonld">
-  <h3>JSON-LD</h3>
-  <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
-    provides a remote Search Profile JSON-LD <a href=
-    "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension">context</a> for mapping
-    <code>SearchEvent</code> terms to IRIs. Caliper message producers MUST reference this
-    context in every Caliper 1.1 <code>SearchEvent</code> and/or <code>Query</code> describe created
-    and serialized for transmission to a target endpoint.</p>
-
-  <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
-    context handling.</p>
-
-  <figure class="example">
-    <figcaption>JSON-LD Context</figcaption>
-    <pre>
-      <code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-  . . .
-}
-      </code>
-    </pre>
+}</code></pre>
   </figure>
+
+  </section>
 </section>
 
 <section class="appendix informative" id="revisionhistory">
@@ -476,7 +475,7 @@
       <tbody>
       <tr>
         <td>IMS Base Document 1.0</td>
-        <td>Month Day, 2018</td>
+        <td>July 30, 2018</td>
         <td>The first internal draft release.</td>
       </tr>
       </tbody>
