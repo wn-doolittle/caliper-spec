@@ -79,16 +79,15 @@
     </p>
 
     <p>The following graph shows the intended deployment pattern for the Tool
-      Launch Profile.</p>
+      Launch Profile. A Caliper sensor is deployed in the LMS and intercepts tool launch
+      events, and emits these to a Caliper endpoint. In the cases where the tool
+      performs an explicit action to return to the <a>Platform</a>, those are captured
+      too.</p>
 
     <figure>
       <img src="assets/caliper-tool_launch-conceptual.png" alt="Deployment pattern"/>
-      <figcaption>Graph of the intended deployment pattern for the Tool Launch
-        Profile. A Caliper sensor is deployed in the LMS and intercepts tool launch
-        events, and emits these to a Caliper endpoint. In the cases where the tool
-        performs an explicit action to return to the <a>Platform</a>, those are captured
-        too. 
-        </figcaption>
+      <figcaption>Graph of the intended deployment pattern for the 
+        Tool Launch Profile.</figcaption>
       </figure>
 
   </section>
