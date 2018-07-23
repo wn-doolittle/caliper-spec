@@ -53,7 +53,8 @@
         querying a resource for information. The profile provides a <code>SearchEvent</code> and
         a 'Searched' action for describing information retrieval activities. An optional
         <code>Query</code> entity can be employed to describe the <code>searchString</code>
-        submitted by a user searching a resource.</p>
+        submitted by a user searching a resource as well as any <code>searchResults</code>
+        returned as a result of the search.</p>
 
       <p>When the Search Profile is used in conjunction with the <a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#readingProfile">
@@ -136,7 +137,8 @@
 
       <p>A Caliper <code>SearchEvent</code> models a <code>Person</code> querying a resource for
         information, typically a <code>DigitalResource</code> or <code>SoftwareApplication</code>.
-        The <code>Query</code> submitted may be referenced using the <code>target</code> property.
+        The <code>Query</code> submitted may be referenced using the <code>generated</code>
+        property.
       </p>
 
       <dl>
@@ -156,6 +158,8 @@
         <dd><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
         >Entity</a></dd>
+        <dt>Supported generated entities</dt>
+        <dd><a href="#query">Query</a></dd>
         <dt>Properties</dt>
         <dd><code>SearchEvent</code> inherits all properties defined by its supertype
             <code>Event</code>. Profile-specific type restrictions are described below:
@@ -175,11 +179,11 @@
           <tr>
             <td>id</td>
             <td><a href=
-                     "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
             >UUID</a></td>
             <td>The emitting application MUST provision the <code>SearchEvent</code> with a UUID. A
               version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
               >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
             <td>Required</td>
           </tr>
@@ -226,23 +230,14 @@
             <td>Required</td>
           </tr>
           <tr>
-            <td>target</td>
+            <td>generated</td>
             <td><a href="#query">Query</a> | <a href=
                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
             >IRI</a></td>
-            <td>A <code>Query</code> defined by the <code>actor</code> that constitutes the search
-              criteria. The <code>Query</code> value MUST be expressed either as an object or as a
-              string corresponding to the query’s <code>IRI</code>.</td>
-            <td>Optional</td>
-          </tr>
-          <tr>
-            <td>generated</td>
-            <td><a href="#searchResults">SearchResults</a> | <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>An ordered list of resources returned by the search.  The <code>SearchResult</code>
-              item values MUST be expressed either as an object or as a string corresponding to the
-              item's <code>IRI</code>.</td>
+            <td>The <code>Query</code> executed by the <code>actor</code> that describes both the
+              search criteria and results, if any, returned by the search. The <code>Query</code>
+              value MUST be expressed either as an object or as a string corresponding to the
+              query’s <code>IRI</code>.</td>
             <td>Optional</td>
           </tr>
         </tbody>
@@ -411,10 +406,11 @@
 
     <section class="informative">
       <h2>Search Profile JSON-LD Examples</h2>
-      <p>Below is an example of expressing a Caliper <code>SearchEvent</code> as JSON-LD.  The
+      <p>Below is an example of a Caliper <code>SearchEvent</code> expressed as JSON-LD.  The
         <code>SearchEvent</code> records a <code>Person</code> searching a
-        <code>SoftwareApplication</code> by issuing a <code>Query</code> with a particular search
-        string.  A list of <code>searchResults</code> expressed as IRIs is also referenced.
+        <code>SoftwareApplication</code>. The <code>SearchEvent</code> is further enriched by
+        inclusion of the generated <code>Query</code> which describes both the search criteria
+        employed and the list of resource IRIs that constitute the search results.
       </p>
 
       <figure class="example">
@@ -474,9 +470,9 @@
 }</code></pre>
       </figure>
 
-      <p>Below is an example of a <code>Query</code> describe can be sent to an endpoint.  The
-        <code>Query</code>references the author, the resource searched, the search
-        string employed, and a list search results expressed as JSON objects.</p>
+      <p>Below is an example of a <code>Query</code> describe that can also be sent to an endpoint.
+        The <code>Query</code>references the author, the resource searched, the search
+        string employed, and a list of search results expressed as JSON objects.</p>
 
       <figure class="example">
       <figcaption><code>Query</code> describe JSON-LD</figcaption>
