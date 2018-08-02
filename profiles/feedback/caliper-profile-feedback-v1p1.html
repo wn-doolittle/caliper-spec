@@ -39,11 +39,9 @@
       <img height="100%" width="100%" src="" alt="Feedback Profile"/>
 
       <p>The Caliper Feedback Profile models a <code>Person</code>
-        providing feedback on a <code>DigitalResource</code>, typically a piece of student work.
-        The profile provides a <code>FeedbackEvent</code> along with 'Commented', 'Disliked',
-        'Liked', and 'Ranked' actions for describing feedback activities. The
-        <code>Annotation</code>, <code>ReactionAnnotation</code>, and <code>RatingAnnotation</code>
-        entities are used to capture the content and value of the feedback.</p>
+        providing feedback on a <code>Entity</code>, typically a piece of student work.
+        The profile provides a <code>FeedbackEvent</code> along with 'Commented' and 'Ranked' actions for describing
+        feedback activities. The <code>Feedback</code> entity is used to capture the criteria and content of the feedback.</p>
     </section>
 
     <section class="informative" id="usecases">
@@ -120,8 +118,8 @@
     <!-- TODO: add Feedback event picture -->
     <img height="100%" width="100%" src="" alt="Feedback Event"/>
 
-    <p>A Caliper <code>FeedbackEvent</code> models a <code>Person</code> providing feedback typically
-      on a <code>DigitalResource</code>, a <code>Response</code>, or another <code>Person</code>.
+    <p>A Caliper <code>FeedbackEvent</code> models a <code>Person</code> providing feedback
+      on a <code>Entity</code>, typically a <code>Response</code>, <code>DigitalResource</code>, or another <code>Person</code>.
       A <code>Frame</code> may be referenced using the <code>target</code> property.
     </p>
 
@@ -138,21 +136,15 @@
       >Person</a></dd>
       <dt>Supported actions</dt>
       <dd><a href="#action-commented">Commented</a></dd>
-      <dd><a href="#action-disliked">Disliked</a></dd>
-      <dd><a href="#action-liked">Liked</a></dd>
       <dd><a href="#action-ranked">Ranked</a></dd>
       <dt>Supported objects</dt>
       <dd><a href=
-        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-      >DigitalResource</a></dd>
-      <dd><a href=
-        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
-      >Response</a></dd>
-      <dd><a href=
-        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#annotation"
-      >Annotation</a></dd>
-      <dd><a href="#entity-reaction-annotation">ReactionAnnotation</a></dd>
-      <dd><a href="#entity-rating-annotation">RatingAnnotation</a></dd>
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+      >Entity</a></dd>
+      <dd>
+      <dt>Supported generated</dt>
+      <dd><a href="#entity-feedback">Feedback</a></dd>
+      <dt>Supported targets</dt>
       <dd><a href=
         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#frame"
       >Frame</a></dd>
@@ -208,18 +200,17 @@
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the 'Commented', 'Disliked', 'Liked',
-            and 'Ranked' actions only.</td>
+            <code>object</code>. The value range is limited to the 'Commented' and 'Ranked' actions only.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>object</td>
           <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-          >DigitalResource</a> | <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+          >Entity</a> | <a href=
                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>DigitalResource</code> that is the target of the feedback. The
+          <td>The <code>Entity</code> that is the target of the feedback. The
             <code>object</code> value MUST be expressed either as an object or as a string
             corresponding to the resource's IRI.</td>
           <td>Required</td>
@@ -236,13 +227,10 @@
         </tr>
         <tr>
           <td>generated</td>
-          <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Annotation</a> | <a href=
+          <td><a href="#entity-feedback">Feedback</a> | <a href=
                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>Annotation</code>, which could be a <code>ReactionAnnotation</code> or
-            <code>RankedAnnotation</code>, that describes the feedback provided.
+          <td>The <code>Feedback</code> entity that describes the feedback provided.
             The <code>object</code> value MUST be expressed either as an object or as a string
             corresponding to the entity's IRI.</td>
           <td>Optional</td>
@@ -268,20 +256,20 @@
     "type": "Response"
   },
   "generated": {
-    "id": "https://example.com/users/554433/texts/imscaliperimplguide/annotations/1",
-    "type": "Annotation",
-    "annotator": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "annotated": {
+    "id": "https://example.com/users/554433/texts/imscaliperimplguide/feedback/1",
+    "type": "Feedback",
+    "feedbackTarget": {
       "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
       "type": "Response"
     },
+    "feedbackText": "I like what you did here but you need to improve on...",
+    "scale: {
+      "id": "https://example.com/users/554433/texts/imscaliperimplguide/scale/1",
+      "type": "Scale",
+      "options": ["Disagree", "Neutral", "Agree"]
+    },
+    "scaleSelection": "Neutral",
     "dateCreated": "2018-08-01T06:00:00.000Z",
-    "extensions": {
-      "content": "I like what you did here but you need to improve on..."
-    }
   },
   "eventTime": "2018-11-15T10:05:00.000Z",
   "edApp": "https://example.edu",
@@ -315,8 +303,7 @@
 <section id="actions">
   <h2>Actions</h2>
 
-  <p>The Caliper <a href="#event-feedback">FeedbackEvent</a> supports the 'Commented', 'Disliked',
-    'Liked', and 'Ranked' actions.</p>
+  <p>The Caliper <a href="#event-feedback">FeedbackEvent</a> supports the 'Commented' and 'Ranked' actions.</p>
 
   <table class="data">
     <thead>
@@ -335,20 +322,6 @@
         Make or write a comment on</a>.</td>
     </tr>
     <tr>
-      <td id="action-disliked">Disliked</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Disliked" rel="nofollow">
-          http://purl.imsglobal.org/caliper/actions/Disliked</a></td>
-      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201780648-v" rel="nofollow">Have
-        or feel a dislike or distaste for</a>. Inverse of <a href="#action-liked">Liked</a>.</td>
-    </tr>
-    <tr>
-      <td id="action-liked">Liked</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Liked" rel="nofollow">
-          http://purl.imsglobal.org/caliper/actions/Liked</a></td>
-      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201780873-v" rel="nofollow">Be fond of</a>.
-        Inverse of <a href="#action-disliked">Disliked</a>.</td>
-    </tr>
-    <tr>
       <td id="action-ranked">Ranked</td>
       <td><a href="http://purl.imsglobal.org/caliper/actions/Ranked" rel="nofollow">
           http://purl.imsglobal.org/caliper/actions/Ranked</a></td>
@@ -362,23 +335,23 @@
 <section id="entities">
   <h2>Entities</h2>
 
-  <p>The <code>FeedbackEvent</code> MAY reference a <code>ReactionAnnotation</code> that captures
-    a like/dislike reaction or a <code>RatingAnnotation</code> that captures perceived quality.</p>
+  <p>The <code>FeedbackEvent</code> MUST reference a <code>Feedback</code> object that captures
+    the content of the feedback.</p>
 
-    <section id="entity-reaction-annotation">
-      <h3>ReactionAnnotation</h3>
-      <p>A Caliper <code>ReactionAnnotation</code> models a person's reaction, typically a like/dislike,
-        to a <code>DigitalResource</code>.</p>
+    <section id="entity-feedback">
+      <h3>Feedback</h3>
+      <p>A Caliper <code>Feedback</code> models a person's reactions, typically textual and/or based on some criteria,
+        to a <code>Entity</code>.</p>
       <dl>
         <dt>IRI</dt>
-        <dd>https://purl.imsglobal.org/caliper/ReactionAnnotation</dd>
+        <dd>https://purl.imsglobal.org/caliper/Feedback</dd>
         <dt>Supertype</dt>
         <dd><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#annotation"
-        >Annotation</a></dd>
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+        >Entity</a></dd>
         <dt>Properties</dt>
-        <dd><code>ReactionAnnotation</code> inherits all properties defined by its supertype <code>Annotation</code>.
-            <code>ReactionAnnotation</code> is also provisioned with one additional property, <code>reaction</code>.
+        <dd><code>Feedback</code> inherits all properties defined by its supertype <code>Entity</code>.
+            <code>Feedback</code> is also provisioned with one additional property, <code>reaction</code>.
             Profile-specific type restrictions are described below:
         </dd>
       </dl>
@@ -414,43 +387,54 @@
           <td><a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to the Term 'ReactionAnnotation'.</td>
+          <td>The string value MUST be set to the Term 'Feedback'.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>name</td>
           <td>string</td>
-          <td>A string value comprising a word or phrase by which the <code>ReactionAnnotation</code> is known.</td>
+          <td>A string value comprising a word or phrase by which the <code>Feedback</code> is known.</td>
           <td>Optional</td>
         </tr>
         <tr>
           <td>description</td>
           <td>string</td>
-          <td>A string value comprising a brief, written representation of the <code>ReactionAnnotation</code>.</td>
+          <td>A string value comprising a brief, written representation of the <code>Feedback</code>.</td>
           <td>Optional</td>
         </tr>
         <tr>
-          <td>annotator</td>
+          <td>feedbackTarget</td>
           <td><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-          >Person</a> | <a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+          >Entity</a> | <a href=
               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>Person</code> who created the <code>ReactionAnnotation</code>.
-            The annotator value MUST be expressed either as an object or as a string corresponding to
-            the annotator’s IRI.</td>
+          <td>The <code>Entity</code> which received the feedback.
+            The feedbackTarget value MUST be expressed either as an object or as a string
+            corresponding to the feedbackTarget resource’s IRI.</td>
           <td>Optional</td>
         </tr>
         <tr>
-          <td>annotated</td>
+          <td>feedbackText</td>
+          <td>string</td>
+          <td>A string value comprising a plain text of the feedback given.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>scale</td>
           <td><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-          >DigitalResource</a> | <a href=
+          "#entity-scale">Scale</a> | <a href=
               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>DigitalResource</code> that was annotated by the annotator.
-            The annotated value MUST be expressed either as an object or as a string
-            corresponding to the annotated resource’s IRI.</td>
+          <td>The <code>Scale</code> which was used to measure the feedbackTarget by some criteria.
+            The scale value MUST be expressed either as an object or as a string
+            corresponding to the scale resource’s IRI.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>scaleSelection</td>
+          <td>string</td>
+          <td>A string value representing the selected value for the feedback from the scale.</td>
           <td>Optional</td>
         </tr>
         <tr>
@@ -470,16 +454,6 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>reaction</td>
-          <td>decimal</td>
-          <td>A number with a fractional part denoted by a decimal separator that designates
-            the level of positive, neutral, or negative reaction.
-            A negative number should be considered negative reaction.
-            A positive number should be considered negative positive reaction.
-            Zero should be considered a neutral reaction.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
           <td>extensions</td>
           <td>Object</td>
           <td>A map of additional attributes not defined by the model MAY be specified
@@ -489,45 +463,147 @@
         </tbody>
     </table>
 
+
+
     <figure class="example">
-      <figcaption><code>ReactionAnnotation</code> describe JSON-LD</figcaption>
+      <figcaption><code>Feedback</code> describe JSON-LD</figcaption>
       <pre>
         <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.com/users/554433/texts/imscaliperimplguide/annotations/1",
-  "type": "ReactionAnnotation",
-  "annotator": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "annotated": {
+  "id": "https://example.com/users/554433/texts/imscaliperimplguide/feedback/1",
+  "type": "Feedback",
+  "feedbackTarget": {
     "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
     "type": "Response"
   },
+  "feedbackText": "I like what you did here but you need to improve on...",
+  "scale: {
+    "id": "https://example.com/users/554433/texts/imscaliperimplguide/scale/1",
+    "type": "Scale",
+    "options": ["Disagree", "Neutral", "Agree"]
+  },
+  "scaleSelection": "Neutral",
   "dateCreated": "2018-08-01T06:00:00.000Z",
-  "reaction": 1.0
 }
         </code>
       </pre>
     </figure>
   </section>
 
-  <section id="entity-rating-annotation">
-      <h3>RatingAnnotation</h3>
-      <p>A Caliper <code>RatingAnnotation</code> models a person's reaction, typically a like/dislike,
-        to a <code>DigitalResource</code>.</p>
+  <section id="entity-scale">
+      <h3>Scale</h3>
+      <p>A Caliper <code>Scale</code> models scale employed in order to capture some rating.</p>
       <dl>
         <dt>IRI</dt>
-        <dd>https://purl.imsglobal.org/caliper/RatingAnnotation</dd>
+        <dd>https://purl.imsglobal.org/caliper/Scale</dd>
         <dt>Supertype</dt>
         <dd><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#annotation"
-        >Annotation</a></dd>
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+        >Entity</a></dd>
         <dt>Properties</dt>
-        <dd><code>RatingAnnotation</code> inherits all properties defined by its supertype <code>Annotation</code>.
-            <code>RatingAnnotation</code> is also provisioned with four additional properties:
-            <code>rating</code>, <code>minValue</code>, <code>maxValue</code>, and <code>criteria</code>.
+        <dd><code>Scale</code> inherits all properties defined by its supertype <code>Entity</code>.
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'Scale'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>A string value comprising a word or phrase by which the <code>Scale</code> is known.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>description</td>
+          <td>string</td>
+          <td>A string value comprising a brief, written representation of the <code>Scale</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>dateCreated</td>
+          <td>DateTime</td>
+          <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+              <code>Scale</code> was created. The value MUST be expressed
+              using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>dateModified</td>
+          <td>DateTime</td>
+          <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+              <code>Scale</code> was last changed or modified. The value MUST be expressed
+              using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>extensions</td>
+          <td>Object</td>
+          <td>A map of additional attributes not defined by the model MAY be specified
+              for a more concise representation of the <code>Scale</code>.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <figure class="example">
+      <figcaption><code>RatingAnnotation</code> describe JSON-LD</figcaption>
+      <pre>
+        <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.com/users/554433/texts/imscaliperimplguide/scale/1",
+  "type": "Scale",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}
+        </code>
+      </pre>
+    </figure>
+  </section>
+
+  <section id="entity-likert-scale">
+      <h3>LikertScale</h3>
+      <p>A Caliper <code>LikertScale</code> models scale employed in order to capture some rating.</p>
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/LikertScale</dd>
+        <dt>Supertype</dt>
+        <dd><a href="#entity-scale">Scale</a></dd>
+        <dt>Properties</dt>
+        <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>.
+            <code>LikertScale</code> is also provisioned with the additional property <code>options</code>.
             Profile-specific type restrictions are described below:
         </dd>
       </dl>
@@ -563,50 +639,32 @@
           <td><a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to the Term 'RatingAnnotation'.</td>
+          <td>The string value MUST be set to the Term 'LikertScale'.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>name</td>
           <td>string</td>
-          <td>A string value comprising a word or phrase by which the <code>RatingAnnotation</code> is known.</td>
+          <td>A string value comprising a word or phrase by which the <code>LikertScale</code> is known.</td>
           <td>Optional</td>
         </tr>
         <tr>
           <td>description</td>
           <td>string</td>
-          <td>A string value comprising a brief, written representation of the <code>RatingAnnotation</code>.</td>
+          <td>A string value comprising a brief, written representation of the <code>LikertScale</code>.</td>
           <td>Optional</td>
         </tr>
         <tr>
-          <td>annotator</td>
-          <td><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-          >Person</a> | <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>The <code>Person</code> who created the <code>RatingAnnotation</code>.
-            The annotator value MUST be expressed either as an object or as a string corresponding to
-            the annotator’s IRI.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>annotated</td>
-          <td><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-          >DigitalResource</a> | <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>The <code>DigitalResource</code> that was annotated by the annotator.
-            The annotated value MUST be expressed either as an object or as a string
-            corresponding to the annotated resource’s IRI.</td>
+          <td>options</td>
+          <td>Array [{key:value}] | Array [value]</td>
+          <td>The ordered list of options used in the likert scale.</td>
           <td>Optional</td>
         </tr>
         <tr>
           <td>dateCreated</td>
           <td>DateTime</td>
           <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-              <code>RatingAnnotation</code> was created. The value MUST be expressed
+              <code>LikertScale</code> was created. The value MUST be expressed
               using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
           <td>Optional</td>
         </tr>
@@ -614,43 +672,15 @@
           <td>dateModified</td>
           <td>DateTime</td>
           <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-              <code>RatingAnnotation</code> was last changed or modified. The value MUST be expressed
+              <code>LikertScale</code> was last changed or modified. The value MUST be expressed
               using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>rating</td>
-          <td>decimal</td>
-          <td>A number with a fractional part denoted by a decimal separator that designates
-            the quality perceived. The rating is bound by the <code>minValue</code> and
-            <code>maxValue</code> properties.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>minValue</td>
-          <td>decimal</td>
-          <td>A number with a fractional part denoted by a decimal separator that designates
-            the minimum rating permitted.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>maxValue</td>
-          <td>decimal</td>
-          <td>A number with a fractional part denoted by a decimal separator that designates
-            the maximum rating permitted.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>criteria</td>
-          <td>text</td>
-          <td>A textual description of the criteria that the rating is based on.</td>
           <td>Optional</td>
         </tr>
         <tr>
           <td>extensions</td>
           <td>Object</td>
           <td>A map of additional attributes not defined by the model MAY be specified
-              for a more concise representation of the <code>RatingAnnotation</code>.</td>
+              for a more concise representation of the <code>LikertScale</code>.</td>
           <td>Optional</td>
         </tr>
         </tbody>
@@ -662,21 +692,10 @@
         <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.com/users/554433/texts/imscaliperimplguide/annotations/1",
-  "type": "RatingAnnotation",
-  "annotator": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "annotated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-    "type": "Response"
-  },
+  "id": "https://example.com/users/554433/texts/imscaliperimplguide/scale/1",
+  "type": "LikertScale",
+  "options": [{0:"Disagree"}, {1: "Neutral"}, {2: "Agree}"] or ["Disagree", "Neutral", "Agree"],
   "dateCreated": "2018-08-01T06:00:00.000Z",
-  "rating": 3.0,
-  "minValue": 1.0,
-  "maxValue": 5.0,
-  "criteria": "Grammar"
 }
         </code>
       </pre>
@@ -691,8 +710,8 @@
     provides a remote Feedback Profile JSON-LD <a href=
     "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension">context</a> for mapping
     <code>FeedbackEvent</code> terms to IRIs. Caliper message producers MUST reference this
-    context in every Caliper 1.1 <code>FeedbackEvent</code>, <code>ReactionAnnotation</code>,
-    and/or <code>RatingAnnotation</code> describe created and serialized for transmission to a
+    context in every Caliper 1.1 <code>FeedbackEvent</code>, <code>Feedback</code>, <code>Scale</code>,
+    and/or <code>LikertScale</code> describe created and serialized for transmission to a
     target endpoint.</p>
 
   <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
