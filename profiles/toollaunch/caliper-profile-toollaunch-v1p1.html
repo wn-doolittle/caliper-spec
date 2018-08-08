@@ -314,7 +314,13 @@
 
   <section>
     <h2>Actions</h2>
-    <p>The Caliper <a href="#toolLaunchEvent">ToolLaunchEvent</a> supports the "Launched" and "Returned" actions.</p>
+    <p>The Caliper <a href="#toolLaunchEvent">ToolLaunchEvent</a> supports the
+      "Launched" and "Returned" actions.</p>
+
+    <section id="action-launched">
+      <h3>Launched</h3>
+      The <code>Launched</code> action gets used when a system will begin a workflow
+      sending a user from its own domain out to an external system.
     <table class="data">
       <thead>
       <tr>
@@ -329,6 +335,24 @@
           <td><a href="http://purl.imsglobal.org/caliper/actions/Launched" rel="nofollow">http://purl.imsglobal.org/caliper/actions/Launched</a></td>
           <td><a href="http://wordnet-rdf.princeton.edu/wn31/01515196-v" rel="nofollow">Get going; give impetus to</a>.</td>
           </tr>
+      </tbody>
+    </table>
+    </section>
+
+    <section id="action-returned">
+      <h3>Returned</h3>
+      The <code>Returned</code> action gets used when the workflow that started
+      with the <a href="action-launched">Launched</a> action gets finished when
+      the external tool redirects the user back to the launching system.
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
           <tr>
           <td id="action-Returned">Returned</td>
           <td><a href="http://purl.imsglobal.org/caliper/actions/Returned" rel="nofollow">http://purl.imsglobal.org/caliper/actions/Returned</a></td>
