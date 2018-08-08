@@ -100,6 +100,7 @@
       via the Tool Launch Profile to answer questions such as: </p>
     <ul>
       <li>Which of the available tools are launched the most or the least?</li>
+      <li>Which of the available tools signal workflow completion with an explicit return?</li>
       <li>Which courses utilize certain tools the most or the least?</li>
       <li>Are there demographic variances in the utilization of the available tools?</li>
       <li>Are there temporal variances in the utilization of the available tools?</li>
@@ -181,12 +182,14 @@
         src="assets/caliper-tool_launched_event_launched.png"
            alt="ToolLaunchEvent"/>
                 
-        <p>The <code>ToolLaunchEvent</code> models a Person launching a SoftwareApplication
-          at a given time and in a given context. It also provides the ability to 
-          model a "return response", which in the context of LTI [[LTI-13]] 
-          typically consists of a <a href="https://www.imsglobal.org/spec/lti/v1p3/#lis-message-variables">
-          redirect URL</a> or a specific response message, as defined in for example 
-          LTI Deep Linking [[LTI-DL-20]].
+        <p>The <code>ToolLaunchEvent</code> models an interaction between a
+          Person and external Tool (SoftwareApplication), at a given time and
+          in a given context at a given time and in a given context. It also
+          provides the ability to model a "return response", which in the
+          context of LTI [[LTI-13]] typically consists of
+          a <a href="https://www.imsglobal.org/spec/lti/v1p3/#lis-message-variables">
+          redirect URL</a> or a specific response message, as defined in for
+          example LTI Deep Linking [[LTI-DL-20]].
         </p>
                 
         <dl>
@@ -206,8 +209,9 @@
           <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareApplication"
             >SoftwareApplication</a></dd>
           <dt>Properties</dt>
-          <dd><code>ToolLaunchEvent</code> inherits all properties defined by its supertype <code>Event</code>. 
-            Profile specific property type restrictions are described below:        
+          <dd><code>ToolLaunchEvent</code> inherits all properties defined by
+            its supertype <code>Event</code>. Profile specific property type
+            restrictions are described below:
           </dd>
         </dl>  
         <table class="data">
@@ -276,7 +280,7 @@
                 <code>SoftwareApplication</code>'s IRI.</td>
               <td>Required</td>
             </tr>          
-            <tr>
+              <tr>
               <td>edApp</td>
               <td><a href=
                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareApplication">SoftwareApplication</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
