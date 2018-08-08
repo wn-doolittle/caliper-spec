@@ -293,6 +293,34 @@
               <td>Required</td>
             </tr>
             <tr>
+              <td>generated</td>
+              <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource">DigitalResource</a></td>
+              <td>In the case that the workflow comes with a resource
+                intended for the receiver of the workflow message associated
+                with this event (for example, a file,
+                or image, or LTI resource link for the receiver to embed within
+                its system), this property can carry its representation as a
+                Caliper <code>DigitalResource</code> (or, more likely, one of
+                its specific sub-types).
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td>target</td>
+              <td><a href="#entity-Link">Link</a>|<a href="#entity-LtiLink">LtiLink</a></td>
+              <td>The fully qualified IRL to which the workflow was
+                redirected. In the case of the 'Launched' action, this would be
+                the fully qualified entry-point on the external tool to which the
+                platform launches. In the case of the 'Returned' action, this
+                would be the fully qualified entry-point on the platform to which
+                the tool is redirecting the workflow after user activity from the
+                original launch finishes (this could be
+                the <code>launch_presentation_return_url</code> in the case of
+                a simple LTI Resource Link request; it could also be
+                the <code>deep_link_return_url</code> in the case of a Deep
+                Linking Response message).
+              <td>Optional</td>
+            </tr>
+            <tr>
               <td>federatedSession</td>
               <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#ltiSession">LtiSession</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a></td>
               <td>The <a>Platform's</a> session, constituting part of the 
@@ -303,7 +331,7 @@
                 otherwise optional. Workflows that have a specific "return message" 
                 component (e.g. LTI Deep Linking response messages) SHOULD provide 
                 the <code>federatedSession</code> property and SHOULD populate 
-                it's messageParameters field with the message parameters in the 
+                its messageParameters field with the message parameters in the
                 response message.</td>
             </tr>
             </tbody>
@@ -360,6 +388,8 @@
           </tr>
       </tbody>
     </table>
+    </section>
+  </section>
 
   <section id="entities">
     <h2>Entities</h2>
