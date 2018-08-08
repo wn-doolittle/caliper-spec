@@ -361,6 +361,122 @@
       </tbody>
     </table>
 
+  <section id="entities">
+    <h2>Entities</h2>
+    <p>The Caliper <a href="#ToolLaunchEvent">ToolLaunchEvent</a> supports the
+      addition of new "Link" and "LtiLink" entities.</p>
+
+    <section id="entity-link">
+      <h3>Link</h3>
+      <p>The Link entity represents an IRL that might be a UI workflow or service
+        endpoint (transient or otherwise), and not necessarily a proper Digital
+        Resource (such as
+        a <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#webPage">WebPage</a>
+        or <a href="#entity-LtiLink">LtiLink).
+      </p>
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/Link</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef">Entity</a></dd>
+        <dt>Properties</dt>
+        <dd><code>Link</code> inherits all properties defined by its supertype <code>Entity</code>.
+          Entity-specific property type restrictions are described below:
+        </dd>
+      </dl>
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Disposition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a>
+            <td>A valid IRI must be specified. The IRI SHOULD be dereferenceable
+              and be fully qualified, i.e., capable of interaction with an HTTP
+              request.</td>
+            <td>Required</td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef">Term</a></td>
+            <td>The string value MUST be set to <code>Link</code>.</td>
+            <td>Required</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="entity-ltiLink">
+      <h3>LtiLink</h3 id="entity-LtiLink">
+      <p>The LtiLink entity represents a digital resource that must be retrieved
+        from an external tool application via an LTI request message. It is,
+        effectively, a Digital Resource that must use LTI for access.
+      </p>
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/LtiLink</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource">DigitalResource</a></dd>
+        <dt>Properties</dt>
+        <dd><code>LtiLink</code> inherits all properties defined by its supertype <code>DigitalResource</code>. 
+          Entity-specific property type restrictions are described below:
+        </dd>
+      </dl>
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Disposition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a>
+            <td>Fully qualified URI of the LTI resource. A valid IRI must be
+              specified. The IRI MUST be dereferenceable, i.e., capable of
+              interaction with an HTTP request.</td>
+            <td>Required</td>
+          </tr>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef">Term</a></td>
+          <td>The string value MUST be set to <code>LtiLink</code>.</td>
+          <td>Required</td>
+        </tr>
+          <tr>
+            <td>messageType</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef">Term</a></td>
+            <td>If present, the string value MUST be set to the term name of the
+              LTI message type used to gain access to this LTI resource link (for example,
+              `LtiResourceLinkRequest` or `LtiDeepLinkingRequest`).</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>ltiVersion</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef">Term</a></td>
+            <td>If present, the string value MUST be set to the term name of the
+              _version_ of LTI that governs sending the message to gain access to
+              this LTI resource link.</td>
+            <td>Optional</td>
+          </tr>
+      </tbody>
+      </table>
+
+      <p>Note that implementers by best practice SHOULD include
+        the <code>messageType</code> and <code>ltiVersion</code> associated with
+        an LTILink entity to provide context for how the link would have been
+        intended to be used.</p>
+
+    </section>
   </section>
 
   <section id="jsonld">
