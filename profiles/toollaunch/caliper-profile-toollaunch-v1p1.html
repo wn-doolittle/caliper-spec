@@ -41,8 +41,8 @@
 <body>
 <section id="abstract">
   <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Tool
-  Launch profile, allowing users to track learning tool utilization from a
-  central location (e.g. an LMS).
+  Launch profile, allowing users to track learning tool interactions from a
+  central location (for example, and LTI Tool Platform).
 </section>
 
 <section>
@@ -54,22 +54,24 @@
          src="assets/caliper-profile_tool_launch-with_name.png" alt="Tool Launch Profile"/>
 
     <p>The Caliper Tool Launch Profile is intended to capture the utilization
-      of learning tools from a centralized location, such as an LMS. As such,
-      it is distinct from the Caliper Tool Usage profile as defined in the
-      Caliper 1.1 specification [[!CALIPER-11]], which captures tool usage as
-      reported by the individual tools themselves (i.e. decentralized capture).
+      of learning tools from a centralized location, such as an LTI Tool
+      Platform (often an LMS). As such, it is distinct from the Caliper Tool
+      Use profile as defined in the Caliper 1.1 specification [[!CALIPER-11]],
+      which captures tool usage as reported by the individual tools themselves
+      (i.e. decentralized capture).
     </p>
-    <p>The Tool Launch and Tool Usage profile have their own unique
-      set of advantages; the primary advantage of the Tool Launch profile is that it 
-      only requires a single sensor to be deployed (typically in an LMS), whereas
-      the Tool Usage profile requires all tools being measured to implement the
-      Caliper sensor API.</p>
+    <p>The Tool Launch and Tool Use profiles have their own unique set of
+      advantages; the primary advantage of the Tool Launch profile is that it_
+      only requires a single sensor to be deployed (typically in an LMS),
+      whereas the Tool Use profile requires all tools being measured to
+      implement the Caliper sensor API.</p>
 
     <p>Data captured using the Tool Launch profile can be used to determine
       which tools were launched within a given timeframe, by whom and in what
-      context. It however can not, as opposed to the Tool Usage profile,
-      provide a measure of whether the user actually interacted with the tool in
-      a manner that the application determines to be its “intended use for learning”.
+      context. It however can not, as opposed to the Tool Use profile, provide
+      a measure of whether the user actually interacted with the tool in a
+      manner that the application determines to be its “intended use for
+      learning”.
     </p>
 
     <p>In certain deployment contexts, using both the Tool Launch and the Tool
