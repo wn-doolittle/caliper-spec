@@ -373,19 +373,12 @@
           </tr>
           <tr>
             <td>searchResults</td>
-            <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResourceCollection"
-            >DigitalResourceCollection</a> | <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
+            <td><a href="#string">array</a></td>
             <td>An ordered collection of <a href=
                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-              >DigitalResource</a> entities that constitute the results of the search.  The
-              <code>DigitalResourceCollection</code> MUST be expressed either as an object or as a
-              string corresponding to the collection's IRI.  If the
-              <code>DigitalResourceCollection</code> is expressed as an object each item listed MUST
-              be expressed either as an object or as a string corresponding to the resource's
-              IRI.</td>
+              >DigitalResource</a> entities that constitute the results of the search.  Each
+              <code>DigitalResource</code> referenced MUST be expressed either as an object or as a
+              string corresponding to the resource's IRI.</td>
             <td>Optional</td>
           </tr>
           </tbody>
@@ -527,16 +520,11 @@
       "dateCreated": "2018-11-15T10:05:00.000Z"
     },
     "searchResultsItemCount": 3,
-    "searchResults": {
-      "id": "https://example.edu/catalog/search/334455?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-      "type": "DigitalResourceCollection",
-      "items": [
-        "https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-        "https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-        "https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29"
-      ]
-    },
-    "dateCreated": "2018-11-15T10:05:00.000Z"
+    "searchResults": [
+      "https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+      "https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+      "https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29"
+    ]
   },
   "edApp": "https://example.edu",
   "group": {
@@ -591,26 +579,23 @@
 		"dateCreated": "2018-11-15T10:05:00.000Z"
 	},
 	"searchResultsItemCount": 3,
-	"searchResults": {
-		"id": "https://example.edu/catalog/search/334455?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-		"type": "DigitalResourceCollection",
-		"items": [{
-				"id": "https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-				"type": "Document",
-				"mediaType": "application/pdf"
-			},
-			{
-				"id": "https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-				"type": "VideoObject",
-				"mediaType": "video/ogg"
-			},
-			{
-				"id": "https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-				"type": "Document",
-				"mediaType": "application/epub+zip"
-			}
-		]
-	},
+	"searchResults": [
+    {
+      "id": "https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+      "type": "Document",
+      "mediaType": "application/pdf"
+    },
+    {
+      "id": "https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+      "type": "VideoObject",
+      "mediaType": "video/ogg"
+    },
+    {
+      "id": "https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+      "type": "Document",
+      "mediaType": "application/epub+zip"
+    }
+  ],
 	"dateCreated": "2018-11-15T10:05:00.000Z"
 }</code></pre>
       </figure>
