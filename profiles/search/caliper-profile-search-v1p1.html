@@ -292,8 +292,8 @@
           <dt>Properties</dt>
           <dd><code>SearchResponse</code> inherits all properties defined by its supertype
             <code>Entity</code>. <code>SearchResponse</code> is also provisioned with four additional
-            properties: <code>searchProvider</code>, <code>resourceSearched</code>, <code>query
-            </code>, <code>searchResultsItemCount</code>, and <code>searchResults</code>.
+            properties: <code>searchProvider</code>, <code>resourceSearched</code>, <code>query</code>,
+            <code>searchResultsItemCount</code>, and <code>searchResults</code>.
             Profile-specific type restrictions are described below:
           </dd>
         </dl>
@@ -445,8 +445,8 @@
           >Person</a> | <a href=
                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>Person</code> who devised the search terms comprising this <code>Query
-          </code>. The<code>creator</code> value MUST be expressed either as an object or as a string
+          <td>The <code>Person</code> who devised the search terms comprising this <code>Query</code>.
+            The<code>creator</code> value MUST be expressed either as an object or as a string
             corresponding to the creator's IRI.</td>
           <td>Optional</td>
         </tr>
@@ -612,7 +612,6 @@
   "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
   "type": "Query",
   "creator": "https://example.edu/users/554433",
-  "searched": "https://example.edu",
   "searchTerms": "IMS AND (Caliper OR Analytics)",
   "dateCreated": "2018-11-15T10:05:00.000Z"
 }</code></pre>
