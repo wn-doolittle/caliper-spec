@@ -510,61 +510,61 @@
       <figure class="example">
         <figcaption><code>SearchEvent</code> JSON-LD</figcaption>
         <pre><code>{
-	"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-	"id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
-	"type": "SearchEvent",
-	"actor": {
-		"id": "https://example.edu/users/554433",
-		"type": "Person"
-	},
-	"action": "Searched",
-	"object": {
-		"id": "https://example.edu/catalog",
-		"type": "SoftwareApplication"
-	},
-	"eventTime": "2018-11-15T10:05:00.000Z",
-	"generated": {
-		"id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-		"type": "SearchResponse",
-		"searchProvider": "https://example.edu",
-		"searchTarget": "https://example.edu/catalog",
-		"query": {
-			"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-			"id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-			"type": "Query",
-			"creator": "https://example.edu/users/554433",
-			"searchTarget": "https://example.edu/catalog",
-			"searchTerms": "IMS AND (Caliper OR Analytics)",
-			"dateCreated": "2018-11-15T10:05:00.000Z"
-		},
-		"searchResultsItemCount": 3,
-		"searchResults": [
-			"https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-			"https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-			"https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29"
-		]
-	},
-	"edApp": "https://example.edu",
-	"group": {
-		"id": "https://example.edu/terms/201601/courses/7/sections/1",
-		"type": "CourseSection",
-		"courseNumber": "CPS 435-01",
-		"academicSession": "Fall 2018"
-	},
-	"membership": {
-		"id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-		"type": "Membership",
-		"member": "https://example.edu/users/554433",
-		"organization": "https://example.edu/terms/201601/courses/7/sections/1",
-		"roles": ["Learner"],
-		"status": "Active",
-		"dateCreated": "2018-08-01T06:00:00.000Z"
-	},
-	"session": {
-		"id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-		"type": "Session",
-		"startedAtTime": "2018-11-15T10:00:00.000Z"
-	}
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+  "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
+  "type": "SearchEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Searched",
+  "object": {
+    "id": "https://example.edu/catalog",
+    "type": "SoftwareApplication"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "generated": {
+    "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+    "type": "SearchResponse",
+    "searchProvider": "https://example.edu",
+    "searchTarget": "https://example.edu/catalog",
+    "query": {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+      "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+      "type": "Query",
+      "creator": "https://example.edu/users/554433",
+      "searchTarget": "https://example.edu/catalog",
+      "searchTerms": "IMS AND (Caliper OR Analytics)",
+      "dateCreated": "2018-11-15T10:05:00.000Z"
+    },
+    "searchResultsItemCount": 3,
+    "searchResults": [
+      "https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+      "https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+      "https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29"
+    ]
+  },
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": ["Learner"],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
 }</code></pre>
       </figure>
 
@@ -575,31 +575,30 @@
       <figure class="example">
         <figcaption><code>Query</code> describe JSON-LD</figcaption>
         <pre><code>{
-	"id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-	"type": "SearchResponse",
-	"searchProvider": {
-		"id": "https://example.edu",
-		"type": "SoftwareApplication"
-	},
-	"searchTarget": {
-		"id": "https://example.edu/catalog",
-		"type": "SoftwareApplication"
-	},
-	"query": {
-		"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-		"id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-		"type": "Query",
-		"creator": {
-			"id": "https://example.edu/users/554433",
-			"type": "Person"
-		},
+  "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+  "type": "SearchResponse",
+  "searchProvider": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "searchTarget": {
+    "id": "https://example.edu/catalog",
+    "type": "SoftwareApplication"
+  },
+  "query": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+    "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+    "type": "Query",
+    "creator": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
     "searchTarget": "https://example.edu/catalog",
-		"searchTerms": "IMS AND (Caliper OR Analytics)",
-		"dateCreated": "2018-11-15T10:05:00.000Z"
-	},
-	"searchResultsItemCount": 3,
-	"searchResults": [
-    {
+    "searchTerms": "IMS AND (Caliper OR Analytics)",
+    "dateCreated": "2018-11-15T10:05:00.000Z"
+  },
+  "searchResultsItemCount": 3,
+  "searchResults": [{
       "id": "https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
       "type": "Document",
       "mediaType": "application/pdf"
@@ -615,7 +614,7 @@
       "mediaType": "application/epub+zip"
     }
   ],
-	"dateCreated": "2018-11-15T10:05:00.000Z"
+  "dateCreated": "2018-11-15T10:05:00.000Z"
 }</code></pre>
       </figure>
 
@@ -627,19 +626,19 @@
       <figure class="example">
       <figcaption><code>Query</code> describe JSON-LD</figcaption>
       <pre><code>{
-	"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-	"id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-	"type": "Query",
-	"creator": {
-		"id": "https://example.edu/users/554433",
-		"type": "Person"
-	},
-	"searchTarget": {
-		"id": "https://example.edu/catalog",
-		"type": "SoftwareApplication"
-	},
-	"searchTerms": "IMS AND (Caliper OR Analytics)",
-	"dateCreated": "2018-11-15T10:05:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+  "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+  "type": "Query",
+  "creator": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "searchTarget": {
+    "id": "https://example.edu/catalog",
+    "type": "SoftwareApplication"
+  },
+  "searchTerms": "IMS AND (Caliper OR Analytics)",
+  "dateCreated": "2018-11-15T10:05:00.000Z"
 }</code></pre>
       </figure>
     </section>
