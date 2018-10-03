@@ -1,0 +1,15 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+  "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+  "type": "Query",
+  "creator": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "searchTarget": {
+    "id": "https://example.edu/catalog",
+    "type": "SoftwareApplication"
+  },
+  "searchTerms": "IMS AND (Caliper OR Analytics)",
+  "dateCreated": "2018-11-15T10:05:00.000Z"
+}
