@@ -125,12 +125,14 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 * [Appendix F. Status](#status)
 * [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths)
 * [Appendix H. Change Log](#changeLog)
-  * H.1 [Profiles](#changeLogProfiles)
-  * H.2 [Actions](#changeLogActions)
-  * H.3 [Events](#changeLogEvents)
-  * H.4 [Entities](#changeLogEntities)
-  * H.5 [Properties](#changeLogProperties)
-  * H.6 [JSON-LD Context](#changeLogJsonldContext)
+  * H.1 [In-place Corrections 24 May 2018](#changeLogCorrections20180524)
+  * H.2 [Caliper 1.1](#changeLogCaliperv1p1)
+    * H.2.1 [Profiles](#changeLogProfiles)
+    * H.2.2 [Actions](#changeLogActions)
+    * H.2.3 [Events](#changeLogEvents)
+    * H.2.4 [Entities](#changeLogEntities)
+    * H.2.5 [Properties](#changeLogProperties)
+    * H.2.6 [JSON-LD Context](#changeLogJsonldContext)
 * [Contributors](#contributors)
 * [References](#references)
 * [About this Document](#aboutThisDoc)
@@ -155,7 +157,6 @@ IMS Global strongly encourages its members and the greater public to provide fee
 Public comments and questions can be posted at the Caliper Analytics&reg; [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
 
 ### <a name="changes"></a>1.2 Summary of Changes
-
 Caliper 1.1 extends as well as refines the Caliper information model and further describes the ways in which Events and Entities can be expressed as [Linked Data](#linkedDataDef) when authoring documents using [JSON-LD](#jsonldDef).
 
 Three new profiles are provided: the [Basic Profile](#basicProfile), [Forum Profile](#forumProfile) and [ToolUse Profile](#toolUseProfile).  The AssessmentItem Profile has been merged into the [Assessment Profile](#assessmentProfile).  The Outcome Profile has been renamed the [Grading Profile](#gradingProfile) and a new [Score](#score) entity has been added.  Both the [Forum Profile](#forumProfile) and the [ToolUse Profile](#toolUseProfile) add new event types to the Caliper event model: [ForumEvent](#forumEvent), [ThreadEvent](#threadEvent), [MessageEvent](#messageEvent), [ToolUseEvent](#toolUseEvent).  New entities and actions are also provided to better describe forum activities and tool use. 
@@ -165,8 +166,10 @@ The [ReadingEvent](#readingEvent) has been deprecated while the [OutcomeEvent](#
 Regarding property changes, use of the [JSON-LD](#jsonldDef) `@id` and `@type` keywords have been deprecated in favor of `id` and `type`.  The Caliper [Event](#event) now includes an identifier `id` property  as well as new `referrer`, `session` and `extensions` attributes.  [Entity](#entity) property additions, name changes and deprecations also feature in this new release.
 
 [Sensor](#sensor) and [endpoint](#endpoint) behaviors are more fully described and the new specification also clarifies how to express Caliper events and entities in a [JSON-LD](#jsonldDef) document.   A new Caliper [JSON-LD](#jsonldDef) context document is also provided to map Caliper terms to their respective [IRIs](iriDef).
+ 
+This version of the specification is versioned 1.1-errata.01.  It includes a number of minor typographical and text duplication errors uncovered when the document was translated into Korean.
 
-All these changes are described in more detail in [Appendix H. Change Log](#changeLog).  
+All these changes are described in more detail in [Appendix H. Change Log](#changeLog).
 
 ### <a name="conventions"></a>1.3 Conventions
 
@@ -1241,13 +1244,21 @@ A Caliper [Endpoint](#endpoint) MUST be capable of receiving Caliper data sent o
 
 ### <a name="httpResponse"></a>6.1 HTTP Responses
 
-Following receipt of a [Sensor](#sensor) request message the [Endpoint](#endpoint) MUST reply with a response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
+Following receipt of a [Sensor](#sensor) HTTP request message, the [Endpoint](#endpoint) MUST reply with an HTTP response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request, as defined by [RFC 7231](#rfc7231).
 
-* To signal a [Sensor](#sensor) that it has successfully received an emitted [Envelope](#envelope) an [Endpoint](#endpoint) MUST reply with a `2xx` class status code. The [Endpoint](#endpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
-* If the [Sensor](#sensor) sends a message containing events and or entities without an enclosing [Envelope](#envelope), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.
-* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#endpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint) SHOULD send a `422 Unprocessable Entity` response instead.
-* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#endpoint) SHOULD reply with a `415 Unsupported Media Type` response.
-* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#endpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
+When signalling to a [Sensor](#sensor) that the endpoint has successfully received the request message, the [Endpoint](#endpoint) MUST reply with a `2xx` class status code. By best practice, the [Endpoint](#endpoint) SHOULD use the `200 OK` response but might instead choose to send a `201 Created` (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` (to indicate successful receipt of the message and queueing for further processing). By best practice, the [Endpoint](#endpoint) SHOULD send back successful responses with an empty body.
+
+An [Endpoint](#endpoint) MAY send back responses other than those with `2xx` class indicating success; if so, it MUST adhere to these response status codes for these specific cases (for other cases, the [Endpoint](#endpoint) may offer other responses):
+
+* If the request message has no enclosing Caliper [Envelope](#envelope), reply with a `400 Bad Request` status code.
+
+* If the request message's Caliper [Envelope](#envelope) is malformed (for example, missing fields required by the Envelop's version), reply with a `400 Bad Request` status code.
+
+* If the [Sensor](#sensor) sends an unauthorized request, or the [Endpoint](#endpoint) is unable to validate the authorization, or the [Endpoint](#endpoint) cannot determine that the [Sensor](#sensor) has sufficient privilege to send such a message, reply with a `401 Unauthorized`.
+
+* If the request message has a content-type other than `application/json`, reply with a `415 Unsupported Media Type`.
+
+* If the [Endpoint](#endpoint) cannot support the version of Caliper data indicated by the Caliper [Envelope](#envelope)'s `dataVersion` field, reply with a `422 Unprocessable Entity` status code.
 
 The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions that vary from the cases described above.  The [Endpoint](#endpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
 
@@ -1814,7 +1825,6 @@ http://purl.imsglobal.org/caliper/ForumEvent
 | eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 | target | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or as a string corresponding to the target entity's [IRI](#iriDef). | Optional |
 | generated | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or as a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| referrer | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents the referring context. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
 | edApp | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | A [SoftwareApplication](#softwareApplication) that constitutes the application context.  The `edApp` value MUST be expressed either as an object or as a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents the referring context. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or as a string corresponding to the referrer's [IRI](#iriDef). | Optional |
 | group | [Organization](#organization) &#124; [IRI](#iriDef) | An [Organization](#organization) that represents the group context.  The `group` value MUST be expressed either as an object or as a string corresponding to the group's [IRI](#iriDef). | Optional |
@@ -2103,7 +2113,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
 | edApp | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | A [SoftwareApplication](#softwareApplication) that constitutes the application context.  The `edApp` value MUST be expressed either as an object or as a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents the referring context. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or as a string corresponding to the referrer's [IRI](#iriDef). | Optional |
 | group | [Organization](#organization) &#124; [IRI](#iriDef) | An [Organization](#organization) that represents the group context.  The `group` value MUST be expressed either as an object or as a string corresponding to the group's [IRI](#iriDef). | Optional |
-| membership | [Membership](#membership) &#124; [IRI](#iriDef) | The relationship between the `actor` and the `group` in terms of roles assigned and current status.  The `membership` value MUST be expressed either as an object or as a string corresponding to the membership entity's [IRI](#iriDef).  The `session` value MUST be expressed either as an object or as a string corresponding to the session's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) &#124; [IRI](#iriDef) | The relationship between the `actor` and the `group` in terms of roles assigned and current status.  The `membership` value MUST be expressed either as an object or as a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
 | session | [Session](#session) &#124; [IRI](#iriDef) | The current user [Session](#session). | Optional |
 | federatedSession | [LtiSession](#ltiSession) &#124; [IRI](#iriDef) | If the [Event](#event) occurs within the context of an [LTI](#ltiDef) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or as a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [MessageEvent](#messageEvent). | Optional |
@@ -5609,22 +5619,21 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 
 ### Roles
 
-[Membership](#membership) includes an optional `roles` property for assigning one or more roles to an [Event](#event) `actor` described as a `member` of an `organization`.  Role values are limited to the list of Caliper role terms derived from the IMS [LIS](#lisDef) specification.  Assigning core context roles should prove sufficient in most cases.  Whenever a subrole is specified, the related context role SHOULD also be included. For example, a role of `Instructor#TeachingAssistant` SHOULD always be accompanied by the `Instructor` role. 
+[Membership](#membership) includes an optional `roles` property for assigning one or more roles to an [Event](#event) `actor` described as a `member` of an `organization`.  Role values are limited to the list of Caliper role terms derived from the IMS [LIS](#lisDef) specification.  Assigning context roles should prove sufficient in most cases.  Whenever a subrole is specified, the related context role SHOULD also be included. For example, a role of `Instructor#TeachingAssistant` SHOULD always be accompanied by the `Instructor` role. 
 
 #### Context Roles
+| Term | IRI |
+| :--- | :-- |
+| Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator |
+| ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper |
+| Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor |
+| Learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner |
+| Manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager |
+| Member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member |
+| Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor |
+| Officer | http://purl.imsglobal.org/vocab/lis/v2/membership#Officer |
 
-| Term | IRI | Core |
-| :--- | :-- | :--- |
-| Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator | Yes |
-| ContentDeveloper | http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper | Yes |
-| Instructor | http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor | Yes |
-| Learner | http://purl.imsglobal.org/vocab/lis/v2/membership#Learner | Yes |
-| Manager | http://purl.imsglobal.org/vocab/lis/v2/membership#Manager | No |
-| Member | http://purl.imsglobal.org/vocab/lis/v2/membership#Member | No |
-| Mentor | http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor | Yes |
-| Officer | http://purl.imsglobal.org/vocab/lis/v2/membership#Officer | No |
-
-#### SubRoles
+#### Sub-roles
 | Term | IRI |
 | :--- | :-- | 
 | Administrator#Administrator | http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator |
@@ -5656,8 +5665,9 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 | Learner#NonCreditLearner | http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner |
 | Manager#AreaManager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager |
 | Manager#CourseCoordinator | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator |
-| Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer",
 | Manager#ExternalObserver | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver |
+| Manager#Manager | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager |
+| Manager#Observer | http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer" |
 | Member#Member | http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member |
 | Mentor#Advisor |  http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor |
 | Mentor#Auditor | http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor |
@@ -5715,12 +5725,21 @@ When storing normalized or "flattened" Caliper [Event](#event) data, the followi
 
 ## <a name="changeLog"></a>Appendix H. Change Log
 
-Caliper 1.1 additions and deprecations are summarized below.
+Caliper 1.x additions, deprecations and corrections are summarized below.
+### <a name="changeLogCorrections20180524"></a>H.1 In-place Corrections 24 May 2018
 
-### <a name="changeLogProfiles"></a>H.1 Profiles
+| Item | Status | Disposition |
+| :--- | :----- | :---------- |
+| [ForumEvent](#forumEvent) | Correction | Eliminated duplicate `referrer` property entry. |
+| [MessageEvent](#messageEvent) | Correction | `membership` property description incorrectly referenced the `session` property value.  Updated to reference the `membership` value. | 
+| [Roles](#roles) | Correction | Added missing sub-role http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager. |
+
+### <a name="changeLogCaliperv1p1"></a>H.2 Caliper 1.1
+
+#### <a name="changeLogProfiles"></a>H.2.1 Profiles
 
 | Profile | Status | Disposition |
-| :------ | :----: | :---------- |
+| :------ | :----- | :---------- |
 | AssessmentItem Profile | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
 | [Basic Profile](#basicProfile) | New | Utilize the generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper. |
 | [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. |
@@ -5729,7 +5748,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Reading Profile](#readingProfile) | Revised | [ReadingEvent](#readingEvent) has been deprecated and targeted for removal while [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) have been added to the profile. [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume) have been deprecated in favor of [Document](#document), [Chapter](#chapter) and [Page](#page). |
 | [Tool Use Profile](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) and a [SoftwareApplication](#softwareApplication). |
 
-### <a name="changeLogActions"></a>H.2 Actions
+#### <a name="changeLogActions"></a>H.2.2 Actions
 
 | Actions | Status | WordNet&reg; Gloss |
 | :------ | :----: | :------------- |
@@ -5744,9 +5763,9 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Reset](#reset) | New | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt] `count` value. |
 | [Retrieved](#retrieved) | New | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
 | [Unsubscribed](#unsubscribed) | New | Inverse of [Subscribed](#subscribed). |
-| [Used](#used) |  New | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
+| [Used](#used) | New | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
 
-### <a name="changeLogEvents"></a>H.3 Events
+#### <a name="changeLogEvents"></a>H.2.3 Events
 
 | Event | Status | Disposition |
 | :---- | :----: | :---------- |
@@ -5763,7 +5782,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
 | [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile).  Supported actions: [Used](#used). |
 
-### <a name="changeLogEntities"></a>H.4 Entities
+#### <a name="changeLogEntities"></a>H.2.4 Entities
 | Entity | Status | Disposition |
 | :----- | :----: | :---------- |
 | [Chapter](#chapter) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
@@ -5781,7 +5800,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Score](#score) | New | Introduced as part of the revisions to the Caliper 1.1 [Grading Profile](#gradingProfile). |
 | [Thread](#thread) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 
-### <a name="changeLogProperties"></a>H.5 Properties
+#### <a name="changeLogProperties"></a>H.2.5 Properties
 
 | Domain | Property | Status | Disposition |
 | :------| :------- | :----: | :---------- |
@@ -5822,7 +5841,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Result](#result) | curvedTotalScore | Deprecated | Targeted for removal in a future version of the specification. |
 | [Result](#result) | extraCreditScore | Deprecated | Targeted for removal in a future version of the specification. |
 | [Result](#result) | normalScore | Deprecated | Targeted for removal in a future version of the specification. |
-| [Result](#result) | maxresultScore | New | Maps to LTI Gradebook-services `Result.resultMaximum`. |
+| [Result](#result) | maxResultScore | New | Maps to LTI Gradebook-services `Result.resultMaximum`. |
 | [Result](#result) | penaltyScore | Deprecated | Targeted for removal in a future version of the specification. |
 | [Result](#result) | resultScore | New | Maps to [LTI](#ltiDef) Gradebook-services `Result.resultScore`. |
 | [Result](#result) | totalScore | Deprecated | Targeted for removal in a future version of the specification.  Use  `resultScore`. |
@@ -5832,7 +5851,7 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Score](#score) | scoreGiven | New | The score or grade awarded for a given assignment.  Maps to [LTI](#ltiDef) Gradebook-services `Score.scoreGiven`. |
 | [SoftwareApplication](#softwareApplication) | version | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
 
-### <a name="changeLogJsonldContext"></a>H.6 JSON-LD context
+#### <a name="changeLogJsonldContext"></a>H.2.6 JSON-LD context
 
 A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document has been created.  See http://purl.imsglobal.org/ctx/caliper/v1p1.
 
@@ -5922,6 +5941,6 @@ Please contact IMS Global through our website at http://www.imsglobal.org.
 Please refer to Document Name: IMS Caliper Analytics&reg; 1.1
 Candidate Final Specification v1.1
 
-Date: 12 January 2018
+Date: 24 May 2018
 
 This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability&reg; (LTI&reg;), Accessible Portable Item Protocol&reg; (APIP&reg;), Question and Test Interoperability&reg; (QTI&reg;), Common Cartridge&reg; (CC&reg;), AccessForAll&trade;, OneRoster&reg;, Caliper Analytics&reg; and SensorAPI&trade;. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
