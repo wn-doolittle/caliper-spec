@@ -1,0 +1,6 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+  "id": "https://tool.com/link/123",
+  "type": "LtiLink",
+  "messageType": "LtiResourceLinkRequest"
+}
