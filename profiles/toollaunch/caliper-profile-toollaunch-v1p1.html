@@ -490,21 +490,13 @@
               `LtiResourceLinkRequest` or `LtiDeepLinkingRequest`).</td>
             <td>Optional</td>
           </tr>
-          <tr>
-            <td>ltiVersion</td>
-            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef">Term</a></td>
-            <td>If present, the string value MUST be set to the term name of the
-              _version_ of LTI that governs sending the message to gain access to
-              this LTI resource link.</td>
-            <td>Optional</td>
-          </tr>
       </tbody>
       </table>
 
       <p>Note that implementers by best practice SHOULD include
-        the <code>messageType</code> and <code>ltiVersion</code> associated with
-        an LTILink entity to provide context for how the link would have been
-        intended to be used.</p>
+        the <code>messageType</code> associated with an LTILink entity to
+        provide context for how the link would have been intended to be
+        used.</p>
 
     </section>
   </section>
@@ -591,8 +583,7 @@
   "target": {
     "id": "https://tool.com/link/123",
     "type": "LtiLink",
-    "messageType": "LtiResourceLinkRequest",
-    "ltiVersion": "1.3.0"
+    "messageType": "LtiResourceLinkRequest"
   },
   "federatedSession": {
     "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
