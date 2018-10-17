@@ -1,6 +1,12 @@
 {
   "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", {
     "ToolLaunchEvent": "caliper:ToolLaunchEvent",
-    "Launched": "caliper:actions/Launched"
+    "Launched": "caliper:actions/Launched",
+    "Returned": "caliper:actions/Returned",    
+    "Link": "caliper:Link",
+    "LtiLink": "caliper:LtiLink",
+    
+    "messageType": {"@id": "caliper:messageType", "@type": "xsd:string"}
+    
   }]
 }
