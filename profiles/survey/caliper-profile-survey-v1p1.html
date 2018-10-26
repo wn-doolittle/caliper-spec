@@ -755,6 +755,66 @@
 <section id="entities">
   <h2>Entities</h2>
 
+  <section id="entity-survey">
+    <h3>Survey</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/Survey</dd>
+      <dt>Supertype</dt>
+      <dd><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+      >Entity</a></dd>
+      <dt>Properties</dt>
+      <dd><code>Survey</code> inherits all properties defined by its supertype
+        <code>DigitalResourceCollection</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'Survey'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>items</td>
+        <td>array</td>
+        <td>An array of one or more <code>SurveyInstrument</code> entities that together comprise
+          the <code>Survey</code>. The <code>object</code> value MUST be expressed either as
+          an object or as a string corresponding to the resources's IRI.</td>
+        <td>Required</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
   <section id="entity-surveyinstrument">
     <h3>SurveyInstrument</h3>
 
