@@ -6,7 +6,9 @@
     "Link": "caliper:Link",
     "LtiLink": "caliper:LtiLink",
     
-    "messageType": {"@id": "caliper:messageType", "@type": "xsd:string"}
+    "messageType": {"@id": "caliper:messageType", "@type": "@id"},    
+    "LtiResourceLinkRequest": "caliper:LtiResourceLinkRequest",
+    "LtiDeepLinkingRequest": "caliper:LtiDeepLinkingRequest"
     
   }]
 }
