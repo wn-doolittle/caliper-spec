@@ -41,8 +41,9 @@
       <p>The Caliper Resource Management Profile models a <code>Person</code>
         managing a <code>Entity</code>.
         The profile provides a <code>ResourceManagementEvent</code> with several actions describing how the
-        resource is being managed: 'Created', 'Modified', 'Deleted', 'Copied', 'Activated', 'Deactivated',
-        'Added', 'Removed', 'Hid', 'Showed', 'Described', 'Retrieved'. Of these only 'Copied' is a new action</p>
+        resource is being managed: 'Activated', 'Added', 'Copied', 'Created', 'Deactivated', 'Deleted',
+        'Described', 'Hid', 'Modified', 'Purged', 'Removed', 'Restored', 'Retrieved', 'Showed'.
+        Of these the 'Copied', 'Purged', and 'Restored' actions are new</p>
     </section>
 
     <section class="informative" id="usecases">
@@ -143,7 +144,9 @@
       <dd><a href="#action-described">Described</a></dd>
       <dd><a href="#action-hid">Hid</a></dd>
       <dd><a href="#action-modified">Modified</a></dd>
+      <dd><a href="#action-purged">Purged</a></dd>
       <dd><a href="#action-removed">Removed</a></dd>
+      <dd><a href="#action-restore">Restored</a></dd>
       <dd><a href="#action-retrieved">Retrieved</a></dd>
       <dd><a href="#action-showed">Showed</a></dd>
       <dt>Supported objects</dt>
@@ -199,9 +202,9 @@
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the 'Created', 'Modified', 'Deleted', 'Copied',
-            'Activated', 'Deactivated', 'Added', 'Removed', 'Hid', 'Showed', 'Described', and 'Retrieved'
-            actions only.</td>
+            <code>object</code>. The value range is limited to the 'Activated', 'Added', 'Copied', 'Created',
+            'Deactivated', 'Deleted', 'Described', 'Hid', 'Modified', 'Purged', 'Removed', 'Restored',
+            'Retrieved', and 'Showed' actions only.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -286,9 +289,9 @@
 <section id="actions">
   <h2>Actions</h2>
 
-  <p>The Caliper <a href="#event-resource-management">ResourceManagementEvent</a> supports the 'Created',
-    'Modified', 'Deleted', 'Copied', 'Activated', 'Deactivated', 'Added', 'Removed', 'Hid', 'Showed',
-    'Described', and 'Retrieved' actions.</p>
+  <p>The Caliper <a href="#event-resource-management">ResourceManagementEvent</a> supports the 'Activated',
+    'Added', 'Copied', 'Created', 'Deactivated', 'Deleted', 'Described', 'Hid', 'Modified', 'Purged',
+    'Removed', 'Restored', 'Retrieved', and 'Showed' actions.</p>
 
   <table class="data">
     <thead>
@@ -368,12 +371,26 @@
         Cause to change; make different; cause a transformation</a>.</td>
     </tr>
     <tr>
+      <td id="action-purged">Purged</td>
+      <td><a href="http://purl.imsglobal.org/caliper/actions/Purged" rel="nofollow">
+        http://purl.imsglobal.org/caliper/actions/Purged</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200907236-v" rel="nofollow">
+        Clear of a charge</a>.</td>
+    </tr>
+    <tr>
       <td id="action-removed">Removed</td>
       <td><a href="http://purl.imsglobal.org/caliper/actions/Removed" rel="nofollow">
         http://purl.imsglobal.org/caliper/actions/Removed</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200181704-v" rel="nofollow">
         Remove from sight</a>.
         Inverse of <a href="#action-added">Added</a>.</td>
+    </tr>
+    <tr>
+      <td id="action-restored">Restored</td>
+      <td><a href="http://purl.imsglobal.org/caliper/actions/Restored" rel="nofollow">
+        http://purl.imsglobal.org/caliper/actions/Restored</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/202558146-v" rel="nofollow">
+        Return to its original or usable and functioning condition</a>.</td>
     </tr>
     <tr>
       <td id="action-retrieved">Retrieved</td>
