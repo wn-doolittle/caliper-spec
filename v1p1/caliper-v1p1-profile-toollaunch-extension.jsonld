@@ -4,13 +4,13 @@
 
     "Link": "caliper:Link",
     "LtiLink": "caliper:LtiLink",
-    "LtiDeepLinkingRequest": "caliper:LtiDeepLinkingRequest",
-    "LtiResourceLinkRequest": "caliper:LtiResourceLinkRequest",
 
-    "messageType": {"@id": "caliper:messageType", "@type": "@id"},    
+    "messageType": {"@id": "caliper:messageType", "@type": "@vocab"},
 
     "Launched": "caliper:actions/Launched",
-    "Returned": "caliper:actions/Returned"    
+    "Returned": "caliper:actions/Returned",
 
+    "LtiDeepLinkingRequest": "caliper:LtiDeepLinkingRequest",
+    "LtiResourceLinkRequest": "caliper:LtiResourceLinkRequest"
   }]
 }
