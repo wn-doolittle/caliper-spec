@@ -41,9 +41,9 @@
       <p>The Caliper Resource Management Profile models a <code>Person</code>
         managing a <code>Entity</code>.
         The profile provides a <code>ResourceManagementEvent</code> with several actions describing how the
-        resource is being managed: 'Copied', 'Created', 'Deleted', 'Described', 'Modified',
-        'Publish', 'Purged', 'Restored', 'Retrieved', and 'Unpublish'.
-        The 'Copied', 'Publish', 'Purged', 'Restored', and 'Unpublish' actions are new actions</p>
+        resource is being managed: 'Archived', 'Copied', 'Created', 'Deleted', 'Described', 'Modified',
+        'Published', 'Restored', 'Retrieved', and 'Unpublished'.
+        The 'Archived', 'Copied', 'Published', 'Restored', and 'Unpublished' actions are new actions</p>
     </section>
 
     <section class="informative" id="usecases">
@@ -141,16 +141,16 @@
         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
+      <dd><a href="#action-archived">Archived</a></dd>
       <dd><a href="#action-copied">Copied</a></dd>
       <dd><a href="#action-created">Created</a></dd>
       <dd><a href="#action-deleted">Deleted</a></dd>
       <dd><a href="#action-described">Described</a></dd>
       <dd><a href="#action-modified">Modified</a></dd>
-      <dd><a href="#action-publish">Publish</a></dd>
-      <dd><a href="#action-purged">Purged</a></dd>
-      <dd><a href="#action-restore">Restored</a></dd>
+      <dd><a href="#action-published">Published</a></dd>
+      <dd><a href="#action-restored">Restored</a></dd>
       <dd><a href="#action-retrieved">Retrieved</a></dd>
-      <dd><a href="#action-unpublish">Unpublish</a></dd>
+      <dd><a href="#action-unpublished">Unpublished</a></dd>
       <dt>Supported objects</dt>
       <dd><a href=
         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
@@ -209,9 +209,9 @@
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the 'Copied', 'Created',
-            'Deleted', 'Described', 'Modified', 'Publish', 'Purged', 'Restored', 'Retrieved',
-            and 'Unpublish' actions only.</td>
+            <code>object</code>. The value range is limited to the 'Archived', 'Copied', 'Created',
+            'Deleted', 'Described', 'Modified', 'Published', 'Restored', 'Retrieved',
+            and 'Unpublished' actions only.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -359,7 +359,7 @@
         }
       },
       "dateCreated": "2018-11-15T10:05:00.000Z"
-    }
+    },
     "eventTime": "2018-11-15T10:05:00.000Z",
     "edApp": "https://example.edu",
     "group": {
@@ -393,8 +393,8 @@
   <h2>Actions</h2>
 
   <p>The Caliper <a href="#event-resource-management">ResourceManagementEvent</a> supports the
-    'Copied', 'Created', 'Deleted', 'Described', 'Modified', 'Publish', 'Purged', 'Restored',
-    'Retrieved', and 'Unpublish' actions.</p>
+    'Archived', 'Copied', 'Created', 'Deleted', 'Described', 'Modified', 'Published',
+    'Restored', 'Retrieved', and 'Unpublished' actions.</p>
 
   <table class="data">
     <thead>
@@ -406,11 +406,19 @@
     </thead>
     <tbody>
     <tr>
+      <td id="action-archived">Archived</td>
+      <td><a href="http://purl.imsglobal.org/caliper/actions/Archived" rel="nofollow">
+        http://purl.imsglobal.org/caliper/actions/Archived</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201387292-v" rel="nofollow">
+        Put into an archive</a>.
+        Inverse of <a href="#action-restored">Restored</a>.</td>
+    </tr>
+    <tr>
       <td id="action-copied">Copied</td>
       <td><a href="http://purl.imsglobal.org/caliper/actions/Copied" rel="nofollow">
         http://purl.imsglobal.org/caliper/actions/Copied</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/201697776-v" rel="nofollow">
-        make a replica of</a>.</td>
+        Make a replica of</a>.</td>
     </tr>
     <tr>
       <td id="action-created">Created</td>
@@ -443,26 +451,20 @@
         Cause to change; make different; cause a transformation</a>.</td>
     </tr>
     <tr>
-      <td id="action-publish">Publish</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Publish" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Publish</a></td>
-      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201748492-v" rel="nofollow">
-        have (one's work) issued for publication</a>.
-        Inverse of <a href="#action-unpublish">Unpublish</a>.</td>
-    </tr>
-    <tr>
-      <td id="action-purged">Purged</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Purged" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Purged</a></td>
-      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200907236-v" rel="nofollow">
-        Clear of a charge</a>.</td>
+      <td id="action-published">Published</td>
+      <td><a href="http://purl.imsglobal.org/caliper/actions/Published" rel="nofollow">
+        http://purl.imsglobal.org/caliper/actions/Published</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">
+        Prepare and issue for public distribution or sale</a>.
+        Inverse of <a href="#action-unpublished">Unpublished</a>.</td>
     </tr>
     <tr>
       <td id="action-restored">Restored</td>
       <td><a href="http://purl.imsglobal.org/caliper/actions/Restored" rel="nofollow">
         http://purl.imsglobal.org/caliper/actions/Restored</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/202558146-v" rel="nofollow">
-        Return to its original or usable and functioning condition</a>.</td>
+        Return to its original or usable and functioning condition</a>.
+        Inverse of <a href="#action-archived">Archived</a>.</td>
     </tr>
     <tr>
       <td id="action-retrieved">Retrieved</td>
@@ -472,12 +474,12 @@
         Obtain or retrieve from a storage device; as of information on a computer</a>.</td>
     </tr>
     <tr>
-      <td id="action-unpublish">Unpublish</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Unpublish" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Unpublish</a></td>
-      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201748492-v" rel="nofollow">
-        have (one's work) removed from publication</a>.
-        Inverse of <a href="#action-publish">Publish</a>.</td>
+      <td id="action-unpublished">Unpublished</td>
+      <td><a href="http://purl.imsglobal.org/caliper/actions/Unpublished" rel="nofollow">
+        http://purl.imsglobal.org/caliper/actions/Unpublished</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">
+        Remove from public distribution or sale</a>.
+        Inverse of <a href="#action-published">Published</a>.</td>
     </tr>
     </tbody>
   </table>
