@@ -19,7 +19,8 @@
           company: "University of British Columbia (Canada)",
           companyURL: "https://www.ubc.ca/",
           role: "Author"
-        }],
+        }
+      ],
       localBiblio: _localBiblio
     };
   </script>
@@ -46,19 +47,21 @@
         The 'Archived', 'Copied', 'Published', 'Restored', and 'Unpublished' actions are new actions</p>
     </section>
 
-    <section class="informative" id="usecases">
-      <h3>Use cases</h3>
-      <p>The Resource Management Profile supports the following learner-centric use cases:</p>
-      <!-- TODO: add use cases -->
+    <section class="informative" id="user-stories">
+      <h3>User Stories</h3>
+      <p>The Resource Management Profile supports the following learner-centric user stories:</p>
       <table>
         <tr>
-          <td></td>
+          <td>As a content developer, I would like to measure the interval between resource availability and
+            learner engagement with learning resources in order to gain insights into both the administrative
+            impact on the learning process and the timing decisions of learners who are expected to ingest the
+            materials.
+          </td>
         </tr>
         <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
+          <td>As an instructor, I would like to measure engagement between different revisions of learning resources
+            over time in order to help determine what content is most effective.
+          </td>
         </tr>
       </table>
     </section>
@@ -111,8 +114,26 @@
 <section id="events">
   <h2>Events</h2>
 
-  <p>The Resource Management Profile is provisioned with a single a <code>ResourceManagementEvent</code>
-    for describing resource management related activities.</p>
+  <p>The Resource Management Profile includes the following <code>Event</code> types: </p>
+
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ResourceManagementEvent</td>
+        <td>A Caliper <code>ResourceManagementEvent</code> models a <code>Person</code>
+          managing an <code>Entity</code>.
+        </td>
+        <td>Required</td>
+      </tr>
+    </tbody>
+  </table>
 
   <section id="event-resource-management">
     <h3>ResourceManagementEvent</h3>
@@ -243,9 +264,7 @@
 
     <figure class="example">
       <figcaption><code>ResourceManagementEvent</code> JSON-LD</figcaption>
-      <pre>
-        <code>
-{
+<pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
   "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
   "type": "ResourceManagementEvent",
@@ -298,93 +317,87 @@
     "type": "Session",
     "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
-}
-          </code>
-        </pre>
+}</code></pre>
     </figure>
 
     <figure class="example">
         <figcaption><code>ResourceManagementEvent</code> JSON-LD</figcaption>
-        <pre>
-          <code>
-  {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
-    "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
-    "type": "ResourceManagementEvent",
-    "actor": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "action": "Copied",
-    "object": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-      "type": "DigitalResource",
-      "name": "Course Syllabus",
-      "mediaType": "application/pdf",
-      "creators": [
-        {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        }
-      ],
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
+  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
+  "type": "ResourceManagementEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Copied",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "creators": [
+      {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      }
+    ],
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
       "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-        "type": "DigitalResourceCollection",
-        "name": "Course Assets",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection"
-        }
-      },
-      "dateCreated": "2018-08-02T11:32:00.000Z"
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
     },
-    "generated": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/2/syllabus_copy.pdf",
-      "type": "DigitalResource",
-      "name": "Course Syllabus (copy)",
-      "mediaType": "application/pdf",
-      "creators": [
-        {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        }
-      ],
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "generated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/2/syllabus_copy.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus (copy)",
+    "mediaType": "application/pdf",
+    "creators": [
+      {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      }
+    ],
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
       "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-        "type": "DigitalResourceCollection",
-        "name": "Course Assets",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection"
-        }
-      },
-      "dateCreated": "2018-11-15T10:05:00.000Z"
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
     },
-    "eventTime": "2018-11-15T10:05:00.000Z",
-    "edApp": "https://example.edu",
-    "group": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "CourseSection",
-      "courseNumber": "CPS 435-01",
-      "academicSession": "Fall 2018"
-    },
-    "membership": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-      "type": "Membership",
-      "member": "https://example.edu/users/554433",
-      "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-      "roles": [ "Instructor" ],
-      "status": "Active",
-      "dateCreated": "2018-08-01T06:00:00.000Z"
-    },
-    "session": {
-      "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-      "type": "Session",
-      "startedAtTime": "2018-11-15T10:00:00.000Z"
-    }
+    "dateCreated": "2018-11-15T10:05:00.000Z"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": [ "Instructor" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
-            </code>
-          </pre>
+}</code></pre>
       </figure>
   </section>
 </section>
@@ -392,91 +405,80 @@
 <section id="actions">
   <h2>Actions</h2>
 
-  <p>The Caliper <a href="#event-resource-management">ResourceManagementEvent</a> supports the
-    'Archived', 'Copied', 'Created', 'Deleted', 'Described', 'Modified', 'Published',
-    'Restored', 'Retrieved', and 'Unpublished' actions.</p>
+  <p>The Caliper <code>Event</code> types included in the Resource Management Profile support the following
+    actions:</p>
 
   <table class="data">
     <thead>
     <tr>
+      <th>Event</th>
       <th>Term</th>
-      <th>IRI</th>
       <th>WordNet® Gloss</th>
     </tr>
     </thead>
     <tbody>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-archived">Archived</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Archived" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Archived</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/201387292-v" rel="nofollow">
         Put into an archive</a>.
         Inverse of <a href="#action-restored">Restored</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-copied">Copied</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Copied" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Copied</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/201697776-v" rel="nofollow">
         Make a replica of</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-created">Created</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Created" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Created</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/201620211-v" rel="nofollow">
         Make or cause to be or to become</a>.
         Inverse of <a href="#action-deleted">Deleted</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-deleted">Deleted</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Deleted" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Deleted</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/201001860-v" rel="nofollow">
         Wipe out digitally</a>.
         Inverse of <a href="#action-created">Created</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-described">Described</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Described" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Described</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200989103-v" rel="nofollow">
         Give a description of</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-modified">Modified</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Modified" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Modified</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/202149298-v" rel="nofollow">
         Cause to change; make different; cause a transformation</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-published">Published</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Published" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Published</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">
         Prepare and issue for public distribution or sale</a>.
         Inverse of <a href="#action-unpublished">Unpublished</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-restored">Restored</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Restored" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Restored</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/202558146-v" rel="nofollow">
         Return to its original or usable and functioning condition</a>.
         Inverse of <a href="#action-archived">Archived</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-retrieved">Retrieved</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Retrieved" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Retrieved</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/202253616-v" rel="nofollow">
         Obtain or retrieve from a storage device; as of information on a computer</a>.</td>
     </tr>
     <tr>
+      <td>ResourceManagementEvent</td>
       <td id="action-unpublished">Unpublished</td>
-      <td><a href="http://purl.imsglobal.org/caliper/actions/Unpublished" rel="nofollow">
-        http://purl.imsglobal.org/caliper/actions/Unpublished</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">
         Remove from public distribution or sale</a>.
         Inverse of <a href="#action-published">Published</a>.</td>
@@ -505,14 +507,10 @@
 
   <figure class="example">
     <figcaption>JSON-LD Context</figcaption>
-    <pre>
-      <code>
-{
+<pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
   . . .
-}
-      </code>
-    </pre>
+}</code></pre>
   </figure>
 </section>
 
