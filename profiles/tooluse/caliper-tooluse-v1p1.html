@@ -31,7 +31,7 @@
 <body>
   <section id="abstract" class="introductory">
     <h2>Abstract</h2> This document extends Caliper 1.1 by enhancing the Tool Use 
-      Profile to include support for aggregated progress metrics.
+      Profile to include support for aggregated metrics.
   </section>
 
   <section>
@@ -58,11 +58,12 @@
         intended. Common questions that can be answered by using this profile include:</p>
 
         <ul>
-          <li>What tools are being used, and how much?</li>
+          <li>What tools are being used, and how often?</li>
           <li>Who is the most active/least active user of tools?</li>
           <li>Does tool usage help/hinder student performance?</li>
           <li>Which tools have the greatest impact on student performance?</li>
-          <li>TODO add some progress questions</li>
+          <li>How much time are users spending in a tool?</li>
+          <li>How much curricular progress have users made in a tool?</li>
         </ul>
         
         <dl>
@@ -71,9 +72,13 @@
           <dt>Supported Actors</dt>
           <dd><a href="https://www.imsglobal.org/...TODO#person">Person</a></dd>
           <dt>Supported Actions</dt>
-          <dd><a href="#usedaction">Used</a></dd>
+          <dd><a href="https://www.imsglobal.org/...TODO#used">Used</a></dd>
           <dt>Supported Objects</dt>
           <dd><a href="https://www.imsglobal.org/...TODO#softwareapplication">SoftwareApplication</a></dd>
+          <dt>Supported Generated Entities</dt>
+          <dd><a href="#AggregateMeasure">AggegateMeasure</a></dd>
+          <dt>Other Requirements</dt>
+          <dd><ul><li>TODO: Other requirements?</li></ul></dd>
         </dl>
     </section>
 
@@ -82,19 +87,20 @@
       <p>The Tool Use Profile supports the following learner-centric use cases:</p>
       <table>
         <tr>
-          <td>TODO</td>
+          <td>As a teacher, I am able to view my students' "time on task" across multiple Learning Tools using a dashboard powered by a Caliper Event Store.</td>
         </tr>
         <tr>
-          <td>TODO</td>
+          <td>As a data scientist, I am able to study the impact of a student's curricular progress in a Learning Tool on his or her academic achievement.</td>
         </tr>
         <tr>
-          <td>TODO</td>
+          <td>As a student, the progress and time metrics I see in a Learning Tool match the metrics I see in an aggregated dashboard.</td>
         </tr>
       </table>
     </section>
 
     <section id="terminology">
       <h3>Terminology</h3>
+      <p>All terms beginning with the prefix <code>Aggregate</code> represent measures of multiple events or user sessions and are non-atomic in nature.</p>
       <p>All terminology used in this specification is concordant with the term
         definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
     </section>
@@ -140,8 +146,138 @@
 
   <section id="events">
     <h2>Events</h2>
-
-  
+    <section id="event-tooluse">
+      <h3>ToolUseEvent</h3>
+      <img height="100%" width="100%" 
+        src="assets/caliper-profile_tool_use_event.png"
+           alt="ToolUseEvent" />
+      <aside class="issue"><p>TODO Update image to include generated & progress properties</aside>
+        <p>A Caliper <a href="#ToolUseEvent">ToolUseEvent</a> models a <a href="#Person">Person</a> using a learning tool in a way that the tool's creators have 
+          determined is an indication of a learning interaction. A <a href="#ToolUseEvent">ToolUseEvent</a> may include information on the aggregate time
+          or progress the <a href="#Person">Person</a> has made in the learning tool.</p>
+                
+        <dl>
+          <dt>IRI</dt>
+          <dd><a href="https://purl.imsglobal.org/caliper/ToolUseEvent">https://purl.imsglobal.org/caliper/ToolUseEvent</a></dd>
+          <dt>Supertype</dt>
+          <dd><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+            >Event</a></dd>
+          <dt>Supported Actors</dt>
+          <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+            >Person</a></dd>
+          <dt>Supported Actions</dt>
+          <dd><a href="#action-used">Used</a></dd>
+          <dt>Supported Objects</dt>
+          <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareApplication"
+            >SoftwareApplication</a></dd>
+          <dt>Properties</dt>
+          <dd><code>ToolUseEvent</code> inherits all properties defined by
+            its supertype <code>Event</code>. Additional requirements are described below:
+          </dd>
+        </dl>  
+        <table class="data">
+          <thead>
+            <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Disposition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td>id</td>
+            <td><a href="#uuidDef">UUID</a></td>
+            <td>The emitting application MUST provision the <a href="#event">Event</a> with a <a href="#uuidDef">UUID</a>.  A version 4 <a href="#uuidDef">UUID</a> SHOULD be generated.  The UUID MUST be expressed as a <a href="#urnDef">URN</a> using the form <code>urn:uuid:&lt;UUID&gt;</code> per <a href="#rfc4122">RFC 4122</a>.</td>
+            <td>Required</td>
+            </tr>
+            <tr>
+            <td>type</td>
+            <td><a href="#termDef">Term</a></td>
+            <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>ToolUseEvent</em>.</td>
+            <td>Required</td>
+            </tr>
+            <tr>
+            <td>actor</td>
+            <td><a href="#person">Person</a> | <a href="#iriDef">IRI</a></td>
+            <td>The <a href="#person">Person</a> who initiated the <code>action</code>.  The <code>actor</code> value MUST be expressed either as an object or as a string corresponding to the actor’s <a href="#iriDef">IRI</a>.</td>
+            <td>Required</td>
+            </tr>
+            <tr>
+            <td>action</td>
+            <td><a href="#termDef">Term</a></td>
+            <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.  The value range is limited to the action terms listed above.  Only one <code>action</code> <a href="#termDef">Term</a>  may be specified per <a href="#event">Event</a>.</td>
+            <td>Required</td>
+            </tr>
+            <tr>
+            <td>object</td>
+            <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+            <td>The <a href="#softwareApplication">SoftwareApplication</a> that constitutes  the <code>object</code> of the interaction.  The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object’s <a href="#iriDef">IRI</a>.</td>
+            <td>Required</td>
+            </tr>
+            <tr>
+            <td>eventTime</td>
+            <td>DateTime</td>
+            <td>An ISO 8601 date and time value expressed with millisecond precision that indicates when the <a href="#event">Event</a> occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+            <td>Required</td>
+            </tr>
+            <tr>
+            <td>target</td>
+            <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+            <td>A <a href="#softwareApplication">SoftwareApplication</a> that represents a particular capability or feature provided by the <code>object</code>.  The <code>target</code> value MUST be expressed either as an object or as a string corresponding to the target entity’s <a href="#iriDef">IRI</a>.</td>
+            <td>Optional</td>
+            </tr>
+            <tr>
+            <td>generated</td>
+            <td><a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> | <a href="#iriDef">IRI</a></td>
+            <td>An <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> created or generated as a result of the interaction.  The <code>generated</code> value MUST be expressed either as an object or as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.</td>
+            <td>Optional</td>
+            </tr>
+            <tr>
+            <td>edApp</td>
+            <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+            <td>A <a href="#softwareApplication">SoftwareApplication</a> that constitutes the application context.  The <code>edApp</code> value MUST be expressed either as an object or as a string corresponding to the edApp’s <a href="#iriDef">IRI</a>.</td>
+            <td>Optional</td>
+            </tr>
+            <tr>
+            <td>referrer</td>
+            <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+            <td>An <a href="#entity">Entity</a> that represents the referring context. A <a href="#softwareApplication">SoftwareApplication</a> or <a href="#aggregateMeasure">aggregateMeasure</a> will typically constitute the referring context.  The <code>referrer</code> value MUST be expressed either as an object or as a string corresponding to the referrer’s <a href="#iriDef">IRI</a>.</td>
+            <td>Optional</td>
+            </tr>
+            <tr>
+            <td>group</td>
+            <td><a href="#organization">Organization</a> | <a href="#iriDef">IRI</a></td>
+            <td>An <a href="#organization">Organization</a> that represents the group context.  The <code>group</code> value MUST be expressed either as an object or as a string corresponding to the group’s <a href="#iriDef">IRI</a>.</td>
+            <td>Optional</td>
+            </tr>
+            <tr>
+            <td>membership</td>
+            <td><a href="#membership">Membership</a> | <a href="#iriDef">IRI</a></td>
+            <td>The relationship between the <code>actor</code> and the <code>group</code> in terms of roles assigned and current status.  The <code>membership</code> value MUST be expressed either as an object or as a string corresponding to the membership entity’s <a href="#iriDef">IRI</a>.</td>
+            <td>Optional</td>
+            </tr>
+            <tr>
+            <td>session</td>
+            <td><a href="#session">Session</a> | <a href="#iriDef">IRI</a></td>
+            <td>The current user <a href="#session">Session</a>.  The <code>session</code> value MUST be expressed either as an object or as a string corresponding to the session’s <a href="#iriDef">IRI</a>.</td>
+            <td>Optional</td>
+            </tr>
+            <tr>
+            <td>federatedSession</td>
+            <td><a href="#ltiSession">LtiSession</a> | <a href="#iriDef">IRI</a></td>
+            <td>If the <a href="#event">Event</a> occurs within the context of an <a href="#ltiDef">LTI</a> tool launch, the actor’s tool consumer <a href="#ltiSession">LtiSession</a> MAY be referenced.  The <code>federatedSession</code> value MUST be expressed either as an object or as a string corresponding to the federatedSession’s <a href="#iriDef">IRI</a>.</td>
+            <td>Optional</td>
+            </tr>
+            <tr>
+            <td>extensions</td>
+            <td>Object</td>
+            <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#toolUseEvent">ToolUseEvent</a>.</td>
+            <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
     </section>
   </section>
 
@@ -153,58 +289,398 @@
 
   <section id="entities">
     <h2>Entities</h2>
+    <section id="entity-aggregatemeasure">
+      <h3><a name="aggregateMeasure"></a>AggregateMeasure</h3>
+      <p>A Caliper <a href="#aggregateMeasure">AggregateMeasure</a> is a generic type that represents an aggregated measure.</p>
+      <p>Utilize <a href="#aggregateMeasure">AggregateMeasure</a> only if no suitable subtype exists to represent the resource being described.</p>
+      <h4>IRI</h4>
+      <p><a href="http://purl.imsglobal.org/caliper/aggregateMeasure">http://purl.imsglobal.org/caliper/aggregateMeasure</a></p>
+      <h4>Supertype</h4>
+      <p><a href="#entity">Entity</a></p>
+      <h4>Properties</h4>
+      <p><a href="#aggregateMeasure">AggregateMeasure</a> inherits all the properties and requirements defined for its supertype <a href="#entity">Entity</a>.  Additional properties and requirements are described below:</p>
+      <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>id</td>
+      <td><a href="#iriDef">IRI</a></td>
+      <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>type</td>
+      <td><a href="#termDef">Term</a></td>
+      <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasure</em>.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>value</td>
+      <td><a href="#number">number</a></td>
+      <td>A number representing the total of the aggregated measures.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>startedAtTime</td>
+      <td>DateTime</td>
+      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was commenced.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>endedAtTime</td>
+      <td>DateTime</td>
+      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was completed.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>extensions</td>
+      <td>Object</td>
+      <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#aggregateMeasure">aggregateMeasure</a>.</td>
+      <td>Optional</td>
+      </tr>
+      </tbody>
+      </table>
+      <h4>Subtypes</h4>
+      <p><a href="#entity-aggregatemeasurecollection">AggregateMeasureCollection</a>, <a href="#entity-aggregatetimeontask">AggregateTimeOnTask</a>, <a href="#entity-aggregateprogress">AggregateProgress</a></p>
+      <h4>Example</h4>
+      <pre><code>
+{
+  "@context":"http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id":"urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d933",
+  "type":"aggregateMeasure",
+  "value":"10",
+  "startedAtTime": "2018-08-15T10:15:00.000Z",
+  "endedAtTime": "2018-11-15T10:15:00.000Z"
+}
+      </code></pre>
 
-  
-  </section>
-  
-  <section id="jsonld">
-    <h2>Representing Caliper as JSON-LD</h2>
+    </section>
+    <section id="entity-aggregatemeasurecollection">
+      <h3><a name="aggregateMeasureCollection"></a>AggregateMeasureCollection</h3>
+      <p>A Caliper <a href="#aggregateMeasureCollection">AggregateMeasureCollection</a> represents an unordered collection of <a href="#aggregateResource">AggregateResource</a> entities.</p>
+      <h4>IRI</h4>
+      <p><a href="http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a></p>
+      <h4>Supertype</h4>
+      <p><a href="#aggregateResource">AggregateResource</a></p>
+      <h4>Properties</h4>
+      <p><a href="#aggregateMeasureCollection">AggregateMeasureCollection</a> inherits all the properties and requirements defined for its supertype <a href="#aggregateResource">AggregateResource</a>.  Additional properties and requirements are described below:</p>
+      <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>id</td>
+      <td><a href="#iriDef">IRI</a></td>
+      <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>type</td>
+      <td><a href="#termDef">Term</a></td>
+      <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasureCollection</em>.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>items</td>
+      <td>Array</td>
+      <td>An ordered collection of <a href="#aggregateResource">AggregateResource</a> entities.  Each array item MUST be expressed either as an object or as a string corresponding to the item’s <a href="#iriDef">IRI</a>.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>extensions</td>
+      <td>Object</td>
+      <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#aggregateMeasureCollection">AggregateMeasureCollection</a>.</td>
+      <td>Optional</td>
+      </tr>
+      </tbody>
+      </table>
+      <h4>Example</h4>
+      <pre><code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
+  "type": "AggregateMeasureCollection",
+  "items": [{
+      "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d917",
+      "type": "AggregateTimeOnTask",
+      "duration": "PT14H33M23S",
+      "startedAtTime": "2018-08-15T10:15:00.000Z",
+      "endedAtTime": "2018-11-15T10:15:00.000Z"
+    },
+    {
+      "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
+      "type": "AggregateProgress",
+      "value": "12",
+      "valueMax": "25",
+      "metric": "UnitsCompleted",
+      "displayName": "Lessons Passed",
+      "startedAtTime": "2018-08-15T10:15:00.000Z",
+      "endedAtTime": "2018-11-15T10:15:00.000Z"
+    }
+  ]
+}
+      </code></pre>
+    </section>
+    <section id="entity-aggregatetimeontask">
+      <h3><a name="aggregateTimeOnTask"></a>AggregateTimeOnTask</h3>
+      <p>A Caliper <a href="#aggregateTimeOnTask">AggregateTimeOnTask</a> represents the aggregated measure of time an Actor has spent actively using a tool.</p>
+      <h4>IRI</h4>
+      <p><a href="http://purl.imsglobal.org/caliper/AggregateTimeOnTask">http://purl.imsglobal.org/caliper/AggregateTimeOnTask</a></p>
+      <h4>Supertype</h4>
+      <p><a href="#aggregateResource">AggregateResource</a></p>
+      <h4>Properties</h4>
+      <p><a href="#aggregateTimeOnTask">AggregateTimeOnTask</a> inherits all the properties and requirements defined for its supertype <a href="#aggregateResource">AggregateResource</a>.  Additional properties and requirements are described below:</p>
+      <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>id</td>
+      <td><a href="#iriDef">IRI</a></td>
+      <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>type</td>
+      <td><a href="#termDef">Term</a></td>
+      <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateTimeOnTask</em>.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>duration</td>
+      <td>Duration</td>
+      <td>An ISO 8601 time duration value expressed with only hours, minutes, and seconds units, so as to prevent confusion related to daylights-savings short days and varying-length months. The value MUST be expressed using the format e.g. PT12H30M15S (12 hours, 30 minutes, 15 seconds). This value should represent the total cumulative amount of time spent since the since startedAtTime until the endedAtTime, or if those values are not defined, the time spent during the current school year.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>startedAtTime</td>
+      <td>DateTime</td>
+      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was commenced.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>endedAtTime</td>
+      <td>DateTime</td>
+      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was completed.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+      <td>Optional</td>
+      </tr>  
+      <tr>
+      <td>extensions</td>
+      <td>Object</td>
+      <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#aggregateTimeOnTask">AggregateTimeOnTask</a>.</td>
+      <td>Optional</td>
+      </tr>
+      </tbody>
+      </table>
+      <h4>Example</h4>
+      <pre><code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d917",
+  "type": "AggregateTimeOnTask",
+  "duration": "PT14H33M23S",
+  "startedAtTime": "2018-08-15T10:15:00.000Z",
+  "endedAtTime": "2018-11-15T10:15:00.000Z"
+}
+      </code></pre>
+    </section>
+    <section id="entity-aggregateprogress">
+      <h3><a name="aggregateProgress"></a>AggregateProgress</h3>
+      <p>A Caliper <a href="#aggregateProgress">AggregateProgress</a> represents the aggregated measure of the progress an Actor has made in a Tool.</p>
+      <h4>IRI</h4>
+      <p><a href="http://purl.imsglobal.org/caliper/AggregateProgress">http://purl.imsglobal.org/caliper/AggregateProgress</a></p>
+      <h4>Supertype</h4>
+      <p><a href="#aggregateResource">AggregateResource</a></p>
+      <h4>Properties</h4>
+      <p><a href="#aggregateProgress">AggregateProgress</a> inherits all the properties and requirements defined for its supertype <a href="#aggregateResource">AggregateResource</a>.  Additional properties and requirements are described below:</p>
+      <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>id</td>
+      <td><a href="#iriDef">IRI</a></td>
+      <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>type</td>
+      <td><a href="#termDef">Term</a></td>
+      <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateProgress</em>.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>value</td>
+      <td>Number</td>
+      <td>A Number representing the total curricular progress the actor has made in the context of the application.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>valueMax</td>
+      <td>Number</td>
+      <td>A Number representing the total possible curricular progress the actor can make in the context of the application.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>metric</td>
+      <td>Enumeration</td>
+      <td>The standard of measurement associated with the progress value. Acceptable values are: <code>activitiesCompleted</code>, <code>activitesPassed</code>, <code>assessmentsCompleted</code>, <code>assessmentsPassed</code>, <code>documentsRead</code>, <code>lessonsCompleted</code>, <code>lessonsPassed</code>, <code>standardsMastered</code>, <code>unitsCompleted</code>, <code>unitsPassed</code>, <code>wordsRead</code>, and <code>wordsWritten.</code></td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>metricDisplayName</td>
+      <td>String</td>
+      <td>A human readable string describing the metric with the language used by the <a href=#SoftwareApplication>SoftwareApplication</a> .</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>startedAtTime</td>
+      <td>DateTime</td>
+      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was commenced.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>endedAtTime</td>
+      <td>DateTime</td>
+      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was completed.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+      <td>Optional</td>
+      </tr>  
+      <tr>
+      <td>extensions</td>
+      <td>Object</td>
+      <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#aggregateTimeOnTask">AggregateTimeOnTask</a>.</td>
+      <td>Optional</td>
+      </tr>
+      </tbody>
+      </table>
+      <h4>Example</h4>
+      <pre><code>
+{
+  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
+  "type": "AggregateProgress",
+  "value": "12",
+  "valueMax": "25",
+  "metric": "UnitsPassed",
+  "displayName": "Units Passed",
+  "startedAtTime": "2018-08-15T10:15:00.000Z",
+  "endedAtTime": "2018-11-15T10:15:00.000Z"
+}
+      </code></pre>
+    </section>
+        
+        </section>
+        
+        <section id="jsonld">
+          <h2>Representing Caliper as JSON-LD</h2>
 
-    <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
-      provides a remote Tool Use Profile JSON-LD <a href=
-      "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a> for mapping
-      <code>ToolUseEvent</code> terms to IRIs. Caliper message producers MUST reference this
-      context in every Caliper 1.1 <code>ToolUseEvent</code> and/or <code>Query</code> describe created
-      and serialized for transmission to a target endpoint.</p>
+          <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
+            provides a remote Tool Use Profile JSON-LD <a href=
+            "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a> for mapping
+            <code>ToolUseEvent</code> terms to IRIs. Caliper message producers MUST reference this
+            context in every Caliper 1.1 <code>ToolUseEvent</code> and/or <code>Query</code> describe created
+            and serialized for transmission to a target endpoint.</p>
 
-    <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
-      context handling.</p>
+          <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
+            context handling.</p>
 
-    <figure class="example">
-      <figcaption>JSON-LD Context</figcaption>
-      <pre><code>{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-    . . .
-}</code></pre>
-    </figure>
+          <figure class="example">
+            <figcaption>JSON-LD Context</figcaption>
+            <pre><code>{
+          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
+          . . .
+      }</code></pre>
+          </figure>
 
-    <section class="informative">
-      <h2>Tool Use Profile JSON-LD Examples</h2>
-      <p>Below is an example of a Caliper <code>ToolUseEvent</code> expressed as JSON-LD.  
-        TODO ... </p>
+          <section class="informative">
+            <h2>Tool Use Profile JSON-LD Examples</h2>
+            <p>Below is an example of a Caliper <code>ToolUseEvent</code> expressed as JSON-LD.</p>
 
-      <figure class="example">
-        <figcaption><code>ToolUseEvent</code> JSON-LD</figcaption>
-        <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-  "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
+            <figure class="example">
+              <figcaption><code>ToolUseEvent</code> JSON-LD</figcaption>
+              <pre><code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
   "type": "ToolUseEvent",
-  TODO
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Used",
+  "object": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "generated": {
+    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
+    "type": "AggregateMeasureCollection",
+    "items": [{
+        "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d917",
+        "type": "AggregateTimeOnTask",
+        "duration": "PT14H33M23S",
+        "startedAtTime": "2018-08-15T10:15:00.000Z",
+        "endedAtTime": "2018-11-15T10:15:00.000Z"
+      },
+      {
+        "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
+        "type": "AggregateProgress",
+        "value": "12",
+        "valueMax": "25",
+        "metric": "UnitsCompleted",
+        "displayName": "Lessons Passed",
+        "startedAtTime": "2018-08-15T10:15:00.000Z",
+        "endedAtTime": "2018-11-15T10:15:00.000Z"
+      }
+    ]
+  }, 
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z" 
 }</code></pre>
       </figure>
-
-      <p>Below is an example of a ... TODO</p>
-
-      <figure class="example">
-        <figcaption><code>ToolUseResponse</code> describe JSON-LD</figcaption>
-        <pre><code>{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-    "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
-    "type": "ToolUseEvent",
-    TODO
-}</code></pre>
-      </figure>
-
     </section></section>
 
   <section class="appendix informative" id="revisionhistory">
