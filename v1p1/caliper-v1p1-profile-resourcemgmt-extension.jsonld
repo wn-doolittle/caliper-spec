@@ -1,0 +1,11 @@
+{
+  "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", {
+    "ResourceManagementEvent": "caliper:ResourceManagementEvent",
+
+    "Archived": "caliper:actions/Archived",
+    "Copied": "caliper:actions/Copied",
+    "Published": "caliper:actions/Published",
+    "Restored": "caliper:actions/Restored",
+    "Unpublished": "caliper:actions/Unpublished"
+  }]
+}
