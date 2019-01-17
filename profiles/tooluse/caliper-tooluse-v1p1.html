@@ -549,7 +549,7 @@
       <tr>
       <td>metric</td>
       <td>Enumeration</td>
-      <td>The standard of measurement associated with the progress value. Acceptable values are: <code>activitiesCompleted</code>, <code>activitesPassed</code>, <code>assessmentsCompleted</code>, <code>assessmentsPassed</code>, <code>documentsRead</code>, <code>lessonsCompleted</code>, <code>lessonsPassed</code>, <code>standardsMastered</code>, <code>unitsCompleted</code>, <code>unitsPassed</code>, <code>wordsRead</code>, and <code>wordsWritten.</code></td>
+      <td>The standard of measurement associated with the progress value. Acceptable values are listed in the <a href="metrics">Metrics</a> Appendix.</td>
       <td>Optional</td>
       </tr>
       <tr>
@@ -682,7 +682,32 @@
 }</code></pre>
       </figure>
     </section></section>
-
+<section class="appendix" id="metrics">
+  <h2>Metrics</h2>
+  <p>The <a href="#entity-aggregateprogress">AggregateProgress</a> entity includes an optional <code>metric</code> property for denoting the metric related to the <a href="#toolUseEvent">ToolUse Event</a>.  Metric values are limited to the list of Caliper metric unit terms below</p>
+  <table title="Metric Units" summary="List of acceptable values for Aggregate Progress metric field.">
+    <thead>
+      <tr>
+        <th>Metric</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>activitiesCompleted</td></tr>
+      <tr><td>activitesPassed</td></tr>
+      <tr><td>assessmentsCompleted</td></tr>
+      <tr><td>assessmentsPassed</td></tr>
+      <tr><td>documentsRead</td></tr>
+      <tr><td>lessonsCompleted</td></tr>
+      <tr><td>lessonsPassed</td></tr>
+      <tr><td>standardsMastered</td></tr>
+      <tr><td>unitsCompleted</td></tr>
+      <tr><td>unitsPassed</td></tr>
+      <tr><td>wordsRead</td></tr>
+      <tr><td>wordsWritten</td></tr>
+    </tbody>
+  </table>
+</section>
+  
   <section class="appendix informative" id="revisionhistory">
     <h2>Revision History</h2>
 
