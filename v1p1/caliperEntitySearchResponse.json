@@ -1,6 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-  "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+  "id": "https://example.edu/users/554433/response?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
   "type": "SearchResponse",
   "searchProvider": {
     "id": "https://example.edu",
