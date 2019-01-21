@@ -1,6 +1,6 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
-  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
+  "id": "urn:uuid:d3543a73-e307-4190-a755-5ce7b3187bc5",
   "type": "ResourceManagementEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
