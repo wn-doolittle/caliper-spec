@@ -32,16 +32,16 @@
   "eventTime": "2018-11-15T10:05:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Instructor" ],
     "status": "Active",
     "dateCreated": "2018-08-01T06:00:00.000Z"
