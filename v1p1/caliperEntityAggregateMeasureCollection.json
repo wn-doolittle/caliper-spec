@@ -6,9 +6,9 @@
         {
             "id": "urn:uuid:21c3f9f2-a9ef-4f65-bf9a-0699ed85e2c7",
             "type": "AggregateMeasure",
-            "metric": "MinutesOnTask"
+            "metric": "MinutesOnTask",
             "name": "Minutes On Task",
-            "value": 873.0
+            "value": 873.0,
             "startedAtTime": "2018-08-15T10:15:00.000Z",
             "endedAtTime": "2018-11-15T10:15:00.000Z"
         },
