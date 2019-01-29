@@ -1,8 +1,0 @@
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-    "id": "urn:uuid:21c3f9f2-a9ef-4f65-bf9a-0699ed85e2c7",
-    "type": "AggregateTimeOnTask",
-    "duration": "PT14H33M23S",
-    "startedAtTime": "2018-08-15T10:15:00.000Z",
-    "endedAtTime": "2018-11-15T10:15:00.000Z"
-}
