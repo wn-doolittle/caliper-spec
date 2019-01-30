@@ -29,22 +29,22 @@ var _localBiblio = {
       "@@@, TBD"
     ]
   },
-  "CALIPER-INFORMAL-FEEDBACK-11": {
+  "CALIPER-FEEDBACK-11": {
     title: "Caliper Analytics® Feedback Profile 1.1",
-    href: "https://www.imsglobal.org/spec/caliper-informal-feedback/v1p1/",
+    href: "https://www.imsglobal.org/spec/caliper-feedback/v1p1/",
     publisher: "IMS Global Learning Consortium",
     "authors": [
       "Gardener, Andrew"
     ]
   },
-  "CALIPER-INFORMAL-FEEDBACK-11-CONTEXT": {
+  "CALIPER-FEEDBACK-11-CONTEXT": {
     title: "Caliper Analytics® Feedback Profile Context 1.1",
-    href: "https://purl.imsglobal.org/spec/caliper-informal-feedback/v1p1/context/",
+    href: "https://purl.imsglobal.org/spec/caliper-feedback/v1p1/context/",
     publisher: "IMS Global Learning Consortium"
   },
-  "CALIPER-INFORMAL-FEEDBACK-11-ERRATA": {
+  "CALIPER-FEEDBACK-11-ERRATA": {
     title: "Caliper Analytics® Feedback Profile 1.1 Errata",
-    href: "https://www.imsglobal.org/spec/caliper-informal-feedback/v1p1/errata/",
+    href: "https://www.imsglobal.org/spec/caliper-feedback/v1p1/errata/",
     publisher: "IMS Global Learning Consortium"
   },
   "CALIPER-TL-11": {

@@ -6,8 +6,8 @@
   <script src='local-biblio.js' class='remove'></script>
   <script class='remove'>
     var respecConfig = {
-      specTitle: "Caliper Analytics® Informal Feedback Profile",
-      shortName: "caliper-informal-feedback",
+      specTitle: "Caliper Analytics® Feedback Profile",
+      shortName: "caliper-feedback",
       specStatus: "IMS Base Document",
       specDate: "July 20th, 2018",
       specVersion: "1.1",
@@ -27,7 +27,7 @@
 </head>
 <body>
 <section id="abstract">
-  <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Informal Feedback Profile that
+  <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Feedback Profile that
     describes informal feedback related learning activities.
 </section>
 
@@ -37,18 +37,18 @@
       <h3>Design Goals and Rationale</h3>
 
       <!-- TODO: Add image -->
-      <img height="100%" width="100%" src="" alt="Informal Feedback Profile"/>
+      <img height="100%" width="100%" src="" alt="Feedback Profile"/>
 
-      <p>The Caliper Informal Feedback Profile models a <code>Person</code>
+      <p>The Caliper Feedback Profile models a <code>Person</code>
         providing informal feedback on a <code>Entity</code>, typically a piece of student work.
-        The profile provides a <code>InformalFeedbackEvent</code> along with 'Commented' and 'Ranked' actions for
+        The profile provides a <code>FeedbackEvent</code> along with 'Commented' and 'Ranked' actions for
         describing feedback activities. The <code>Rating</code> entity is used to capture quantitative feedback
         while the <code>Comment</code> entity is used to capture qualitative feedback.</p>
     </section>
 
     <section class="informative" id="user-stories">
       <h3>User Stories</h3>
-      <p>The Informal Feedback Profile supports the following learner-centric user stories:</p>
+      <p>The Feedback Profile supports the following learner-centric user stories:</p>
       <table>
         <tr>
           <td>As an instructor, I would like an overview of the overall quality of peer feedback my students
@@ -85,9 +85,9 @@
           </dd>
           <dt>JSON-LD Context</dt>
           <dd>The JSON-LD Context for this profile defines all relevant term-IRI mappings
-            [[!CALIPER-INFORMAL-FEEDBACK-11-CONTEXT]]. </dd>
+            [[!CALIPER-FEEDBACK-11-CONTEXT]]. </dd>
           <dt>Errata</dt>
-          <dd>The errata [[!CALIPER-INFORMAL-FEEDBACK-11-ERRATA]] details any errata registered for this version
+          <dd>The errata [[!CALIPER-FEEDBACK-11-ERRATA]] details any errata registered for this version
             of this specification since its publication.</dd>
           <dt>Conformance and Certification guide</dt>
           <dd>The conformance and certification guide that accompanies the Caliper 1.1 specification
@@ -111,7 +111,7 @@
 <section id="events">
   <h2>Events</h2>
 
-  <p>The Informal Feedback Profile includes the following <code>Event</code> types: </p>
+  <p>The Feedback Profile includes the following <code>Event</code> types: </p>
 
   <table class="data">
     <thead>
@@ -123,9 +123,9 @@
     </thead>
     <tbody>
       <tr>
-        <td>InformalFeedbackEvent</td>
-        <td>A Caliper <code>InformalFeedbackEvent</code> models a <code>Person</code> providing informal feedback
-          on a <code>Entity</code>, typically a <code>Response</code>, <code>DigitalResource</code>, or another <code>Person</code>.
+        <td>FeedbackEvent</td>
+        <td>A Caliper <code>FeedbackEvent</code> models a <code>Person</code> providing informal feedback
+          on a <code>Entity</code>, typically a <code>DigitalResource</code> or another <code>Person</code>.
           A <code>Frame</code> may be referenced using the <code>target</code> property.
         </td>
         <td>Required</td>
@@ -133,20 +133,20 @@
     </tbody>
   </table>
 
-  <section id="event-informal-feedback">
-    <h3>InformalFeedbackEvent</h3>
+  <section id="event-feedback">
+    <h3>FeedbackEvent</h3>
 
-    <!-- TODO: add Informal Feedback event picture -->
-    <img height="100%" width="100%" src="" alt="Informal Feedback Event"/>
+    <!-- TODO: add Feedback event picture -->
+    <img height="100%" width="100%" src="" alt="Feedback Event"/>
 
-    <p>A Caliper <code>InformalFeedbackEvent</code> models a <code>Person</code> providing informal feedback
-      on a <code>Entity</code>, typically a <code>Response</code>, <code>DigitalResource</code>, or another <code>Person</code>.
+    <p>A Caliper <code>FeedbackEvent</code> models a <code>Person</code> providing informal feedback
+      on a <code>Entity</code>, typically a <code>DigitalResource</code> or another <code>Person</code>.
       A <code>Frame</code> may be referenced using the <code>target</code> property.
     </p>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/InformalFeedbackEvent</dd>
+      <dd>https://purl.imsglobal.org/caliper/FeedbackEvent</dd>
       <dt>Supertype</dt>
       <dd><a href=
         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
@@ -171,7 +171,7 @@
         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#frame"
       >Frame</a></dd>
       <dt>Properties</dt>
-      <dd><code>InformalFeedbackEvent</code> inherits all properties defined by its supertype
+      <dd><code>FeedbackEvent</code> inherits all properties defined by its supertype
           <code>Event</code>. Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -191,7 +191,7 @@
           <td><a href=
               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
             >UUID</a></td>
-          <td>The emitting application MUST provision the <code>InformalFeedbackEvent</code> with a UUID. A
+          <td>The emitting application MUST provision the <code>FeedbackEvent</code> with a UUID. A
             version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
             >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[rfc4122]].</td>
@@ -202,7 +202,7 @@
           <td><a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to 'InformalFeedbackEvent'.</td>
+          <td>The string value MUST be set to 'FeedbackEvent'.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -253,6 +253,8 @@
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>Rating</code> or <code>Comment</code> entity that describes the feedback provided.
+            If the action is 'Ranked' then the generated MUST be a <code>Rating</code>.
+            If the action is 'Commented' then the generated MUST be a <code>Comment</code>.
             The <code>object</code> value MUST be expressed either as an object or as a string
             corresponding to the entity's IRI.</td>
           <td>Optional</td>
@@ -261,33 +263,57 @@
     </table>
 
     <figure class="example">
-      <figcaption><code>InformalFeedbackEvent</code> JSON-LD</figcaption>
+      <figcaption><code>FeedbackEvent</code> action 'Ranked' JSON-LD</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/InformalFeedbackProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
   "id": "urn:uuid:a502e4fc-24c1-11e9-ab14-d663bd873d93",
-  "type": "InformalFeedbackEvent",
+  "type": "FeedbackEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "action": "Ranked",
   "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-    "type": "Response"
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
   },
   "generated": {
-    "id": "https://example.com/users/554433/texts/imscaliperimplguide/rating/1",
+    "id": "https://example.edu/users/554433/rating/1",
     "type": "Rating",
     "rater": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "rated": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-      "type": "Response"
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2018-08-02T11:32:00.000Z"
     },
     "scale": {
-      "id": "https://example.com/users/554433/texts/imscaliperimplguide/scale/2",
+      "id": "https://example.edu/scale/2",
       "type": "LikertScale",
       "points": 4,
       "question": "Do you agree with the opinion presented?",
@@ -295,17 +321,29 @@
       "itemValues": [-2, -1, 1, 2],
       "dateCreated": "2018-08-01T06:00:00.000Z"
     },
-    "selection": "1",
+    "selections": ["1"],
     "comment": {
-      "id": "https://example.com/users/554433/texts/imscaliperimplguide/comment/1",
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
       "type": "Comment",
       "commenter": {
         "id": "https://example.edu/users/554433",
         "type": "Person"
       },
-      "commented": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-        "type": "Response"
+      "commentedOn": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+        "type": "DigitalResource",
+        "name": "Course Syllabus",
+        "mediaType": "application/pdf",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+          "type": "DigitalResourceCollection",
+          "name": "Course Assets",
+          "isPartOf": {
+            "id": "https://example.edu/terms/201801/courses/7/sections/1",
+            "type": "CourseSection"
+          }
+        },
+        "dateCreated": "2018-08-02T11:32:00.000Z"
       },
       "value": "I like what you did here but you need to improve on...",
       "dateCreated": "2018-08-01T06:00:00.000Z"
@@ -338,30 +376,54 @@
     </figure>
 
     <figure class="example">
-      <figcaption><code>InformalFeedbackEvent</code> JSON-LD</figcaption>
+      <figcaption><code>FeedbackEvent</code> action 'Commented' JSON-LD</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/InformalFeedbackProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
   "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
-  "type": "InformalFeedbackEvent",
+  "type": "FeedbackEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "action": "Commented",
   "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-    "type": "Response"
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
   },
   "generated": {
-    "id": "https://example.com/users/554433/texts/imscaliperimplguide/comment/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
     "type": "Comment",
     "commenter": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
-    "commented": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-      "type": "Response"
+    "commentedOn": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2018-08-02T11:32:00.000Z"
     },
     "value": "I like what you did here but you need to improve on...",
     "dateCreated": "2018-08-01T06:00:00.000Z"
@@ -396,7 +458,7 @@
 <section id="actions">
   <h2>Actions</h2>
 
-  <p>The Caliper <code>Event</code> types included in the Informal Feedback Profile support the following
+  <p>The Caliper <code>Event</code> types included in the Feedback Profile support the following
     actions:</p>
 
   <table class="data">
@@ -409,13 +471,13 @@
     </thead>
     <tbody>
     <tr>
-      <td>InformalFeedbackEvent</td>
+      <td>FeedbackEvent</td>
       <td id="action-commented">Commented</td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/201060446-v" rel="nofollow">
         Make or write a comment on</a>.</td>
     </tr>
     <tr>
-      <td>InformalFeedbackEvent</td>
+      <td>FeedbackEvent</td>
       <td id="action-ranked">Ranked</td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200659723-v" rel="nofollow">Assign
         a rank or rating to</a>.</td>
@@ -427,7 +489,7 @@
 <section id="entities">
   <h2>Entities</h2>
 
-  <p>The <code>InformalFeedbackEvent</code> MUST reference a <code>Rating</code> or <code>Comment</code> object that
+  <p>The <code>FeedbackEvent</code> MUST reference a <code>Rating</code> or <code>Comment</code> object that
     captures the content of the feedback.</p>
 
   <section id="entity-rating">
@@ -443,7 +505,7 @@
       <dt>Properties</dt>
       <dd><code>Rating</code> inherits all properties defined by its supertype <code>Entity</code>.
           <code>Rating</code> is also provisioned with additional properties, <code>rater</code>,
-          <code>rated</code>, <code>scale</code>, <code>selection</code>, and <code>comment</code>.
+          <code>rated</code>, <code>scale</code>, <code>selections</code>, and <code>comment</code>.
           Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -483,18 +545,6 @@
         <td>Required</td>
       </tr>
       <tr>
-        <td>name</td>
-        <td>string</td>
-        <td>A string value comprising a word or phrase by which the <code>Rating</code> is known.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>description</td>
-        <td>string</td>
-        <td>A string value comprising a brief, written representation of the <code>Rating</code>.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
         <td>rater</td>
         <td><a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
@@ -529,9 +579,9 @@
         <td>Optional</td>
       </tr>
       <tr>
-        <td>selection</td>
-        <td>string</td>
-        <td>A string value representing the rater selected value on the scale.</td>
+        <td>selections</td>
+        <td>Array</td>
+        <td>An array of the values representing the rater's selected response.</td>
         <td>Optional</td>
       </tr>
       <tr>
@@ -544,71 +594,107 @@
           corresponding to the comment resource’s IRI.</td>
         <td>Optional</td>
       </tr>
-      <tr>
-        <td>dateCreated</td>
-        <td>DateTime</td>
-        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-            <code>Rating</code> was created. The value MUST be expressed
-            using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>dateModified</td>
-        <td>DateTime</td>
-        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-            <code>Rating</code> was last changed or modified. The value MUST be expressed
-            using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>extensions</td>
-        <td>Object</td>
-        <td>A map of additional attributes not defined by the model MAY be specified
-            for a more concise representation of the <code>Rating</code>.</td>
-        <td>Optional</td>
-      </tr>
       </tbody>
     </table>
-
-
 
     <figure class="example">
       <figcaption><code>Rating</code> describe JSON-LD</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/InformalFeedbackProfile-extension",
-  "id": "https://example.com/users/554433/texts/imscaliperimplguide/rating/1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/users/554433/rating/1",
   "type": "Rating",
   "rater": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "rated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-    "type": "Response"
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
   },
   "scale": {
-    "id": "https://example.com/users/554433/texts/imscaliperimplguide/scale/2",
+    "id": "https://example.edu/scale/2",
     "type": "LikertScale",
     "points": 4,
     "question": "Do you agree with the opinion presented?",
     "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
     "itemValues": [-2, -1, 1, 2]
   },
-  "selection": "1",
+  "selections": ["1"],
   "comment": {
-    "id": "https://example.com/users/554433/texts/imscaliperimplguide/comment/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
     "type": "Comment",
     "commenter": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
-    "commented": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-      "type": "Response"
+    "commentedOn": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2018-08-02T11:32:00.000Z"
     },
     "value": "I like what you did here but you need to improve on...",
     "dateCreated": "2018-08-01T06:00:00.000Z"
   },
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+
+
+    <figure class="example">
+      <figcaption><code>Rating</code> with scale of type <code>MultiselectionScale</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/users/554433/rating/2",
+  "type": "Rating",
+  "rater": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "rated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+    "type": "DigitalResourceCollection",
+    "name": "Course Assets",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
+      "type": "CourseSection"
+    }
+  },
+  "scale": {
+    "id": "https://example.edu/scale/3",
+    "type": "MultiselectionScale",
+    "question": "How do you feel about this content? (select one or more)",
+    "points": 5,
+    "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+    "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+    "orderedSelection": false,
+    "minSelections": 1,
+    "maxSelections": 5,
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "selections": ["superhappy", "disappointed"],
   "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
@@ -629,7 +715,7 @@
       <dt>Properties</dt>
       <dd><code>Comment</code> inherits all properties defined by its supertype <code>Entity</code>.
           <code>Comment</code> is also provisioned with additional properties, <code>commenter</code>,
-          <code>commented</code>, and <code>value</code>.
+          <code>commentedOn</code>, and <code>value</code>.
           Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -669,18 +755,6 @@
         <td>Required</td>
       </tr>
       <tr>
-        <td>name</td>
-        <td>string</td>
-        <td>A string value comprising a word or phrase by which the <code>Comment</code> is known.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>description</td>
-        <td>string</td>
-        <td>A string value comprising a brief, written representation of the <code>Comment</code>.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
         <td>commenter</td>
         <td><a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
@@ -693,15 +767,15 @@
         <td>Optional</td>
       </tr>
       <tr>
-        <td>commented</td>
+        <td>commentedOn</td>
         <td><a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
         >Entity</a> | <a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
         <td>The <code>Entity</code> which received the comment.
-          The commented value MUST be expressed either as an object or as a string
-          corresponding to the commented resource’s IRI.</td>
+          The commentedOn value MUST be expressed either as an object or as a string
+          corresponding to the resource’s IRI that was commented on.</td>
         <td>Optional</td>
       </tr>
       <tr>
@@ -710,274 +784,402 @@
         <td>A string value representing the comment's textual value.</td>
         <td>Optional</td>
       </tr>
-      <tr>
-        <td>dateCreated</td>
-        <td>DateTime</td>
-        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-            <code>Comment</code> was created. The value MUST be expressed
-            using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>dateModified</td>
-        <td>DateTime</td>
-        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-            <code>Comment</code> was last changed or modified. The value MUST be expressed
-            using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>extensions</td>
-        <td>Object</td>
-        <td>A map of additional attributes not defined by the model MAY be specified
-            for a more concise representation of the <code>Comment</code>.</td>
-        <td>Optional</td>
-      </tr>
       </tbody>
-  </table>
+    </table>
 
-
-
-  <figure class="example">
-    <figcaption><code>Comment</code> describe JSON-LD</figcaption>
+    <figure class="example">
+      <figcaption><code>Comment</code> describe JSON-LD</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/InformalFeedbackProfile-extension",
-  "id": "https://example.com/users/554433/texts/imscaliperimplguide/comment/1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
   "type": "Comment",
   "commenter": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "commented": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1",
-    "type": "Response"
+  "commentedOn": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
   },
   "value": "I like what you did here but you need to improve on...",
   "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
-  </figure>
-</section>
+    </figure>
+  </section>
 
   <section id="entity-scale">
-      <h3>Scale</h3>
-      <p>A Caliper <code>Scale</code> models a scale employed in order to capture some rating.</p>
-      <dl>
-        <dt>IRI</dt>
-        <dd>https://purl.imsglobal.org/caliper/Scale</dd>
-        <dt>Supertype</dt>
-        <dd><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-        >Entity</a></dd>
-        <dt>Properties</dt>
-        <dd><code>Scale</code> inherits all properties defined by its supertype <code>Entity</code>.
-        </dd>
-      </dl>
+    <h3>Scale</h3>
+    <p>A Caliper <code>Scale</code> models a scale employed in order to capture some rating.</p>
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/Scale</dd>
+      <dt>Supertype</dt>
+      <dd><a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+      >Entity</a></dd>
+      <dt>Properties</dt>
+      <dd><code>Scale</code> inherits all properties defined by its supertype <code>Entity</code>.
+        <code>Scale</code> is also provisioned with the additional property <code>question</code>.
+        Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
 
-      <table class="data">
-        <thead>
-        <tr>
-          <th>Property</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Disposition</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>id</td>
-          <td><a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
-            also be dereferenceable, i.e., capable of returning a representation of the resource.
-            A <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
-            >URI</a> employing the <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> scheme MAY be provided in cases where a <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
-            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>type</td>
-          <td><a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-          >Term</a></td>
-          <td>The string value MUST be set to the Term 'Scale'.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>name</td>
-          <td>string</td>
-          <td>A string value comprising a word or phrase by which the <code>Scale</code> is known.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>description</td>
-          <td>string</td>
-          <td>A string value comprising a brief, written representation of the <code>Scale</code>.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>dateCreated</td>
-          <td>DateTime</td>
-          <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-              <code>Scale</code> was created. The value MUST be expressed
-              using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>dateModified</td>
-          <td>DateTime</td>
-          <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-              <code>Scale</code> was last changed or modified. The value MUST be expressed
-              using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>extensions</td>
-          <td>Object</td>
-          <td>A map of additional attributes not defined by the model MAY be specified
-              for a more concise representation of the <code>Scale</code>.</td>
-          <td>Optional</td>
-        </tr>
-        </tbody>
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'Scale'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>question</td>
+        <td>string</td>
+        <td>A string value comprising the question posed to be scaled.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
     </table>
 
     <figure class="example">
       <figcaption><code>Scale</code> describe JSON-LD</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/InformalFeedbackProfile-extension",
-  "id": "https://example.com/users/554433/texts/imscaliperimplguide/scale/1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/1",
   "type": "Scale",
+  "question": "How would you rate this?",
   "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
   </section>
 
   <section id="entity-likert-scale">
-      <h3>LikertScale</h3>
-      <p>A Caliper <code>LikertScale</code> models scale employed in order to capture some rating.</p>
-      <dl>
-        <dt>IRI</dt>
-        <dd>https://purl.imsglobal.org/caliper/LikertScale</dd>
-        <dt>Supertype</dt>
-        <dd><a href="#entity-scale">Scale</a></dd>
-        <dt>Properties</dt>
-        <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>.
-            <code>LikertScale</code> is also provisioned with the additional properties <code>points</code>,
-            <code>question</code>, <code>itemLabels</code>, <code>itemValues</code>.
-            Profile-specific type restrictions are described below:
-        </dd>
-      </dl>
+    <h3>LikertScale</h3>
+    <p>A Caliper <code>LikertScale</code> models a likert scale employed in order to capture some likert rating.</p>
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/LikertScale</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-scale">Scale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>.
+        <code>LikertScale</code> is also provisioned with the additional properties <code>points</code>,
+        <code>itemLabels</code>, and <code>itemValues</code>.
+        Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
 
-      <table class="data">
-        <thead>
-        <tr>
-          <th>Property</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Disposition</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>id</td>
-          <td><a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
-            also be dereferenceable, i.e., capable of returning a representation of the resource.
-            A <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
-            >URI</a> employing the <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> scheme MAY be provided in cases where a <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
-            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>type</td>
-          <td><a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-          >Term</a></td>
-          <td>The string value MUST be set to the Term 'LikertScale'.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>name</td>
-          <td>string</td>
-          <td>A string value comprising a word or phrase by which the <code>LikertScale</code> is known.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>description</td>
-          <td>string</td>
-          <td>A string value comprising a brief, written representation of the <code>LikertScale</code>.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>points</td>
-          <td>integer</td>
-          <td>A integer value used to determine the amount of points on the <code>LikertScale</code>.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>question</td>
-          <td>string</td>
-          <td>A string value comprising the question posed to be scaled.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>itemLabels</td>
-          <td>Array [{key:value}] | Array [value]</td>
-          <td>The ordered list of labels for each point on the likert scale.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>itemValues</td>
-          <td>Array [{key:value}] | Array [value]</td>
-          <td>The ordered list of values for each point on the likert scale.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>dateCreated</td>
-          <td>DateTime</td>
-          <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-              <code>LikertScale</code> was created. The value MUST be expressed
-              using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>dateModified</td>
-          <td>DateTime</td>
-          <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
-              <code>LikertScale</code> was last changed or modified. The value MUST be expressed
-              using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>extensions</td>
-          <td>Object</td>
-          <td>A map of additional attributes not defined by the model MAY be specified
-              for a more concise representation of the <code>LikertScale</code>.</td>
-          <td>Optional</td>
-        </tr>
-        </tbody>
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'LikertScale'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>points</td>
+        <td>integer</td>
+        <td>A integer value used to determine the amount of points on the <code>LikertScale</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemLabels</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The ordered list of labels for each point on the likert scale.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemValues</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The ordered list of values for each point on the likert scale.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
     </table>
 
     <figure class="example">
       <figcaption><code>LikertScale</code> describe JSON-LD</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/InformalFeedbackProfile-extension",
-  "id": "https://example.com/users/554433/texts/imscaliperimplguide/scale/2",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/2",
   "type": "LikertScale",
-  "points": 4,
   "question": "Do you agree with the opinion presented?",
+  "points": 4,
   "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
   "itemValues": [-2, -1, 1, 2],
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+  </section>
+
+  <section id="entity-multiselection-scale">
+    <h3>MultiselectionScale</h3>
+    <p>A Caliper <code>MultiselectionScale</code> models a scale used in order to capture one or more options when ratings.</p>
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/MultiselectionScale</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-scale">Scale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>MultiselectionScale</code> inherits all properties defined by its supertype <code>Scale</code>.
+        <code>MultiselectionScale</code> is also provisioned with the additional properties <code>points</code>,
+        <code>itemLabels</code>, <code>itemValues</code>, <code>orderedSelection</code>,
+        <code>minSelections</code>, and <code>maxSelections</code>.
+        Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'MultiselectionScale'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>points</td>
+        <td>integer</td>
+        <td>A integer value used to determine the amount of points on the <code>MultiselectionScale</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemLabels</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The ordered list of labels for each point on the scale.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemValues</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The ordered list of values for each point on the scale.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>orderedSelection</td>
+        <td>boolean</td>
+        <td>Indicates whether the order the selected items is important.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>minSelections</td>
+        <td>integer</td>
+        <td>Indicates the minimum number of selections that can be chosen.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>maxSelections</td>
+        <td>integer</td>
+        <td>Indicates the maximum number of selections that can be chosen.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <figure class="example">
+      <figcaption><code>MultiselectionScale</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/3",
+  "type": "MultiselectionScale",
+  "question": "How do you feel about this content? (select one or more)",
+  "points": 5,
+  "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+  "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+  "orderedSelection": false,
+  "minSelections": 1,
+  "maxSelections": 5,
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+  </section>
+
+  <section id="entity-numeric-scale">
+    <h3>NumericScale</h3>
+    <p>A Caliper <code>NumericScale</code> models a numeric scale used to capture some rating.</p>
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/NumericScale</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-scale">Scale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>NumericScale</code> inherits all properties defined by its supertype <code>NumericScale</code>.
+        <code>NumericScale</code> is also provisioned with the additional properties <code>minValue</code>,
+        <code>minLabel</code>, <code>maxValue</code>, <code>maxLabel</code>, and <code>valueStep</code>.
+        Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'NumericScale'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>minValue</td>
+        <td>decimal</td>
+        <td>A decimal value used to determine the minimum value of the <code>NumericScale</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>minLabel</td>
+        <td>string</td>
+        <td>The label for the minimum value.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>maxValue</td>
+        <td>decimal</td>
+        <td>A decimal value used to determine the maximum value of the <code>NumericScale</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>maxLabel</td>
+        <td>string</td>
+        <td>The label for the maximum value.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>step</td>
+        <td>decimal</td>
+        <td>Indicates the decimal step used for determining the options between the minimum and maximum values.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <figure class="example">
+      <figcaption><code>NumericScale</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/4",
+  "type": "NumericScale",
+  "question": "How do you feel about this content?",
+  "minValue": 0.0,
+  "minLabel": "Disliked",
+  "maxValue": 10.0,
+  "maxLabel": "Liked",
+  "step": 0.5,
   "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
@@ -988,12 +1190,12 @@
 <section id="jsonld">
   <h3>JSON-LD</h3>
   <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
-    provides a remote Informal Feedback Profile JSON-LD <a href=
-    "http://purl.imsglobal.org/ctx/caliper/v1p1/InformalFeedbackProfile-extension">context</a> for mapping
-    <code>InformalFeedbackEvent</code> terms to IRIs. Caliper message producers MUST reference this
-    context in every Caliper 1.1 <code>InformalFeedbackEvent</code>, <code>Rating</code>, <code>Comment</code>,
-    <code>Scale</code>, and/or <code>LikertScale</code> describe created and serialized for transmission
-    to a target endpoint.</p>
+    provides a remote  Feedback Profile JSON-LD <a href=
+    "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension">context</a> for mapping
+    <code>FeedbackEvent</code> terms to IRIs. Caliper message producers MUST reference this
+    context in every Caliper 1.1 <code>FeedbackEvent</code>, <code>Rating</code>, <code>Comment</code>,
+    <code>Scale</code>, <code>LikertScale</code>, <code>MultiselectionScale</code>, and/or
+    <code>NumericScale</code> describe created and serialized for transmission to a target endpoint.</p>
 
   <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
     context handling.</p>
@@ -1001,7 +1203,7 @@
   <figure class="example">
     <figcaption>JSON-LD Context</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/InformalFeedbackProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
   . . .
 }</code></pre>
   </figure>
