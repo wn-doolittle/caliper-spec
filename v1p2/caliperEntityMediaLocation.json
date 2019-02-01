@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "https://example.edu/videos/1225",
   "type": "MediaLocation",
   "currentTime": "PT30M54S",
