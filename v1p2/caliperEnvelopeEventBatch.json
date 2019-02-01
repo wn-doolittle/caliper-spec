@@ -1,10 +1,10 @@
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2016-11-15T11:05:01.000Z",
-  "dataVersion":  "https://purl.imsglobal.org/caliper/v1p2/context/Core",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "data": [
     {
-      "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:72f66ce5-d2ec-44cc-bce5-41602e1015dc",
       "type": "NavigationEvent",
       "actor": {
@@ -52,7 +52,7 @@
       }
     },
     {
-      "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:c0afa013-64df-453f-b0a6-50f3efbe4cc0",
       "type": "AnnotationEvent",
       "actor": {
@@ -103,7 +103,7 @@
       }
     },
     {
-      "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "type": "ViewEvent",
       "id": "urn:uuid:94bad4bd-a7b1-4c3e-ade4-2253efe65172",
       "actor": {

@@ -1,5 +1,5 @@
 {
-  "@context": "https://purl.imsglobal.org/caliper/v1p2/context/Core",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
   "type": "Attempt",
   "assignable": {
