@@ -2009,7 +2009,7 @@
         <tr>
           <td>baseType</td>
           <td>Enumeration</td>
-          <td>The base type of the <code>OutcomeVariable</code>, taken from the corresponding declaration of
+          <td>The base type of the <code>OutcomeVariable</code> taken from the corresponding declaration of
             definition. The enumerated value set is limited to: 'boolean', 'directedPair', 'duration', 'file', 'float',
             'identifier', 'integer', 'pair', 'point', 'string', and 'uri'. The <code>baseType</code> value is omitted
             ONLY for an <code>OutcomeVariable</code> with 'record' cardinality.
@@ -2049,6 +2049,14 @@
           <td>Double</td>
           <td>The <code>masteryValue</code> attribute optionally defines a value for numeric outcome variables
             above which the aspect being measured is considered to have been mastered by the candidate.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>Array</td>
+          <td>The value(s) of the <code>OutcomeVariable</code>. The order of the values is significant only if
+            the outcome was declared with ordered cardinality.
           </td>
           <td>Optional</td>
         </tr>
