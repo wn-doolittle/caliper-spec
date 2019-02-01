@@ -19,12 +19,6 @@
           company: "University of Michigan (USA)",
           companyURL: "https://www.umich.edu/",
           role: "Author"
-        },
-        {
-          name: "Markus Gylling",
-          company: "IMS Global (Sweden)",
-          companyURL: "https://www.imsglobal.org",
-          role: "Editor"
         }],
       localBiblio: _localBiblio
     };
@@ -125,7 +119,7 @@
 
     <p>The QTI Profile models assessment-related activities including interactions with
       individual assessment parts, sections and items. Caliper provides <code>Assessment</code>,
-      <code>AssessmentTestPart</code>, <code>AssessmentSection</code> and <code>AssessmentItem</code>
+      <code>TestPart</code>, <code>AssessmentSection</code> and <code>AssessmentItem</code>
       entities for describing the object of these activities, as well as a learner's
       <code>Attempt</code> for recording a count of the number of times an assigned resource has been
       attempted. A <code>Response</code> is also modeled for capturing individual item responses.
@@ -160,7 +154,7 @@
         <dd><a href="action-submitted">Submitted</a></dd>
         <dt>Supported objects</dt>
         <dd><a href="#assessment">Assessment</a></dd>
-        <dd><a href="#assessmentTestPart">AssessmentTestPart</a></dd>
+        <dd><a href="#TestPart">TestPart</a></dd>
         <dd><a href="#assessmentSection">AssessmentSection</a></dd>
         <dt>Supported generated entities</dt>
         <dd><a href="#attempt">Attempt</a></dd>
@@ -439,7 +433,7 @@
       "type": "AssessmentSection",
       "isPartOf": {
         "id": "https://example.edu/assess/1/parts/1",
-        "type": "AssessmentTestPart",
+        "type": "TestPart",
         "isPartOf": {
           "id": "https://example.edu/assess/1",
           "type": "Assessment"
@@ -612,7 +606,7 @@
         <dd><a href="action-viewed">Viewed</a></dd>
         <dt>Supported objects</dt>
         <dd><a href="#assessment">Assessment</a></dd>
-        <dd><a href="#assessmentTestPart">AssessmentTestPart</a></dd>
+        <dd><a href="#TestPart">TestPart</a></dd>
         <dd><a href="#assessmentSection">AssessmentSection</a></dd>
         <dd><a href="#assessmentItem">AssessmentItem</a></dd>
         <dt>Properties</dt>
@@ -674,12 +668,12 @@
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#assessment">Assessment</a> | <a href="#assessmentTestPart">AssessmentTestPart</a> |
+          <td><a href="#assessment">Assessment</a> | <a href="#TestPart">TestPart</a> |
             <a href="#assessmentSection">AssessmentSection</a> |
             <a href="#assessmentItem">AssessmentItem</a> | <a href=
                                                                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
             >IRI</a></td>
-          <td>The <a href="#assessment">Assessment</a>, <a href="#assessmentTestPart">AssessmentTestPart
+          <td>The <a href="#assessment">Assessment</a>, <a href="#TestPart">TestPart
           </a>, <a href="#assessmentSection">AssessmentSection</a>, or
             <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
             <code>object</code> value MUST be expressed either as an object or as a string
@@ -827,12 +821,12 @@
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#assessment">Assessment</a> | <a href="#assessmentTestPart">AssessmentTestPart</a> |
+          <td><a href="#assessment">Assessment</a> | <a href="#TestPart">TestPart</a> |
             <a href="#assessmentSection">AssessmentSection</a> |
             <a href="#assessmentItem">AssessmentItem</a> | <a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <a href="#assessment">Assessment</a>, <a href="#assessmentTestPart">AssessmentTestPart
+          <td>The <a href="#assessment">Assessment</a>, <a href="#TestPart">TestPart
           </a>, <a href="#assessmentSection">AssessmentSection</a>, or
             <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
             <code>object</code> value MUST be expressed either as an object or as a string
@@ -1178,7 +1172,6 @@
 
     <section id="TestPart">
       <h3>TestPart</h3>
-
       <p>A QTI <code>TestPart</code> represents a segment of an <code>AssessmentTest</code> that is normally
         undertaken in separate test sessions.</p>
 
@@ -1285,16 +1278,20 @@
       "id": "TODO",
       "type": "AssessmentSection"
     }
-  ]
+  },
+  "assessmentSectionSelection": [{
+    "type": "AssessmentSectionSelection",
+    "assessmentSection": {},
+    "assessmentSectionRef": {}
+  }]
 }
           </code>
         </pre>
       </figure>
     </section>
 
-    <section id="assessmentSection">
+    <section id="AssessmentSection">
       <h3>AssessmentSection</h3>
-
       <p>A QTI <code>AssessmentSection</code> represents child <code>AssessmentSection</code>
         or <code>AssessmentItem</code>AssessmentItem groupings that share a common pedagogic
         testing objective.</p>
@@ -1426,9 +1423,8 @@
       </figure>
     </section>
 
-    <section id="assessmentItem">
-      <h3>AssessmentItem</h3>
-
+    <section id="AssessmentStimulus">
+      <h3>AssessmentStimulus</h3>
       <p>A QTI <code>AssessmentItem</code> encompasses the information that is presented to a candidate and information
         about how to score the item. Scoring takes place when candidate responses are transformed into outcomes by
         response processing rules.</p>
@@ -1474,7 +1470,7 @@
           <td><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to the Term 'AssessmentItem'.</td>
+          <td>The string value MUST be set to the Term 'AssessmentSection'.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -1828,23 +1824,23 @@
         <tr>
           <td>id</td>
           <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
             also be dereferenceable, i.e., capable of returning a representation of the resource.
             A <a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
             >URI</a> employing the <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
             >URN</a> scheme MAY be provided in cases where a <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
             >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>type</td>
           <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The string value MUST be set to the Term 'ItemResult'.</td>
           <td>Required</td>
@@ -2107,13 +2103,12 @@
       <table class="data">
         <thead>
         <tr>
-          <th>Property</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Disposition</th>
+          <td>title</td>
+          <td><a href="#title"
+          >Term</a></td>
+          <td>TODO QTI WG definition.</td>
+          <td>Optional</td>
         </tr>
-        </thead>
-        <tbody>
         <tr>
           <td>id</td>
           <td><a href=
@@ -2515,20 +2510,6 @@
         </pre>
       </figure>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   </section>
 
