@@ -2079,12 +2079,12 @@
   "normalMinimum": 10.0,
   "masteryValue": "90.0",
   "value": [{
-    "id": "IRI",
-    "type": "Value",
-    "fieldIdentifier": "",
-    "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
-    "valueValue": "TODO RETHINK NAME OR VALUE EXPRESSED AS AN OBJECT"
-  }]
+      "id": "TODO",
+      "type": "Value",
+      "fieldIdentifier": "TODO",
+      "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+      "entry": "TODO"
+    }]
 }
           </code>
         </pre>
@@ -2120,7 +2120,7 @@
         <tr>
           <td>id</td>
           <td><a href=
-                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
             also be dereferenceable, i.e., capable of returning a representation of the resource.
@@ -2215,9 +2215,9 @@
     "value": [{
       "id": "TODO",
       "type": "Value",
-      "fieldIdentifier": "",
+      "fieldIdentifier": "TODO",
       "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
-      "valueValue": "TODO RETHINK NAME"
+      "entry": "TODO"
     }]
   },
   "candidateResponse": {
@@ -2226,9 +2226,9 @@
     "value": [{
       "id": "TODO",
       "type": "Value",
-      "fieldIdentifier": "",
+      "fieldIdentifier": "TODO",
       "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
-      "valueValue": "TODO RETHINK NAME"
+      "entry": "TODO"
     }]
   }
 }
@@ -2340,7 +2340,7 @@
     "type": "Value",
     "fieldIdentifier": "TODO",
     "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
-    "valueValue": "TODO RETHINK NAME"
+    "entry": "TODO"
   }]
 }
           </code>
@@ -2430,7 +2430,7 @@
     "type": "Value",
     "fieldIdentifier": "TODO",
     "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
-    "valueValue": "TODO RETHINK NAME"
+    "entry": "TODO"
   }]
 }
           </code>
@@ -2511,13 +2511,130 @@
     "type": "Value",
     "fieldIdentifier": "TODO",
     "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
-    "valueValue": "TODO RETHINK NAME"
+    "entry": "TODO"
   }]
 }
           </code>
         </pre>
       </figure>
     </section>
+
+    <section id="value">
+      <h3>Value</h3>
+
+      <aside class="issue">
+        <p>Can the <code>Value</code> class be dropped in favor of a string representation?
+          <pre>
+            "value": [{<code>Value</code>}, {<code>Value</code>}] be simplified
+            to
+            "value": ["string", "string"]
+          </pre>
+        </p>
+      </aside>
+
+      <p>A QTI <code>Value</code> represents a single value of any baseType in variable declarations and result
+        reports. The base-type is defined by the <code>baseType</code> attribute of the declaration except in
+        the case of variables with 'record' cardinality.</p>
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/CandidateResponse</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'Value'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>baseType</td>
+          <td>Enumeration</td>
+          <td>This attribute is only used for specifying the base-type of a <code>Value</code> that forms
+            part of a record.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>fieldIdentifier</td>
+          <td>string</td>
+          <td>This attribute is only used for specifying the <code>fieldIdentifier</code> for a <code>Value</code>
+            that forms part of a record.  The <code>fieldIdentifier</code> is a string of characters that must
+            start with a Letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>entry</td>
+          <td>string</td>
+          <td>The actual value provided by the candidate in the form of a string.</td>
+          <td>Required</td>
+        </tr>
+
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>CandidateResponse</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "id": "TODO",
+  "type": "Value",
+  "fieldIdentifier": "TODO",
+  "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+  "entry": "TODO"
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
   </section>
 
@@ -2534,8 +2651,7 @@ ______________________________________________
     * AssessmentSectionRef
     * AssessmentSectionSelection
     * Context
-    * CorrectResponse
-    * CandidateResponse
+
     * SectionPart
     * Value
 
