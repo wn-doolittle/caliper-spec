@@ -291,8 +291,8 @@
     <h2>Entities</h2>
     <section id="entity-aggregatemeasure">
       <h3><a name="aggregateMeasure"></a>AggregateMeasure</h3>
-      <p>A Caliper <a href="#aggregateMeasure">AggregateMeasure</a> is a generic type that represents an aggregated measure.</p>
-      <p>Utilize <a href="#aggregateMeasure">AggregateMeasure</a> only if no suitable subtype exists to represent the resource being described.</p>
+      <p>A Caliper <a href="#aggregateMeasure">AggregateMeasure</a> represents an aggregated measure of a <a href="#Person">Person</a>'s use of a Learning Tool.</p>
+      <p>For example, an <a href="#aggregateMeasure">AggregateMeasure</a> may represent the total time on task a <a href="#Person">Person</a> has spent on a Learning Tool over a period of time.</p>
       <h4>IRI</h4>
       <p><a href="http://purl.imsglobal.org/caliper/aggregateMeasure">http://purl.imsglobal.org/caliper/aggregateMeasure</a></p>
       <h4>Supertype</h4>
@@ -322,10 +322,34 @@
       <td>Required</td>
       </tr>
       <tr>
-      <td>value</td>
-      <td><a href="#number">number</a></td>
-      <td>A number representing the total of the aggregated measures.</td>
+      <td>name</td>
+      <td>string</td>
+      <td>A string value comprising a word or phrase by which the <a href="#aggregateMeasure">AggregateMeasure</a> is known.</td>
       <td>Optional</td>
+      </tr>
+      <tr>
+      <td>description</td>
+      <td>string</td>
+      <td>A string value comprising comprising a brief, written representation of the <a href="#aggregateMeasure">AggregateMeasure</a>.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>value</td>
+      <td>Number</td>
+      <td>A Number representing the total curricular progress the actor has made in the context of the application.</td>
+      <td>Required</td>
+      </tr>
+      <tr>
+      <td>valueMax</td>
+      <td>Number</td>
+      <td>A Number representing the total possible curricular progress the actor can make in the context of the application.</td>
+      <td>Optional</td>
+      </tr>
+      <tr>
+      <td>metric</td>
+      <td>Enumeration</td>
+      <td>The standard of measurement associated with the progress value. Acceptable values are listed in the <a href="metrics">Metrics</a> Appendix.</td>
+      <td>Required</td>
       </tr>
       <tr>
       <td>startedAtTime</td>
@@ -347,15 +371,17 @@
       </tr>
       </tbody>
       </table>
-      <h4>Subtypes</h4>
-      <p><a href="#entity-aggregatemeasurecollection">AggregateMeasureCollection</a>, <a href="#entity-aggregatetimeontask">AggregateTimeOnTask</a>, <a href="#entity-aggregateprogress">AggregateProgress</a></p>
       <h4>Example</h4>
       <pre><code>
 {
-  "@context":"http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "@context":"http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
   "id":"urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d933",
-  "type":"aggregateMeasure",
-  "value":"10",
+  "type":"AggregateMeasure",
+  "value": "12",
+  "valueMax": "25",
+  "metric": "AssessmentsPassed",
+  "name": "End of Chapter Assessments Passed",
+  "description": "Number of end of chapter assessments successfully passed on first or second attempt",
   "startedAtTime": "2018-08-15T10:15:00.000Z",
   "endedAtTime": "2018-11-15T10:15:00.000Z"
 }
@@ -368,9 +394,9 @@
       <h4>IRI</h4>
       <p><a href="http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a></p>
       <h4>Supertype</h4>
-      <p><a href="#aggregateMeasure">AggregateMeasure </a></p>
+      <p><a href="#entity">Entity</a></p>
       <h4>Properties</h4>
-      <p><a href="#aggregateMeasureCollection">AggregateMeasureCollection</a> inherits all the properties and requirements defined for its supertype <a href="#aggregateResource">AggregateResource</a>.  Additional properties and requirements are described below:</p>
+      <p><a href="#aggregateMeasureCollection">AggregateMeasureCollection</a> inherits all the properties and requirements defined for its supertype <a href="#entity">Entity</a>.  Additional properties and requirements are described below:</p>
       <table class="table table-bordered table-striped">
       <thead>
       <tr>
@@ -410,23 +436,27 @@
       <h4>Example</h4>
       <pre><code>
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
   "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
   "type": "AggregateMeasureCollection",
   "items": [{
       "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d917",
-      "type": "AggregateTimeOnTask",
-      "duration": "PT14H33M23S",
+      "type": "AggregateMeasure",
+      "value": "153.5",
+      "metric": "MinutesOnTask",
+      "name": "On Task Minutes",
+      "description": "Total active minutes on task",
       "startedAtTime": "2018-08-15T10:15:00.000Z",
       "endedAtTime": "2018-11-15T10:15:00.000Z"
     },
     {
       "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
-      "type": "AggregateProgress",
+      "type": "AggregateMeasure",
       "value": "12",
       "valueMax": "25",
-      "metric": "UnitsCompleted",
-      "displayName": "Lessons Passed",
+      "metric": "AssessmentsPassed",
+      "name": "End of Chapter Assessments Passed",
+      "description": "Number of end of chapter assessments successfully passed on first or second attempt",
       "startedAtTime": "2018-08-15T10:15:00.000Z",
       "endedAtTime": "2018-11-15T10:15:00.000Z"
     }
@@ -434,167 +464,6 @@
 }
       </code></pre>
     </section>
-    <section id="entity-aggregatetimeontask">
-      <h3><a name="aggregateTimeOnTask"></a>AggregateTimeOnTask</h3>
-      <p>A Caliper <a href="#aggregateTimeOnTask">AggregateTimeOnTask</a> represents the aggregated measure of time an Actor has spent actively using a tool.</p>
-      <h4>IRI</h4>
-      <p><a href="http://purl.imsglobal.org/caliper/AggregateTimeOnTask">http://purl.imsglobal.org/caliper/AggregateTimeOnTask</a></p>
-      <h4>Supertype</h4>
-      <p><a href="#aggregateMeasure"> AggregateMeasure</a></p>
-      <h4>Properties</h4>
-      <p><a href="#aggregateTimeOnTask">AggregateTimeOnTask</a> inherits all the properties and requirements defined for its supertype <a href="#aggregateResource">AggregateResource</a>.  Additional properties and requirements are described below:</p>
-      <table class="table table-bordered table-striped">
-      <thead>
-      <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td>id</td>
-      <td><a href="#iriDef">IRI</a></td>
-      <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-      <td>Required</td>
-      </tr>
-      <tr>
-      <td>type</td>
-      <td><a href="#termDef">Term</a></td>
-      <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateTimeOnTask</em>.</td>
-      <td>Required</td>
-      </tr>
-      <tr>
-      <td>duration</td>
-      <td>Duration</td>
-      <td>An ISO 8601 time duration value expressed with only hours, minutes, and seconds units, so as to prevent confusion related to daylights-savings short days and varying-length months. The value MUST be expressed using the format e.g. PT12H30M15S (12 hours, 30 minutes, 15 seconds). This value should represent the total cumulative amount of time spent since the since startedAtTime until the endedAtTime, or if those values are not defined, the time spent during the current school year.</td>
-      <td>Required</td>
-      </tr>
-      <tr>
-      <td>startedAtTime</td>
-      <td>DateTime</td>
-      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was commenced.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-      <td>Optional</td>
-      </tr>
-      <tr>
-      <td>endedAtTime</td>
-      <td>DateTime</td>
-      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was completed.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-      <td>Optional</td>
-      </tr>  
-      <tr>
-      <td>extensions</td>
-      <td>Object</td>
-      <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#aggregateTimeOnTask">AggregateTimeOnTask</a>.</td>
-      <td>Optional</td>
-      </tr>
-      </tbody>
-      </table>
-      <h4>Example</h4>
-      <pre><code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d917",
-  "type": "AggregateTimeOnTask",
-  "duration": "PT14H33M23S",
-  "startedAtTime": "2018-08-15T10:15:00.000Z",
-  "endedAtTime": "2018-11-15T10:15:00.000Z"
-}
-      </code></pre>
-    </section>
-    <section id="entity-aggregateprogress">
-      <h3><a name="aggregateProgress"></a>AggregateProgress</h3>
-      <p>A Caliper <a href="#aggregateProgress">AggregateProgress</a> represents the aggregated measure of the progress an Actor has made in a Tool.</p>
-      <h4>IRI</h4>
-      <p><a href="http://purl.imsglobal.org/caliper/AggregateProgress">http://purl.imsglobal.org/caliper/AggregateProgress</a></p>
-      <h4>Supertype</h4>
-      <p><a href="#aggregateMeasure"> AggregateMeasure</a></p>
-      <h4>Properties</h4>
-      <p><a href="#aggregateProgress">AggregateProgress</a> inherits all the properties and requirements defined for its supertype <a href="#aggregateResource">AggregateResource</a>.  Additional properties and requirements are described below:</p>
-      <table class="table table-bordered table-striped">
-      <thead>
-      <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td>id</td>
-      <td><a href="#iriDef">IRI</a></td>
-      <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-      <td>Required</td>
-      </tr>
-      <tr>
-      <td>type</td>
-      <td><a href="#termDef">Term</a></td>
-      <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateProgress</em>.</td>
-      <td>Required</td>
-      </tr>
-      <tr>
-      <td>value</td>
-      <td>Number</td>
-      <td>A Number representing the total curricular progress the actor has made in the context of the application.</td>
-      <td>Required</td>
-      </tr>
-      <tr>
-      <td>valueMax</td>
-      <td>Number</td>
-      <td>A Number representing the total possible curricular progress the actor can make in the context of the application.</td>
-      <td>Optional</td>
-      </tr>
-      <tr>
-      <td>metric</td>
-      <td>Enumeration</td>
-      <td>The standard of measurement associated with the progress value. Acceptable values are listed in the <a href="metrics">Metrics</a> Appendix.</td>
-      <td>Optional</td>
-      </tr>
-      <tr>
-      <td>metricDisplayName</td>
-      <td>String</td>
-      <td>A human readable string describing the metric with the language used by the <a href=#SoftwareApplication>SoftwareApplication</a> .</td>
-      <td>Optional</td>
-      </tr>
-      <tr>
-      <td>startedAtTime</td>
-      <td>DateTime</td>
-      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was commenced.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-      <td>Optional</td>
-      </tr>
-      <tr>
-      <td>endedAtTime</td>
-      <td>DateTime</td>
-      <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was completed.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-      <td>Optional</td>
-      </tr>  
-      <tr>
-      <td>extensions</td>
-      <td>Object</td>
-      <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#aggregateTimeOnTask">AggregateTimeOnTask</a>.</td>
-      <td>Optional</td>
-      </tr>
-      </tbody>
-      </table>
-      <h4>Example</h4>
-      <pre><code>
-{
-  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
-  "type": "AggregateProgress",
-  "value": "12",
-  "valueMax": "25",
-  "metric": "UnitsPassed",
-  "displayName": "Units Passed",
-  "startedAtTime": "2018-08-15T10:15:00.000Z",
-  "endedAtTime": "2018-11-15T10:15:00.000Z"
-}
-      </code></pre>
-    </section>
-        
-        </section>
-        
         <section id="jsonld">
           <h2>Representing Caliper as JSON-LD</h2>
 
@@ -645,27 +514,30 @@
     "academicSession": "Fall 2018"
   },
   "generated": {
-    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
+    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d982",
     "type": "AggregateMeasureCollection",
     "items": [{
-        "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d917",
-        "type": "AggregateTimeOnTask",
-        "duration": "PT14H33M23S",
-        "startedAtTime": "2018-08-15T10:15:00.000Z",
-        "endedAtTime": "2018-11-15T10:15:00.000Z"
-      },
-      {
-        "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
-        "type": "AggregateProgress",
-        "value": "12",
-        "valueMax": "25",
-        "metric": "UnitsCompleted",
-        "displayName": "Lessons Passed",
-        "startedAtTime": "2018-08-15T10:15:00.000Z",
-        "endedAtTime": "2018-11-15T10:15:00.000Z"
-      }
-    ]
-  }, 
+      "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d987",
+      "type": "AggregateMeasure",
+      "value": "153.5",
+      "metric": "MinutesOnTask",
+      "name": "On Task Minutes",
+      "description": "Total active minutes on task",
+      "startedAtTime": "2018-08-15T10:15:00.000Z",
+      "endedAtTime": "2018-11-15T10:15:00.000Z"
+    },
+    {
+      "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d988",
+      "type": "AggregateMeasure",
+      "value": "12",
+      "valueMax": "25",
+      "metric": "AssessmentsPassed",
+      "name": "End of Chapter Assessments Passed",
+      "description": "Number of end of chapter assessments successfully passed on first or second attempt",
+      "startedAtTime": "2018-08-15T10:15:00.000Z",
+      "endedAtTime": "2018-11-15T10:15:00.000Z"
+    }
+  ]  }, 
   "membership": {
     "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
@@ -692,18 +564,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td>activitiesCompleted</td></tr>
-      <tr><td>activitesPassed</td></tr>
-      <tr><td>assessmentsCompleted</td></tr>
-      <tr><td>assessmentsPassed</td></tr>
-      <tr><td>documentsRead</td></tr>
-      <tr><td>lessonsCompleted</td></tr>
-      <tr><td>lessonsPassed</td></tr>
-      <tr><td>standardsMastered</td></tr>
-      <tr><td>unitsCompleted</td></tr>
-      <tr><td>unitsPassed</td></tr>
-      <tr><td>wordsRead</td></tr>
-      <tr><td>wordsWritten</td></tr>
+      <tr><td>ActivitiesCompleted</td></tr>
+      <tr><td>ActivitesPassed</td></tr>
+      <tr><td>AssessmentsCompleted</td></tr>
+      <tr><td>AssessmentsPassed</td></tr>
+      <tr><td>DocumentsRead</td></tr>
+      <tr><td>LessonsCompleted</td></tr>
+      <tr><td>LessonsPassed</td></tr>
+      <tr><td>MinutesOnTask</td></tr>
+      <tr><td>StandardsMastered</td></tr>
+      <tr><td>UnitsCompleted</td></tr>
+      <tr><td>UnitsPassed</td></tr>
+      <tr><td>WordsRead</td></tr>
+      <tr><td>WordsWritten</td></tr>
     </tbody>
   </table>
 </section>
