@@ -1,0 +1,2722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
+  <script src='local-biblio.js' class='remove'></script>
+  <script class='remove'>
+    var respecConfig = {
+      specTitle: "Caliper Analytics® QTI Profile",
+      shortName: "caliper-search",
+      specStatus: "IMS Base Document",
+      specDate: "August 31, 2018",
+      specVersion: "1.1",
+      specNature: "normative",
+      specType: "spec",
+      contributors: [
+        {
+          name: "Anthony Whyte",
+          company: "University of Michigan (USA)",
+          companyURL: "https://www.umich.edu/",
+          role: "Author"
+        }],
+      localBiblio: _localBiblio
+    };
+  </script>
+</head>
+<body>
+  <section id="abstract">
+    <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Question & Test
+    Interoperability (QTI) Profile that describes assessment-related learning activities.
+  </section>
+
+  <section>
+    <h2>Overview</h2>
+    <section class="informative">
+      <h3>Design Goals and Rationale</h3>
+
+      <img height="100%" width="100%" src="../assets/caliper-qti.png"
+           alt="QTI Profile"/>
+
+      <p>The Caliper QTI Profile models a <code>Person</code>, typically a learner,
+        . . . . TODO</p>
+    </section>
+
+    <section class="informative" id="usecases">
+      <h3>Use cases</h3>
+
+      <p>The QTI Profile supports the following learner-centric use cases:</p>
+      <table>
+        <tr>
+          <td>TODO</td>
+        </tr>
+        <tr>
+          <td>TODO</td>
+        </tr>
+        <tr>
+          <td>TODO</td>
+        </tr>
+        <tr>
+          <td>TODO</td>
+        </tr>
+        <tr>
+          <td>TODO</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="terminology">
+      <h3>Terminology</h3>
+
+      <p>All terminology used in this specification is concordant with the term
+        definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
+    </section>
+
+    <section id="conformance">
+      <h3>Conformance Statements</h3>
+    </section>
+
+    <section id="documentset">
+      <h3>Document Set</h3>
+
+      <section>
+        <h4>Normative Documents</h4>
+
+        <dl>
+          <dt>Caliper 1.1</dt>
+          <dd>This profile is an extension to the Caliper 1.1 specification [[!CALIPER-11]].
+            All requirements in the Caliper 1.1 specification also apply to implementations of this
+            specification.
+          </dd>
+          <dt>JSON-LD Context</dt>
+          <dd>The JSON-LD Context for this profile defines all relevant term-IRI mappings
+            [[!CALIPER-QTI-11-CONTEXT]]. </dd>
+          <dt>Errata</dt>
+          <dd>The errata [[!CALIPER-QTI-11-ERRATA]] details any errata registered for this version
+            of this specification since its publication.</dd>
+          <dt>Conformance and Certification guide</dt>
+          <dd>The conformance and certification guide that accompanies the Caliper 1.1 specification
+            defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-11]].
+          </dd>
+        </dl>
+      </section>
+
+      <section class="informative">
+        <h4>Informative Documents</h4>
+
+        <dl>
+          <dt>Caliper 1.1 Implementation Guide</dt>
+          <dd>The implementation guide that accompanies the Caliper 1.1 specification provides
+            advice and guidance for implementors [[CALIPER-IMPL-11]].
+          </dd>
+        </dl>
+      </section>
+    </section>
+  </section>
+
+  <section id="events">
+    <h2>Events</h2>
+
+    <p>The QTI Profile models assessment-related activities including interactions with
+      individual assessment parts, sections and items. Caliper provides <code>Assessment</code>,
+      <code>TestPart</code>, <code>AssessmentSection</code> and <code>AssessmentItem</code>
+      entities for describing the object of these activities, as well as a learner's
+      <code>Attempt</code> for recording a count of the number of times an assigned resource has been
+      attempted. A <code>Response</code> is also modeled for capturing individual item responses.
+    </p>
+
+    <section id="assessmentEvent">
+      <h3>AssessmentEvent</h3>
+
+      <img height="100%" width="100%"
+           src="./assets/caliper-assessment_event_started-v2.png" alt="AssessmentEvent"/>
+
+      <p>A Caliper <code>AssessmentEvent</code> models learner interactions with assessment
+      instruments such as online tests or quizzes.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentEvent</dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a></dd>
+        <dt>Supported actors</dt>
+        <dd><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a></dd>
+        <dt>Supported actions</dt>
+        <dd><a href="action-started">Started</a></dd>
+        <dd><a href="action-paused">Paused</a></dd>
+        <dd><a href="action-resumed">Resumed</a></dd>
+        <dd><a href="action-restarted">Restarted</a></dd>
+        <dd><a href="action-reset">Reset</a></dd>
+        <dd><a href="action-submitted">Submitted</a></dd>
+        <dt>Supported objects</dt>
+        <dd><a href="#assessment">Assessment</a></dd>
+        <dd><a href="#TestPart">TestPart</a></dd>
+        <dd><a href="#assessmentSection">AssessmentSection</a></dd>
+        <dt>Supported generated entities</dt>
+        <dd><a href="#attempt">Attempt</a></dd>
+        <dt>Properties</dt>
+        <dd><code>AssessmentEvent</code> inherits all properties defined by its supertype
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+          >UUID</a></td>
+          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
+            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[rfc4122]].</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'AssessmentEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The value range is limited to the supported action terms listed
+            above. Only one action may be specified per <code>AssessmentEvent</code>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#assessment"
+          >Assessment</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Assessment</code> taken by the <code>actor</code>. The <code>object</code>
+            value MUST be expressed either as an object or as a string corresponding to the
+            resources's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>generated</td>
+          <td><a href="#attempt">Attempt</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>Provides a count of the number of times the <code>actor</code> has interacted with
+            the <code>object</code> along with start time, end time and duration information.  The
+            <code>generated</code> value MUST be expressed either as an object or as a
+            string corresponding to the attempts’s IRI.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentEvent</code> JSON-LD.</figcaption>
+          <pre>
+            <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:27734504-068d-4596-861c-2315be33a2a2",
+  "type": "AssessmentEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Started",
+  "object": {
+    "id": "https://example.edu/assess/1",
+    "type": "Assessment",
+    "name": "Quiz 1",
+    "dateToStartOn": "2018-11-14T05:00:00.000Z",
+    "dateToSubmit": "2018-11-18T11:59:59.000Z",
+    "maxAttempts": 2,
+    "maxSubmits": 2,
+    "maxScore": 25.0,
+    "version": "1.0"
+  },
+  "generated": {
+    "id": "https://example.edu/assess/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": "https://example.edu/assess/1",
+    "count": 1,
+    "dateCreated": "2018-11-15T10:15:00.000Z",
+    "startedAtTime": "2018-11-15T10:15:00.000Z"
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}
+            </code>
+          </pre>
+      </figure>
+    </section>
+
+    <section id="assessmentItemEvent">
+      <h3>AssessmentItemEvent</h3>
+
+      <img height="100%" width="100%"
+           src="./assets/caliper-assessmentitem_event_completed-v2.png" alt="AssessmentItemEvent"/>
+
+      <p>A Caliper <code>AssessmentItemEvent</code> models a learner's interaction with an
+        individual <code>AssessmentItem</code>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentItemEvent</dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a></dd>
+        <dt>Supported actors</dt>
+        <dd><a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a></dd>
+        <dt>Supported actions</dt>
+        <dd><a href="action-started">Started</a></dd>
+        <dd><a href="action-skipped">Skipped</a></dd>
+        <dd><a href="action-completed">Completed</a></dd>
+        <dt>Supported objects</dt>
+        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
+        <dt>Supported generated entities</dt>
+        <dd>TODO</dd>
+        <dt>Properties</dt>
+        <dd><code>AssessmentItemEvent</code> inherits all properties defined by its supertype
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+          >UUID</a></td>
+          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
+            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC 4122]].</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'AssessmentItemEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The value range is limited to the supported actions listed
+            above. Only one action may be specified per <code>AssessmentItemEvent</code>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href="#assessmentItem">AssessmentItem</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>AssessmentItem</code> presented to the <code>actor</code>. The
+            <code>object</code> value MUST be expressed either as an object or as a string
+            corresponding to the resources's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>generated</td>
+          <td>TODO | <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>For a <a href="action-completed">Completed</a> action the learner's
+            <code>TODO</code> MAY be specified. The <code>generated</code> value MUST be expressed
+            either as an object or as a string corresponding to the attempts’s IRI.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentItemEvent</code> JSON-LD.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:e5891791-3d27-4df1-a272-091806a43dfb",
+  "type": "AssessmentItemEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Completed",
+  "object": {
+    "id": "https://example.edu/assess/1/parts/1/sec/1/items/3",
+    "type": "AssessmentItem",
+    "isPartOf": {
+      "id": "https://example.edu/assess/1/parts/1/sec/1",
+      "type": "AssessmentSection",
+      "isPartOf": {
+        "id": "https://example.edu/assess/1/parts/1",
+        "type": "TestPart",
+        "isPartOf": {
+          "id": "https://example.edu/assess/1",
+          "type": "Assessment"
+        }
+      }
+    },
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "datePublished": "2018-08-15T09:30:00.000Z",
+    "isTimeDependent": false,
+    "maxScore": 1.0,
+    "maxSubmits": 2
+  },
+  "generated": {
+    ...
+    TODO Interactions/Response.  See speculative example below.
+    ...
+  },
+  "eventTime": "2018-11-15T10:15:12.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [
+      "Learner"
+    ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}
+          </code>
+        </pre>
+      </figure>
+
+      <figure class="example">
+        <figcaption><code>AssessmentItemEvent.generated</code>
+          <code>AssessmentItemInteractions</code> collection.</figcaption>
+        <pre>
+          <code>
+{
+  "generated": {
+    "id": "IRI",
+    "type": "AssessmentItemInteractions",
+    "length": 3,
+    "items": [{
+        "id": "IRI",
+        "type": "AssessmentItemInteraction",
+        "isPartOf": "AssessmentItemInteractions IRI",
+        "sequenceIndex": 0,
+        "response": {
+          "id": "IRI",
+          "type": "Response",
+          "attempt": {
+            "id": "IRI",
+            "type": "Attempt",
+            "assignee": {
+              "id": "IRI",
+              "type": "Person"
+            },
+            "assignable": {
+              "id": "IRI",
+              "type": "AssessmentItem"
+            },
+            "count": 1,
+            "duration": "ISO 8601 duration"
+          },
+          "baseType": "identifier",
+          "choiceSequence": ["D", "B", "C", "A"],
+          "correctResponse": "A",
+          "candidateResponse": "B"
+        }
+      },
+      {
+        "id": "IRI",
+        "type": "AssessmentItemInteraction",
+        "isPartOf": "AssessmentItemInteractions IRI",
+        "sequenceIndex": 1,
+        "response": {
+          "id": "IRI",
+          "type": "Response",
+          "attempt": {
+            "id": "IRI",
+            "type": "Attempt",
+            "assignee": {
+              "id": "IRI",
+              "type": "Person"
+            },
+            "assignable": {
+              "id": "IRI",
+              "type": "AssessmentItem"
+            },
+            "count": 1,
+            "duration": "ISO 8601 duration"
+          },
+          "baseType": "Point",
+          "choiceSequence": [[125, 300], [402, 500], [700, 821]],
+          "correctResponse": "[402, 500]",
+          "candidateResponse": "[700, 821]"
+        }
+      },
+      {
+        "id": "IRI",
+        "type": "AssessmentItemInteraction",
+        "isPartOf": "AssessmentItemInteractions IRI",
+        "sequenceIndex": 2,
+        "response": {
+          "id": "IRI",
+          "type": "Response",
+          "attempt": {
+            "id": "IRI",
+            "type": "Attempt",
+            "assignee": {
+              "id": "IRI",
+              "type": "Person"
+            },
+            "assignable": {
+              "id": "IRI",
+              "type": "Assessment"
+            },
+            "count": 1,
+            "duration": "ISO 8601 duration"
+          },
+          "baseType": "Boolean",
+          "choiceSequence": [true, false],
+          "correctResponse": "true",
+          "candidateResponse": "true"
+        }
+      }
+    ]
+  }
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="navigationEvent">
+      <h3>NavigationEvent</h3>
+
+      <img height="100%" width="100%"
+           src="./assets/caliper-navigation_event_navigatedto-v2.png" alt="NavigationEvent"/>
+
+      <p>A Caliper <code>NavigationEvent</code> models an actor traversing a network of digital
+        resources.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/NavigationEvent</dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a></dd>
+        <dt>Supported actors</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a></dd>
+        <dt>Supported actions</dt>
+        <dd><a href="action-viewed">Viewed</a></dd>
+        <dt>Supported objects</dt>
+        <dd><a href="#assessment">Assessment</a></dd>
+        <dd><a href="#TestPart">TestPart</a></dd>
+        <dd><a href="#assessmentSection">AssessmentSection</a></dd>
+        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
+        <dt>Properties</dt>
+        <dd><code>NavigationEvent</code> inherits all properties defined by its supertype
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+          >UUID</a></td>
+          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
+            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC 4122]].</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'ViewEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The string value MUST be set to 'NavigatedTo'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href="#assessment">Assessment</a> | <a href="#TestPart">TestPart</a> |
+            <a href="#assessmentSection">AssessmentSection</a> |
+            <a href="#assessmentItem">AssessmentItem</a> | <a href=
+                                                                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            >IRI</a></td>
+          <td>The <a href="#assessment">Assessment</a>, <a href="#TestPart">TestPart
+          </a>, <a href="#assessmentSection">AssessmentSection</a>, or
+            <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
+            <code>object</code> value MUST be expressed either as an object or as a string
+            corresponding to the resources's IRI.</td>
+          <td>Required</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>ViewEvent</code> JSON-LD.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:77bcfcad-e5d7-477f-b8aa-6fd953244f69",
+  "type": "NavigationEvent",
+  "actor": "https://example.edu/users/554433",
+  "action": "NavigatedTo",
+  "object": {
+    "id": "https://example.edu/assess/1",
+    "type": "Assessment",
+    "name": "Quiz 1",
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "dateModified": "2018-09-02T11:30:00.000Z",
+    "datePublished": "2018-08-15T09:30:00.000Z",
+    "version": "1.0"
+  },
+  "eventTime": "2018-11-15T10:15:12.000Z",
+  "referrer": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
+    "type": "WebPage"
+  },
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [
+      "Learner"
+    ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}
+            </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="viewEvent">
+      <h3>ViewEvent</h3>
+
+      <img height="100%" width="100%"
+           src="./assets/caliper-view_event_viewed-v2.png" alt="ViewEvent"/>
+
+      <p>A Caliper <code>ViewEvent</code> describes an actor's examination of digital
+        content whenever the activity emphasizes thoughtful observation or study as opposed to
+        the mere retrieval of a resource.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/ViewEvent</dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a></dd>
+        <dt>Supported actors</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a></dd>
+        <dt>Supported actions</dt>
+        <dd><a href="action-viewed">Viewed</a></dd>
+        <dt>Supported objects</dt>
+        <dd><a href="#assessment">Assessment</a></dd>
+        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
+        <dt>Properties</dt>
+        <dd><code>ViewEvent</code> inherits all properties defined by its supertype
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>. Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+          >UUID</a></td>
+          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
+            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC 4122]].</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'ViewEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The string value MUST be set to 'Viewed'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href="#assessment">Assessment</a> | <a href="#TestPart">TestPart</a> |
+            <a href="#assessmentSection">AssessmentSection</a> |
+            <a href="#assessmentItem">AssessmentItem</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <a href="#assessment">Assessment</a>, <a href="#TestPart">TestPart
+          </a>, <a href="#assessmentSection">AssessmentSection</a>, or
+            <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
+            <code>object</code> value MUST be expressed either as an object or as a string
+            corresponding to the resources's IRI.</td>
+          <td>Required</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>ViewEvent</code> JSON-LD.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:13d0830e-ef93-4cd6-8aa4-80eeca90f0a9",
+  "type": "ViewEvent",
+  "actor": "https://example.edu/users/554433",
+  "action": "Viewed",
+  "object": {
+    "id": "https://example.edu/assess/1",
+    "type": "Assessment",
+    "name": "Quiz 1",
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "dateModified": "2018-09-02T11:30:00.000Z",
+    "datePublished": "2018-08-15T09:30:00.000Z",
+    "version": "1.0"
+  },
+  "eventTime": "2018-11-15T10:15:12.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [
+      "Learner"
+    ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+  </section>
+
+  <section id="actions">
+    <h2>Actions</h2>
+
+    <p>Caliper includes a vocabulary of actions for describing learning interactions. Each
+      <code>action</code> is based on the past-tense form of an English (en-US) verb. An
+      <code>action</code> can also indicate a change in a particular characteristic of the
+      <code>object</code> (e.g., resolution, size, speed, volume). Each <code>action</code> is
+      mapped to a persistent <a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+      >IRI</a> listed in the external IMS Caliper JSON-LD context. Each <code>action</code> is
+      also linked to a brief definition ("gloss") derived in whole or in part from
+      Princeton University's WordNet® project in order to eliminate ambiguity and aid natural
+      language processing.</p>
+
+    <section id="action-assessmentEvent">
+      <h2>AssessmentEvent actions</h2>
+
+      <p>The Caliper <a href="#assessmentEvent">AssessmentEvent</a> supports the following
+        actions: Started, Paused, Resumed, Restarted, Reset, Submitted, Abandoned, TimedOut.</p>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Term</th>
+          <th>IRI</th>
+          <th>WordNet® Gloss</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="action-assessmentEvent-started">Started</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Started</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
+              start</a>.</td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-paused">Paused</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Paused" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Paused</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200781106-v">Cease an action
+              temporarily</a>. Inverse of <a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#resumed"
+            >Resumed</a>.</td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-resumed">Resumed</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Resumed" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Resumed</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
+              as in to start something, pause and then begin again at the location where the pause in
+              action occurred. Inverse of <a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#paused"
+              >Paused</a>.</td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-restarted">Restarted</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Restarted" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Restarted</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
+              as in to start something, make progress but then stop and return to the beginning in
+              order to start again.</td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-reset">Reset</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Reset" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Reset</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200949623-v">Set anew.</a></td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-submitted">Submitted</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Submitted" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Submitted</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/202267560-v">Hand over formally.</a>
+            </td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-abandoned">Abandoned</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/Abandoned" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/Abandoned</a></td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/202232813-v">Forsake, leave behind.</a>
+            </td>
+          </tr>
+          <tr>
+            <td id="action-assessmentEvent-timedOut">TimedOut</td>
+            <td><a href="http://purl.imsglobal.org/caliper/actions/TimedOut" rel="nofollow">
+              http://purl.imsglobal.org/caliper/actions/TimedOut</a></td>
+            <td>Cancellation of a user session after a predetermined time interval has occurred
+              without activity.</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="action-assessmentItemEvent">
+      <h2>AssessmentItemEvent actions</h2>
+
+      <p>The Caliper <a href="#assessmentItemEvent">AssessmentItemEvent</a> supports the following
+        actions: Started, Skipped, Completed, TimedOut.</p>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Term</th>
+          <th>IRI</th>
+          <th>WordNet® Gloss</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td id="action-assessmentItemEvent-started">Started</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/Started</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
+            start</a>.</td>
+        </tr>
+        <tr>
+          <td id="action-assessmentItemEvent-skipped">Skipped</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Skipped" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/Skipped</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200618188-v">Bypass</a>.</td>
+        </tr>
+        <tr>
+          <td id="action-assessmentItemEvent-changed">Changed</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Changed" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/Changed</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/00126072-v">Cause to change; make
+            different; cause a transformation</a>.</td>
+        </tr>
+        <tr>
+          <td id="action-assessmentItemEvent-completed">Completed</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/Completed" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/Completed</a></td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200485097-v">Come or bring to a
+            finish or an end</a>.</td>
+        </tr>
+        <tr>
+          <td id="action-assessmentItemEvent-timedOut">TimedOut</td>
+          <td><a href="http://purl.imsglobal.org/caliper/actions/TimedOut" rel="nofollow">
+            http://purl.imsglobal.org/caliper/actions/TimedOut</a></td>
+          <td>Cancellation of a user session after a predetermined time interval has occurred
+            without activity.</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </section>
+
+  <section id="entities">
+    <h2>Entities</h2>
+
+    <p>The following entities are referenced in the events described above either
+      as the <code>object</code> of an interaction or as a <code>generated</code> entity.</p>
+
+    <section id="assessmentTest">
+      <h3>AssessmentTest</h3>
+
+      <p>A QTI <code>AssessmentTest</code> represents an assessment instrument such as a test or
+        quiz. An <code>AssessmentTest</code> is comprised of one or more <code>TestPart</code> entities.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/AssessmentTest</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'AssessmentTest'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>AssessmentTest</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>string</td>
+          <td>The title of an <code>AssessmentTest</code> is intended to enable the test to be selected outside of any test
+            session. Therefore, delivery engines may reveal the title to candidates at any time, but are not
+            required to do so.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>isPartOf</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#Entity"
+          >Entity</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A related Caliper <code>Entity</code> that includes or incorporates this <code>AssessmentTest</code> as a part of
+            its whole. The <code>isPartOf</code> value MUST be expressed either as an object or as a string
+            corresponding to the associated entity's IRI.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>testPart</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+            >Array</a></td>
+          <td>Each <code>AssessmentTest</code> is divided into one or more <code>TestPart</code> entities which may
+            in turn be divided into sections, sub-sections and so on. A <code>testPart</code> represents a major
+            division of the test and is used to control the basic mode parameters that apply to all sections and
+            sub-sections within that part.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentTest</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "id": "TODO",
+  "type": "AssessmentTest",
+  "identifier": "TODO",
+  "title": "TODO",
+  "isPartOf": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "TODO",
+    "type": "CourseSection"
+  },
+  "testPart": [
+    {
+      "id": "TODO",
+      "type": "TestPart"
+    },
+    {
+      "id": "TODO",
+      "type": "TestPart"
+    },
+    {
+      "id": "TODO",
+      "type": "TestPart"
+    }
+  ]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="TestPart">
+      <h3>TestPart</h3>
+      <p>A QTI <code>TestPart</code> represents a segment of an <code>AssessmentTest</code> that is normally
+        undertaken in separate test sessions.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/TestPart</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'TestPart'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>TestPart</code>. An identifier is a string of characters that must start with a
+            letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'), period
+            ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>isPartOf</td>
+          <td><a href="#AssessmentTest">AssessmentTest</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A QTI <code>AssessmentTest</code> that includes or incorporates this <code>TestPart</code> as a
+            part of its whole. The <code>isPartOf</code> value MUST be expressed either as an object or as a
+            string corresponding to the associated entity's IRI.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>assessmentSectionSelection</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>Each <code>TestPart</code> is divided into one or more <code>AssessmentSection</code> entities which may
+            in turn be divided into sections, sub-sections and so on. </td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>TestPart</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "id": "TODO",
+  "type": "TestPart",
+  "identifier": "TODO",
+  "title": "TODO",
+  "isPartOf": {
+    "id": "TODO",
+    "type": "AssessmentTest",
+    "isPartOf": {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "TODO",
+      "type": "CourseSection"
+    }
+  },
+  "assessmentSectionSelection": [
+    {
+      "id": "TODO",
+      "type": "AssessmentSection"
+    },
+    {
+      "id": "TODO",
+      "type": "AssessmentSection"
+    }
+  },
+  "assessmentSectionSelection": [{
+    "type": "AssessmentSectionSelection",
+    "assessmentSection": {},
+    "assessmentSectionRef": {}
+  }]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="AssessmentSection">
+      <h3>AssessmentSection</h3>
+      <p>A QTI <code>AssessmentSection</code> represents child <code>AssessmentSection</code>
+        or <code>AssessmentItem</code>AssessmentItem groupings that share a common pedagogic
+        testing objective.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/AssessmentSection</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'AssessmentSection'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>AssessmentSection</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'), period
+            ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>string</td>
+          <td>The title of an <code>AssessmentSection</code> is intended to enable the section to be selected in
+            situations where the contents of the section are not available, for example when a candidate is browsing
+            a test. Therefore, delivery engines may reveal the title to candidates at any time during the test but
+            are not required to do so.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>isPartOf</td>
+          <td><a href="#TestPart">TestPart</a> |
+            <a href="#AssessmentSection">AssessmentSection</a> |
+            <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A QTI <code>TestPart</code> or <code>AssessmentSection</code> that includes or incorporates this
+            <code>AssessmentSection</code> as a part of its whole. The <code>isPartOf</code> value MUST be expressed
+            either as an object or as a string corresponding to the associated entity's IRI.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>sectionPart</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>Each <code>AssessmentSection</code> MAY reference one or more <code>SectionPart</code> entities that
+            enable the inclusion of the external referenced content or child <code>assessmentSection</code> entities to be used in this
+            <code>AssessmentSection</code>.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentSection</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "id": "TODO",
+  "type": "AssessmentSection",
+  "identifier": "TODO",
+  "title": "TODO",
+  "isPartOf": {
+    "id": "TODO",
+    "type": "TestPart",
+    "isPartOf": {
+      "id": "TODO",
+      "type": "AssessmentTest"
+    }
+  },
+  "sectionPart": [{
+      "id": "TODO",
+      "type": "SectionPart"
+    },
+    {
+      "id": "TODO",
+      "type": "SectionPart"
+    },
+    {
+      "id": "TODO",
+      "type": "SectionPart"
+    },
+    {
+      "id": "TODO",
+      "type": "SectionPart"
+    }
+  ]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="AssessmentStimulus">
+      <h3>AssessmentStimulus</h3>
+      <p>A QTI <code>AssessmentItem</code> encompasses the information that is presented to a candidate and information
+        about how to score the item. Scoring takes place when candidate responses are transformed into outcomes by
+        response processing rules.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/AssessmentItem</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'AssessmentSection'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>AssessmentItem</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>string</td>
+          <td>The title of an <code>AssessmentItem</code> is intended to enable the item to be selected in situations
+            where the full text of the itemBody is not available, for example when a candidate is browsing a set of
+            items to determine the order in which to attempt them. Therefore, delivery engines may reveal the title
+            to candidates at any time but are not required to do so.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>string</td>
+          <td>A human readable label that can be used to describe the <code>AssessmentItem</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>isPartOf</td>
+          <td><a href="#TestPart">TestPart</a> |
+            <a href="#AssessmentSection">AssessmentSection</a> |
+            <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            >IRI</a></td>
+          <td>A QTI <code>TestPart</code> or <code>AssessmentSection</code> that includes or incorporates this
+            <code>AssessmentItem</code> as a part of its whole. The <code>isPartOf</code> value MUST be expressed
+            either as an object or as a string corresponding to the associated entity's IRI.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentItem</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "id": "TODO",
+  "type": "AssessmentItem",
+  "identifier": "TODO",
+  "title": "TODO",
+  "label": "TODO",
+  "isPartOf": {
+    "id": "TODO",
+    "type": "AssessmentSection",
+    "isPartOf": {
+      "id": "TODO",
+      "type": "TestPart",
+      "isPartOf": {
+        "id": "TODO",
+        "type": "AssessmentTest"
+      }
+    }
+  }
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="assessmentResult">
+      <h3>AssessmentResult</h3>
+
+      <p>A QTI <code>AssessmentResult</code> is used to report the results of a candidate's interaction with a
+        <code>AssessmentTest</code> and/or one or more <code>AssessmentItem</code> entities attempted.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/AssessmentResult</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'AssessmentResult'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>AssessmentResult</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>context</td>
+          <td><a href="#Context">Context</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>Contains the contextual information for the associated itemTest and itemResults. Contextual information
+            must be supplied.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>isPartOf</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#Entity"
+          >Entity</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A related Caliper <code>Entity</code> that includes or incorporates this <code>AssessmentTest</code> as a part of
+            its whole. The <code>isPartOf</code> value MUST be expressed either as an object or as a string
+            corresponding to the associated entity's IRI.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>testResult</td>
+          <td><a href=#TestResult">TestResult</a></td>
+          <td>A summary report for an <code>AssessmentTest</code> is represented by an <code>AssessmentResult</code>
+            containing a <code>TestResult</code> but no <code>itemResult</code> entries.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>itemResult</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>When a <code>TestResult</code> is provided any item results that are reported MUST relate only to items
+            that were selected for presentation as part of the corresponding test session. Furthermore, all items
+            selected for presentation SHOULD be reported with a corresponding <code>itemResult</code>.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentResult</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "id": "TODO",
+  "type": "AssessmentResult",
+  "context": {
+    "id": "TODO",
+    "type": "Context",
+    "sourcedId": "TODO",
+    "sessionIdentifier": []
+  },
+  "testResult": {
+    "id": "TODO",
+    "type": "TestResult",
+    "identifier": "TODO",
+    "datestamp": "ISO 8601 DateTime",
+    "itemVariable": [{}]
+  },
+  "itemResult": []
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="testResult">
+      <h3>TestResult</h3>
+
+      <p>A QTI <code>TestResult</code> represents . . .  TODO. When a <code>TestResult</code> is provided any item
+        results that are reported MUST relate only to items that were selected for presentation as part of the
+        corresponding test session. Furthermore, all items selected for presentation SHOULD be reported with a
+        corresponding <code>itemResult</code>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/TestResult</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'TestResult'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>TestResult</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>datestamp</td>
+          <td>DateTime</td>
+          <td>An ISO 8601 date and time value expressed with millisecond precision that indicates when the
+            <code>TestResult</code> was recorded. The value MUST be expressed using the format
+            YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.
+          </td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>outcomeVariable</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>A list of one or more outcome variables associated with either an <code>AssessmentItem</code> or <code>AssessmentTest</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>responseVariable</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>A list of one or more response variables associated with an <code>AssessmentItem</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>templateVariable</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>A list of one or more template variables associated with an <code>AssessmentItem</code>.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>TestResult</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "id": "TODO",
+  "type": "TestResult",
+  "identifier": "TODO",
+  "datestamp": "2019-11-15T10:12:00.000Z",
+  "outcomeVariable": [{
+    "id": "TODO",
+    "type": "OutcomeVariable"
+  }],
+  "responseVariable": [{
+    "id": "TODO",
+    "type": "ResponseVariable"
+  }],
+  "templateVariable": [{
+    "id": "TODO",
+    "type": "TemplateVariable"
+  }]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="itemResult">
+      <h3>ItemResult</h3>
+
+      <p>A QTI <code>ItemResult</code> represents . . .  TODO. The result of an item session is reported with an
+        <code>itemResult</code>. A report may contain multiple results for the same instance of an item representing
+        multiple attempts, progression through an adaptive item or even more detailed tracking. In these cases,
+        each <code>ItemResult</code> must have a different datestamp.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/ItemResult</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'ItemResult'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>ItemResult</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>sequenceIndex</td>
+          <td>integer</td>
+          <td>For an <code>ItemResult</code> that is reported as part of an <code>AssessmentTest</code>, this
+            attribute MUST be used to indicate the position of the <code>AssessmentItem</code> within the
+            specific instance of the <code>AssessmentTest</code>. The first <code>AssessmentItem</code> of the
+            first part of the <code>AssessmentTest</code> MUST be assigned a sequence index value of 1.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>datestamp</td>
+          <td>DateTime</td>
+          <td>An ISO 8601 date and time value expressed with millisecond precision that indicates when the
+            <code>TestResult</code> was recorded. The value MUST be expressed using the format
+            YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.
+          </td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>sessionStatus</td>
+          <td>Enumeration</td>
+          <td>The <code>sessionStatus</code> is used to interpret <code>ItemVariable</code> values. The enumerated
+            value set is limited to: 'final', 'initial', 'pendingResponseProcessing', and 'pendingSubmission'.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>outcomeVariable</td>
+          <td><a href=
+                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>A list of one or more outcome variables associated with either an <code>AssessmentItem</code> or <code>AssessmentTest</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>responseVariable</td>
+          <td><a href=
+                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>A list of one or more response variables associated with an <code>AssessmentItem</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>templateVariable</td>
+          <td><a href=
+                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
+          >Array</a></td>
+          <td>A list of one or more template variables associated with an <code>AssessmentItem</code>.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>ItemResult</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "id": "TODO",
+  "type": "ItemResult",
+  "identifier": "TODO",
+  "sequenceIndex": 1,
+  "datestamp": "2019-11-15T10:12:00.000Z",
+  "sessionStatus": "final | initial | pendingResponseProcessing | pendingSubmission",
+  "outcomeVariable": [{
+    "id": "TODO",
+    "type": "OutcomeVariable"
+  }],
+  "responseVariable": [{
+    "id": "TODO",
+    "type": "ResponseVariable"
+  }],
+  "templateVariable": [{
+    "id": "TODO",
+    "type": "TemplateVariable"
+  }]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="outcomeVariable">
+      <h3>OutcomeVariable</h3>
+
+      <p>A QTI <code>OutcomeVariable</code> represents . . .  TODO. Indicates that an <code>OutcomeVariable</code>
+        is being reported. This is the value of one of the outcomes associated with either an
+        <code>AssessmentItem</code> or <code>AssessmentTest</code> and defined in the corresponding ASI instance.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/OutcomeVariable</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'OutcomeVariable'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>OutcomeVariable</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>cardinality</td>
+          <td>Enumeration</td>
+          <td>The cardinality of the <code>OutcomeVariable</code>, taken from the corresponding declaration or
+            definition. The enumerated value set is limited to: 'multiple', 'ordered', 'record', and 'single'.
+          </td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>baseType</td>
+          <td>Enumeration</td>
+          <td>The base type of the <code>OutcomeVariable</code> taken from the corresponding declaration of
+            definition. The enumerated value set is limited to: 'boolean', 'directedPair', 'duration', 'file', 'float',
+            'identifier', 'integer', 'pair', 'point', 'string', and 'uri'. The <code>baseType</code> value is omitted
+            ONLY for an <code>OutcomeVariable</code> with 'record' cardinality.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>view</td>
+          <td>Enumeration</td>
+          <td>The views (if any) declared for the <code>OutcomeVariable</code> MUST be copied to the report to
+            enable systems that render the report to hide information not relevant in a specific situation.
+            If no values are given, the outcome's value should be considered relevant in all views.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>normalMaximum</td>
+          <td>Double</td>
+          <td>The <code>normalMaximum</code> attribute optionally defines the maximum magnitude of numeric
+            outcome variables.  The <code>normalMaximum</code> MUST be a positive value. If given, the outcome's
+            value can be divided by <code>normalMaximum</code> and then truncated (if necessary) to obtain a
+            normalized score in the range [-1.0,1.0]. <code>normalMaximum</code> has no affect on responseProcessing
+            or the values that the <code>OutcomeVariable</code> itself can take.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>normalMinimum</td>
+          <td>Double</td>
+          <td>The <code>normalMinimum</code> attribute optionally defines the minimum value of numeric outcome
+            variables.  The value MAY be negative.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>masteryValue</td>
+          <td>Double</td>
+          <td>The <code>masteryValue</code> attribute optionally defines a value for numeric outcome variables
+            above which the aspect being measured is considered to have been mastered by the candidate.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>Array</td>
+          <td>The value(s) of the <code>OutcomeVariable</code>. The order of the values is significant only if
+            the outcome was declared with ordered cardinality.
+          </td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>OutcomeVariable</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "id": "TODO",
+  "type": "OutcomeVariable",
+  "identifier": "TODO",
+  "cardinality": "multiple | ordered | record | single",
+  "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+  "view": ["author | candidate | proctor | scorer | testConstructor | tutor", ""],
+  "normalMaxiumum": 100.0,
+  "normalMinimum": 10.0,
+  "masteryValue": "90.0",
+  "value": [{
+      "id": "TODO",
+      "type": "Value",
+      "fieldIdentifier": "TODO",
+      "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+      "entry": "TODO"
+    }]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="responseVariable">
+      <h3>ResponseVariable</h3>
+
+      <p>A QTI <code>ResponseVariable</code> represents . . .  TODO. Indicates that a <code>ResponseVariable</code> is
+        being reported. This is the value of one of the responses associated with an <code>AssessmentItem</code> in
+        the corresponding ASI instance.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/ResponseVariable</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <td>title</td>
+          <td><a href="#title"
+          >Term</a></td>
+          <td>TODO QTI WG definition.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'ResponseVariable'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>ResponseVariable</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>cardinality</td>
+          <td>Enumeration</td>
+          <td>The cardinality of the <code>ResponseVariable</code>, taken from the corresponding declaration or
+            definition. The enumerated value set is limited to: 'multiple', 'ordered', 'record', and 'single'.
+          </td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>baseType</td>
+          <td>Enumeration</td>
+          <td>The base type of the <code>ResponseVariable</code>, taken from the corresponding declaration of
+            definition. The enumerated value set is limited to: 'boolean', 'directedPair', 'duration', 'file', 'float',
+            'identifier', 'integer', 'pair', 'point', 'string', and 'uri'. The <code>baseType</code> value is omitted
+            ONLY for an <code>ResponseVariable</code> with 'record' cardinality.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>choiceSequence</td>
+          <td>Array</td>
+          <td>When a <code>ResponseVariable</code> is bound to an interaction that supports the shuffling of
+            choices, the sequence of choices experienced by the candidate will vary between test instances.
+            When shuffling is in effect, the sequence of choices should be reported as a sequence of choice
+            identifiers using this attribute. The list consist of values of data-type(s): NCName (Primitive-type).
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>correctResponse</td>
+          <td>CorrectResponse</td>
+          <td>The <code>CorrectResponse</code> may be output as part of the report if desired. Systems are not
+            limited to reporting correct responses declared in responseDeclarations. For example, a correct response
+            may be set by a <code>templateRule</code> or may simply have been suppressed from the declaration passed
+            to the delivery engine e.g. for security.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>candidateResponse</td>
+          <td>CandidateResponse</td>
+          <td>The response given by the candidate.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>ResponseVariable</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "id": "TODO",
+  "type": "ResponseVariable",
+  "identifier": "TODO",
+  "cardinality": "multiple | ordered | record | single",
+  "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+  "choiceSequence": ["Identifier01", "Identifier02", "Identifier03"],
+  "correctResponse": {
+    "id": "TODO",
+    "type": "CorrectResponse",
+    "interpretation": "",
+    "value": [{
+      "id": "TODO",
+      "type": "Value",
+      "fieldIdentifier": "TODO",
+      "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+      "entry": "TODO"
+    }]
+  },
+  "candidateResponse": {
+    "id": "TODO",
+    "type": "CandidateResponse",
+    "value": [{
+      "id": "TODO",
+      "type": "Value",
+      "fieldIdentifier": "TODO",
+      "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+      "entry": "TODO"
+    }]
+  }
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="templateVariable">
+      <h3>TemplateVariable</h3>
+
+      <p>A QTI <code>TemplateVariable</code> represents . . .  TODO. The Item result information related to a
+        'Template Variable'.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/TemplateVariabl</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'TemplateVariable'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>identifier</td>
+          <td>string</td>
+          <td>The local identifier of the <code>TemplateVariable</code>. An identifier is a string of characters that
+            must start with a letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>cardinality</td>
+          <td>Enumeration</td>
+          <td>The cardinality of the <code>TemplateVariable</code>, taken from the corresponding declaration or
+            definition. The enumerated value set is limited to: 'multiple', 'ordered', 'record', and 'single'.
+          </td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>baseType</td>
+          <td>Enumeration</td>
+          <td>The base type of the <code>TemplateVariable</code>, taken from the corresponding declaration of
+            definition. The enumerated value set is limited to: 'boolean', 'directedPair', 'duration', 'file', 'float',
+            'identifier', 'integer', 'pair', 'point', 'string', and 'uri'. The <code>baseType</code> value is omitted
+            ONLY for an <code>TemplateVariable</code> with 'record' cardinality.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>Array</td>
+          <td>The value(s) of the <code>TemplateVariable</code>. The order of the values is significant only if the
+            <code>TemplateVariable</code> was declared with ordered cardinality.
+          </td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>TemplateVariable</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "id": "TODO",
+  "type": "TemplateVariable",
+  "identifier": "TODO",
+  "cardinality": "multiple | ordered | record | single",
+  "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+  "value": [{
+    "id": "TODO",
+    "type": "Value",
+    "fieldIdentifier": "TODO",
+    "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+    "entry": "TODO"
+  }]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="correctResponse">
+      <h3>CorrectResponse</h3>
+
+      <p>A QTI <code>CorrectResponse</code> . . . TODO. The correct response may be included as part of the report if
+        desired. Systems are not limited to reporting correct responses declared in response declarations. For example,
+        a <code>CorrectResponse</code> may be set by a <code>templateRule</code> or may simply have been suppressed from the
+        declaration passed to the delivery engine e.g. for security.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/CorrectResponse</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'CorrectResponse'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>interpretation</td>
+          <td>string</td>
+          <td>A human readable interpretation of the correct value.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>Array</td>
+          <td>A list of <code>Value</code> entities. The order of the values is significant only when the response
+            is of 'ordered' cardinality.
+          </td>
+          <td>Required</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>CorrectResponse</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "id": "TODO",
+  "type": "CorrectResponse",
+  "interpretation": "TODO",
+  "value": [{
+    "id": "TODO",
+    "type": "Value",
+    "fieldIdentifier": "TODO",
+    "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+    "entry": "TODO"
+  }]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="candidateResponse">
+      <h3>CandidateResponse</h3>
+
+      <p>A QTI <code>CandidateResponse</code> represents the response given by the candidate.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/CandidateResponse</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'CandidateResponse'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>Array</td>
+          <td>The value(s) of the <code>ResponseVariable</code>. A NULL value, resulting from no response, is
+            indicated by the absence of any value. The order of the values is significant only if the response
+            was declared with ordered cardinality.
+          </td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>CandidateResponse</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "id": "TODO",
+  "type": "CandidateResponse",
+  "value": [{
+    "id": "TODO",
+    "type": "Value",
+    "fieldIdentifier": "TODO",
+    "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+    "entry": "TODO"
+  }]
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+    <section id="value">
+      <h3>Value</h3>
+
+      <aside class="issue">
+        <p>Can the <code>Value</code> class be dropped in favor of a string representation?
+          <pre>
+            "value": [{<code>Value</code>}, {<code>Value</code>}] be simplified
+            to
+            "value": ["string", "string"]
+          </pre>
+        </p>
+      </aside>
+
+      <p>A QTI <code>Value</code> represents a single value of any baseType in variable declarations and result
+        reports. The base-type is defined by the <code>baseType</code> attribute of the declaration except in
+        the case of variables with 'record' cardinality.</p>
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/qti/CandidateResponse</dd>
+        <dt>Supertypes</dt>
+        <dd>TODO (MAYBE)</dd>
+        <dt>Properties</dt>
+        <dd>TODO . . . . Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+            also be dereferenceable, i.e., capable of returning a representation of the resource.
+            A <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            >URI</a> employing the <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> scheme MAY be provided in cases where a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term 'Value'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>baseType</td>
+          <td>Enumeration</td>
+          <td>This attribute is only used for specifying the base-type of a <code>Value</code> that forms
+            part of a record.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>fieldIdentifier</td>
+          <td>string</td>
+          <td>This attribute is only used for specifying the <code>fieldIdentifier</code> for a <code>Value</code>
+            that forms part of a record.  The <code>fieldIdentifier</code> is a string of characters that must
+            start with a Letter or an underscore ('_') and contain only Letters, underscores, hyphens ('-'),
+            period ('.', a.k.a. full-stop), Digits, CombiningChars and Extenders. Identifiers containing the period
+            character are reserved for use in prefixing, as described in the definition of variable.
+          </td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>entry</td>
+          <td>string</td>
+          <td>The actual value provided by the candidate in the form of a string.</td>
+          <td>Required</td>
+        </tr>
+
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>CandidateResponse</code> JSON-LD describe.</figcaption>
+        <pre>
+          <code>
+{
+  "id": "TODO",
+  "type": "Value",
+  "fieldIdentifier": "TODO",
+  "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+  "entry": "TODO"
+}
+          </code>
+        </pre>
+      </figure>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+______________________________________________
+
+
+
+
+
+
+    ### Additional Entities referenced in JSON-LD examples
+
+    * AssessmentItemRef
+    * AssessmentSectionRef
+    * AssessmentSectionSelection
+    * Context
+
+    * SectionPart
+    * Value
+
+
+
+________________________________________
+
+
+
+  <section id="jsonld">
+    <h3>JSON-LD</h3>
+    <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
+      provides a remote QTI Profile JSON-LD <a href=
+      "http://purl.imsglobal.org/ctx/caliper/v1p1/QTIProfile-extension">context</a> for mapping
+      <a href=
+         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+      >Event</a> terms to IRIs. Caliper message producers MUST reference this
+      context in every Caliper 1.1 <a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+      >Event</a> and/or <a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+      >Entity</a> describe created and serialized for transmission to a target endpoint.</p>
+
+    <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
+      context handling.</p>
+
+    <figure class="example">
+      <figcaption>JSON-LD Context.</figcaption>
+      <pre>
+        <code>
+{
+"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QTIProfile-extension",
+. . .
+}
+        </code>
+      </pre>
+    </figure>
+  </section>
+
+  <section class="appendix informative" id="revisionhistory">
+    <h2>Revision History</h2>
+    <section>
+      <h3>Version History</h3>
+      <table title="Revision History" summary="Publication history and revision details for this specification.">
+        <thead>
+        <tr>
+          <th>Version No.</th>
+          <th>Release Date</th>
+          <th>Comments</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>IMS Base Document 1.0</td>
+          <td>August 31, 2018</td>
+          <td>The first internal draft release.</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h3>Changes from previous version</h3>
+      <p>As this is the first version of this document, no previous version change log exists.</p>
+    </section>
+  </section>
+
+</body>
+</html>
