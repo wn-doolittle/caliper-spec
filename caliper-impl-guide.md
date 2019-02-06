@@ -180,11 +180,98 @@ A great way to think of a Metric Profile is by the questions it can help answer.
 
 ## Sending an Event to an endpoint
 
-### JSON Envelopes
+### Envelopes
 
 TODO: Talk about Envelopes and give example. (are Envelopes best discussed in a different section?)
 
-### Send to secured HTTP endpoint
+An Envelope must have the properties
+
+#### Base Envelope JSON
+
+```json
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2018-11-15T11:05:01.000Z",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": []
+}
+```
+
+TODO: Talk about what can be in data: just an event, multiple events, or even mixed payloads of objects and events.
+
+#### Envelope with an Event JSON
+
+```json
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2018-11-15T11:05:01.000Z",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
+    "type": "ToolUseEvent",
+    "eventTime": "2018-11-15T10:15:00.000Z",
+    "actor": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "action": "Used",
+    "object": {
+      "id": "https://example.edu",
+      "type": "SoftwareApplication"
+    }
+  }]
+}
+```
+
+#### Mixed payload Envelope JSON
+
+In this example, the Person and SoftwareApplication are part of the data array and referenced from the events for reuse.
+
+```json
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2018-11-15T11:05:01.000Z",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [
+   {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "https://example.edu/users/554433",
+    "type": "Person",
+    "dateCreated": "2018-08-01T06:00:00.000Z",
+    "dateModified": "2018-09-02T11:30:00.000Z"
+  },
+  {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "https://example.edu",
+    "type": "SoftwareApplication",
+    "version": "v2"
+  },
+  {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
+    "type": "ToolUseEvent",
+    "eventTime": "2018-11-15T10:15:00.000Z",
+    "actor": "https://example.edu/users/554433",
+    "action": "Used",
+    "object": "https://example.edu"
+  },
+  {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "urn:uuid:9r34jdfj-a0d8-4430-95bd-783ffae4d916",
+    "type": "ToolUseEvent",
+    "eventTime": "2018-11-15T11:15:00.000Z",
+    "actor": "https://example.edu/users/554433",
+    "action": "Used",
+    "object": "https://example.edu"
+  }
+  ]
+}
+```
+
+
+
+### Sending to a secured HTTP endpoint
 
 TODO: Short description of how it's done then link to the LTI service definition: https://github.com/IMSGlobal/LTI-spec-Caliper/blob/develop/lti-spec-caliper.md#23-communicating-the-availability-of-the-service
 
