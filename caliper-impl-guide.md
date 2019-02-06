@@ -71,7 +71,7 @@ TODO: What is an event: An Actor, Action, and Object
 
 ```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
   "type": "ViewEvent",
   "eventTime": "2018-11-15T10:15:00.000Z",
@@ -126,7 +126,7 @@ To bring it all together, and Event would look something like this:
 
 ```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
   "type": "ViewEvent",
   "eventTime": "2018-11-15T10:16:00.000Z",
@@ -151,7 +151,7 @@ TODO: Short explanation about using ID only (or "Type Coercion") instead of full
 
 ```json
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
   "type": "ForumEvent",
   "eventTime": "2018-11-15T10:16:00.000Z",
@@ -200,7 +200,7 @@ An Envelope must have the properties
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2018-11-15T11:05:01.000Z",
-  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "data": []
 }
 ```
@@ -213,9 +213,9 @@ TODO: Talk about what can be in data: just an event, multiple events, or even mi
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2018-11-15T11:05:01.000Z",
-  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "data": [{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
     "eventTime": "2018-11-15T10:15:00.000Z",
@@ -240,23 +240,23 @@ In this example, the Person and SoftwareApplication are part of the data array a
 {
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2018-11-15T11:05:01.000Z",
-  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "data": [
    {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "https://example.edu/users/554433",
     "type": "Person",
     "dateCreated": "2018-08-01T06:00:00.000Z",
     "dateModified": "2018-09-02T11:30:00.000Z"
   },
   {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "https://example.edu",
     "type": "SoftwareApplication",
     "version": "v2"
   },
   {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
     "eventTime": "2018-11-15T10:15:00.000Z",
@@ -265,7 +265,7 @@ In this example, the Person and SoftwareApplication are part of the data array a
     "object": "https://example.edu"
   },
   {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "urn:uuid:9r34jdfj-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
     "eventTime": "2018-11-15T11:15:00.000Z",
