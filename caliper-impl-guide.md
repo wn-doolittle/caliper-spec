@@ -13,7 +13,7 @@ To review the use case collection that drove the development of this specificati
 please refer to [the use cases section](https://www.imsglobal.org/example/v1p1/#use-cases) 
 in [[EXAMPLE10]].
 
-## What is Caliper?
+### What is Caliper?
 
 Caliper is a technical specification to help institutions collect learning and usage data from digital resources and learning tools. This can help you present this information to students, instructors, and advisers in meaningful ways.
 
@@ -21,7 +21,7 @@ Caliper defines a common vocabulary for what activities can be observed (via a "
 
 Some examples of observable activities are how a learner interacts in a forum, while taking an assessment, or when consuming course readings and videos. 
 
-## Links to documents for your convenience
+### Links to documents for your convenience
 
 Many documents will be referenced in this guide. Here are links that will be useful for finding help and further information.
 
@@ -33,11 +33,11 @@ Many documents will be referenced in this guide. Here are links that will be use
 - Others?
 
 
-### Conformance
+## Conformance
 
 
 
-### Terminology
+## Terminology
 
 Learning this vocabulary in the context of the Caliper specification will be very helpful when using this document.
 
@@ -118,11 +118,11 @@ TODO: Explain Objects and their basic properties then link to main spec document
 }
 ```
 
-### Full Event JSON
+### Complete Event Example JSON
 
 To bring it all together, and Event would look something like this:
 
-#### Full JSON
+#### Complete JSON
 
 ```json
 {
