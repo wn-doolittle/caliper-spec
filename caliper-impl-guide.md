@@ -41,6 +41,8 @@ Many documents will be referenced in this guide. Here are links that will be use
 
 Learning this vocabulary in the context of the Caliper specification will be very helpful when using this document.
 
+TODO: Add definitions, and Figure out what definitions to include here vs leaving to the full spec.
+
 <dl>
   <dt>Action</dt><dd>Part of an Event.</dd>
   <dt>Actor</dt><dd>Part of an Event.</dd>
@@ -54,25 +56,155 @@ Learning this vocabulary in the context of the Caliper specification will be ver
   <dt></dt><dd></dd>
 </dl>
 
-Here is a simple explanation of how Caliper works using this vocabulary. If you can understand this you're well on your way to understanding Caliper!
+Here is a short explanation of how Caliper works using this vocabulary. If you can understand this you're well on your way to understanding Caliper!
 
 When a Caliper-observable interaction, as defined by a _Metric Profile_, is detected by a _Sensor_, an _Event_ is created which consists of an _Actor_, an _Object_, and an _Action_. (The Actor did the Action to the Object) To emit an _Event_ to another system via an API call, it is described as a JSON object which is wrapped in an _Envelope_ with a little metadata about the _Sensor_. The JSON is then sent via a secured HTTP call with an authentication token in an HTTP header.
 
-## Key Concepts
+
+## How to create a Caliper Event
+
+### Events
+
+TODO: What is an event: An Actor, Action, and Object
+
+#### Event JSON stub
+
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
+  "type": "ViewEvent",
+  "eventTime": "2018-11-15T10:15:00.000Z",
+  "actor": {},
+  "action": "",
+  "object": {}
+}
+```
+
+### Actors
+
+TODO: Explain Actors and their basic properties then link to main spec document where appropriate for more details.
+
+#### Actor JSON
+
+```json
+{
+  "id": "https://example.edu/users/554433",
+  "type": "Person"
+}
+```
+
+### Action
+
+TODO: Explain Actions and their basic properties then link to main spec document where appropriate for more details.
+
+#### Action JSON
+
+```json
+"Viewed"
+```
+
+### Object
+
+TODO: Explain Objects and their basic properties then link to main spec document where appropriate for more details.
+
+#### Object JSON
+
+```json
+{
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/readings/1",
+  "type": "DigitalResource",
+  "name": "Chapter 1 reading"
+}
+```
+
+### Full Event JSON
+
+To bring it all together, and Event would look something like this:
+
+#### Full JSON
+
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "ViewEvent",
+  "eventTime": "2018-11-15T10:16:00.000Z",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Viewed",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/readings/1",
+    "type": "DigitalResource",
+    "name": "Chapter 1 reading"
+  }
+}
+```
+
+This Event is read as something like: "This Person Viewed this DigitalResource at this eventTime"
+
+#### Smaller, ID-Only JSON
+
+TODO: Short explanation about using ID only (or "Type Coercion") instead of full object and then _link_ to more in-depth explanations around proper use. Maybe make a best practice section about when you should generally use object vs just ID and how it needs to be agreed upon between the parties so that they remain interoperable?
+
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "ForumEvent",
+  "eventTime": "2018-11-15T10:16:00.000Z",
+  "actor": "https://example.edu/users/554433",
+  "action": "Subscribed",
+  "object": "https://example.edu/terms/201801/courses/7/sections/1/forums/1"
+}
+```
+
+### Additional properties on Events
+
+While the base information required by most Events is represented in the above example, each Event type could require more properties, and allow for more properties and context as desired by the implementors. To understand what information is required and possible you should consult the Metric Profiles for the activities you're trying to implement.
+
+## Metric Profiles
+
+TODO: Profiles are so amazing!
+
+A great way to think of a Metric Profile is by the questions it can help answer. For example the Reading Profile could help Instructors and researchers answer questions such as:
+
+ - Who is consuming the content?
+ - What materials are being accessed?
+ - When are the resources accessed?
+ - How often is the content viewed?
+ - What paths are taken to reach the content?
+
+
+## Sending an Event to an endpoint
+
+### JSON Envelopes
+
+TODO: Talk about Envelopes and give example. (are Envelopes best discussed in a different section?)
+
+### Send to secured HTTP endpoint
+
+TODO: Short description of how it's done then link to the LTI service definition: https://github.com/IMSGlobal/LTI-spec-Caliper/blob/develop/lti-spec-caliper.md#23-communicating-the-availability-of-the-service
+
+Also explain how 2 vendors can work out keys and endpoints independent of LTI.
 
 
 
 ## Use Cases
 
-
+TODO: Find some demonstrative use cases and explain how they'd be solved by talking through what questions they want answered, then what Metric Profiles and Events are needed to answer them.
 
 ## Best Practices 
+
+TODO: talk with current implementors and ask what best practices they'd suggest.
 
 ### Robustness expectations
 
 As an _analytics_ specification, Caliper is not generally well suited to other uses that require more robust guarantees around timeliness and completeness. 
 
-Notes of what to cover:
+TODO: Notes of what to cover:
 - Caliper is _not_ specified as a messaging or transaction service
 - There are no guarantees around delivery timing
 - Events in Caliper are _not_ ordered and may come much later, or in batches, etc.
@@ -81,6 +213,15 @@ Notes of what to cover:
 - Do _not_ rely on it for grades! Use: list other standards & services?
 _ Do not rely on it for course and enrollment information. Use: list other standards & services? 
 
+
+### Industry Analytics and Data Retention Standards
+
+TODO: Explain and link to industry best practices around ethics, data retention best practices and laws, and other stuff? I assume there are some good resources out there for researchers and IRB training.
+
+
+### JSON-LD
+
+TODO: The implementation guide probably doesn't need to dive very deeply into JSON-LD, so give some notes about what JSON-LD is and how Caliper uses it then links to Caliper docs and JSON-LD docs for further learning if necessary
 
 
 ## List of Contributors
