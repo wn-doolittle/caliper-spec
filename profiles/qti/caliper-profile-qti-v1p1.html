@@ -9,7 +9,7 @@
       specTitle: "Caliper Analytics® QTI Profile",
       shortName: "caliper-search",
       specStatus: "IMS Base Document",
-      specDate: "August 31, 2018",
+      specDate: "June 1, 2019",
       specVersion: "1.1",
       specNature: "normative",
       specType: "spec",
@@ -38,8 +38,19 @@
       <img height="100%" width="100%" src="../assets/caliper-qti.png"
            alt="QTI Profile"/>
 
+      <p>The IMS Question & Test Interoperability (QTI&reg;) specification describes a data model for the representation
+        of question (<code>AssessmentItem</code>) and test (<code>AssessmentTest</code>) data and their corresponding
+        results reports. Therefore, the specification enables the exchange of this item, test and results data between
+        authoring tools, item banks, test constructional tools, learning platforms and assessment delivery systems.
+        The data model is described abstractly, using [UML] to facilitate binding to a wide range of data-modelling
+        tools and programming languages; however, for interchange between systems a binding is provided to the
+        industry standard eXtensible Markup Language [XML] and use of this binding is strongly recommended.
+        The IMS QTI specification has been designed to support both interoperability and innovation through the
+        provision of well-defined extension points. These extension points can be used to wrap specialized or
+        proprietary data in ways that allow it to be used alongside items that can be represented directly.</p>
+
       <p>The Caliper QTI Profile models a <code>Person</code>, typically a learner,
-        . . . . TODO</p>
+      . . . . TODO</p>
     </section>
 
     <section class="informative" id="usecases">
@@ -117,6 +128,15 @@
   <section id="events">
     <h2>Events</h2>
 
+    <aside class="issue">
+      <ul>
+        <li>Should Event types be prefixed with 'QTI', e.g., <code>QtiAssessmentTestEvent</code>?</li>
+        <li>Do interactions with test parts and sections require their own <code>Event</code> types (e.g.,
+          <code>AssessmentSectionEvent</code>) or can we slim the number of event types down by using only
+          <code>AssessmentEvent</code>?</li>
+      </ul>
+      </aside>
+
     <p>The QTI Profile models assessment-related activities including interactions with
       individual assessment parts, sections and items. Caliper provides <code>Assessment</code>,
       <code>TestPart</code>, <code>AssessmentSection</code> and <code>AssessmentItem</code>
@@ -125,18 +145,18 @@
       attempted. A <code>Response</code> is also modeled for capturing individual item responses.
     </p>
 
-    <section id="assessmentEvent">
-      <h3>AssessmentEvent</h3>
+    <section id="assessmentTestEvent">
+      <h3>AssessmentTestEvent</h3>
 
       <img height="100%" width="100%"
-           src="./assets/caliper-assessment_event_started-v2.png" alt="AssessmentEvent"/>
+           src="./assets/caliper-assessment_test_event_started-v2.png" alt="AssessmentTestEvent"/>
 
-      <p>A Caliper <code>AssessmentEvent</code> models learner interactions with assessment
+      <p>A Caliper <code>AssessmentTestEvent</code> models learner interactions with assessment
       instruments such as online tests or quizzes.</p>
 
       <dl>
         <dt>IRI</dt>
-        <dd>http://purl.imsglobal.org/caliper/AssessmentEvent</dd>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentTestEvent</dd>
         <dt>Supertype</dt>
         <dd><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
@@ -153,16 +173,16 @@
         <dd><a href="action-reset">Reset</a></dd>
         <dd><a href="action-submitted">Submitted</a></dd>
         <dt>Supported objects</dt>
-        <dd><a href="#assessment">Assessment</a></dd>
-        <dd><a href="#TestPart">TestPart</a></dd>
-        <dd><a href="#assessmentSection">AssessmentSection</a></dd>
+        <dd><a href="#assessmentTest">AssessmentTest</a></dd>
         <dt>Supported generated entities</dt>
         <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
-        <dd><code>AssessmentEvent</code> inherits all properties defined by its supertype
+        <dd><code>AssessmentTestEvent</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-          >Event</a>. Profile-specific type restrictions are described below:
+          >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+          <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+          restrictions are described below:
         </dd>
       </dl>
 
@@ -177,22 +197,11 @@
         </thead>
         <tbody>
         <tr>
-          <td>id</td>
-          <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
-          >UUID</a></td>
-          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
-            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[rfc4122]].</td>
-          <td>Required</td>
-        </tr>
-        <tr>
           <td>type</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to 'AssessmentEvent'.</td>
+          <td>The string value MUST be set to 'AssessmentTestEvent'.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -211,21 +220,18 @@
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the supported action terms listed
-            above. Only one action may be specified per <code>AssessmentEvent</code>.</td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
+            The value range is limited to the following supported actions: 'Started', 'Paused', 'Resumed', 'Restarted',
+            'Reset', and 'Submitted'. Only one action may be specified per <code>AssessmentTestEvent</code>.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>object</td>
-          <td><a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#assessment"
-          >Assessment</a> | <a href=
+          <td><a href="#assessmentTest">AssessmentTest</a> | <a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>Assessment</code> taken by the <code>actor</code>. The <code>object</code>
-            value MUST be expressed either as an object or as a string corresponding to the
-            resources's IRI.</td>
+          <td>The <code>AssessmentTest</code> taken by the <code>actor</code>. The <code>object</code> value MUST be
+            expressed either as an object or as a string corresponding to the resources's IRI.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -243,59 +249,53 @@
       </table>
 
       <figure class="example">
-        <figcaption><code>AssessmentEvent</code> JSON-LD.</figcaption>
+        <figcaption><code>AssessmentTestEvent</code> JSON-LD.</figcaption>
           <pre>
             <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
   "id": "urn:uuid:27734504-068d-4596-861c-2315be33a2a2",
-  "type": "AssessmentEvent",
+  "type": "AssessmentTestEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "action": "Started",
   "object": {
-    "id": "https://example.edu/assess/1",
-    "type": "Assessment",
-    "name": "Quiz 1",
-    "dateToStartOn": "2018-11-14T05:00:00.000Z",
-    "dateToSubmit": "2018-11-18T11:59:59.000Z",
-    "maxAttempts": 2,
-    "maxSubmits": 2,
-    "maxScore": 25.0,
-    "version": "1.0"
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
+    "type": "AssessmentTest",
+    "identifier": "TODO"
   },
   "generated": {
     "id": "https://example.edu/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": "https://example.edu/users/554433",
-    "assignable": "https://example.edu/assess/1",
+    "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
     "count": 1,
-    "dateCreated": "2018-11-15T10:15:00.000Z",
-    "startedAtTime": "2018-11-15T10:15:00.000Z"
+    "dateCreated": "2019-11-15T10:15:00.000Z",
+    "startedAtTime": "2019-11-15T10:15:00.000Z"
   },
-  "eventTime": "2018-11-15T10:15:00.000Z",
+  "eventTime": "2019-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "id": "https://example.edu/terms/201901/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
+    "academicSession": "Fall 2019"
   },
   "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [ "Learner" ],
+    "organization": "https://example.edu/terms/201901/courses/7/sections/1",
+    "roles": ["Learner"],
     "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
+    "dateCreated": "2019-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
+    "startedAtTime": "2019-11-15T10:00:00.000Z"
   }
 }
             </code>
@@ -303,39 +303,44 @@
       </figure>
     </section>
 
-    <section id="assessmentItemEvent">
-      <h3>AssessmentItemEvent</h3>
+    <section id="assessmentPartEvent">
+      <h3>AssessmentTestPartEvent</h3>
 
       <img height="100%" width="100%"
-           src="./assets/caliper-assessmentitem_event_completed-v2.png" alt="AssessmentItemEvent"/>
+        src="./assets/caliper-test_part_event_started-v2.png" alt="AssessmentTestPartEvent"/>
 
-      <p>A Caliper <code>AssessmentItemEvent</code> models a learner's interaction with an
-        individual <code>AssessmentItem</code>.</p>
+      <p>A Caliper <code>AssessmentTestPartEvent</code> models learner interactions with a segment of an
+        <code>AssessmentTest</code> that is normally undertaken in separate test sessions.</p>
 
       <dl>
         <dt>IRI</dt>
-        <dd>http://purl.imsglobal.org/caliper/AssessmentItemEvent</dd>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentTestPartEvent</dd>
         <dt>Supertype</dt>
         <dd><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
         >Event</a></dd>
         <dt>Supported actors</dt>
         <dd><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
         >Person</a></dd>
         <dt>Supported actions</dt>
         <dd><a href="action-started">Started</a></dd>
-        <dd><a href="action-skipped">Skipped</a></dd>
-        <dd><a href="action-completed">Completed</a></dd>
+        <dd><a href="action-paused">Paused</a></dd>
+        <dd><a href="action-resumed">Resumed</a></dd>
+        <dd><a href="action-restarted">Restarted</a></dd>
+        <dd><a href="action-reset">Reset</a></dd>
+        <dd><a href="action-submitted">Submitted</a></dd>
         <dt>Supported objects</dt>
-        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
+        <dd><a href="#testPart">TestPart</a></dd>
         <dt>Supported generated entities</dt>
-        <dd>TODO</dd>
+        <dd><a href="#attempt">Attempt</a></dd>
         <dt>Properties</dt>
-        <dd><code>AssessmentItemEvent</code> inherits all properties defined by its supertype
+        <dd><code>AssessmentTestPartEvent</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-          >Event</a>. Profile-specific type restrictions are described below:
+          >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+          <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+          restrictions are described below:
         </dd>
       </dl>
 
@@ -350,16 +355,360 @@
         </thead>
         <tbody>
         <tr>
-          <td>id</td>
+          <td>type</td>
           <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
-          >UUID</a></td>
-          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
-            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC 4122]].</td>
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'AssessmentTestPartEvent'.</td>
           <td>Required</td>
         </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
+            The value range is limited to the following supported actions: 'Started', 'Paused', 'Resumed', 'Restarted',
+            'Reset', and 'Submitted'. Only one action may be specified per <code>AssessmentTestPartEvent</code>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href="#testPart">TestPart</a> | <a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>TestPart</code> taken by the <code>actor</code>. The <code>object</code> value MUST be
+            expressed either as an object or as a string corresponding to the resources's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>generated</td>
+          <td><a href="#attempt">Attempt</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>Provides a count of the number of times the <code>actor</code> has interacted with
+            the <code>object</code> along with start time, end time and duration information.  The
+            <code>generated</code> value MUST be expressed either as an object or as a
+            string corresponding to the attempts’s IRI.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentTestPartEvent</code> JSON-LD.</figcaption>
+        <pre>
+            <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:e13fe61d-17d7-4f17-ace9-5264f3ec0ef3",
+  "type": "AssessmentTestPartEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Started",
+  "object": {
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
+    "type": "TestPart",
+    "identifier": "TODO",
+    "title": "TODO",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
+      "type": "AssessmentTest",
+      "identifier": "TODO"
+    }
+  },
+  "generated": {
+    "id": "https://example.edu/assess/1/parts/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
+    "count": 1,
+    "isPartOf": {
+      "id": "https://example.edu/assess/1/users/554433/attempts/1",
+      "type": "Attempt",
+      "assignee": "https://example.edu/users/554433",
+      "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
+      "count": 1
+    },
+    "dateCreated": "2019-11-15T10:15:10.000Z",
+    "startedAtTime": "2019-11-15T10:15:10.000Z"
+  },
+  "eventTime": "2019-11-15T10:15:15.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201901/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2019"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201901/courses/7/sections/1",
+    "roles": ["Learner"],
+    "status": "Active",
+    "dateCreated": "2019-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2019-11-15T10:00:00.000Z"
+  }
+}
+            </code>
+          </pre>
+      </figure>
+    </section>
+
+    <section id="assessmentSectionEvent">
+
+      <h3>AssessmentSectionEvent</h3>
+
+      <img height="100%" width="100%"
+           src="./assets/caliper-assessment_section_event_started-v2.png" alt="assessmentSectionEvent"/>
+
+      <p>A Caliper <code>AssessmentSectionEvent</code> models learner interactions with an
+        <code>AssessmentSection</code>.
+      </p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentSectionEvent</dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a></dd>
+        <dt>Supported actors</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a></dd>
+        <dt>Supported actions</dt>
+        <dd><a href="action-started">Started</a></dd>
+        <dd><a href="action-paused">Paused</a></dd>
+        <dd><a href="action-resumed">Resumed</a></dd>
+        <dd><a href="action-restarted">Restarted</a></dd>
+        <dd><a href="action-reset">Reset</a></dd>
+        <dd><a href="action-submitted">Submitted</a></dd>
+        <dt>Supported objects</dt>
+        <dd><a href="#assessmentSection">AssessmentSection</a></dd>
+        <dt>Supported generated entities</dt>
+        <dd><a href="#attempt">Attempt</a></dd>
+        <dt>Properties</dt>
+        <dd><code>AssessmentSectionEvent</code> inherits all properties defined by its supertype
+          <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+          <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+          restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'AssessmentSectionEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
+            The value range is limited to the following supported actions: 'Started', 'Paused', 'Resumed', 'Restarted',
+            'Reset', and 'Submitted'. Only one action may be specified per <code>AssessmentSectionEvent</code>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href="#assessmentSection">AssessmentSection</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>AssessmentSection</code> taken by the <code>actor</code>. The <code>object</code> value MUST be
+            expressed either as an object or as a string corresponding to the resources's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>generated</td>
+          <td><a href="#attempt">Attempt</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>Provides a count of the number of times the <code>actor</code> has interacted with
+            the <code>object</code> along with start time, end time and duration information.  The
+            <code>generated</code> value MUST be expressed either as an object or as a
+            string corresponding to the attempts’s IRI.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <figure class="example">
+        <figcaption><code>AssessmentSectionEvent</code> JSON-LD.</figcaption>
+        <pre>
+            <code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:1528a85e-36a6-459d-a23f-6c61b7898350",
+  "type": "AssessmentSectionEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Started",
+  "object": {
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
+    "type": "AssessmentSection",
+    "identifier": "TODO",
+    "title": "TODO",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
+      "type": "TestPart",
+      "identifier": "TODO",
+      "title": "TODO",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
+        "type": "AssessmentTest",
+        "identifier": "TODO"
+      }
+    }
+  },
+  "generated": {
+    "id": "https://example.edu/assess/1/parts/1/secs/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
+    "count": 1,
+    "isPartOf": {
+      "id": "https://example.edu/assess/1/parts/1/users/554433/attempts/1",
+      "type": "Attempt",
+      "assignee": "https://example.edu/users/554433",
+      "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
+      "count": 1,
+      "isPartOf": {
+        "id": "https://example.edu/assess/1/users/554433/attempts/1",
+        "type": "Attempt",
+        "assignee": "https://example.edu/users/554433",
+        "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
+        "count": 1
+      }
+    },
+    "dateCreated": "2019-11-15T10:15:20.000Z",
+    "startedAtTime": "2019-11-15T10:15:20.000Z"
+  },
+  "eventTime": "2019-11-15T10:15:25.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201901/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2019"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201901/courses/7/sections/1",
+    "roles": ["Learner"],
+    "status": "Active",
+    "dateCreated": "2019-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2019-11-15T10:00:00.000Z"
+  }
+}
+            </code>
+          </pre>
+      </figure>
+    </section>
+
+    <section id="assessmentItemEvent">
+
+      <h3>AssessmentItemEvent</h3>
+
+      <img height="100%" width="100%"
+           src="./assets/caliper-assessment_item_event_started-v2.png" alt="assessmentItemEvent"/>
+
+      <p>A Caliper <code>AssessmentItemEvent</code> models a learner's interaction with an
+        individual <code>AssessmentItem</code>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>http://purl.imsglobal.org/caliper/AssessmentItemEvent</dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a></dd>
+        <dt>Supported actors</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a></dd>
+        <dt>Supported actions</dt>
+        <dd><a href="action-started">Started</a></dd>
+        <dd><a href="action-skipped">Skipped</a></dd>
+        <dd><a href="action-completed">Submitted</a></dd>
+        <dt>Supported objects</dt>
+        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
+        <dt>Supported generated entities</dt>
+        <dd><a href="#attempt">Attempt</a></dd>
+        <dt>Properties</dt>
+        <dd><code>AssessmentItemEvent</code> inherits all properties defined by its supertype
+          <a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+          <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+          restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
         <tr>
           <td>type</td>
           <td><a href=
@@ -384,29 +733,29 @@
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the supported actions listed
-            above. Only one action may be specified per <code>AssessmentItemEvent</code>.</td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
+            The value range is limited to the following supported actions: 'Started', 'Skipped', and 'Submitted'.
+            Only one action may be specified per <code>AssessmentSectionEvent</code>.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#assessmentItem">AssessmentItem</a> | <a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          <td><a href="#assessmentItemn">AssessmentItem</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>AssessmentItem</code> presented to the <code>actor</code>. The
-            <code>object</code> value MUST be expressed either as an object or as a string
-            corresponding to the resources's IRI.</td>
+          <td>The <code>AssessmentSection</code> taken by the <code>actor</code>. The <code>object</code> value MUST be
+            expressed either as an object or as a string corresponding to the resources's IRI.</td>
           <td>Required</td>
         </tr>
         <tr>
           <td>generated</td>
-          <td>TODO | <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          <td><a href="#attempt">Attempt</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>For a <a href="action-completed">Completed</a> action the learner's
-            <code>TODO</code> MAY be specified. The <code>generated</code> value MUST be expressed
-            either as an object or as a string corresponding to the attempts’s IRI.</td>
+          <td>Provides a count of the number of times the <code>actor</code> has interacted with
+            the <code>object</code> along with start time, end time and duration information.  The
+            <code>generated</code> value MUST be expressed either as an object or as a
+            string corresponding to the attempts’s IRI.</td>
           <td>Optional</td>
         </tr>
         </tbody>
@@ -415,170 +764,84 @@
       <figure class="example">
         <figcaption><code>AssessmentItemEvent</code> JSON-LD.</figcaption>
         <pre>
-          <code>
+            <code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  "id": "urn:uuid:e5891791-3d27-4df1-a272-091806a43dfb",
+  "id": "urn:uuid:92536eb8-bd7d-4950-8278-0e124f3527cc",
   "type": "AssessmentItemEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "Completed",
+  "action": "Submitted",
   "object": {
-    "id": "https://example.edu/assess/1/parts/1/sec/1/items/3",
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1/items/1",
     "type": "AssessmentItem",
+    "identifier": "TODO",
     "isPartOf": {
-      "id": "https://example.edu/assess/1/parts/1/sec/1",
-      "type": "AssessmentSection",
+      "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
+      "type": "TestSection",
+      "identifier": "TODO",
       "isPartOf": {
-        "id": "https://example.edu/assess/1/parts/1",
+        "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
         "type": "TestPart",
+        "identifier": "TODO",
         "isPartOf": {
-          "id": "https://example.edu/assess/1",
-          "type": "Assessment"
+          "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/",
+          "type": "AssessmentTest",
+          "identifier": "TODO"
         }
       }
-    },
-    "dateCreated": "2018-08-01T06:00:00.000Z",
-    "datePublished": "2018-08-15T09:30:00.000Z",
-    "isTimeDependent": false,
-    "maxScore": 1.0,
-    "maxSubmits": 2
+    }
   },
   "generated": {
-    ...
-    TODO Interactions/Response.  See speculative example below.
-    ...
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
+    "count": 1,
+    "isPartOf": {
+      "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/users/554433/attempts/1",
+      "type": "Attempt",
+      "assignee": "https://example.edu/users/554433",
+      "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
+      "count": 1,
+      "isPartOf": {
+        "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/users/554433/attempts/1",
+        "type": "Attempt",
+        "assignee": "https://example.edu/users/554433",
+        "assignable": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
+        "count": 1
+      }
+    },
+    "dateCreated": "2019-11-15T10:15:30.000Z",
+    "startedAtTime": "2019-11-15T10:15:30.000Z"
   },
-  "eventTime": "2018-11-15T10:15:12.000Z",
+  "eventTime": "2019-11-15T10:15:35.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "id": "https://example.edu/terms/201901/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
+    "academicSession": "Fall 2019"
   },
   "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [
-      "Learner"
-    ],
+    "organization": "https://example.edu/terms/201901/courses/7/sections/1",
+    "roles": ["Learner"],
     "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
+    "dateCreated": "2019-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
+    "startedAtTime": "2019-11-15T10:00:00.000Z"
   }
 }
-          </code>
-        </pre>
-      </figure>
-
-      <figure class="example">
-        <figcaption><code>AssessmentItemEvent.generated</code>
-          <code>AssessmentItemInteractions</code> collection.</figcaption>
-        <pre>
-          <code>
-{
-  "generated": {
-    "id": "IRI",
-    "type": "AssessmentItemInteractions",
-    "length": 3,
-    "items": [{
-        "id": "IRI",
-        "type": "AssessmentItemInteraction",
-        "isPartOf": "AssessmentItemInteractions IRI",
-        "sequenceIndex": 0,
-        "response": {
-          "id": "IRI",
-          "type": "Response",
-          "attempt": {
-            "id": "IRI",
-            "type": "Attempt",
-            "assignee": {
-              "id": "IRI",
-              "type": "Person"
-            },
-            "assignable": {
-              "id": "IRI",
-              "type": "AssessmentItem"
-            },
-            "count": 1,
-            "duration": "ISO 8601 duration"
-          },
-          "baseType": "identifier",
-          "choiceSequence": ["D", "B", "C", "A"],
-          "correctResponse": "A",
-          "candidateResponse": "B"
-        }
-      },
-      {
-        "id": "IRI",
-        "type": "AssessmentItemInteraction",
-        "isPartOf": "AssessmentItemInteractions IRI",
-        "sequenceIndex": 1,
-        "response": {
-          "id": "IRI",
-          "type": "Response",
-          "attempt": {
-            "id": "IRI",
-            "type": "Attempt",
-            "assignee": {
-              "id": "IRI",
-              "type": "Person"
-            },
-            "assignable": {
-              "id": "IRI",
-              "type": "AssessmentItem"
-            },
-            "count": 1,
-            "duration": "ISO 8601 duration"
-          },
-          "baseType": "Point",
-          "choiceSequence": [[125, 300], [402, 500], [700, 821]],
-          "correctResponse": "[402, 500]",
-          "candidateResponse": "[700, 821]"
-        }
-      },
-      {
-        "id": "IRI",
-        "type": "AssessmentItemInteraction",
-        "isPartOf": "AssessmentItemInteractions IRI",
-        "sequenceIndex": 2,
-        "response": {
-          "id": "IRI",
-          "type": "Response",
-          "attempt": {
-            "id": "IRI",
-            "type": "Attempt",
-            "assignee": {
-              "id": "IRI",
-              "type": "Person"
-            },
-            "assignable": {
-              "id": "IRI",
-              "type": "Assessment"
-            },
-            "count": 1,
-            "duration": "ISO 8601 duration"
-          },
-          "baseType": "Boolean",
-          "choiceSequence": [true, false],
-          "correctResponse": "true",
-          "candidateResponse": "true"
-        }
-      }
-    ]
-  }
-}
-          </code>
-        </pre>
+            </code>
+          </pre>
       </figure>
     </section>
 
@@ -603,9 +866,9 @@
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
         >Person</a></dd>
         <dt>Supported actions</dt>
-        <dd><a href="action-viewed">Viewed</a></dd>
+        <dd><a href="action-viewed">NavigatedTo</a></dd>
         <dt>Supported objects</dt>
-        <dd><a href="#assessment">Assessment</a></dd>
+        <dd><a href="#assessment">AssessmentTest</a></dd>
         <dd><a href="#TestPart">TestPart</a></dd>
         <dd><a href="#assessmentSection">AssessmentSection</a></dd>
         <dd><a href="#assessmentItem">AssessmentItem</a></dd>
@@ -613,7 +876,9 @@
         <dd><code>NavigationEvent</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-          >Event</a>. Profile-specific type restrictions are described below:
+          >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+          <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+          restrictions are described below:
         </dd>
       </dl>
 
@@ -628,22 +893,11 @@
         </thead>
         <tbody>
         <tr>
-          <td>id</td>
-          <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
-          >UUID</a></td>
-          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
-            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC 4122]].</td>
-          <td>Required</td>
-        </tr>
-        <tr>
           <td>type</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to 'ViewEvent'.</td>
+          <td>The string value MUST be set to 'NavigationEvent'.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -668,219 +922,66 @@
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#assessment">Assessment</a> | <a href="#TestPart">TestPart</a> |
+          <td><a href="#assessmentTest">AssessmentTest</a> |
+            <a href="#TestPart">TestPart</a> |
             <a href="#assessmentSection">AssessmentSection</a> |
             <a href="#assessmentItem">AssessmentItem</a> | <a href=
-                                                                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
             >IRI</a></td>
-          <td>The <a href="#assessment">Assessment</a>, <a href="#TestPart">TestPart
-          </a>, <a href="#assessmentSection">AssessmentSection</a>, or
-            <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
-            <code>object</code> value MUST be expressed either as an object or as a string
-            corresponding to the resources's IRI.</td>
+          <td>The <a href="#assessmentTest">AssessmentTest</a>, <a href="#TestPart">TestPart</a>,
+            <a href="#assessmentSection">AssessmentSection</a>, or <a href="#assessmentItem">AssessmentItem</a>
+            presented to the <code>actor</code>. The <code>object</code> value MUST be expressed either as an object
+            or as a string corresponding to the resources's IRI.</td>
           <td>Required</td>
         </tr>
         </tbody>
       </table>
 
       <figure class="example">
-        <figcaption><code>ViewEvent</code> JSON-LD.</figcaption>
+        <figcaption><code>NavigationEvent</code> JSON-LD.</figcaption>
         <pre>
           <code>
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  "id": "urn:uuid:77bcfcad-e5d7-477f-b8aa-6fd953244f69",
-  "type": "NavigationEvent",
-  "actor": "https://example.edu/users/554433",
-  "action": "NavigatedTo",
-  "object": {
-    "id": "https://example.edu/assess/1",
-    "type": "Assessment",
-    "name": "Quiz 1",
-    "dateCreated": "2018-08-01T06:00:00.000Z",
-    "dateModified": "2018-09-02T11:30:00.000Z",
-    "datePublished": "2018-08-15T09:30:00.000Z",
-    "version": "1.0"
-  },
-  "eventTime": "2018-11-15T10:15:12.000Z",
-  "referrer": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
-    "type": "WebPage"
-  },
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [
-      "Learner"
-    ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
+	"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+	"id": "urn:uuid:77bcfcad-e5d7-477f-b8aa-6fd953244f69",
+	"type": "NavigationEvent",
+	"actor": "https://example.edu/users/554433",
+	"action": "NavigatedTo",
+	"object": {
+		"id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
+		"type": "AssessmentTest",
+		"identifier": "TODO"
+	},
+	"eventTime": "2019-11-15T10:15:12.000Z",
+	"referrer": {
+		"id": "https://example.edu/terms/201901/courses/7/sections/1/pages/1",
+		"type": "WebPage"
+	},
+	"edApp": "https://example.edu",
+	"group": {
+		"id": "https://example.edu/terms/201901/courses/7/sections/1",
+		"type": "CourseSection",
+		"courseNumber": "CPS 435-01",
+		"academicSession": "Fall 2019"
+	},
+	"membership": {
+		"id": "https://example.edu/terms/201901/courses/7/sections/1/rosters/1",
+		"type": "Membership",
+		"member": "https://example.edu/users/554433",
+		"organization": "https://example.edu/terms/201901/courses/7/sections/1",
+		"roles": [
+			"Learner"
+		],
+		"status": "Active",
+		"dateCreated": "2019-08-01T06:00:00.000Z"
+	},
+	"session": {
+		"id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+		"type": "Session",
+		"startedAtTime": "2019-11-15T10:00:00.000Z"
+	}
 }
             </code>
-        </pre>
-      </figure>
-    </section>
-
-    <section id="viewEvent">
-      <h3>ViewEvent</h3>
-
-      <img height="100%" width="100%"
-           src="./assets/caliper-view_event_viewed-v2.png" alt="ViewEvent"/>
-
-      <p>A Caliper <code>ViewEvent</code> describes an actor's examination of digital
-        content whenever the activity emphasizes thoughtful observation or study as opposed to
-        the mere retrieval of a resource.</p>
-
-      <dl>
-        <dt>IRI</dt>
-        <dd>http://purl.imsglobal.org/caliper/ViewEvent</dd>
-        <dt>Supertype</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-        >Event</a></dd>
-        <dt>Supported actors</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-        >Person</a></dd>
-        <dt>Supported actions</dt>
-        <dd><a href="action-viewed">Viewed</a></dd>
-        <dt>Supported objects</dt>
-        <dd><a href="#assessment">Assessment</a></dd>
-        <dd><a href="#assessmentItem">AssessmentItem</a></dd>
-        <dt>Properties</dt>
-        <dd><code>ViewEvent</code> inherits all properties defined by its supertype
-          <a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-          >Event</a>. Profile-specific type restrictions are described below:
-        </dd>
-      </dl>
-
-      <table class="data">
-        <thead>
-        <tr>
-          <th>Property</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Disposition</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>id</td>
-          <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
-          >UUID</a></td>
-          <td>The emitting application MUST provision the <code>AssessmentEvent</code> with a UUID. A
-            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC 4122]].</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>type</td>
-          <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-          >Term</a></td>
-          <td>The string value MUST be set to 'ViewEvent'.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>actor</td>
-          <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-          >Person</a> | <a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
-            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>action</td>
-          <td><a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-          >Term</a></td>
-          <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The string value MUST be set to 'Viewed'.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>object</td>
-          <td><a href="#assessment">Assessment</a> | <a href="#TestPart">TestPart</a> |
-            <a href="#assessmentSection">AssessmentSection</a> |
-            <a href="#assessmentItem">AssessmentItem</a> | <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>The <a href="#assessment">Assessment</a>, <a href="#TestPart">TestPart
-          </a>, <a href="#assessmentSection">AssessmentSection</a>, or
-            <a href="#assessmentItem">AssessmentItem</a> presented to the <code>actor</code>. The
-            <code>object</code> value MUST be expressed either as an object or as a string
-            corresponding to the resources's IRI.</td>
-          <td>Required</td>
-        </tr>
-        </tbody>
-      </table>
-
-      <figure class="example">
-        <figcaption><code>ViewEvent</code> JSON-LD.</figcaption>
-        <pre>
-          <code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  "id": "urn:uuid:13d0830e-ef93-4cd6-8aa4-80eeca90f0a9",
-  "type": "ViewEvent",
-  "actor": "https://example.edu/users/554433",
-  "action": "Viewed",
-  "object": {
-    "id": "https://example.edu/assess/1",
-    "type": "Assessment",
-    "name": "Quiz 1",
-    "dateCreated": "2018-08-01T06:00:00.000Z",
-    "dateModified": "2018-09-02T11:30:00.000Z",
-    "datePublished": "2018-08-15T09:30:00.000Z",
-    "version": "1.0"
-  },
-  "eventTime": "2018-11-15T10:15:12.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [
-      "Learner"
-    ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}
-          </code>
         </pre>
       </figure>
     </section>
@@ -900,6 +1001,9 @@
       Princeton University's WordNet® project in order to eliminate ambiguity and aid natural
       language processing.</p>
 
+
+    Each action is bound to one or more Events.
+
     <section id="action-assessmentEvent">
       <h2>AssessmentEvent actions</h2>
 
@@ -909,32 +1013,45 @@
       <table class="data">
         <thead>
         <tr>
-          <th>Term</th>
-          <th>IRI</th>
+          <th>Event(s)</th>
+          <th>Action</th>
           <th>WordNet® Gloss</th>
         </tr>
         </thead>
         <tbody>
           <tr>
-            <td id="action-assessmentEvent-started">Started</td>
-            <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
-              http://purl.imsglobal.org/caliper/actions/Started</a></td>
+            <td><a href="#navigationEvent">NavigationEvent</a></td>
+            <td>NavigatedTo</td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/201935739-v">Direct the course; determine the
+              direction of travelling</a>.</td>
+          </tr>
+          <tr>
+            <td><a href="#assessmentTestEvent">AssessmentTestEvent</a>,
+              <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a>,
+              <a href="#assessmentSectionEvent">AssessmentSectionEvent</a>
+              <a href="#assessmentItemEvent">AssessmentItemEvent</a>
+            </td>
+            <td>Started</td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
               start</a>.</td>
           </tr>
           <tr>
-            <td id="action-assessmentEvent-paused">Paused</td>
-            <td><a href="http://purl.imsglobal.org/caliper/actions/Paused" rel="nofollow">
-              http://purl.imsglobal.org/caliper/actions/Paused</a></td>
+            <td><a href="#assessmentTestEvent">AssessmentTestEvent</a>,
+              <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a>,
+              <a href="#assessmentSectionEvent">AssessmentSectionEvent</a>
+            </td>
+            <td>Paused</td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200781106-v">Cease an action
               temporarily</a>. Inverse of <a href=
                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#resumed"
             >Resumed</a>.</td>
           </tr>
           <tr>
-            <td id="action-assessmentEvent-resumed">Resumed</td>
-            <td><a href="http://purl.imsglobal.org/caliper/actions/Resumed" rel="nofollow">
-              http://purl.imsglobal.org/caliper/actions/Resumed</a></td>
+            <td><a href="#assessmentTestEvent">AssessmentTestEvent</a>,
+              <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a>,
+              <a href="#assessmentSectionEvent">AssessmentSectionEvent</a>
+            </td>
+            <td>Resumed</td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
               as in to start something, pause and then begin again at the location where the pause in
               action occurred. Inverse of <a href=
@@ -942,95 +1059,29 @@
               >Paused</a>.</td>
           </tr>
           <tr>
-            <td id="action-assessmentEvent-restarted">Restarted</td>
-            <td><a href="http://purl.imsglobal.org/caliper/actions/Restarted" rel="nofollow">
-              http://purl.imsglobal.org/caliper/actions/Restarted</a></td>
+            <td><a href="#assessmentTestEvent">AssessmentTestEvent</a>,
+              <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a>,
+              <a href="#assessmentSectionEvent">AssessmentSectionEvent</a>
+            </td>
+            <td>Restarted</td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
               as in to start something, make progress but then stop and return to the beginning in
               order to start again.</td>
           </tr>
           <tr>
-            <td id="action-assessmentEvent-reset">Reset</td>
-            <td><a href="http://purl.imsglobal.org/caliper/actions/Reset" rel="nofollow">
-              http://purl.imsglobal.org/caliper/actions/Reset</a></td>
-            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200949623-v">Set anew.</a></td>
+            <td><a href="#assessmentItemEvent">AssessmentItemEvent</a></td>
+            <td>Skipped</td>
+            <td><a href="http://wordnet-rdf.princeton.edu/wn31/200618188-v">Bypass</a>.</td>
           </tr>
           <tr>
-            <td id="action-assessmentEvent-submitted">Submitted</td>
-            <td><a href="http://purl.imsglobal.org/caliper/actions/Submitted" rel="nofollow">
-              http://purl.imsglobal.org/caliper/actions/Submitted</a></td>
+            <td><a href="#assessmentTestEvent">AssessmentTestEvent</a>,
+              <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a>,
+              <a href="#assessmentSectionEvent">AssessmentSectionEvent</a>
+              <a href="#assessmentItemEvent">AssessmentItemEvent</a></td>
+            <td>Submitted</td>
             <td><a href="http://wordnet-rdf.princeton.edu/wn31/202267560-v">Hand over formally.</a>
             </td>
           </tr>
-          <tr>
-            <td id="action-assessmentEvent-abandoned">Abandoned</td>
-            <td><a href="http://purl.imsglobal.org/caliper/actions/Abandoned" rel="nofollow">
-              http://purl.imsglobal.org/caliper/actions/Abandoned</a></td>
-            <td><a href="http://wordnet-rdf.princeton.edu/wn31/202232813-v">Forsake, leave behind.</a>
-            </td>
-          </tr>
-          <tr>
-            <td id="action-assessmentEvent-timedOut">TimedOut</td>
-            <td><a href="http://purl.imsglobal.org/caliper/actions/TimedOut" rel="nofollow">
-              http://purl.imsglobal.org/caliper/actions/TimedOut</a></td>
-            <td>Cancellation of a user session after a predetermined time interval has occurred
-              without activity.</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section id="action-assessmentItemEvent">
-      <h2>AssessmentItemEvent actions</h2>
-
-      <p>The Caliper <a href="#assessmentItemEvent">AssessmentItemEvent</a> supports the following
-        actions: Started, Skipped, Completed, TimedOut.</p>
-
-      <table class="data">
-        <thead>
-        <tr>
-          <th>Term</th>
-          <th>IRI</th>
-          <th>WordNet® Gloss</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td id="action-assessmentItemEvent-started">Started</td>
-          <td><a href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">
-            http://purl.imsglobal.org/caliper/actions/Started</a></td>
-          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to
-            start</a>.</td>
-        </tr>
-        <tr>
-          <td id="action-assessmentItemEvent-skipped">Skipped</td>
-          <td><a href="http://purl.imsglobal.org/caliper/actions/Skipped" rel="nofollow">
-            http://purl.imsglobal.org/caliper/actions/Skipped</a></td>
-          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200618188-v">Bypass</a>.</td>
-        </tr>
-        <tr>
-          <td id="action-assessmentItemEvent-changed">Changed</td>
-          <td><a href="http://purl.imsglobal.org/caliper/actions/Changed" rel="nofollow">
-            http://purl.imsglobal.org/caliper/actions/Changed</a></td>
-          <td><a href="http://wordnet-rdf.princeton.edu/wn31/00126072-v">Cause to change; make
-            different; cause a transformation</a>.</td>
-        </tr>
-        <tr>
-          <td id="action-assessmentItemEvent-completed">Completed</td>
-          <td><a href="http://purl.imsglobal.org/caliper/actions/Completed" rel="nofollow">
-            http://purl.imsglobal.org/caliper/actions/Completed</a></td>
-          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200485097-v">Come or bring to a
-            finish or an end</a>.</td>
-        </tr>
-        <tr>
-          <td id="action-assessmentItemEvent-timedOut">TimedOut</td>
-          <td><a href="http://purl.imsglobal.org/caliper/actions/TimedOut" rel="nofollow">
-            http://purl.imsglobal.org/caliper/actions/TimedOut</a></td>
-          <td>Cancellation of a user session after a predetermined time interval has occurred
-            without activity.</a>
-          </td>
-        </tr>
         </tbody>
       </table>
     </section>
@@ -1263,27 +1314,44 @@
   "isPartOf": {
     "id": "TODO",
     "type": "AssessmentTest",
+    "identifier": "TODO",
     "isPartOf": {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
       "id": "TODO",
       "type": "CourseSection"
     }
   },
-  "assessmentSectionSelection": [
-    {
+  "assessmentSectionSelection": [{
       "id": "TODO",
-      "type": "AssessmentSection"
+      "type": "AssessmentSectionSelection",
+      "assessmentSection": {
+        "id": "TODO",
+        "type": "AssessmentSection",
+        "identifier": "TODO"
+      },
+      "assessmentSectionRef": {
+        "id": "TODO",
+        "type": "AssessmentSectionRef",
+        "identifier": "TODO",
+        "href": "TODO"
+      }
     },
     {
       "id": "TODO",
-      "type": "AssessmentSection"
+      "type": "AssessmentSectionSelection",
+      "assessmentSection": {
+        "id": "TODO",
+        "type": "AssessmentSection",
+        "identifier": "TODO"
+      },
+      "assessmentSectionRef": {
+        "id": "TODO",
+        "type": "AssessmentSectionRef",
+        "identifier": "TODO",
+        "href": "TODO"
+      }
     }
-  },
-  "assessmentSectionSelection": [{
-    "type": "AssessmentSectionSelection",
-    "assessmentSection": {},
-    "assessmentSectionRef": {}
-  }]
+  ]
 }
           </code>
         </pre>
@@ -1293,7 +1361,7 @@
     <section id="AssessmentSection">
       <h3>AssessmentSection</h3>
       <p>A QTI <code>AssessmentSection</code> represents child <code>AssessmentSection</code>
-        or <code>AssessmentItem</code>AssessmentItem groupings that share a common pedagogic
+        or <code>AssessmentItem</code> groupings that share a common pedagogic
         testing objective.</p>
 
       <dl>
@@ -1423,8 +1491,8 @@
       </figure>
     </section>
 
-    <section id="AssessmentStimulus">
-      <h3>AssessmentStimulus</h3>
+    <section id="AssessmentItem">
+      <h3>AssessmentItem</h3>
       <p>A QTI <code>AssessmentItem</code> encompasses the information that is presented to a candidate and information
         about how to score the item. Scoring takes place when candidate responses are transformed into outcomes by
         response processing rules.</p>
@@ -1470,7 +1538,7 @@
           <td><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The string value MUST be set to the Term 'AssessmentSection'.</td>
+          <td>The string value MUST be set to the Term 'AssessmentItem'.</td>
           <td>Required</td>
         </tr>
         <tr>
@@ -2706,7 +2774,7 @@ ________________________________________
         <tbody>
         <tr>
           <td>IMS Base Document 1.0</td>
-          <td>August 31, 2018</td>
+          <td>June 1, 2019</td>
           <td>The first internal draft release.</td>
         </tr>
         </tbody>
