@@ -176,6 +176,14 @@ A great way to think of a Metric Profile is by the questions it can help answer.
  - When are the resources accessed?
  - How often is the content viewed?
  - What paths are taken to reach the content?
+ 
+
+Talk about how `@context` changes for extensions and explain how it works? Then point to the Release Schedule section. 
+ 
+ 
+## Custom Extensions
+
+TODO: how to do this. Don't know where best to put this section. Might be mostly pointing to other JSON-LD resources.
 
 
 ## Sending an Event to an endpoint
@@ -278,10 +286,22 @@ TODO: Short description of how it's done then link to the LTI service definition
 Also explain how 2 vendors can work out keys and endpoints independent of LTI.
 
 
+## Release Schedule stuff
+
+- Core spec once a year
+ - new base context is updated
+
+- Profiles can be extended during year
+ - profile is described in core
+ - and might be extensions
+ - manifested in JSON as a different @context string by adding `-extension`
+
 
 ## Use Cases
 
 TODO: Find some demonstrative use cases and explain how they'd be solved by talking through what questions they want answered, then what Metric Profiles and Events are needed to answer them.
+
+Make sure to get a use case that decides why and how to add custom extensions.
 
 ## Best Practices 
 
