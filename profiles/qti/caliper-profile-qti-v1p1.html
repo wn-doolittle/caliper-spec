@@ -35,32 +35,24 @@
     <section class="informative">
       <h3>Design Goals and Rationale</h3>
 
-      <img height="100%" width="100%" src="../assets/caliper-qti.png"
-           alt="QTI Profile"/>
+      <aside class="issue"> TODO: QTI WG to provide a compelling design goals and rationale.</aside>
 
       <p>The IMS Question & Test Interoperability (QTI&reg;) specification describes a data model for the representation
         of question (<code>AssessmentItem</code>) and test (<code>AssessmentTest</code>) data and their corresponding
-        results reports. Therefore, the specification enables the exchange of this item, test and results data between
-        authoring tools, item banks, test constructional tools, learning platforms and assessment delivery systems.
-        The data model is described abstractly, using [UML] to facilitate binding to a wide range of data-modelling
-        tools and programming languages; however, for interchange between systems a binding is provided to the
-        industry standard eXtensible Markup Language [XML] and use of this binding is strongly recommended.
-        The IMS QTI specification has been designed to support both interoperability and innovation through the
-        provision of well-defined extension points. These extension points can be used to wrap specialized or
-        proprietary data in ways that allow it to be used alongside items that can be represented directly.</p>
+        results reports. The Caliper Analytics&reg; Specification provides a structured approach to describing,
+        collecting and exchanging learning activity data at scale. Caliper also defines an application programming
+        interface (the Sensor API&trade;) for marshalling and transmitting event data from instrumented applications to
+        target endpoints for storage, analysis and use. The QTI Caliper Profile . . . .</p>
 
-      <p>The Caliper QTI Profile models a <code>Person</code>, typically a learner,
-      . . . . TODO</p>
     </section>
 
     <section class="informative" id="usecases">
-      <h3>Use cases</h3>
+      <h3>User stories</h3>
 
-      <p>The QTI Profile supports the following learner-centric use cases:</p>
+      <aside class="issue"> TODO: QTI WG to provide a set of user stories.</aside>
+
+      <p>The QTI Profile supports the following learner-centric scenarios:</p>
       <table>
-        <tr>
-          <td>TODO</td>
-        </tr>
         <tr>
           <td>TODO</td>
         </tr>
@@ -240,7 +232,7 @@
           <pre>
             <code>
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:27734504-068d-4596-861c-2315be33a2a2",
   "type": "AssessmentTestEvent",
   "actor": {
@@ -249,6 +241,7 @@
   },
   "action": "Started",
   "object": {
+    "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
     "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
     "type": "AssessmentTest",
     "identifier": "TODO"
@@ -359,7 +352,7 @@
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#testPart">TestPart</a> | <a href=
+          <td><a href="#testParts">TestPart</a> | <a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>TestPart</code> taken by the <code>actor</code>. The <code>object</code> value MUST be
@@ -385,7 +378,7 @@
         <pre>
             <code>
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:e13fe61d-17d7-4f17-ace9-5264f3ec0ef3",
   "type": "AssessmentTestPartEvent",
   "actor": {
@@ -394,6 +387,7 @@
   },
   "action": "Started",
   "object": {
+    "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
     "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
     "type": "TestPart",
     "identifier": "TODO",
@@ -519,7 +513,7 @@
         </tr>
         <tr>
           <td>object</td>
-          <td><a href="#assessmentSection">AssessmentSection</a> | <a href=
+          <td><a href="#assessmentSections">AssessmentSection</a> | <a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>AssessmentSection</code> taken by the <code>actor</code>. The <code>object</code> value MUST be
@@ -545,7 +539,7 @@
         <pre>
             <code>
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:1528a85e-36a6-459d-a23f-6c61b7898350",
   "type": "AssessmentSectionEvent",
   "actor": {
@@ -554,6 +548,7 @@
   },
   "action": "Started",
   "object": {
+    "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
     "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
     "type": "AssessmentSection",
     "identifier": "TODO",
@@ -716,7 +711,7 @@
         <pre>
             <code>
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:92536eb8-bd7d-4950-8278-0e124f3527cc",
   "type": "AssessmentItemEvent",
   "actor": {
@@ -725,6 +720,7 @@
   },
   "action": "Submitted",
   "object": {
+    "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
     "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1/items/1",
     "type": "AssessmentItem",
     "identifier": "TODO",
@@ -896,87 +892,86 @@
         </tbody>
       </table>
 
+      <aside class="issue">Can the <code>context</code> property be removed.</aside>
+
+      <aside class="issue">TODO: add additional JSON-LD example that includes <code>itemResult</code>,
+        <code>ResponseVariable</code> entities, etc.</aside>
+
       <figure class="example">
         <figcaption><code>AssessmentResultEvent</code> JSON-LD.</figcaption>
         <pre>
             <code>
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
-  "id": "urn:uuid:92536eb8-bd7d-4950-8278-0e124f3527cc",
-  "type": "AssessmentResultEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "recorded",
-  "object": {
-    "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
-    "id": "TODO",
-    "type": "AssessmentResult",
-    "context": {
-      "id": "TODO",
-      "type": "Context",
-      "sourcedId": "TODO",
-      "sessionIdentifier": []
-    },
-    "testResult": {
-      "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
-      "id": "TODO",
-      "type": "TestResult",
-      "identifier": "TODO",
-      "datestamp": "2019-11-15T10:12:00.000Z",
-      "outcomeVariable": [{
-        "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
-        "id": "TODO",
-        "type": "OutcomeVariable",
-        "identifier": "TODO",
-        "cardinality": "multiple | ordered | record | single",
-        "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
-        "view": ["author | candidate | proctor | scorer | testConstructor | tutor", ""],
-        "normalMaxiumum": 100.0,
-        "normalMinimum": 10.0,
-        "masteryValue": "90.0",
-        "value": [{
-          "id": "TODO",
-          "type": "Value",
-          "fieldIdentifier": "TODO",
-          "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
-          "entry": "TODO"
-        }]
-      }],
-      "responseVariable": [{
-        "id": "TODO",
-        "type": "ResponseVariable"
-      }],
-      "templateVariable": [{
-        "id": "TODO",
-        "type": "TemplateVariable"
-      }]
-    },
-    "itemResult": []
-  },
-  "eventTime": "2019-11-15T10:15:35.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201901/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2019"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201901/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201901/courses/7/sections/1",
-    "roles": ["Learner"],
-    "status": "Active",
-    "dateCreated": "2019-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2019-11-15T10:00:00.000Z"
-  }
+	"@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+	"id": "urn:uuid:92536eb8-bd7d-4950-8278-0e124f3527cc",
+	"type": "AssessmentResultEvent",
+	"actor": {
+		"id": "https://example.edu/users/554433",
+		"type": "Person"
+	},
+	"action": "Recorded",
+	"object": {
+		"@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
+		"id": "TODO",
+		"type": "AssessmentResult",
+		"context": {
+			"id": "TODO",
+			"type": "Context",
+			"sourcedId": "TODO",
+			"sessionIdentifier": [{
+				"id": "TODO",
+				"type": "SessionIdentifier",
+				"sourceId": "TODO",
+				"identifier": "TODO"
+			}]
+		},
+		"testResult": {
+			"id": "TODO",
+			"type": "TestResult",
+			"identifier": "TODO",
+			"datestamp": "2019-11-15T10:12:00.000Z",
+			"outcomeVariables": [{
+				"id": "TODO",
+				"type": "OutcomeVariable",
+				"identifier": "TODO",
+				"cardinality": "multiple | ordered | record | single",
+				"baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+				"view": ["author | candidate | proctor | scorer | testConstructor | tutor", ""],
+				"normalMaxiumum": 100.0,
+				"normalMinimum": 10.0,
+				"masteryValue": "90.0",
+				"value": [{
+					"id": "TODO",
+					"type": "Value",
+					"fieldIdentifier": "TODO",
+					"baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+					"entry": "TODO"
+				}]
+			}]
+		}
+	},
+	"eventTime": "2019-11-15T10:15:35.000Z",
+	"edApp": "https://example.edu",
+	"group": {
+		"id": "https://example.edu/terms/201901/courses/7/sections/1",
+		"type": "CourseSection",
+		"courseNumber": "CPS 435-01",
+		"academicSession": "Fall 2019"
+	},
+	"membership": {
+		"id": "https://example.edu/terms/201901/courses/7/sections/1/rosters/1",
+		"type": "Membership",
+		"member": "https://example.edu/users/554433",
+		"organization": "https://example.edu/terms/201901/courses/7/sections/1",
+		"roles": ["Learner"],
+		"status": "Active",
+		"dateCreated": "2019-08-01T06:00:00.000Z"
+	},
+	"session": {
+		"id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+		"type": "Session",
+		"startedAtTime": "2019-11-15T10:00:00.000Z"
+	}
 }
             </code>
           </pre>
@@ -1051,12 +1046,12 @@
           <td>object</td>
           <td><a href="#assessmentTest">AssessmentTest</a> |
             <a href="#TestPart">TestPart</a> |
-            <a href="#assessmentSection">AssessmentSection</a> |
+            <a href="#assessmentSections">AssessmentSection</a> |
             <a href="#assessmentItem">AssessmentItem</a> | <a href=
               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
             >IRI</a></td>
           <td>The <a href="#assessmentTest">AssessmentTest</a>, <a href="#TestPart">TestPart</a>,
-            <a href="#assessmentSection">AssessmentSection</a>, or <a href="#assessmentItem">AssessmentItem</a>
+            <a href="#assessmentSections">AssessmentSection</a>, or <a href="#assessmentItem">AssessmentItem</a>
             presented to the <code>actor</code>. The <code>object</code> value MUST be expressed either as an object
             or as a string corresponding to the resources's IRI.</td>
           <td>Required</td>
@@ -1069,12 +1064,13 @@
         <pre>
           <code>
 {
-	"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+	"@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
 	"id": "urn:uuid:77bcfcad-e5d7-477f-b8aa-6fd953244f69",
 	"type": "NavigationEvent",
 	"actor": "https://example.edu/users/554433",
 	"action": "NavigatedTo",
 	"object": {
+        "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
 		"id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
 		"type": "AssessmentTest",
 		"identifier": "TODO"
@@ -1298,12 +1294,12 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>testPart</td>
+          <td>testParts</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
             >Array</a></td>
           <td>Each <code>AssessmentTest</code> is divided into one or more <code>TestPart</code> entities which may
-            in turn be divided into sections, sub-sections and so on. A <code>testPart</code> represents a major
+            in turn be divided into sections, sub-sections and so on. A <code>testParts</code> represents a major
             division of the test and is used to control the basic mode parameters that apply to all sections and
             sub-sections within that part.</td>
           <td>Optional</td>
@@ -1316,16 +1312,16 @@
         <pre>
           <code>
 {
-  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
   "type": "AssessmentTest",
   "identifier": "TODO",
   "isPartOf": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "TODO",
     "type": "CourseSection"
   },
-  "testPart": [
+  "testParts": [
     {
       "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
       "type": "TestPart",
@@ -1407,7 +1403,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>assessmentSection</td>
+          <td>assessmentSections</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -1421,8 +1417,8 @@
       <aside class="issue">
         The QTI <code>TestPart</code> <code>assessmentSectionSelection</code>
         &lt;<code>AbstractSectionSelection</code>&gt; is described as "an abstract class that enables the selection
-        of an assessmentSection or an assessmentSectionRef (a pointer to an assessmentSection). This is used in the
-        context of a 'testPart'.
+        of an assessmentSections or an assessmentSectionRef (a pointer to an assessmentSections). This is used in the
+        context of a 'testParts'.
 
         Since the Caliper QTI <code>AssessmentSection</code> entity includes an <code>id</code> property of type IRI
         the inclusion of an <code>AssessmentSectionSelection</code> and <code>AssessmentSectionRef</code> entitities
@@ -1430,14 +1426,14 @@
 
         <pre>
         {
-          "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+          "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
           "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
           "type": "TestPart",
           "identifier": "TODO",
           "assessmentSectionSelection": [{
               "id": "TODO",
               "type": "AssessmentSectionSelection",
-              "assessmentSection": {
+              "assessmentSections": {
                 "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
                 "type": "AssessmentSection",
                 "identifier": "TODO"
@@ -1452,7 +1448,7 @@
             {
               "id": "TODO",
               "type": "AssessmentSectionSelection",
-              "assessmentSection": {
+              "assessmentSections": {
                 "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/2",
                 "type": "AssessmentSection",
                 "identifier": "TODO"
@@ -1472,11 +1468,11 @@
 
         <pre>
         {
-          "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+          "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
           "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
           "type": "TestPart",
           "identifier": "TODO",
-          "assessmentSection": [{
+          "assessmentSections": [{
               "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
               "type": "AssessmentSection",
               "identifier": "TODO"
@@ -1491,7 +1487,7 @@
       </pre>
 
         Note: if <code>TestPart</code> is made a subclass of <code>AssignableDigitalResource</code> the
-        <code>assessmentSection</code> property name would be changed to <code>items</code>.
+        <code>assessmentSections</code> property name would be changed to <code>items</code>.
 
       </aside>
 
@@ -1500,7 +1496,7 @@
         <pre>
           <code>
 {
-  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
   "type": "TestPart",
   "identifier": "TODO",
@@ -1510,12 +1506,12 @@
     "type": "AssessmentTest",
     "identifier": "TODO",
     "isPartOf": {
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "TODO",
       "type": "CourseSection"
     }
   },
-  "assessmentSection": [{
+  "assessmentSections": [{
       "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
       "type": "AssessmentSection",
       "identifier": "TODO"
@@ -1602,7 +1598,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>sectionPart</td>
+          <td>sectionParts</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -1614,10 +1610,10 @@
       </table>
 
       <aside class="issue">
-        The QTI <code>AssessmentSection</code> <code>sectionPart</code>
+        The QTI <code>AssessmentSection</code> <code>sectionParts</code>
         &lt;<code>SectionPart</code>&gt; is described as "an abstract attribute that enables the definition of the
         set of assessmentItemRefs, assessmentSectionRefs and assessmentSections to be included as children of the
-        parent assessmentSection. Sections group together individual item references and/or sub-sections."
+        parent assessmentSections. Sections group together individual item references and/or sub-sections."
 
         Since both the Caliper QTI <code>AssessmentSection</code> and <code>AssessmentItem</code> entities includes
         an <code>id</code> property of type IRI the inclusion of <code>SectionPart</code>,
@@ -1625,14 +1621,14 @@
 
         <pre>
         {
-          "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+          "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
           "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
           "type": "AssessmentSection",
           "identifier": "TODO",
-          "sectionPart": [{
+          "sectionParts": [{
               "id": "TODO",
               "type": "SectionPart",
-              "assessmentSection": {
+              "assessmentSections": {
                 "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/11",
                 "type": "AssessmentSection",
                 "identifier": "TODO"
@@ -1653,7 +1649,7 @@
             {
               "id": "TODO",
               "type": "SectionPart",
-              "assessmentSection": {
+              "assessmentSections": {
                 "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/12",
                 "type": "AssessmentSection",
                 "identifier": "TODO"
@@ -1680,11 +1676,11 @@
 
         <pre>
         {
-          "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+          "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
           "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
           "type": "AssessmentSection",
           "identifier": "TODO",
-          "sectionPart": [
+          "sectionParts": [
             {
               "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/11",
               "type": "AssessmentSection",
@@ -1726,7 +1722,7 @@
       </pre>
 
         Note: if <code>AssessmentSection</code> is made a subclass of <code>AssignableDigitalResource</code> the
-        <code>sectionPart</code> property name would be changed to <code>items</code>.
+        <code>sectionParts</code> property name would be changed to <code>items</code>.
 
       </aside>
 
@@ -1735,7 +1731,7 @@
         <pre>
           <code>
 {
-  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
   "type": "AssessmentSection",
   "identifier": "TODO",
@@ -1748,7 +1744,7 @@
       "type": "AssessmentTest"
     }
   },
-  "sectionPart": [{
+  "sectionParts": [{
       "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/11",
       "type": "AssessmentSection",
       "identifier": "TODO",
@@ -1865,7 +1861,7 @@
         <pre>
           <code>
 {
-  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/11/items/1",
   "type": "AssessmentItem",
   "identifier": "TODO",
@@ -1987,7 +1983,7 @@
         <pre>
           <code>
 {
-  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "AssessmentResult",
   "context": {
@@ -2071,7 +2067,7 @@
           <td>Required</td>
         </tr>
         <tr>
-          <td>outcomeVariable</td>
+          <td>outcomeVariables</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -2079,7 +2075,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>responseVariable</td>
+          <td>responseVariables</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -2087,7 +2083,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>templateVariable</td>
+          <td>templateVariables</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -2102,20 +2098,20 @@
         <pre>
           <code>
 {
-  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "TestResult",
   "identifier": "TODO",
   "datestamp": "2019-11-15T10:12:00.000Z",
-  "outcomeVariable": [{
+  "outcomeVariables": [{
     "id": "TODO",
     "type": "OutcomeVariable"
   }],
-  "responseVariable": [{
+  "responseVariables": [{
     "id": "TODO",
     "type": "ResponseVariable"
   }],
-  "templateVariable": [{
+  "templateVariables": [{
     "id": "TODO",
     "type": "TemplateVariable"
   }]
@@ -2204,7 +2200,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>outcomeVariable</td>
+          <td>outcomeVariables</td>
           <td><a href=
                          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -2212,7 +2208,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>responseVariable</td>
+          <td>responseVariables</td>
           <td><a href=
                          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -2220,7 +2216,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>templateVariable</td>
+          <td>templateVariables</td>
           <td><a href=
                          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -2235,22 +2231,22 @@
         <pre>
           <code>
 {
-  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "ItemResult",
   "identifier": "TODO",
   "sequenceIndex": 1,
   "datestamp": "2019-11-15T10:12:00.000Z",
   "sessionStatus": "final | initial | pendingResponseProcessing | pendingSubmission",
-  "outcomeVariable": [{
+  "outcomeVariables": [{
     "id": "TODO",
     "type": "OutcomeVariable"
   }],
-  "responseVariable": [{
+  "responseVariables": [{
     "id": "TODO",
     "type": "ResponseVariable"
   }],
-  "templateVariable": [{
+  "templateVariables": [{
     "id": "TODO",
     "type": "TemplateVariable"
   }]
@@ -2260,7 +2256,7 @@
       </figure>
     </section>
 
-    <section id="outcomeVariable">
+    <section id="outcomeVariables">
       <h3>OutcomeVariable</h3>
 
       <p>A QTI <code>OutcomeVariable</code> represents . . .  TODO. Indicates that an <code>OutcomeVariable</code>
@@ -2380,7 +2376,7 @@
         <pre>
           <code>
 {
-  "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "OutcomeVariable",
   "identifier": "TODO",
@@ -2403,7 +2399,7 @@
       </figure>
     </section>
 
-    <section id="responseVariable">
+    <section id="responseVariables">
       <h3>ResponseVariable</h3>
 
       <p>A QTI <code>ResponseVariable</code> represents . . .  TODO. Indicates that a <code>ResponseVariable</code> is
@@ -2505,6 +2501,7 @@
         <pre>
           <code>
 {
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "ResponseVariable",
   "identifier": "TODO",
@@ -2540,7 +2537,7 @@
       </figure>
     </section>
 
-    <section id="templateVariable">
+    <section id="templateVariables">
       <h3>TemplateVariable</h3>
 
       <p>A QTI <code>TemplateVariable</code> represents . . .  TODO. The Item result information related to a
@@ -2623,6 +2620,7 @@
         <pre>
           <code>
 {
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "TemplateVariable",
   "identifier": "TODO",
@@ -2721,6 +2719,7 @@
         <pre>
           <code>
 {
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "CorrectResponse",
   "interpretation": "TODO",
@@ -2793,6 +2792,7 @@
         <pre>
           <code>
 {
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "CandidateResponse",
   "value": [{
@@ -2892,6 +2892,7 @@
         <pre>
           <code>
 {
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "Value",
   "fieldIdentifier": "TODO",
@@ -2973,6 +2974,7 @@
         <figcaption><code>Context</code> JSON-LD describe.</figcaption>
         <pre><code>
 {
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
   "id": "TODO",
   "type": "Context",
   "sourcedId": "TODO",
@@ -3056,6 +3058,7 @@
         <figcaption><code>SessionIdentifier</code> JSON-LD describe.</figcaption>
         <pre><code>
 {
+    "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
     "id": "TODO",
     "type": "SessionIdentifier",
     "sourceId": "TODO",
@@ -3066,6 +3069,8 @@
     </section>
 
   </section>
+
+  <aside class="issue">TODO: describe use of JSON-LD multiple contexts.</aside>
 
   <section id="jsonld">
     <h3>JSON-LD</h3>
@@ -3089,8 +3094,12 @@
       <pre>
         <code>
 {
-"@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QTIProfile-extension",
+"@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
 . . .
+  "object": {
+  "@context": "http://purl.imsglobal.org/ctx/qti/v3p0",
+  . . .
+  }
 }
         </code>
       </pre>
