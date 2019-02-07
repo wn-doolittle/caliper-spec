@@ -207,7 +207,7 @@
           >Term</a></td>
           <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
             The value range is limited to the following supported actions: <a href="#started">Started</a>,
-            <a href="#paused">Paused</a>, <a href="#resumed">Resumed</a>,
+            <a href="#paused">Paused</a>, <a href="#reset">Reset</a>, <a href="#resumed">Resumed</a>,
             <a href="#restarted">Restarted</a>, and <a href="#submitted">Submitted</a>. Only one action may be
             specified per <code>AssessmentTestEvent</code>.</td>
           <td>Required</td>
@@ -796,25 +796,31 @@
     </section>
 
     <section id="assessmentResultEvent">
-
       <h3>AssessmentResultEvent</h3>
+
+      <aside class="issue">Using reported as the action shifts the focus away from the candidate to the system
+        administering the test. Consider instead a Learner-centric event: <code>Person</code> (candidate) Recorded
+        [an] <code>AssessmentResult</code>.
+      </aside>
 
       <img height="100%" width="100%"
            src="./assets/caliper-assessment_result_event_started-v2.png" alt="AssessmentResultEvent"/>
 
-      <p>A Caliper <code>AssessmentResultEvent</code> models . . . TODO.</p>
+      <p>A Caliper QTI <code>AssessmentResultEvent</code> can be used to report a candidate's
+        <code>AssessmentResult</code>. An <code>AssessmentResult</code> is used to report the results of a
+        candidate's interaction with a test and/or one or more items attempted.</p>
 
       <dl>
         <dt>IRI</dt>
         <dd>http://purl.imsglobal.org/caliper/AssessmentResultEvent</dd>
         <dt>Supertype</dt>
         <dd><a href=
-                       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
         >Event</a></dd>
         <dt>Properties</dt>
         <dd><code>AssessmentResultEvent</code> inherits all properties defined by its supertype
           <a href=
-                     "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
           >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
           <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
           restrictions are described below:
@@ -834,7 +840,7 @@
         <tr>
           <td>type</td>
           <td><a href=
-                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The string value MUST be set to 'AssessmentResultEvent'.</td>
           <td>Required</td>
@@ -846,7 +852,13 @@
           >Agent</a> | <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>Agent</code>, typically a <code>SoftwareApplication</code>, who initiated the action. The
+          <td>The <code>Person</code> who recorded the <code>AssessmentResult</code>. The
+            <code>actor</code> value MUST be expressed either as an object or as a string corresponding to the
+            actor's IRI.
+            <br />
+            OR
+            <br />
+            The <code>Agent</code>, typically a <code>SoftwareApplication</code>, who initiated the action. The
             <code>actor</code> value MUST be expressed either as an object or as a string corresponding to the
             actor's IRI.</td>
           <td>Required</td>
@@ -856,9 +868,14 @@
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
-          <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
-            The value range is limited to the following supported actions: . . . TODO. Only one action may be
-            specified per <code>AssessmentItemEvent</code>.</td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The string value MUST be set to <a href="#reported">Recorded</a>.
+            <br />
+            OR
+            <br />
+            The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The string value MUST be set to <a href="#reported">Reported</a>.
+          </td>
           <td>Required</td>
         </tr>
         <tr>
@@ -866,19 +883,100 @@
           <td><a href="#assessmentItemn">AssessmentResult</a> | <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-          <td>The <code>AssessmentResult</code> provided by the <code>actor</code>. The <code>object</code> value MUST be
-            expressed either as an object or as a string corresponding to the resources's IRI.</td>
+          <td>The <code>AssessmentResult</code> recorded by the <code>actor</code>. The <code>object</code> value MUST be
+            expressed either as an object or as a string corresponding to the resources's IRI.
+          <br />
+          OR
+          <br />
+          The <code>AssessmentResult</code> reported by the <code>actor</code>. The <code>object</code> value MUST be
+          expressed either as an object or as a string corresponding to the resources's IRI.
+          </td>
           <td>Required</td>
         </tr>
         </tbody>
       </table>
 
       <figure class="example">
-        <figcaption><code>AssessmentItemEvent</code> JSON-LD.</figcaption>
+        <figcaption><code>AssessmentResultEvent</code> JSON-LD.</figcaption>
         <pre>
             <code>
 {
-  TODO
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/QtiProfile-extension",
+  "id": "urn:uuid:92536eb8-bd7d-4950-8278-0e124f3527cc",
+  "type": "AssessmentResultEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "recorded",
+  "object": {
+    "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+    "id": "TODO",
+    "type": "AssessmentResult",
+    "context": {
+      "id": "TODO",
+      "type": "Context",
+      "sourcedId": "TODO",
+      "sessionIdentifier": []
+    },
+    "testResult": {
+      "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+      "id": "TODO",
+      "type": "TestResult",
+      "identifier": "TODO",
+      "datestamp": "2019-11-15T10:12:00.000Z",
+      "outcomeVariable": [{
+        "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
+        "id": "TODO",
+        "type": "OutcomeVariable",
+        "identifier": "TODO",
+        "cardinality": "multiple | ordered | record | single",
+        "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+        "view": ["author | candidate | proctor | scorer | testConstructor | tutor", ""],
+        "normalMaxiumum": 100.0,
+        "normalMinimum": 10.0,
+        "masteryValue": "90.0",
+        "value": [{
+          "id": "TODO",
+          "type": "Value",
+          "fieldIdentifier": "TODO",
+          "baseType": "boolean | directedPair | duration | file | float | identifier | integer | pair | point | string | uri",
+          "entry": "TODO"
+        }]
+      }],
+      "responseVariable": [{
+        "id": "TODO",
+        "type": "ResponseVariable"
+      }],
+      "templateVariable": [{
+        "id": "TODO",
+        "type": "TemplateVariable"
+      }]
+    },
+    "itemResult": []
+  },
+  "eventTime": "2019-11-15T10:15:35.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201901/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2019"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201901/courses/7/sections/1",
+    "roles": ["Learner"],
+    "status": "Active",
+    "dateCreated": "2019-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2019-11-15T10:00:00.000Z"
+  }
 }
             </code>
           </pre>
@@ -1029,6 +1127,11 @@
       brief definition ("gloss") derived in whole or in part from Princeton University's WordNet® project in order to
       eliminate ambiguity and aid natural language processing.</p>
 
+    <aside class="issue">Learner-centric: <code>Person</code> (candidate) Recorded [an] <code>AssessmentResult</code>;
+      System-centric: <code>SoftwareApplication</code> Reported [an] <code>AssessmentResult</code>.  Prefer 'Recorded'
+      to 'Reported' and 'Recorded' to 'Achieved', 'Attained', or 'Scored'.
+    </aside>
+
     <table class="data">
       <thead>
       <tr>
@@ -1078,10 +1181,19 @@
           </td>
         </tr>
         <tr>
+          <td>Reset</td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/200949623-v">Set anew</a> without incrementing the
+            <code>Attempt</code>.</td>
+          <td><a href="#assessmentTestEvent">AssessmentTestEvent</a>,
+            <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a>,
+            <a href="#assessmentSectionEvent">AssessmentSectionEvent</a>
+          </td>
+        </tr>
+        <tr>
           <td>Restarted</td>
           <td><a href="http://wordnet-rdf.princeton.edu/wn31/200350758-v">Take up or begin anew</a>,
             as in to start something, make progress but then stop and return to the beginning in
-            order to start again.</td>
+            order to start again. A restart will increment the <code>Attempt</code>.</td>
           <td><a href="#assessmentTestEvent">AssessmentTestEvent</a>,
             <a href="#assessmentTestPartEvent">AssessmentTestPartEvent</a>,
             <a href="#assessmentSectionEvent">AssessmentSectionEvent</a>
@@ -1100,6 +1212,18 @@
             <a href="#assessmentSectionEvent">AssessmentSectionEvent</a>
             <a href="#assessmentItemEvent">AssessmentItemEvent</a>
           </td>
+        </tr>
+        <tr>
+          <td>Recorded</td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/01000214-v">Make a record of; set down in permanent
+            form.</a>.</td>
+          <td><a href="#assessmentItemEvent">AssessmentResultEvent</a></td>
+        </tr>
+        <tr>
+          <td>Reported</td>
+          <td><a href="http://wordnet-rdf.princeton.edu/wn31/00966809-v">Announce as the result of an investigation or
+            experience or finding</a>.</td>
+          <td><a href="#assessmentItemEvent">AssessmentResultEvent</a></td>
         </tr>
       </tbody>
     </table>
@@ -1129,7 +1253,7 @@
         <dd><code>AssessmentTest</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -1240,7 +1364,7 @@
         <dd><code>TestPart</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -1283,7 +1407,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>assessmentSections</td>
+          <td>assessmentSection</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -1352,7 +1476,7 @@
           "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
           "type": "TestPart",
           "identifier": "TODO",
-          "assessmentSections": [{
+          "assessmentSection": [{
               "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
               "type": "AssessmentSection",
               "identifier": "TODO"
@@ -1391,7 +1515,7 @@
       "type": "CourseSection"
     }
   },
-  "assessmentSections": [{
+  "assessmentSection": [{
       "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
       "type": "AssessmentSection",
       "identifier": "TODO"
@@ -1425,7 +1549,7 @@
         <dd><code>AssessmentSection</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -1478,7 +1602,7 @@
           <td>Optional</td>
         </tr>
         <tr>
-          <td>sectionParts</td>
+          <td>sectionPart</td>
           <td><a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#arrayDef"
           >Array</a></td>
@@ -1560,7 +1684,7 @@
           "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
           "type": "AssessmentSection",
           "identifier": "TODO",
-          "sectionParts": [
+          "sectionPart": [
             {
               "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/11",
               "type": "AssessmentSection",
@@ -1624,7 +1748,7 @@
       "type": "AssessmentTest"
     }
   },
-  "sectionParts": [{
+  "sectionPart": [{
       "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/11",
       "type": "AssessmentSection",
       "identifier": "TODO",
@@ -1684,7 +1808,7 @@
         <dd><code>AssessmentItem</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -1742,18 +1866,18 @@
           <code>
 {
   "@context": "https://purl.imsglobal.org/spec/qti/v3p0/context/",
-  "id": "TODO",
+  "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/11/items/1",
   "type": "AssessmentItem",
   "identifier": "TODO",
   "label": "TODO",
   "isPartOf": {
-    "id": "TODO",
+    "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1/secs/1",
     "type": "AssessmentSection",
     "isPartOf": {
-      "id": "TODO",
+      "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1/parts/1",
       "type": "TestPart",
       "isPartOf": {
-        "id": "TODO",
+        "id": "https://example.edu/terms/201901/courses/7/sections/1/assess/1",
         "type": "AssessmentTest"
       }
     }
@@ -1766,6 +1890,10 @@
 
     <section id="assessmentResult">
       <h3>AssessmentResult</h3>
+
+      <aside class="issue">
+        <p>Recommend dropping <code>Context</code> property as redundant. See rationale below.</p>
+      </aside>
 
       <p>A QTI <code>AssessmentResult</code> is used to report the results of a candidate's interaction with a
         <code>AssessmentTest</code> and/or one or more <code>AssessmentItem</code> entities attempted.</p>
@@ -1781,7 +1909,7 @@
         <dd><code>AssessmentResult</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -1901,7 +2029,7 @@
         <dd><code>TestResult</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2016,7 +2144,7 @@
         <dd><code>ItemResult</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2150,7 +2278,7 @@
         <dd><code>OutcomeVariable</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2293,7 +2421,7 @@
         <dd><code>ResponseVariable</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2429,7 +2557,7 @@
         <dd><code>TemplateVariable</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2532,7 +2660,7 @@
         <dd><code>CorrectResponse</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2625,7 +2753,7 @@
         <dd><code>CandidateResponse</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2707,7 +2835,7 @@
         <dd><code>Value</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2799,7 +2927,7 @@
         <dd><code>Context</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
@@ -2883,7 +3011,7 @@
         <dd><code>SessionIdentifier</code> inherits all properties defined by its supertype
           <a href=
              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a>, of which <code>id</code>, and <code>type</code> are required. Additional profile-specific type
+          >Entity</a>, of which <code>id</code> and <code>type</code> are required. Additional profile-specific type
           and value restrictions are described below:
         </dd>
       </dl>
