@@ -167,7 +167,7 @@ While the base information required by most Events is represented in the above e
 
 ## Metric Profiles
 
-TODO: Profiles are so amazing!
+TODO: Profiles are so amazing! Here's why: TODO
 
 A great way to think of a Metric Profile is by the questions it can help answer. For example the Reading Profile could help Instructors and researchers answer questions such as:
 
@@ -178,7 +178,9 @@ A great way to think of a Metric Profile is by the questions it can help answer.
  - What paths are taken to reach the content?
  
 
-Talk about how `@context` changes for extensions and explain how it works? Then point to the Release Schedule section. 
+TODO: Talk about how `@context` changes for extensions and explain how it works? Then point to the Release Schedule section. 
+
+TODO: Emphasise this is the level of certification. That's possibly also discussed in the Certification header above, and possibly in the release schedule stuff below. Maybe the repetition is good since this is an important point to understand.
  
  
 ## Custom Extensions
@@ -283,7 +285,16 @@ In this example, the Person and SoftwareApplication are part of the data array a
 
 TODO: Short description of how it's done then link to the LTI service definition: https://github.com/IMSGlobal/LTI-spec-Caliper/blob/develop/lti-spec-caliper.md#23-communicating-the-availability-of-the-service
 
-Also explain how 2 vendors can work out keys and endpoints independent of LTI.
+TODO: Also explain how 2 vendors can work out keys and endpoints independent of LTI.
+
+
+## Receiving Caliper Events
+
+TODO: Talk about LRS/LRW? Talk about validating events and doing something with them right away vs throwing into a bucket super fast for later analysis?
+
+TODO: Talk about auth header check
+
+TODO: Talk about credentials? Or just reference the LTI doc again?
 
 
 ## Release Schedule stuff
@@ -295,6 +306,13 @@ Also explain how 2 vendors can work out keys and endpoints independent of LTI.
  - profile is described in core
  - and might be extensions
  - manifested in JSON as a different @context string by adding `-extension`
+
+
+## Code Libraries, Examples, and Test Servers
+
+- talk about the sensor libraries and their maintenance
+- examples of usage for emitting and consuming
+- if there is one, point to testing endpoint for development
 
 
 ## Use Cases
