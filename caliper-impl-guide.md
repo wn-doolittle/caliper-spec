@@ -35,6 +35,10 @@ Many documents will be referenced in this guide. Here are links that will be use
 
 ## Conformance
 
+TODO: Talk about how conformance works and point to certification suite. 
+ 
+ - Should it talk about profiles as central to conformance here? Or leave it to profile area? A little of both?
+ - Should it reference how extension conformance works or leave that to a different section?
 
 
 ## Terminology
@@ -203,7 +207,7 @@ An Envelope must have the properties
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2018-11-15T11:05:01.000Z",
   "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "data": []
+  "data": [ {event1}, {event2}, {eventN}]
 }
 ```
 
@@ -306,6 +310,8 @@ TODO: Talk about credentials? Or just reference the LTI doc again?
  - profile is described in core
  - and might be extensions
  - manifested in JSON as a different @context string by adding `-extension`
+ 
+- Talk about how upgrades happen for both sides. Should receiver of events try to understand all previous versions of a profile? Explain everything needed to understand the scope of implementing upgraded core versions and profiles.
 
 
 ## Code Libraries, Examples, and Test Servers
