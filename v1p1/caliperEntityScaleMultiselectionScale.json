@@ -1,0 +1,13 @@
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+    "id": "https://example.edu/scale/3",
+    "type": "MultiselectionScale",
+    "question": "How do you feel about this content? (select one or more)",
+    "points": 5,
+    "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+    "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+    "orderedSelection": false,
+    "minSelections": 1,
+    "maxSelections": 5,
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+}
