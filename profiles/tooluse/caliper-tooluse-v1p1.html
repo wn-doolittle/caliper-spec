@@ -8,7 +8,7 @@
       specTitle: "Caliper Analytics® Tool Use Profile",
       shortName: "caliper-tooluse",
       specStatus: "IMS Base Document",
-      specDate: "@@@Month Day, 2019",
+      specDate: "June 1, 2019",
       specVersion: "1.1",
       specNature: "normative",
       specType: "spec",
@@ -26,10 +26,10 @@
         role: "Author, Editor"
       },
       {
-        name: "Anthony Whytte",
+        name: "Anthony Whyte",
         company: "University of Michigan (USA)",
         companyURL: "https://umich.edu",
-        role: "Editor"
+        role: "Author, Editor"
       }]      
     };
   </script>
@@ -169,17 +169,13 @@
           <dd><a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
             >Event</a></dd>
-          <dt>Supported Actors</dt>
-          <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-            >Person</a></dd>
-          <dt>Supported Actions</dt>
-          <dd><a href="#action-used">Used</a></dd>
-          <dt>Supported Objects</dt>
-          <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareApplication"
-            >SoftwareApplication</a></dd>
           <dt>Properties</dt>
-          <dd><code>ToolUseEvent</code> inherits all properties defined by
-            its supertype <code>Event</code>. Additional requirements are described below:
+          <dd><code>ToolUseEvent</code> inherits all properties defined by its supertype
+            <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+            >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+            <code>object</code>, and <code>eventTime</code> are required. Profile-specific type restrictions are
+            described below:
           </dd>
         </dl>  
         <table class="data">
@@ -192,12 +188,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-            <td>id</td>
-            <td><a href="#uuidDef">UUID</a></td>
-            <td>The emitting application MUST provision the <a href="#event">Event</a> with a <a href="#uuidDef">UUID</a>.  A version 4 <a href="#uuidDef">UUID</a> SHOULD be generated.  The UUID MUST be expressed as a <a href="#urnDef">URN</a> using the form <code>urn:uuid:&lt;UUID&gt;</code> per <a href="#rfc4122">RFC 4122</a>.</td>
-            <td>Required</td>
-            </tr>
             <tr>
             <td>type</td>
             <td><a href="#termDef">Term</a></td>
@@ -213,19 +203,14 @@
             <tr>
             <td>action</td>
             <td><a href="#termDef">Term</a></td>
-            <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.  The value range is limited to the action terms listed above.  Only one <code>action</code> <a href="#termDef">Term</a>  may be specified per <a href="#event">Event</a>.</td>
+            <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The
+              value range is limited to the <a href="#actions">Used</a> action only.</td>
             <td>Required</td>
             </tr>
             <tr>
             <td>object</td>
             <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
             <td>The <a href="#softwareApplication">SoftwareApplication</a> that constitutes  the <code>object</code> of the interaction.  The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object’s <a href="#iriDef">IRI</a>.</td>
-            <td>Required</td>
-            </tr>
-            <tr>
-            <td>eventTime</td>
-            <td>DateTime</td>
-            <td>An ISO 8601 date and time value expressed with millisecond precision that indicates when the <a href="#event">Event</a> occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
             <td>Required</td>
             </tr>
             <tr>
@@ -240,49 +225,7 @@
             <td>An <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> created or generated as a result of the interaction.  The <code>generated</code> value MUST be expressed either as an object or as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.</td>
             <td>Optional</td>
             </tr>
-            <tr>
-            <td>edApp</td>
-            <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
-            <td>A <a href="#softwareApplication">SoftwareApplication</a> that constitutes the application context.  The <code>edApp</code> value MUST be expressed either as an object or as a string corresponding to the edApp’s <a href="#iriDef">IRI</a>.</td>
-            <td>Optional</td>
-            </tr>
-            <tr>
-            <td>referrer</td>
-            <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
-            <td>An <a href="#entity">Entity</a> that represents the referring context. A <a href="#softwareApplication">SoftwareApplication</a> or <a href="#aggregateMeasure">aggregateMeasure</a> will typically constitute the referring context.  The <code>referrer</code> value MUST be expressed either as an object or as a string corresponding to the referrer’s <a href="#iriDef">IRI</a>.</td>
-            <td>Optional</td>
-            </tr>
-            <tr>
-            <td>group</td>
-            <td><a href="#organization">Organization</a> | <a href="#iriDef">IRI</a></td>
-            <td>An <a href="#organization">Organization</a> that represents the group context.  The <code>group</code> value MUST be expressed either as an object or as a string corresponding to the group’s <a href="#iriDef">IRI</a>.</td>
-            <td>Optional</td>
-            </tr>
-            <tr>
-            <td>membership</td>
-            <td><a href="#membership">Membership</a> | <a href="#iriDef">IRI</a></td>
-            <td>The relationship between the <code>actor</code> and the <code>group</code> in terms of roles assigned and current status.  The <code>membership</code> value MUST be expressed either as an object or as a string corresponding to the membership entity’s <a href="#iriDef">IRI</a>.</td>
-            <td>Optional</td>
-            </tr>
-            <tr>
-            <td>session</td>
-            <td><a href="#session">Session</a> | <a href="#iriDef">IRI</a></td>
-            <td>The current user <a href="#session">Session</a>.  The <code>session</code> value MUST be expressed either as an object or as a string corresponding to the session’s <a href="#iriDef">IRI</a>.</td>
-            <td>Optional</td>
-            </tr>
-            <tr>
-            <td>federatedSession</td>
-            <td><a href="#ltiSession">LtiSession</a> | <a href="#iriDef">IRI</a></td>
-            <td>If the <a href="#event">Event</a> occurs within the context of an <a href="#ltiDef">LTI</a> tool launch, the actor’s tool consumer <a href="#ltiSession">LtiSession</a> MAY be referenced.  The <code>federatedSession</code> value MUST be expressed either as an object or as a string corresponding to the federatedSession’s <a href="#iriDef">IRI</a>.</td>
-            <td>Optional</td>
-            </tr>
-            <tr>
-            <td>extensions</td>
-            <td>Object</td>
-            <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#toolUseEvent">ToolUseEvent</a>.</td>
-            <td>Optional</td>
-            </tr>
-            </tbody>
+          </tbody>
         </table>
     </section>
   </section>
@@ -290,7 +233,25 @@
   <section id="actions">
     <h2>Actions</h2>
 
-  
+    <p>The Caliper Tool Use Profile supports the following actions:</p>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Action</th>
+        <th>WordNet&reg; Gloss</th>
+        <th>Event</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td id="action-Used">Used</td>
+        <td><a href="http://wordnet-rdf.princeton.edu/wn31/201161188-v" rel="nofollow">Put into service; make work
+          or employ for a particular purpose or for its inherent or natural purpose</a>.</td>
+        <td><a href="#event-tooluse">ToolUseEvent</a></td>
+      </tr>
+      </tbody>
+    </table>
   </section>
 
   <section id="entities">
@@ -299,13 +260,25 @@
       <h3><a name="aggregateMeasure"></a>AggregateMeasure</h3>
       <p>A Caliper <a href="#aggregateMeasure">AggregateMeasure</a> represents an aggregated measure of a <a href="#Person">Person</a>'s use of a Learning Tool.</p>
       <p>For example, an <a href="#aggregateMeasure">AggregateMeasure</a> may represent the total time on task a <a href="#Person">Person</a> has spent on a Learning Tool over a period of time.</p>
-      <h4>IRI</h4>
-      <p><a href="http://purl.imsglobal.org/caliper/aggregateMeasure">http://purl.imsglobal.org/caliper/aggregateMeasure</a></p>
-      <h4>Supertype</h4>
-      <p><a href="#entity">Entity</a></p>
-      <h4>Properties</h4>
-      <p><a href="#aggregateMeasure">AggregateMeasure</a> inherits all the properties and requirements defined for its supertype <a href="#entity">Entity</a>.  Additional properties and requirements are described below:</p>
-      <table class="table table-bordered table-striped">
+
+      <dl>
+        <dt>IRI</dt>
+        <dd><a href="http://purl.imsglobal.org/caliper/aggregateMeasure">
+          http://purl.imsglobal.org/caliper/aggregateMeasure</a>
+        </dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+        >Event</a></dd>
+        <dt>Properties</dt>
+        <dd><code>AggregateMeasure</code> inherits all the properties and requirements defined for its
+          supertype <a href="#entity">Entity</a>, of which <code>id</code>, and <code>type</code> are required.
+          <code>AggregateMeasure</code> is also provisioned with five additional properties:
+          <code>value</code>, <code>valueMax</code>, <code>metric</code>, <code>startedAtTime</code>, and
+          <code>endedAtTime</code>. Profile-specific type restrictions are described below:</dd>
+      </dl>
+
+      <table class="data">
       <thead>
       <tr>
       <th>Property</th>
@@ -316,30 +289,11 @@
       </thead>
       <tbody>
       <tr>
-      <td>id</td>
-      <td><a href="#iriDef">IRI</a></td>
-      <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-      <td>Required</td>
-      </tr>
-      <tr>
       <td>type</td>
       <td><a href="#termDef">Term</a></td>
       <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasure</em>.</td>
       <td>Required</td>
       </tr>
-      <tr>
-      <td>name</td>
-      <td>string</td>
-      <td>A string value comprising a word or phrase by which the <a href="#aggregateMeasure">AggregateMeasure</a> is known.</td>
-      <td>Optional</td>
-      </tr>
-      <tr>
-      <td>description</td>
-      <td>string</td>
-      <td>A string value comprising comprising a brief, written representation of the <a href="#aggregateMeasure">AggregateMeasure</a>.</td>
-      <td>Optional</td>
-      </tr>
-      <tr>
       <td>value</td>
       <td>Number</td>
       <td>A Number representing the total curricular progress the actor has made in the context of the application.</td>
@@ -369,12 +323,6 @@
       <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric aggregation was completed.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
       <td>Optional</td>
       </tr>
-      <tr>
-      <td>extensions</td>
-      <td>Object</td>
-      <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#aggregateMeasure">aggregateMeasure</a>.</td>
-      <td>Optional</td>
-      </tr>
       </tbody>
       </table>
       <h4>Example</h4>
@@ -397,13 +345,24 @@
     <section id="entity-aggregatemeasurecollection">
       <h3><a name="aggregateMeasureCollection"></a>AggregateMeasureCollection</h3>
       <p>A Caliper <a href="#aggregateMeasureCollection">AggregateMeasureCollection</a> represents an unordered collection of <a href="#aggregateResource">AggregateResource</a> entities.</p>
-      <h4>IRI</h4>
-      <p><a href="http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a></p>
-      <h4>Supertype</h4>
-      <p><a href="#entity">Entity</a></p>
-      <h4>Properties</h4>
-      <p><a href="#aggregateMeasureCollection">AggregateMeasureCollection</a> inherits all the properties and requirements defined for its supertype <a href="#entity">Entity</a>.  Additional properties and requirements are described below:</p>
-      <table class="table table-bordered table-striped">
+
+      <dl>
+        <dt>IRI</dt>
+        <dd><a href="http://purl.imsglobal.org/caliper/AggregateMeasureCollection">
+          http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
+        </dd>
+        <dt>Supertype</dt>
+        <dd><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+        >Event</a></dd>
+        <dt>Properties</dt>
+        <dd><code>AggregateMeasureCollection</code> inherits all the properties and requirements defined for its
+          supertype <a href="#entity">Entity</a>, of which <code>id</code>, and <code>type</code> are required.
+          <code>AggregateMeasureCollection</code> is also provisioned with an optional <code>items</code> property.
+          Profile-specific type restrictions are described below:</dd>
+      </dl>
+
+      <table class="data">
       <thead>
       <tr>
       <th>Property</th>
@@ -414,12 +373,6 @@
       </thead>
       <tbody>
       <tr>
-      <td>id</td>
-      <td><a href="#iriDef">IRI</a></td>
-      <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-      <td>Required</td>
-      </tr>
-      <tr>
       <td>type</td>
       <td><a href="#termDef">Term</a></td>
       <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasureCollection</em>.</td>
@@ -429,12 +382,6 @@
       <td>items</td>
       <td>Array</td>
       <td>An ordered collection of <a href="#aggregateMeasure"> AggregateMeasure</a> entities.  Each array item MUST be expressed either as an object or as a string corresponding to the item’s <a href="#iriDef">IRI</a>.</td>
-      <td>Optional</td>
-      </tr>
-      <tr>
-      <td>extensions</td>
-      <td>Object</td>
-      <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation of the <a href="#aggregateMeasureCollection">AggregateMeasureCollection</a>.</td>
       <td>Optional</td>
       </tr>
       </tbody>
@@ -600,7 +547,7 @@
         <tbody>
         <tr>
           <td>IMS Base Document 1.1</td>
-          <td>@@@Month Day, 2019</td>
+          <td>June 1, 2019</td>
           <td>The first Base Document release.</td>
         </tr>
         </tbody>
