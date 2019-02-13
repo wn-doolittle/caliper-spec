@@ -8,7 +8,7 @@
       specTitle: "Caliper Analytics® Search Profile",
       shortName: "caliper-search",
       specStatus: "IMS Base Document",
-      specDate: "October 31, 2018",
+      specDate: "June 1, 2019",
       specVersion: "1.1",
       specNature: "normative",
       specType: "spec",
@@ -146,21 +146,13 @@
         <dd><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
         >Event</a></dd>
-        <dt>Supported actors</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-        >Person</a></dd>
-        <dt>Supported actions</dt>
-        <dd><a href="action-Searched">Searched</a></dd>
-        <dt>Supported objects</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-        >Entity</a></dd>
-        <dt>Supported generated entities</dt>
-        <dd><a href="#query">SearchResponse</a></dd>
         <dt>Properties</dt>
         <dd><code>SearchEvent</code> inherits all properties defined by its supertype
-            <code>Event</code>. Profile-specific type restrictions are described below:
+          <a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+          >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+          <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+          restrictions are described below:
         </dd>
       </dl>
 
@@ -174,17 +166,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>id</td>
-            <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
-            >UUID</a></td>
-            <td>The emitting application MUST provision the <code>SearchEvent</code> with a UUID. A
-              version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-              >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
-            <td>Required</td>
-          </tr>
           <tr>
             <td>type</td>
             <td><a href=
@@ -210,8 +191,8 @@
                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
             >Term</a></td>
             <td>The action or predicate that binds the <code>actor</code> or subject to the
-                <code>object</code>. The value range is limited to the 'Searched' action only
-              .</td>
+                <code>object</code>. The value range is limited to the <a href="#actions">Searched</a> action only.
+            </td>
             <td>Required</td>
           </tr>
           <tr>
@@ -289,8 +270,9 @@
           >Entity</a></dd>
           <dt>Properties</dt>
           <dd><code>SearchResponse</code> inherits all properties defined by its supertype
-            <code>Entity</code>. <code>SearchResponse</code> is also provisioned with four additional
-            properties: <code>searchProvider</code>, <code>searchTarget</code>, <code>query</code>,
+            <code>Entity</code>, of which <code>id</code>, and <code>type</code> are required.
+            <code>SearchResponse</code> is also provisioned with four additional properties:
+            <code>searchProvider</code>, <code>searchTarget</code>, <code>query</code>,
             <code>searchResultsItemCount</code>, and <code>searchResults</code>.
             Profile-specific type restrictions are described below:
           </dd>
@@ -306,22 +288,6 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>id</td>
-            <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
-              also be dereferenceable, i.e., capable of returning a representation of the resource.
-              A <a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
-              >URI</a> employing the <a href=
-                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-              >URN</a> scheme MAY be provided in cases where a <a href=
-                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
-              >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-            <td>Required</td>
-          </tr>
           <tr>
             <td>type</td>
             <td><a href=
@@ -358,9 +324,9 @@
           <tr>
             <td>query</td>
             <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#query"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#query"
             >Query</a> | <a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
             >IRI</a></td>
             <td>The <code>Query</code> submitted by the <code>actor</code>.</td>
             <td>Optional</td>
@@ -400,9 +366,9 @@
         >Entity</a></dd>
         <dt>Properties</dt>
         <dd><code>Query</code> inherits all properties defined by its supertype
-          <code>Entity</code>.  <code>Query</code> is also provisioned with three additional
-          properties: <code>creator</code>, <code>searchTarget</code>, and <code>searchTerms
-          </code>. Profile-specific type restrictions are described below:
+          <code>Entity</code>, of which <code>id</code>, and <code>type</code> are required.  <code>Query</code> is
+          also provisioned with three additional properties: <code>creator</code>, <code>searchTarget</code>,
+          and <code>searchTerms</code>. Profile-specific type restrictions are described below:
         </dd>
       </dl>
 
@@ -417,25 +383,9 @@
         </thead>
         <tbody>
         <tr>
-          <td>id</td>
-          <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
-            also be dereferenceable, i.e., capable of returning a representation of the resource.
-            A <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
-            >URI</a> employing the <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> scheme MAY be provided in cases where a <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
-            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
           <td>type</td>
           <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The string value MUST be set to the Term 'Query'.</td>
           <td>Required</td>
@@ -443,9 +393,9 @@
         <tr>
           <td>creator</td>
           <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
           >Person</a> | <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>Person</code> who devised the search terms comprising this <code>Query</code>.
             The <code>creator</code> value MUST be expressed either as an object or as a string
@@ -455,9 +405,9 @@
         <tr>
           <td>searchTarget</td>
           <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
           >Entity</a> | <a href=
-                             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
           <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
             <code>SoftwareApplication</code>, that is the target of the <code>Query</code>. The
@@ -658,7 +608,7 @@
         <tbody>
         <tr>
           <td>IMS Base Document 1.1</td>
-          <td>October 31, 2018</td>
+          <td>June 1, 2019</td>
           <td>The first Base Document release.</td>
         </tr>
         </tbody>
