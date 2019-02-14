@@ -5,6 +5,7 @@
   "academicSession": "Fall 2016",
   "courseNumber": "CPS 435-01",
   "name": "CPS 435 Learning Analytics, Section 01",
+  "lisSourcedId": "example.edu:SI182-001-F16",
   "category": "seminar",
   "subOrganizationOf": {
     "id": "https://example.edu/terms/201601/courses/7",
