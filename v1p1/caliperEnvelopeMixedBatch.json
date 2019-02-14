@@ -8,8 +8,7 @@
       "id": "https://example.edu/users/554433",
       "type": "Person",
       "dateCreated": "2016-08-01T06:00:00.000Z",
-      "dateModified": "2016-09-02T11:30:00.000Z",
-      "lisSourcedId": "example.edu:71ee7e42-f6d2-414a-80db-b69ac2defd4"
+      "dateModified": "2016-09-02T11:30:00.000Z"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
