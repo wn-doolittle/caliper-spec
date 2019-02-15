@@ -69,7 +69,36 @@ When a Caliper-observable interaction, as defined by a _Metric Profile_, is dete
 
 ### Events
 
-TODO: What is an event: An Actor, Action, and Object
+[Link to full Event docs](#events)
+
+An Event is the combination of an *Actor*, an *Action*, and an *Object*. In a sentence, an Event describes what an Actor _did_ (Action) to an Object. Each of those will be described in the following sections.
+
+It's important to have a clear understanding of Caliper Events since they describe the semantics of what's happening in the system. 
+
+
+#### Event Types
+
+TODO: EventType....
+
+#### Event Required Properties
+
+[Link to full Event Properties docs section](#event Properties)
+
+TODO?? Simplify these descriptions since the full technical version is in the docs.
+
+
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
+| actor | [Agent](#agent) &#124; [IRI](#iriDef) | The [Agent](#agent) who initiated the [Event](#event), typically though not always a [Person](#person).  The `actor` value MUST be expressed either as an object or as a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object.  The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Entity](#entity) &#124; [IRI](#iriDef) | The [Entity](#entity) that comprises the object of the interaction.  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
+
+#### Other Event Properties
+
+TODO: talk about profiles defining more properties both required and optional.
 
 #### Event JSON stub
 
@@ -87,6 +116,8 @@ TODO: What is an event: An Actor, Action, and Object
 
 ### Actors
 
+[Link to full Actor docs](#actors)
+
 TODO: Explain Actors and their basic properties then link to main spec document where appropriate for more details.
 
 #### Actor JSON
@@ -100,6 +131,8 @@ TODO: Explain Actors and their basic properties then link to main spec document 
 
 ### Action
 
+[Link to full Action docs](#actions)
+
 TODO: Explain Actions and their basic properties then link to main spec document where appropriate for more details.
 
 #### Action JSON
@@ -109,6 +142,8 @@ TODO: Explain Actions and their basic properties then link to main spec document
 ```
 
 ### Object
+
+[Link to full Object docs](#objects)
 
 TODO: Explain Objects and their basic properties then link to main spec document where appropriate for more details.
 
@@ -125,6 +160,8 @@ TODO: Explain Objects and their basic properties then link to main spec document
 ### Complete Event Example JSON
 
 To bring it all together, and Event would look something like this:
+
+TODO: Explain how to find sample JSON for their specific event/action/profile by pointing to docs and fixtures, etc. Since we can't put every example in this document, teach how to find examples they need. (This might be worthy of it's own top-level section just for discoverability. Coming to this doc to find example JSON will be one of the primary activities for developers)
 
 #### Complete JSON
 
@@ -170,6 +207,8 @@ TODO: Short explanation about using ID only (or "Type Coercion") instead of full
 While the base information required by most Events is represented in the above example, each Event type could require more properties, and allow for more properties and context as desired by the implementors. To understand what information is required and possible you should consult the Metric Profiles for the activities you're trying to implement.
 
 ## Metric Profiles
+
+[Link to full Metric Profile docs](#profiles)
 
 TODO: Profiles are so amazing! Here's why: TODO
 
