@@ -327,6 +327,8 @@ TODO: Find some demonstrative use cases and explain how they'd be solved by talk
 
 Make sure to get a use case that decides why and how to add custom extensions.
 
+Need to add use cases for all action types for each profile ( request from issue #196) 
+
 ## Best Practices 
 
 TODO: talk with current implementors and ask what best practices they'd suggest.
