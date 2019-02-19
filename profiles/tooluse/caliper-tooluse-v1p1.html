@@ -48,8 +48,6 @@
         <img height="100%" width="100%" src="./assets/caliper-profile_tool_use.png"
              alt="Tool Use Profile"/>
 
-        <aside class="issue"><p>TODO Update image to include generated & progress properties</aside>
-
         <p>The Caliper Tool Use Profile models an intended interaction between a
             user and a tool. In other words, when a <code>Person</code> utilizes a
             <code>SoftwareApplication</code> in a manner that the application determines to be
@@ -167,10 +165,8 @@
     <h2>Events</h2>
     <section id="event-tooluse">
         <h3>ToolUseEvent</h3>
-        <img height="100%" width="100%"
-             src="assets/caliper-profile_tool_use_event.png"
-             alt="ToolUseEvent"/>
-        <aside class="issue"><p>TODO Update image to include generated & progress properties</aside>
+        <img height="100%" width="100%" src="assets/caliper-profile_tool_use_event.png" alt="ToolUseEvent"/>
+
         <p>A Caliper <a href="#ToolUseEvent">ToolUseEvent</a> models a <a href="#Person">Person</a> using a learning
             tool in a way that the tool's creators have
             determined is an indication of a learning interaction. A <a href="#ToolUseEvent">ToolUseEvent</a> may
@@ -188,7 +184,7 @@
             <dt>Properties</dt>
             <dd><code>ToolUseEvent</code> inherits all properties defined by its supertype
                 <a href=
-                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
                 >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
                 <code>object</code>, and <code>eventTime</code> are required. Profile-specific type restrictions are
                 described below:
@@ -246,9 +242,9 @@
             </tr>
             <tr>
                 <td>generated</td>
-                <td><a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> | <a href="#iriDef">IRI</a>
+                <td><a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> | <a href="#iriDef">IRI</a>
                 </td>
-                <td>An <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> created or generated as a
+                <td>An <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> created or generated as a
                     result of the interaction. The <code>generated</code> value MUST be expressed either as an object or
                     as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.
                 </td>
@@ -262,36 +258,31 @@
 <section id="actions">
     <h2>Actions</h2>
 
-    <p>The Caliper Tool Use Profile supports the following actions:</p>
+    <p>The Caliper Tool Use Profile supports the <em>Used</em> action only.</p>
 
-    <table class="data">
-        <thead>
-        <tr>
-            <th>Action</th>
-            <th>WordNet&reg; Gloss</th>
-            <th>Event</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td id="action-Used">Used</td>
-            <td><a href="http://wordnet-rdf.princeton.edu/wn31/201161188-v" rel="nofollow">Put into service; make work
-                or employ for a particular purpose or for its inherent or natural purpose</a>.
-            </td>
-            <td><a href="#event-tooluse">ToolUseEvent</a></td>
-        </tr>
-        </tbody>
-    </table>
+    <section id="action-Used">
+        <h3>Used</h3>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>Used</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/actions/Used</dd>
+            <dt>WordNet&reg; Gloss</dt>
+            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201161188-v" rel="nofollow">Put into service; make work
+                or employ for a particular purpose or for its inherent or natural purpose.</a></dd>
+        </dl>
+    </section>
 </section>
 
 <section id="entities">
     <h2>Entities</h2>
-    <section id="entity-aggregatemeasure">
-        <h3><a name="aggregateMeasure"></a>AggregateMeasure</h3>
-        <p>A Caliper <a href="#aggregateMeasure">AggregateMeasure</a> represents an aggregated measure of a <a
-                href="#Person">Person</a>'s use of a Learning Tool.</p>
-        <p>For example, an <a href="#aggregateMeasure">AggregateMeasure</a> may represent the total time on task a <a
-                href="#Person">Person</a> has spent on a Learning Tool over a period of time.</p>
+    <section id="entity-aggregateMeasure">
+        <h3>AggregateMeasure</h3>
+        <p>A Caliper <code>AggregateMeasure</code> represents an aggregated measure of a
+            <a href="#Person">Person</a>'s use of a Learning Tool. For example, an
+            <code>AggregateMeasure</code> may represent the total time on task a
+            <a href="#Person">Person</a> has spent on a Learning Tool over a period of time.</p>
 
         <dl>
             <dt>IRI</dt>
@@ -370,32 +361,17 @@
             </tr>
             </tbody>
         </table>
-        <h4>Example</h4>
-        <pre><code>
-{
-  "@context":"http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-  "id":"urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d933",
-  "type":"AggregateMeasure",
-  "value": "12",
-  "valueMax": "25",
-  "metric": "AssessmentsPassed",
-  "name": "End of Chapter Assessments Passed",
-  "description": "Number of end of chapter assessments successfully passed on first or second attempt",
-  "startedAtTime": "2018-08-15T10:15:00.000Z",
-  "endedAtTime": "2018-11-15T10:15:00.000Z"
-}
-      </code></pre>
-
     </section>
-    <section id="entity-aggregatemeasurecollection">
-        <h3><a name="aggregateMeasureCollection"></a>AggregateMeasureCollection</h3>
-        <p>A Caliper <a href="#aggregateMeasureCollection">AggregateMeasureCollection</a> represents an unordered
-            collection of <a href="#aggregateResource">AggregateResource</a> entities.</p>
+
+    <section id="entity-aggregateMeasureCollection">
+        <h3>AggregateMeasureCollection</h3>
+        <p>A Caliper <code>AggregateMeasureCollection</code> represents an unordered
+            collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities.</p>
 
         <dl>
             <dt>IRI</dt>
-            <dd><a href="http://purl.imsglobal.org/caliper/AggregateMeasureCollection">
-                http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
+            <dd><a href=
+                           "http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
             </dd>
             <dt>Supertype</dt>
             <dd><a href=
@@ -430,45 +406,120 @@
             <tr>
                 <td>items</td>
                 <td>Array</td>
-                <td>An ordered collection of <a href="#aggregateMeasure"> AggregateMeasure</a> entities. Each array item
+                <td>An ordered collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities. Each array item
                     MUST be expressed either as an object or as a string corresponding to the item’s <a href="#iriDef">IRI</a>.
                 </td>
                 <td>Optional</td>
             </tr>
             </tbody>
         </table>
-        <h4>Example</h4>
-        <pre><code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
-  "type": "AggregateMeasureCollection",
-  "items": [{
-      "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d917",
-      "type": "AggregateMeasure",
-      "value": "153.5",
-      "metric": "MinutesOnTask",
-      "name": "On Task Minutes",
-      "description": "Total active minutes on task",
-      "startedAtTime": "2018-08-15T10:15:00.000Z",
-      "endedAtTime": "2018-11-15T10:15:00.000Z"
-    },
-    {
-      "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
-      "type": "AggregateMeasure",
-      "value": "12",
-      "valueMax": "25",
-      "metric": "AssessmentsPassed",
-      "name": "End of Chapter Assessments Passed",
-      "description": "Number of end of chapter assessments successfully passed on first or second attempt",
-      "startedAtTime": "2018-08-15T10:15:00.000Z",
-      "endedAtTime": "2018-11-15T10:15:00.000Z"
-    }
-  ]
-}
-      </code></pre>
     </section>
 </section>
+
+<section id="metrics">
+    <h2>Metrics</h2>
+    <p>The <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
+        property for denoting the metric related to the <a href="#toolUseEvent">ToolUse Event</a>. Metric values are
+        limited to the list of Caliper terms listed below</p>
+
+    <section id="metric-AssessmentsSubmitted">
+        <h3>AssessmentsSubmitted</h3>
+        <p>Count of assessments that have been submitted by the learner.</p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>AssessmentsSubmitted</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/AssessmentsSubmitted</dd>
+        </dl>
+    </section>
+
+    <section id="metric-AssessmentsPassed">
+        <h3>AssessmentsPassed</h3>
+        <p>Count of assessments that have been passed by the learner.</p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>AssessmentsPassed</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/AssessmentsPassed</dd>
+        </dl>
+    </section>
+
+    <section id="metric-MinutesOnTask">
+        <h3>MinutesOnTask</h3>
+        <p>Active time spent by learner utilizing the tool.</p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>MinutesOnTask</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/MinutesOnTask</dd>
+        </dl>
+    </section>
+
+    <section id="metric-SkillsMastered">
+        <h3>SkillsMastered</h3>
+        <p>Count of learning skills or targets for which the learner has demonstrated understanding.</p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>SkillsMastered</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/SkillsMastered</dd>
+        </dl>
+    </section>
+
+    <section id="metric-StandardsMastered">
+        <h3>StandardsMastered</h3>
+        <p>Count of learning standards or competencies for which the learner has demonstrated understanding.</p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>StandardsMastered</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/StandardsMastered</dd>
+        </dl>
+    </section>
+
+    <section id="metric-UnitsCompleted">
+        <h3>UnitsCompleted</h3>
+        <p>Count of instructional units completed by the learner.</p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>UnitsCompleted</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/UnitsCompleted</dd>
+        </dl>
+    </section>
+
+    <section id="metric-UnitsPassed">
+        <h3>UnitsPassed</h3>
+        <p>Count of instructional units completed by the learner, submitted for evaluation, and scored with a
+            passing mark.</p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>UnitsPassed</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/UnitsPassed</dd>
+        </dl>
+    </section>
+
+    <section id="metric-WordsRead">
+        <h3>WordsRead</h3>
+        Count of the number of words read by the learner.
+
+        <dl>
+            <dt>Term</dt>
+            <dd>WordsRead</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/WordsRead</dd>
+        </dl>
+    </section>
+</section>
+
 <section id="jsonld">
     <h2>Representing Caliper as JSON-LD</h2>
 
@@ -485,15 +536,16 @@
 
     <figure class="example">
         <figcaption>JSON-LD Context</figcaption>
-        <pre><code>{
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-          . . .
-      }</code></pre>
+        <pre><code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
+  . . .
+}</code></pre>
     </figure>
 
     <section class="informative">
         <h2>Tool Use Profile JSON-LD Examples</h2>
-        <p>Below is an example of a Caliper <code>ToolUseEvent</code> expressed as JSON-LD.</p>
+        <p>Below is an example of a Caliper <a href="#event-tooluse">ToolUseEvent</a> expressed as JSON-LD.</p>
 
         <figure class="example">
             <figcaption><code>ToolUseEvent</code> JSON-LD</figcaption>
@@ -559,57 +611,62 @@
     "startedAtTime": "2018-11-15T10:00:00.000Z" 
 }</code></pre>
         </figure>
+
+    <p>Below is an example of a <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity describe that can also
+        be sent to an endpoint.</p>
+
+    <figure class="example">
+        <figcaption><code>Query</code> describe JSON-LD</figcaption>
+        <pre><code>
+{
+  "@context":"http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
+  "id":"urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d933",
+  "type":"AggregateMeasure",
+  "value": "12",
+  "valueMax": "25",
+  "metric": "AssessmentsPassed",
+  "name": "End of Chapter Assessments Passed",
+  "description": "Number of end of chapter assessments successfully passed on first or second attempt",
+  "startedAtTime": "2018-08-15T10:15:00.000Z",
+  "endedAtTime": "2018-11-15T10:15:00.000Z"
+}</code></pre>
+        </figure>
+
+    <p>Below is an example of a  <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> entity
+        describe that can also be sent to an endpoint.</p>
+
+    <figure class="example">
+        <figcaption><code>Query</code> describe JSON-LD</figcaption>
+        <pre><code>
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
+  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
+  "type": "AggregateMeasureCollection",
+  "items": [{
+      "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d917",
+      "type": "AggregateMeasure",
+      "value": "153.5",
+      "metric": "MinutesOnTask",
+      "name": "On Task Minutes",
+      "description": "Total active minutes on task",
+      "startedAtTime": "2018-08-15T10:15:00.000Z",
+      "endedAtTime": "2018-11-15T10:15:00.000Z"
+    },
+    {
+      "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
+      "type": "AggregateMeasure",
+      "value": "12",
+      "valueMax": "25",
+      "metric": "AssessmentsPassed",
+      "name": "End of Chapter Assessments Passed",
+      "description": "Number of end of chapter assessments successfully passed on first or second attempt",
+      "startedAtTime": "2018-08-15T10:15:00.000Z",
+      "endedAtTime": "2018-11-15T10:15:00.000Z"
+    }
+  ]
+}</code></pre>
+        </figure>
     </section>
-</section>
-<section class="appendix" id="metrics">
-    <h2>Metrics</h2>
-    <p>The <a href="#entity-aggregateprogress">AggregateProgress</a> entity includes a required <code>metric</code>
-        property for denoting the metric related to the <a href="#toolUseEvent">ToolUse Event</a>. Metric values are
-        limited to the list of Caliper metric unit terms below</p>
-    <table title="Metric Units" summary="List of acceptable values for Aggregate Progress metric field.">
-        <thead>
-        <tr>
-            <th>Metric</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>AssessmentsSubmitted</td>
-            <td>Count of assessments that have been submitted by the learner.</td>
-        </tr>
-        <tr>
-            <td>AssessmentsPassed</td>
-            <td>Count of assessments that have been passed by the learner.</td>
-        </tr>
-        <tr>
-            <td>MinutesOnTask</td>
-            <td>Active time spent by learner in the tool.
-        </tr>
-        <tr>
-            <td>SkillsMastered</td>
-            <td>Count of learning skills or targets for which the learner has demonstrated understanding.</td>
-        </tr>
-        <tr>
-            <td>StandardsMastered</td>
-            <td>Count of learning standards or competencies for which the learner has demonstrated understanding.</td>
-        </tr>
-        <tr>
-            <td>UnitsCompleted</td>
-            <td>Count of instructional units completed by the learner.</td>
-        </tr>
-        <tr>
-            <td>UnitsPassed</td>
-            <td>Count of instructional units completed by the learner, submitted for evaluation, and scored with a
-                passing mark.
-            </td>
-        </tr>
-        <tr>
-            <td>WordsRead</td>
-            <td>Count of the number of words read by the learner.</td>
-        </tr>
-        </tbody>
-    </table>
 </section>
 
 <section class="appendix informative" id="revisionhistory">
