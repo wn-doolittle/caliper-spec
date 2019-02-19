@@ -242,7 +242,7 @@
                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
                 >Term</a></td>
                 <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
-                    The value range is limited to either the <a href="#actions">Launched</a> or
+                    The value range is limited to either the \ or
                     <a href="#actions">Returned</a> actions.
                 </td>
                 <td>Required</td>
@@ -275,7 +275,7 @@
                 <td>target</td>
                 <td><a href="#entity-Link">Link</a> | <a href="#entity-LtiLink">LtiLink</a></td>
                 <td>The fully qualified URL to which the workflow was redirected. In the case of the
-                    <em>Launched</em> action, this would be the fully qualified entry-point on the external tool to
+                    <a href="#actions">Launched</a> action, this would be the fully qualified entry-point on the external tool to
                     which the platform launches. In the case of the 'Returned' action, this would be the fully
                     qualified entry-point on the platform to which the tool is redirecting the workflow after user
                     activity from the original launch finishes (this could be the
@@ -297,7 +297,7 @@
                     <code>federatedSession</code> value MUST be expressed either as an object or as a string
                     corresponding to the federatedSession’s IRI.
                 </td>
-                <td>Required when the <a href="#action">action</a> is <em>Launched</em>, otherwise optional. Workflows that
+                <td>Required when the <a href="#action">action</a> is <a href="#actions">Launched</a>, otherwise optional. Workflows that
                     have a specific "return message" component (e.g. LTI Deep Linking response messages) SHOULD provide
                     the <code>federatedSession</code> property and SHOULD populate its messageParameters field with the
                     message parameters in the response message.
@@ -312,11 +312,11 @@
 <section id="actions">
     <h2>Actions</h2>
     <p>The Caliper <a href="#toolLaunchEvent">ToolLaunchEvent</a> supports the
-        "Launched" and "Returned" actions.</p>
+        <em>Launched</em> and <em>Returned</em> actions.</p>
 
     <section id="action-launched">
         <h3>Launched</h3>
-        Use the <code>Launched</code> action when a system commences a workflow sending an <code>actor</code> from its
+        Use the <em>Launched</em> action when a system commences a workflow sending an <code>actor</code> from its
         own domain out to an external system.
 
         <dl>
@@ -332,9 +332,8 @@
 
     <section id="action-returned">
         <h3>Returned</h3>
-        Use the <code>Returned</code> action when the workflow that started with the
-        <a href="action-launched">Launched</a> action gets finished when the external tool redirects the user
-        back to the launching system.
+        Use the <em>Returned</em> action when the workflow that started with the <em>Launched</em> action gets
+        finished when the external tool redirects the user back to the launching system.
 
         <dl>
             <dt>Term</dt>
@@ -519,9 +518,9 @@
         events.
 
         <section>
-            <h3>Tool Launch Event with Launched Action</h3>
+            <h3>Tool Launch Event with <em>Launched</em> Action</h3>
             <p>Below is an example of a full JSON-LD payload for a Tool Launch event
-                using the <code>Launched</code> action. The <code>Person</code> launches
+                using the <a href="#actions">Launched</a> action. The <code>Person</code> launches
                 the tool (represented by the <code>object</code> property) from the
                 <a>Platform</a> (represented by the <code>edApp</code> property). A
                 <code>federatedSession</code> property is included, as is required by
@@ -529,7 +528,7 @@
                 the LTI 1.3 Resource Link Launch Request launch.
             </p>
             <figure class="example">
-                <figcaption>Example of LTI 1.3 Tool Launch Event (Launched)</figcaption>
+                <figcaption>Example of LTI 1.3 Tool Launch Event (<em>Launched</em>)</figcaption>
                 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
   "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
@@ -682,9 +681,9 @@
         </section>
 
         <section>
-            <h3>Tool Launch Event with Returned Action</h3>
+            <h3>Tool Launch Event with <em>Returned</em> Action</h3>
             <p>Below is an example of a full JSON-LD payload for a Tool Launch event
-                using the <code>Returned</code> action, representing the closure of
+                using the <em>Returned</em> action, representing the closure of
                 an LTI workflow that started with a Resource Link Launch Request.
             </p>
             <p>
@@ -699,7 +698,7 @@
             </p>
 
             <figure class="example">
-                <figcaption>Example of Tool Launch Event (Returned)</figcaption>
+                <figcaption>Example of Tool Launch Event (<em>Returned</em>)</figcaption>
                 <pre><code>{
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
     "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
