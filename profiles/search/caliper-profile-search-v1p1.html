@@ -48,11 +48,11 @@
         <img height="100%" width="100%" src="./assets/caliper-profile_search.png" alt="Search Profile"/>
 
         <p>The Caliper Search Profile models a <code>Person</code>, typically a learner,
-            querying a resource for information. The profile provides a <code>SearchEvent</code> and
-            a 'Searched' action for describing information retrieval activities. An optional
-            <code>SearchResponse</code> entity can be employed to describe the <code>Query</code>
-            submitted by a user as well as any <code>searchResults</code> returned as a result of the
-            search.</p>
+            querying a resource for information. The profile provides a <a href="#event-search">SearchEvent</a> and
+            and a <a href="#actions">Searched</a> action for describing information retrieval activities. An optional
+            <a href="#entity-searchresponse">SearchResponse</a> entity can be employed to describe the
+            <a href="#entity-query">Query</a> submitted by a user as well as any <code>searchResults</code> returned
+            as a result of the search.</p>
 
         <p>When the Search Profile is used in conjunction with the <a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#readingProfile">
@@ -126,7 +126,7 @@
 <section id="events">
     <h2>Events</h2>
 
-    <p>The Search Profile is provisioned with a single a <code>SearchEvent</code> for describing
+    <p>The Search Profile is provisioned with a single a <a href="#event-search">SearchEvent</a> for describing
         information retrieval activities.</p>
 
     <section id="event-search">
@@ -137,7 +137,7 @@
 
         <p>A Caliper <code>SearchEvent</code> models a <code>Person</code> querying a resource for
             information, typically a <code>DigitalResource</code> or <code>SoftwareApplication</code>.
-            A <code>SearchResponse</code> may be referenced using the <code>generated</code>
+            A <a href="#entity-searchresponse">SearchResponse</a> may be referenced using the <code>generated</code>
             property.
         </p>
 
@@ -233,38 +233,33 @@
 <section id="actions">
     <h2>Actions</h2>
 
-    <p>The Caliper Search Profile supports the following actions:</p>
+    <p>The Caliper <a href="#event-search">SearchEvent</a> supports the <em>Searched</em> action only.</p>
 
-    <table class="data">
-        <thead>
-        <tr>
-            <th>Action</th>
-            <th>WordNet&reg; Gloss</th>
-            <th>Event</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Used</td>
-            <td><a href="http://wordnet-rdf.princeton.edu/wn31/201935739-v">Direct the course; determine the
-                direction of travelling</a>.
-            </td>
-            <td><a href="#event-search">SearchEvent</a></td>
-        </tr>
-        </tbody>
-    </table>
+    <section id="action-Searched">
+        <h3>Searched</h3>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>Searched</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/actions/Searched</dd>
+            <dt>WordNet&reg; Gloss</dt>
+            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/00649877-v" rel="nofollow">inquire into.</a></dd>
+        </dl>
+    </section>
 </section>
 
 <section id="entities">
     <h2>Entities</h2>
 
-    <p>The <code>SearchEvent</code> MAY reference a generated <code>SearchResponse</code>
-        that describes the search criteria as well as the search results returned by the query.</p>
+    <p>The <a href="#event-search">SearchEvent</a> MAY reference a <code>generated</code>
+        <a href="#entity-searchresponse">SearchResponse</a> that describes the search criteria as well as
+        the search results returned by the <a href="#entity-query">Query</a>.</p>
 
     <section id="entity-searchresponse">
         <h3>SearchResponse</h3>
-        <p>A Caliper <code>SearchResponse</code> models a search engine response to an <code>actor
-        </code> querying a searchable resource.</p>
+        <p>A Caliper <code>SearchResponse</code> models a search engine response to an <code>actor</code>
+            querying a searchable resource.</p>
 
         <dl>
             <dt>IRI</dt>
@@ -445,8 +440,8 @@
         provides a remote Search Profile JSON-LD <a href=
          "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension">context</a>
         for mapping <code>SearchEvent</code> terms to IRIs. Caliper message producers MUST reference this
-        context in every Caliper 1.1 <code>SearchEvent</code> and/or <code>Query</code> describe created
-        and serialized for transmission to a target endpoint.</p>
+        context in every Caliper 1.1 <a href="#event-search">SearchEvent</a> and/or <a href="#entity-query">Query</a>
+        describe created and serialized for transmission to a target endpoint.</p>
 
     <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
         context handling.</p>
@@ -461,11 +456,11 @@
 
     <section class="informative">
         <h2>Search Profile JSON-LD Examples</h2>
-        <p>Below is an example of a Caliper <code>SearchEvent</code> expressed as JSON-LD. The
-            <code>SearchEvent</code> records a <code>Person</code> searching a
-            <code>SoftwareApplication</code>. The <code>SearchEvent</code> is further enriched by
-            inclusion of the generated <code>Query</code> which references both the search criteria
-            employed and the search results returned.</p>
+        <p>Below is an example of a Caliper <a href="#event-search">SearchEvent</a> expressed as JSON-LD. The
+            <a href="#event-search">SearchEvent</a> records a <code>Person</code> searching a
+            <code>SoftwareApplication</code>. The <a href="#event-search">SearchEvent</a> is further enriched by
+            inclusion of the generated <a href="#entity-searchresponse">SearchResponse</a> which references both
+            the search criteria employed and the search results returned.</p>
 
         <figure class="example">
             <figcaption><code>SearchEvent</code> JSON-LD</figcaption>
@@ -528,9 +523,9 @@
 }</code></pre>
         </figure>
 
-        <p>Below is an example of a <code>SearchResponse</code> entity describe that can also be
-            sent to an endpoint. The <code>SearchResponse</code> references the search provider, a list
-            of search results expressed as JSON objects.</p>
+        <p>Below is an example of a <a href="#entity-searchresponse">SearchResponse</a> entity describe that can
+            also be sent to an endpoint. The <a href="#entity-searchresponse">SearchResponse</a> references the
+            search provider, a list of search results expressed as JSON objects.</p>
 
         <figure class="example">
             <figcaption><code>SearchResponse</code> describe JSON-LD</figcaption>
@@ -578,9 +573,8 @@
 }</code></pre>
         </figure>
 
-        <p>Below is an example of a <code>Query</code> entity describe that can also be sent to an
-            endpoint.
-            The <code>Query</code> references the author, the resource searched, the search
+        <p>Below is an example of a <a href="#entity-query">Query</a> entity describe that can also be sent to an
+            endpoint. The <a href="#entity-query">Query</a> references the author, the resource searched, the search
             string employed, and a list of search results expressed as JSON objects.</p>
 
         <figure class="example">
