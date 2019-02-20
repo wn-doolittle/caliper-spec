@@ -51,7 +51,7 @@
         <p>The Caliper Tool Use Profile models an intended interaction between a
             user and a tool. In other words, when a <code>Person</code> utilizes a
             <code>SoftwareApplication</code> in a manner that the application determines to be
-            its "intended use for learning", an application that implements the Tool
+            its intended use for learning, an application that implements the Tool
             Use Profile can emit a <code>ToolUseEvent</code> indicating such usage.</p>
 
         <p>The Tool Use Profile enables the gathering of basic usage information.
@@ -165,7 +165,7 @@
     <h2>Events</h2>
     <section id="event-tooluse">
         <h3>ToolUseEvent</h3>
-        <img height="100%" width="100%" src="assets/caliper-profile_tool_use_event.png" alt="ToolUseEvent"/>
+        <img height="100%" width="100%" src="assets/caliper-tool_use_event_used_progress-v1p2.png" alt="ToolUseEvent"/>
 
         <p>A Caliper <a href="#ToolUseEvent">ToolUseEvent</a> models a <a href="#Person">Person</a> using a learning
             tool in a way that the tool's creators have
@@ -258,14 +258,14 @@
 <section id="actions">
     <h2>Actions</h2>
 
-    <p>The Caliper Tool Use Profile supports the <em>Used</em> action only.</p>
+    <p>The Caliper <a href="#toolUseEvent">ToolUse Event</a> supports the <em>Used</em> action only.</p>
 
     <section id="action-Used">
         <h3>Used</h3>
+        The <em>Used</em> action signals that a learner has utilized a <code>SoftwareApplication</code> in a manner
+        that the application determines to be its intended use for learning.
 
         <dl>
-            <dt>Term</dt>
-            <dd>Used</dd>
             <dt>IRI</dt>
             <dd>https://purl.imsglobal.org/caliper/actions/Used</dd>
             <dt>WordNet&reg; Gloss</dt>
@@ -279,10 +279,9 @@
     <h2>Entities</h2>
     <section id="entity-aggregateMeasure">
         <h3>AggregateMeasure</h3>
-        <p>A Caliper <code>AggregateMeasure</code> represents an aggregated measure of a
-            <a href="#Person">Person</a>'s use of a Learning Tool. For example, an
-            <code>AggregateMeasure</code> may represent the total time on task a
-            <a href="#Person">Person</a> has spent on a Learning Tool over a period of time.</p>
+        <p>A Caliper <code>AggregateMeasure</code> represents an aggregated measure of a learner's use of a learning
+            tool. For example, an <code>AggregateMeasure</code> may represent the total time on task a learner has
+            spent on a learning tool over a period of time.</p>
 
         <dl>
             <dt>IRI</dt>
@@ -291,7 +290,7 @@
             </dd>
             <dt>Supertype</dt>
             <dd><a href=
-                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
             >Event</a></dd>
             <dt>Properties</dt>
             <dd><code>AggregateMeasure</code> inherits all the properties and requirements defined for its
