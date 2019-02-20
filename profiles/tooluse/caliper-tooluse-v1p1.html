@@ -69,25 +69,6 @@
             <li>How much time are users spending in a tool?</li>
             <li>How much curricular progress have users made in a tool?</li>
         </ul>
-
-        <dl>
-            <dt>Supported Events</dt>
-            <dd><a href="#tooluseevent">ToolUseEvent</a></dd>
-            <dt>Supported Actors</dt>
-            <dd><a href="https://www.imsglobal.org/...TODO#person">Person</a></dd>
-            <dt>Supported Actions</dt>
-            <dd><a href="https://www.imsglobal.org/...TODO#used">Used</a></dd>
-            <dt>Supported Objects</dt>
-            <dd><a href="https://www.imsglobal.org/...TODO#softwareapplication">SoftwareApplication</a></dd>
-            <dt>Supported Generated Entities</dt>
-            <dd><a href="#AggregateMeasure">AggegateMeasure</a></dd>
-            <dt>Other Requirements</dt>
-            <dd>
-                <ul>
-                    <li>TODO: Other requirements?</li>
-                </ul>
-            </dd>
-        </dl>
     </section>
 
     <section class="informative">
@@ -174,6 +155,8 @@
             or progress the <a href="#Person">Person</a> has made in the learning tool.</p>
 
         <dl>
+            <dt>Term</dt>
+            <dd>ToolUseEvent</dd>
             <dt>IRI</dt>
             <dd><a href="https://purl.imsglobal.org/caliper/ToolUseEvent">https://purl.imsglobal.org/caliper/ToolUseEvent</a>
             </dd>
@@ -242,9 +225,11 @@
             </tr>
             <tr>
                 <td>generated</td>
-                <td><a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> | <a href="#iriDef">IRI</a>
+                <td><a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> | <a
+                        href="#iriDef">IRI</a>
                 </td>
-                <td>An <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> created or generated as a
+                <td>An <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> created or generated
+                    as a
                     result of the interaction. The <code>generated</code> value MUST be expressed either as an object or
                     as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.
                 </td>
@@ -266,6 +251,8 @@
         that the application determines to be its intended use for learning.
 
         <dl>
+            <dt>Term</dt>
+            <dd>Used</dd>
             <dt>IRI</dt>
             <dd>https://purl.imsglobal.org/caliper/actions/Used</dd>
             <dt>WordNet&reg; Gloss</dt>
@@ -284,13 +271,15 @@
             spent on a learning tool over a period of time.</p>
 
         <dl>
+            <dt>Term</dt>
+            <dd>AggregateMeasure</dd>
             <dt>IRI</dt>
             <dd><a href="http://purl.imsglobal.org/caliper/aggregateMeasure">
                 http://purl.imsglobal.org/caliper/aggregateMeasure</a>
             </dd>
             <dt>Supertype</dt>
             <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
             >Event</a></dd>
             <dt>Properties</dt>
             <dd><code>AggregateMeasure</code> inherits all the properties and requirements defined for its
@@ -368,13 +357,15 @@
             collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities.</p>
 
         <dl>
+            <dt>Term</dt>
+            <dd>AggregateMeasureCollection</dd>
             <dt>IRI</dt>
             <dd><a href=
-                           "http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
+               "http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
             </dd>
             <dt>Supertype</dt>
             <dd><a href=
-                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
             >Event</a></dd>
             <dt>Properties</dt>
             <dd><code>AggregateMeasureCollection</code> inherits all the properties and requirements defined for its
@@ -405,7 +396,8 @@
             <tr>
                 <td>items</td>
                 <td>Array</td>
-                <td>An ordered collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities. Each array item
+                <td>An ordered collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities. Each
+                    array item
                     MUST be expressed either as an object or as a string corresponding to the item’s <a href="#iriDef">IRI</a>.
                 </td>
                 <td>Optional</td>
@@ -524,9 +516,8 @@
 
     <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
         provides a remote Tool Use Profile JSON-LD <a href=
-                                                              "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a>
-        for mapping
-        <code>ToolUseEvent</code> terms to IRIs. Caliper message producers MUST reference this
+        "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a>
+        for mapping <code>ToolUseEvent</code> terms to IRIs. Caliper message producers MUST reference this
         context in every Caliper 1.1 <code>ToolUseEvent</code> and/or <code>Query</code> describe created
         and serialized for transmission to a target endpoint.</p>
 
@@ -543,8 +534,10 @@
     </figure>
 
     <section class="informative">
-        <h2>Tool Use Profile JSON-LD Examples</h2>
-        <p>Below is an example of a Caliper <a href="#event-tooluse">ToolUseEvent</a> expressed as JSON-LD.</p>
+        <h3>ToolUseEvent (action=<em>Used</em>)</h3>
+        <p>Below is an example of a Caliper <a href="#event-tooluse">ToolUseEvent</a> expressed as JSON-LD that
+            includes a representation of an <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a>.
+        </p>
 
         <figure class="example">
             <figcaption><code>ToolUseEvent</code> JSON-LD</figcaption>
@@ -611,12 +604,16 @@
 }</code></pre>
         </figure>
 
-    <p>Below is an example of a <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity describe that can also
-        be sent to an endpoint.</p>
+    </section>
 
-    <figure class="example">
-        <figcaption><code>Query</code> describe JSON-LD</figcaption>
-        <pre><code>
+    <section class="informative">
+        <h3>AggregateMeasure Describe</h3>
+        <p>Below is an example of a <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity describe that can
+            also be sent to an endpoint.</p>
+
+        <figure class="example">
+            <figcaption><code>Query</code> describe JSON-LD</figcaption>
+            <pre><code>
 {
   "@context":"http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
   "id":"urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d933",
@@ -631,12 +628,16 @@
 }</code></pre>
         </figure>
 
-    <p>Below is an example of a  <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> entity
-        describe that can also be sent to an endpoint.</p>
+    </section>
 
-    <figure class="example">
-        <figcaption><code>Query</code> describe JSON-LD</figcaption>
-        <pre><code>
+    <section class="informative">
+        <h3>AggregateMeasureCollection Describe</h3>
+        <p>Below is an example of a <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> entity
+            describe that can also be sent to an endpoint.</p>
+
+        <figure class="example">
+            <figcaption><code>Query</code> describe JSON-LD</figcaption>
+            <pre><code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
   "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
