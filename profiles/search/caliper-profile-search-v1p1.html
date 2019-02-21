@@ -442,7 +442,7 @@
 </section>
 
 <section id="jsonld">
-    <h2>Representing Caliper as JSON-LD</h2>
+    <h2>Expressing Caliper as JSON-LD</h2>
 
     <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
         provides a remote Search Profile JSON-LD <a href=
@@ -463,13 +463,13 @@
     </figure>
 
     <section class="informative">
-        <h2>SearchEvent (action=Searched)</h2>
+        <h2>Example: Application Searched</h2>
 
-        <p>Below is an example of a Caliper <a href="#event-search">SearchEvent</a> expressed as JSON-LD. The
-            <a href="#event-search">SearchEvent</a> records a <code>Person</code> searching a
-            <code>SoftwareApplication</code>. The <a href="#event-search">SearchEvent</a> is further enriched by
-            inclusion of the generated <a href="#entity-searchresponse">SearchResponse</a> which references both
-            the search criteria employed and the search results returned.</p>
+        <p>Below is an example of a Caliper <a href="#event-search">SearchEvent</a> that records a
+            <code>Person</code> searching a <code>SoftwareApplication</code>. The
+            <a href="#event-search">SearchEvent</a> is further enriched by inclusion of the generated
+            <a href="#entity-searchresponse">SearchResponse</a> which references both the search criteria
+            employed and the search results returned.</p>
 
         <figure class="example">
             <figcaption><code>SearchEvent</code> JSON-LD</figcaption>

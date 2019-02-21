@@ -308,8 +308,8 @@
 
     <section id="action-launched">
         <h3>Launched</h3>
-        Utilize the <em>Launched</em> action when a system commences a workflow sending an <code>actor</code> from its
-        own domain out to an external system.
+        The <em>Launched</em> action signals that a system has commenced a workflow that sends an <code>actor</code>
+        from its own domain out to an external system.
 
         <dl>
             <dt>Term</dt>
@@ -324,8 +324,8 @@
 
     <section id="action-returned">
         <h3>Returned</h3>
-        Utilize the <em>Returned</em> action when the workflow that started with the <em>Launched</em> action gets
-        finished when the external tool redirects the user back to the launching system.
+        The <em>Returned</em> action signals that the workflow that started with the <em>Launched</em> action gets
+        completed when the external tool redirects the user back to the launching system.
 
         <dl>
             <dt>Term</dt>
@@ -488,7 +488,7 @@
 </section>
 
 <section id="jsonld">
-    <h2 id="json-ld">Representing Caliper as JSON-LD</h2>
+    <h2 id="json-ld">Expressing Caliper as JSON-LD</h2>
     <p>Individual Caliper events and entity describes are serialized as JSON-LD.
         IMS Global provides a remote ToolLaunch Profile JSON-LD
         <a href="http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension">context</a>
@@ -674,7 +674,7 @@
         <h3>ToolLaunchEvent (action=<em>Returned</em>)</h3>
         <p>Below is an example of a full JSON-LD payload for a Tool Launch event
             using the <em>Returned</em> action, representing the closure of
-            an LTI workflow that started with a Resource Link Launch Request.
+            an LTI workflow that started with a resource link launch request.
         </p>
         <p>
             The <a>Platform</a> is still represented by the <code>edApp</code>
