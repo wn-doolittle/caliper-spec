@@ -153,6 +153,7 @@
     "selectionText": {"@id": "caliper:selectionText", "@type": "xsd:string"},
     "start": {"@id": "caliper:start", "@type": "xsd:nonNegativeInteger"},
     "startedAtTime": {"@id": "caliper:startedAtTime", "@type": "xsd:dateTime"},
+    "storageName": {"@id": "caliper:storageName", "@type": "xsd:string"},
     "value": {"@id": "caliper:value", "@type": "xsd:string"},
     "version": {"@id": "caliper:version", "@type": "xsd:string"},
     "volumeLevel": {"@id": "caliper:volumeLevel", "@type": "xsd:string"},
