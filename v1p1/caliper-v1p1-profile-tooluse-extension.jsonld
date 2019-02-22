@@ -1,0 +1,23 @@
+{
+  "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", {
+
+    "AggregateMeasure": "caliper:AggregateMeasure",
+
+    "metric": {"@id": "caliper:metric", "@type": "@vocab"},
+    "progressValue": {"@id": "caliper:progressValue", "@type": "xsd:decimal"},
+
+    "ActivitiesCompleted": "caliper:ActivitiesCompleted",
+    "ActivitiesPassed": "caliper:ActivitiesPassed",
+    "AssessmentsCompleted": "caliper:AssessmentsCompleted",
+    "AssessmentsPassed": "caliper:AssessmentsPassed",
+    "DocumentsRead": "caliper:DocumentsRead",
+    "LessonsCompleted": "caliper:LessonsCompleted",
+    "LessonsPased": "caliper:LessonsPassed",
+    "MinutesOnTask": "caliper:MinutesOnTask",
+    "StandardsMastered": "caliper:StandardsMastered",
+    "UnitsCompleted": "caliper:UnitsCompleted",
+    "UnitsPassed": "caliper:UnitsPassed",
+    "WordsRead": "caliper:WordsRead",
+    "WordsWritten": "caliper:WordsWritten"
+  }]
+}
