@@ -42,10 +42,6 @@
     <section class="informative">
         <h3>Design Goals and Rationale</h3>
 
-        <aside class="issue">Restrict <code>object</code> of the interaction to <code>DigitalResource</code> rather
-            than <code>Entity</code>?
-        </aside>
-
         <img height="100%" width="100%" src="./assets/caliper-profile_resource_management.png"
              alt="Resource Management Profile"/>
 
@@ -155,7 +151,7 @@
                            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
             >Event</a></dd>
             <dt>Properties</dt>
-            <dd><code>ResourceManagementEvent</code> inherits all properties defined by its supertype
+            <dd>The <code>ResourceManagementEvent</code> inherits all properties defined by its supertype
                 <a href=
                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
                 >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
@@ -435,7 +431,7 @@
     </figure>
 
     <section class="informative">
-        <h2>Example: Resource Created</h2>
+        <h2>Created ResourceManagementEvent</h2>
 
         <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
             records a <code>Person</code> creating a <code>DigitalResource</code>.</p>
@@ -500,7 +496,7 @@
     </section>
 
     <section class="informative">
-        <h2>Example: Resource Copied</h2>
+        <h2>Copied ResourceManagementEvent</h2>
 
         <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
             records a <code>Person</code> generating a new copy of a <code>DigitalResource</code>.
