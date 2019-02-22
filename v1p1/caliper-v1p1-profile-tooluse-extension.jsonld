@@ -5,6 +5,7 @@
 
     "metric": {"@id": "caliper:metric", "@type": "@vocab"},
     "progressValue": {"@id": "caliper:progressValue", "@type": "xsd:decimal"},
+    "progressValueMax": {"@id": "caliper:progressValueMax", "@type": "xsd:decimal"},
 
     "ActivitiesCompleted": "caliper:ActivitiesCompleted",
     "ActivitiesPassed": "caliper:ActivitiesPassed",
