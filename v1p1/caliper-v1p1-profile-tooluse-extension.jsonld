@@ -4,8 +4,8 @@
     "AggregateMeasure": "caliper:AggregateMeasure",
 
     "metric": {"@id": "caliper:metric", "@type": "@vocab"},
-    "progressValue": {"@id": "caliper:progressValue", "@type": "xsd:decimal"},
-    "progressValueMax": {"@id": "caliper:progressValueMax", "@type": "xsd:decimal"},
+    "metricValue": {"@id": "caliper:metricValue", "@type": "xsd:decimal"},
+    "metricValueMax": {"@id": "caliper:metricValueMax", "@type": "xsd:decimal"},
 
     "ActivitiesCompleted": "caliper:ActivitiesCompleted",
     "ActivitiesPassed": "caliper:ActivitiesPassed",
