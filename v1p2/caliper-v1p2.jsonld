@@ -139,6 +139,7 @@
     "eventTime": {"@id": "caliper:eventTime", "@type": "xsd:dateTime"},
     "index": {"@id": "caliper:index", "@type": "xsd:long"},
     "isTimeDependent": {"@id": "caliper:isTimeDependent", "@type": "xsd:boolean"},
+    "lisSourcedId": {"@id": "caliper:lisSourcedId", "@type": "xsd:string"},
     "maxAttempts": {"@id": "caliper:maxAttempts", "@type": "xsd:nonNegativeInteger"},
     "maxResultScore": {"@id": "caliper:maxResultScore", "@type": "xsd:decimal"},
     "maxScore": {"@id": "caliper:maxScore", "@type": "xsd:decimal"},
