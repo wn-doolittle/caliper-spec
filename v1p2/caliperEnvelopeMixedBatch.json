@@ -8,7 +8,8 @@
       "id": "https://example.edu/users/554433",
       "type": "Person",
       "dateCreated": "2016-08-01T06:00:00.000Z",
-      "dateModified": "2016-09-02T11:30:00.000Z"
+      "dateModified": "2016-09-02T11:30:00.000Z",
+      "lisSourcedId": "example.edu:71ee7e42-f6d2-414a-80db-b69ac2defd4"
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
@@ -54,6 +55,7 @@
       "academicSession": "Fall 2016",
       "courseNumber": "CPS 435-01",
       "name": "CPS 435 Learning Analytics, Section 01",
+      "lisSourcedId": "example.edu:SI182-001-F16",
       "category": "seminar",
       "subOrganizationOf": {
         "id": "https://example.edu/terms/201601/courses/7",
