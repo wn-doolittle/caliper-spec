@@ -1,0 +1,9 @@
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+    "id": "https://example.edu/scale/2",
+    "type": "LikertScale",
+    "points": 4,
+    "question": "Do you agree with the opinion presented?",
+    "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+    "itemValues": [-2, -1, 1, 2]
+}

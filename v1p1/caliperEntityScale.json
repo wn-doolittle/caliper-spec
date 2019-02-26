@@ -1,0 +1,7 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/1",
+  "type": "Scale",
+  "question": "How would you rate this?",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}
