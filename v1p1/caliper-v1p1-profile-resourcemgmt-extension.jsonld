@@ -4,8 +4,12 @@
 
     "Archived": "caliper:actions/Archived",
     "Copied": "caliper:actions/Copied",
+    "Downloaded": "caliper:actions/Downloaded",
+    "Printed": "caliper:actions/Printed",
     "Published": "caliper:actions/Published",
     "Restored": "caliper:actions/Restored",
-    "Unpublished": "caliper:actions/Unpublished"
+    "Saved": "caliper:actions/Saved",
+    "Unpublished": "caliper:actions/Unpublished",
+    "Uploaded": "caliper:actions/Uploaded"
   }]
 }
