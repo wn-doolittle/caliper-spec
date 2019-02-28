@@ -29,28 +29,6 @@
     },
     "dateCreated": "2018-08-02T11:32:00.000Z"
   },
-  "generated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus_copy.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus (copy)",
-    "mediaType": "application/pdf",
-    "creators": [
-      {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      }
-    ],
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-11-15T10:05:00.000Z"
-  },
   "eventTime": "2018-11-15T10:05:00.000Z",
   "edApp": "https://example.edu",
   "group": {
