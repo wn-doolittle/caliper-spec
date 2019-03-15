@@ -47,7 +47,7 @@
     "points": {"@id": "caliper:points", "type": "xsd:integer"},
     "question": {"@id": "caliper:question", "type": "xsd:string"},
     "searchResultsItemCount": {"@id": "caliper:searchResultsItemCount", "@type": "xsd:nonNegativeInteger"},
-    "searchTerms": {"@id": "caliper:searchTerms", "@type": "xsd:string"}
+    "searchTerms": {"@id": "caliper:searchTerms", "@type": "xsd:string"},
     "step": {"@id": "caliper:step", "type": "xsd:decimal"},
 
     "Archived": "caliper:actions/Archived",
@@ -57,15 +57,15 @@
     "Launched": "caliper:actions/Launched",
     "Printed": "caliper:actions/Printed",
     "Published": "caliper:actions/Published",
-    "Ranked": "caliper:actions/Ranked"
+    "Ranked": "caliper:actions/Ranked",
     "Restored": "caliper:actions/Restored",
     "Returned": "caliper:actions/Returned",
     "Saved": "caliper:actions/Saved",
     "Unpublished": "caliper:actions/Unpublished",
-    "Uploaded": "caliper:actions/Uploaded"
+    "Uploaded": "caliper:actions/Uploaded",
 
     "LtiDeepLinkingRequest": "caliper:lti/LtiDeepLinkingRequest",
-    "LtiResourceLinkRequest": "caliper:lti/LtiResourceLinkRequest"
+    "LtiResourceLinkRequest": "caliper:lti/LtiResourceLinkRequest",
 
     "AssessmentsSubmitted": "caliper:metrics/AssessmentsSubmitted",
     "AssessmentsPassed": "caliper:metrics/AssessmentsPassed",
