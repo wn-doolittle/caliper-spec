@@ -521,7 +521,7 @@
             <dt>Properties</dt>
             <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>, of which
                 <code>id</code>, and <code>type</code> are required. <code>LikertScale</code> is also provisioned
-                with three additional properties <code>points</code>, <code>itemLabels</code>, and
+                with three additional properties <code>scalePoints</code>, <code>itemLabels</code>, and
                 <code>itemValues</code>. Profile-specific type restrictions are described below:
             </dd>
         </dl>
@@ -545,7 +545,7 @@
                 <td>Required</td>
             </tr>
             <tr>
-                <td>points</td>
+                <td>scalePoints</td>
                 <td>integer</td>
                 <td>A integer value used to determine the amount of points on the <code>LikertScale</code>.</td>
                 <td>Optional</td>
@@ -579,7 +579,7 @@
             <dt>Properties</dt>
             <dd><code>MultiselectScale</code> inherits all properties defined by its supertype <code>Scale</code>,
                 of which<code>id</code>, and <code>type</code> are required. <code>MultiselectScale</code> is also
-                provisioned with six additional properties <code>points</code>, <code>itemLabels</code>,
+                provisioned with six additional properties <code>scalePoints</code>, <code>itemLabels</code>,
                 <code>itemValues</code>, <code>orderedSelection</code>, <code>minSelections</code>, and
                 <code>maxSelections</code>. Profile-specific type restrictions are described below:
             </dd>
@@ -604,7 +604,7 @@
                 <td>Required</td>
             </tr>
             <tr>
-                <td>points</td>
+                <td>scalePoints</td>
                 <td>integer</td>
                 <td>A integer value used to determine the amount of points on the <code>MultiselectScale</code>.</td>
                 <td>Optional</td>
@@ -884,7 +884,7 @@
     "scale": {
       "id": "https://example.edu/scale/2",
       "type": "LikertScale",
-      "points": 4,
+      "scalePoints": 4,
       "question": "Do you agree with the opinion presented?",
       "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
       "itemValues": [-2, -1, 1, 2],
@@ -998,7 +998,7 @@
   "id": "https://example.edu/scale/2",
   "type": "LikertScale",
   "question": "Do you agree with the opinion presented?",
-  "points": 4,
+  "scalePoints": 4,
   "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
   "itemValues": [-2, -1, 1, 2],
   "dateCreated": "2018-08-01T06:00:00.000Z"
@@ -1020,7 +1020,7 @@
   "id": "https://example.edu/scale/3",
   "type": "MultiselectScale",
   "question": "How do you feel about this content? (select one or more)",
-  "points": 5,
+  "scalePoints": 5,
   "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
   "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
   "orderedSelection": false,
@@ -1091,7 +1091,7 @@
   "scale": {
     "id": "https://example.edu/scale/2",
     "type": "LikertScale",
-    "points": 4,
+    "scalePoints": 4,
     "question": "Do you agree with the opinion presented?",
     "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
     "itemValues": [-2, -1, 1, 2]
@@ -1159,7 +1159,7 @@
     "id": "https://example.edu/scale/3",
     "type": "MultiselectScale",
     "question": "How do you feel about this content? (select one or more)",
-    "points": 5,
+    "scalePoints": 5,
     "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
     "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
     "orderedSelection": false,
