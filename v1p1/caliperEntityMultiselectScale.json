@@ -3,7 +3,7 @@
     "id": "https://example.edu/scale/3",
     "type": "MultiselectScale",
     "question": "How do you feel about this content? (select one or more)",
-    "points": 5,
+    "scalePoints": 5,
     "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
     "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
     "isOrderedSelection": false,
