@@ -6,7 +6,7 @@
     "points": 5,
     "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
     "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-    "orderedSelection": false,
+    "isOrderedSelection": false,
     "minSelections": 1,
     "maxSelections": 5,
     "dateCreated": "2018-08-01T06:00:00.000Z"
