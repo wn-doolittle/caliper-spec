@@ -521,7 +521,7 @@
             <dt>Properties</dt>
             <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>, of which
                 <code>id</code>, and <code>type</code> are required. <code>LikertScale</code> is also provisioned
-                with three additional properties <code>points</code>, <code>itemLabels</code>, and
+                with three additional properties <code>scalePoints</code>, <code>itemLabels</code>, and
                 <code>itemValues</code>. Profile-specific type restrictions are described below:
             </dd>
         </dl>
@@ -545,7 +545,7 @@
                 <td>Required</td>
             </tr>
             <tr>
-                <td>points</td>
+                <td>scalePoints</td>
                 <td>integer</td>
                 <td>A integer value used to determine the amount of points on the <code>LikertScale</code>.</td>
                 <td>Optional</td>
@@ -553,13 +553,13 @@
             <tr>
                 <td>itemLabels</td>
                 <td>Array [{key:value}] | Array [value]</td>
-                <td>The ordered list of labels for each point on the likert scale.</td>
+                <td>The ordered list of labels for each point on the Likert scale.</td>
                 <td>Optional</td>
             </tr>
             <tr>
                 <td>itemValues</td>
                 <td>Array [{key:value}] | Array [value]</td>
-                <td>The ordered list of values for each point on the likert scale.</td>
+                <td>The ordered list of values for each point on the Likert scale.</td>
                 <td>Optional</td>
             </tr>
             </tbody>
@@ -579,8 +579,8 @@
             <dt>Properties</dt>
             <dd><code>MultiselectScale</code> inherits all properties defined by its supertype <code>Scale</code>,
                 of which<code>id</code>, and <code>type</code> are required. <code>MultiselectScale</code> is also
-                provisioned with six additional properties <code>points</code>, <code>itemLabels</code>,
-                <code>itemValues</code>, <code>orderedSelection</code>, <code>minSelections</code>, and
+                provisioned with six additional properties <code>scalePoints</code>, <code>itemLabels</code>,
+                <code>itemValues</code>, <code>isOrderedSelection</code>, <code>minSelections</code>, and
                 <code>maxSelections</code>. Profile-specific type restrictions are described below:
             </dd>
         </dl>
@@ -604,7 +604,7 @@
                 <td>Required</td>
             </tr>
             <tr>
-                <td>points</td>
+                <td>scalePoints</td>
                 <td>integer</td>
                 <td>A integer value used to determine the amount of points on the <code>MultiselectScale</code>.</td>
                 <td>Optional</td>
@@ -622,7 +622,7 @@
                 <td>Optional</td>
             </tr>
             <tr>
-                <td>orderedSelection</td>
+                <td>isOrderedSelection</td>
                 <td>boolean</td>
                 <td>Indicates whether the order of the selected items is important.</td>
                 <td>Optional</td>
@@ -884,7 +884,7 @@
     "scale": {
       "id": "https://example.edu/scale/2",
       "type": "LikertScale",
-      "points": 4,
+      "scalePoints": 4,
       "question": "Do you agree with the opinion presented?",
       "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
       "itemValues": [-2, -1, 1, 2],
@@ -989,7 +989,9 @@
 
         <p>Below is an example of a <a href="#entity-likert-scale">LikertScale</a> entity describe that
             can also be sent to an endpoint. The <a href="#entity-likert-scale">LikertScale</a>
-            references the question, points, item labels, and item values.</p>
+            references the <code>question</code>, <code>scalePoints</code>, <code>itemLabels</code>,
+            and <code>itemValues</code>.
+        </p>
 
         <figure class="example">
             <figcaption><code>LikertScale</code> describe JSON-LD</figcaption>
@@ -998,7 +1000,7 @@
   "id": "https://example.edu/scale/2",
   "type": "LikertScale",
   "question": "Do you agree with the opinion presented?",
-  "points": 4,
+  "scalePoints": 4,
   "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
   "itemValues": [-2, -1, 1, 2],
   "dateCreated": "2018-08-01T06:00:00.000Z"
@@ -1011,7 +1013,8 @@
 
         <p>Below is an example of a <a href="#entity-multiselect-scale">MultiselectScale</a> entity describe that
             can also be sent to an endpoint. The <a href="#entity-multiselect-scale">MultiselectScale</a>
-            references the question, item labels, item values, ordering (if any), and selection range.</p>
+            references the <code>question</code>, <code>itemLabels</code>, <code>itemValues</code>, ordering (if any),
+            and selection range.</p>
 
         <figure class="example">
             <figcaption><code>MultiselectScale</code> describe JSON-LD</figcaption>
@@ -1020,10 +1023,10 @@
   "id": "https://example.edu/scale/3",
   "type": "MultiselectScale",
   "question": "How do you feel about this content? (select one or more)",
-  "points": 5,
+  "scalePoints": 5,
   "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
   "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-  "orderedSelection": false,
+  "isOrderedSelection": false,
   "minSelections": 1,
   "maxSelections": 5,
   "dateCreated": "2018-08-01T06:00:00.000Z"
@@ -1091,7 +1094,7 @@
   "scale": {
     "id": "https://example.edu/scale/2",
     "type": "LikertScale",
-    "points": 4,
+    "scalePoints": 4,
     "question": "Do you agree with the opinion presented?",
     "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
     "itemValues": [-2, -1, 1, 2]
@@ -1159,10 +1162,10 @@
     "id": "https://example.edu/scale/3",
     "type": "MultiselectScale",
     "question": "How do you feel about this content? (select one or more)",
-    "points": 5,
+    "scalePoints": 5,
     "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
     "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-    "orderedSelection": false,
+    "isOrderedSelection": false,
     "minSelections": 1,
     "maxSelections": 5,
     "dateCreated": "2018-08-01T06:00:00.000Z"
