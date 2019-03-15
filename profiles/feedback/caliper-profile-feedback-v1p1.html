@@ -580,7 +580,7 @@
             <dd><code>MultiselectScale</code> inherits all properties defined by its supertype <code>Scale</code>,
                 of which<code>id</code>, and <code>type</code> are required. <code>MultiselectScale</code> is also
                 provisioned with six additional properties <code>scalePoints</code>, <code>itemLabels</code>,
-                <code>itemValues</code>, <code>orderedSelection</code>, <code>minSelections</code>, and
+                <code>itemValues</code>, <code>isOrderedSelection</code>, <code>minSelections</code>, and
                 <code>maxSelections</code>. Profile-specific type restrictions are described below:
             </dd>
         </dl>
@@ -622,7 +622,7 @@
                 <td>Optional</td>
             </tr>
             <tr>
-                <td>orderedSelection</td>
+                <td>isOrderedSelection</td>
                 <td>boolean</td>
                 <td>Indicates whether the order of the selected items is important.</td>
                 <td>Optional</td>
@@ -1023,7 +1023,7 @@
   "scalePoints": 5,
   "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
   "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-  "orderedSelection": false,
+  "isOrderedSelection": false,
   "minSelections": 1,
   "maxSelections": 5,
   "dateCreated": "2018-08-01T06:00:00.000Z"
@@ -1162,7 +1162,7 @@
     "scalePoints": 5,
     "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
     "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-    "orderedSelection": false,
+    "isOrderedSelection": false,
     "minSelections": 1,
     "maxSelections": 5,
     "dateCreated": "2018-08-01T06:00:00.000Z"
