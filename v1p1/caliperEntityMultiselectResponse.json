@@ -1,0 +1,13 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/5/users/554433/responses/5",
+  "type": "MultiselectResponse",
+  "selections": [
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/1",
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/2"
+  ],
+  "startedAtTime": "2018-08-01T05:55:48.000Z",
+  "endedAtTime": "2018-08-01T06:00:00.000Z",
+  "duration": "PT4M12S",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}

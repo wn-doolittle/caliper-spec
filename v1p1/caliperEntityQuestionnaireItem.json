@@ -1,0 +1,19 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
+  "type": "QuestionnaireItem",
+  "question": {
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/1/question",
+    "type": "RatingScaleQuestion",
+    "questionPosed": "How satisfied are you with our services?",
+    "scale": {
+      "id": "https://example.edu/scale/2",
+      "type": "LikertScale",
+      "scalePoints": 4,
+      "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+      "itemValues": [-2, -1, 1, 2]
+    }
+  },
+  "categories": ["teaching effectiveness", "Course structure"],
+  "weight": 1.0
+}

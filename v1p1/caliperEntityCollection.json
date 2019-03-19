@@ -1,0 +1,23 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/collections/1",
+  "type": "Collection",
+  "items": [
+    {
+      "id": "https://example.edu/videos/1225",
+      "type": "VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Introduction to IMS Caliper",
+      "dateCreated": "2018-08-01T06:00:00.000Z",
+      "duration": "PT1H12M27S",
+      "version": "1.1"
+    },
+    {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/554433/responses/1",
+      "type": "Response",
+      "dateCreated": "2018-11-15T10:15:46.000Z",
+      "startedAtTime": "2018-11-15T10:15:46.000Z",
+      "endedAtTime": "2018-11-15T10:17:20.000Z"
+    }
+  ]
+}
