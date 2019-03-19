@@ -1,0 +1,6 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/question/1",
+  "type": "Question",
+  "questionPosed": "How would you rate this?"
+}

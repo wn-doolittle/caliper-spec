@@ -1,0 +1,14 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/question/2",
+  "type": "RatingScaleQuestion",
+  "questionPosed": "Do you agree with the opinion presented?",
+  "scale": {
+    "id": "https://example.edu/scale/2",
+    "type": "LikertScale",
+    "scalePoints": 4,
+    "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+    "itemValues": [-2, -1, 1, 2],
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  }
+}

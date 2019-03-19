@@ -2,7 +2,6 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
   "id": "https://example.edu/scale/4",
   "type": "NumericScale",
-  "question": "How do you feel about this content?",
   "minValue": 0.0,
   "minLabel": "Disliked",
   "maxValue": 10.0,
