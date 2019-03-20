@@ -10,15 +10,18 @@
     },
     {
       "type": "SystemIdentifier",
-      "identifier": "jane@example.edu",
-      "identifierType": "EmailAddress",
-      "source": "https://example.edu"
+      "identifier": "https://example.edu/users/554433",
+      "identifierType": "LtiUserId",
+      "source":  {
+        "id": "https://example.edu",
+        "type": "SoftwareApplication"
+      }
     },
     {
       "type": "SystemIdentifier",
-      "identifier": "https://example.edu/users/554433",
-      "identifierType": "LtiUserId",
-      "source": "07940580-b309-415e-a37c-914d387c1150"
+      "identifier": "jane@example.edu",
+      "identifierType": "EmailAddress",
+      "source": "https://example.edu"
     }
   ],
   "dateCreated": "2016-08-01T06:00:00.000Z",
