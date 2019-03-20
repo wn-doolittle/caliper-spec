@@ -19,13 +19,16 @@
     "RatingScaleQuestion": "caliper:RatingScaleQuestion",
     "SearchResponse": "caliper:SearchResponse",
     "Scale": "caliper:Scale",
+    "SystemIdentifier": "caliper:SystemIdentifier",
 
     "creator": {"@id": "caliper:creator", "@type": "@id"},
     "commentedOn": {"@id": "caliper:commentedOn", "type": "@id"},
     "commenter": {"@id": "caliper:commenter", "type": "@id"},
+    "identifierType": {"@id": "caliper:identifierType", "@type": "@vocab"},
     "itemLabels": {"@id": "caliper:itemLabels", "@type": "@id", "@container": "@list"},
     "itemValues": {"@id": "caliper:itemValues", "@type": "@id", "@container": "@list"},
     "messageType": {"@id": "caliper:messageType", "@type": "@vocab"},
+    "otherIdentifiers": {"@id": "caliper:otherIdentifiers", "@type": "@id", "@container": "@list"},
     "query": {"@id": "caliper:query", "@type": "@id"},
     "question": {"@id": "caliper:question", "type": "@id"},
     "rater": {"@id": "caliper:rater", "type": "@id"},
@@ -36,7 +39,9 @@
     "searchResults": {"@id": "caliper:searchResults", "@type": "@id", "@container": "@list"},
     "searchTarget": {"@id": "caliper:searchTarget", "@type": "@id"},
     "selections": {"@id": "caliper:selections", "@type": "@id", "@container": "@list"},
+    "source": {"@id": "caliper:source", "@type": "@id"},
 
+    "identifier": {"@id": "caliper:identifier", "@type": "xsd:string"},
     "isOrderedSelection": {"@id": "caliper:isOrderedSelection", "type": "xsd:boolean"},
     "maxLabel": {"@id": "caliper:maxLabel", "type": "xsd:string"},
     "maxMetricValue": {"@id": "caliper:maxMetricValue", "@type": "xsd:decimal"},
@@ -77,6 +82,19 @@
     "StandardsMastered": "caliper:metrics/StandardsMastered",
     "UnitsCompleted": "caliper:metrics/UnitsCompleted",
     "UnitsPassed": "caliper:metrics/UnitsPassed",
-    "WordsRead": "caliper:metrics/WordsRead"
+    "WordsRead": "caliper:metrics/WordsRead",
+    
+    "AccountUserName": "caliper:systemIdentifiers/AccountUserName",
+    "EmailAddress": "caliper:systemIdentifiers/EmailAddress",
+    "LisSourcedId": "caliper:systemIdentifiers/LisSourcedId",
+    "LtiContextId": "caliper:systemIdentifiers/LtiContextId",
+    "LtiDeploymentId": "caliper:systemIdentifiers/LtiDeploymentId",
+    "LtiPlatformId": "caliper:systemIdentifiers/LtiPlatformId",
+    "LtiToolId": "caliper:systemIdentifiers/LtiToolId",
+    "LtiUserId": "caliper:systemIdentifiers/LtiUserId",
+    "OneRosterSourcedId": "caliper:systemIdentifiers/OneRosterSourcedId",
+    "Other": "caliper:systemIdentifiers/Other",
+    "SisSourcedId": "caliper:systemIdentifiers/SisSourcedId",
+    "SystemId": "caliper:systemIdentifiers/SystemId"
   }]
 }
