@@ -22,15 +22,15 @@
     "scale": {"@id": "caliper:scale", "type": "@id"},
     "selections": {"@id": "caliper:selections", "@type": "@id", "@container": "@list"},
 
+    "isOrderedSelection": {"@id": "caliper:isOrderedSelection", "type": "xsd:boolean"},
     "maxLabel": {"@id": "caliper:maxLabel", "type": "xsd:string"},
     "maxSelections": {"@id": "caliper:maxSelections", "type": "xsd:integer"},
     "maxValue": {"@id": "caliper:maxValue", "type": "xsd:decimal"},
     "minLabel": {"@id": "caliper:minLabel", "type": "xsd:string"},
     "minSelections": {"@id": "caliper:minSelections", "type": "xsd:integer"},
     "minValue": {"@id": "caliper:minValue", "type": "xsd:decimal"},
-    "isOrderedSelection": {"@id": "caliper:isOrderedSelection", "type": "xsd:boolean"},
-    "scalePoints": {"@id": "caliper:scalePoints", "type": "xsd:integer"},
     "questionPosed": {"@id": "caliper:questionPosed", "type": "xsd:string"},
+    "scalePoints": {"@id": "caliper:scalePoints", "type": "xsd:integer"},
     "step": {"@id": "caliper:step", "type": "xsd:decimal"},
 
     "Commented": "caliper:actions/Commented",
