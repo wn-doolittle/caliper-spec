@@ -2,6 +2,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
   "type": "ToolLaunchEvent",
+  "profile": "ToolLaunchProfile",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"

@@ -95,6 +95,7 @@
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
       "type": "AssessmentEvent",
+      "profile": "AssessmentProfile",
       "actor": "https://example.edu/users/554433",
       "action": "Started",
       "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
@@ -129,6 +130,7 @@
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
       "type": "AssessmentEvent",
+      "profile": "AssessmentProfile",
       "actor": "https://example.edu/users/554433",
       "action": "Submitted",
       "object": "https://example.edu/terms/201601/courses/7/sections/1/assess/1?ver=v1p0",
@@ -165,6 +167,7 @@
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
       "type": "GradeEvent",
+      "profile": "GradingProfile",
       "actor": {
         "id": "https://example.edu/autograder",
         "type": "SoftwareApplication",

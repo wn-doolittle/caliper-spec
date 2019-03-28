@@ -2,6 +2,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:0d015a85-abf5-49ee-abb1-46dbd57fe64e",
   "type": "MessageEvent",
+  "profile": "ForumProfile",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
