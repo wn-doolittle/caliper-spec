@@ -7,6 +7,7 @@
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
       "type": "AssessmentEvent",
+      "profile": "AssessmentProfile",
       "actor": {
         "id": "https://example.edu/users/554433",
         "type": "Person"
