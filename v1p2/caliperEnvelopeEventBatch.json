@@ -108,7 +108,7 @@
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "type": "ViewEvent",
       "id": "urn:uuid:94bad4bd-a7b1-4c3e-ade4-2253efe65172",
-      "profile": "GeneralProfile",
+      "profile": "ReadingProfile",
       "actor": {
         "id": "https://example.edu/users/554433",
         "type": "Person"
