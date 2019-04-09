@@ -736,7 +736,7 @@
             <dt>Supertype</dt>
             <dd><a href="#entity-scale">Scale</a></dd>
             <dt>Properties</dt>
-            <dd><code>NumericScale</code> inherits all properties defined by its supertype <code>NumericScale</code>,
+            <dd><code>NumericScale</code> inherits all properties defined by its supertype <code>Scale</code>,
                 of which<code>id</code>, and <code>type</code> are required. <code>NumericScale</code> is also
                 provisioned with five additional properties <code>minValue</code>, <code>minLabel</code>,
                 <code>maxValue</code>, <code>maxLabel</code>, and <code>valueStep</code>. Profile-specific type
@@ -1081,10 +1081,10 @@
         <figure class="example">
             <figcaption><code>Question</code> describe JSON-LD</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
   "id": "https://example.edu/question/1",
   "type": "Question",
-  "questionPosed": "How would you rate this?",
+  "questionPosed": "How would you rate this?"
 }</code></pre>
         </figure>
     </section>
@@ -1095,7 +1095,7 @@
         <figure class="example">
             <figcaption><code>RatingScaleQuestion</code> describe JSON-LD</figcaption>
 <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
   "id": "https://example.edu/question/2",
   "type": "RatingScaleQuestion",
   "questionPosed": "Do you agree with the opinion presented?",
@@ -1107,6 +1107,24 @@
     "itemValues": [-2, -1, 1, 2],
     "dateCreated": "2018-08-01T06:00:00.000Z"
   }
+}</code></pre>
+        </figure>
+    </section>
+
+
+    <section class="informative">
+        <h2>Scale Describe</h2>
+
+        <p>Below is an example of a <a href="#entity-scale">Scale</a> entity describe that
+            can also be sent to an endpoint.</p>
+
+        <figure class="example">
+            <figcaption><code>Scale</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/1",
+  "type": "Scale",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
         </figure>
     </section>
@@ -1127,8 +1145,7 @@
   "type": "LikertScale",
   "scalePoints": 4,
   "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-  "itemValues": [-2, -1, 1, 2],
-  "dateCreated": "2018-08-01T06:00:00.000Z"
+  "itemValues": [-2, -1, 1, 2]
 }</code></pre>
         </figure>
     </section>
