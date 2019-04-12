@@ -22,13 +22,17 @@
     },
     "dateCreated": "2018-08-02T11:32:00.000Z"
   },
-  "scale": {
-    "id": "https://example.edu/scale/2",
-    "type": "LikertScale",
-    "scalePoints": 4,
-    "question": "Do you agree with the opinion presented?",
-    "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-    "itemValues": [-2, -1, 1, 2]
+  "question": {
+    "id": "https://example.edu/question/2",
+    "type": "RatingScaleQuestion",
+    "questionPosed": "Do you agree with the opinion presented?",
+    "scale": {
+      "id": "https://example.edu/scale/2",
+      "type": "LikertScale",
+      "scalePoints": 4,
+      "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+      "itemValues": [-2, -1, 1, 2]
+    }
   },
   "selections": ["1"],
   "ratingComment": {
