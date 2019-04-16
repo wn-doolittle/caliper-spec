@@ -27,6 +27,14 @@
           "identifier": "jane@example.edu",
           "identifierType": "EmailAddress",
           "source": "https://example.edu"
+        },
+        {
+          "type": "SystemIdentifier",
+          "identifier": "4567",
+          "identifierType": "SystemId",
+          "extensions": {
+            "com.examplePlatformVendor.identifier_type": "UserIdentifier"
+          }
         }
       ],
       "dateCreated": "2016-08-01T06:00:00.000Z",
