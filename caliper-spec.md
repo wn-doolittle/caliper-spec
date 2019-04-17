@@ -3128,7 +3128,7 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 
 ### <a name="attempt"></a>C.6 Attempt
 
-A Caliper [Attempt](#attempt) provides a count of the number of times an actor has interacted with an DigitalResource](#digitalresource) along with start time, end time and duration information.  An [Attempt](#attempt) is generated as the result of an action such as starting an [Assessment](#assessment).
+A Caliper [Attempt](#attempt) provides a count of the number of times an actor has interacted with an DigitalResource](#digitalResource) along with start time, end time and duration information.  An [Attempt](#attempt) is generated as the result of an action such as starting an [Assessment](#assessment).
 
 #### IRI
 http://purl.imsglobal.org/caliper/Attempt
@@ -5790,7 +5790,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [Message](#message) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 | [Page](#page) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
 | [Reading](#reading) | Deprecated | Targeted for removal in a future version of the specification. |
-| [Response](#response) | Correction | The `attempt` property description reference [DigitalResource](#digitalResource). |
+| [Response](#response) | Correction | The `attempt` property description incorrectly referenced [AssessmentItem](#assessmentItem). The correct reference is [DigitalResource](#digitalResource). |
 | [Score](#score) | New | Introduced as part of the revisions to the Caliper 1.1 [Grading Profile](#gradingProfile). |
 | [Thread](#thread) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 
