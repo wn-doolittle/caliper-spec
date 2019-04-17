@@ -8,7 +8,7 @@
             specTitle: "Caliper Analytics® Search Profile",
             shortName: "caliper-search",
             specStatus: "IMS Base Document",
-            specDate: "June 1, 2019",
+            specDate: "30 June 2019",
             specVersion: "1.1",
             specNature: "normative",
             specType: "spec",
@@ -442,14 +442,15 @@
 </section>
 
 <section id="jsonld">
-    <h2>Expressing Caliper as JSON-LD</h2>
+    <h2>Caliper JSON-LD Examples</h2>
 
     <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
         provides a remote Search Profile JSON-LD <a href=
          "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension">context</a>
-        for mapping <code>SearchEvent</code> terms to IRIs. Caliper message producers MUST reference this
-        context in every Caliper 1.1 <a href="#event-search">SearchEvent</a> and/or <a href="#entity-query">Query</a>
-        describe created and serialized for transmission to a target endpoint.</p>
+        for mapping <code>SearchEvent</code> terms to IRIs. Caliper message producers MUST reference the Search
+        Profile 1.1-extension context in every <code>Event</code> subtype described in this profile. Likewise,
+        Caliper message producers MUST reference the Search Profile 1.1-extension context whenever an
+        <code>Entity</code> subtype described in this profile is emitted on its own as a <em>describe</em>.</p>
 
     <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
         context handling.</p>
@@ -463,17 +464,23 @@
     </figure>
 
     <section class="informative">
-        <h2>Searched SearchEvent</h2>
+        <h3>Events</h3>
 
-        <p>Below is an example of a Caliper <a href="#event-search">SearchEvent</a> that records a
-            <code>Person</code> searching a <code>SoftwareApplication</code>. The
-            <a href="#event-search">SearchEvent</a> is further enriched by inclusion of the generated
-            <a href="#entity-searchresponse">SearchResponse</a> which references both the search criteria
-            employed and the search results returned.</p>
+        <section class="informative">
+            <h3>SearchEvent</h3>
 
-        <figure class="example">
-            <figcaption><code>SearchEvent</code> JSON-LD</figcaption>
-            <pre><code>{
+            <section class="informative">
+                <h3>Searched</h3>
+
+                <p>Below is an example of a Caliper <a href="#event-search">SearchEvent</a> that records a
+                    <code>Person</code> searching a <code>SoftwareApplication</code>. The
+                    <a href="#event-search">SearchEvent</a> is further enriched by inclusion of the generated
+                    <a href="#entity-searchresponse">SearchResponse</a> which references both the search criteria
+                    employed and the search results returned.</p>
+
+                <figure class="example">
+                    <figcaption><code>SearchEvent</code> JSON-LD</figcaption>
+<pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
   "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
   "type": "SearchEvent",
@@ -530,19 +537,24 @@
     "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }</code></pre>
-        </figure>
+                </figure>
+            </section>
+        </section>
     </section>
 
     <section class="informative">
-        <h2>Query Describe</h2>
+        <h3>Entity Describes</h3>
 
-        <p>Below is an example of a <a href="#entity-query">Query</a> entity describe that can also be sent to an
-            endpoint. The <a href="#entity-query">Query</a> references the author, the resource searched, the search
-            string employed, and a list of search results expressed as JSON objects.</p>
+        <section class="informative">
+            <h3>Query</h3>
 
-        <figure class="example">
-            <figcaption><code>Query</code> describe JSON-LD</figcaption>
-            <pre><code>{
+            <p>Below is an example of a <a href="#entity-query">Query</a> entity describe that can also be sent to an
+                endpoint. The <a href="#entity-query">Query</a> references the author, the resource searched, the search
+                string employed, and a list of search results expressed as JSON objects.</p>
+
+            <figure class="example">
+                <figcaption><code>Query</code> describe JSON-LD</figcaption>
+<pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
   "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
   "type": "Query",
@@ -557,19 +569,19 @@
   "searchTerms": "IMS AND (Caliper OR Analytics)",
   "dateCreated": "2018-11-15T10:05:00.000Z"
 }</code></pre>
-        </figure>
-    </section>
+            </figure>
+        </section>
 
-    <section class="informative">
-        <h2>SearchResponse Describe</h2>
+        <section class="informative">
+            <h3>SearchResponse</h3>
 
-        <p>Below is an example of a <a href="#entity-searchresponse">SearchResponse</a> entity describe that can
-            also be sent to an endpoint. The <a href="#entity-searchresponse">SearchResponse</a> references the
-            search provider, a list of search results expressed as JSON objects.</p>
+            <p>Below is an example of a <a href="#entity-searchresponse">SearchResponse</a> entity describe that can
+                also be sent to an endpoint. The <a href="#entity-searchresponse">SearchResponse</a> references the
+                search provider, a list of search results expressed as JSON objects.</p>
 
-        <figure class="example">
-            <figcaption><code>SearchResponse</code> describe JSON-LD</figcaption>
-            <pre><code>{
+            <figure class="example">
+                <figcaption><code>SearchResponse</code> describe JSON-LD</figcaption>
+<pre><code>{
   "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
   "type": "SearchResponse",
   "searchProvider": {
@@ -611,7 +623,8 @@
   ],
   "dateCreated": "2018-11-15T10:05:00.000Z"
 }</code></pre>
-        </figure>
+            </figure>
+        </section>
     </section>
 </section>
 
@@ -619,7 +632,7 @@
     <h2>Revision History</h2>
 
     <section>
-        <h2>Version History</h2>
+        <h3>Version History</h3>
         <table title="Revision History" summary="Publication history and revision details for this specification.">
             <thead>
             <tr>
@@ -631,7 +644,7 @@
             <tbody>
             <tr>
                 <td>IMS Base Document 1.1</td>
-                <td>June 1, 2019</td>
+                <td>30 June 2019</td>
                 <td>The first Base Document release.</td>
             </tr>
             </tbody>

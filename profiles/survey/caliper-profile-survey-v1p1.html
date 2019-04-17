@@ -9,7 +9,7 @@
       specTitle: "Caliper Analytics® Survey Profile",
       shortName: "caliper-survey",
       specStatus: "IMS Base Document",
-      specDate: "30 June, 2019",
+      specDate: "30 June 2019",
       specVersion: "1.1",
       specNature: "normative",
       specType: "spec",
@@ -261,8 +261,8 @@
       <tr>
         <td>object</td>
         <td><a href="#entity-questionnaire">Questionnaire</a> | <a
-                href="#entity-questionnaire-item">QuestionnaireItem</a> | <a
-                href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+              href="#entity-questionnaire-item">QuestionnaireItem</a> | <a
+              href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
         <td>The <code>Questionnaire</code> or <code>QuestionnaireItem</code> to which the
           <code>actor</code> navigated. The <code>object</code> value MUST be expressed either as
@@ -1329,7 +1329,7 @@
           <tr>
             <td>itemLabels</td>
             <td>Array</td>
-            <td>The list labels that describe the set of selectable question options. Each label MUST be cast as
+            <td>The list of labels that describe the set of selectable question options. Each label MUST be cast as
               a string.</td>
             <td>Optional</td>
           </tr>
@@ -1844,7 +1844,7 @@
         <tr>
           <td>type</td>
           <td><a href=
-                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
           >Term</a></td>
           <td>The string value MUST be set to the Term <em>LikertScale</em>.</td>
           <td>Required</td>
@@ -1857,14 +1857,91 @@
         </tr>
         <tr>
           <td>itemLabels</td>
-          <td>Array [{key:value}] | Array [value]</td>
-          <td>The ordered list of labels for each point on the likert scale.</td>
+          <td>Array</td>
+          <td>The ordered list of labels for each point on the scale. The values MUST be cast as strings.</td>
           <td>Optional</td>
         </tr>
         <tr>
           <td>itemValues</td>
-          <td>Array [{key:value}] | Array [value]</td>
-          <td>The ordered list of values for each point on the likert scale.</td>
+          <td>Array</td>
+          <td>The ordered list of values for each point on the scale. The values MUST be cast as strings.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="entity-multiselect-scale">
+      <h3>MultiselectScale</h3>
+      <p>A Caliper <code>MultiselectScale</code> models a scale used to capture one or more rating options.</p>
+      <dl>
+        <dt>Term</dt>
+        <dl>MultiselectScale</dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/MultiselectScale</dd>
+        <dt>Supertype</dt>
+        <dd><a href="#entity-scale">Scale</a></dd>
+        <dt>Properties</dt>
+        <dd><code>MultiselectScale</code> inherits all properties defined by its supertype <code>Scale</code>,
+          of which<code>id</code>, and <code>type</code> are required. <code>MultiselectScale</code> is also
+          provisioned with six additional properties <code>scalePoints</code>, <code>itemLabels</code>,
+          <code>itemValues</code>, <code>isOrderedSelection</code>, <code>minSelections</code>, and
+          <code>maxSelections</code>. Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>MultiselectScale</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>scalePoints</td>
+          <td>integer</td>
+          <td>A integer value used to determine the amount of points on the <code>MultiselectScale</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>itemLabels</td>
+          <td>Array</td>
+          <td>The ordered list of labels for each point on the scale. The values MUST be cast as strings.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>itemValues</td>
+          <td>Array</td>
+          <td>The ordered list of values for each point on the scale. The values MUST be cast as strings.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>isOrderedSelection</td>
+          <td>boolean</td>
+          <td>Indicates whether the order of the selected items is important.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>minSelections</td>
+          <td>integer</td>
+          <td>Indicates the minimum number of selections that can be chosen.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>maxSelections</td>
+          <td>integer</td>
+          <td>Indicates the maximum number of selections that can be chosen.</td>
           <td>Optional</td>
         </tr>
         </tbody>
@@ -1967,13 +2044,13 @@
   </figure>
 
   <section class="informative">
-    <h2>Events</h2>
+    <h3>Events</h3>
 
     <section class="informative">
-      <h2>SurveyEvent</h2>
+      <h3>SurveyEvent</h3>
 
       <section class="informative">
-        <h2>OptedIn</h2>
+        <h3>OptedIn</h3>
 
         <figure class="example">
           <figcaption><code>SurveyEvent</code> OptedIn JSON-LD</figcaption>
@@ -2018,10 +2095,10 @@
     </section>
 
     <section class="informative">
-      <h2>SurveyInvitationEvent</h2>
+      <h3>SurveyInvitationEvent</h3>
 
       <section class="informative">
-        <h2>Accepted</h2>
+        <h3>Accepted</h3>
 
         <figure class="example">
           <figcaption><code>SurveyInvitationEvent</code> Accepted JSON-LD</figcaption>
@@ -2076,7 +2153,7 @@
       </section>
 
       <section class="informative">
-        <h2>Sent</h2>
+        <h3>Sent</h3>
 
         <figure class="example">
           <figcaption><code>SurveyInvitationEvent</code> Sent JSON-LD</figcaption>
@@ -2132,10 +2209,10 @@
     </section>
 
     <section class="informative">
-      <h2>QuestionnaireEvent</h2>
+      <h3>QuestionnaireEvent</h3>
 
       <section class="informative">
-        <h2>Started</h2>
+        <h3>Started</h3>
 
       <figure class="example">
         <figcaption><code>QuestionnaireEvent</code> Started JSON-LD</figcaption>
@@ -2190,7 +2267,7 @@
       </section>
 
       <section class="informative">
-        <h2>Completed</h2>
+        <h3>Completed</h3>
 
         <figure class="example">
           <figcaption><code>QuestionnaireEvent</code> Completed JSON-LD</figcaption>
@@ -2246,13 +2323,13 @@
     </section>
 
     <section class="informative">
-      <h2>QuestionnaireItemEvent</h2>
+      <h3>QuestionnaireItemEvent</h3>
 
-    <section class="informative">
-      <h2>Started</h2>
+      <section class="informative">
+        <h3>Started</h3>
 
-      <figure class="example">
-        <figcaption><code>QuestionnaireItemEvent</code> Started JSON-LD</figcaption>
+        <figure class="example">
+          <figcaption><code>QuestionnaireItemEvent</code> Started JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
   "id": "urn:uuid:23995ed4-3c6b-11e9-b210-d663bd873d93",
@@ -2307,10 +2384,10 @@
       </section>
 
       <section class="informative">
-        <h2>Submitted (OpenEndedQuestion)</h2>
+        <h3>Completed (OpenEndedQuestion)</h3>
 
         <figure class="example">
-          <figcaption><code>QuestionnaireItemEvent</code> Submitted JSON-LD</figcaption>
+          <figcaption><code>QuestionnaireItemEvent</code> Completed JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
   "id": "urn:uuid:590f1ff2-3c6d-11e9-b210-d663bd873d93",
@@ -2319,7 +2396,7 @@
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "Submitted",
+  "action": "Completed",
   "object": {
     "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
     "type": "QuestionnaireItem",
@@ -2367,10 +2444,10 @@
       </section>
 
       <section class="informative">
-        <h2>Submitted (RatingScaleQuestion)</h2>
+        <h3>Completed (RatingScaleQuestion)</h3>
 
         <figure class="example">
-          <figcaption><code>QuestionnaireItemEvent</code> Submitted JSON-LD</figcaption>
+          <figcaption><code>QuestionnaireItemEvent</code> Completed JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
   "id": "urn:uuid:590f1ff2-3c6d-11e9-b210-d663bd873d93",
@@ -2379,7 +2456,7 @@
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "Submitted",
+  "action": "Completed",
   "object": {
     "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
     "type": "QuestionnaireItem",
@@ -2435,10 +2512,10 @@
     </section>
 
     <section class="informative">
-      <h2>NavigationEvent</h2>
+      <h3>NavigationEvent</h3>
 
       <section class="informative">
-        <h2>NavigatedTo</h2>
+        <h3>NavigatedTo</h3>
 
         <figure class="example">
           <figcaption><code>NavigationEvent</code> NavigatedTo JSON-LD</figcaption>
@@ -2490,10 +2567,10 @@
     </section>
 
     <section class="informative">
-      <h2>ViewEvent</h2>
+      <h3>ViewEvent</h3>
 
       <section class="informative">
-        <h2>Viewed</h2>
+        <h3>Viewed</h3>
 
         <figure class="example">
           <figcaption><code>ViewEvent</code> Viewed JSON-LD</figcaption>
@@ -2546,10 +2623,10 @@
   </section>
 
   <section class="informative">
-    <h2>Entity Describes</h2>
+    <h3>Entity Describes</h3>
 
     <section class="informative">
-      <h2>Survey</h2>
+      <h3>Survey</h3>
 
       <figure class="example">
         <figcaption><code>Survey</code> describe JSON-LD</figcaption>
@@ -2594,7 +2671,7 @@
     </section>
 
     <section class="informative">
-      <h2>SurveyInvitation</h2>
+      <h3>SurveyInvitation</h3>
 
       <figure class="example">
         <figcaption><code>SurveyInvitation</code> describe JSON-LD</figcaption>
@@ -2618,7 +2695,7 @@
     </section>
 
     <section class="informative">
-      <h2>Questionnaire</h2>
+      <h3>Questionnaire</h3>
 
       <figure class="example">
         <figcaption><code>Questionnaire</code> describe JSON-LD</figcaption>
@@ -2642,7 +2719,7 @@
     </section>
 
     <section class="informative">
-      <h2>QuestionnaireItem</h2>
+      <h3>QuestionnaireItem</h3>
 
       <figure class="example">
         <figcaption><code>QuestionnaireItem</code> describe JSON-LD</figcaption>
@@ -2669,7 +2746,7 @@
     </section>
 
     <section class="informative">
-      <h2>Question</h2>
+      <h3>Question</h3>
 
       <figure class="example">
         <figcaption><code>Question</code> describe JSON-LD</figcaption>
@@ -2682,7 +2759,7 @@
       </figure>
 
       <section class="informative">
-        <h2>RatingScaleQuestion</h2>
+        <h3>RatingScaleQuestion</h3>
 
         <figure class="example">
           <figcaption><code>RatingScaleQuestion</code> describe JSON-LD</figcaption>
@@ -2703,7 +2780,7 @@
       </section>
 
       <section class="informative">
-        <h2>DateTimeQuestion</h2>
+        <h3>DateTimeQuestion</h3>
 
         <figure class="example">
           <figcaption><code>DateTimeQuestion</code> describe JSON-LD</figcaption>
@@ -2721,7 +2798,7 @@
       </section>
 
       <section class="informative">
-        <h2>MultiselectQuestion</h2>
+        <h3>MultiselectQuestion</h3>
 
         <figure class="example">
           <figcaption><code>MultiselectQuestion</code> describe JSON-LD</figcaption>
@@ -2743,7 +2820,7 @@
       </section>
 
       <section class="informative">
-        <h2>OpenEndedQuestion</h2>
+        <h3>OpenEndedQuestion</h3>
 
         <figure class="example">
           <figcaption><code>OpenEndedQuestion</code> describe JSON-LD</figcaption>
@@ -2758,10 +2835,10 @@
     </section>
 
     <section class="informative">
-      <h2>Response</h2>
+      <h3>Response</h3>
 
       <section class="informative">
-        <h2>RatingScaleResponse</h2>
+        <h3>RatingScaleResponse</h3>
 
         <figure class="example">
           <figcaption><code>RatingScaleResponse</code> describe JSON-LD</figcaption>
@@ -2779,7 +2856,7 @@
       </section>
 
       <section class="informative">
-        <h2>DateTimeResponse</h2>
+        <h3>DateTimeResponse</h3>
 
         <figure class="example">
           <figcaption><code>DateTimeResponse</code> describe JSON-LD</figcaption>
@@ -2797,7 +2874,7 @@
       </section>
 
       <section class="informative">
-        <h2>MultiselectResponse</h2>
+        <h3>MultiselectResponse</h3>
 
         <figure class="example">
           <figcaption><code>MultiselectResponse</code> describe JSON-LD</figcaption>
@@ -2818,7 +2895,7 @@
       </section>
 
       <section class="informative">
-        <h2>OpenEndedResponse</h2>
+        <h3>OpenEndedResponse</h3>
 
         <figure class="example">
           <figcaption><code>OpenEndedResponse</code> describe JSON-LD</figcaption>
@@ -2837,7 +2914,7 @@
     </section>
 
     <section class="informative">
-      <h2>Scale</h2>
+      <h3>Scale</h3>
 
       <figure class="example">
         <figcaption><code>Scale</code> describe JSON-LD</figcaption>
@@ -2850,7 +2927,7 @@
       </figure>
 
       <section class="informative">
-        <h2>LikertScale</h2>
+        <h3>LikertScale</h3>
 
         <figure class="example">
           <figcaption><code>LikertScale</code> describe JSON-LD</figcaption>
@@ -2867,7 +2944,7 @@
       </section>
 
       <section class="informative">
-        <h2>NumericScale</h2>
+        <h3>NumericScale</h3>
 
         <figure class="example">
           <figcaption><code>NumericScale</code> describe JSON-LD</figcaption>
@@ -2904,7 +2981,7 @@
       <tbody>
       <tr>
         <td>IMS Base Document 1.0</td>
-        <td>30 June, 2019</td>
+        <td>30 June 2019</td>
         <td>The first internal draft release.</td>
       </tr>
       </tbody>

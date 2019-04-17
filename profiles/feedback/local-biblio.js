@@ -34,7 +34,8 @@ var _localBiblio = {
     href: "https://www.imsglobal.org/spec/caliper-feedback/v1p1/",
     publisher: "IMS Global Learning Consortium",
     "authors": [
-      "Gardener, Andrew"
+      "Gardener, Andrew",
+      "Whyte, Anthony"
     ]
   },
   "CALIPER-FEEDBACK-11-CONTEXT": {
