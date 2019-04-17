@@ -9,7 +9,7 @@
             specTitle: "Caliper Analytics® Resource Management Profile",
             shortName: "caliper-resource-management",
             specStatus: "IMS Base Document",
-            specDate: "June 1, 2019",
+            specDate: "30 June 2019",
             specVersion: "1.1",
             specNature: "normative",
             specType: "spec",
@@ -496,14 +496,14 @@
 </section>
 
 <section id="jsonld">
-    <h3>Expressing Caliper as JSON-LD</h3>
+    <h3>Caliper JSON-LD Examples</h3>
     <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
         provides a remote Resource Management Profile JSON-LD <a href=
-                                                                         "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension">context</a>
-        for mapping
-        <code>ResourceManagementEvent</code> terms to IRIs. Caliper message producers MUST reference this
-        context in every Caliper 1.1 <code>ResourceManagementEvent</code> describe created and
-        serialized for transmission to a target endpoint.</p>
+         "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension">context</a>
+        for mapping <code>ResourceManagementEvent</code> terms to IRIs. Caliper message producers MUST reference the
+        ResourceManagement Profile 1.1-extension context in every <code>Event</code> subtype described in this profile.
+        Likewise, Caliper message producers MUST reference the ResourceManagement Profile 1.1-extension context whenever
+        an <code>Entity</code> subtype described in this profile is emitted on its own as a <em>describe</em>.</p>
 
     <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
         context handling.</p>
@@ -517,14 +517,20 @@
     </figure>
 
     <section class="informative">
-        <h2>Created ResourceManagementEvent</h2>
+        <h3>Events</h3>
 
-        <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
-            records a <code>Person</code> creating a <code>DigitalResource</code>.</p>
+        <section class="informative">
+            <h3>ResourceManagementEvent</h3>
 
-        <figure class="example">
-            <figcaption><code>ResourceManagementEvent</code> Created JSON-LD</figcaption>
-            <pre><code>{
+        <section class="informative">
+            <h3>Created</h3>
+
+            <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
+                records a <code>Person</code> creating a <code>DigitalResource</code>.</p>
+
+            <figure class="example">
+                <figcaption><code>ResourceManagementEvent</code> Created JSON-LD</figcaption>
+<pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
   "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
   "type": "ResourceManagementEvent",
@@ -578,18 +584,18 @@
     "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }</code></pre>
-        </figure>
-    </section>
+                </figure>
+            </section>
 
-    <section class="informative">
-        <h2>Copied ResourceManagementEvent</h2>
+            <section class="informative">
+                <h3>Copied</h3>
 
-        <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
-            records a <code>Person</code> generating a new copy of a <code>DigitalResource</code>.
+                <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
+                    records a <code>Person</code> generating a new copy of a <code>DigitalResource</code>.
 
-            <figure class="example">
-                <figcaption><code>ResourceManagementEvent</code> Copied JSON-LD</figcaption>
-                <pre><code>{
+                    <figure class="example">
+                        <figcaption><code>ResourceManagementEvent</code> Copied JSON-LD</figcaption>
+<pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
   "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
   "type": "ResourceManagementEvent",
@@ -665,8 +671,9 @@
     "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }</code></pre>
-            </figure>
-
+                </figure>
+            </section>
+        </section>
     </section>
 </section>
 
@@ -686,7 +693,7 @@
             <tbody>
             <tr>
                 <td>IMS Base Document 1.0</td>
-                <td>June 1, 2019</td>
+                <td>30 June 2019</td>
                 <td>The first internal draft release.</td>
             </tr>
             </tbody>

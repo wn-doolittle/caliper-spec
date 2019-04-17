@@ -8,7 +8,7 @@
             specTitle: "Caliper Analytics® Tool Use Profile",
             shortName: "caliper-tooluse",
             specStatus: "IMS Base Document",
-            specDate: "June 1, 2019",
+            specDate: "30 June 2019",
             specVersion: "1.1",
             specNature: "normative",
             specType: "spec",
@@ -353,24 +353,19 @@
 
     <section id="entity-collection">
         <h3>Collection</h3>
-        <p>A Caliper <code>Collection</code> represents an unordered collection of entities.</p>
+        <p>A Caliper <code>Collection</code> is a generic type that represents an unordered collection of entities.
+            Utilize <code>Collection</code> only if no suitable subtype exists to represent the collection being described.</p>
 
         <dl>
-            <dt>Term</dt>
-            <dd>Collection</dd>
             <dt>IRI</dt>
-            <dd><a href=
-               "http://purl.imsglobal.org/caliper/Collection">http://purl.imsglobal.org/caliper/Collection</a>
-            </dd>
+            <dd>https://purl.imsglobal.org/caliper/Collection</dd>
             <dt>Supertype</dt>
-            <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+            <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
             >Entity</a></dd>
             <dt>Properties</dt>
-            <dd><code>Collection</code> inherits all the properties and requirements defined for its
-                supertype <a href="#entity">Entity</a>, of which <code>id</code>, and <code>type</code> are required.
-                <code>Collection</code> is also provisioned with an optional <code>items</code> property.
-                Profile-specific type restrictions are described below:
+            <dd><code>Collection</code> inherits all properties defined by its supertype <code>Entity</code>,
+                of which <code>id</code> and <code>type</code> are required.  <code>Collection</code> is also provisioned
+                with the additional property <code>items</code>. Profile-specific type restrictions are described below:
             </dd>
         </dl>
 
@@ -386,70 +381,71 @@
             <tbody>
             <tr>
                 <td>type</td>
-                <td><a href="#termDef">Term</a></td>
-                <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Collection</em>.</td>
+                <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the Term <em>Collection</em>.</td>
                 <td>Required</td>
             </tr>
             <tr>
                 <td>items</td>
-                <td>Array</td>
+                <td>array</td>
                 <td>An ordered collection of entities. Each array item MUST be expressed either as an object
-                  or as a string corresponding to the resource's IRI.</td>
+                    or as a string corresponding to the resource's IRI.</td>
                 <td>Optional</td>
             </tr>
             </tbody>
         </table>
-    </section>
 
-    <section id="entity-aggregateMeasureCollection">
-        <h3>AggregateMeasureCollection</h3>
-        <p>A Caliper <code>AggregateMeasureCollection</code> represents an unordered
-            collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities.</p>
+        <section id="entity-aggregateMeasureCollection">
+            <h3>AggregateMeasureCollection</h3>
+            <p>A Caliper <code>AggregateMeasureCollection</code> represents an unordered
+                collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities.</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>AggregateMeasureCollection</dd>
-            <dt>IRI</dt>
-            <dd><a href=
-               "http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
-            </dd>
-            <dt>Supertype</dt>
-            <dd><a href="#entity-collection">Collection</a></dd>
-            <dt>Properties</dt>
-            <dd><code>AggregateMeasureCollection</code> inherits all the properties and requirements defined for its
-                supertype <a href="#entity-collection">Collection</a>, of which <code>id</code>, and <code>type</code> are required.
-                Profile-specific type restrictions are described below:
-            </dd>
-        </dl>
+            <dl>
+                <dt>Term</dt>
+                <dd>AggregateMeasureCollection</dd>
+                <dt>IRI</dt>
+                <dd><a href=
+                   "http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
+                </dd>
+                <dt>Supertype</dt>
+                <dd><a href="#entity-collection">Collection</a></dd>
+                <dt>Properties</dt>
+                <dd><code>AggregateMeasureCollection</code> inherits all the properties and requirements defined for its
+                    supertype <a href="#entity-collection">Collection</a>, of which <code>id</code>, and <code>type</code> are required.
+                    Profile-specific type restrictions are described below:
+                </dd>
+            </dl>
 
-        <table class="data">
-            <thead>
-            <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Disposition</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>type</td>
-                <td><a href="#termDef">Term</a></td>
-                <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasureCollection</em>.
-                </td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>items</td>
-                <td>Array</td>
-                <td>An ordered collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities. Each
-                    array item
-                    MUST be expressed either as an object or as a string corresponding to the item’s <a href="#iriDef">IRI</a>.
-                </td>
-                <td>Optional</td>
-            </tr>
-            </tbody>
-        </table>
+            <table class="data">
+                <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Disposition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>type</td>
+                    <td><a href="#termDef">Term</a></td>
+                    <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasureCollection</em>.
+                    </td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td>items</td>
+                    <td>Array</td>
+                    <td>An ordered collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities. Each
+                        array item
+                        MUST be expressed either as an object or as a string corresponding to the item’s <a href="#iriDef">IRI</a>.
+                    </td>
+                    <td>Optional</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
     </section>
 </section>
 
@@ -558,14 +554,15 @@
 </section>
 
 <section id="jsonld">
-    <h2>Expressing Caliper as JSON-LD</h2>
+    <h2>Caliper JSON-LD Examples</h2>
 
     <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
         provides a remote Tool Use Profile JSON-LD <a href=
         "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a>
-        for mapping <code>ToolUseEvent</code> terms to IRIs. Caliper message producers MUST reference this
-        context in every Caliper 1.1 <code>ToolUseEvent</code> and/or <code>Query</code> describe created
-        and serialized for transmission to a target endpoint.</p>
+        for mapping <code>ToolUseEvent</code> terms to IRIs. Caliper message producers MUST reference the Tool Use
+        Profile 1.1-extension context in every <code>Event</code> subtype described in this profile. Likewise,
+        Caliper message producers MUST reference the Tool Use Profile 1.1-extension context whenever an
+        <code>Entity</code> subtype described in this profile is emitted on its own as a <em>describe</em>.</p>
 
     <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
         context handling.</p>
@@ -580,14 +577,20 @@
     </figure>
 
     <section class="informative">
-        <h3>Used ToolUseEvent</h3>
-        <p>Below is an example of a Caliper <a href="#event-tooluse">ToolUseEvent</a> that includes progress-related
-            information expressed as minutes on task and assessments passed.
-        </p>
+        <h3>Events</h3>
 
-        <figure class="example">
-            <figcaption><code>ToolUseEvent</code> JSON-LD</figcaption>
-            <pre><code>
+        <section class="informative">
+            <h3>ToolUseEvent</h3>
+
+            <section class="informative">
+                <h3>Used</h3>
+
+                <p>Below is an example of a Caliper <a href="#event-tooluse">ToolUseEvent</a> that includes progress-related
+                    information expressed as minutes on task and assessments passed.</p>
+
+                <figure class="example">
+                    <figcaption><code>ToolUseEvent</code> JSON-LD</figcaption>
+<pre><code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
   "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
@@ -671,18 +674,23 @@
       "startedAtTime": "2016-09-15T10:00:00.000Z"
   }
 }</code></pre>
-        </figure>
-
+                </figure>
+            </section>
+        </section>
     </section>
 
     <section class="informative">
-        <h3>AggregateMeasure Describe</h3>
-        <p>Below is an example of a <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity describe that can
-            also be sent to an endpoint.</p>
+        <h3>Entity Describes</h3>
 
-        <figure class="example">
-            <figcaption><code>AggregateMeasure</code> describe JSON-LD</figcaption>
-            <pre><code>
+            <section class="informative">
+                <h3>AggregateMeasure</h3>
+
+                <p>Below is an example of a <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity describe that can
+                    also be sent to an endpoint.</p>
+
+                <figure class="example">
+                    <figcaption><code>AggregateMeasure</code> describe JSON-LD</figcaption>
+<pre><code>
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
     "id": "urn:uuid:c3ba4c01-1f17-46e0-85dd-1e366e6ebb81",
@@ -694,45 +702,17 @@
     "startedAtTime": "2019-08-15T10:15:00.000Z",
     "endedAtTime": "2019-11-15T10:15:00.000Z"
 }</code></pre>
-        </figure>
+            </figure>
+        </section>
 
-    </section>
+        <section class="informative">
+            <h3>AggregateMeasureCollection</h3>
+            <p>Below is an example of a <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> entity
+                describe that can also be sent to an endpoint.</p>
 
-    <section class="informative">
-        <h3>Collection Describe</h3>
-        <p>Below is an example of a <a href="#entity-collection">Collection</a> entity
-          describe that can also be sent to an endpoint.</p>
-
-        <figure class="example">
-            <figcaption><code>Collection</code> describe JSON-LD</figcaption>
-            <pre><code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-  "id": "urn:uuid:9e5987b9-31db-48bf-8dfb-4f6055a8c5db",
-  "type": "Collection",
-  "items": [
-    {
-      "id": "urn:uuid:81e6326d-e57e-43b8-a949-e8a835b4462a",
-      "type": "Entity"
-    },
-    {
-      "id": "urn:uuid:f83086d9-d046-4464-8fbe-c8e4f9e8d7e2",
-      "type": "Entity"
-    }
-  ]
-}</code></pre>
-        </figure>
-
-    </section>
-
-    <section class="informative">
-        <h3>AggregateMeasureCollection Describe</h3>
-        <p>Below is an example of a <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> entity
-            describe that can also be sent to an endpoint.</p>
-
-        <figure class="example">
-            <figcaption><code>AggregateMeasureCollection</code> describe JSON-LD</figcaption>
-            <pre><code>
+            <figure class="example">
+                <figcaption><code>AggregateMeasureCollection</code> describe JSON-LD</figcaption>
+<pre><code>
 {
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
     "id": "urn:uuid:60b4db01-f1e5-4a7f-add9-6a8f761625b1",
@@ -759,7 +739,8 @@
         }
     ]
 }</code></pre>
-        </figure>
+            </figure>
+        </section>
     </section>
 </section>
 
@@ -767,7 +748,7 @@
     <h2>Revision History</h2>
 
     <section>
-        <h2>Version History</h2>
+        <h3>Version History</h3>
         <table title="Revision History" summary="Publication history and revision details for this specification.">
             <thead>
             <tr>
@@ -779,7 +760,7 @@
             <tbody>
             <tr>
                 <td>IMS Base Document 1.1</td>
-                <td>June 1, 2019</td>
+                <td>30 June 2019</td>
                 <td>The first Base Document release.</td>
             </tr>
             </tbody>
