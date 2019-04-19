@@ -245,36 +245,60 @@
     </section>
 </section>
 
-<section id="events">
-    <h2>Events</h2>
-    <section id="event-tooluse">
-        <h3>ToolUseEvent</h3>
-        <img height="100%" width="100%" src="assets/caliper-tool_use_event_used_progress-v1p2.png" alt="ToolUseEvent"/>
+<section id="information_model">
+    <h2>The Information Model</h2>
 
-        <p>A Caliper <a href="#ToolUseEvent">ToolUseEvent</a> models a <a href="#Person">Person</a> using a learning
-            tool in a way that the tool's creators have
-            determined is an indication of a learning interaction. A <a href="#ToolUseEvent">ToolUseEvent</a> may
-            include information on the aggregate time
-            or progress the <a href="#Person">Person</a> has made in the learning tool.</p>
+    <p>The Caliper information model defines a set of concepts, rules, and relationships for describing learning
+        activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles) ("profile").
+        Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a controlled
+        vocabulary of [actions](#actions) undertaken by learners, instructors, and others, that are scoped to the event.
+        Various [Entity](#entity) types representing people, groups, and resources are provided in order to better
+        describe both the relationships established between participating entities and the contextual elements
+        relevant to the interaction.
+    </p>
 
+    <section id="event">
+        <h3>The Caliper Event</h3>
+
+        <img height="100%" width="100%" src="assets/caliper-event_model_no_title-v3.png" alt="Caliper Event"/>
+
+        <p>A Caliper [Event](#event) is a generic type that describes the relationship established between an `actor`
+            and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` at a
+            particular moment in time and within a given learning context.  The [Event](#event) properties `actor`,
+            `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject
+            to an object via a predicate. A learner starting an assessment, annotating a reading, pausing a video, or
+            posting a message to a forum, are examples of learning activities that Caliper models as events.</p>
+
+        <p>Caliper defines a number of [Event](#event) subtypes, each scoped to a particular activity domain and
+            distinguishable by a `type` attribute.  The `type` value is a string that MUST match the [Term](#termDef)
+            specified for the [Event](#event) by the Caliper information model (e.g. "MessageEvent"). Each
+            [Event](#event) instance is assigned a 128-bit long universally unique identifier (UUID) formatted as a
+            [URN](#urnDef) per [RFC 4122](#rfc4122), which describes a [URN](#urnDef) namespace for [UUIDs](#uuidDef).</p>
+
+        <p>The information model also seeks to describe the learning environment or context in which a learning
+            activity is situated. Group affiliation, membership roles and status, recent navigation history,
+            supporting technology and session information can all be optionally represented.  An [Entity](#entity)
+            generated as a result of the interaction between an `actor` and an `object` can also be described;
+            annotating a piece of digital content and producing an [Annotation](#annotation) is one such example.
+            An `extensions` property is also provided so that implementers can add custom attributes not described
+            by the model.</p>
+
+        <p>Considered as a data structure an [Event](#event) constitutes an unordered set of key:value pairs that is
+            semi-structured by design. Optional attributes can be ignored when describing an [Event](#event).  An
+            [Entity](#entity) participating in an [Event](#event) can be represented as an object or as a string that
+            corresponds to the [IRI](#iriDef) defined for the [Entity](#entity).</p>
+
+        <p>The base set of [Event](#event) properties or attributes is listed below. Each property MUST be referenced 
+            only once.  The `id`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; 
+            all other properties are optional.  Custom attributes not described by the model MAY be included but 
+            MUST be added to the `extensions` property as a map of key:value pairs.  Properties with a value of 
+            *null* or empty SHOULD be excluded prior to serialization.</p>
+        
         <dl>
             <dt>Term</dt>
-            <dd>ToolUseEvent</dd>
+            <dd>Event</dd>
             <dt>IRI</dt>
-            <dd><a href="https://purl.imsglobal.org/caliper/ToolUseEvent">https://purl.imsglobal.org/caliper/ToolUseEvent</a>
-            </dd>
-            <dt>Supertype</dt>
-            <dd><a href=
-                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
-            >Event</a></dd>
-            <dt>Properties</dt>
-            <dd>The <code>ToolUseEvent</code> inherits all properties defined by its supertype
-                <a href=
-                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-                >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
-                <code>object</code>, and <code>eventTime</code> are required. Profile-specific type restrictions are
-                described below:
-            </dd>
+            <dd><a href="https://purl.imsglobal.org/caliper/Event">https://purl.imsglobal.org/caliper/Event</a></dd>
         </dl>
         <table class="data">
             <thead>
@@ -287,55 +311,135 @@
             </thead>
             <tbody>
             <tr>
+                <td>id</td>
+                <td><a href="#uuidDef">UUID</a></td>
+                <td>The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4
+                    [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the
+                    form <code>urn:uuid:&lt;UUID&gt;</code> per [RFC 4122](#rfc4122).</td>
+                <td>Required</td>
+            </tr>
+            <tr>
                 <td>type</td>
                 <td><a href="#termDef">Term</a></td>
-                <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>ToolUseEvent</em>.</td>
+                <td>A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the
+                    external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p2) document.
+                    For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of
+                    [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype
+                    utilized, e.g., *NavigationEvent*.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>profile</td>
+                <td><a href="#termDef">Term</a></td>
+                <td>A string value corresponding to the [Term](#termDef) defined for the [Profile](#profile) that governs
+                    the vocabulary used in the creation of the <a href="#event">Event</a>. The list of [Profile](#profile)
+                    terms is listed in the external IMS Caliper JSON-LD
+                    [context](http://purl.imsglobal.org/ctx/caliper/v1p2) document. For a generic [Event](#event) set
+                    the <code>profile</code> property value to the string term *GeneralProfile*.</td>
                 <td>Required</td>
             </tr>
             <tr>
                 <td>actor</td>
-                <td><a href="#person">Person</a> | <a href="#iriDef">IRI</a></td>
-                <td>The <a href="#person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value
-                    MUST be expressed either as an object or as a string corresponding to the actor’s <a href="#iriDef">IRI</a>.
-                </td>
+                <td><a href="#agent">Agent</a> | <a href="#iriDef">IRI</a></td>
+                <td>The [Agent](#agent) who initiated the [Event](#event), typically though not always a
+                    [Person](#person).  The `actor` value MUST be expressed either as an object or as a string
+                    corresponding to the actor's [IRI](#iriDef).</td>
                 <td>Required</td>
             </tr>
             <tr>
                 <td>action</td>
                 <td><a href="#termDef">Term</a></td>
-                <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The
-                    value range is limited to the <a href="#actions">Used</a> action only.
-                </td>
+                <td>The action or predicate that binds the actor or subject to the object.  The `action` range is
+                    limited to the set of [actions](#actions) described in this specification or associated profiles
+                    and may be further constrained by the chosen [Event](#event) type.  Only one `action`
+                    [Term](#termDef) may be specified per [Event](#event).</td>
                 <td>Required</td>
             </tr>
             <tr>
                 <td>object</td>
-                <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
-                <td>The <a href="#softwareApplication">SoftwareApplication</a> that constitutes the <code>object</code>
-                    of the interaction. The <code>object</code> value MUST be expressed either as an object or as a
-                    string corresponding to the object’s <a href="#iriDef">IRI</a>.
-                </td>
+                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+                <td>The <a href="#entity">Entity</a> that comprises the object of the interaction.  The `object` value
+                    MUST be expressed either as an object or as a string corresponding to the object's
+                    [IRI](#iriDef).</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>eventTime</td>
+                <td>DateTime</td>
+                <td>An ISO 8601 date and time value expressed with millisecond precision that indicates when the
+                    [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ
+                    set to UTC with no offset specified.</td>
                 <td>Required</td>
             </tr>
             <tr>
                 <td>target</td>
-                <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
-                <td>A <a href="#softwareApplication">SoftwareApplication</a> that represents a particular capability or
-                    feature provided by the <code>object</code>. The <code>target</code> value MUST be expressed either
-                    as an object or as a string corresponding to the target entity’s <a href="#iriDef">IRI</a>.
-                </td>
+                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+                <td>An <a href="#entity">Entity</a> that represents a particular segment or location within the `object`.
+                    The `target` value MUST be expressed either as an object or as a string corresponding to the
+                    target entity's [IRI](#iriDef).</td>
                 <td>Optional</td>
             </tr>
             <tr>
                 <td>generated</td>
-                <td><a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> | <a
-                        href="#iriDef">IRI</a>
-                </td>
-                <td>An <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> created or generated
-                    as a
-                    result of the interaction. The <code>generated</code> value MUST be expressed either as an object or
-                    as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.
-                </td>
+                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+                <td>An <a href="#entity">Entity</a> created or generated as a result of the interaction.  The
+                    `generated` value MUST be expressed either as an object or as a string corresponding to the
+                    generated entity's [IRI](#iriDef).</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>edApp</td>
+                <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+                <td>A <a href="#softwareApplication">SoftwareApplication</a> that constitutes the application context.
+                    The `edApp` value MUST be expressed either as an object or as a string corresponding to the
+                    edApp's [IRI](#iriDef). </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>referrer</td>
+                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+                <td>An <a href="#entity">Entity</a> that represents the referring context. A
+                    [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically
+                    constitute the referring context.  The `referrer` value MUST be expressed either as an object or
+                    as a string corresponding to the referrer's [IRI](#iriDef).</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>group</td>
+                <td><a href="#organization">Organization</a> | <a href="#iriDef">IRI</a></td>
+                <td>An <a href="#organization">Organization</a> that represents the group context.  The `group` value
+                    MUST be expressed either as an object or as a string corresponding to the group's [IRI](#iriDef).</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>membership</td>
+                <td><a href="#membership">Membership</a> | <a href="#iriDef">IRI</a></td>
+                <td>The relationship between the `actor` and the `group` in terms of roles assigned and current status.
+                    The `membership` value MUST be expressed either as an object or as a string corresponding to the
+                    membership entity's [IRI](#iriDef).</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>session</td>
+                <td><a href="#session">Session</a> | <a href="#iriDef">IRI</a></td>
+                <td>The current user <a href="#session">Session</a>.  The <code>session</code> value MUST be expressed either as an
+                    object or as a string corresponding to the session's [IRI](#iriDef).</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>federatedSession</td>
+                <td><a href="#federatedSession">federatedSession</a> | <a href="#iriDef">IRI</a></td>
+                <td>If the [Event](#event) occurs within the context of an [LTI](#ltiDef) platform launch, the tool's
+                    [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be
+                    expressed either as an object or as a string corresponding to the
+                    federatedSession's [IRI](#iriDef).</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>extensions</td>
+                <td>Object</td>
+                <td>A map of additional attributes not defined by the model MAY be specified for a more concise
+                    representation of the [Event](#event).</td>
                 <td>Optional</td>
             </tr>
             </tbody>
@@ -346,7 +450,7 @@
 <section id="actions">
     <h2>Actions</h2>
 
-    <p>The Caliper <a href="#toolUseEvent">ToolUseEvent</a> supports the <em>Used</em> action only.</p>
+    <p>The Caliper <a href="#toolUseEvent">Event</a> supports the <em>Used</em> action only.</p>
 
     <section id="action-Used">
         <h3>Used</h3>
@@ -555,7 +659,7 @@
 <section id="metrics">
     <h2>Metrics</h2>
     <p>The <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
-        property for denoting the metric related to the <a href="#toolUseEvent">ToolUseEvent</a>. Metric values are
+        property for denoting the metric related to the <a href="#toolUseEvent">Event</a>. Metric values are
         limited to the list of Caliper terms listed below</p>
 
     <section id="metric-AssessmentsSubmitted">
@@ -662,7 +766,7 @@
     <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
         provides a remote Tool Use Profile JSON-LD <a href=
         "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a>
-        for mapping <code>ToolUseEvent</code> terms to IRIs. Caliper message producers MUST reference the Tool Use
+        for mapping <code>Event</code> terms to IRIs. Caliper message producers MUST reference the Tool Use
         Profile 1.1-extension context in every <a href="#event">Event</a> subtype described in this profile. Likewise,
         Caliper message producers MUST reference the Tool Use Profile 1.1-extension context whenever an
         <a href="#entity">Entity</a> subtype described in this profile is emitted on its own as a <em>describe</em>.</p>
@@ -683,21 +787,21 @@
         <h3>Events</h3>
 
         <section class="informative">
-            <h3>ToolUseEvent</h3>
+            <h3>Event</h3>
 
             <section class="informative">
                 <h3>Used</h3>
 
-                <p>Below is an example of a Caliper <a href="#event-tooluse">ToolUseEvent</a> that includes progress-related
+                <p>Below is an example of a Caliper <a href="#event-tooluse">Event</a> that includes progress-related
                     information expressed as minutes on task and assessments passed.</p>
 
                 <figure class="example">
-                    <figcaption><code>ToolUseEvent</code> JSON-LD</figcaption>
+                    <figcaption><code>Event</code> JSON-LD</figcaption>
 <pre><code>
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
   "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
-  "type": "ToolUseEvent",
+  "type": "Event",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
