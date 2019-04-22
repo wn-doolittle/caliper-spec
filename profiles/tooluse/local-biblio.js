@@ -18,5 +18,5 @@ var _localBiblio = {
     "title": "Caliper Analytics® Tool Launch Profile 1.1 Errata",
     "href": "https://www.imsglobal.org/spec/caliper-toollaunch/v1p1/errata/",
     "publisher": "IMS Global Learning Consortium"
-  },
+  }
 };
