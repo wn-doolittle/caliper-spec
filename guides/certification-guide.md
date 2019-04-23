@@ -1,4 +1,4 @@
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="IMS Global Learning Consortium, Inc. Logo" src="assets/ims-logo-h170w600.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="IMS Global Learning Consortium, Inc. Logo" src="../assets/ims-logo-h170w600.png"></div>
 
 # IMS Global Learning Consortium, Inc.
 
@@ -57,7 +57,7 @@ THIS GUIDE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, 
 
 ## <a name="introduction"></a>1.0 Introduction
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="assets/caliper-sensor-v2.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="../assets/caliper-sensor-v2.png"></div>
 
 The *Caliper Analytics&reg; Specification*, [version 1.1](#caliperSpec), provides a structured approach to describing, collecting and exchanging learning activity data at scale.  Establishing a common vocabulary for describing learning interactions is a central objective.  Promoting data interoperability, data sharing and data-informed decision making are also important goals.
 
@@ -144,7 +144,7 @@ Each Caliper profile is also a unit of certification for Caliper [Sensor](#senso
 
 ### <a name="annotationProfile"></a>3.1 Annotation Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Annotation Profile" src="assets/caliper-profile_annotation.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Annotation Profile" src="../assets/caliper-profile_annotation.png"></div>
 
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#digitalResource).  
 
@@ -171,7 +171,7 @@ Create and send a "Bookmarked" [AnnotationEvent](https://www.imsglobal.org/calip
  
 ### <a name="assessmentProfile"></a>3.2 Assessment Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assessment Profile" src="assets/caliper-profile_assessment.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assessment Profile" src="../assets/caliper-profile_assessment.png"></div>
 
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items.
 
@@ -198,7 +198,7 @@ Create and send a "Started" [AssessmentEvent](https://www.imsglobal.org/caliper/
  
 ### <a name="assignableProfile"></a>3.3 Assignable Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assignable Profile" src="assets/caliper-profile_assignable.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assignable Profile" src="../assets/caliper-profile_assignable.png"></div>
 
 The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.
 
@@ -225,7 +225,7 @@ Create and send a "Started" [AssignableEvent](https://www.imsglobal.org/caliper/
  
 ### <a name="forumProfile"></a>3.4 Forum Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Forum Profile" src="assets/caliper-profile_forum.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Forum Profile" src="../assets/caliper-profile_forum.png"></div>
 
 The Caliper Forum Profile models learners and others participating in online forum communities.
 
@@ -249,7 +249,7 @@ Create and send a "Posted" [MessageEvent](https://www.imsglobal.org/caliper/v1p1
  
 ### <a name="gradingProfile"></a>3.5 Grading Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Grading Profile" src="../assets/caliper-profile_grading.png"></div>
 
 The Caliper Grading Profile models grading activities performed by an [Agent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#agent), typically a [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) or a [SoftwareApplication](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#softwareApplication).
 
@@ -279,7 +279,7 @@ For auto-graded scenarios the [SoftwareApplication](https://www.imsglobal.org/ca
  
 ### <a name="mediaProfile"></a>3.6 Media Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Media Profile" src="assets/caliper-profile_media.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Media Profile" src="../assets/caliper-profile_media.png"></div>
 
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.
 
@@ -306,7 +306,7 @@ Create and send a "Started" [MediaEvent](https://www.imsglobal.org/caliper/v1p1/
  
 ### <a name="readingProfile"></a>3.7 Reading Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Reading Profile" src="../assets/caliper-profile_reading.png"></div>
 
 The Caliper Reading Profile models activities associated with navigating to and viewing digital textual content.
 
@@ -330,7 +330,7 @@ Create and send both a "NavigatedTo" [NavigationEvent](https://www.imsglobal.org
  
 ### <a name="sessionProfile"></a>3.8 Session Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="assets/caliper-profile_session.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="../assets/caliper-profile_session.png"></div>
 
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) interacting with a [SoftwareApplication](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#softwareApplication).
 
@@ -354,7 +354,7 @@ Create and send a "LoggedIn" [SessionEvent](https://www.imsglobal.org/caliper/v1
  
 ### <a name="toolUseProfile"></a>3.9 Tool Use Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Tool Use Profile" src="assets/caliper-profile_tool_use.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Tool Use Profile" src="../assets/caliper-profile_tool_use.png"></div>
 
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.
 
@@ -379,7 +379,7 @@ Create and send a "Used" [ToolUseEvent](https://www.imsglobal.org/caliper/v1p1/c
 
 ### <a name="basicProfile"></a>3.10 Basic Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Basic Profile" src="assets/caliper-profile_basic.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Basic Profile" src="../assets/caliper-profile_basic.png"></div>
 
 The Caliper Basic Profile provides a generic [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event) for describing learning or supporting activities that have yet to be modeled by Caliper. 
 
