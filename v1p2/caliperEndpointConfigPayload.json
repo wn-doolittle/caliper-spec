@@ -1,0 +1,11 @@
+{
+  "caliper_maximum_payload_size": 512,
+  "caliper_supported_extensions": {
+    "endpoint_name": "Example Endpoint"
+  },
+  "caliper_supported_versions": [
+    "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+    "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  ],
+}  
