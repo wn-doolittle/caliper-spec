@@ -5638,6 +5638,17 @@ http://purl.imsglobal.org/caliper/SystemIdentifier
 | source | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | The [SoftwareApplication](#softwareApplication) identified as the source (the creator or owner) of the system identifier. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [SystemIdentifier](#SystemIdentifier). | Optional |
 
+```
+{
+  "type": "SystemIdentifier",
+  "identifier": "https://example.edu/users/554433",
+  "identifierType": "LtiUserId",
+  "source":  {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  }
+}
+```
 
 ### <a name="systemIdentifierType"></a>E.2 System Identifier Types
 
