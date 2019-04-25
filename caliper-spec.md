@@ -121,18 +121,20 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * C.48 [WebPage](#webPage)
 * [Appendix D. Selectors](#selectors)
   * D.1 [TextPositionSelector](#textPositionSelector)
-* [Appendix E. Roles](#roles)
-* [Appendix F. Status](#status)
-* [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths)
-* [Appendix H. Change Log](#changeLog)
-  * H.1 [In-place Corrections 24 May 2018](#changeLogCorrections20180524)
-  * H.2 [Caliper 1.1](#changeLogCaliperv1p1)
-    * H.2.1 [Profiles](#changeLogProfiles)
-    * H.2.2 [Actions](#changeLogActions)
-    * H.2.3 [Events](#changeLogEvents)
-    * H.2.4 [Entities](#changeLogEntities)
-    * H.2.5 [Properties](#changeLogProperties)
-    * H.2.6 [JSON-LD Context](#changeLogJsonldContext)
+* [Appendix E. System Identifiers](#systemIdentifiers)
+  * E.1 [SystemIdentifier](#systemIdentifier)
+* [Appendix F. Roles](#roles)
+* [Appendix G. Status](#status)
+* [Appendix H. Minimum Supported String Lengths](#minSupportedStringLengths)
+* [Appendix I. Change Log](#changeLog)
+  * I.1 [In-place Corrections 24 May 2018](#changeLogCorrections20180524)
+  * I.2 [Caliper 1.1](#changeLogCaliperv1p1)
+    * I.2.1 [Profiles](#changeLogProfiles)
+    * I.2.2 [Actions](#changeLogActions)
+    * I.2.3 [Events](#changeLogEvents)
+    * I.2.4 [Entities](#changeLogEntities)
+    * I.2.5 [Properties](#changeLogProperties)
+    * I.2.6 [JSON-LD Context](#changeLogJsonldContext)
 * [Contributors](#contributors)
 * [References](#references)
 * [About this Document](#aboutThisDoc)
@@ -293,6 +295,7 @@ Like an [Event](#event), an [Entity](#entity) is considered semi-structured data
 | description | string |  A string value comprising a brief, written representation of the [Entity](#entity). | Optional |
 | dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last changed or updated.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
+| otherIdentifiers | Array | An ordered collection of [SystemIdentifier](#systemIdentifier) entities that represent other identifiers for parent entity known to the [Sensor](#sensor) application. Each array item MUST be expressed either an object or as a string corresponding to the item's [IRI](#iriDef). | Optional | 
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
@@ -5616,7 +5619,46 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 }
 ```
 
-## <a name="roles"></a>Appendix E. Roles
+## <a name="systemIdentifiers"></a>Appendix E. System Identifiers
+
+Caliper [Entities](#entity) while all having an `id` to uniquely identify them can also convey system, or local, identifiers that other systems also use to refer to them. Many of these other identifiers are used in a variety of other IMS Global specifications (such as OneRoster, LIS, or LTI).
+
+### <a name="systemIdentifier"></a>E.1 SystemIdentifier
+
+A Caliper [SystemIdentifier](#systemIdentifier) represents a single, system-local identifier for a Caliper [Entity](#entity).
+
+#### IRI
+http://purl.imsglobal.org/caliper/SystemIdentifier
+
+#### Properties
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| identifier | string | Opaque string representing the system identifier value. | Required |
+| identifierType | string | The string value MUST be set to one of the [System Identifier Type](#systemIdentifierType) [Terms](#termDef). | Required |
+| source | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | The [SoftwareApplication](#softwareApplication) identified as the source (the creator or owner) of the system identifier. | Optional |
+| extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [SystemIdentifier](#SystemIdentifier). | Optional |
+
+
+### <a name="systemIdentifierType"></a>E.2 System Identifier Types
+
+Caliper provides a controlled vocabulary for enumerating the various categories of [SystemIdentifier](#systemIdentifier) types that might be meaningful (especially with respect to ther IMS Global standards).
+
+| Term | IRI |
+| :--- | :-- |
+| AccountUserName | http://purl.imsglobal.org/vocab/systemIdentifiers/AccountUserName |
+| EmailAddress | http://purl.imsglobal.org/vocab/systemIdentifiers/EmailAddress |
+| LisSourcedId | http://purl.imsglobal.org/vocab/systemIdentifiers/LisSourcedId |
+| LtiContextId | http://purl.imsglobal.org/vocab/systemIdentifiers/LtiContextId |
+| LtiDeploymentId | http://purl.imsglobal.org/vocab/systemIdentifiers/LtiDeploymentId |
+| LtiPlatformId | http://purl.imsglobal.org/vocab/systemIdentifiers/LtiPlatformId |
+| LtiToolId | http://purl.imsglobal.org/vocab/systemIdentifiers/LtiToolId |
+| LtiUserId | http://purl.imsglobal.org/vocab/systemIdentifiers/LtiUserId |
+| OneRosterSourcedId | http://purl.imsglobal.org/vocab/systemIdentifiers/OneRosterSourcedId |
+| Other | http://purl.imsglobal.org/vocab/systemIdentifiers/Other |
+| SisSourcedId | http://purl.imsglobal.org/vocab/systemIdentifiers/SisSourcedId |
+| SystemId | http://purl.imsglobal.org/vocab/systemIdentifiers/SystemId |
+
+## <a name="roles"></a>Appendix F. Roles
 
 ### Roles
 
@@ -5687,7 +5729,7 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 | Officer#Treasurer | http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Treasurer |
 | Officer#Vice-Chair | http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Vice-Chair |
 
-## <a name="status"></a>Appendix F. Status
+## <a name="status"></a>Appendix G. Status
 
 The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate [Term](#term) string value:
 
@@ -5696,7 +5738,7 @@ The status of a [member](#member) within an organization can be set to one of th
 | Active | http://purl.imsglobal.org/vocab/lis/v2/status#Active |
 | Inactive | http://purl.imsglobal.org/vocab/lis/v2/status#Inactive |
 
-## <a name="minSupportedStringLengths"></a>Appendix G. Minimum Supported String Lengths
+## <a name="minSupportedStringLengths"></a>Appendix H. Minimum Supported String Lengths
 
 When storing normalized or "flattened" Caliper [Event](#event) data, the following *minimum* character lengths SHOULD be assumed in order to accommodate Caliper data expressed as strings of variable length. 
 
@@ -5724,10 +5766,10 @@ When storing normalized or "flattened" Caliper [Event](#event) data, the followi
 | [MultipleChoiceResponse](#multipleChoiceResponse), [TrueFalseResponse](#trueFalseResponse) | value | Plain text representation of the selected option | 256 |
 | [Result](#result) | comment | Plain text feedback provided by the scorer. | 1024 |
 
-## <a name="changeLog"></a>Appendix H. Change Log
+## <a name="changeLog"></a>Appendix I. Change Log
 
 Caliper 1.x additions, deprecations and corrections are summarized below.
-### <a name="changeLogCorrections20180524"></a>H.1 In-place Corrections 24 May 2018
+### <a name="changeLogCorrections20180524"></a>I.1 In-place Corrections 24 May 2018
 
 | Item | Status | Disposition |
 | :--- | :----- | :---------- |
@@ -5735,9 +5777,9 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [MessageEvent](#messageEvent) | Correction | `membership` property description incorrectly referenced the `session` property value.  Updated to reference the `membership` value. | 
 | [Roles](#roles) | Correction | Added missing sub-role http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager. |
 
-### <a name="changeLogCaliperv1p1"></a>H.2 Caliper 1.1
+### <a name="changeLogCaliperv1p1"></a>I.2 Caliper 1.1
 
-#### <a name="changeLogProfiles"></a>H.2.1 Profiles
+#### <a name="changeLogProfiles"></a>I.2.1 Profiles
 
 | Profile | Status | Disposition |
 | :------ | :----- | :---------- |
@@ -5749,7 +5791,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [Reading Profile](#readingProfile) | Revised | [ReadingEvent](#readingEvent) has been deprecated and targeted for removal while [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) have been added to the profile. [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume) have been deprecated in favor of [Document](#document), [Chapter](#chapter) and [Page](#page). |
 | [Tool Use Profile](#toolUseProfile) | New | A light-weight profile that models an intended interaction between a [Person](#person) and a [SoftwareApplication](#softwareApplication). |
 
-#### <a name="changeLogActions"></a>H.2.2 Actions
+#### <a name="changeLogActions"></a>I.2.2 Actions
 
 | Actions | Status | WordNet&reg; Gloss |
 | :------ | :----: | :------------- |
@@ -5766,7 +5808,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [Unsubscribed](#unsubscribed) | New | Inverse of [Subscribed](#subscribed). |
 | [Used](#used) | New | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
 
-#### <a name="changeLogEvents"></a>H.2.3 Events
+#### <a name="changeLogEvents"></a>I.2.3 Events
 
 | Event | Status | Disposition |
 | :---- | :----: | :---------- |
@@ -5783,7 +5825,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
 | [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile).  Supported actions: [Used](#used). |
 
-#### <a name="changeLogEntities"></a>H.2.4 Entities
+#### <a name="changeLogEntities"></a>I.2.4 Entities
 | Entity | Status | Disposition |
 | :----- | :----: | :---------- |
 | [Chapter](#chapter) | New | Introduced as part of the revisions to the Caliper 1.1 [Reading Profile](#readingProfile). |
@@ -5801,7 +5843,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [Score](#score) | New | Introduced as part of the revisions to the Caliper 1.1 [Grading Profile](#gradingProfile). |
 | [Thread](#thread) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). |
 
-#### <a name="changeLogProperties"></a>H.2.5 Properties
+#### <a name="changeLogProperties"></a>I.2.5 Properties
 
 | Domain | Property | Status | Disposition |
 | :------| :------- | :----: | :---------- |
@@ -5852,7 +5894,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [Score](#score) | scoreGiven | New | The score or grade awarded for a given assignment.  Maps to [LTI](#ltiDef) Gradebook-services `Score.scoreGiven`. |
 | [SoftwareApplication](#softwareApplication) | version | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
 
-#### <a name="changeLogJsonldContext"></a>H.2.6 JSON-LD context
+#### <a name="changeLogJsonldContext"></a>I.2.6 JSON-LD context
 
 A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document has been created.  See http://purl.imsglobal.org/ctx/caliper/v1p1.
 
