@@ -6,6 +6,6 @@
   "caliper_supported_versions": [
     "http://purl.imsglobal.org/ctx/caliper/v1p1",
     "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
-    "http://purl.imsglobal.org/ctx/caliper/v1p2",
+    "http://purl.imsglobal.org/ctx/caliper/v1p2"
   ],
 }  
