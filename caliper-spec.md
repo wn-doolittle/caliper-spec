@@ -295,7 +295,7 @@ Like an [Event](#event), an [Entity](#entity) is considered semi-structured data
 | description | string |  A string value comprising a brief, written representation of the [Entity](#entity). | Optional |
 | dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last changed or updated.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
-| otherIdentifiers | Array | An ordered collection of [SystemIdentifier](#systemIdentifier) entities that represent other identifiers for parent entity known to the [Sensor](#sensor) application. Each array item MUST be expressed either an object or as a string corresponding to the item's [IRI](#iriDef). | Optional | 
+| otherIdentifiers | Array | An ordered collection of [SystemIdentifier](#systemIdentifier) entities that represent other identifiers for parent entity known to the [Sensor](#sensor) application. Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). | Optional | 
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
