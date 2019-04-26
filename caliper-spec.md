@@ -788,7 +788,10 @@ As noted above, a [JSON-LD](#jsonldDef) document can reference more than one con
 ##### Correct order (Caliper context listed last)
 ```
 {
-  "@context": ["https://schema.org/docs/jsonldcontext.json", "http://purl.imsglobal.org/ctx/caliper/v1p1"]
+  "@context": [
+    "https://schema.org/docs/jsonldcontext.json",
+    "http://purl.imsglobal.org/ctx/caliper/v1p1"
+  ]
   . . .
 }
 ```
