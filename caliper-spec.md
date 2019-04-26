@@ -250,6 +250,7 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 | :------- | :--- | ----------- | :---------: |
 | id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
+| profile | [Term](#termDef) | The [metric profile](#profile) that governs the rules of intepretation for the [Event](#event). The `profile` range is limited to the set of [profiles](#profileTerm) described in this specification and any metric profile extension specifications extending this specification. Only one `profile` [Term](#termDef) may be specified per [Event](#event). | Optional |
 | actor | [Agent](#agent) &#124; [IRI](#iriDef) | The [Agent](#agent) who initiated the [Event](#event), typically though not always a [Person](#person).  The `actor` value MUST be expressed either as an object or as a string corresponding to the actor's [IRI](#iriDef). | Required |
 | action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object.  The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [Entity](#entity) &#124; [IRI](#iriDef) | The [Entity](#entity) that comprises the object of the interaction.  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
@@ -324,6 +325,27 @@ Extending Caliper's information model involves designing a new metric profile or
 The following metric profiles are currently available and are summarized individually below:
 
 [Annotation Profile](#annotationProfile), [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Forum Profile](#forumProfile), [Media Profile](#mediaProfile), [Grading Profile](#gradingProfile), [Reading Profile](#readingProfile), [Session Profile](#sessionProfile), [Tool Use Profile](#toolUseProfile), [General Profile](#generalProfile)
+
+#### <a name="profileTerm"></a>3.0.1 Profile Terms
+Each profile also has a vocabulary term for use with the [Event's](#event) `profile` property.
+
+| Term | IRI |
+| :--- | :-- |
+| AnnotationProfile | http://purl.imsglobal.org/profiles/AnnotationProfile |
+| AssessmentProfile | http://purl.imsglobal.org/profiles/AssessmentProfile |
+| AssignableProfile | http://purl.imsglobal.org/profiles/AssignableProfile |
+| FeedbackProfile | http://purl.imsglobal.org/profiles/FeedbackProfile |
+| ForumProfile | http://purl.imsglobal.org/profiles/ForumProfile |
+| GeneralProfile | http://purl.imsglobal.org/profiles/GeneralProfile |
+| GradingProfile | http://purl.imsglobal.org/profiles/GradingProfile |
+| MediaProfile | http://purl.imsglobal.org/profiles/MediaProfile |
+| ReadingProfile | http://purl.imsglobal.org/profiles/ReadingProfile |
+| ResourceManagementProfile | http://purl.imsglobal.org/profiles/ResourceManagementProfile |
+| SearchProfile | http://purl.imsglobal.org/profiles/SearchProfile |
+| SessionProfile | http://purl.imsglobal.org/profiles/SessionProfile |
+| SurveyProfile | http://purl.imsglobal.org/profiles/SurveyProfile |
+| ToolLaunchProfile | http://purl.imsglobal.org/profiles/ToolLaunchProfile |
+| ToolUseProfile | http://purl.imsglobal.org/profiles/ToolUseProfile |
 
 ### <a name="annotationProfile"></a>3.1 Annotation Profile
 
@@ -5818,6 +5840,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
 | [Entity](#entity) | id | New | Replaces use of the [JSON-LD](#jsonldDef) keyword `@id` which is now aliased as `id` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
 | [Entity](#entity) | @id | Deprecated | Use `id`. |
+
 | [Entity](#entity) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Person*. |
 | [Entity](#entity) | @type | Deprecated | Use `type`. |
 | [Annotation](#annotation) | annotator | New | Adds the ability to specify the [Agent](#agent) who created the [Annotation](#annotation). |
