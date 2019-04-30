@@ -3388,6 +3388,68 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 }
 ```
 
+### <a name="collection"></a>C.10 Collection
+
+A Caliper [Collection](#collection) is a generic type that represents an order list of similar Caliper [Entities](#entity).
+
+Utilize [Collection](#response) only if no suitable subtype exists to represent the list being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Collection
+
+#### Supertype
+[Entity](#entity)
+
+#### Properties
+[Collection](#collection) inherits all the properties and requirements defined for its supertype [Entity](#entity). Additional properties and requirements are described below:
+
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Collection*. | Required |
+| items | Array | An ordered collection of Caliper [Entities](#entity). Each array item MUST be expressed either as an objedct or as a string corresponding to the item's [IRI](#iriDef). | Optional |
+| name | string | A string value comprising a word or phrase by which the [Collection](#collection)  is known. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Collection](#collection). | Optional |
+| dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Collection](#collection) was created.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
+| dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Collection](#collection)  was last changed or modified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
+| extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Collection](#collection). | Optional |
+
+#### Subtypes
+[AggregateMeasureCollection](#aggregateMeasureCollection), [Assessment](#Assessment), [DigitalResourceCollection](#digitalResourceCollection), [Forum](#Forum), [Questionnaire](#questionnaire), [Survey](#Survey), [Thread](#thread)
+
+#### Example
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+  "type": "Collection",
+  "items": [
+    {
+      "id": "https://example.edu/videos/1225",
+      "type": "VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Introduction to IMS Caliper",
+      "storageName": "caliper-intro.ogg",
+      "dateCreated": "2019-08-01T06:00:00.000Z",
+      "duration": "PT1H12M27S",
+      "version": "1.1"
+    },
+    {
+      "id": "https://example.edu/videos/5629",
+      "type": "VideoObject",
+      "mediaType": "video/ogg",
+      "name": "IMS Caliper Activity Profiles",
+      "storageName": "caliper-activity-profiles.ogg",
+      "dateCreated": "2019-08-01T06:00:00.000Z",
+      "duration": "PT55M13S",
+      "version": "1.1.1"
+    }
+  ],
+  "dateCreated": "2019-08-01T06:00:00.000Z",
+  "dateModified": "2019-09-02T11:30:00.000Z"
+}
+```
+
 ### <a name="courseOffering"></a>C.11 CourseOffering
 
 A Caliper [CourseOffering](#courseOffering) represents the occurrence of a course or a type during a specified time period.  [CourseOffering](#courseOffering) is composed of a subset of properties specified in the IMS [LTI 2.1](#ltiDef) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
