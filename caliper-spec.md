@@ -3473,6 +3473,7 @@ http://purl.imsglobal.org/caliper/DigitalResource
 | dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the resource was created.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the resource was last changed or modified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | datePublished | DateTime | An ISO 8601 date and time value expressed with millisecond precision that provides the publication date of the resource.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
+| storageName | string | A string value that designates the name used to locally store this [Entity](#entity) known to the [Sensor](#sensor) application. | Optional |
 | version | string | A string value that designates the current form or version of the resource. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [DigitalResource](#digitalResource). | Optional |
 
