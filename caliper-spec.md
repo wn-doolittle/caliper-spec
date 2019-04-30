@@ -2282,7 +2282,7 @@ http://purl.imsglobal.org/caliper/NavigationEvent
 | action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object`.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [DigitalResource](#digitalResource) &#124; [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef)| The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the `object` of the interaction.  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
-| target | [Frame](#frame) &#124; [IRI](#iriDef) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or as a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| target | [DigitalResource](#digitalResource) &#124; [IRI](#iriDef) | A [DigitalResource](#digitalResource) that represents the particular part or location of the `object` being navigated to.  The `target` value MUST be expressed either as an object or as a string corresponding to the target entity's [IRI](#iriDef). | Optional |
 | generated | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or as a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
 | edApp | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | A [SoftwareApplication](#softwareApplication) that constitutes the application context.  The `edApp` value MUST be expressed either as an object or as a string corresponding to the edApp's [IRI](#iriDef). | Optional |
 | referrer | [DigitalResource](#digitalResource) &#124; [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context.  The `referrer` value MUST be expressed either as an object or as a string corresponding to the referrer's [IRI](#iriDef). | Optional |
@@ -2302,7 +2302,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 #### Example: NavigationEvent (navigated to)
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f",
   "type": "NavigationEvent",
   "actor": {
@@ -2311,37 +2311,54 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
   },
   "action": "NavigatedTo",
   "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/2",
-    "type": "WebPage",
-    "name": "Learning Analytics Specifications",
-    "description": "Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.",
-    "dateCreated": "2018-08-01T09:00:00.000Z"
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+    "type": "DigitalResourceCollection",
+    "name": "Video Collection",
+    "keywords": ["collection", "videos"],
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "dateModified": "2016-09-02T11:30:00.000Z"
   },
-  "eventTime": "2018-11-15T10:15:00.000Z",
+  "eventTime": "2016-11-15T10:15:00.000Z",
   "referrer": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
-    "type": "WebPage"
+    "id": "https://example.edu/videos/1225",
+    "type": "VideoObject",
+    "mediaType": "video/ogg",
+    "name": "Introduction to IMS Caliper",
+    "storageName": "caliper-intro.ogg",
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "duration": "PT1H12M27S",
+    "version": "1.1"
+  },
+  "target": {
+    "id": "https://example.edu/videos/5629",
+    "type": "VideoObject",
+    "mediaType": "video/ogg",
+    "name": "IMS Caliper Activity Profiles",
+    "storageName": "caliper-activity-profiles.ogg",
+    "dateCreated": "2016-08-01T06:00:00.000Z",
+    "duration": "PT55M13S",
+    "version": "1.1.1"
   },
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
+    "academicSession": "Fall 2016"
   },
   "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
+    "dateCreated": "2016-08-01T06:00:00.000Z"
   },
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
+    "startedAtTime": "2016-11-15T10:00:00.000Z"
   }
 }
 ```
