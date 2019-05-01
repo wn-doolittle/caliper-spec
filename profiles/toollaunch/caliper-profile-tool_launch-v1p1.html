@@ -10,7 +10,7 @@
             shortName: "caliper-toollaunch",
             specStatus: "IMS Base Document",
             specDate: "30 June 2019",
-            specVersion: "1.1",
+            specVersion: "1.1-extension",
             specNature: "normative",
             specType: "spec",
             contributors: [
@@ -167,177 +167,17 @@
 
 <section id="events">
     <h2>Events</h2>
-    <section id="event-toollaunch">
-        <h3>ToolLaunchEvent</h3>
-        <p>The Tool Launch Profile is provisioned with a single <code>ToolLaunchEvent</code>
-            for describing tool launches, typically occuring in the context of an LMS.</p>
 
-        <img height="100%" width="100%" src="assets/caliper-tool_launch_event_launched-v1p2.png" alt="ToolLaunchEvent"/>
-
-        <p>The <code>ToolLaunchEvent</code> models an interaction between a Person and external Tool
-            (SoftwareApplication), at a given time and in a given context. It also provides the ability to
-            model a "return response", which in the context of LTI [[LTI-13]] typically consists of
-            a <a href="https://www.imsglobal.org/spec/lti/v1p3/#lis-message-variables">redirect URL</a> or a
-            specific response message, as defined in for example LTI Deep Linking [[LTI-DL-20]].
-        </p>
-
-        <dl>
-            <dt>Term</dt>
-            <dd>ToolLaunchEvent</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/ToolLaunchEvent</dd>
-            <dt>Supertype</dt>
-            <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
-            >Event</a></dd>
-            <dt>Properties</dt>
-            <dd>The <code>ToolLaunchEvent</code> inherits all properties defined by its supertype
-                <a href=
-                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-                >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
-                <code>object</code>, and <code>eventTime</code> are required. Profile-specific type restrictions are
-                described below:
-            </dd>
-        </dl>
-
-        <table class="data">
-            <thead>
-            <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Disposition</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>type</td>
-                <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-                >Term</a></td>
-                <td>The string value MUST be set to <em>ToolLaunchEvent</em>.</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>actor</td>
-                <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-                >Person</a> | <a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-                >IRI</a></td>
-                <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST be expressed
-                    either as an object or as a string corresponding to the actor's IRI.
-                </td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td id="action">action</td>
-                <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-                >Term</a></td>
-                <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
-                    The value range is limited to either the \ or
-                    <a href="#actions">Returned</a> actions.
-                </td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>object</td>
-                <td><a href=
-                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareApplication"
-                >SoftwareApplication</a> | <a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-                >IRI</a></td>
-                <td>The <code>SoftwareApplication</code> that is the target of the <code>Person</code>'s launch
-                    activity.
-                    The <code>object</code> value MUST be expressed either as an object or as a string corresponding to
-                    the <code>SoftwareApplication</code>'s IRI.
-                </td>
-                <td>Required</td>
-            <tr>
-                <td>generated</td>
-                <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-                >DigitalResource</a></td>
-                <td>In the case that the workflow comes with a resource intended for the receiver of the workflow
-                    message associated with this event (for example, a file, or image, or LTI resource link for
-                    the receiver to embed within its system), this property can carry its representation as a Caliper
-                    <code>DigitalResource</code> (or, more likely, one of its specific sub-types).
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>target</td>
-                <td><a href="#entity-Link">Link</a> | <a href="#entity-LtiLink">LtiLink</a></td>
-                <td>The fully qualified URL to which the workflow was redirected. In the case of the
-                    <a href="#actions">Launched</a> action, this would be the fully qualified entry-point on the external tool to
-                    which the platform launches. In the case of the 'Returned' action, this would be the fully
-                    qualified entry-point on the platform to which the tool is redirecting the workflow after user
-                    activity from the original launch finishes (this could be the
-                    <code>launch_presentation_return_url</code> in the case of a simple LTI Resource
-                    Link request; it could also be the <code>deep_link_return_url</code> in the case of a Deep
-                    Linking Response message).
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>federatedSession</td>
-                <td>
-                    <a href=
-                       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#ltiSession"
-                    >LtiSession</a> |
-                    <a href=
-                       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-                    >IRI</a></td>
-                <td>The <a>Platform's</a> session, constituting part of the tool launch context. The
-                    <code>federatedSession</code> value MUST be expressed either as an object or as a string
-                    corresponding to the federatedSession’s IRI.
-                </td>
-                <td>Required when the <a href="#action">action</a> is <a href="#actions">Launched</a>, otherwise optional. Workflows that
-                    have a specific "return message" component (e.g. LTI Deep Linking response messages) SHOULD provide
-                    the <code>federatedSession</code> property and SHOULD populate its messageParameters field with the
-                    message parameters in the response message.
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
+    <section id="ToolLaunchEvent" data-include="../../fragments/events/caliper-event-toollaunch.html"></section>
 </section>
 
 <section id="actions">
     <h2>Actions</h2>
     <p>The Caliper <a href="#toolLaunchEvent">ToolLaunchEvent</a> supports the
-        <em>Launched</em> and <em>Returned</em> actions.</p>
+        <a href="#action-launched">Launched</a> and <a href="#action-returned">Returned</a> actions.</p>
 
-    <section id="action-launched">
-        <h3>Launched</h3>
-        The <em>Launched</em> action signals that a system has commenced a workflow that sends an <code>actor</code>
-        from its own domain out to an external system.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Launched</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Launched</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/01515196-v" rel="nofollow">Get going; give impetus
-                to.</a></dd>
-        </dl>
-    </section>
-
-    <section id="action-returned">
-        <h3>Returned</h3>
-        The <em>Returned</em> action signals that the workflow that started with the <em>Launched</em> action gets
-        completed when the external tool redirects the user back to the launching system.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Returned</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Returned</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/01515196-v" rel="nofollow">Go or come back to place,
-                condition, or activity where one has been before.</a></dd>
-        </dl>
-    </section>
+    <section id="action-launched" data-include="../../fragments/actions/caliper-action-launched.html"></section>
+    <section id="action-returned" data-include="../../fragments/actions/caliper-action-returned.html"></section>
 </section>
 
 <section id="entities">
@@ -345,147 +185,23 @@
     <p>The Caliper <a href="#ToolLaunchEvent">ToolLaunchEvent</a> supports the addition of new <code>Link</code> and
         <code>LtiLink</code> entities.</p>
 
-    <section id="entity-link">
-        <h3>Link</h3>
-        <p>The <code>Link</code> entity represents a URL that might be a UI workflow or service endpoint
-            (transient or otherwise), and not necessarily a proper <code>DigitalResource</code> (such as a
-            <a href="
-                https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#webPage"
-            >WebPage</a> or <a href="#entity-LtiLink">LtiLink</a>).
-        </p>
+    <section id="Link" data-include="../../fragments/entities/caliper-entity-link.html"></section>
+    <section id="LtiLink" data-include="../../fragments/entities/caliper-entity-ltilink.html"></section>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>Link</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/Link</dd>
-            <dt>Supertype</dt>
-            <dd>
-                <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef">Entity</a>
-            </dd>
-            <dt>Properties</dt>
-            <dd><code>Link</code> inherits all properties defined by its supertype <code>Entity</code>, of which
-                <code>id</code>, and <code>type</code> are required. Profile-specific type restrictions are described
-                below:
-            </dd>
-        </dl>
-
-        <table class="data">
-            <thead>
-            <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Disposition</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>type</td>
-                <td><a href="
-                    https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-                >Term</a></td>
-                <td>The string value MUST be set to <em>Link</em>.</td>
-                <td>Required</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section id="entity-ltiLink">
-        <h3>LtiLink</h3>
-        <p>The <code>LtiLink</code> entity represents a <code>DigitalResource</code> that must be retrieved from an
-            external tool application via an LTI request message. It is, effectively, a <code>DigitalResource</code>
-            that must use LTI for access.
-        </p>
-
-        <dl>
-            <dt>Term</dt>
-            <dd>LtiLink</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/LtiLink</dd>
-            <dt>Supertype</dt>
-            <dd><a href="
-                https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-            >DigitalResource</a></dd>
-            <dt>Properties</dt>
-            <dd><code>LtiLink</code> inherits all properties defined by its supertype <code>DigitalResource</code>,
-                of which <code>id</code>, and <code>type</code> are required. <code>LtiLink</code> is also provisioned
-                with a <code>messageType</code> property. Profile-specific type restrictions are described below:
-            </dd>
-        </dl>
-
-        <table class="data">
-            <thead>
-            <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Disposition</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>type</td>
-                <td><a href="
-                    https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-                >Term</a></td>
-                <td>The string value MUST be set to <code>LtiLink</code>.</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>messageType</td>
-                <td><a href="
-                    https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef
-              ">Term</a></td>
-                <td>If present, the string value MUST be set to the term name of the LTI message type used to gain
-                    access to this LTI resource link (for example, <em>LtiResourceLinkRequest</em> or
-                    <em>LtiDeepLinkingRequest</em>).
-                </td>
-                <td>Optional</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <p>Note that implementers by best practice SHOULD include
-            the <code>messageType</code> associated with an LTILink entity to
-            provide context for how the link would have been intended to be
-            used.</p>
+    <p>Note that implementers by best practice SHOULD include the <code>messageType</code> associated with an
+        <a href="#LtiLink">LtiLink</a> entity to provide context for how the link would have been intended to be used.</p>
 
     </section>
 </section>
 
 <section id="lti-messageTypes">
     <h2>LTI Message Types</h2>
-    <p>The Caliper <a href="#entity-ltiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
+    <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
         property for describing the type of LTI message associated with the
-        <a href="#event-toollaunch">ToolLaunchEvent</a>. The value range is limited to the following string values:</p>
+        <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string values:</p>
 
-    <section id="ltiResourceLinkRequest">
-        <h3>LtiResourceLinkRequest</h3>
-        Set the <code>messageType</code> value to <em>LtiResourceLinkRequest</em> if
-        the <a href="#entity-ltiLink">LtiLink</a> is associated with an LTI resource link launch request message.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>LtiResourceLinkRequest</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/LtiResourceLinkRequest</dd>
-        </dl>
-    </section>
-
-    <section id="ltiDeepLinkingRequest">
-        <h3>LtiDeepLinkingRequest</h3>
-        Set the <code>LtiLink.messageType</code> value to <em>LtiDeepLinkingRequest</em> if
-        the <a href="#entity-ltiLink">LtiLink</a> is associated with an LTI deep linking request message.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>LtiDeepLinkingRequest</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/LtiDeepLinkingRequest</dd>
-        </dl>
-    </section>
+    <section id="LtiDeepLinkRequest" data-include="../../fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
+    <section id="LtiResourceLinkRequest" data-include="../../fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
 </section>
 
 <section id="jsonld">
