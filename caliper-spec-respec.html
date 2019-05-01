@@ -18,966 +18,532 @@
                     company: "University of Michigan (USA)",
                     companyURL: "https://umich.edu",
                     role: "Author"
-                }]
+                },
+                {
+                    name: "Viktor Haag",
+                    company: "D2L (Canada)",
+                    companyURL: "https://www.d2l.com",
+                    role: "Author"
+                },
+                {
+                    name: "Andrew Gardener",
+                    company: "University of British Columbia (Canada)",
+                    companyURL: "https://www.ubc.ca/",
+                    role: "Author"
+                },
+                {
+                    name: "Yeona Jang",
+                    company: "Explorance (Canada)",
+                    companyURL: "https://explorance.com/",
+                    role: "Author"
+                },
+                {
+                    name: "Dan Carroll",
+                    company: "Clever (USA)",
+                    companyURL: "https://www.clever.com/",
+                    role: "Author"
+                },
+                {
+                    name: "Daniel Green",
+                    company: "VitalSource (USA)",
+                    companyURL: "https://www.vitalsource.com/",
+                    role: "Author"
+                },
+                {
+                    name: "Markus Gylling",
+                    company: "IMS Global (Sweden)",
+                    companyURL: "https://www.imsglobal.org",
+                    role: "Editor"
+                },
+                {
+                    name: "Sam Sciolla",
+                    company: "University of Michigan (USA)",
+                    companyURL: "https://umich.edu",
+                    role: "Editor"
+                }
+            ]
         };
     </script>
 </head>
 <body>
-<section id="abstract" class="introductory">
-    <h2>Abstract</h2> This document comprises the TODO . . . .
-</section>
-
-<section>
-    <h2>Overview</h2>
-    <section class="informative">
-        <h3>Design Goals and Rationale</h3>
-
-        <p>Delivering teaching and learning at scale is encouraging adoption of “big data” practices.  Cloud computing
-            and machine learning are changing both the learning technology landscape and the business of education.
-            The definition of what constitutes learning is also evolving beyond the formal classroom experience to
-            include informal, social and experiential modes of acquiring knowledge and skills. Opportunities exist
-            to leverage new tools, tap new data sources, ask new questions and pursue new insights.</p>
-
-        <p>Consider the enterprising instructor seeking to augment if not transform the classroom environment for her
-            students.  She utilizes a video platform to create and post video assignments. Class discussions and Q&A
-            sessions are conducted online using another service. She administers her course using a learning management
-            system.  Three services, three vendors, three potential sources of learning data.</p>
-
-        <p>Analyzing the viewing behavior of her students in relation to the questions they pose about her course
-            content is vital to understanding student comprehension and performance. Yet exploring such relationships
-            is all too often a challenging exercise. Likely there are significant barriers to overcome. Is the data
-            required for analysis actually collected? If it exists, who owns it? If ownership is not an issue what
-            about privacy concerns? If privacy protocols are in place is the data easy to retrieve? If retrievable
-            how difficult is it to combine with data sourced from other platforms?</p>
-
-        <p>The Caliper Analytics&reg; specification seeks to address a number of the issues outlined above by providing
-            a structured approach to describing, collecting and exchanging learning activity data. Establishing a
-            common vocabulary for describing learning interactions is a central objective.  Promoting data
-            interoperability, data sharing and data-informed decision making are also important goals.</p>
-
-        <p>Caliper also defines an application programming interface (the Sensor API&trade;) for marshalling and
-            transmitting event data from instrumented applications to target endpoints for storage, analysis and use.
-            Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data
-            environment in which to build new and innovative services designed to measure, infer, predict, report and
-            visualize.</p>
+    <section id="abstract" class="introductory">
+        <h2>Abstract</h2> This document comprises the TODO . . . .
     </section>
 
-    <section class="informative">
-        <h3>User Stories</h3>
-        <p>Caliper supports the following learner-centric use stories:</p>
-        <table>
-            <tr>
-                <td>TODO
-                </td>
-            </tr>
-            <tr>
-                <td>TODO
-                </td>
-            </tr>
-            <tr>
-                <td>TODO
-                </td>
-            </tr>
-        </table>
-    </section>
+    <section>
+        <h2>Overview</h2>
+        <section class="informative">
+            <h3>Design Goals and Rationale</h3>
 
-    <section id="terminology">
-        <h3>Terminology</h3>
+            <p>Delivering teaching and learning at scale is encouraging adoption of “big data” practices.  Cloud computing
+                and machine learning are changing both the learning technology landscape and the business of education.
+                The definition of what constitutes learning is also evolving beyond the formal classroom experience to
+                include informal, social and experiential modes of acquiring knowledge and skills. Opportunities exist
+                to leverage new tools, tap new data sources, ask new questions and pursue new insights.</p>
 
-        <p><a name="actorDef"></a><strong>Actor</strong>: An <code>actor</code> is an <a href="#agent">Agent</a> capable
-            of initiating or performing an <code>action</code> on a thing or as part of a process. A Caliper
-            <a href="#event">Event</a> includes an <code>actor</code> attribute for representing the
-            <a href="#agent">Agent</a>.</p>
+            <p>Consider the enterprising instructor seeking to augment if not transform the classroom environment for her
+                students.  She utilizes a video platform to create and post video assignments. Class discussions and Q&A
+                sessions are conducted online using another service. She administers her course using a learning management
+                system.  Three services, three vendors, three potential sources of learning data.</p>
 
-        <p><a name="blankNodeDef"></a><strong>Blank Node Identifier</strong>: a string that begins with "_:" that is
-            used to identify an <a href="#entity">Entity</a> for which an <a href="#iriDef">IRI</a> is not provided.
-            An <a href="#entity">Entity</a> provisioned with a blank node identifier is neither dereferenceable nor has
-            meaning outside the scope of the <a href="#jsonldDef">JSON-LD</a> document within which it resides.</p>
+            <p>Analyzing the viewing behavior of her students in relation to the questions they pose about her course
+                content is vital to understanding student comprehension and performance. Yet exploring such relationships
+                is all too often a challenging exercise. Likely there are significant barriers to overcome. Is the data
+                required for analysis actually collected? If it exists, who owns it? If ownership is not an issue what
+                about privacy concerns? If privacy protocols are in place is the data easy to retrieve? If retrievable
+                how difficult is it to combine with data sourced from other platforms?</p>
 
-       <p><a name="actionDef"></a><strong>Action</strong>: something performed or done to accomplish a purpose. Caliper
-           <a href="#event">Event</a> subtypes define a controlled vocabulary of one or more
-           <a href="#actions">actions</a> relevant to the activity domain. A Caliper <a href="#event">Event</a>
-           includes an <code>action</code> attribute for expressing the associated <code>action</code>.</p>
+            <p>The Caliper Analytics&reg; specification seeks to address a number of the issues outlined above by providing
+                a structured approach to describing, collecting and exchanging learning activity data. Establishing a
+                common vocabulary for describing learning interactions is a central objective.  Promoting data
+                interoperability, data sharing and data-informed decision making are also important goals.</p>
 
-        <p><a name="contextDef"></a><strong>Context</strong>: a special
-            <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> keyword that maps the terms employed in a
-            JSON document to <a href="https://www.ietf.org/rfc/rfc3987.txt">IRIs</a> that link to one or more published
-            vocabularies. Inclusion of a <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> context provides
-            an economical way of communicating document semantics to services interested in consuming Caliper event
-            data.</p>
-
-        <p><a name="describeDef"></a><strong>Describe</strong>: a Caliper message containing an <a href="#entity">Entity</a> 
-            that is not directly associated with an <a href="#event">Event</a>. Entities can be sent asynchronously using 
-            <em>Describe</em> messages in order to reduce verbosity (e.g. sending a <a href="#person">Person</a> entity 
-            as a <em>Describe</em> avoids having to repeat the <a href="#person">Person</a> object in each 
-            <a href="#event">Event</a> that includes it).</p>
-
-        <p><a name="endpointDef"></a><strong>Endpoint</strong>: a receiver or consumer of Caliper data that is bound
-            to a specific network protocol.</p>
-
-        <p><a name="entityDef"></a><strong>Entity</strong>: an object or a thing that participates in learning-related
-            activity. Caliper <a href="#entity">Entity</a> types provide coarsed-grained representations of applications,
-            people, groups and resources that constitute the "stuff" of a Caliper <a href="#event">Event</a>.
-            Each <a href="#entity">Entity</a> corresponds to a node in a directed graph.</p>
-
-        <p><a name="envelopeDef"></a><strong>Envelope</strong>: a data structure that serves as a transport container 
-            of Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a> data.  The envelope also includes 
-            metadata about the emitting <a href="#sensor">Sensor</a> and the data payload.</p>
-
-        <p><a name="eventDef"></a><strong>Event</strong>: describes a relationship established between an 
-            <a href="#agent">Agent</a> (the <code>actor</code>) and an <a href="#entity">Entity</a> (the 
-            <code>object</code>) formed as a result of a purposeful <code>action</code> undertaken by the 
-            <code>actor</code> in connection to the <code>object</code> at a particular moment in time.</p>
-
-        <p><a name="jsonldDef"></a><strong>JSON-LD</strong>: a specification providing a JSON-based data serialization
-            and messaging format, processing algorithms and API for working with <a href="#linkedData">Linked Data</a>.
-            The messages described in this specification are intended to be used in programming environments that
-            support <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a>.</p>
-
-        <p><a name="iriDef"></a><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the 
-            Uniform Resource Identifier (<a href="#uriDef">URI</a>) scheme by using characters drawn from the Universal 
-            character set rather than US-ASCII per <a href="https://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>. 
-            <a href="#linkedData">Linked Data</a> rely on IRIs to refer to most nodes and properties.</p>
-
-        <p><a name="iso8601Def"></a><strong>ISO 8601</strong>: Caliper data and time values are formatted per 
-            ISO 8601 with the addition of millisecond precision. The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' 
-            separates the date from the time while 'Z' indicates that the time is set to UTC.</p>
-
-        <p><a name="linkedDataDef"></a><strong>Linked Data</strong>: A set of design principles first articulated 
-            by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web. The principles 
-            can be summarized as follows: use <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> as names for things;
-            use HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> so that information about things (e.g., people,
-            objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of
-            their <a href="#iriDef">IRIs</a>/<a href="#uriDef">URIs</a> in order to promote discovery of new relationships
-            between things.</p>
-
-        <p><a name="lisDef"></a><strong>LIS</strong>: Learning Information Services&reg; (LIS&reg;) [[!LIS-20]] is an
-            IMS standard that defines how systems manage the exchange of information that describes people, groups,
-            memberships, courses and outcomes.</p>
-
-        <p><a name="ltiDef"></a><strong>LTI</strong>: Learning Tools Interoperability&reg; (LTI&reg;) [[!LTI-13]] is an
-            IMS standard for integration of rich learning applications within educational environments.</p>
-
-        <p><a name="metricProfileDef"></a><strong>Metric Profile</strong>: models a learning activity or a supporting
-            activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts
-            that application designers and developers can draw upon to describe common user interactions in a consistent
-            manner using a shared vocabulary.</p>
-
-        <p><a name="objectDef"></a><strong>Object</strong>: an <a href="#entity">Entity</a> that an
-            <a href="#agent">Agent</a> interacts with that becomes the focus, target or object of an interaction.
-            A Caliper <a href="#event">Event</a> includes an <code>object</code> attribute for representing the
-            resource.</p>
-
-        <p><a name="sensorDef"></a><strong>Sensor</strong>: Software assets deployed within a learning application that
-            implement the <a href="#sensorAPIDef">Sensor API&trade;</a> for marshalling and transmitting Caliper data to
-            a target endpoint.</p>
-
-        <p><a name="sensorAPIDef"></a><strong>Sensor API&trade;</strong>: The standard set of methods and supported
-            parameters that a [Sensor](#sensorDef) implements according to this specification in order to transmit
-            Caliper data in an interoperable way.</p>
-
-        <p><a name="termDef"></a><strong>Term</strong>: a word or short expression that expands to an 
-            <a href="#iriDef">IRI</a> when mapped to a JSON-LD <a href="#contextDef">context</a> document. Terms are
-            employed by Caliper as <code>type</code> property string values in order to distinguish between various
-            JSON representations of entities and events defined by the Caliper information model.</p>
-
-        <p><a name="typeCoercionDef"></a><strong>Type Coercion</strong>: the process of coercing values to a particular
-            data type.</p>
-
-        <p><a name="#uriDef"></a><strong>URI</strong>:  the Uniform Resource Identifier (<a href="#uriDef">URI</a>) 
-            utilizes the US-ASCII character set to identify a resource. Per <a href="#rfc2396">RFC 2396</a> a 
-            <a href="#uriDef">URI</a> "can be further classified as a locator, a name or both."  Both the Uniform 
-            Resource Locator (<a href="#urlDef">URL</a>) and the Uniform Resource Name (<a href="#urnDef">URN</a>)
-            are considered subspaces of the more general <a href="#uriDef">URI</a> space.
-
-        <p><a name="urlDef"></a><strong>URL</strong>: A Uniform Resource Locator (<a href="#urlDef">URL</a>) is a
-            type of <a href="#uriDef">URI</a> that provides a reference to resource that specifies both its location
-            and a means of retrieving a representation of it.  An HTTP <a href="#uriDef">URI</a> is a
-            <a href="#urlDef">URL</a> and using HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> to identify
-            things is fundamental to <a href="#linkedData">Linked Data</a>.</p>
-
-        <p><a name="urnDef"></a><strong>URN</strong>: A Uniform Resource Name (<a href="#urnDef">URN</a>) is a type
-            of <a href="#uriDef">URI</a> that provides a persistent identifier for a resource that is bound to a
-            defined namespace.  Unlike a <a href="#urlDef">URL</a> a <a href="#urnDef">URN</a> is location-independent
-            and provides no means of accessing a representation of the named resource.</p>
-
-        <p><a name="uuidDef"></a><strong>UUID</strong>: a 128-bit identifier that does not require a registration
-            authority to assure uniqueness.  However, absolute uniqueness is not guaranteed although the collision
-            probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly
-            generated version 4 UUIDs.  Each Caliper <a href="#event">Event</a> MUST be assigned a UUID that is
-            expressed as a <a href="#urnDef">URN</a> using the form <code>urn:uuid:&lt;UUID&gt;</code> as described in
-            <a href="#rfc4122">RFC 4122</a>.
-    </section>
-
-    <section id="conformance">
-        <h3>Conformance Statements</h3>
-    </section>
-
-    <section id="documentset">
-        <h3>Document Set</h3>
-        <section>
-            <h4>Normative Documents</h4>
-            <dl>
-                <dt>JSON-LD Context</dt>
-                <dd>The JSON-LD Context document for this specification defines all relevant term-IRI mappings
-                    [[!CALIPER-12-CONTEXT]].
-                </dd>
-                <dt>Errata</dt>
-                <dd>The errata [[!CALIPER-12-ERRATA]] details any errata registered for this version
-                    of this specification since its publication.
-                </dd>
-                <dt>Conformance and Certification guide</dt>
-                <dd>The conformance and certification guide that accompanies the Caliper 1.2 specification
-                    defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-11]].
-                </dd>
-            </dl>
+            <p>Caliper also defines an application programming interface (the Sensor API&trade;) for marshalling and
+                transmitting event data from instrumented applications to target endpoints for storage, analysis and use.
+                Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data
+                environment in which to build new and innovative services designed to measure, infer, predict, report and
+                visualize.</p>
         </section>
 
         <section class="informative">
-            <h4>Informative Documents</h4>
-            <dl>
-                <dt>Caliper 1.2 Implementation Guide</dt>
-                <dd>The implementation guide that accompanies the Caliper 1.2 specification provides
-                    advice and guidance for implementors [[CALIPER-12-IMPL]].
-                </dd>
-            </dl>
-        </section>
-    </section>
-</section>
-
-<section id="information_model">
-    <h2>The Information Model</h2>
-
-    <p>The Caliper information model defines a set of concepts, rules, and relationships for describing learning
-        activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles) ("profile").
-        Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a controlled
-        vocabulary of [actions](#actions) undertaken by learners, instructors, and others, that are scoped to the event.
-        Various [Entity](#entity) types representing people, groups, and resources are provided in order to better
-        describe both the relationships established between participating entities and the contextual elements
-        relevant to the interaction.
-    </p>
-
-    <section id="event">
-        <h3>The Caliper Event</h3>
-
-        <img height="100%" width="100%" src="assets/caliper-event_model_no_title-v3.png" alt="Caliper Event"/>
-
-        <p>A Caliper [Event](#event) is a generic type that describes the relationship established between an `actor`
-            and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` at a
-            particular moment in time and within a given learning context.  The [Event](#event) properties `actor`,
-            `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject
-            to an object via a predicate. A learner starting an assessment, annotating a reading, pausing a video, or
-            posting a message to a forum, are examples of learning activities that Caliper models as events.</p>
-
-        <p>Caliper defines a number of [Event](#event) subtypes, each scoped to a particular activity domain and
-            distinguishable by a `type` attribute.  The `type` value is a string that MUST match the [Term](#termDef)
-            specified for the [Event](#event) by the Caliper information model (e.g. "MessageEvent"). Each
-            [Event](#event) instance is assigned a 128-bit long universally unique identifier (UUID) formatted as a
-            [URN](#urnDef) per [RFC 4122](#rfc4122), which describes a [URN](#urnDef) namespace for [UUIDs](#uuidDef).</p>
-
-        <p>The information model also seeks to describe the learning environment or context in which a learning
-            activity is situated. Group affiliation, membership roles and status, recent navigation history,
-            supporting technology and session information can all be optionally represented.  An [Entity](#entity)
-            generated as a result of the interaction between an `actor` and an `object` can also be described;
-            annotating a piece of digital content and producing an [Annotation](#annotation) is one such example.
-            An `extensions` property is also provided so that implementers can add custom attributes not described
-            by the model.</p>
-
-        <p>Considered as a data structure an [Event](#event) constitutes an unordered set of key:value pairs that is
-            semi-structured by design. Optional attributes can be ignored when describing an [Event](#event).  An
-            [Entity](#entity) participating in an [Event](#event) can be represented as an object or as a string that
-            corresponds to the [IRI](#iriDef) defined for the [Entity](#entity).</p>
-
-        <p>The base set of [Event](#event) properties or attributes is listed below. Each property MUST be referenced 
-            only once.  The `id`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; 
-            all other properties are optional.  Custom attributes not described by the model MAY be included but 
-            MUST be added to the `extensions` property as a map of key:value pairs.  Properties with a value of 
-            *null* or empty SHOULD be excluded prior to serialization.</p>
-        
-        <dl>
-            <dt>Term</dt>
-            <dd>Event</dd>
-            <dt>IRI</dt>
-            <dd><a href="https://purl.imsglobal.org/caliper/Event">https://purl.imsglobal.org/caliper/Event</a></dd>
-        </dl>
-        <table class="data">
-            <thead>
-            <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Disposition</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>id</td>
-                <td><a href="#uuidDef">UUID</a></td>
-                <td>The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4
-                    [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the
-                    form <code>urn:uuid:&lt;UUID&gt;</code> per [RFC 4122](#rfc4122).</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>type</td>
-                <td><a href="#termDef">Term</a></td>
-                <td>A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the
-                    external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p2) document.
-                    For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of
-                    [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype
-                    utilized, e.g., *NavigationEvent*.</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>profile</td>
-                <td><a href="#termDef">Term</a></td>
-                <td>A string value corresponding to the [Term](#termDef) defined for the [Profile](#profile) that governs
-                    the vocabulary used in the creation of the <a href="#event">Event</a>. The list of [Profile](#profile)
-                    terms is listed in the external IMS Caliper JSON-LD
-                    [context](http://purl.imsglobal.org/ctx/caliper/v1p2) document. For a generic [Event](#event) set
-                    the <code>profile</code> property value to the string term *GeneralProfile*.</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>actor</td>
-                <td><a href="#agent">Agent</a> | <a href="#iriDef">IRI</a></td>
-                <td>The [Agent](#agent) who initiated the [Event](#event), typically though not always a
-                    [Person](#person).  The `actor` value MUST be expressed either as an object or as a string
-                    corresponding to the actor's [IRI](#iriDef).</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>action</td>
-                <td><a href="#termDef">Term</a></td>
-                <td>The action or predicate that binds the actor or subject to the object.  The `action` range is
-                    limited to the set of [actions](#actions) described in this specification or associated profiles
-                    and may be further constrained by the chosen [Event](#event) type.  Only one `action`
-                    [Term](#termDef) may be specified per [Event](#event).</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>object</td>
-                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
-                <td>The <a href="#entity">Entity</a> that comprises the object of the interaction.  The `object` value
-                    MUST be expressed either as an object or as a string corresponding to the object's
-                    [IRI](#iriDef).</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>eventTime</td>
-                <td>DateTime</td>
-                <td>An ISO 8601 date and time value expressed with millisecond precision that indicates when the
-                    [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ
-                    set to UTC with no offset specified.</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>target</td>
-                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
-                <td>An <a href="#entity">Entity</a> that represents a particular segment or location within the `object`.
-                    The `target` value MUST be expressed either as an object or as a string corresponding to the
-                    target entity's [IRI](#iriDef).</td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>generated</td>
-                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
-                <td>An <a href="#entity">Entity</a> created or generated as a result of the interaction.  The
-                    `generated` value MUST be expressed either as an object or as a string corresponding to the
-                    generated entity's [IRI](#iriDef).</td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>edApp</td>
-                <td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
-                <td>A <a href="#softwareApplication">SoftwareApplication</a> that constitutes the application context.
-                    The `edApp` value MUST be expressed either as an object or as a string corresponding to the
-                    edApp's [IRI](#iriDef). </td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>referrer</td>
-                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
-                <td>An <a href="#entity">Entity</a> that represents the referring context. A
-                    [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically
-                    constitute the referring context.  The `referrer` value MUST be expressed either as an object or
-                    as a string corresponding to the referrer's [IRI](#iriDef).</td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>group</td>
-                <td><a href="#organization">Organization</a> | <a href="#iriDef">IRI</a></td>
-                <td>An <a href="#organization">Organization</a> that represents the group context.  The `group` value
-                    MUST be expressed either as an object or as a string corresponding to the group's [IRI](#iriDef).</td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>membership</td>
-                <td><a href="#membership">Membership</a> | <a href="#iriDef">IRI</a></td>
-                <td>The relationship between the `actor` and the `group` in terms of roles assigned and current status.
-                    The `membership` value MUST be expressed either as an object or as a string corresponding to the
-                    membership entity's [IRI](#iriDef).</td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>session</td>
-                <td><a href="#session">Session</a> | <a href="#iriDef">IRI</a></td>
-                <td>The current user <a href="#session">Session</a>.  The <code>session</code> value MUST be expressed either as an
-                    object or as a string corresponding to the session's [IRI](#iriDef).</td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>federatedSession</td>
-                <td><a href="#federatedSession">federatedSession</a> | <a href="#iriDef">IRI</a></td>
-                <td>If the [Event](#event) occurs within the context of an [LTI](#ltiDef) platform launch, the tool's
-                    [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be
-                    expressed either as an object or as a string corresponding to the
-                    federatedSession's [IRI](#iriDef).</td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>extensions</td>
-                <td>Object</td>
-                <td>A map of additional attributes not defined by the model MAY be specified for a more concise
-                    representation of the [Event](#event).</td>
-                <td>Optional</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
-</section>
-
-<section id="actions">
-    <h2>Actions</h2>
-
-    <p>The Caliper <a href="#toolUseEvent">Event</a> supports the <em>Used</em> action only.</p>
-
-    <section id="action-Used">
-        <h3>Used</h3>
-        The <em>Used</em> action signals that a learner has utilized a <code>SoftwareApplication</code> in a manner
-        that the application determines to be its intended use for learning.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Used</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Used</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201161188-v" rel="nofollow">Put into service; make work
-                or employ for a particular purpose or for its inherent or natural purpose.</a></dd>
-        </dl>
-    </section>
-</section>
-
-<section id="entities">
-    <h2>Entities</h2>
-    <section id="entity-aggregateMeasure">
-        <h3>AggregateMeasure</h3>
-        <p>A Caliper <code>AggregateMeasure</code> represents an aggregated measure of a learner's use of a learning
-            tool. For example, an <code>AggregateMeasure</code> may represent the total time on task a learner has
-            spent on a learning tool over a period of time.</p>
-
-        <dl>
-            <dt>Term</dt>
-            <dd>AggregateMeasure</dd>
-            <dt>IRI</dt>
-            <dd><a href="http://purl.imsglobal.org/caliper/aggregateMeasure">
-                http://purl.imsglobal.org/caliper/aggregateMeasure</a>
-            </dd>
-            <dt>Supertype</dt>
-            <dd><a href=
-                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
-            >Entity</a></dd>
-            <dt>Properties</dt>
-            <dd><code>AggregateMeasure</code> inherits all the properties and requirements defined for its
-                supertype <a href="#entity">Entity</a>, of which <code>id</code>, and <code>type</code> are required.
-                <code>AggregateMeasure</code> is also provisioned with five additional properties:
-                <code>value</code>, <code>valueMax</code>, <code>metric</code>, <code>startedAtTime</code>, and
-                <code>endedAtTime</code>. Profile-specific type restrictions are described below:
-            </dd>
-        </dl>
-
-        <table class="data">
-            <thead>
-            <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Disposition</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>type</td>
-                <td><a href="#termDef">Term</a></td>
-                <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasure</em>.</td>
-                <td>Required</td>
-            </tr>
-            <td>metricValue</td>
-            <td>decimal</td>
-            <td>A decimal value representing the total curricular progress the actor has made in the context of the
-                application.
-            </td>
-            <td>Required</td>
-            </tr>
-            <tr>
-                <td>maxMetricValue</td>
-                <td>decimal</td>
-                <td>A decimal value representing the total possible curricular progress the actor can make in the context of
-                    the application.
-                </td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>metric</td>
-                <td>Enumeration</td>
-                <td>The standard of measurement associated with the progress value. Acceptable values are listed in the
-                    <a href="metrics">Metrics</a> Appendix.
-                </td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>startedAtTime</td>
-                <td>DateTime</td>
-                <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric
-                    aggregation was commenced. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set
-                    to UTC with no offset specified.
-                </td>
-                <td>Optional</td>
-            </tr>
-            <tr>
-                <td>endedAtTime</td>
-                <td>DateTime</td>
-                <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the metric
-                    aggregation was completed. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set
-                    to UTC with no offset specified.
-                </td>
-                <td>Optional</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section id="entity-collection">
-        <h3>Collection</h3>
-        <p>A Caliper <code>Collection</code> is a generic type that represents an unordered collection of entities.
-            Utilize <code>Collection</code> only if no suitable subtype exists to represent the collection being described.</p>
-
-        <dl>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/Collection</dd>
-            <dt>Supertype</dt>
-            <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-            >Entity</a></dd>
-            <dt>Properties</dt>
-            <dd><code>Collection</code> inherits all properties defined by its supertype <a href="#entity">Entity</a>,
-                of which <code>id</code> and <code>type</code> are required.  <code>Collection</code> is also provisioned
-                with the additional property <code>items</code>. Profile-specific type restrictions are described below:
-            </dd>
-        </dl>
-
-        <table class="data">
-            <thead>
-            <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Disposition</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>type</td>
-                <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-                >Term</a></td>
-                <td>The string value MUST be set to the Term <em>Collection</em>.</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>items</td>
-                <td>array</td>
-                <td>An ordered collection of entities. Each array item MUST be expressed either as an object
-                    or as a string corresponding to the resource's IRI.</td>
-                <td>Optional</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <section id="entity-aggregateMeasureCollection">
-            <h3>AggregateMeasureCollection</h3>
-            <p>A Caliper <code>AggregateMeasureCollection</code> represents an unordered
-                collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities.</p>
-
-            <dl>
-                <dt>Term</dt>
-                <dd>AggregateMeasureCollection</dd>
-                <dt>IRI</dt>
-                <dd><a href=
-                   "http://purl.imsglobal.org/caliper/AggregateMeasureCollection">http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
-                </dd>
-                <dt>Supertype</dt>
-                <dd><a href="#entity-collection">Collection</a></dd>
-                <dt>Properties</dt>
-                <dd><code>AggregateMeasureCollection</code> inherits all the properties and requirements defined for its
-                    supertype <a href="#entity-collection">Collection</a>, of which <code>id</code>, and <code>type</code> are required.
-                    Profile-specific type restrictions are described below:
-                </dd>
-            </dl>
-
-            <table class="data">
-                <thead>
+            <h3>User Stories</h3>
+            <p>Caliper supports the following learner-centric use stories:</p>
+            <table>
                 <tr>
-                    <th>Property</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                    <th>Disposition</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>type</td>
-                    <td><a href="#termDef">Term</a></td>
-                    <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasureCollection</em>.
+                    <td>TODO
                     </td>
-                    <td>Required</td>
                 </tr>
                 <tr>
-                    <td>items</td>
-                    <td>Array</td>
-                    <td>An ordered collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities. Each
-                        array item
-                        MUST be expressed either as an object or as a string corresponding to the item’s <a href="#iriDef">IRI</a>.
+                    <td>TODO
                     </td>
-                    <td>Optional</td>
                 </tr>
-                </tbody>
+                <tr>
+                    <td>TODO
+                    </td>
+                </tr>
             </table>
         </section>
-    </section>
-</section>
 
-<section id="metrics">
-    <h2>Metrics</h2>
-    <p>The <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
-        property for denoting the metric related to the <a href="#toolUseEvent">Event</a>. Metric values are
-        limited to the list of Caliper terms listed below</p>
+        <section id="terminology">
+            <h3>Terminology</h3>
 
-    <section id="metric-AssessmentsSubmitted">
-        <h3>AssessmentsSubmitted</h3>
-        <p>Count of assessments that have been submitted by the learner.</p>
+            <p><a name="actorDef"></a><strong>Actor</strong>: An <code>actor</code> is an <a href="#agent">Agent</a> capable
+                of initiating or performing an <code>action</code> on a thing or as part of a process. A Caliper
+                <a href="#event">Event</a> includes an <code>actor</code> attribute for representing the
+                <a href="#agent">Agent</a>.</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>AssessmentsSubmitted</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/metrics/AssessmentsSubmitted</dd>
-        </dl>
-    </section>
+            <p><a name="blankNodeDef"></a><strong>Blank Node Identifier</strong>: a string that begins with "_:" that is
+                used to identify an <a href="#entity">Entity</a> for which an <a href="#iriDef">IRI</a> is not provided.
+                An <a href="#entity">Entity</a> provisioned with a blank node identifier is neither dereferenceable nor has
+                meaning outside the scope of the <a href="#jsonldDef">JSON-LD</a> document within which it resides.</p>
 
-    <section id="metric-AssessmentsPassed">
-        <h3>AssessmentsPassed</h3>
-        <p>Count of assessments that have been passed by the learner.</p>
+           <p><a name="actionDef"></a><strong>Action</strong>: something performed or done to accomplish a purpose. Caliper
+               <a href="#event">Event</a> subtypes define a controlled vocabulary of one or more
+               <a href="#actions">actions</a> relevant to the activity domain. A Caliper <a href="#event">Event</a>
+               includes an <code>action</code> attribute for expressing the associated <code>action</code>.</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>AssessmentsPassed</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/metrics/AssessmentsPassed</dd>
-        </dl>
-    </section>
+            <p><a name="contextDef"></a><strong>Context</strong>: a special
+                <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> keyword that maps the terms employed in a
+                JSON document to <a href="https://www.ietf.org/rfc/rfc3987.txt">IRIs</a> that link to one or more published
+                vocabularies. Inclusion of a <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> context provides
+                an economical way of communicating document semantics to services interested in consuming Caliper event
+                data.</p>
 
-    <section id="metric-MinutesOnTask">
-        <h3>MinutesOnTask</h3>
-        <p>Active time spent by learner utilizing the tool.</p>
+            <p><a name="describeDef"></a><strong>Describe</strong>: a Caliper message containing an <a href="#entity">Entity</a>
+                that is not directly associated with an <a href="#event">Event</a>. Entities can be sent asynchronously using
+                <em>Describe</em> messages in order to reduce verbosity (e.g. sending a <a href="#person">Person</a> entity
+                as a <em>Describe</em> avoids having to repeat the <a href="#person">Person</a> object in each
+                <a href="#event">Event</a> that includes it).</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>MinutesOnTask</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/metrics/MinutesOnTask</dd>
-        </dl>
-    </section>
+            <p><a name="endpointDef"></a><strong>Endpoint</strong>: a receiver or consumer of Caliper data that is bound
+                to a specific network protocol.</p>
 
-    <section id="metric-SkillsMastered">
-        <h3>SkillsMastered</h3>
-        <p>Count of learning skills or targets for which the learner has demonstrated understanding.</p>
+            <p><a name="entityDef"></a><strong>Entity</strong>: an object or a thing that participates in learning-related
+                activity. Caliper <a href="#entity">Entity</a> types provide coarsed-grained representations of applications,
+                people, groups and resources that constitute the "stuff" of a Caliper <a href="#event">Event</a>.
+                Each <a href="#entity">Entity</a> corresponds to a node in a directed graph.</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>SkillsMastered</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/metrics/SkillsMastered</dd>
-        </dl>
-    </section>
+            <p><a name="envelopeDef"></a><strong>Envelope</strong>: a data structure that serves as a transport container
+                of Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a> data.  The envelope also includes
+                metadata about the emitting <a href="#sensor">Sensor</a> and the data payload.</p>
 
-    <section id="metric-StandardsMastered">
-        <h3>StandardsMastered</h3>
-        <p>Count of learning standards or competencies for which the learner has demonstrated understanding.</p>
+            <p><a name="eventDef"></a><strong>Event</strong>: describes a relationship established between an
+                <a href="#agent">Agent</a> (the <code>actor</code>) and an <a href="#entity">Entity</a> (the
+                <code>object</code>) formed as a result of a purposeful <code>action</code> undertaken by the
+                <code>actor</code> in connection to the <code>object</code> at a particular moment in time.</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>StandardsMastered</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/metrics/StandardsMastered</dd>
-        </dl>
-    </section>
+            <p><a name="jsonldDef"></a><strong>JSON-LD</strong>: a specification providing a JSON-based data serialization
+                and messaging format, processing algorithms and API for working with <a href="#linkedData">Linked Data</a>.
+                The messages described in this specification are intended to be used in programming environments that
+                support <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a>.</p>
 
-    <section id="metric-UnitsCompleted">
-        <h3>UnitsCompleted</h3>
-        <p>Count of instructional units completed by the learner.</p>
+            <p><a name="iriDef"></a><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the
+                Uniform Resource Identifier (<a href="#uriDef">URI</a>) scheme by using characters drawn from the Universal
+                character set rather than US-ASCII per <a href="https://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>.
+                <a href="#linkedData">Linked Data</a> rely on IRIs to refer to most nodes and properties.</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>UnitsCompleted</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/metrics/UnitsCompleted</dd>
-        </dl>
-    </section>
+            <p><a name="iso8601Def"></a><strong>ISO 8601</strong>: Caliper data and time values are formatted per
+                ISO 8601 with the addition of millisecond precision. The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T'
+                separates the date from the time while 'Z' indicates that the time is set to UTC.</p>
 
-    <section id="metric-UnitsPassed">
-        <h3>UnitsPassed</h3>
-        <p>Count of instructional units completed by the learner, submitted for evaluation, and scored with a
-            passing mark.</p>
+            <p><a name="linkedDataDef"></a><strong>Linked Data</strong>: A set of design principles first articulated
+                by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web. The principles
+                can be summarized as follows: use <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> as names for things;
+                use HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> so that information about things (e.g., people,
+                objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of
+                their <a href="#iriDef">IRIs</a>/<a href="#uriDef">URIs</a> in order to promote discovery of new relationships
+                between things.</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>UnitsPassed</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/metrics/UnitsPassed</dd>
-        </dl>
-    </section>
+            <p><a name="lisDef"></a><strong>LIS</strong>: Learning Information Services&reg; (LIS&reg;) [[!LIS-20]] is an
+                IMS standard that defines how systems manage the exchange of information that describes people, groups,
+                memberships, courses and outcomes.</p>
 
-    <section id="metric-WordsRead">
-        <h3>WordsRead</h3>
-        Count of the number of words read by the learner.
+            <p><a name="ltiDef"></a><strong>LTI</strong>: Learning Tools Interoperability&reg; (LTI&reg;) [[!LTI-13]] is an
+                IMS standard for integration of rich learning applications within educational environments.</p>
 
-        <dl>
-            <dt>Term</dt>
-            <dd>WordsRead</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/metrics/WordsRead</dd>
-        </dl>
-    </section>
-</section>
+            <p><a name="profileDef"></a><strong>Profile</strong>: models a learning activity or a supporting
+                activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts
+                that application designers and developers can draw upon to describe common user interactions in a consistent
+                manner using a shared vocabulary.</p>
 
-<section id="jsonld">
-    <h2>Caliper JSON-LD Examples</h2>
+            <p><a name="objectDef"></a><strong>Object</strong>: an <a href="#entity">Entity</a> that an
+                <a href="#agent">Agent</a> interacts with that becomes the focus, target or object of an interaction.
+                A Caliper <a href="#event">Event</a> includes an <code>object</code> attribute for representing the
+                resource.</p>
 
-    <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
-        provides a remote Tool Use Profile JSON-LD <a href=
-        "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a>
-        for mapping <code>Event</code> terms to IRIs. Caliper message producers MUST reference the Tool Use
-        Profile 1.1-extension context in every <a href="#event">Event</a> subtype described in this profile. Likewise,
-        Caliper message producers MUST reference the Tool Use Profile 1.1-extension context whenever an
-        <a href="#entity">Entity</a> subtype described in this profile is emitted on its own as a <em>describe</em>.</p>
+            <p><a name="sensorDef"></a><strong>Sensor</strong>: Software assets deployed within a learning application that
+                implement the <a href="#sensorAPIDef">Sensor API&trade;</a> for marshalling and transmitting Caliper data to
+                a target endpoint.</p>
 
-    <p>See the Caliper 1.2 specification [[!CALIPER-12]] for a discussion of JSON-LD and JSON-LD
-        context handling.</p>
+            <p><a name="sensorAPIDef"></a><strong>Sensor API&trade;</strong>: The standard set of methods and supported
+                parameters that a <a href="#sensorDef">Sensor</a> implements according to this specification in order
+                to transmit Caliper data in an interoperable way.</p>
 
-    <figure class="example">
-        <figcaption>JSON-LD Context</figcaption>
-        <pre><code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-  . . .
-}</code></pre>
-    </figure>
+            <p><a name="termDef"></a><strong>Term</strong>: a word or short expression that expands to an
+                <a href="#iriDef">IRI</a> when mapped to a JSON-LD <a href="#contextDef">context</a> document. Terms are
+                employed by Caliper as <code>type</code> property string values in order to distinguish between various
+                JSON representations of entities and events defined by the Caliper information model.</p>
 
-    <section class="informative">
-        <h3>Events</h3>
+            <p><a name="typeCoercionDef"></a><strong>Type Coercion</strong>: the process of coercing values to a particular
+                data type.</p>
 
-        <section class="informative">
-            <h3>Event</h3>
+            <p><a name="uriDef"></a><strong>URI</strong>:  the Uniform Resource Identifier (<a href="#uriDef">URI</a>)
+                utilizes the US-ASCII character set to identify a resource. Per <a href="#rfc2396">RFC 2396</a> a
+                <a href="#uriDef">URI</a> "can be further classified as a locator, a name or both."  Both the Uniform
+                Resource Locator (<a href="#urlDef">URL</a>) and the Uniform Resource Name (<a href="#urnDef">URN</a>)
+                are considered subspaces of the more general <a href="#uriDef">URI</a> space.
+
+            <p><a name="urlDef"></a><strong>URL</strong>: A Uniform Resource Locator (<a href="#urlDef">URL</a>) is a
+                type of <a href="#uriDef">URI</a> that provides a reference to resource that specifies both its location
+                and a means of retrieving a representation of it.  An HTTP <a href="#uriDef">URI</a> is a
+                <a href="#urlDef">URL</a> and using HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> to identify
+                things is fundamental to <a href="#linkedData">Linked Data</a>.</p>
+
+            <p><a name="urnDef"></a><strong>URN</strong>: A Uniform Resource Name (<a href="#urnDef">URN</a>) is a type
+                of <a href="#uriDef">URI</a> that provides a persistent identifier for a resource that is bound to a
+                defined namespace.  Unlike a <a href="#urlDef">URL</a> a <a href="#urnDef">URN</a> is location-independent
+                and provides no means of accessing a representation of the named resource.</p>
+
+            <p><a name="uuidDef"></a><strong>UUID</strong>: a 128-bit identifier that does not require a registration
+                authority to assure uniqueness. However, absolute uniqueness is not guaranteed although the collision
+                probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly
+                generated version 4 UUIDs. Each Caliper <a href="#event">Event</a> MUST be assigned a UUID that is
+                expressed as a <a href="#urnDef">URN</a> using the form <code>urn:uuid:&lt;UUID&gt;</code> as described in
+                <a href="#rfc4122">RFC 4122</a>.
+        </section>
+
+        <section id="conformance">
+            <h3>Conformance Statements</h3>
+        </section>
+
+        <section id="documentset">
+            <h3>Document Set</h3>
+            <section>
+                <h4>Normative Documents</h4>
+                <dl>
+                    <dt>JSON-LD Context</dt>
+                    <dd>The JSON-LD Context document for this specification defines all relevant term-IRI mappings
+                        [[!CALIPER-12-CONTEXT]].
+                    </dd>
+                    <dt>Errata</dt>
+                    <dd>The errata [[!CALIPER-12-ERRATA]] details any errata registered for this version
+                        of this specification since its publication.
+                    </dd>
+                    <dt>Conformance and Certification guide</dt>
+                    <dd>The conformance and certification guide that accompanies the Caliper 1.2 specification
+                        defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-11]].
+                    </dd>
+                </dl>
+            </section>
 
             <section class="informative">
-                <h3>Used</h3>
-
-                <p>Below is an example of a Caliper <a href="#event-tooluse">Event</a> that includes progress-related
-                    information expressed as minutes on task and assessments passed.</p>
-
-                <figure class="example">
-                    <figcaption><code>Event</code> JSON-LD</figcaption>
-<pre><code>
-{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
-  "type": "Event",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Used",
-  "object": {
-    "id": "https://example.edu",
-    "type": "SoftwareApplication"
-  },
-  "eventTime": "2019-11-15T10:15:00.000Z",
-  "edApp": "https://example.edu",
-  "generated": {
-    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d912",
-    "type": "AggregateMeasureCollection",
-    "items": [
-        {
-            "id": "urn:uuid:21c3f9f2-a9ef-4f65-bf9a-0699ed85e2c7",
-            "type": "AggregateMeasure",
-            "metric": "MinutesOnTask",
-            "name": "Minutes On Task",
-            "metricValue": 873.0,
-            "startedAtTime": "2019-08-15T10:15:00.000Z",
-            "endedAtTime": "2019-11-15T10:15:00.000Z"
-        },
-        {
-            "id": "urn:uuid:c3ba4c01-1f17-46e0-85dd-1e366e6ebb81",
-            "type": "AggregateMeasure",
-            "metric": "UnitsCompleted",
-            "name": "Units Completed",
-            "metricValue": 12.0,
-            "maxMetricValue": 25.0,
-            "startedAtTime": "2019-08-15T10:15:00.000Z",
-            "endedAtTime": "2019-11-15T10:15:00.000Z"
-        }
-    ]
-  },
-  "group": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1",
-      "type": "CourseSection",
-      "academicSession": "Fall 2016",
-      "courseNumber": "CPS 435-01",
-      "name": "CPS 435 Learning Analytics, Section 01",
-      "category": "seminar",
-      "subOrganizationOf": {
-          "id": "https://example.edu/terms/201601/courses/7",
-          "type": "CourseOffering",
-          "courseNumber": "CPS 435"
-      },
-      "dateCreated": "2016-08-01T06:00:00.000Z"
-  },
-  "membership": {
-      "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
-      "type": "Membership",
-      "member": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-      },
-      "organization": {
-          "id": "https://example.edu/terms/201601/courses/7/sections/1",
-          "type": "CourseSection",
-          "subOrganizationOf": {
-              "id": "https://example.edu/terms/201601/courses/7",
-              "type": "CourseOffering"
-          }
-      },
-      "roles": [ "Learner" ],
-      "status": "Active",
-      "dateCreated": "2016-11-01T06:00:00.000Z"
-  },
-  "session": {
-      "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-      "type": "Session",
-      "user": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-      },
-      "startedAtTime": "2016-09-15T10:00:00.000Z"
-  }
-}</code></pre>
-                </figure>
+                <h4>Informative Documents</h4>
+                <dl>
+                    <dt>Caliper 1.2 Implementation Guide</dt>
+                    <dd>The implementation guide that accompanies the Caliper 1.2 specification provides
+                        advice and guidance for implementors [[CALIPER-12-IMPL]].
+                    </dd>
+                </dl>
             </section>
         </section>
     </section>
 
-    <section class="informative">
-        <h3>Entity Describes</h3>
+    <section id="information_model">
+        <h2>The Information Model</h2>
 
-            <section class="informative">
-                <h3>AggregateMeasure</h3>
+        <p>The Caliper information model defines a set of concepts, rules, and relationships for describing learning
+            activities.  Each activity domain modeled is described in a Caliper <a href="#profileDef">Profile</a>.
+            Each profile is composed of one or more <a href="#Event">Event</a> types. Each <a href="#Event">Event</a>
+            defines a controlled vocabulary of <a href="actions">actions</a> undertaken by learners, instructors, and others,
+            that are scoped to the event. Various <a href="#Entity">Entity</a> types representing people, groups, and resources
+            are provided in order to better describe both the relationships established between participating entities
+            and the contextual elements relevant to the interaction.
+        </p>
 
-                <p>Below is an example of a <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity describe that can
-                    also be sent to an endpoint.</p>
+        <section id="Event" data-include="fragments/events/caliper-event-event.html"></section>
+        <section id="Entity" data-include="fragments/entities/caliper-entity-entity.html"></section>
+    </section>
 
-                <figure class="example">
-                    <figcaption><code>AggregateMeasure</code> describe JSON-LD</figcaption>
-<pre><code>
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-    "id": "urn:uuid:c3ba4c01-1f17-46e0-85dd-1e366e6ebb81",
-    "type": "AggregateMeasure",
-    "metric": "UnitsCompleted",
-    "name": "Units Completed",
-    "metricValue": 12.0,
-    "maxMetricValue": 25.0,
-    "startedAtTime": "2019-08-15T10:15:00.000Z",
-    "endedAtTime": "2019-11-15T10:15:00.000Z"
-}</code></pre>
-            </figure>
+    <section id="profiles">
+        <h2>Profiles</h2>
+
+        <img height="100%" width="100%" src="assets/caliper-profiles-v3.png" alt="Caliper Profiles"/>
+
+        <p>The Caliper information model defines a number of profiles, each of which models a learning activity or a
+            supporting activity that helps facilitate learning.  A profile's <em>raison d'etre</em> is to encourage vocabulary
+            standardization and re-use among application providers delivering complementary, albeit competing capabilities
+            that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that
+            application designers and developers can draw upon to describe common user interactions in a consistent manner
+            using a shared vocabulary.  Annotating a reading, playing a video, taking a test, or grading an assignment
+            submission represent a few examples of the many activities or events that Caliper's profiles attempt to
+            describe.</p>
+
+        <p>
+            Think of each profile as a stand-alone, logical container, or collection of one or more Caliper events
+            that together help describe a set of inter-related activities.  Each <a href="#Event">Event</a> type included in a
+            profile place constraints on the various entities and actions that can be utilized to describe a
+            learning activity. Vocabulary restrictions are outlined in each profile description under the following
+            headings:</p>
+
+        <ul>
+            <li>supported events</li>
+            <li>supported actors</li>
+            <li>supported actions</li>
+            <li>supported objects</li>
+            <li>supported target entities</li>
+            <li>supported generated entities</li>
+            <li>other requirements</li>
+        </ul>
+
+        <p>As an example, the <a href="#ForumProfile">Forum Profile</a> models a set of activities associated
+            with online discussions involving instructors and learners. The profile currently includes a
+            <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
+            <a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a> and
+            <a href="#ViewEvent">ViewEvent</a>. An action sequence mediated by the
+            <a href="#ForumProfile">Forum Profile</a> might involve a learner navigating to a forum, subscribing
+            to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as
+            read.</p>
+
+        <p>
+            Extending Caliper's information model involves designing a new profile or enhancing an existing one.
+            Implementers are free to implement only those Caliper profiles as are necessary to model a learning
+            domain. A video platform provider may decide that only the
+            <a href="#AssignableProfile">Assignable Profile</a>, <a href="#MediaProfile">Media Profile</a> and
+            <a href="#SessionProfile">Session Profile</a> are relevant to its needs, while developers instrumenting
+            an assessment engine would most likely implement the <a href="#AssessmentProfile">Assessment Profile</a>,
+            <a href="#GradingProfile">Grading Profile</a> and <a href="#SessionProfile">Session Profile</a>.</p>
+
+        <p>Caliper 1.2 includes the following profiles which are summarized individually below:</p>
+
+        <p>
+            <a href="#AnnotationProfile">Annotation Profile</a>,
+            <a href="#AssessmentProfile">Assessment Profile</a>,
+            <a href="#AssignableProfile">Assignable Profile</a>,
+            <a href="#FeedbackProfile">Feedback Profile</a>,
+            <a href="#ForumProfile">Forum Profile</a>,
+            <a href="#GradingProfile">Grading Profile</a>,
+            <a href="#MediaProfile">Media Profile</a>,
+            <a href="#ReadingProfile">Reading Profile</a>,
+            <a href="#ResourceManagementProfile">Resource Management Profile</a>,
+            <a href="#SearchProfile">Search Profile</a>,
+            <a href="#SessionProfile">Session Profile</a>,
+            <a href="#SurveyProfile">Survey Profile</a>,
+            <a href="#ToolLaunchProfile">Tool Launch Profile</a>,
+            <a href="#ToolUseProfile">Tool Use Profile</a>,
+            <a href="#GeneralProfile">General Profile</a>
+        </p>
+
+    </section>
+
+    <section id="events">
+        <h2>Event subtypes</h2>
+        <section id="FeedbackEvent" data-include="fragments/events/caliper-event-feedback.html"></section>
+        <section id="NavigationEvent" data-include="fragments/events/caliper-event-navigation.html"></section>
+        <section id="QuestionnaireEvent" data-include="fragments/events/caliper-event-questionnaire.html"></section>
+        <section id="QuestionnaireItemEvent" data-include="fragments/events/caliper-event-questionnaireitem.html"></section>
+        <section id="ResourceManagementEvent" data-include="fragments/events/caliper-event-resourcemanagement.html"></section>
+        <section id="SearchEvent" data-include="fragments/events/caliper-event-search.html"></section>
+        <section id="SurveyEvent" data-include="fragments/events/caliper-event-survey.html"></section>
+        <section id="SurveyInvitationEvent" data-include="fragments/events/caliper-event-surveyinvitation.html"></section>
+        <section id="ToolLaunchEvent" data-include="fragments/events/caliper-event-toollaunch.html"></section>
+        <section id="ToolUseEvent" data-include="fragments/events/caliper-event-tooluse.html"></section>
+        <section id="ViewEvent" data-include="fragments/events/caliper-event-view.html"></section>
+    </section>
+
+    <section id="actions">
+        <h2>Actions</h2>
+
+        <p>Caliper includes a vocabulary of actions for describing learning interactions. Each action <a href="#termDef">Term</a>
+            is based on the past-tense form of an English (en-US) verb.  An action <a href="#termDef">Term</a> can also indicate a
+            change in a particular characteristic of the <code>object</code> (e.g., resolution, size, speed, volume).
+            Each action <a href="#termDef">Term</a> is mapped to a persistent <a href="iriDef">IRI</a> listed in the external IMS Caliper JSON-LD
+            <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>.  Each action is also linked to a brief definition
+            ("gloss") derived in whole or in part from Princeton University's WordNet&reg; project in order to eliminate
+            ambiguity and aid natural language processing.</p>
+
+        <p>Each Caliper <a href="#Event">Event</a> type supports one or more of the actions listed below.
+            The <a href="#Event">Event</a> <code>action</code> property string value MUST be set to the appropriate
+            <a href="termDef">Term</a>. Only one action may be specified per <a href="#Event">Event</a>.</p>
+
+        <section id="action-accepted" data-include="fragments/actions/caliper-action-accepted.html"></section>
+        <section id="action-archived" data-include="fragments/actions/caliper-action-archived.html"></section>
+        <section id="action-commented" data-include="fragments/actions/caliper-action-commented.html"></section>
+        <section id="action-completed" data-include="fragments/actions/caliper-action-completed.html"></section>
+        <section id="action-copied" data-include="fragments/actions/caliper-action-copied.html"></section>
+        <section id="action-created" data-include="fragments/actions/caliper-action-created.html"></section>
+        <section id="action-declined" data-include="fragments/actions/caliper-action-declined.html"></section>
+        <section id="action-deleted" data-include="fragments/actions/caliper-action-deleted.html"></section>
+        <section id="action-described" data-include="fragments/actions/caliper-action-described.html"></section>
+        <section id="action-downloaded" data-include="fragments/actions/caliper-action-downloaded.html"></section>
+        <section id="action-launched" data-include="fragments/actions/caliper-action-launched.html"></section>
+        <section id="action-modified" data-include="fragments/actions/caliper-action-modified.html"></section>
+        <section id="action-navigatedto" data-include="fragments/actions/caliper-action-navigatedto.html"></section>
+        <section id="action-optedin" data-include="fragments/actions/caliper-action-optedin.html"></section>
+        <section id="action-optedout" data-include="fragments/actions/caliper-action-optedout.html"></section>
+        <section id="action-printed" data-include="fragments/actions/caliper-action-printed.html"></section>
+        <section id="action-published" data-include="fragments/actions/caliper-action-published.html"></section>
+        <section id="action-ranked" data-include="fragments/actions/caliper-action-ranked.html"></section>
+        <section id="action-restored" data-include="fragments/actions/caliper-action-restored.html"></section>
+        <section id="action-retrieved" data-include="fragments/actions/caliper-action-retrieved.html"></section>
+        <section id="action-returned" data-include="fragments/actions/caliper-action-returned.html"></section>
+        <section id="action-saved" data-include="fragments/actions/caliper-action-saved.html"></section>
+        <section id="action-searched" data-include="fragments/actions/caliper-action-searched.html"></section>
+        <section id="action-sent" data-include="fragments/actions/caliper-action-sent.html"></section>
+        <section id="action-skipped" data-include="fragments/actions/caliper-action-skipped.html"></section>
+        <section id="action-started" data-include="fragments/actions/caliper-action-started.html"></section>
+        <section id="action-submitted" data-include="fragments/actions/caliper-action-submitted.html"></section>
+        <section id="action-unpublished" data-include="fragments/actions/caliper-action-unpublished.html"></section>
+        <section id="action-uploaded" data-include="fragments/actions/caliper-action-uploaded.html"></section>
+        <section id="action-used" data-include="fragments/actions/caliper-action-used.html"></section>
+        <section id="action-viewed" data-include="fragments/actions/caliper-action-viewed.html"></section>
+    </section>
+
+    <section id="entities">
+        <h2>Entity subtypes</h2>
+        <section id="AggregateMeasure" data-include="fragments/entities/caliper-entity-aggregatemeasure.html"></section>
+        <section id="AggregateMeasureCollection" data-include="fragments/entities/caliper-entity-aggregatemeasurecollection.html"></section>
+        <section id="Collection" data-include="fragments/entities/caliper-entity-collection.html"></section>
+        <section id="Comment" data-include="fragments/entities/caliper-entity-comment.html"></section>
+        <section id="DateTimeQuestion" data-include="fragments/entities/caliper-entity-datetimequestion.html"></section>
+        <section id="DateTimeResponse" data-include="fragments/entities/caliper-entity-datetimeresponse.html"></section>
+        <section id="DigitalResource" data-include="fragments/entities/caliper-entity-digitalresource.html"></section>
+        <section id="LikertScale" data-include="fragments/entities/caliper-entity-likertscale.html"></section>
+        <section id="Link" data-include="fragments/entities/caliper-entity-link.html"></section>
+        <section id="LtiLink" data-include="fragments/entities/caliper-entity-ltilink.html"></section>
+        <section id="MultiselectQuestion" data-include="fragments/entities/caliper-entity-multiselectquestion.html"></section>
+        <section id="MultiselectResponse" data-include="fragments/entities/caliper-entity-multiselectresponse.html"></section>
+        <section id="MultiselectScale" data-include="fragments/entities/caliper-entity-multiselectscale.html"></section>
+        <section id="NumericScale" data-include="fragments/entities/caliper-entity-numericscale.html"></section>
+        <section id="OpenEndedQuestion" data-include="fragments/entities/caliper-entity-openendedquestion.html"></section>
+        <section id="OpenEndedResponse" data-include="fragments/entities/caliper-entity-openendedresponse.html"></section>
+        <section id="Query" data-include="fragments/entities/caliper-entity-query.html"></section>
+        <section id="Question" data-include="fragments/entities/caliper-entity-question.html"></section>
+        <section id="Questionnaire" data-include="fragments/entities/caliper-entity-questionnaire.html"></section>
+        <section id="QuestionnaireItem" data-include="fragments/entities/caliper-entity-questionnaireitem.html"></section>
+        <section id="Rating" data-include="fragments/entities/caliper-entity-rating.html"></section>
+        <section id="RatingScaleQuestion" data-include="fragments/entities/caliper-entity-ratingscalequestion.html"></section>
+        <section id="RatingScaleResponse" data-include="fragments/entities/caliper-entity-ratingscaleresponse.html"></section>
+        <section id="Response" data-include="fragments/entities/caliper-entity-response.html"></section>
+        <section id="Scale" data-include="fragments/entities/caliper-entity-scale.html"></section>
+        <section id="SearchResponse" data-include="fragments/entities/caliper-entity-searchresponse.html"></section>
+        <section id="Survey" data-include="fragments/entities/caliper-entity-survey.html"></section>
+        <section id="SurveyInvitation" data-include="fragments/entities/caliper-entity-surveyinvitation.html"></section>
+    </section>
+
+    <section id="lti-messageTypes">
+        <h2>LTI Message Types</h2>
+        <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
+            property for describing the type of LTI message associated with the
+            <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
+            values:</p>
+
+        <section id="LtiDeepLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
+        <section id="LtiResourceLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
+    </section>
+
+    <section id="metrics">
+        <h2>Use Metrics</h2>
+        <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
+            property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric values are
+            limited to the list of Caliper terms listed below.</p>
+
+        <section id="metric-assessmentpassed" data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html"></section>
+        <section id="metric-assessmentsubmitted" data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html"></section>
+        <section id="metric-minutesontask" data-include="fragments/usemetrics/caliper-metric-minutesontask.html"></section>
+        <section id="metric-skillsmastered" data-include="fragments/usemetrics/caliper-metric-skillsmastered.html"></section>
+        <section id="metric-standardsmastered" data-include="fragments/usemetrics/caliper-metric-standardsmastered.html"></section>
+        <section id="metric-unitscompleted" data-include="fragments/usemetrics/caliper-metric-unitscompleted.html"></section>
+        <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
+        <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
+    </section>
+
+    <section id="jsonld">
+        <h2>Caliper JSON-LD Examples</h2>
+
+        <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
+            provides a remote Tool Use Profile JSON-LD <a href=
+            "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a>
+            for mapping <code>Event</code> terms to IRIs. Caliper message producers MUST reference the Tool Use
+            Profile 1.1-extension context in every <a href="#event">Event</a> subtype described in this profile. Likewise,
+            Caliper message producers MUST reference the Tool Use Profile 1.1-extension context whenever an
+            <a href="#entity">Entity</a> subtype described in this profile is emitted on its own as a <em>describe</em>.</p>
+
+        <p>See the Caliper 1.2 specification [[!CALIPER-12]] for a discussion of JSON-LD and JSON-LD
+            context handling.</p>
+
+
+        TODO: add examples here or interleave them in Events and Entities sections as was done with 1.1.
+
+
+    </section>
+
+    <section class="appendix informative" id="revisionhistory">
+        <h2>Revision History</h2>
+
+        <section>
+            <h3>Version History</h3>
+            <table title="Revision History" summary="Publication history and revision details for this specification.">
+                <thead>
+                <tr>
+                    <th>Version No.</th>
+                    <th>Release Date</th>
+                    <th>Comments</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>IMS Base Document 1.2</td>
+                    <td>31 August 2019</td>
+                    <td>The first Base Document release.</td>
+                </tr>
+                </tbody>
+            </table>
         </section>
 
-        <section class="informative">
-            <h3>AggregateMeasureCollection</h3>
-            <p>Below is an example of a <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> entity
-                describe that can also be sent to an endpoint.</p>
-
-            <figure class="example">
-                <figcaption><code>AggregateMeasureCollection</code> describe JSON-LD</figcaption>
-<pre><code>
-{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension",
-    "id": "urn:uuid:60b4db01-f1e5-4a7f-add9-6a8f761625b1",
-    "type": "AggregateMeasureCollection",
-    "items": [
-        {
-            "id": "urn:uuid:21c3f9f2-a9ef-4f65-bf9a-0699ed85e2c7",
-            "type": "AggregateMeasure",
-            "metric": "MinutesOnTask",
-            "name": "Minutes On Task",
-            "metricValue": 873.0,
-            "startedAtTime": "2019-08-15T10:15:00.000Z",
-            "endedAtTime": "2019-11-15T10:15:00.000Z"
-        },
-        {
-            "id": "urn:uuid:c3ba4c01-1f17-46e0-85dd-1e366e6ebb81",
-            "type": "AggregateMeasure",
-            "metric": "UnitsCompleted",
-            "name": "Units Completed",
-            "metricValue": 12.0,
-            "maxMetricValue": 25.0,
-            "startedAtTime": "2019-08-15T10:15:00.000Z",
-            "endedAtTime": "2019-11-15T10:15:00.000Z"
-        }
-    ]
-}</code></pre>
-            </figure>
+        <section>
+            <h3>Changes from previous version</h3>
+            <p>As this is the first version of this document, no previous version change log exists.</p>
         </section>
     </section>
-</section>
-
-<section class="appendix informative" id="revisionhistory">
-    <h2>Revision History</h2>
-
-    <section>
-        <h3>Version History</h3>
-        <table title="Revision History" summary="Publication history and revision details for this specification.">
-            <thead>
-            <tr>
-                <th>Version No.</th>
-                <th>Release Date</th>
-                <th>Comments</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>IMS Base Document 1.2</td>
-                <td>31 August 2019</td>
-                <td>The first Base Document release.</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section>
-        <h3>Changes from previous version</h3>
-        <p>As this is the first version of this document, no previous version change log exists.</p>
-    </section>
-</section>
-</body>
+    </body>
 </html>
