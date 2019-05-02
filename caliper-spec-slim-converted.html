@@ -2970,44 +2970,7 @@ src="assets/caliper-profile_general.png"></div>
   }
 }
 </code></pre>
-<h3><a name="courseOffering"></a>C.10 CourseOffering</h3>
-<p>A Caliper <a href="#courseOffering">CourseOffering</a> represents the occurrence of a course or a type during a specified time period.  <a href="#courseOffering">CourseOffering</a> is composed of a subset of properties specified in the IMS <a href="#ltiDef">LTI 2.1</a> specification, which in turn, draws inspiration from the IMS <a href="#lis">LIS 1.0</a> specification.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/CourseOffering</p>
-<h4>Supertype</h4>
-<p><a href="#organization">Organization</a></p>
-<h4>Properties</h4>
-<p><a href="#courseOffering">CourseOffering</a> inherits all the properties and requirements defined for its supertype <a href="#organization">Organization</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>CourseOffering</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>courseNumber</td>
-<td>string</td>
-<td>A string value that constitutes a human-readable identifier for the <a href="#courseOffering">CourseOffering</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>academicSession</td>
-<td>string</td>
-<td>A string value that constitutes a human-readable identifier of the designated period in which this <a href="#courseOffering">CourseOffering</a> occurs.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Subtypes</h4>
 <p><a href="#courseSection">CourseSection</a></p>
 <h4>Example</h4>
@@ -3071,103 +3034,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateCreated&quot;: &quot;2018-08-01T06:00:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="digitalResource"></a>C.12 DigitalResource</h3>
-<p>A Caliper <a href="#digitalResource">DigitalResource</a> is a generic type that represents digital content.</p>
-<p>Utilize <a href="#digitalResource">DigitalResource</a> only if no suitable subtype exists to represent the resource being described.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/DigitalResource</p>
-<h4>Supertype</h4>
-<p><a href="#entity">Entity</a></p>
-<h4>Properties</h4>
-<p><a href="#digitalResource">DigitalResource</a> inherits all the properties and requirements defined for its supertype <a href="#entity">Entity</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>DigitaResource</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>creators</td>
-<td>Array</td>
-<td>An ordered collection of <a href="#agent">Agent</a> entities, typically of type <a href="#person">Person</a>, that are responsible for bringing resource into being.  Each array item MUST be expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>mediaType</td>
-<td>string</td>
-<td>A string value drawn from the list of <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA</a> approved media types and subtypes that identifies the file format of the resource.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>keywords</td>
-<td>Array</td>
-<td>An ordered collection of one or more string values that represent tags or labels used to identify the resource.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>learningObjectives</td>
-<td>Array</td>
-<td>An ordered collection of one or more <a href="#learningobjective">LearningObjective</a> entities that describe what a learner is expected to comprehend or accomplish after engaging with the resource.  Each array item MUST be expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>isPartOf</td>
-<td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a></td>
-<td>A related <a href="#entity">Entity</a> that includes or incorporates the resource as a part of its whole.  The <code>isPartOf</code> value MUST be expressed either as an object or as a string corresponding to the associated entity's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>datePublished</td>
-<td>DateTime</td>
-<td>An ISO 8601 date and time value expressed with millisecond precision that provides the publication date of the resource.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>version</td>
-<td>string</td>
-<td>A string value that designates the current form or version of the resource.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
-<h4>Deprecated Properties</h4>
-<p>The following <a href="#digitalResource">DigitalResource</a> properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><s>objectType</s></td>
-<td>string</td>
-<td>A string value that designates the <a href="#digitalResource">DigitalResource</a> type.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><s>alignedLearningObjective</s></td>
-<td>Array</td>
-<td>An ordered collection of one or more <a href="#learningobjective">LearningObjective</a> entities that describe what a learner is expected to comprehend or accomplish after engaging with a <a href="#digitalResource">DigitalResource</a>.  <code>alignedLearningObjective</code> has been DEPRECATED and replaced by <code>learningObjectives</code>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
-<h4>Subtypes</h4>
-<p><a href="#assignableDigitalResource">AssignableDigitalResource</a>, <a href="#chapter">Chapter</a>, <a href="#digitalResourceCollection">DigitalResourceCollection</a>, <a href="#document">Document</a>, <a href="#forum">Forum</a>, <a href="#frame">Frame</a>, <a href="#mediaLocation">MediaLocation</a>, <a href="#mediaobject">MediaObject</a>, <a href="#message">Message</a>, <a href="#page">Page</a>, <a href="#thread">Thread</a>, <a href="#webPage">WebPage</a></p>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
