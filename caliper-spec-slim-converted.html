@@ -2924,56 +2924,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;duration&quot;: &quot;PT50M30S&quot;
 }
 </code></pre>
-<h3><a name="audioObject"></a>C.7 AudioObject</h3>
-<p>A Caliper <a href="#audioObject">AudioObject</a> represents an audio or sound file.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/AudioObject</p>
-<h4>Supertype</h4>
-<p><a href="#mediaObject">MediaObject</a></p>
-<h4>Properties</h4>
-<p><a href="#audioObject">AudioObject</a> inherits all the properties and requirements defined for its supertype <a href="#mediaObject">MediaObject</a>.  Additional properties are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AudioObject</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>volumeLevel</td>
-<td>string</td>
-<td>A string value indicating the current volume level.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>volumeMin</td>
-<td>string</td>
-<td>A string value indicating the minimum volume level permitted.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>volumeMax</td>
-<td>string</td>
-<td>A string value indicating the maximum volume level permitted.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>muted</td>
-<td>Boolean</td>
-<td>An optional boolean value indicating whether or not the AudioObject has been muted.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
