@@ -1408,65 +1408,7 @@ src="assets/caliper-profile_general.png"></div>
   }
 }
 </code></pre>
-<h3><a name="assessmentEvent"></a>B.2 AssessmentEvent</h3>
-<div><img class="img-responsive" alt="AssessmentEvent Started image" src="assets/caliper-assessment_event_started-v2.png"></div>
-<p>A Caliper <a href="#assessmentEvent">AssessmentEvent</a> models learner interactions with assessments instruments such as online tests or quizzes.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/AssessmentEvent</p>
-<h4>Supertype</h4>
-<p><a href="#event">Event</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<p><a href="#started">Started</a>, <a href="#paused">Paused</a>, <a href="#resumed">Resumed</a>, <a href="#restarted">Restarted</a>, <a href="#reset">Reset</a>, <a href="#submitted">Submitted</a></p>
-<h4>Supported Objects</h4>
-<p><a href="#assessment">Assessment</a></p>
-<h4>Supported Generated Entities</h4>
-<p><a href="#attempt">Attempt</a></p>
-<h4>Properties</h4>
-<p><a href="#assessmentEvent">AssessmentEvent</a> inherits all properties defined by its supertype <a href="#event">Event</a>. Additional requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AssessmentEvent</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>actor</td>
-<td><a href="#person">Person</a> | <a href="#iriDef">IRI</a></td>
-<td>the <a href="#person">Person</a> who initiated the <code>action</code>.   The <code>actor</code> value MUST be expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>action</td>
-<td><a href="#termDef">Term</a></td>
-<td>the action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.  The value range is limited to the supported action terms listed above.  Only one <code>action</code> <a href="#termDef">Term</a> may be specified per <a href="#event">Event</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>object</td>
-<td><a href="#assessment">Assessment</a> | <a href="#iriDef">IRI</a></td>
-<td>The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object's <a href="#iriDef">IRI</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>generated</td>
-<td><a href="#attempt">Attempt</a> | <a href="#iriDef">IRI</a></td>
-<td>The <code>generated</code> value MUST be expressed either as an object or as a string corresponding to the generated entity's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example: AssessmentEvent (started)</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
