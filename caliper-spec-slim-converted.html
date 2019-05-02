@@ -2802,36 +2802,7 @@ src="assets/caliper-profile_general.png"></div>
   }
 }
 </code></pre>
-<h2><a name="entities"></a>Appendix C. Entity Subtypes</h2>
-<h3><a name="agent"></a>C.1 Agent</h3>
-<p>A Caliper <a href="#agent">Agent</a> is a generic type that represents an <a href="#entity">Entity</a> that can initiate or perform an action.</p>
-<p>Utilize <a href="#agent">Agent</a> only if no suitable subtype exists to represent the actor being described.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Agent</p>
-<h4>Supertype</h4>
-<p><a href="#entity">Entity</a></p>
-<h4>Properties</h4>
-<p><a href="#agent">Agent</a> inherits all properties defined by its supertype <a href="#entity">Entity</a>.  Additional requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Agent</em>.</td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
-<h4>Subtypes</h4>
-<p><a href="#organization">Organization</a>, <a href="#person">Person</a>, <a href="#softwareapplication">SoftwareApplication</a></p>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
