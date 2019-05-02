@@ -48,8 +48,8 @@
         <td>action</td>
         <td><a href="#termDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
-            range is limited to the <a href="#started">Started</a>, <a href="#skipped">Skipped</a>, and
-            <a href="#completed">Completed</a> actions only.</td>
+            range is limited to the <a href="#action-started">Started</a>, <a href="#action-skipped">Skipped</a>, and
+            <a href="#action-completed">Completed</a> actions only.</td>
         <td>Required</td>
     </tr>
     <tr>
@@ -62,7 +62,7 @@
     <tr>
         <td>generated</td>
         <td><a href="#Response">Response</a> | <a href="#iriDef">IRI</a></td>
-        <td>For a <a href="#completed">completed</a> action a <code>generated</code> <a href="#Response">Response</a>
+        <td>For a <a href="#action-completed">completed</a> action a <code>generated</code> <a href="#Response">Response</a>
             or a subtype. The <code>generated</code> value MUST be expressed either as an object or as a string
             corresponding to the generated entity's <a href="#iriDef">IRI</a>.</td>
         <td>Optional</td>
