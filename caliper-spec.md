@@ -1261,7 +1261,7 @@ Before sending Caliper data, a [Sensor][#sensor] MAY choose to check the current
 * If an [Endpoint](#endpoint) receives this request alongside appropriate authorization, it MUST respond with a `200 OK` status code. The body of a successful response MUST contain its configuration parameters in a JSON data structure.
 * If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#endpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
 
-A [Sensor](#sensor) sending a ping request SHOULD interpret any status code besides `200 OK` or `401 Unauthorized` as the [Endpoint](#endpoint) indicating that its service is currently unavailable.
+A [Sensor](#sensor) sending a configuration request SHOULD interpret any status code besides `200 OK` or `401 Unauthorized` as the [Endpoint](#endpoint) indicating that its service is currently unavailable.
 
 #### Properties
 
