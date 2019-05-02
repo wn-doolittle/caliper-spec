@@ -2812,47 +2812,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateModified&quot;: &quot;2018-09-02T11:30:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="annotation"></a>C.2 Annotation</h3>
-<p>A Caliper <a href="#annotation">Annotation</a> is a generic type that represents a comment, explanation, highlight, mark, note, question or tag linked to a <a href="#digitalResource">DigitalResource</a>.  The act of sharing a <a href="#digitalResource">DigitalResource</a> with others is also considered a form of annotation.</p>
-<p>Utilize <a href="#annotation">Annotation</a> only if no suitable subtype exists to represent the annotation being described.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Annotation</p>
-<h4>Supertype</h4>
-<p><a href="#entity">Entity</a></p>
-<h4>Properties</h4>
-<p><a href="#annotation">Annotation</a> inherits all properties defined by its supertype <a href="#entity">Entity</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Annotation</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>annotator</td>
-<td><a href="#person">Person</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#person">Person</a> who created the <a href="#annotation">Annotation</a>.  The <code>annotator</code> value MUST be expressed either as an object or as a string corresponding to the annotator's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>annotated</td>
-<td><a href="#digitalResource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#digitalResource">DigitalResource</a> that was annotated by the <code>annotator</code>.  The <code>annotated</code> value MUST be expressed either as an object or as a string corresponding to the annotated resource's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
-<h4>Subtypes</h4>
-<p><a href="#bookmarkAnnotation">BookmarkAnnotation</a>, <a href="#highlightAnnotation">HighlightAnnotation</a>, <a href="#sharedAnnotation">SharedAnnotation</a>, <a href="#tagAnnotation">TagAnnotation</a></p>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
@@ -2869,38 +2829,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateCreated&quot;: &quot;2018-08-01T06:00:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="assessment"></a>C.3 Assessment</h3>
-<p>A Caliper <a href="#assessment">Assessment</a> represents an assessment instrument such as a test or quiz.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Assessment</p>
-<h4>Supertype</h4>
-<p><a href="#digitalResourceCollection">DigitalResourceCollection</a>, <a href="#assignableDigitalResource">AssignableDigitalResource</a></p>
-<h4>Properties</h4>
-<p><a href="#assessment">Assessment</a> inherits all the properties and requirements defined by its supertypes <a href="#digitalResourceCollection">DigitalResourceCollection</a> and <a href="#assignableDigitalResource">AssignableDigitalResource</a>.  Additional requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Assessment</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>items</td>
-<td>Array</td>
-<td>An ordered collection of <a href="#assessmentItem">AssessmentItem</a> entities.  Each array item MUST be expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
