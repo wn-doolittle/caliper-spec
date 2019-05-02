@@ -40,7 +40,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 3.7 [Reading Profile](#readingProfile)
   * 3.8 [Session Profile](#sessionProfile)
   * 3.9 [Tool Use Profile](#toolUseProfile)
-  * 3.10 [Basic Profile](#basicProfile)
+  * 3.10 [General Profile](#generalProfile)
 * 4.0 [Serialization of the Model](#dataSerialization)
   * 4.1 [JSON-LD Context](#jsonldContext)
   * 4.2 [Identifiers](#jsonldIdentifiers)
@@ -158,7 +158,7 @@ Public comments and questions can be posted at the Caliper Analytics&reg; [publi
 ### <a name="changes"></a>1.2 Summary of Changes
 Caliper 1.1 extends as well as refines the Caliper information model and further describes the ways in which Events and Entities can be expressed as [Linked Data](#linkedDataDef) when authoring documents using [JSON-LD](#jsonldDef).
 
-Three new profiles are provided: the [Basic Profile](#basicProfile), [Forum Profile](#forumProfile) and [ToolUse Profile](#toolUseProfile).  The AssessmentItem Profile has been merged into the [Assessment Profile](#assessmentProfile).  The Outcome Profile has been renamed the [Grading Profile](#gradingProfile) and a new [Score](#score) entity has been added.  Both the [Forum Profile](#forumProfile) and the [ToolUse Profile](#toolUseProfile) add new event types to the Caliper event model: [ForumEvent](#forumEvent), [ThreadEvent](#threadEvent), [MessageEvent](#messageEvent), [ToolUseEvent](#toolUseEvent).  New entities and actions are also provided to better describe forum activities and tool use.
+Three new profiles are provided: the [General Profile](#generalProfile), [Forum Profile](#forumProfile) and [ToolUse Profile](#toolUseProfile).  The AssessmentItem Profile has been merged into the [Assessment Profile](#assessmentProfile).  The Outcome Profile has been renamed the [Grading Profile](#gradingProfile) and a new [Score](#score) entity has been added.  Both the [Forum Profile](#forumProfile) and the [ToolUse Profile](#toolUseProfile) add new event types to the Caliper event model: [ForumEvent](#forumEvent), [ThreadEvent](#threadEvent), [MessageEvent](#messageEvent), [ToolUseEvent](#toolUseEvent).  New entities and actions are also provided to better describe forum activities and tool use. 
 
 The [ReadingEvent](#readingEvent) has been deprecated while the [OutcomeEvent](#outcomeEvent) has been replaced by the [GradeEvent](#gradeEvent).  Certain action vocabularies have been adjusted as a result of additions and/or removals.  These include actions associated with the [AnnotationEvent](#annotationEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [AssignableEvent](#assignableEvent) and [MediaEvent](#mediaEvent).  A number of entities have also been deprecated.  The list includes [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume) and [Reading](#reading).
 
@@ -321,7 +321,7 @@ Extending Caliper's information model involves designing a new metric profile or
 
 The following metric profiles are currently available and are summarized individually below:
 
-[Annotation Profile](#annotationProfile), [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Forum Profile](#forumProfile), [Media Profile](#mediaProfile), [Grading Profile](#gradingProfile), [Reading Profile](#readingProfile), [Session Profile](#sessionProfile), [Tool Use Profile](#toolUseProfile), [Basic Profile](#basicProfile)
+[Annotation Profile](#annotationProfile), [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Forum Profile](#forumProfile), [Media Profile](#mediaProfile), [Grading Profile](#gradingProfile), [Reading Profile](#readingProfile), [Session Profile](#sessionProfile), [Tool Use Profile](#toolUseProfile), [General Profile](#generalProfile)
 
 ### <a name="annotationProfile"></a>3.1 Annotation Profile
 
@@ -714,11 +714,12 @@ The Tool Use Profile enables the gathering of basic usage information. It provid
 #### Supported Objects
 [SoftwareApplication](#softwareApplication)
 
-### <a name="basicProfile"></a>3.10 Basic Profile
+### <a name="generalProfile"></a>3.10 General Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Basic Profile" src="assets/caliper-profile_basic.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="General Profile" 
+src="assets/caliper-profile_general.png"></div>
 
-The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
+The Caliper General Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
 #### Supported Events
 [Event](#event) (supertype only)
@@ -733,7 +734,7 @@ Any Caliper action MAY be used to describe the interaction.
 [Entity](#entity)
 
 #### Other Requirements
-* Use of the Basic Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
+* Use of the General Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
 
 ## <a name="dataSerialization"></a>4.0 Serialization of the Model
 
@@ -785,7 +786,10 @@ As noted above, a [JSON-LD](#jsonldDef) document can reference more than one con
 ##### Correct order (Caliper context listed last)
 ```
 {
-  "@context": ["https://schema.org/docs/jsonldcontext.json", "http://purl.imsglobal.org/ctx/caliper/v1p1"]
+  "@context": [
+    "https://schema.org/docs/jsonldcontext.json",
+    "http://purl.imsglobal.org/ctx/caliper/v1p1"
+  ]
   . . .
 }
 ```
@@ -1242,13 +1246,21 @@ A Caliper [Endpoint](#endpoint) MUST be capable of receiving Caliper data sent o
 
 ### <a name="httpResponse"></a>6.1 HTTP Responses
 
-Following receipt of a [Sensor](#sensor) request message the [Endpoint](#endpoint) MUST reply with a response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
+Following receipt of a [Sensor](#sensor) HTTP request message, the [Endpoint](#endpoint) MUST reply with an HTTP response message.  The response will include a three-digit status code indicating whether or not the [Endpoint](#endpoint) was able to understand and satisfy the request, as defined by [RFC 7231](#rfc7231).
 
-* To signal to a [Sensor](#sensor) that it has successfully received an emitted [Envelope](#envelope) an [Endpoint](#endpoint) MUST reply with a `2xx` class status code. The [Endpoint](#endpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
-* If the [Sensor](#sensor) sends a message containing events and or entities without an enclosing [Envelope](#envelope), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.
-* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#endpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#endpoint) cannot support; in this case, the [Endpoint](#endpoint) SHOULD send a `422 Unprocessable Entity` response instead.
-* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#endpoint) SHOULD reply with a `415 Unsupported Media Type` response.
-* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#endpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#endpoint) SHOULD reply with a `401 Unauthorized` response.
+When signalling to a [Sensor](#sensor) that the endpoint has successfully received the request message, the [Endpoint](#endpoint) MUST reply with a `2xx` class status code. By best practice, the [Endpoint](#endpoint) SHOULD use the `200 OK` response but might instead choose to send a `201 Created` (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` (to indicate successful receipt of the message and queueing for further processing). By best practice, the [Endpoint](#endpoint) SHOULD send back successful responses with an empty body.
+
+An [Endpoint](#endpoint) MAY send back responses other than those with `2xx` class indicating success; if so, it MUST adhere to these response status codes for these specific cases (for other cases, the [Endpoint](#endpoint) may offer other responses):
+
+* If the request message has no enclosing Caliper [Envelope](#envelope), reply with a `400 Bad Request` status code.
+
+* If the request message's Caliper [Envelope](#envelope) is malformed (for example, missing fields required by the Envelop's version), reply with a `400 Bad Request` status code.
+
+* If the [Sensor](#sensor) sends an unauthorized request, or the [Endpoint](#endpoint) is unable to validate the authorization, or the [Endpoint](#endpoint) cannot determine that the [Sensor](#sensor) has sufficient privilege to send such a message, reply with a `401 Unauthorized`.
+
+* If the request message has a content-type other than `application/json`, reply with a `415 Unsupported Media Type`.
+
+* If the [Endpoint](#endpoint) cannot support the version of Caliper data indicated by the Caliper [Envelope](#envelope)'s `dataVersion` field, reply with a `422 Unprocessable Entity` status code.
 
 The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions that vary from the cases described above.  The [Endpoint](#endpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
 
@@ -5767,7 +5779,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | Profile | Status | Disposition |
 | :------ | :----- | :---------- |
 | AssessmentItem Profile | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
-| [Basic Profile](#basicProfile) | New | Utilize the generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper. |
+| [General Profile](#generalProfile) | New | Utilize the generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper. |
 | [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. |
 | [Grading Profile](#gradingProfile) | New | Replaces [Outcome Profile](#outcomeProfile).  Adds [Score](#score). |
 | Outcome Profile | Removed | Replaced by [Grading Profile](#gradingProfile). |
