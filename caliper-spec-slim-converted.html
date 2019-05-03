@@ -2600,63 +2600,7 @@ src="assets/caliper-profile_general.png"></div>
   }
 }
 </code></pre>
-<h3><a name="toolUseEvent"></a>B.12 ToolUseEvent</h3>
-<div><img class="img-responsive" alt="ToolUseEvent Used image" src="assets/caliper-tool_use_event_used-v2.png"></div>
-<p>A Caliper <a href="#toolUseEvent">ToolUseEvent</a> models a <a href="#person">Person</a> using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/ToolUseEvent</p>
-<h4>Supertype</h4>
-<p><a href="#event">Event</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<p><a href="#used">Used</a></p>
-<h4>Supported Objects</h4>
-<p><a href="#softwareApplication">SoftwareApplication</a></p>
-<h4>Properties</h4>
-<p><a href="#toolUseEvent">ToolUseEvent</a> inherits all properties defined by its supertype <a href="#event">Event</a>. Additional requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>ToolUseEvent</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>actor</td>
-<td><a href="#person">Person</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#person">Person</a> who initiated the <code>action</code>.  The <code>actor</code> value MUST be expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>action</td>
-<td><a href="#termDef">Term</a></td>
-<td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.  The value range is limited to the action terms listed above.  Only one <code>action</code> <a href="#termDef">Term</a>  may be specified per <a href="#event">Event</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>object</td>
-<td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#softwareApplication">SoftwareApplication</a> that constitutes  the <code>object</code> of the interaction.  The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object's <a href="#iriDef">IRI</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>target</td>
-<td><a href="#softwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
-<td>A <a href="#softwareApplication">SoftwareApplication</a> that represents a particular capability or feature provided by the <code>object</code>.  The <code>target</code> value MUST be expressed either as an object or as a string corresponding to the target entity's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example: ToolUseEvent (used)</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
@@ -2695,71 +2639,7 @@ src="assets/caliper-profile_general.png"></div>
   }
 }
 </code></pre>
-<h3><a name="viewEvent"></a>B.13 ViewEvent</h3>
-<div><img class="img-responsive" alt="ViewEvent Viewed image" src="assets/caliper-view_event_viewed-v2.png"></div>
-<p>A Caliper <a href="#viewEvent">ViewEvent</a> describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/ViewEvent</p>
-<h4>Supertype</h4>
-<p><a href="#event">Event</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<p><a href="#viewed">Viewed</a></p>
-<h4>Supported Objects</h4>
-<p><a href="#digitalResource">DigitalResource</a></p>
-<h4>Supported Target Entities</h4>
-<p><a href="#frame">Frame</a></p>
-<h4>Properties</h4>
-<p><a href="#viewEvent">ViewEvent</a> inherits all properties defined by its supertype <a href="#event">Event</a>. Additional requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>ViewEvent</em>.</td>
-<td></td>
-</tr>
-<tr>
-<td>actor</td>
-<td><a href="#person">Person</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#person">Person</a> who initiated the <code>action</code>.  The <code>actor</code> value MUST be expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>action</td>
-<td><a href="#termDef">Term</a></td>
-<td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.  The value range is limited to the action terms listed above.  Only one <code>action</code> <a href="#termDef">Term</a>  may be specified per <a href="#event">Event</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>object</td>
-<td><a href="#digitalResource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#digitalResource">DigitalResource</a> that constitutes the <code>object</code> of the interaction.  The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object's <a href="#iriDef">IRI</a>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>eventTime</td>
-<td>DateTime</td>
-<td>An ISO 8601 date and time value expressed with millisecond precision that indicates when the <a href="#event">Event</a> occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>target</td>
-<td><a href="#frame">Frame</a> | <a href="#iriDef">IRI</a></td>
-<td>A <a href="#frame">Frame</a> that represents a particular segment or location within the <code>object</code>.  The <code>target</code> value MUST be expressed either as an object or as a string corresponding to the target entity's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example ViewEvent (viewed)</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
@@ -2985,38 +2865,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateModified&quot;: &quot;2018-09-02T11:30:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="courseSection"></a>C.11 CourseSection</h3>
-<p>A Caliper <a href="#courseSection">CourseSection</a> represents a specific instance of a <a href="#courseOffering">CourseOffering</a> occurring during a specific semester, term or period.  <a href="#courseSection">CourseSection</a> is composed of a subset of properties specified in the IMS <a href="#ltiDef">LTI 2.1</a> specification, which in turn, draws inspiration from the IMS <a href="#lis">LIS 1.0</a> specification.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/CourseSection</p>
-<h4>Supertype</h4>
-<p><a href="#courseOffering">CourseOffering</a></p>
-<h4>Properties</h4>
-<p><a href="#courseSection">CourseSection</a> inherits all the properties and requirements defined for its supertype <a href="#courseOffering">CourseOffering</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>CourseSection</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>category</td>
-<td>string</td>
-<td>A string value that characterizes the purpose of the section such as &quot;lecture&quot;, &quot;lab&quot; or &quot;seminar&quot;.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,

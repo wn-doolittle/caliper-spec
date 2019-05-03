@@ -459,6 +459,7 @@
         <section id="Collection" data-include="fragments/entities/caliper-entity-collection.html"></section>
         <section id="Comment" data-include="fragments/entities/caliper-entity-comment.html"></section>
         <section id="CourseOffering" data-include="fragments/entities/caliper-entity-courseoffering.html"></section>
+        <section id="CourseSection" data-include="fragments/entities/caliper-entity-coursesection.html"></section>
         <section id="DateTimeQuestion" data-include="fragments/entities/caliper-entity-datetimequestion.html"></section>
         <section id="DateTimeResponse" data-include="fragments/entities/caliper-entity-datetimeresponse.html"></section>
         <section id="DigitalResource" data-include="fragments/entities/caliper-entity-digitalresource.html"></section>
@@ -486,31 +487,35 @@
         <section id="SurveyInvitation" data-include="fragments/entities/caliper-entity-surveyinvitation.html"></section>
     </section>
 
-    <section id="lti-messageTypes">
-        <h2>LTI Message Types</h2>
-        <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
-            property for describing the type of LTI message associated with the
-            <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
-            values:</p>
+    <section id="constants">
+        <h2>Constants</h2>
 
-        <section id="LtiDeepLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
-        <section id="LtiResourceLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
-    </section>
+        <section id="lti-messageTypes">
+            <h3>LTI Message Types</h3>
+            <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
+                property for describing the type of LTI message associated with the
+                <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
+                values:</p>
 
-    <section id="metrics">
-        <h2>Use Metrics</h2>
-        <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
-            property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric values are
-            limited to the list of Caliper terms listed below.</p>
+            <section id="LtiDeepLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
+            <section id="LtiResourceLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
+        </section>
 
-        <section id="metric-assessmentpassed" data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html"></section>
-        <section id="metric-assessmentsubmitted" data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html"></section>
-        <section id="metric-minutesontask" data-include="fragments/usemetrics/caliper-metric-minutesontask.html"></section>
-        <section id="metric-skillsmastered" data-include="fragments/usemetrics/caliper-metric-skillsmastered.html"></section>
-        <section id="metric-standardsmastered" data-include="fragments/usemetrics/caliper-metric-standardsmastered.html"></section>
-        <section id="metric-unitscompleted" data-include="fragments/usemetrics/caliper-metric-unitscompleted.html"></section>
-        <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
-        <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
+        <section id="metrics">
+            <h3>Use Metrics</h3>
+            <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
+                property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric values are
+                limited to the list of Caliper terms listed below.</p>
+
+            <section id="metric-assessmentpassed" data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html"></section>
+            <section id="metric-assessmentsubmitted" data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html"></section>
+            <section id="metric-minutesontask" data-include="fragments/usemetrics/caliper-metric-minutesontask.html"></section>
+            <section id="metric-skillsmastered" data-include="fragments/usemetrics/caliper-metric-skillsmastered.html"></section>
+            <section id="metric-standardsmastered" data-include="fragments/usemetrics/caliper-metric-standardsmastered.html"></section>
+            <section id="metric-unitscompleted" data-include="fragments/usemetrics/caliper-metric-unitscompleted.html"></section>
+            <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
+            <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
+        </section>
     </section>
 
     <section id="jsonld">
