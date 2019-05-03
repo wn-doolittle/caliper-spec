@@ -1,11 +1,11 @@
 <h3>Caliper Event</h3>
 
-<img height="100%" width="100%" src="assets/caliper-event_model_no_title-v3.png" alt="Caliper Event"/>
+<img height="100%" width="100%" src="assets/caliper-event_model_no_title-v3.png" alt="Caliper Event">
 
 <p>A Caliper <a href="#Event">Event</a> is a generic type that describes the relationship established between an
     <code>action</code> and an <code>object</code>, formed as a result of a purposeful
     <a href="#actions">action</a> undertaken by the <code>action</code> at a particular moment in time and within a
-    given learning context.  The <a href="#Event">Event</a> properties <code>action</code>, <code>action</code> and
+    given learning context. The <a href="#Event">Event</a> properties <code>action</code>, <code>action</code> and
     <code>object</code> form a compact data structure that resembles an <a href="#rdf">RDF</a> triple linking a subject
     to an object via a predicate. A learner starting an assessment, annotating a reading, pausing a video, or
     posting a message to a forum, are examples of learning activities that Caliper models as events.</p>
@@ -19,14 +19,14 @@
 
 <p>The information model also seeks to describe the learning environment or context in which a learning
     activity is situated. Group affiliation, membership roles and status, recent navigation history,
-    supporting technology and session information can all be optionally represented.  An <a href="#entity">Entity</a>
+    supporting technology and session information can all be optionally represented. An <a href="#entity">Entity</a>
     generated as a result of the interaction between an <code>action</code> and an <code>object</code> can also be described;
     annotating a piece of digital content and producing an <a href="#Annotation">Annotation</a> is one such example.
     An <code>extensions</code> property is also provided so that implementers can add custom attributes not described
     by the model.</p>
 
 <p>Considered as a data structure an <a href="#Event">Event</a> constitutes an unordered set of key:value pairs that is
-    semi-structured by design. Optional attributes can be ignored when describing an <a href="#Event">Event</a>.  An
+    semi-structured by design. Optional attributes can be ignored when describing an <a href="#Event">Event</a>. An
     <a href="#entity">Entity</a> participating in an <a href="#Event">Event</a> can be represented as an object or as a
     string that corresponds to the <a href="#iriDef">IRI</a> defined for the <a href="#entity">Entity</a>.</p>
 
@@ -61,10 +61,10 @@
     </dd>
     <dt>Properties</dt>
     <dd>The base set of <a href="#Event">Event</a> properties or attributes is listed below. Each property MUST be
-        referenced only once.  The <code>id</code>, <code>type</code>, <code>action</code>, <code>action</code>,
+        referenced only once. The <code>id</code>, <code>type</code>, <code>action</code>, <code>action</code>,
         <code>object</code> and <code>eventTime</code> properties are required; all other properties are optional.
         Custom attributes not described by the model MAY be included but MUST be added to the <code>extensions</code>
-        property as a map of key:value pairs.  Properties with a value of *null* or empty SHOULD be excluded prior
+        property as a map of key:value pairs. Properties with a value of *null* or empty SHOULD be excluded prior
         to serialization.
     </dd>
 </dl>
@@ -83,7 +83,7 @@
         <td>id</td>
         <td><a href="#uuidDef">UUID</a></td>
         <td>The emitting application MUST provision the <a href="#Event">Event</a> with a <a href="#uuidDef">UUID</a>.
-            A version 4 <a href="#uuidDef">UUID</a> SHOULD be generated.  The UUID MUST be expressed as a
+            A version 4 <a href="#uuidDef">UUID</a> SHOULD be generated. The UUID MUST be expressed as a
             <a href="#urnDef">URN</a> using the form <code>urn:uuid:&lt;UUID&gt;</code> per
             <a href="#rfc4122">RFC 4122</a>.</td>
         <td>Required</td>
@@ -120,7 +120,7 @@
     <tr>
         <td>action</td>
         <td><a href="#termDef">Term</a></td>
-        <td>The action or predicate that binds the actor or subject to the object.  The <code>action</code> range is
+        <td>The action or predicate that binds the actor or subject to the object. The <code>action</code> range is
             limited to the set of <a href="#actions">actions</a> described in this specification or associated profiles
             and may be further constrained by the chosen <a href="#Event">Event</a> type. Only one <code>action</code>
             <a href="#termDef">Term</a> may be specified per <a href="#Event">Event</a>.</td>
@@ -153,7 +153,7 @@
     <tr>
         <td>generated</td>
         <td><a href="#Entity">Entity</a> | <a href="#iriDef">IRI</a></td>
-        <td>An <a href="#entity">Entity</a> created or generated as a result of the interaction.  The
+        <td>An <a href="#entity">Entity</a> created or generated as a result of the interaction. The
             <code>generated</code> value MUST be expressed either as an object or as a string corresponding to the
             generated entity's <a href="#iriDef">IRI</a>.</td>
         <td>Optional</td>
