@@ -3846,38 +3846,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateModified&quot;: &quot;2018-09-02T11:30:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="trueFalseResponse"></a>C.41 TrueFalseResponse</h3>
-<p>A Caliper <a href="#trueFalseResponse">TrueFalseResponse</a> represents a type of <a href="#response">Response</a> to an  <a href="#assessmentItem">AssessmentItem</a> in which only two possible options are provided (e.g., true/false, yes/no).</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/TrueFalseResponse</p>
-<h4>Supertype</h4>
-<p><a href="#response">Response</a></p>
-<h4>Properties</h4>
-<p><a href="#trueFalseResponse">TrueFalseResponse</a> inherits all the properties and requirements defined for <a href="#response">Response</a>, its supertype.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>TrueFalseResponse</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>A string value that provides the true/false, yes/no binary selection SHOULD be provided.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
@@ -3908,32 +3877,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;value&quot;: &quot;true&quot;
 }
 </code></pre>
-<h3><a name="videoObject"></a>C.42 VideoObject</h3>
-<p>A Caliper <a href="#videoObject">VideoObject</a> represents a visual recording stored in digital form.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/VideoObject</p>
-<h4>Supertype</h4>
-<p><a href="#mediaObject">MediaObject</a></p>
-<h4>Properties</h4>
-<p><a href="#videoObject">VideoObject</a> inherits all the properties and requirements defined for its supertype <a href="#mediaObject">MediaObject</a>.  Additional requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>VideoObject</em>.</td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
