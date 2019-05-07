@@ -3184,44 +3184,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;values&quot;: [ &quot;A&quot;, &quot;D&quot;, &quot;E&quot; ]
 }
 </code></pre>
-<h3><a name="organization"></a>C.29 Organization</h3>
-<p>A Caliper <a href="#organization">Organization</a> represents a formal collection of people organized for some common educational, social or administrative purpose.  An <a href="#organization">Organization</a> can act as an <a href="#agent">Agent</a>.  It can be linked both to a parent <a href="#organization">Organization</a> and to its <code>members</code>.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Organization</p>
-<h4>Supertype</h4>
-<p><a href="#agent">Agent</a></p>
-<h3>Required properties</h3>
-<p>Organization inherits all the properties and requirements defined for <a href="#agent">Agent</a>, its supertype.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Organization</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>subOrganizationOf</td>
-<td><a href="#organization">Organization</a> | <a href="#iriDef">IRI</a></td>
-<td>The parent <a href="#organization">Organization</a> of this <a href="#organization">Organization</a>.  The <code>subOrganizationOf</code> value MUST be expressed either as an object or as a string corresponding to the parent organization's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>members</td>
-<td>Array</td>
-<td>An ordered collection of <a href="#agent">Agent</a> entities.  Each array item MUST be expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Subtypes</h4>
 <p><a href="#courseOffering">CourseOffering</a>, <a href="#courseSection">CourseSection</a>, <a href="#group">Group</a></p>
 <h4>Example</h4>
