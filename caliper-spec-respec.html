@@ -108,7 +108,7 @@
         <section class="informative">
             <h3>User Stories</h3>
             <p>Caliper supports the following learner-centric use stories:</p>
-            <table>
+            <table class="data">
                 <tr>
                     <td>TODO
                     </td>
@@ -249,7 +249,7 @@
                 probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly
                 generated version 4 UUIDs. Each Caliper <a href="#event">Event</a> MUST be assigned a UUID that is
                 expressed as a <a href="#urnDef">URN</a> using the form <code>urn:uuid:&lt;UUID&gt;</code> as described in
-                <a href="#rfc4122">RFC 4122</a>.
+                <a href="#rfc4122">RFC 4122</a>.</p>
         </section>
 
         <section id="conformance">
@@ -355,24 +355,841 @@
 
         <p>Caliper 1.2 includes the following profiles which are summarized individually below:</p>
 
-        <p>
-            <a href="#AnnotationProfile">Annotation Profile</a>,
-            <a href="#AssessmentProfile">Assessment Profile</a>,
-            <a href="#AssignableProfile">Assignable Profile</a>,
-            <a href="#FeedbackProfile">Feedback Profile</a>,
-            <a href="#ForumProfile">Forum Profile</a>,
-            <a href="#GradingProfile">Grading Profile</a>,
-            <a href="#MediaProfile">Media Profile</a>,
-            <a href="#ReadingProfile">Reading Profile</a>,
-            <a href="#ResourceManagementProfile">Resource Management Profile</a>,
-            <a href="#SearchProfile">Search Profile</a>,
-            <a href="#SessionProfile">Session Profile</a>,
-            <a href="#SurveyProfile">Survey Profile</a>,
-            <a href="#ToolLaunchProfile">Tool Launch Profile</a>,
-            <a href="#ToolUseProfile">Tool Use Profile</a>,
-            <a href="#GeneralProfile">General Profile</a>
-        </p>
+        <section id="#AnnotationProfile">
+            <h3>Annotation Profile</h3>
 
+        </section>
+        <section id="#AssessmentProfile">
+            <h3>Assessment Profile</h3>
+
+        </section>
+        <section id="#AssignableProfile">
+            <h3>Assignable Profile</h3>
+
+        </section>
+        <section id="#FeedbackProfile">
+            <h3>Feedback Profile</h3>
+
+        </section>
+        <section id="#ForumProfile">
+            <h3>Forum Profile</h3>
+
+        </section>
+        <section id="#GradingProfile">
+            <h3>Grading Profile</h3>
+
+        </section>
+        <section id="#MediaProfile">
+            <h3>Media Profile</h3>
+
+        </section>
+        <section id="#ReadingProfile">
+            <h3>Reading Profile</h3>
+
+        </section>
+        <section id="#ResourceManagementProfile">
+            <h3>Resource Management Profile</h3>
+
+        </section>
+        <section id="#SearchProfile">
+            <h3>Search Profile</h3>
+
+        </section>
+        <section id="#SessionProfile">
+            <h3>Session Profile</h3>
+
+        </section>
+        <section id="#SurveyProfile">
+            <h3>Survey Profile</h3>
+
+        </section>
+        <section id="#ToolLaunchProfile">
+            <h3>Tool Launch Profile</h3>
+
+        </section>
+        <section id="#ToolUseProfile">
+            <h3>Tool Use Profile</h3>
+        </section>
+        <section id="#GeneralProfile">
+            <h3>General Profile</h3>
+
+        </section>
+    </section>
+
+    <section id="serialization">
+        <h2>Serialization of the Model</h2>
+
+        <p>Over the last decade the advent of cloud-based, networked applications have led to changes in the way data
+            is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course
+            roster, or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing
+            to other bundles of data now requires thinking in terms of graphs and <a href="#linkedData">Linked Data</a>.
+            Caliper <a href="#event">Event</a> data presents us with similar structures. A Caliper
+            <a href="#event">Event</a> can link to user data, digital content, courses and rosters, grades and
+            credentials, institutional and organizational data, application and session data, and so on, the sources of
+            which are likely diverse and the opportunities for discovering new relationships between the entities
+            represented therein both numerous as well as enlightening.</p>
+
+        <p>Exchanging data linked to other data distributed across a wide network requires both a simple,
+            well-understood data-interchange format as well as means of defining unambiguously the underlying
+            semantics or meaning intended for the data structures transmitted from one machine to another. For Caliper,
+            <a href="#jsonldDef">JSON-LD</a> provides the necessary representational horsepower to both describe these
+            kinds of data linkages and specify how data is to be understood when published and shared across a
+            network.</p>
+
+        <p><a href="#jsonldDef">JSON-LD</a> defines an economical syntax for representing learning activity data
+            as <a href="#linkedData">Linked Data</a> using <a href="#jsonDef">JSON</a> as the underlying
+            data-interchange format. <a href="#jsonldDef">JSON-LD</a> also provides an API and set of processing
+            algorithms for working with <a href="#jsonldDef">JSON-LD</a> documents that are based on different contexts.
+            Algorithms have also been developed to serialize <a href="#rdf">RDF</a> as <a href="#jsonldDef">JSON-LD</a>
+            and deserialize a <a href="#jsonldDef">JSON-LD</a> document to an <a href="#rdf">RDF</a> data set.</p>
+
+        <section id="serialization-jsonld-context">
+            <h3>JSON-LD Context</h3>
+
+            <p><a href="#jsonldDef">JSON-LD</a> documents require inclusion of a <em>context</em>, denoted by the
+                <code>@context</code> keyword, a property employed to map document <a href="#termDef">Terms</a> to
+                <a href="#iriDef">IRIs</a>.  <a href="#jsonldDef">JSON-LD</a> contexts can be embedded inline or
+                referenced externally in a document.  Inclusion of a <a href="#jsonldDef">JSON-LD</a> context provides
+                an economical way for Caliper to communicate document semantics to services interested in consuming
+                Caliper event data.</p>
+
+            <p>IMS Global provides a remote Caliper 1.1 <a href="#jsonldDef">JSON-LD</a> context document
+                (<a href="http://purl.imsglobal.org/ctx/caliper/v1p2/">http://purl.imsglobal.org/ctx/caliper/v1p2/</a>)
+                for mapping Caliper <a href="#termDef">Terms</a> to <a href="#iriDef">IRIs</a>. Implementers are
+                encouraged to familiarize themselves with the term definitions described therein.</p>
+
+            <h4>Requirements</h4>
+            <ul>
+                <li>Each Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a>
+                    <em><a href="#describeDef">describe</a></em> document generated by a <a href="#sensor">Sensor</a>
+                    MUST be provisioned with a <a href="#jsonldDef">JSON-LD</a> <code>@context</code> defined as a
+                    property of the top-level object.</li>
+                <li>The top-level <code>@context</code> property type MUST be defined as a string or an array.</li>
+                <li>If the top-level <code>@context</code> value is defined as a string it MUST be set to the Caliper
+                    remote context URL "http://purl.imsglobal.org/ctx/caliper/v1p2".</li>
+                <li>If the top-level <code>@context</code> value is defined as an array of multiple contexts, the
+                    remote Caliper <a href="#jsonldDef">JSON-LD</a> context MUST be listed last in order to ensure that
+                    Caliper terms retain their primacy given that <a href="#jsonldDef">JSON-LD</a> parsers rely on a
+                    "most-recently-defined-wins" approach when evaluating duplicate terms.</li>
+                <li>Referencing the remote Caliper <a href="#jsonldDef">JSON-LD</a> context document in the top-level
+                    <code>@context</code> is mandatory.  The terms it defines MUST NOT be defined inline as an
+                    object.</li>
+                <li>Additional remote or inline <em>local</em> contexts may be referenced any time a JSON object is
+                    defined in order to ascribe meaning to terms not described by the model. These contexts are additive
+                    in nature and can be defined as a string, object or array.  Duplicate context references SHOULD be
+                    omitted when serializing the object.  Nested <em>local</em> contexts that are added to the
+                    <em>active</em> context at processing time MUST NOT override Caliper terms defined by the top-level
+                    context.</li>
+            </ul>
+
+            <p>In the following example, <code>@context</code> is a top-level <a href="#event">Event</a> property with
+                a value that references the remote Caliper <a href="#jsonldDef">JSON-LD</a> context document. All of the
+                <a href="#event">Event</a> key:value pairings are mapped to [IRIs] in the referenced context.</p>
+
+            <figure class="example">
+                <figcaption>Referencing the Caliper JSON-LD context</figcaption>
+                <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
+  "type": "Event",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Created",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/123",
+    "type": "Document"
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z"
+}</code></pre>
+            </figure>
+
+            <p>As noted above, a <a href="#jsonldDef">JSON-LD</a> document can reference more than one context. Subject
+                to the requirements listed above additional contexts MAY be defined for a Caliper
+                <a href="#event">Event</a> or <a href="#entity">Entity</a> <em><a href="#describeDef">describe</a></em>
+                in order to map non-Caliper vocabulary terms to their respective <a href="#iriDef">IRIs</a>. The Caliper
+                JSON-LD context MUST be listed last if an array of contexts is referenced.</p>
+
+            <figure class="example">
+                <figcaption>Referencing multiple JSON-LD contexts</figcaption>
+                <pre><code>{
+  "@context": ["https://schema.org/docs/jsonldcontext.json", "http://purl.imsglobal.org/ctx/caliper/v1p2"]
+  . . .
+}</code></pre>
+            </figure>
+
+            <p>Contexts embedded inline can be combined with externally referenced contexts. Again, order matters.</p>
+
+            <figure class="example">
+                <figcaption>Combining inline and referenced JSON-LD contexts</figcaption>
+                <pre><code>{
+TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
+}</code></pre>
+            </figure>
+        </section>
+
+        <section id="serialization-identifiers">
+            <h3>Identifiers</h3>
+
+            <p><a href="#linkedData">Linked Data</a> relies on <a href="#iriDef">IRIs</a>/<a href="#uriDefs">URIs</a>
+                for the identification and retrieval of resources.  Likewise, <a href="#jsonldDef">JSON-LD</a> specifies
+                the use of <a href="#iriDef">IRIs</a>/<a href="#uriDefs">URIs</a> for identifying most nodes
+                (i.e., JSON objects) and their attributes.  Caliper too specifies the use of <a href="#iriDef">IRIs</a>
+                for identifying nodes (i.e., the things or entities being described) and their attributes.</p>
+
+            <p><a href="#iriDef">IRI</a> values MUST be absolute containing a scheme, path and optional query and
+                fragment segments.  A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be
+                used as an identifier although care should be taken when employing a location-independent identifier
+                since it precludes the possibility of utilizing it in future to retrieve machine-readable data over
+                HTTP. If an <a href="#iriDef">IRI</a> is deemed inappropriate for the resource a
+                <a href="#blankNodeDef">blank node</a> identifier may be assigned.</p>
+
+            <p><a href="#jsonldDef">JSON-LD</a> provides a special <code>@id</code> keyword for assigning identifiers
+                to nodes. For Caliper, the <a href="#jsonldDef">JSON-LD</a> <code>@id</code> keyword is aliased as
+                <code>id</code> in the external IMS Caliper JSON-LD
+                <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>.  This is done in order to avoid the
+                temptation of employing <a href="#jsonldDef">JSON-LD</a> keywords as property names and is aligned with
+                <a href="#jsonldDef">JSON-LD</a> community practice.  Thus, each Caliper <a href="#event">Event</a> and
+                <a href="#entity">Entity</a> described by the model is provisioned with an <code>id</code> rather than
+                <code>@id</code> property for identifying the resource.</p>
+
+            <p>Every <a href="#entity">Entity</a> MUST be assigned an identifier in the form of a valid
+                <a href="#iriDef">IRI</a> or a blank node identifier. The <a href="#iriDef">IRI</a> MUST be unique and
+                persistent.  The <a href="#iriDef">IRI</a> SHOULD be dereferenceable; i.e., capable of returning a
+                representation of the <a href="#entity">Entity</a>.  A <a href="#uriDef">URI</a> employing the
+                <a href="#urnDef">URN</a> scheme MAY also be utilized.</p>
+
+            <p>Unlike Entities, each <a href="#event">Event</a> MUST be assigned a 128-bit long universally unique
+                identifier (<a href="#uuidDef">UUID</a>) formatted as a <a href="#urnDef">URN</a> per
+                <a href="#rfc4122">RFC 4122</a>, which describes a <a href="#urnDef">URN</a> namespace for
+                <a href="#uuidDef">UUIDs</a>.</p>
+
+
+            <figure class="example">
+                <figcaption>Event and Entity identifiers</figcaption>
+                <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f",
+  "type": "NavigationEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  . . .
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/2",
+    "type": "WebPage",
+    . . .
+  },
+  . . .
+}</code></pre>
+            </figure>
+        </section>
+
+        <section id="serialization-types">
+            <h3>Types and Type Coercion</h3>
+
+            <p><a href="#jsonldDef">JSON-LD</a> employs the <code>@type</code> keyword in two ways. Individual
+                <em>nodes</em> (i.e., the thing being described) can be assigned a type.  Values can also be associated
+                with or <em>coerced</em> to a particular type.  Both node types and typed values are specified in the
+                Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>.  As with the aliasing
+                of <code>@id</code> as <code>id</code>, the <code>@type</code> keyword is aliased as <code>type</code>
+                in the external IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>
+                in keeping with <a href="#jsonldDef">JSON-LD</a> community practice.</p>
+
+            <p>Caliper permits <a href="#entity">Entity</a> values to be expressed either as a JSON object or as a
+                string corresponding to its <a href="#iriDef">IRI</a>.  <a href="#jsonldDef">JSON-LD</a> also supports
+                the <em>coercion</em> of data values to specified types based on value type mappings defined in a
+                <a href="#jsonldDef">JSON-LD</a> context.  For a given <code>@type</code> the keywords <code>@id</code>
+                or <code>@vocab</code> may be assigned as a value in order to signal to a
+                <a href="#jsonldDef">JSON-LD</a> parser that if a term's instance value is set to a string it is to be
+                interpreted as an <a href="#iriDef">IRI</a>.  Type coercion of this sort provides representational
+                flexibility that implementers are encouraged to leverage.</p>
+
+            <p>The following <a href="#messageEvent">MessageEvent</a> example utilizes an inline context to illustrate
+                how <a href="#jsonldDef">JSON-LD</a> types can be specified in a context. The
+                <a href="#messageEvent">MessageEvent</a>, <a href="#person">Person</a> and
+                <a href="#message">Message</a> terms are all considered node types. Other terms illustrate the
+                coercion of values to specified data types.  In the example below, the values of the <code>actor</code>,
+                <code>object</code> and <code>edApp</code> terms are coerced to the <code>@id</code> keyword. Use of
+                this convention informs <a href="#jsonldDef">JSON-LD</a> parsers that string values are to be
+                interpreted as <a href="#iriDef">IRIs</a> (as in the case of <code>edApp</code>). In a like manner,
+                the <code>action</code> value is coerced to the <code>@vocab</code> keyword indicating that the value
+                is to be interpreted as a <a href="#termDef">Term</a> defined in the active context or as an
+                <a href="#iriDef">IRI</a>; in this case <em>Posted</em>.  Terms such as <code>name</code>,
+                <code>description</code>, <code>dateCreated</code>, <code>dateModified</code> and <code>duration</code>
+                are coerced to a particular value type such as a string, integer, boolean or date.</p>
+
+            <figure class="example">
+                <figcaption>Node and value types</figcaption>
+                <pre><code>{
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "caliper": "http://purl.imsglobal.org/caliper/",
+    "verb": "http://purl.imsglobal.org/caliper/actions/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "MessageEvent": "caliper:MessageEvent",
+    "Message": "caliper:Message",
+    "Person": "caliper:Person",
+    "actor": {"@id": "caliper:actor", "@type": "@id"},
+    "action": {"@id": "caliper:action", "@type": "@vocab"},
+    "edApp": {"@id": "caliper:edApp", "@type": "@id"},
+    "object": {"@id": "caliper:object", "@type": "@id"},
+    "body": {"@id": "caliper:body", "@type": "xsd:string"},
+    "dateCreated": {"@id": "caliper:dateCreated", "@type": "xsd:dateTime"},
+    "eventTime": {"@id": "caliper:eventTime", "@type": "xsd:dateTime"},
+    "Posted": "verb:Posted"
+  },
+  "type": "MessageEvent",
+  "id": "urn:uuid:0d015a85-abf5-49ee-abb1-46dbd57fe64e",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Posted",
+  "object": {
+    "id": "https://example.edu/sections/1/forums/2/topics/1/messages/2",
+    "type": "Message",
+    "body": "What does Caliper Event JSON-LD look like?",
+    "dateCreated": "2018-12-15T10:15:00.000Z"
+  },
+  "eventTime": "2018-12-15T10:15:00.000Z",
+  "edApp": "https://example.edu"
+}</code></pre>
+            </figure>
+
+            <p>As the abbreviated <a href="#forumEvent">ForumEvent</a> example below demonstrates, in cases where
+                an <a href="#event">Event</a> references the same <a href="#entity">Entity</a> more than once
+                (e.g., <code>actor</code>, <code>member</code>, <code>user</code>; <code>group</code>,
+                <code>organization</code>), or a property is associated with a specific type (e.g.,
+                <code>edApp</code>) or an <a href="#entity">Entity</a> possesses an <a href="#iriDef">IRI</a> that
+                is dereferenceable, consider expressing the value as a string corresponding to the
+                entity's <a href="#iriDef">IRI</a>.</p>
+
+            <figure class="example">
+                <figcaption><code>membership</code> and <code>session</code> references to <code>actor</code> and
+                    <code>group</code> expressed as IRIs</figcaption>
+                <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "ForumEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Subscribed",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
+    "type": "Forum",
+    "name": "Caliper Forum"
+  },
+  "eventTime": "2018-11-15T10:16:00.000Z",
+  "edApp": {
+    "id": "https://example.edu/forums",
+    "type": "SoftwareApplication"
+  },
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ]
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "user": "https://example.edu/users/554433",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}</code></pre>
+            </figure>
+
+            <p>Indeed, the example <a href="#forumEvent">ForumEvent</a> could be thinned still further if each
+                referenced <a href="#entity">Entity</a> is provisioned with a dereferenceable <a href="#iriDef">IRI</a>
+                that permits consumers to retrieve a more robust representation of the object if required.</p>
+
+            <figure class="example">
+                <figcaption>Thinned ForumEvent comprised of (dereferenceable) IRI values</figcaption>
+                <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "ForumEvent",
+  "actor": "https://example.edu/users/554433",
+  "action": "Subscribed",
+  "object": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
+  "eventTime": "2018-11-15T10:16:00.000Z",
+  "edApp": "https://example.edu/forums",
+  "group": "https://example.edu/terms/201801/courses/7/sections/1",
+  "membership": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+  "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
+}</code></pre>
+            </figure>
+        </section>
+    </section>
+
+    <section id="sensor">
+        <h2>The Sensor API™</h2>
+
+        <img height="100%" width="100%" src="assets/caliper-sensor-v2.png" alt="Caliper Sensor">
+
+        <p>Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data
+            to a target endpoints.  Adopting one or more <a href="#profiles">profiles</a> ensures adherence
+            to the information model; implementing the <code>Sensor</code> provides instrumented platforms,
+            applications and services with a transport interface for communicating with data consumers.</p>
+
+        <section id="sensor-behavior">
+            <h3>Behavior</h3>
+
+            <p>A <code>Sensor</code> MUST implement the following behaviors:</p>
+
+            <ul>
+                <li>create in-memory object representations of Caliper <a href="#event">Event</a> and
+                    <a href="#entity">Entity</a> types as described in Section <a href="#infoModel">2.0</a>. The particular
+                    <a href="#event">Event</a> and <a href="#entity">Entity</a> types that a <code>Sensor</code>
+                    must be capable of expressing are determined by the <a href="#profiles">profiles</a>
+                    implemented as described in Section <a href="#profiles">3.0</a>.</li>
+                <li>express <a href="#entity">Entity</a> values as either an object or a string corresponding to the
+                    resource's <a href="#iriDef">IRI</a> as described in Section <a href="#entity">2.2</a>.</li>
+                <li>serialize in-memory <a href="#event">Event</a> and <a href="#entity">Entity</a> objects as
+                    <a href="#jsonldDef">JSON-LD</a> as described in Section <a href="#serialization">4.0</a>.</li>
+                <li>create an in-memory object representation of a Caliper <a href="#envelope">Envelope</a> as
+                    described in Section <a href="#envelope">5.2</a>.</li>
+                <li>serialize in-memory Caliper <a href="#envelope">Envelope</a> objects as JSON as described in
+                    Section <a href="#envelope">5.2</a>.  <a href="#event">Event</a> and <a href="#entity">Entity</a>
+                    <em><a href="#describeDef">describe</a></em> data serialized as JSON-LD MUST be transmitted inside
+                    an <a href="#envelope">Envelope</a> as described in Sections <a href="#envelope">5.2</a> and
+                    <a href="#jsonldPayload">5.3</a>.</li>
+                <li>transmit serialized Caliper <a href="#envelope">Envelopes</a> containing <a href="#event">Event</a>
+                    and/or <a href="#entity">Entity</a> <em><a href="#describeDef">describe</a></em> data to a target
+                    <a href="#endpoint">Endpoint</a> over HTTP as described in Section <a href="#httpRequest">5.4</a>.</li>
+            </ul>
+
+            <p>A <code>Sensor</code> MAY be assigned other responsibilities such as validating Caliper
+                <a href="#event">Event</a> and <a href="#entity">Entity</a> data but such capabilities need not be
+                exposed to learning data providers.</p>
+        </section>
+
+        <section id="envelope">
+            <h3>Envelope</h3>
+
+            <p>Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a> data MUST be transmitted inside a Caliper
+                <a href="#envelope">Envelope</a>, a purpose-built JSON data structure that includes metadata about the
+                emitting <a href="#sensor">Sensor</a> and the data payload.</p>
+
+            <h4>Properties</h4>
+            <p>Caliper <a href="#envelope">Envelope</a> properties are listed below. The <code>sensor</code>,
+                <code>sendTime</code>, <code>dataVersion</code> and <code>data</code> properties are required. Each
+                property MUST be referenced only once.  No custom properties are permitted.</p>
+            <table class="data">
+                <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Disposition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>sensor</td>
+                    <td>string</td>
+                    <td>A unique identifier assigned either to the <a href="#sensor">Sensor</a> or to the instrumented
+                        platform, application or service utilizing the <a href="#sensor">Sensor</a>. The identifier SHOULD
+                        be in the form of an <a href="#iriDef">IRI</a>.</td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td>sendTime</td>
+                    <td>DateTime</td>
+                    <td>A date and time string value expressed with millisecond precision that indicates the time at
+                        which the <a href="#sensor">Sensor</a> issued the message.  The value MUST be expressed using the
+                        format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td>dataVersion</td>
+                    <td>string</td>
+                    <td>A string value indicating which version of the IMS Caliper Analytics® specification governs the
+                        form of the Caliper entities and events contained in the <code>data</code> payload. The value MUST
+                        be set to the IMS Caliper <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">Context</a>
+                        <a href="#iriDef">IRI</a> used to resolve the meanings of the <code>data</code> payload's terms
+                        and values.</td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td>data</td>
+                    <td>Array</td>
+                    <td>An ordered collection of one or more Caliper <a href="#event">Event</a> and/or
+                        <a href="#entity">Entity</a> <em><a href="#describeDef">describe</a></em> objects. The Sensor MAY
+                        mix <a href="#event">Event</a> and <a href="#entity">Entity</a>
+                        <em><a href="#describeDef">describe</a></em> data in the same
+                        <a href="#envelope">Envelope</a>.</td>
+                    <td>Required</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="jsonldPayload">
+            <h3>JSON-LD Payload</h3>
+
+            <p>Each <a href="#event">Event</a> and <a href="#entity">Entity</a> <em><a href="#describeDef">describe</a></em>
+                transmitted inside an <a href="#envelope">Envelope</a> MUST be serialized as a
+                <a href="#jsonld">JSON-LD</a> document.</p>
+
+            <figure class="example">
+                <figcaption>Single Event Payload</figcaption>
+                <pre><code>{
+      "sensor": "https://example.edu/sensors/1",
+      "sendTime": "2018-11-15T11:05:01.000Z",
+      "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "data": [{
+        "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+        "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
+        "type": "ToolUseEvent",
+        "actor": {
+          "id": "https://example.edu/users/554433",
+          "type": "Person"
+        },
+        "action": "Used",
+        "object": {
+          "id": "https://example.edu",
+          "type": "SoftwareApplication"
+        },
+        "eventTime": "2018-11-15T10:15:00.000Z",
+        "edApp": "https://example.edu",
+        "group": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection",
+          "courseNumber": "CPS 435-01",
+          "academicSession": "Fall 2018"
+        },
+        "membership": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+          "type": "Membership",
+          "member": "https://example.edu/users/554433",
+          "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+          "roles": ["Learner"],
+          "status": "Active",
+          "dateCreated": "2018-08-01T06:00:00.000Z"
+        },
+        "session": {
+          "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+          "type": "Session",
+          "startedAtTime": "2018-11-15T10:00:00.000Z"
+        }
+      }]
+    }</code></pre>
+            </figure>
+
+            <figure class="example">
+                <figcaption>Mixed Payload</figcaption>
+                <pre><code>{
+      "sensor": "https://example.edu/sensors/1",
+      "sendTime": "2018-11-15T11:05:01.000Z",
+      "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "data": [
+        {
+          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+          "id": "https://example.edu/users/554433",
+          "type": "Person",
+          "dateCreated": "2018-08-01T06:00:00.000Z",
+          "dateModified": "2018-09-02T11:30:00.000Z"
+        },
+        {
+          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+          "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
+          "type": "Assessment",
+          "name": "Quiz One",
+          "items": [
+            {
+              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1",
+              "type": "AssessmentItem"
+            },
+            {
+              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2",
+              "type": "AssessmentItem"
+            },
+            {
+              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
+              "type": "AssessmentItem"
+            }
+          ],
+          "dateCreated": "2018-08-01T06:00:00.000Z",
+          "dateModified": "2018-09-02T11:30:00.000Z",
+          "datePublished": "2018-08-15T09:30:00.000Z",
+          "dateToActivate": "2018-08-16T05:00:00.000Z",
+          "dateToShow": "2018-08-16T05:00:00.000Z",
+          "dateToStartOn": "2018-08-16T05:00:00.000Z",
+          "dateToSubmit": "2018-09-28T11:59:59.000Z",
+          "maxAttempts": 2,
+          "maxScore": 15.0,
+          "maxSubmits": 2,
+          "version": "1.0"
+        },
+        {
+          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+          "id": "https://example.edu",
+          "type": "SoftwareApplication",
+          "version": "v2"
+        },
+        {
+          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection",
+          "academicSession": "Fall 2018",
+          "courseNumber": "CPS 435-01",
+          "name": "CPS 435 Learning Analytics, Section 01",
+          "category": "seminar",
+          "subOrganizationOf": {
+            "id": "https://example.edu/terms/201801/courses/7",
+            "type": "CourseOffering",
+            "courseNumber": "CPS 435"
+          },
+          "dateCreated": "2018-08-01T06:00:00.000Z"
+        },
+        {
+          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+          "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
+          "type": "AssessmentEvent",
+          "actor": "https://example.edu/users/554433",
+          "action": "Started",
+          "object": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
+          "generated": {
+            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
+            "type": "Attempt",
+            "assignee": "https://example.edu/users/554433",
+            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
+            "count": 1,
+            "dateCreated": "2018-11-15T10:15:00.000Z",
+            "startedAtTime": "2018-11-15T10:15:00.000Z"
+          },
+          "eventTime": "2018-11-15T10:15:00.000Z",
+          "edApp": "https://example.edu",
+          "group": "https://example.edu/terms/201801/courses/7/sections/1",
+          "membership": {
+            "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+            "type": "Membership",
+            "member": "https://example.edu/users/554433",
+            "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+            "roles": [ "Learner" ],
+            "status": "Active",
+            "dateCreated": "2018-08-01T06:00:00.000Z"
+          },
+          "session": {
+            "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+            "type": "Session",
+            "startedAtTime": "2018-11-15T10:00:00.000Z"
+          }
+        },
+        {
+          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+          "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
+          "type": "AssessmentEvent",
+          "actor": "https://example.edu/users/554433",
+          "action": "Submitted",
+          "object": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
+          "generated": {
+            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
+            "type": "Attempt",
+            "assignee": "https://example.edu/users/554433",
+            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
+            "count": 1,
+            "dateCreated": "2018-11-15T10:15:00.000Z",
+            "startedAtTime": "2018-11-15T10:15:00.000Z",
+            "endedAtTime": "2018-11-15T10:55:12.000Z",
+            "duration": "PT40M12S"
+          },
+          "eventTime": "2018-11-15T10:25:30.000Z",
+          "edApp": "https://example.edu",
+          "group": "https://example.edu/terms/201801/courses/7/sections/1",
+          "membership": {
+            "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+            "type": "Membership",
+            "member": "https://example.edu/users/554433",
+            "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+            "roles": ["Learner"],
+            "status": "Active",
+            "dateCreated": "2018-08-01T06:00:00.000Z"
+          },
+          "session": {
+            "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+            "type": "Session",
+            "startedAtTime": "2018-11-15T10:00:00.000Z"
+          }
+        },
+        {
+          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+          "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
+          "type": "GradeEvent",
+          "actor": {
+            "id": "https://example.edu/autograder",
+            "type": "SoftwareApplication",
+            "version": "v2"
+          },
+          "action": "Graded",
+          "object": {
+            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
+            "type": "Attempt",
+            "assignee": "https://example.edu/users/554433",
+            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
+            "count": 1,
+            "dateCreated": "2018-11-15T10:15:00.000Z",
+            "startedAtTime": "2018-11-15T10:15:00.000Z",
+            "endedAtTime": "2018-11-15T10:55:12.000Z",
+            "duration": "PT40M12S"
+          },
+          "eventTime": "2018-11-15T10:57:06.000Z",
+          "edApp": "https://example.edu",
+          "generated": {
+            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+            "type": "Score",
+            "attempt": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
+            "maxScore": 15.0,
+            "scoreGiven": 10.0,
+            "scoredBy": "https://example.edu/autograder",
+            "comment": "auto-graded exam",
+            "dateCreated": "2018-11-15T10:56:00.000Z"
+          },
+          "group": "https://example.edu/terms/201801/courses/7/sections/1"
+        }
+      ]
+    }</code></pre>
+            </figure>
+        </section>
+
+        <section id="httpRequest">
+            <h3>HTTP Requests</h3>
+
+            <p>A Caliper <a href="#sensor">Sensor</a> MUST be capable of transmitting Caliper data successfully to a
+                Caliper <a href="#endpoint">Endpoint</a>.  Communication with an <a href="#endpoint">Endpoint</a> is
+                limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted
+                with Transport Layer Security (TLS).</p>
+
+            <p>Each message request MUST consist of a single JSON representation of a Caliper
+                <a href="#envelope">Envelope</a>.  Messages MUST be sent using the POST request method.
+                The HTTP <code>Host</code> and <code>Content-Type</code> request header fields MUST be set.</p>
+
+            <p>A <a href="#sensor">Sensor</a> SHOULD also set the <code>Authorization</code> request header field using
+                the "Bearer" authentication scheme described in <a href="#rfc6750">RFC 6750</a>,
+                <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>. The <code>b64token</code>
+                authorization credential sent by a <a href="#sensor">Sensor</a> MUST be one the
+                <a href="#endpoint">Endpoint</a> can validate although the credential MAY be opaque to the emitting
+                <a href="#sensor">Sensor</a> itself.</p>
+
+            <table class="data">
+                <thead>
+                <tr>
+                    <th>Request Header</th>
+                    <th>Description</th>
+                    <th>Disposition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Authorization</td>
+                    <td>Set the string value to a bearer token using the "Bearer" authentication scheme described in
+                        <a href="#rfc6750">RFC 6750</a>, <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>
+                        (e.g., Authorization: Bearer &lt;token value&gt;).</td>
+                    <td>Recommended</td>
+                </tr>
+                <tr>
+                    <td>Content-Type</td>
+                    <td>Set the string value to the IANA media type "application/json".</td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td>Host</td>
+                    <td>Set the string value to the Internet host and port number of the resource being requested.</td>
+                    <td>Required</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+
+    <section id="endpoint">
+        <h2>Endpoint</h2>
+
+        <p>A Caliper <a href="#endpoint">Endpoint</a> MUST be capable of receiving Caliper data sent over HTTP by a
+            Caliper <a href="#sensor">Sensor</a> using the standard POST request method. The connection MUST be
+            secured with Transport Layer Security (TLS) and a valid TLS certificate provided. The
+            <a href="#endpoint">Endpoint</a> MUST be capable of accessing standard HTTP request headers and support
+            message authentication that utilizes the HTTP <code>Authorization</code> request header &quot;Bearer&quot;
+            authentication scheme as described in <a href="#rfc6750">RFC 6750</a>,
+            <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>.</p>
+
+
+        <section id="httpResponse">
+            <h3>HTTP Responses</h3>
+
+            <p>Following receipt of a <a href="#sensor">Sensor</a> HTTP request message, the
+                <a href="#endpoint">Endpoint</a> MUST reply with an HTTP response message. The response will include
+                a three-digit status code indicating whether or not the <a href="#endpoint">Endpoint</a> was able to
+                understand and satisfy the request, as defined by <a href="#rfc7231">RFC 7231</a>.</p>
+
+            <p>When signalling to a <a href="#sensor">Sensor</a> that the endpoint has successfully received the
+                request message, the <a href="#endpoint">Endpoint</a> MUST reply with a <code>2xx</code> class status
+                code. By best practice, the <a href="#endpoint">Endpoint</a> SHOULD use the <code>200 OK</code> response
+                but might instead choose to send a <code>201 Created</code> (to indicate successful receipt of the
+                message and creation of a new resource) or a <code>202 Accepted</code> (to indicate successful receipt
+                of the message and queueing for further processing). By best practice, the
+                <a href="#endpoint">Endpoint</a> SHOULD send back successful responses with an empty body.</p>
+
+            <p>An <a href="#endpoint">Endpoint</a> MAY send back responses other than those with <code>2xx</code> class
+                indicating success; if so, it MUST adhere to these response status codes for these specific cases
+                (for other cases, the <a href="#endpoint">Endpoint</a> may offer other responses):</p>
+
+            <ul>
+                <li>If the request message has no enclosing Caliper <a href="#envelope">Envelope</a>, reply with a
+                        <code>400 Bad Request</code> status code.</li>
+                <li>If the request message's Caliper <a href="#envelope">Envelope</a> is malformed (for example,
+                        missing fields required by the Envelop's version), reply with a <code>400 Bad Request</code>
+                        status code.</li>
+                <li>If the <a href="#sensor">Sensor</a> sends an unauthorized request, or the
+                        <a href="#endpoint">Endpoint</a> is unable to validate the authorization, or the
+                        <a href="#endpoint">Endpoint</a> cannot determine that the <a href="#sensor">Sensor</a>
+                        has sufficient privilege to send such a message, reply with a <code>401 Unauthorized</code>.</li>
+                <li>If the request message has a content-type other than <code>application/json</code>, reply with
+                        a <code>415 Unsupported Media Type</code>.</li>
+                <li>If the <a href="#endpoint">Endpoint</a> cannot support the version of Caliper data indicated by
+                        the Caliper <a href="#envelope">Envelope</a>'s <code>dataVersion</code> field, reply with
+                        a <code>422 Unprocessable Entity</code> status code.</li>
+            </ul>
+
+            <p>The <a href="#endpoint">Endpoint</a> MAY respond to <a href="#sensor">Sensor</a> messages with other
+                standard HTTP status codes to indicate result dispositions that vary from the cases described above.
+                The <a href="#endpoint">Endpoint</a> MAY also communicate more detailed information about problem
+                states, using the standard method for reporting problem details described in
+                <a href="#rfc7807">RFC 7807</a>.</p>
+
+            <p>Caliper <a href="#endpoint">Endpoint</a> implementers should bear in mind that some Caliper
+                <a href="#sensor">Sensor</a> implementations may lack sophisticated error handling.</p>
+        </section>
+
+        <section id="stringLengths">
+            <h3>String Lengths and Storage</h3>
+            <p>Certain Caliper data properties are expressed as strings of variable length.
+                <a href="#jsonldDef">JSON-LD</a> also defines a set of processing algorithms for transforming
+                <a href="#jsonldDef">JSON-LD</a> documents in ways that can change the length of keys and values
+                that are expressed as <a href="#iridDef">IRIs</a>, compact <a href="#iridDef">IRIs</a> or
+                <a href="#termDef">Terms</a>.  Many implementers will choose to store each incoming
+                <a href="#event">Event</a> and <a href="#entity">Entity</a> <em><a href="#describeDef">describe</a></em>
+                received as a <a href="#jsonldDef">JSON-LD</a> document or as a graph data structure consisting of
+                nodes, edges and properties.  Others may opt to normalize or &quot;flatten&quot; some or all of the nested
+                JSON objects that comprise a Caliper <a href="#event">Event</a> or <a href="#entity">Entity</a>. If the
+                chosen persistence strategy involves normalizing Caliper semi-structured data, care should be taken to
+                ensure that strings of character data can be stored without truncation. See
+                <a href="#minSupportedStringLengths">Appendix G. Minimum Supported String Lengths</a> for a list of
+                Caliper data properties and recommended <em>minimum</em> string lengths.</p>
+        </section>
     </section>
 
     <section id="events">
@@ -467,9 +1284,15 @@
         <section id="Collection" data-include="fragments/entities/caliper-entity-collection.html"></section>
         <section id="Comment" data-include="fragments/entities/caliper-entity-comment.html"></section>
         <section id="CourseOffering" data-include="fragments/entities/caliper-entity-courseoffering.html"></section>
+        <section id="CourseSection" data-include="fragments/entities/caliper-entity-coursesection.html"></section>
         <section id="DateTimeQuestion" data-include="fragments/entities/caliper-entity-datetimequestion.html"></section>
         <section id="DateTimeResponse" data-include="fragments/entities/caliper-entity-datetimeresponse.html"></section>
         <section id="DigitalResource" data-include="fragments/entities/caliper-entity-digitalresource.html"></section>
+        <section id="DigitalResourceCollection" data-include="fragments/entities/caliper-entity-digitalresourcecollection.html"></section>
+        <section id="Document" data-include="fragments/entities/caliper-entity-document.html"></section>
+        <section id="Group" data-include="fragments/entities/caliper-entity-group.html"></section>
+        <section id="ImageObject" data-include="fragments/entities/caliper-entity-imageobject.html"></section>
+        <section id="LearningObjective" data-include="fragments/entities/caliper-entity-learningobjective.html"></section>
         <section id="LikertScale" data-include="fragments/entities/caliper-entity-likertscale.html"></section>
         <section id="Link" data-include="fragments/entities/caliper-entity-link.html"></section>
         <section id="LtiLink" data-include="fragments/entities/caliper-entity-ltilink.html"></section>
@@ -479,6 +1302,8 @@
         <section id="NumericScale" data-include="fragments/entities/caliper-entity-numericscale.html"></section>
         <section id="OpenEndedQuestion" data-include="fragments/entities/caliper-entity-openendedquestion.html"></section>
         <section id="OpenEndedResponse" data-include="fragments/entities/caliper-entity-openendedresponse.html"></section>
+        <section id="Organization" data-include="fragments/entities/caliper-entity-organization.html"></section>
+        <section id="Page" data-include="fragments/entities/caliper-entity-page.html"></section>
         <section id="Person" data-include="fragments/entities/caliper-entity-person.html"></section>
         <section id="Query" data-include="fragments/entities/caliper-entity-query.html"></section>
         <section id="Question" data-include="fragments/entities/caliper-entity-question.html"></section>
@@ -490,35 +1315,41 @@
         <section id="Response" data-include="fragments/entities/caliper-entity-response.html"></section>
         <section id="Scale" data-include="fragments/entities/caliper-entity-scale.html"></section>
         <section id="SearchResponse" data-include="fragments/entities/caliper-entity-searchresponse.html"></section>
+        <section id="SoftwareApplication" data-include="fragments/entities/caliper-entity-softwareApplication.html"></section>
         <section id="Survey" data-include="fragments/entities/caliper-entity-survey.html"></section>
         <section id="SurveyInvitation" data-include="fragments/entities/caliper-entity-surveyinvitation.html"></section>
+        <section id="WebPage" data-include="fragments/entities/caliper-entity-webpage.html"></section>
     </section>
 
-    <section id="lti-messageTypes">
-        <h2>LTI Message Types</h2>
-        <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
-            property for describing the type of LTI message associated with the
-            <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
-            values:</p>
+    <section id="constants">
+        <h2>Constants</h2>
 
-        <section id="LtiDeepLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
-        <section id="LtiResourceLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
-    </section>
+        <section id="lti-messageTypes">
+            <h3>LTI Message Types</h3>
+            <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
+                property for describing the type of LTI message associated with the
+                <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
+                values:</p>
 
-    <section id="metrics">
-        <h2>Use Metrics</h2>
-        <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
-            property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric values are
-            limited to the list of Caliper terms listed below.</p>
+            <section id="LtiDeepLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
+            <section id="LtiResourceLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
+        </section>
 
-        <section id="metric-assessmentpassed" data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html"></section>
-        <section id="metric-assessmentsubmitted" data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html"></section>
-        <section id="metric-minutesontask" data-include="fragments/usemetrics/caliper-metric-minutesontask.html"></section>
-        <section id="metric-skillsmastered" data-include="fragments/usemetrics/caliper-metric-skillsmastered.html"></section>
-        <section id="metric-standardsmastered" data-include="fragments/usemetrics/caliper-metric-standardsmastered.html"></section>
-        <section id="metric-unitscompleted" data-include="fragments/usemetrics/caliper-metric-unitscompleted.html"></section>
-        <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
-        <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
+        <section id="metrics">
+            <h3>Use Metrics</h3>
+            <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
+                property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric values are
+                limited to the list of Caliper terms listed below.</p>
+
+            <section id="metric-assessmentpassed" data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html"></section>
+            <section id="metric-assessmentsubmitted" data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html"></section>
+            <section id="metric-minutesontask" data-include="fragments/usemetrics/caliper-metric-minutesontask.html"></section>
+            <section id="metric-skillsmastered" data-include="fragments/usemetrics/caliper-metric-skillsmastered.html"></section>
+            <section id="metric-standardsmastered" data-include="fragments/usemetrics/caliper-metric-standardsmastered.html"></section>
+            <section id="metric-unitscompleted" data-include="fragments/usemetrics/caliper-metric-unitscompleted.html"></section>
+            <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
+            <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
+        </section>
     </section>
 
     <section id="jsonld">
@@ -526,7 +1357,7 @@
 
         <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
             provides a remote Tool Use Profile JSON-LD <a href=
-            "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension">context</a>
+            "http://purl.imsglobal.org/ctx/caliper/v1p2/ToolUseProfile-extension">context</a>
             for mapping <code>Event</code> terms to IRIs. Caliper message producers MUST reference the Tool Use
             Profile 1.1-extension context in every <a href="#event">Event</a> subtype described in this profile. Likewise,
             Caliper message producers MUST reference the Tool Use Profile 1.1-extension context whenever an
