@@ -3168,43 +3168,9 @@ src="assets/caliper-profile_general.png"></div>
   }
 }
 </code></pre>
+
 <h2><a name="selectors"></a>Appendix D. Selectors</h2>
-<p>A Caliper Selector represents a fragment, selection or part of an <a href="#entity">Entity</a>.</p>
-<h3><a name="textPositionSelector"></a>D.1 TextPositionSelector</h3>
-<p>A Caliper <a href="#textPositionSelector">TextPositionSelector</a> represents a fragment or selection of textual content, the starting and ending positions of which are determined by the distance in characters from the initial character (position 0) of the enclosing full text.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/TextPositionSelector</p>
-<h4>Properties</h4>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>TextPositionSelector</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>start</td>
-<td>integer</td>
-<td>The starting position of the selected text MUST be specified.  The first character in the full text is character position 0.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>end</td>
-<td>integer</td>
-<td>The end position of the selected text MUST be specified.</td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
+
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
   &quot;id&quot;: &quot;https://example.edu/users/554433/etexts/201/highlights/20&quot;,
