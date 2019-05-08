@@ -2822,38 +2822,7 @@ src="assets/caliper-profile_general.png"></div>
     &quot;startedAtTime&quot;: &quot;2018-11-15T10:15:00.000Z&quot;
   }
 </code></pre>
-<h3><a name="mediaLocation"></a>C.23 MediaLocation</h3>
-<p>A Caliper <a href="#mediaLocation">MediaLocation</a> provides the current playback position in a <a href="#mediaObject">MediaObject</a> such as an <a href="#audioObject">AudioObject</a> or <a href="#videoObject">VideoObject</a>.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/MediaLocation</p>
-<h4>Supertype</h4>
-<p><a href="#digitalResource">DigitalResource</a></p>
-<h4>Properties</h4>
-<p><a href="#mediaLocation">MediaLocation</a> inherits all the properties and requirements defined for its supertype <a href="#digitalResource">DigitalResource</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MediaLocation</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>currentTime</td>
-<td>Duration</td>
-<td>A time interval or duration that represents the current playback position measured from the beginning of an <a href="#audioObject">AudioObject</a> or <a href="#videoObject">VideoObject</a>.  If a currentTime is specified the value MUST conform to the ISO 8601 duration format.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
