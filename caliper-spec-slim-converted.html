@@ -3459,38 +3459,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateCreated&quot;: &quot;2018-08-01T09:00:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="thread"></a>C.40 Thread</h3>
-<p>A Caliper <a href="#thread">Thread</a> represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Thread</p>
-<h4>Supertype</h4>
-<p><a href="#digitalResourceCollection">DigitalResourceCollection</a></p>
-<h4>Properties</h4>
-<p><a href="#thread">Thread</a> inherits all the properties and requirements defined for its supertype <a href="#digitalResourceCollection">DigitalResourceCollection</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Forum</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>items</td>
-<td>Array</td>
-<td>An ordered collection of <a href="#message">Message</a> entities.  Each array item MUST be expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
