@@ -2900,68 +2900,6 @@ src="assets/caliper-profile_general.png"></div>
 }
 </code></pre>
 
-<h4>Deprecated Properties</h4>
-<p>The following <a href="#result">Result</a> properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><s>actor</s></td>
-<td><a href="#person">Person</a></td>
-<td>The <a href="#person">Person</a> who generated the <a href="#attempt">Attempt</a>.  <code>actor</code> has been DEPRECATED and replaced by <code>attempt</code>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><s>assignable</s></td>
-<td><a href="#digitalResource">DigitalResource</a></td>
-<td>The assigned <a href="#digitalResource">DigitalResource</a> associated with the <a href="#result">Result</a>. <code>assignable</code> has been DEPRECATED and replaced by <code>attempt</code>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><s>normalScore</s></td>
-<td>decimal</td>
-<td>The score earned by the learner <em>before</em> adding the <code>extraCreditScore</code>, subtracting the <code>penaltyScore</code> or applying the <code>curveFactor</code>, if any.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><s>penaltyScore</s></td>
-<td>decimal</td>
-<td>The number of points deducted from the <code>normalScore</code> due to an infraction such as submitting an <a href="#attempt">Attempt</a> after the due date.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><s>extraCreditScore</s></td>
-<td>decimal</td>
-<td>The number of extra credit points earned by the learner.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><s>totalScore</s></td>
-<td>decimal</td>
-<td>A score earned by the learner equal to the sum of <code>normalScore</code> + <code>extraCreditScore</code> - <code>penaltyScore</code>.  This value does not take into account the effects of curving.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><s>curvedTotalScore</s></td>
-<td>decimal</td>
-<td>The total score earned by the learner after applying a <code>curveFactor</code> to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - <code>curvedFactor</code>(100 - <code>totalScore</code>).</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><s>curveFactor</s></td>
-<td>decimal</td>
-<td>A scale factor to be used in adjusting the <code>totalScore</code>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
@@ -2995,62 +2933,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateCreated&quot;: &quot;2018-11-15T10:56:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="score"></a>C.34 Score</h3>
-<p>A Caliper <a href="#score">Score</a> represents a &quot;raw&quot; or unadjusted numeric score or grade awarded for a given assignment submission.  A gradebook SHOULD treat the <code>scoreGiven</code> value as read-only and preserve it.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Score</p>
-<h4>Supertype</h4>
-<p><a href="#entity">Entity</a></p>
-<h4>Properties</h4>
-<p><a href="#score">Score</a> inherits all the properties and requirements defined for its supertype <a href="#entity">Entity</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Score</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>attempt</td>
-<td><a href="#attempt">Attempt</a> | <a href="#iriDef">IRI</a></td>
-<td>The associated <a href="#attempt">Attempt</a>.  The <code>attempt</code> value MUST be expressed either as an object or as a string corresponding to the attempt's <a href="#iriDef">IRI</a>.  If an object representation is provided, the <a href="#attempt">Attempt</a> SHOULD reference both the <a href="#person">Person</a> who generated the <a href="#attempt">Attempt</a> and the assigned <a href="#digitalResource">DigitalResource</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>maxScore</td>
-<td>decimal</td>
-<td>A number with a fractional part denoted by a decimal separator that designates the maximum score permitted.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>scoreGiven</td>
-<td>decimal</td>
-<td>A number with a fractional part denoted by a decimal separator that designates the actual score awarded.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>scoredBy</td>
-<td><a href="#agent">Agent</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#agent">Agent</a> who scored or graded the <a href="#attempt">Attempt</a>.  The <code>scoredBy</code> value MUST be expressed either as an object or as a string corresponding to the scorer's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>comment</td>
-<td>string</td>
-<td>Plain text feedback provided by the scorer.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
