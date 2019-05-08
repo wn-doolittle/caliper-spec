@@ -2669,38 +2669,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;maxScore&quot;: 50.0
 }
 </code></pre>
-<h3><a name="ltiSession"></a>C.22 LtiSession</h3>
-<p>A Caliper <a href="#ltiSession">LtiSession</a> represents an <a href="#ltiDef">LTI</a> Tool Consumer user session.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/LtiSession</p>
-<h4>Supertype</h4>
-<p><a href="#session">Session</a></p>
-<h4>Properties</h4>
-<p><a href="#ltiSession">LtiSession</a> inherits all the properties and requirements defined for its supertype <a href="#session">Session</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>LtiSession</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>messageParameters</td>
-<td>Object</td>
-<td>A map of <a href="#ltiDef">LTI</a>-specified message parameters that provide Tool Consumer-related contextual information.  <a href="#ltiDef">LTI</a> message parameters of whatever type (i.e., required, recommended, optional, custom and extension) MAY be referenced.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
     &quot;id&quot;: &quot;urn:uuid:1c519ff7-3dfa-4764-be48-d2fb35a2925a&quot;,
