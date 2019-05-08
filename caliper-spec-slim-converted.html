@@ -2845,56 +2845,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;duration&quot;: &quot;PT1H17M50S&quot;
 }
 </code></pre>
-<h3><a name="membership"></a>C.25 Membership</h3>
-<p>A Caliper <a href="#membership">Membership</a> describes the relationship between an <a href="#organization">Organization</a> and an <a href="#agent">Agent</a>, typically a <a href="#person">Person</a> (i.e., a <a href="#member">member</a>) in terms of the roles assigned and current status.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Membership</p>
-<h4>Supertype</h4>
-<p><a href="#entity">Entity</a></p>
-<h4>Properties</h4>
-<p><a href="#membership">Membership</a> inherits all the properties and requirements defined for its supertype <a href="#entity">Entity</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Membership</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>organization</td>
-<td><a href="#organization">Organization</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#organization">Organization</a> associated with the <a href="#membership">Membership</a>.  The <code>organization</code> value MUST be expressed either as an object or as a string corresponding to the organization's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>member</td>
-<td><a href="#person">Person</a> | <a href="#iriDef">IRI</a></td>
-<td>The <a href="#person">Person</a> associated with this <a href="#membership">Membership</a>.  The <code>member</code> value MUST be expressed either as an object or as a string corresponding to the member's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>roles</td>
-<td>Array</td>
-<td>An ordered collection of organizational roles assigned to the <code>member</code>.  Role values are limited to the list of Caliper defined <a href="#roles">roles</a> terms.  Whenever a subrole is specified, the core context role SHOULD also be included; for example, a role of <code>Instructor#TeachingAssistant</code> should always be accompanied by the <code>Instructor</code> role.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>status</td>
-<td><a href="#term">Term</a></td>
-<td>A string value that indicates the current standing of the <code>member</code>.  If a status is specified, the value be chosen from the list of Caliper defined <a href="#status">statuses</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
