@@ -2513,38 +2513,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;values&quot;: [ &quot;data interoperability&quot;, &quot;semantic interoperability&quot; ]
 }
 </code></pre>
-<h3><a name="forum"></a>C.16 Forum</h3>
-<p>A Caliper <a href="#forum">Forum</a> represents a channel or virtual space in which group discussions take place.  A <a href="#forum">Forum</a> typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Forum</p>
-<h4>Supertype</h4>
-<p><a href="#digitalResourceCollection">DigitalResourceCollection</a></p>
-<h4>Properties</h4>
-<p><a href="#forum">Forum</a> inherits all the properties and requirements defined for its supertype <a href="#digitalResourceCollection">DigitalResourceCollection</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Forum</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>items</td>
-<td>Array</td>
-<td>An ordered collection of <a href="#thread">Thread</a> entities.  Each array item MUST be expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
@@ -2583,38 +2552,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateModified&quot;: &quot;2018-09-02T11:30:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="frame"></a>C.17 Frame</h3>
-<p>A Caliper <a href="#frame">Frame</a> represents a part, portion or segment of a <a href="#digitalResource">DigitalResource</a>.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Frame</p>
-<h4>Supertype</h4>
-<p><a href="#digitalResource">DigitalResource</a></p>
-<h4>Properties</h4>
-<p><a href="#frame">Frame</a> inherits all the properties and requirements defined for its supertype <a href="#digitalResource">DigitalResource</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Frame</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>index</td>
-<td>integer</td>
-<td>A non-negative integer that represents the position of the <a href="#frame">Frame</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
