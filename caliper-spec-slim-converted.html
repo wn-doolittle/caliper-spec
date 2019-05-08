@@ -3319,78 +3319,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;values&quot;: [ &quot;Information Model&quot;, &quot;Sensor API&quot;, &quot;Profiles&quot; ]
 }
 </code></pre>
-<h3><a name="session"></a>C.36 Session</h3>
-<p>A Caliper <a href="#session">Session</a> represents a web application user session.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Session</p>
-<h4>Supertype</h4>
-<p><a href="#entity">Entity</a></p>
-<h4>Properties</h4>
-<p><a href="#session">Session</a> inherits all the properties and requirements defined for <a href="#entity">Entity</a>, its supertype.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Agent</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>user</td>
-<td><a href="#person">Person</a></td>
-<td>The <a href="#person">Person</a> who initiated the <a href="#session">Session</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>startedAtTime</td>
-<td>DateTime</td>
-<td>An ISO 8601 date and time value expressed with millisecond precision that describes when the <a href="#session">Session</a> was commenced.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>endedAtTime</td>
-<td>DateTime</td>
-<td>An ISO 8601 date and time value expressed with millisecond precision that describes when the <a href="#session">Session</a> was completed or terminated.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>duration</td>
-<td>Duration</td>
-<td>A time interval that represents the time taken to complete the <a href="#session">Session</a>.  If a duration is specified the value MUST conform to the ISO 8601 duration format.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
-<h4>Deprecated Properties</h4>
-<p>The following <a href="#session">Session</a> properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><s>actor</s></td>
-<td><a href="#person">Person</a></td>
-<td>The <a href="#person">Person</a> who initiated the <a href="#session">Session</a>.  <code>actor</code> property has been DEPRECATED and replaced by <code>user</code>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
-<h4>Subtypes</h4>
-<p><a href="#ltiSession">LtiSession</a></p>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
