@@ -3651,38 +3651,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;startedAtTime&quot;: &quot;2018-09-15T10:00:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="sharedAnnotation"></a>C.37 SharedAnnotation</h3>
-<p>A Caliper <a href="#sharedAnnotation">SharedAnnotation</a> represents the act of sharing a reference to a <a href="#digitalResource">DigitalResource</a> with other agents.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/SharedAnnotation</p>
-<h4>Supertype</h4>
-<p><a href="#annotation">Annotation</a></p>
-<h4>Properties</h4>
-<p><a href="#sharedAnnotation">SharedAnnotation</a> inherits all the properties and requirements defined for its supertype <a href="#annotation">Annotation</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>SharedAnnotation</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>withAgents</td>
-<td>Array</td>
-<td>An ordered collection of one or more <a href="#agent">Agent</a> entities, typically of type <a href="#person">Person</a>, with whom the annotated <a href="#digitalResource">DigitalResource</a> has been shared.  Each array item MUST be expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
