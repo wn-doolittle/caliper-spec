@@ -2868,50 +2868,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateCreated&quot;: &quot;2018-11-01T06:00:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="message"><a/>C.26 Message</h3>
-<p>A Caliper <a href="#message">Message</a> is a digital form of written communication sent to a recipient. A series of messages may constitute a <a href="#thread">Thread</a> if they share a common subject and are connected by a reply or by date relationships.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/Message</p>
-<h4>Supertype</h4>
-<p><a href="#digitalResource">DigitalResource</a></p>
-<h4>Properties</h4>
-<p><a href="#message">Message</a> inherits all the properties and requirements defined for its supertype <a href="#digitalResource">DigitalResource</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Message</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>replyTo</td>
-<td><a href="#message">Message</a> | <a href="#iriDef">IRI</a></td>
-<td>A <a href="#message">Message</a> that represents the post to which this <a href="#message">Message</a> is directed in reply.  The <code>replyTo</code> value MUST be expressed either as an object or as a string corresponding to the associated message's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>body</td>
-<td>string</td>
-<td>A string value comprising a plain-text rendering of the <code>body</code> content of the <a href="#message">Message</a>.</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>attachments</td>
-<td>Array</td>
-<td>An ordered collection of one or more <a href="#digitalResource">DigitalResource</a> entities attached to this <a href="#message">Message</a>.  Each array item MUST be expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Example</h4>
 <pre><code>{
   &quot;@context&quot;: &quot;http://purl.imsglobal.org/ctx/caliper/v1p1&quot;,
