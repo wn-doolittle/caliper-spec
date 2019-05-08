@@ -2832,39 +2832,7 @@ src="assets/caliper-profile_general.png"></div>
   &quot;dateCreated&quot;: &quot;2018-08-01T06:00:00.000Z&quot;
 }
 </code></pre>
-<h3><a name="mediaObject"></a>C.24 MediaObject</h3>
-<p>A Caliper <a href="#mediaObject">MediaObject</a> represents a generic piece of media content.</p>
-<p>Utilize <a href="#mediaObject">MediaObject</a> only if no suitable subtype exists to represent the resource being described.</p>
-<h4>IRI</h4>
-<p>http://purl.imsglobal.org/caliper/MediaObject</p>
-<h4>Supertype</h4>
-<p><a href="#digitalResource">DigitalResource</a></p>
-<h4>Properties</h4>
-<p><a href="#mediaObject">MediaObject</a> inherits all the properties and requirements defined for its supertype <a href="#digitalResource">DigitalResource</a>.  Additional properties and requirements are described below:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#termDef">Term</a></td>
-<td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MediaObject</em>.</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>duration</td>
-<td>Duration</td>
-<td>An optional time interval that represents the total time required to view and/or listen to the <a href="#mediaObject">MediaObject</a> at normal speed.  If a duration is specified the value MUST conform to the ISO 8601 duration format.</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
+
 <h4>Subtypes</h4>
 <p><a href="#audioObject">AudioObject</a>, <a href="#imageObject">ImageObject</a>, <a href="#videoObject">VideoObject</a></p>
 <h4>Example</h4>
