@@ -105,25 +105,6 @@
                 visualize.</p>
         </section>
 
-        <section class="informative">
-            <h3>User Stories</h3>
-            <p>Caliper supports the following learner-centric use stories:</p>
-            <table class="data">
-                <tr>
-                    <td>TODO
-                    </td>
-                </tr>
-                <tr>
-                    <td>TODO
-                    </td>
-                </tr>
-                <tr>
-                    <td>TODO
-                    </td>
-                </tr>
-            </table>
-        </section>
-
         <section id="terminology">
             <h3>Terminology</h3>
 
@@ -355,62 +336,143 @@
 
         <p>Caliper 1.2 includes the following profiles which are summarized individually below:</p>
 
-        <section id="#AnnotationProfile">
+        <section id="profile-annotation">
             <h3>Annotation Profile</h3>
 
         </section>
-        <section id="#AssessmentProfile">
+
+        <section id="profile-assessment">
             <h3>Assessment Profile</h3>
 
         </section>
-        <section id="#AssignableProfile">
+
+        <section id="profile-assignable">
             <h3>Assignable Profile</h3>
 
         </section>
-        <section id="#FeedbackProfile">
+
+        <section id="profile-feedback">
             <h3>Feedback Profile</h3>
 
         </section>
-        <section id="#ForumProfile">
+
+        <section id="profile-forum">
             <h3>Forum Profile</h3>
 
         </section>
-        <section id="#GradingProfile">
+
+        <section id="profile-grading">
             <h3>Grading Profile</h3>
 
         </section>
-        <section id="#MediaProfile">
+
+        <section id="profile-media">
             <h3>Media Profile</h3>
 
         </section>
-        <section id="#ReadingProfile">
+
+        <section id="profile-reading">
             <h3>Reading Profile</h3>
 
         </section>
-        <section id="#ResourceManagementProfile">
+
+        <section id="profile-resourcemanagement">
             <h3>Resource Management Profile</h3>
 
+            <img height="100%" width="100%" src="assets/caliper-profile_resource_management.png"
+                 alt="Resource Management Profile"/>
+
+            <p>The Caliper Resource Management Profile models a <a href="Person">Person</a> managing a
+                <a href="#DigitalResource">DigitalResource</a>.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd><a href="http://purl.imsglobal.org/caliper/ResourceManagementProfile">
+                    http://purl.imsglobal.org/caliper/ResourceManagementProfile</a>
+                </dd>
+                <dt>Term</dt>
+                <dd>ResourceManagementProfile</dd>
+            </dl>
+
+            <section id="profile-resourcemanagement-userstories">
+                <h4>User Stories</h4>
+                <p>The Resource Management Profile supports the following learner-centric user stories:</p>
+
+                <ul>
+                    <li>As a content developer, I would like to measure the interval between resource availability and
+                        learner engagement with learning resources in order to gain insights into both the administrative
+                        impact on the learning process and the timing decisions of learners who are expected to ingest the
+                        materials.</li>
+                    <li>As an instructor, I would like to measure engagement between different revisions of learning
+                        resources over time in order to help determine what content is most effective.</li>
+                </ul>
+            </section>
+
+            <section id="profile-resourcemanagement-events">
+                <h4>Events</h4>
+
+                <p>A single <a href="#ResourceManagementEvent">ResourceManagementEvent</a> is defined for describing
+                    resource handling actions.</p>
+
+                <table class="data">
+                    <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>actor</th>
+                        <th>actions</th>
+                        <th>objects</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+                        <td><a href="Person">Person</a></td>
+                        <td><a href="#action-archived">Archived</a>,
+                            <a href="#action-copied">Copied</a>,
+                            <a href="#action-created">Created</a>,
+                            <a href="#action-deleted">Deleted</a>,
+                            <a href="#action-described">Described</a>,
+                            <a href="#action-downloaded">Downloaded</a>,
+                            <a href="#action-modified">Modified</a>,
+                            <a href="#action-printed">Printed</a>,
+                            <a href="#action-published">Published</a>,
+                            <a href="#action-restored">Restored</a>,
+                            <a href="#action-retrieved">Retrieved</a>,
+                            <a href="#action-saved">Saved</a>,
+                            <a href="#action-uploaded">Uploaded</a>,
+                            <a href="#action-unpublished">Unpublished</a></td>
+                        <td><a href="#DigitalResource">DigitalResource</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
         </section>
-        <section id="#SearchProfile">
+
+        <section id="profile-search">
             <h3>Search Profile</h3>
 
         </section>
-        <section id="#SessionProfile">
+
+        <section id="profile-session">
             <h3>Session Profile</h3>
 
         </section>
-        <section id="#SurveyProfile">
+
+        <section id="profile-survey">
             <h3>Survey Profile</h3>
 
         </section>
-        <section id="#ToolLaunchProfile">
+
+        <section id="profile-toollaunch">
             <h3>Tool Launch Profile</h3>
 
         </section>
-        <section id="#ToolUseProfile">
+
+        <section id="profile-tooluse">
             <h3>Tool Use Profile</h3>
         </section>
-        <section id="#GeneralProfile">
+
+        <section id="profile-general">
             <h3>General Profile</h3>
 
         </section>
