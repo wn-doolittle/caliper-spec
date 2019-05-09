@@ -339,6 +339,91 @@
         <section id="profile-annotation">
             <h3>Annotation Profile</h3>
 
+            <img height="100%" width="100%" src="assets/caliper-profile_annotation.png" alt="Annotation Profile">
+
+            <dl>
+                <dt>IRI</dt>
+                <dd><a href="http://purl.imsglobal.org/caliper/AnnotationProfile">
+                    http://purl.imsglobal.org/caliper/AnnotationProfile</a>
+                </dd>
+                <dt>Term</dt>
+                <dd>AnnotationProfile</dd>
+            </dl>
+
+            <p>The Caliper Annotation Profile models activities related to the annotation of a
+                <a href="#digitalResource">DigitalResource</a>. Creating a bookmark, highlighting selected text,
+                sharing a resource, tagging a document, and viewing an annotation are modeled. The generated
+                <a href="#annotation">Annotation</a> is also described and is subtyped for greater type specificity.</p>
+
+            <p>The Annotation Profile supports the following user stories:</p>
+
+            <ul>
+                <li>As an instructor, I would like to know which students are generating annotations?</li>
+                <li>As an instructor, I would like to know what content is most often annotated?</li>
+                <li>As an instructor, I would like to know what types of annotations are being created?</li>
+                <li>As an instructor, I would like to know which segments of text are being highlighted?</li>
+                <li>As an instructor, I would like to know what tags are being used?</li>
+                <li>As an instructor, I would like to know what notes are being added?</li>
+            </ul>
+
+            <p>As an example, instructors can use the places where students are making notes in the course material
+                to determine whether they have the right idea about which material should be highlighted. In addition,
+                if there are students who are asking questions or making notes indicating confusion about a particular
+                piece of content, this can also inform the instructor about the suitability or quality of the material
+                which they have chosen to use.</p>
+
+            <section id="profile-annotation-events">
+                <h4>Supported Events</h4>
+
+                <p>The profile defines an <a href="#AnnotationEvent">AnnotationEvent</a> for describing the annotation
+                    of resources. For each <a href="#AnnotationEvent">AnnotationEvent</a> described, the
+                    <code>generated</code> <a href="#Annotation">Annotation</a> subtype SHOULD be specified.
+                    Pair the <code>action</code> with the appropriate <a href="#Annotation">Annotation</a>
+                    subtype (e.g., <a href="#action-bookmarked">Bookmarked</a> with
+                    <a href="#BookmarkAnnotation">BookmarkAnnotation</a>). If the generated
+                    <a href="#Annotation">Annotation</a> is expressed as an object both the
+                    <code>annotator</code> and <code>annotated</code> entities SHOULD be referenced.</p>
+
+                <table class="data">
+                    <thead>
+                        <tr>
+                            <th colspan="4">AnnotationEvent</th>
+                        </tr>
+                        <tr>
+                            <th>actor</th>
+                            <th>action</th>
+                            <th>object</th>
+                            <th>generated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-bookmarked">Bookmarked</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td><a href="#BookmarkAnnotation">BookmarkAnnotation</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-highlighted">Highlighted</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td><a href="#HighlightAnnotation">HighlightAnnotation</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-shared">Shared</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td><a href="#HighlightAnnotation">HighlightAnnotation</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-tagged">Tagged</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td><a href="#TaggedAnnotation">TaggedAnnotation</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
         </section>
 
         <section id="profile-assessment">
@@ -382,9 +467,6 @@
             <img height="100%" width="100%" src="assets/caliper-profile_resource_management.png"
                  alt="Resource Management Profile"/>
 
-            <p>The Caliper Resource Management Profile models a <a href="Person">Person</a> managing a
-                <a href="#DigitalResource">DigitalResource</a>.</p>
-
             <dl>
                 <dt>IRI</dt>
                 <dd><a href="http://purl.imsglobal.org/caliper/ResourceManagementProfile">
@@ -394,55 +476,100 @@
                 <dd>ResourceManagementProfile</dd>
             </dl>
 
-            <section id="profile-resourcemanagement-userstories">
-                <h4>User Stories</h4>
-                <p>The Resource Management Profile supports the following learner-centric user stories:</p>
+            <p>The Caliper Resource Management Profile models a <a href="Person">Person</a> managing a
+                <a href="#DigitalResource">DigitalResource</a>.</p>
 
-                <ul>
-                    <li>As a content developer, I would like to measure the interval between resource availability and
-                        learner engagement with learning resources in order to gain insights into both the administrative
-                        impact on the learning process and the timing decisions of learners who are expected to ingest the
-                        materials.</li>
-                    <li>As an instructor, I would like to measure engagement between different revisions of learning
-                        resources over time in order to help determine what content is most effective.</li>
-                </ul>
-            </section>
+            <p>The Resource Management Profile supports the following user stories:</p>
+
+            <ul>
+                <li>As a content developer, I would like to measure the interval between resource availability and
+                    learner engagement with learning resources in order to gain insights into both the administrative
+                    impact on the learning process and the timing decisions of learners who are expected to ingest the
+                    materials.</li>
+                <li>As an instructor, I would like to measure engagement between different revisions of learning
+                    resources over time in order to help determine what content is most effective.</li>
+            </ul>
 
             <section id="profile-resourcemanagement-events">
-                <h4>Events</h4>
+                <h4>Supported Events</h4>
 
-                <p>A single <a href="#ResourceManagementEvent">ResourceManagementEvent</a> is defined for describing
+                <p>The profile defines a <a href="#ResourceManagementEvent">ResourceManagementEvent</a> for describing
                     resource handling actions.</p>
 
                 <table class="data">
                     <thead>
-                    <tr>
-                        <th>Event</th>
-                        <th>actor</th>
-                        <th>actions</th>
-                        <th>objects</th>
-                    </tr>
+                        <tr>
+                            <th colspan="4">ResourceManagementEvent</th>
+                        </tr>
+                        <tr>
+                            <th>actor</th>
+                            <th>action</th>
+                            <th>object</th>
+                            <th>generated</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
-                        <td><a href="Person">Person</a></td>
-                        <td><a href="#action-archived">Archived</a>,
-                            <a href="#action-copied">Copied</a>,
-                            <a href="#action-created">Created</a>,
-                            <a href="#action-deleted">Deleted</a>,
-                            <a href="#action-described">Described</a>,
-                            <a href="#action-downloaded">Downloaded</a>,
-                            <a href="#action-modified">Modified</a>,
-                            <a href="#action-printed">Printed</a>,
-                            <a href="#action-published">Published</a>,
-                            <a href="#action-restored">Restored</a>,
-                            <a href="#action-retrieved">Retrieved</a>,
-                            <a href="#action-saved">Saved</a>,
-                            <a href="#action-uploaded">Uploaded</a>,
-                            <a href="#action-unpublished">Unpublished</a></td>
-                        <td><a href="#DigitalResource">DigitalResource</a></td>
-                    </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-archived">Archived</a> | <a href="#action-restored">Restored</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-copied">Copied</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-created">Created</a> | <a href="#action-deleted">Deleted</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-described">Described</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-downloaded">Downloaded</a> | <a href="#action-uploaded">Uploaded</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-modified">Modified</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-printed">Printed</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-retrieved">Retrieved</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-saved">Saved</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><a href="Person">Person</a></td>
+                            <td><a href="#action-published">Published</a> | <a href="#action-unpublished">Unpublished</a></td>
+                            <td><a href="#DigitalResource">DigitalResource</a></td>
+                            <td>&nbsp;</td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
