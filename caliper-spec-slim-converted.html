@@ -177,33 +177,7 @@
 <h2><a name="profiles"></a>3.0 Metric Profiles</h2>
 <p>The following metric profiles are currently available and are summarized individually below:</p>
 <p><a href="#annotationProfile">Annotation Profile</a>, <a href="#annotationProfile">Assessment Profile</a>, <a href="#assignableProfile">Assignable Profile</a>, <a href="#forumProfile">Forum Profile</a>, <a href="#mediaProfile">Media Profile</a>, <a href="#gradingProfile">Grading Profile</a>, <a href="#readingProfile">Reading Profile</a>, <a href="#sessionProfile">Session Profile</a>, <a href="#toolUseProfile">Tool Use Profile</a>, <a href="#generalProfile">General Profile</a></p>
-<h3><a name="annotationProfile"></a>3.1 Annotation Profile</h3>
-<div><img class="img-responsive" alt="Annotation Profile" src="assets/caliper-profile_annotation.png"></div>
-<p>The Caliper Annotation Profile models activities related to the annotation of a <a href="#digitalResource">DigitalResource</a>. Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated <a href="#annotation">Annotation</a> is also described and is subtyped for greater type specificity.</p>
-<p>As an example, instructors can use the places where students are making notes in the course material to determine whether they have the right idea about which material should be highlighted.  In addition, if there are students who are asking questions or making notes indicating confusion about a particular piece of content, this can also inform the instructor about the suitability or quality of the material which they have chosen to use.</p>
-<p>Questions which can be answered using this profile are as follows:</p>
-<ul>
-<li>Which students are generating annotations?</li>
-<li>What content is most often annotated?</li>
-<li>What types of annotations are being created?</li>
-<li>Which segments of text are being highlighted?</li>
-<li>What tags are being used?</li>
-<li>What notes are being added?</li>
-</ul>
-<h4>Supported Events</h4>
-<p><a href="#annotationEvent">AnnotationEvent</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<p><a href="#bookmarked">Bookmarked</a>, <a href="#highlighted">Highlighted</a>, <a href="#shared">Shared</a>, <a href="#tagged">Tagged</a></p>
-<h4>Supported Objects</h4>
-<p><a href="#digitalResource">DigitalResource</a></p>
-<h4>Supported Generated Entities</h4>
-<p><a href="#bookmarkAnnotation">BookmarkAnnotation</a>, <a href="#highlightAnnotation">HighlightAnnotation</a>, <a href="#sharedAnnotation">SharedAnnotation</a>, <a href="#taggedAnnotation">TaggedAnnotation</a></p>
-<h4>Other Requirements</h4>
-<ul>
-<li>For each <a href="#annotationEvent">AnnotationEvent</a> described, the <code>generated</code> <a href="#annotation">Annotation</a> subtype SHOULD be specified.  Pair the <code>action</code> with the appropriate <a href="#annotation">Annotation</a> subtype (e.g., <a href="#bookmarked">Bookmarked</a> with <a href="#bookmarkAnnotation">BookmarkAnnotation</a>).  If the generated <a href="#annotation">Annotation</a> is expressed as an object both the <code>annotator</code> and <code>annotated</code> entities SHOULD be referenced.</li>
-</ul>
+
 <h3><a name="assessmentProfile"></a>3.2 Assessment Profile</h3>
 <div><img class="img-responsive" alt="Assessment Profile" src="assets/caliper-profile_assessment.png"></div>
 <p>The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides <a href="#assessment">Assessment</a> and <a href="#assessmentItem">AssessmentItem</a> entities for describing the <code>object</code> of these activities, as well as a learner's <a href="#attempt">Attempt</a> for recording a count of the number of times an assigned resource has been attempted.  Five <a href="#response">Response</a> types are also provided for capturing individual item responses.  <em>Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile.</em></p>
