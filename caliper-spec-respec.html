@@ -229,8 +229,8 @@
                 authority to assure uniqueness. However, absolute uniqueness is not guaranteed although the collision
                 probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly
                 generated version 4 UUIDs. Each Caliper <a href="#event">Event</a> MUST be assigned a UUID that is
-                expressed as a <a href="#urnDef">URN</a> using the form <code>urn:uuid:&lt;UUID&gt;</code> as described in
-                <a href="#rfc4122">RFC 4122</a>.</p>
+                expressed as a <a href="#urnDef">URN</a> using the form "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"
+                as described in <a href="#rfc4122">RFC 4122</a>.</p>
         </section>
 
         <section id="conformance">
@@ -386,41 +386,109 @@
 
                 <table class="data">
                     <thead>
-                        <tr>
-                            <th colspan="4">AnnotationEvent</th>
-                        </tr>
-                        <tr>
-                            <th>actor</th>
-                            <th>action</th>
-                            <th>object</th>
-                            <th>generated</th>
-                        </tr>
+                    <tr>
+                        <th>Event</th>
+                        <th>Required</th>
+                        <th>Optional</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-bookmarked">Bookmarked</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td><a href="#BookmarkAnnotation">BookmarkAnnotation</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-highlighted">Highlighted</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td><a href="#HighlightAnnotation">HighlightAnnotation</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-shared">Shared</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td><a href="#HighlightAnnotation">HighlightAnnotation</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-tagged">Tagged</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td><a href="#TaggedAnnotation">TaggedAnnotation</a></td>
-                        </tr>
+                    <tr>
+                        <td><a href="#AnnotationEvent">AnnotationEvent</a><br />
+                            (<a href="#action-bookmarked">Bookmarked</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AnnotationEvent"<br />
+                            <code>profile</code>: "AnnotationProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-bookmarked">Bookmarked</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#BookmarkAnnotation">BookmarkAnnotation</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AnnotationEvent">AnnotationEvent</a><br />
+                            (<a href="#action-highlighted">Highlighted</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AnnotationEvent"<br />
+                            <code>profile</code>: "AnnotationProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-highlighted">Highlighted</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#HighlightAnnotation">HighlightAnnotation</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AnnotationEvent">AnnotationEvent</a><br />
+                            (<a href="#action-shared">Shared</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AnnotationEvent"<br />
+                            <code>profile</code>: "AnnotationProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-shared">Shared</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#SharedAnnotation">SharedAnnotation</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AnnotationEvent">AnnotationEvent</a><br />
+                            (<a href="#action-tagged">Tagged</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AnnotationEvent"<br />
+                            <code>profile</code>: "AnnotationProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-tagged">Tagged</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#TagAnnotation">TagAnnotation</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </section>
@@ -429,6 +497,342 @@
         <section id="profile-assessment">
             <h3>Assessment Profile</h3>
 
+            <img height="100%" width="100%" src="assets/caliper-profile_assessment.png" alt="Assessment Profile">
+
+            <dl>
+                <dt>IRI</dt>
+                <dd><a href="http://purl.imsglobal.org/caliper/AssessmentProfile">
+                    http://purl.imsglobal.org/caliper/AssessmentProfile</a>
+                </dd>
+                <dt>Term</dt>
+                <dd>AssessmentProfile</dd>
+            </dl>
+
+            <p>The Caliper Assessment Profile models assessment-related activities including interactions with
+                individual assessment items. Caliper provides <a href="#Assessment">Assessment</a> and
+                <a href="#AssessmentItem">AssessmentItem</a> entities for describing the <code>object</code> of
+                these activities, as well as a learner's <a href="#Attempt">Attempt</a> for recording a count of the
+                number of times an assigned resource has been attempted. Five <a href="#Response">Response</a> types
+                are also provided for capturing individual item responses.</p>
+
+            <p>The Annotation Profile supports the following user stories:</p>
+
+            <ul>
+                <li>As an instructor, I want to know how much time is required to complete and submit an assessment?</li>
+                <li>As an instructor, I want to know how much time is spent answering individual assessment items?</li>
+                <li>As an instructor, I want to know which assessment items are completed?</li>
+                <li>As an instructor, I want to know which assessment items are skipped?</li>
+                <li>As an instructor, I want to know when learners start their assessments, if test-taking times
+                    are flexible?</li>
+            </ul>
+
+            <section id="profile-assessment-events">
+                <h4>Supported Events</h4>
+
+                <p>The profile defines an <a href="#AssessmentEvent">AssessmentEvent</a>,
+                    <a href="#AssessmentItemEvent">AssessmentItemEvent</a>,
+                    <a href="#NavigationEvent">NavigationEvent</a>, and <a href="#ViewEvent">ViewEvent</a> for
+                    describing learner interactions with tests and questions.</p>
+
+                <p>For each <a href="#assessmentEvent">AssessmentEvent</a> described, the <code>generated</code>
+                    <a href="#attempt">Attempt</a> SHOULD be specified.  If the <a href="#attempt">Attempt</a> is
+                    expressed as an object the <a href="#attempt">Attempt</a> SHOULD define, at a minimum, the
+                    <code>assignee</code>, the <code>assignable</code>, and the <code>count</code>. Set the
+                    <a href="#attempt">Attempt</a> <code>count</code> values as follows (per action):
+
+                <ul>
+                    <li><a href="#started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
+                        increment by 1 for each subsequent attempt.</li>
+                    <li><a href="#paused">Paused</a>, <a href="#resumed">Resumed</a>, <a href="#reset">Reset</a>: do
+                        not change the current <code>count</code> value.</li>
+                    <li><a href="#restarted">Restarted</a>: increment the <code>count</code> value by 1.</li>
+                </ul>
+
+                <p>For each <a href="#assessmentItemEvent">AssessmentItemEvent</a> described, referencing a
+                    <code>generated</code> <a href="#attempt">Attempt</a> or <a href="#response">Response</a> depends
+                    on the <code>action</code> value specified.  Set the <a href="#attempt">Attempt</a>
+                    <code>count</code> values as follows (per action):</p>
+
+                <ul>
+                    <li><a href="#started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
+                        increment by 1 for each subsequent attempt.</li>
+                    <li><a href="#skipped">Skipped</a>: do not increment the <a href="#attempt">Attempt</a>
+                        <code>count</code> by 1. The current <code>count</code> value MUST remain unchanged.</li>
+                    <li><a href="#completed">Completed</a>: if desired, specify the learner's
+                        <a href="#response">Response</a> and reference the associated <a href="#attempt">Attempt</a>
+                        via the <code>attempt</code> property.  The current <code>count</code> value MUST remain
+                        unchanged.</li>
+                </ul>
+
+                <p>Parent-child relationships that exist between <a href="#assessmentItem">AssessmentItem</a> and
+                <a href="#assessment">Assessment</a> attempts MAY be represented by use of the
+                    <a href="#attempt">Attempt</a> <code>isPartOf</code> property.</p>
+
+                <p>As a learner navigates from one <a href="#assessmentItem">AssessmentItem</a> to another
+                    <a href="#assessmentItem">AssessmentItem</a>, the previous
+                    <a href="#assessmentItem">AssessmentItem</a> MAY be specified as the <code>referrer</code>.</p>
+
+                <table class="data">
+                    <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Required</th>
+                        <th>Optional</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="#AssessmentEvent">AssessmentEvent</a><br />
+                            (<a href="#action-started">Started</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AssessmentEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-started">Started</a><br />
+                            <code>object</code>: <a href="#Assessment">Assessment</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Attempt">Attempt</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AssessmentEvent">AssessmentEvent</a><br />
+                            (<a href="#action-paused">Paused</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AssessmentEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-paused">Paused</a><br />
+                            <code>object</code>: <a href="#Assessment">Assessment</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Attempt">Attempt</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AssessmentEvent">AssessmentEvent</a><br />
+                            (<a href="#action-resumed">Resumed</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AssessmentEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-resumed">Resumed</a><br />
+                            <code>object</code>: <a href="#Assessment">Assessment</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Attempt">Attempt</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AssessmentEvent">AssessmentEvent</a><br />
+                            (<a href="#action-restarted">Restarted</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AssessmentEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-restarted">Restarted</a><br />
+                            <code>object</code>: <a href="#Assessment">Assessment</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Attempt">Attempt</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AssessmentEvent">AssessmentEvent</a><br />
+                            (<a href="#action-submitted">Submitted</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AssessmentEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-submitted">Submitted</a><br />
+                            <code>object</code>: <a href="#Assessment">Assessment</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Attempt">Attempt</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a><br />
+                            (<a href="#action-started">Started</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AssessmentItemEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-started">Started</a><br />
+                            <code>object</code>: <a href="#AssessmentItem">AssessmentItem</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Attempt">Attempt</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a><br />
+                            (<a href="#action-skipped">Skipped</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AssessmentItemEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-skipped">Skipped</a><br />
+                            <code>object</code>: <a href="#AssessmentItem">AssessmentItem</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Attempt">Attempt</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a><br />
+                            (<a href="#action-completed">Completed</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "AssessmentItemEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-completed">Completed</a><br />
+                            <code>object</code>: <a href="#AssessmentItem">AssessmentItem</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <br />
+                            &nbsp;&nbsp;&nbsp;<a href="#FillinBlankResponse">FillinBlankResponseResponse</a>,<br />
+                            &nbsp;&nbsp;&nbsp;<a href="#MultipleChoiceResponse">MultipleChoiceResponse</a>,<br />
+                            &nbsp;&nbsp;&nbsp;<a href="#MultipleResponseResponse">MultipleResponseResponse</a>,<br />
+                            &nbsp;&nbsp;&nbsp;<a href="#SelectTextResponse">SelectTextResponse</a>,<br />
+                            &nbsp;&nbsp;&nbsp;<a href="#TrueFalseResponse">TrueFalseResponse</a>,<br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#NavigationEvent">NavigationEvent</a><br />
+                            (<a href="#action-navigatedTo">NavigatedTo</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "NavigationEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-navigatedTo">NavigatedTo</a><br />
+                            <code>object</code>: <br />
+                            &nbsp;&nbsp;&nbsp;<a href="#Assessment">Assessment</a>,<br />
+                            &nbsp;&nbsp;&nbsp;<a href="#AssessmentItem">AssessmentItem</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ViewEvent">ViewEvent</a><br />
+                            (<a href="#action-viewed">Viewed</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ViewEvent"<br />
+                            <code>profile</code>: "AssessmentProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-viewed">Viewed</a><br />
+                            <code>object</code>: <br />
+                            &nbsp;&nbsp;&nbsp;<a href="#Assessment">Assessment</a>,<br />
+                            &nbsp;&nbsp;&nbsp;<a href="#AssessmentItem">AssessmentItem</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
         </section>
 
         <section id="profile-assignable">
@@ -496,80 +900,352 @@
                 <p>The profile defines a <a href="#ResourceManagementEvent">ResourceManagementEvent</a> for describing
                     resource handling actions.</p>
 
+
                 <table class="data">
                     <thead>
-                        <tr>
-                            <th colspan="4">ResourceManagementEvent</th>
-                        </tr>
-                        <tr>
-                            <th>actor</th>
-                            <th>action</th>
-                            <th>object</th>
-                            <th>generated</th>
-                        </tr>
+                    <tr>
+                        <th>Event</th>
+                        <th>Required</th>
+                        <th>Optional</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-archived">Archived</a> | <a href="#action-restored">Restored</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-copied">Copied</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-created">Created</a> | <a href="#action-deleted">Deleted</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-described">Described</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-downloaded">Downloaded</a> | <a href="#action-uploaded">Uploaded</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-modified">Modified</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-printed">Printed</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-retrieved">Retrieved</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-saved">Saved</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><a href="Person">Person</a></td>
-                            <td><a href="#action-published">Published</a> | <a href="#action-unpublished">Unpublished</a></td>
-                            <td><a href="#DigitalResource">DigitalResource</a></td>
-                            <td>&nbsp;</td>
-                        </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-archived">Archived</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-archived">Archived</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-copied">Copied</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-copied">Copied</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-created">Created</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-created">Created</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-deleted">Deleted</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-deleted">Deleted</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-described">Described</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-described">Described</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-downloaded">Downloaded</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-downloaded">Downloaded</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-modified">Modified</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-modified">Modified</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-printed">Printed</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-printed">Printed</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-published">Published</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-published">Published</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-restored">Restored</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-restored">Restored</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-retrieved">Retrieved</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-retrieved">Retrieved</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-saved">Saved</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-saved">Saved</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-unpublished">Unpublished</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-unpublished">Unpublished</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
+                            (<a href="#action-uploaded">Uploaded</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ResourceManagementEvent"<br />
+                            <code>profile</code>: "ResourceManagementProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-uploaded">Uploaded</a><br />
+                            <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </section>
