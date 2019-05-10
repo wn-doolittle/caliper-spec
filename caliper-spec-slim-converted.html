@@ -178,63 +178,7 @@
 <p>The following metric profiles are currently available and are summarized individually below:</p>
 <p><a href="#annotationProfile">Annotation Profile</a>, <a href="#annotationProfile">Assessment Profile</a>, <a href="#assignableProfile">Assignable Profile</a>, <a href="#forumProfile">Forum Profile</a>, <a href="#mediaProfile">Media Profile</a>, <a href="#gradingProfile">Grading Profile</a>, <a href="#readingProfile">Reading Profile</a>, <a href="#sessionProfile">Session Profile</a>, <a href="#toolUseProfile">Tool Use Profile</a>, <a href="#generalProfile">General Profile</a></p>
 
-<h3><a name="assessmentProfile"></a>3.2 Assessment Profile</h3>
-<div><img class="img-responsive" alt="Assessment Profile" src="assets/caliper-profile_assessment.png"></div>
-<p>The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides <a href="#assessment">Assessment</a> and <a href="#assessmentItem">AssessmentItem</a> entities for describing the <code>object</code> of these activities, as well as a learner's <a href="#attempt">Attempt</a> for recording a count of the number of times an assigned resource has been attempted.  Five <a href="#response">Response</a> types are also provided for capturing individual item responses.  <em>Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile.</em></p>
-<p>Tracking patterns using the assessment profile will allow instructors to understand more about how students are interacting with their assessments.  Typical ways to make use of this profile are to answer the following questions:</p>
-<ul>
-<li>How much time is required to complete and submit an assessment?</li>
-<li>How much time is spent answering individual questions?</li>
-<li>Which questions are completed?</li>
-<li>Which questions are skipped?</li>
-<li>If test-taking times are flexible, when do learners start their assessments?</li>
-</ul>
-<h4>Supported Events</h4>
-<p><a href="#assessmentEvent">AssessmentEvent</a>, <a href="#assessmentItemEvent">AssessmentItemEvent</a>, <a href="#navigationEvent">NavigationEvent</a>, <a href="#viewEvent">ViewEvent</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<h5>AssessmentEvent</h5>
-<p><a href="#started">Started</a>, <a href="#paused">Paused</a>, <a href="#resumed">Resumed</a>, <a href="#restarted">Restarted</a>, <a href="#reset">Reset</a>, <a href="#submitted">Submitted</a></p>
-<h5>AssessmentItemEvent</h5>
-<p><a href="#started">Started</a>, <a href="#skipped">Skipped</a>, <a href="#completed">Completed</a></p>
-<h5>NavigationEvent</h5>
-<p><a href="#navigatedTo">NavigatedTo</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#viewed">Viewed</a></p>
-<h4>Supported Objects</h4>
-<h5>AssessmentEvent</h5>
-<p><a href="#assessment">Assessment</a></p>
-<h5>AssessmentItemEvent</h5>
-<p><a href="#assessmentItem">AssessmentItem</a></p>
-<h5>NavigationEvent</h5>
-<p><a href="#assessment">Assessment</a>, <a href="#assessmentItem">AssessmentItem</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#assessment">Assessment</a>, <a href="#assessmentItem">AssessmentItem</a></p>
-<h4>Supported Generated Entities</h4>
-<h5>AssessmentEvent</h5>
-<p><a href="#attempt">Attempt</a></p>
-<h5>AssessmentItemEvent</h5>
-<p><a href="#attempt">Attempt</a>, <a href="#response">Response</a></p>
-<h4>Other Requirements</h4>
-<ul>
-<li>For each <a href="#assessmentEvent">AssessmentEvent</a> described, the <code>generated</code> <a href="#attempt">Attempt</a> SHOULD be specified.  If the <a href="#attempt">Attempt</a> is expressed as an object the <a href="#attempt">Attempt</a> SHOULD define, at a minimum, the <code>assignee</code>, the <code>assignable</code>, and the <code>count</code>.  Set the <a href="#attempt">Attempt</a> <code>count</code> values as follows (per action):
-<ul>
-<li><a href="#started">Started</a>: set the <code>count</code> value to 1 for a first attempt and increment by 1 for each subsequent attempt.</li>
-<li><a href="#paused">Paused</a>, <a href="#resumed">Resumed</a>, <a href="#reset">Reset</a>: do not change the current <code>count</code> value.</li>
-<li><a href="#restarted">Restarted</a>: increment the <code>count</code> value by 1.</li>
-</ul>
-</li>
-<li>For each <a href="#assessmentItemEvent">AssessmentItemEvent</a> described, referencing a <code>generated</code> <a href="#attempt">Attempt</a> or <a href="#response">Response</a> depends on the <code>action</code> value specified.  Set the <a href="#attempt">Attempt</a> <code>count</code> values as follows (per action):
-<ul>
-<li><a href="#started">Started</a>: set the <code>count</code> value to 1 for a first attempt and increment by 1 for each subsequent attempt.</li>
-<li><a href="#skipped">Skipped</a>: do not specify an <a href="#attempt">Attempt</a>.</li>
-<li><a href="#completed">Completed</a>: if desired, specify the learner's <a href="#response">Response</a> and reference the associated <a href="#attempt">Attempt</a> via the <code>attempt</code> property.  The current <code>count</code> value MUST remain unchanged.</li>
-</ul>
-</li>
-<li>Parent-child relationships that exist between <a href="#assessmentItem">AssessmentItem</a> and <a href="#assessment">Assessment</a> attempts MAY be represented by use of the <a href="#attempt">Attempt</a> <code>isPartOf</code> property.</li>
-<li>As a learner navigates from one <a href="#assessmentItem">AssessmentItem</a> to another <a href="#assessmentItem">AssessmentItem</a>, the previous <a href="#assessmentItem">AssessmentItem</a> MAY be specified as the <code>referrer</code>.</li>
-</ul>
+
 <h3><a name="assignableProfile"></a>3.3 Assignable Profile</h3>
 <div><img class="img-responsive" alt="Assignable Profile" src="assets/caliper-profile_assignable.png"></div>
 <p>The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic <a href="#assignableDigitalResource">AssignableDigitalResource</a> for describing the <code>object</code> of these activities as well as a learner's <a href="#attempt">Attempt</a> for recording a count of the number of times an assigned resource has been attempted.</p>
