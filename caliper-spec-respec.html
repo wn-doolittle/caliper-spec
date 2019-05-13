@@ -1114,6 +1114,15 @@
 
             <img height="100%" width="100%" src="assets/caliper-profile_grading.png" alt="Grading Profile">
 
+            <dl>
+                <dt>IRI</dt>
+                <dd><a href="http://purl.imsglobal.org/caliper/GradingProfile">
+                    http://purl.imsglobal.org/caliper/GradingProfile</a>
+                </dd>
+                <dt>Term</dt>
+                <dd>GradingProfile</dd>
+            </dl>
+
             <p>The Caliper Grading Profile models grading activities performed by an <a href="#Agent">Agent</a>,
                 typically a <a href="#Person">Person</a> or a <a href="#SoftwareApplication">SoftwareApplication</a>.
                 Grading a learner's <a href="#Attempt">Attempt</a> of an
@@ -1218,6 +1227,15 @@
             <h3>Reading Profile</h3>
 
             <img height="100%" width="100%" src="assets/caliper-profile_reading.png" alt="Reading Profile">
+
+            <dl>
+                <dt>IRI</dt>
+                <dd><a href="http://purl.imsglobal.org/caliper/ReadingProfile">
+                    http://purl.imsglobal.org/caliper/ReadingProfile</a>
+                </dd>
+                <dt>Term</dt>
+                <dd>ReadingProfile</dd>
+            </dl>
 
             <p>The Caliper Reading Profile models activities associated with navigating to and viewing digital textual
                 content. Caliper provides a number of entities representing digital content including a generic
@@ -1701,6 +1719,141 @@
         <section id="profile-session">
             <h3>Session Profile</h3>
 
+            <img height="100%" width="100%" src="assets/caliper-profile_session.png" alt="Session Profile">
+
+            <dl>
+                <dt>IRI</dt>
+                <dd><a href="http://purl.imsglobal.org/caliper/SessionProfile">
+                    http://purl.imsglobal.org/caliper/SessionProfile</a>
+                </dd>
+                <dt>Term</dt>
+                <dd>SessionProfile</dd>
+            </dl>
+
+            <p>The Caliper Session Profile models the creation and subsequent termination of a user session
+                established by a <a href="#person">Person</a> interacting with a
+                <a href="#softwareApplication">SoftwareApplication</a>.  A <a href="#session">Session</a> entity is
+                described for representing the user session.</p>
+
+            <p>The session profile can facilitate the capture of data about who is logging into the learning
+                environment, and more importantly, which students are not logging in.</p>
+
+            <p>The Session Profile supports the following user stories:</p>
+
+            <ul>
+                <li>As an instructor I want to know which students have not logged in for more than a week.</li>
+                <li>As an instructor I want to know who logs in/logs out most/least.</li>
+            </ul>
+
+            <section id="profile-session-events">
+                <h4>Supported Events</h4>
+
+                <p>The profile defines a <a href="#SessionEvent">SessionEvent</a> for recording application log in,
+                    log out, and time out activity.</p>
+
+                <p>For <a href="#action-loggedIn">LoggedIn</a> and <a href="#action-loggedOut">LoggedOut</a> actions
+                    a <a href="Person">Person</a> MUST be specified as the <code>actor</code>. For a
+                    <a href="#action-timedOut">TimedOut</a> action a
+                    <a href="#SoftwareApplication">SoftwareApplication</a> MUST be specified as the
+                    <code>actor</code>.</p>
+
+                <p>For a <a href="#loggedIn">LoggedIn</a> action, if the <code>actor</code> is attempting to access a
+                    particular <a href="#digitalResource">DigitalResource</a> the resource MAY be designated as
+                    the <code>target</code> of the interaction.</p>
+
+                <p>For a <a href="#timedOut">TimedOut</a> action, the
+                    <a href="#softwareApplication">SoftwareApplication</a> MUST be specified as the
+                    <code>actor</code> and the <a href="#session">Session</a> MUST be specified as the
+                    <code>object</code>. If a <a href="#session">Session</a> is expressed as an object the
+                    <code>user</code>, <code>startedAtTime</code>, <code>endedAtTime</code>, and <code>duration</code>
+                    property values SHOULD be provided.</p>
+
+                <table class="data">
+                    <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Required</th>
+                        <th>Optional</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="#SessionEvent">SessionEvent</a><br />
+                            (<a href="#action-loggedIn">LoggedIn</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "SessionEvent"<br />
+                            <code>profile</code>: "SessionProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-loggedIn">LoggedIn</a><br />
+                            <code>object</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>referrer</code>: <a href="#DigitalResource">DigitalResource</a>,
+                            <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    <tr>
+                    <tr>
+                        <td><a href="#SessionEvent">SessionEvent</a><br />
+                            (<a href="#action-loggedOut">LoggedOut</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "SessionEvent"<br />
+                            <code>profile</code>: "SessionProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-loggedOut">LoggedOut</a><br />
+                            <code>object</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                            <code>referrer</code>: <a href="#DigitalResource">DigitalResource</a>,
+                            <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    <tr>
+                    <tr>
+                        <td><a href="#SessionEvent">SessionEvent</a><br />
+                            (<a href="#action-timedOut">TimedOut</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "SessionEvent"<br />
+                            <code>profile</code>: "SessionProfile"<br />
+                            <code>actor</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>action</code>: <a href="#action-timedOut">TimedOut</a><br />
+                            <code>object</code>: <a href="#Session">Session</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#Entity">Entity</a><br />
+                            <code>target</code>: <a href="#Entity">Entity</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    <tr>
+                    </tbody>
+                </table>
+            </section>
         </section>
 
         <section id="profile-survey">
