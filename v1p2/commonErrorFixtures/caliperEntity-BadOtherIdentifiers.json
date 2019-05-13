@@ -1,0 +1,8 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/users/554433",
+  "type": "Person",
+  "otherIdentifiers": "Not a list of other identifiers",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
+}
