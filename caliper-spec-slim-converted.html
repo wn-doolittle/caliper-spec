@@ -178,38 +178,6 @@
 <p>The following metric profiles are currently available and are summarized individually below:</p>
 <p><a href="#annotationProfile">Annotation Profile</a>, <a href="#annotationProfile">Assessment Profile</a>, <a href="#assignableProfile">Assignable Profile</a>, <a href="#forumProfile">Forum Profile</a>, <a href="#mediaProfile">Media Profile</a>, <a href="#gradingProfile">Grading Profile</a>, <a href="#readingProfile">Reading Profile</a>, <a href="#sessionProfile">Session Profile</a>, <a href="#toolUseProfile">Tool Use Profile</a>, <a href="#generalProfile">General Profile</a></p>
 
-
-<h3><a name="assignableProfile"></a>3.3 Assignable Profile</h3>
-<div><img class="img-responsive" alt="Assignable Profile" src="assets/caliper-profile_assignable.png"></div>
-<p>The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic <a href="#assignableDigitalResource">AssignableDigitalResource</a> for describing the <code>object</code> of these activities as well as a learner's <a href="#attempt">Attempt</a> for recording a count of the number of times an assigned resource has been attempted.</p>
-<p>This profile would be useful for instructors to gather insight about the relationship between students and their assignments.  Answers to the following questions can be enabled using this profile:</p>
-<ul>
-<li>Who is assigned what material?</li>
-<li>How long does it take to complete something that has been assigned?</li>
-<li>What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)</li>
-</ul>
-<h4>Supported Events</h4>
-<p><a href="#assignableEvent">AssignableEvent</a>, <a href="#navigationEvent">NavigationEvent</a>, <a href="#viewEvent">ViewEvent</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<h5>AssignableEvent</h5>
-<p><a href="#activated">Activated</a>, <a href="#deactivated">Deactivated</a>, <a href="#started">Started</a>, <a href="#completed">Completed</a>, <a href="#submitted">Submitted</a>, <a href="#reviewed">Reviewed</a></p>
-<h5>NavigationEvent</h5>
-<p><a href="#navigatedTo">NavigatedTo</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#viewed">Viewed</a></p>
-<h4>Supported Objects</h4>
-<p><a href="#assignableDigitalResource">AssignableDigitalResource</a></p>
-<h4>Supported Generated Entities</h4>
-<h5>AssignableEvent</h5>
-<p><a href="#attempt">Attempt</a></p>
-<h4>Other Requirements</h4>
-<ul>
-<li>A <code>generated</code> <a href="#attempt">Attempt</a> SHOULD be specified for the following <a href="#assignableEvent">AssignableEvent</a> actions: <a href="#started">Started</a>, <a href="#completed">Completed</a>, <a href="#submitted">Submitted</a>, <a href="#reviewed">Reviewed</a></li>
-<li>If the <a href="#attempt">Attempt</a> is expressed as an object the <a href="#attempt">Attempt</a> SHOULD define, at a minimum, the <code>assignee</code>, the <code>assignable</code>, and the <code>count</code>.  Set the <code>count</code> value to 1 for a first attempt and increment by 1 for each subsequent attempt.</li>
-<li>Parent-child relationships that exist between <a href="#assignableDigitalResource">AssignableDigitalResource</a> attempts MAY be represented by use of the <a href="#attempt">Attempt</a> <code>isPartOf</code> property.</li>
-</ul>
 <h3><a name="forumProfile"></a>3.4 Forum Profile</h3>
 <div><img class="img-responsive" alt="Forum Profile" src="assets/caliper-profile_forum.png"></div>
 <p>The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides <a href="#forum">Forum</a>, <a href="#thread">Thread</a> and <a href="#message">Message</a> entities for representing the <code>object</code> of these activities.</p>
