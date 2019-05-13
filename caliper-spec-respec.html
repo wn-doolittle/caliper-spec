@@ -1868,6 +1868,99 @@
 
         <section id="profile-tooluse">
             <h3>Tool Use Profile</h3>
+
+            <img height="100%" width="100%" src="assets/caliper-profile_tool_use.png" alt="Tool Use Profile">
+
+            <dl>
+                <dt>IRI</dt>
+                <dd><a href="http://purl.imsglobal.org/caliper/ToolUseProfile">
+                    http://purl.imsglobal.org/caliper/ToolUseProfile</a>
+                </dd>
+                <dt>Term</dt>
+                <dd>ToolUseProfile</dd>
+            </dl>
+
+            <p>The Caliper Tool Use Profile models an intended interaction between a user and a tool. In other words,
+                when a <code>Person</code> utilizes a <code>SoftwareApplication</code> in a manner that the application
+                determines to be its intended use for learning, an application that implements the Tool  Use Profile
+                can emit a <code>ToolUseEvent</code> indicating such usage.</p>
+
+            <p>The Tool Use Profile enables the gathering of basic usage information. It provides an easy way to get
+                started with a base level of instrumentation by allowing the learning tool to make the determination
+                of its own use. Any learning app can be instrumented using this profile to detect when a learner
+                accesses the tool and uses it in the way it was intended.</p>
+
+            <p>The Tool Use Profile supports the following user stories:</p>
+
+            <ul>
+                <li>As an instructor I want to know what tools are being used, and how often.</li>
+                <li>As an instructor I want to know who is the most active/least active user of tools.</li>
+                <li>As an instructor I want to know whether or not tool usage helps/hinders student performance.</li>
+                <li>As an instructor I want to know which tools have the greatest impact on student performance.</li>
+                <li>As an instructor I want to know how much time learners are spending using a tool.</li>
+                <li>As an instructor I want to know how much curricular progress have learners made in a tool.</li>
+                <li>As an instructor I want to be able to view my students' "time on task" across multiple learning 
+                    tools using a dashboard powered by a Caliper event store.</li>
+                <li>As a data scientist I want to be able to study the impact of a student's curricular progress in a
+                    learning tool on his or her academic achievement.</li>
+                <li>As a student I want to confirm that the progress and time metrics I see in a learning tool matches 
+                    the metrics I see in an aggregated dashboard.</li>
+            </ul>
+
+            <section id="profile-tooluse-events">
+                <h4>Supported Events</h4>
+
+                <p>The profile defines a <a href="#ToolUseEvent">ToolUseEvent</a> for describing a
+                    <a href="#Person">Person</a> using a learning tool in a way that the tool's creators have
+                    determined is an indication of a learning interaction. A <a href="#ToolUseEvent">ToolUseEvent</a>
+                    MAY reference a generated <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>
+                    containing one or more <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities that
+                    provide information on a learner's "progress" using the tool. The following metrics can be recorded:
+                    <a href="#metric-assessmentpassed">AssessmentPassed</a>,
+                    <a href="#metric-assessmentsubmitted">AssessmentSubmitted</a>,
+                    <a href="#metric-minutesontask">MinutesOnTask</a>,
+                    <a href="#metric-skillsmastered">SkillsMastered</a>,
+                    <a href="#metric-standardsmastered">StandardsMastered</a>,
+                    <a href="#metric-unitscompleted">UnitsCompleted</a></li>,
+                    <a href="#metric-unitspassed">UnitsPassed</a>,
+                    <a href="#metric-wordsread">WordsRead</a>.
+
+                <table class="data">
+                    <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Required</th>
+                        <th>Optional</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="#ToolUseEvent">ToolUseEvent</a><br />
+                            (<a href="#action-used">Used</a>)</td>
+                        <td>
+                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                            <code>type</code>: "ToolUseEvent"<br />
+                            <code>profile</code>: "ToolUseProfile"<br />
+                            <code>actor</code>: <a href="Person">Person</a><br />
+                            <code>action</code>: <a href="#action-used">Used</a><br />
+                            <code>object</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>eventTime</code>: DateTime
+                        </td>
+                        <td>
+                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>generated</code>: <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a><br />
+                            <code>target</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
+                            <code>group</code>: <a href="#Organization">Organization</a><br />
+                            <code>membership</code>: <a href="#Membership">Membership</a><br />
+                            <code>session</code>: <a href="#Session">Session</a><br />
+                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                            <code>extensions</code>: Object
+                        </td>
+                    <tr>
+                    </tbody>
+                </table>
+            </section>
         </section>
 
         <section id="profile-general">
