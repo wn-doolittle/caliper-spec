@@ -218,38 +218,7 @@
 <li>If a <a href="#message">Message</a> is expressed as an object and is in the form of a reply, the previous <a href="#message">Message</a> that prompted the reply SHOULD be referenced via the <a href="#message">Message</a> <code>replyTo</code> property.</li>
 <li>Parent-child relationships that exist between a <a href="#message">Message</a>, <a href="#thread">Thread</a> and a <a href="#forum">Forum</a> MAY be represented by use of the <code>isPartOf</code> property.</li>
 </ul>
-<h3><a name="gradingProfile"></a>3.5 Grading Profile</h3>
-<div><img class="img-responsive" alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
-<p>The Caliper Grading Profile models grading activities performed by an <a href="#agent">Agent</a>, typically a <a href="#person">Person</a> or a <a href="#softwareApplication">SoftwareApplication</a>.  Grading a learner's <a href="#attempt">Attempt</a> of an <a href="#assignableDigitalResource">AssignableDigitalResource</a> and generating a <a href="#score">Score</a> is modeled. <em>Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile.</em></p>
-<p>The grading profile allows information to be captured about grade changes for a given assessment or submission.  This may be useful to understand the way in which students and teachers may be interacting throughout the course.  For example, the grading profile can be used to answer questions such as:</p>
-<ul>
-<li>How often are grades changed for an assessment?</li>
-</ul>
-<h4>Supported Events</h4>
-<p><a href="#gradeEvent">GradeEvent</a>, <a href="#viewEvent">ViewEvent</a></p>
-<h4>Supported Actors</h4>
-<h5>GradeEvent</h5>
-<p><a href="#agent">Agent</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<h5>GradeEvent</h5>
-<p><a href="#graded">Graded</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#viewed">Viewed</a></p>
-<h4>Supported Objects</h4>
-<h5>GradeEvent</h5>
-<p><a href="#attempt">Attempt</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#result">Result</a></p>
-<h4>Supported Generated Entities</h4>
-<h5>GradeEvent</h5>
-<p><a href="#score">Score</a></p>
-<h4>Other Requirements</h4>
-<ul>
-<li>When describing a <a href="#gradeEvent">GradeEvent</a>, the <code>generated</code> <a href="#score">Score</a> SHOULD be specified.</li>
-<li>For auto-graded scenarios the <a href="#softwareApplication">SoftwareApplication</a> MUST be specified as the <code>actor</code>.</li>
-</ul>
+
 <h3><a name="mediaProfile"></a>3.6 Media Profile</h3>
 <div><img class="img-responsive" alt="Media Profile" src="assets/caliper-profile_media.png"></div>
 <p>The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementers can leverage a number of media-related entities including <a href="#audioObject">AudioObject</a>, <a href="#audioObject">ImageObject</a> and <a href="#videoObject">VideoObject</a>, each subtyped from a generic <a href="#mediaObject">MediaObject</a>.  A <a href="#mediaLocation">MediaLocation</a> entity is also provided in order to represent the current location in an audio or video stream.</p>
@@ -289,38 +258,7 @@
 </ul>
 </li>
 </ul>
-<h3><a name="readingProfile"></a>3.7 Reading Profile</h3>
-<div><img class="img-responsive" alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
-<p>The Caliper Reading Profile models activities associated with navigating to and viewing digital textual content.  Caliper provides a number of entities representing digital content including a generic <a href="#digitalResource">DigitalResource</a> and  <a href="#digitalResourceCollection">DigitalResourceCollection</a> along with <a href="#document">Document</a>, <a href="#chapter">Chapter</a>, <a href="#page">Page</a>, <a href="#webPage">WebPage</a>, <a href="#message">Message</a> and <a href="#frame">Frame</a>.</p>
-<p>Instructors and researchers can utilize data collected via the Reading Profile to answer questions such as:</p>
-<ul>
-<li>Who is consuming the content?</li>
-<li>What materials are being accessed?</li>
-<li>When are the resources accessed?</li>
-<li>How often is the content viewed?</li>
-<li>What paths are taken to reach the content?</li>
-</ul>
-<p>When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.</p>
-<h4>Supported Events</h4>
-<p><a href="#navigationEvent">NavigationEvent</a>, <a href="#viewEvent">ViewEvent</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<h5>NavigationEvent</h5>
-<p><a href="#navigatedTo">NavigatedTo</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#viewed">Viewed</a></p>
-<h4>Supported Objects</h4>
-<p><a href="#assignableDigitalResource">AssignableDigitalResource</a>, <a href="#chapter">Chapter</a>, <a href="#digitalResource">DigitalResource</a>, <a href="#digitalResourceCollection">DigitalResourceCollection</a>, <a href="#document">Document</a>, <a href="#page">Page</a>, <a href="#webPage">WebPage</a></p>
-<h4>Supported Target Entities</h4>
-<p>The following <a href="#entity">Entity</a> types are supported:</p>
-<ul>
-<li><a href="#frame">Frame</a></li>
-</ul>
-<h4>Other Requirements</h4>
-<ul>
-<li>A <a href="#frame">Frame</a> MAY be specified as the <code>target</code> in order to indicate an indexed segment or location.</li>
-</ul>
+
 <h3><a name="sessionProfile"></a>3.8 Session Profile</h3>
 <div><img class="img-responsive" alt="Session Profile" src="assets/caliper-profile_session.png"></div>
 <p>The Caliper Session Profile models the creation and subsequent termination of a user session established by a <a href="#person">Person</a> interacting with a <a href="#softwareApplication">SoftwareApplication</a>.  A <a href="#session">Session</a> entity is described for representing the user session.</p>
