@@ -178,47 +178,6 @@
 <p>The following metric profiles are currently available and are summarized individually below:</p>
 <p><a href="#annotationProfile">Annotation Profile</a>, <a href="#annotationProfile">Assessment Profile</a>, <a href="#assignableProfile">Assignable Profile</a>, <a href="#forumProfile">Forum Profile</a>, <a href="#mediaProfile">Media Profile</a>, <a href="#gradingProfile">Grading Profile</a>, <a href="#readingProfile">Reading Profile</a>, <a href="#sessionProfile">Session Profile</a>, <a href="#toolUseProfile">Tool Use Profile</a>, <a href="#generalProfile">General Profile</a></p>
 
-<h3><a name="forumProfile"></a>3.4 Forum Profile</h3>
-<div><img class="img-responsive" alt="Forum Profile" src="assets/caliper-profile_forum.png"></div>
-<p>The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides <a href="#forum">Forum</a>, <a href="#thread">Thread</a> and <a href="#message">Message</a> entities for representing the <code>object</code> of these activities.</p>
-<p>Tracking patterns using the forum profile will allow instructors to understand more about how students are engaged within discussion forums.  Using this profile, instructors can gain insight in the following areas:</p>
-<ul>
-<li>Who is posting most often</li>
-<li>Which posts create the most replies?</li>
-<li>Compare graded vs. non-graded discussions</li>
-</ul>
-<h4>Supported Events</h4>
-<p><a href="#forumEvent">ForumEvent</a>, <a href="#messageEvent">MessageEvent</a>, <a href="#navigationEvent">NavigationEvent</a>, <a href="#threadEvent">ThreadEvent</a>, <a href="#viewEvent">ViewEvent</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<h5>ForumEvent</h5>
-<p><a href="#subscribed">Subscribed</a>, <a href="#unsubscribed">Unsubscribed</a></p>
-<h5>MessageEvent</h5>
-<p><a href="#markedAsRead">MarkedAsRead</a>, <a href="#markedAsUnRead">MarkedAsUnRead</a>, <a href="#posted">Posted</a></p>
-<h5>NavigationEvent</h5>
-<p><a href="#navigatedTo">NavigatedTo</a></p>
-<h5>ThreadEvent</h5>
-<p><a href="#markedAsRead">MarkedAsRead</a>, <a href="#markedAsUnRead">MarkedAsUnRead</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#viewed">Viewed</a></p>
-<h4>Supported Objects</h4>
-<h5>ForumEvent</h5>
-<p><a href="#forum">Forum</a></p>
-<h5>MessageEvent</h5>
-<p><a href="#message">Message</a></p>
-<h5>NavigationEvent</h5>
-<p><a href="#forum">Forum</a>, <a href="#message">Message</a>, <a href="#thread">Thread</a></p>
-<h5>ThreadEvent</h5>
-<p><a href="#thread">Thread</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#forum">Forum</a>, <a href="#message">Message</a>, <a href="#thread">Thread</a></p>
-<h4>Other Requirements</h4>
-<ul>
-<li>If a <a href="#message">Message</a> is expressed as an object and is in the form of a reply, the previous <a href="#message">Message</a> that prompted the reply SHOULD be referenced via the <a href="#message">Message</a> <code>replyTo</code> property.</li>
-<li>Parent-child relationships that exist between a <a href="#message">Message</a>, <a href="#thread">Thread</a> and a <a href="#forum">Forum</a> MAY be represented by use of the <code>isPartOf</code> property.</li>
-</ul>
-
 <h3><a name="mediaProfile"></a>3.6 Media Profile</h3>
 <div><img class="img-responsive" alt="Media Profile" src="assets/caliper-profile_media.png"></div>
 <p>The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementers can leverage a number of media-related entities including <a href="#audioObject">AudioObject</a>, <a href="#audioObject">ImageObject</a> and <a href="#videoObject">VideoObject</a>, each subtyped from a generic <a href="#mediaObject">MediaObject</a>.  A <a href="#mediaLocation">MediaLocation</a> entity is also provided in order to represent the current location in an audio or video stream.</p>
