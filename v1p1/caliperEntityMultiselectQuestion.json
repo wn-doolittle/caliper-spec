@@ -1,0 +1,14 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/4/question",
+  "type": "MultiselectQuestion",
+  "questionPosed": "What do you want to study today?",
+  "points": 4,
+  "itemLabels": ["Calculus", "Number theory", "Combinatorics", "Algebra"],
+  "itemValues": [
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/1",
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/2",
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/3",
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/4"
+  ]
+}
