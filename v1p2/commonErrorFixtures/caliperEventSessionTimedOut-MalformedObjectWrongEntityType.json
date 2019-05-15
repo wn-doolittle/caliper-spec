@@ -1,0 +1,17 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:4e61cf6c-ffbe-45bc-893f-afe7ad4079dc",
+  "type": "SessionEvent",
+  "profile": "SessionProfile",
+  "actor": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "action": "TimedOut",
+  "object": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "eventTime": "2016-11-15T11:15:00.000Z",
+  "edApp": "https://example.edu"
+}
