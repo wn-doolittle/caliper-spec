@@ -1,0 +1,47 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:5801f73e-3564-11e9-b210-d663bd873d93",
+  "type": "SurveyInvitationEvent",
+  "actor": {
+    "id": "https://example.edu/users/112233",
+    "type": "Person"
+  },
+  "action": "Sent",
+  "object": {
+    "id": "https://example.edu/surveys/100/invitations/users/554433",
+    "type": "SurveyInvitation",
+    "sentCount": 1,
+    "sentDate": "2018-11-15T10:05:00.000Z",
+    "rater": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "survey": {
+      "id": "https://example.edu/survey/1",
+      "type": "Survey"
+    },
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/112233",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Instructor" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}
