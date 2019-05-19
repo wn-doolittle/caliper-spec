@@ -31,9 +31,6 @@
     "minValue": {"@id": "caliper:minValue", "type": "xsd:decimal"},
     "questionPosed": {"@id": "caliper:questionPosed", "type": "xsd:string"},
     "scalePoints": {"@id": "caliper:scalePoints", "type": "xsd:integer"},
-    "step": {"@id": "caliper:step", "type": "xsd:decimal"},
-
-    "Commented": "caliper:actions/Commented",
-    "Ranked": "caliper:actions/Ranked"
+    "step": {"@id": "caliper:step", "type": "xsd:decimal"}
   }]
 }
