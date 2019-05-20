@@ -1,0 +1,8 @@
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+    "id": "https://example.edu/scale/2",
+    "type": "LikertScale",
+    "scalePoints": 4,
+    "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+    "itemValues": ["-2", "-1", "1", "2"]
+}

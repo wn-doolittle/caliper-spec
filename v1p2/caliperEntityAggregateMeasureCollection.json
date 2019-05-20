@@ -1,0 +1,26 @@
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+    "id": "urn:uuid:60b4db01-f1e5-4a7f-add9-6a8f761625b1",
+    "type": "AggregateMeasureCollection",
+    "items": [
+        {
+            "id": "urn:uuid:21c3f9f2-a9ef-4f65-bf9a-0699ed85e2c7",
+            "type": "AggregateMeasure",
+            "metric": "MinutesOnTask",
+            "name": "Minutes On Task",
+            "metricValue": 873.0,
+            "startedAtTime": "2019-08-15T10:15:00.000Z",
+            "endedAtTime": "2019-11-15T10:15:00.000Z"
+        },
+        {
+            "id": "urn:uuid:c3ba4c01-1f17-46e0-85dd-1e366e6ebb81",
+            "type": "AggregateMeasure",
+            "metric": "UnitsCompleted",
+            "name": "Units Completed",
+            "metricValue": 12.0,
+            "maxMetricValue": 25.0,
+            "startedAtTime": "2019-08-15T10:15:00.000Z",
+            "endedAtTime": "2019-11-15T10:15:00.000Z"
+        }
+    ]
+}
