@@ -1,0 +1,54 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
+  "type": "ResourceManagementEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Created",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "creators": [
+      {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      }
+    ],
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Instructor" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}
