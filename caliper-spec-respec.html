@@ -3450,6 +3450,53 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
             <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
             <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
         </section>
+
+        <section id="lis-roles">
+            <h3>LIS Roles</h3>
+            <p><a href="#membership">Membership</a> includes an optional <code>roles</code> property for assigning one
+                or more roles to an <a href="#Event">Event</a> <code>actor</code> described as a <code>member</code> of
+                an <code>organization</code>. Role values are limited to the list of Caliper role terms derived from the
+                IMS <a href="#lisDef">LIS</a> specification. Assigning context roles should prove sufficient in most
+                cases. Whenever a sub-role is specified, the related context role SHOULD also be included. For example,
+                a role of <code>Instructor#TeachingAssistant</code> SHOULD always be accompanied by the
+                <code>Instructor</code> role.
+            </p>
+            <section id="role-administrator" data-include="fragments/roles/lis-role-administrator.html"></section>
+            <section id="role-contentdeveloper" data-include="fragments/roles/lis-role-contentdeveloper.html"></section>
+            <section id="role-instructor" data-include="fragments/roles/lis-role-instructor.html"></section>
+            <section id="role-learner" data-include="fragments/roles/lis-role-learner.html"></section>
+            <section id="role-manager" data-include="fragments/roles/lis-role-manager.html"></section>
+            <section id="role-member" data-include="fragments/roles/lis-role-member.html"></section>
+            <section id="role-mentor" data-include="fragments/roles/lis-role-mentor.html"></section>
+            <section id="role-officer" data-include="fragments/roles/lis-role-officer.html"></section>
+        </section>
+
+        <section id="lis-statuses">
+            <h3>LIS Statuses</h3>
+            <p>The status associated with a <a href="#Membership">Membership</a> within an organization can be set to
+                one of the following states: Active or Inactive. These states are derived from the IMS
+                <a href="#lisDef">LIS</a> specification. The value MUST be set to the appropriate
+                <a href="#termDef">Term</a> string value. ...TO DO
+            </p>
+            <section id="lis-status-active">
+                <h4>Active</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/lis/v2/status#Active</dd>
+                    <dt>Term</dt>
+                    <dd>Active</dd>
+                </dl>
+            </section>
+            <section id="lis-status-inactive">
+                <h4>Inactive</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/lis/v2/status#Inactive</dd>
+                    <dt>Term</dt>
+                    <dd>Inactive</dd>
+                </dl>
+            </section>
+        </section>
     </section>
 
     <section id="jsonld">
