@@ -2,7 +2,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:71657137-8e6e-44f8-8499-e1c3df6810d2",
   "type": "NavigationEvent",
-  "profile": "GeneralProfile",
+  "profile": "ReadingProfile",
   "actor": "https://example.edu/users/554433",
   "action": "NavigatedTo",
   "object": "https://example.edu/terms/201601/courses/7/sections/1/pages/2",
