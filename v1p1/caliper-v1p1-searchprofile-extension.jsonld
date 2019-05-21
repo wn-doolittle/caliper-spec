@@ -8,7 +8,6 @@
     "creator": {"@id": "caliper:creator", "@type": "@id"},
     "query": {"@id": "caliper:query", "@type": "@id"},
     "searchProvider": {"@id": "caliper:searchProvider", "@type": "@id"},
-    "searchResults": {"@id": "caliper:searchResults", "@type": "@id", "@container": "@list"},
     "searchTarget": {"@id": "caliper:searchTarget", "@type": "@id"},
 
     "searchResultsItemCount": {"@id": "caliper:searchResultsItemCount", "@type": "xsd:nonNegativeInteger"},
