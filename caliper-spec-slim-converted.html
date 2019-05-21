@@ -178,45 +178,7 @@
 <p>The following metric profiles are currently available and are summarized individually below:</p>
 <p><a href="#annotationProfile">Annotation Profile</a>, <a href="#annotationProfile">Assessment Profile</a>, <a href="#assignableProfile">Assignable Profile</a>, <a href="#forumProfile">Forum Profile</a>, <a href="#mediaProfile">Media Profile</a>, <a href="#gradingProfile">Grading Profile</a>, <a href="#readingProfile">Reading Profile</a>, <a href="#sessionProfile">Session Profile</a>, <a href="#toolUseProfile">Tool Use Profile</a>, <a href="#generalProfile">General Profile</a></p>
 
-<h3><a name="mediaProfile"></a>3.6 Media Profile</h3>
-<div><img class="img-responsive" alt="Media Profile" src="assets/caliper-profile_media.png"></div>
-<p>The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementers can leverage a number of media-related entities including <a href="#audioObject">AudioObject</a>, <a href="#audioObject">ImageObject</a> and <a href="#videoObject">VideoObject</a>, each subtyped from a generic <a href="#mediaObject">MediaObject</a>.  A <a href="#mediaLocation">MediaLocation</a> entity is also provided in order to represent the current location in an audio or video stream.</p>
-<p>As an example of how this profile could be used, consider the following scenario: an instructor has decided to incorporate a video player into their course.  The video content may or may not be launched via <a href="#ltiDef">LTI</a> from the Learning Management System (LMS).  Since the video player tool is instrumented to emit activity data via Caliper, the instructor will be able to collect useful information about student viewing behavior.  In addition, he will be able to compare this data along with other relevent information in the LMS, such as assignment and quiz results.  Using data collected via Caliper, instructors (and administrators) can answer key questions, such as:</p>
-<ul>
-<li>Who is using the tool?</li>
-<li>Which videos are being played the most?</li>
-<li>How long are they spending on each video?</li>
-<li>Where do they pause the video?</li>
-<li>Are there instances of where students are replaying sections of the video?</li>
-</ul>
-<h4>Supported Events</h4>
-<p><a href="#mediaEvent">MediaEvent</a>, <a href="#navigationEvent">NavigationEvent</a>, <a href="#viewEvent">ViewEvent</a></p>
-<h4>Supported Actors</h4>
-<p><a href="#person">Person</a></p>
-<h4>Supported Actions</h4>
-<h5>MediaEvent</h5>
-<p><a href="#started">Started</a>, <a href="#ended">Ended</a>, <a href="#paused">Paused</a>, <a href="#resumed">Resumed</a>, <a href="#restarted">Restarted</a>, <a href="#forwardedTo">ForwardedTo</a>, <a href="#jumpedTo">JumpedTo</a>, <a href="#changedResolution">ChangedResolution</a>, <a href="#changedSize">ChangedSize</a>, <a href="#changedSpeed">ChangedSpeed</a>, <a href="#changedVolume">ChangedVolume</a>, <a href="#enabledClosedCaptioning">EnabledClosedCaptioning</a>, <a href="#disabledClosedCaptioning">DisabledClosedCaptioning</a>, <a href="#enteredFullScreen">EnteredFullScreen</a>, <a href="#exitedFullScreen">ExitedFullScreen</a>, <a href="#muted">Muted</a>, <a href="#unmuted">Unmuted</a>, <a href="#openedPopout">OpenedPopout</a>, <a href="#closedPopout">ClosedPopout</a></p>
-<h5>NavigationEvent</h5>
-<p><a href="#navigatedTo">NavigatedTo</a></p>
-<h5>ViewEvent</h5>
-<p><a href="#viewed">Viewed</a></p>
-<h4>Supported Objects</h4>
-<p><a href="#audioObject">AudioObject</a>, <a href="#imageObject">ImageObject</a>, <a href="#mediaObject">MediaObject</a>, <a href="#videoObject">VideoObject</a></p>
-<h4>Supported Target Entities</h4>
-<p><a href="#mediaLocation">MediaLocation</a></p>
-<h4>Other Requirements</h4>
-<ul>
-<li>A <a href="#mediaLocation">MediaLocation</a> MAY be specified as the <code>target</code> in order to indicate the current location in an audio or video stream.</li>
-<li>If the <a href="#mediaLocation">MediaLocation</a> is expressed as an object, set the <code>currentTime</code> value as follows (per action):
-<ul>
-<li><a href="#started">Started</a>, <a href="#restarted">Restarted</a>: set the <code>currentTime</code> value to the beginning or initial starting location in the audio or video stream.</li>
-<li><a href="#paused">Paused</a>: set the <code>currentTime</code> value to the location in the audio or video stream where the pause occurred.</li>
-<li><a href="#resumed">Resumed</a>: set the <code>currentTime</code> value to the location in the audio or video stream where the previous pause occurred.</li>
-<li><a href="#ended">Ended</a>: set the <code>currentTime</code> value to the ending or closing location in the audio or video stream.</li>
-<li>For other <a href="#mediaEvent">MediaEvent</a> supported actions the <a href="#mediaLocation">MediaLocation</a> <code>currentTime</code> value MUST be set to the location in the audio or video stream where the action occurred.</li>
-</ul>
-</li>
-</ul>
+
 
 <h3><a name="generalProfile"></a>3.10 General Profile</h3>
 <div><img class="img-responsive" alt="General Profile"
