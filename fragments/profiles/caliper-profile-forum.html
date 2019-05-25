@@ -1,0 +1,44 @@
+<h3>Forum Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_forum.png" alt="Forum Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/ForumProfile">
+        http://purl.imsglobal.org/caliper/ForumProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>ForumProfile</dd>
+</dl>
+
+<p>The Caliper Forum Profile models learners and others participating in online discussion forums. Forums
+    typically encompass one or more threads or topics to which members can subscribe, post messages and
+    reply to other messages if a threaded discussion is permitted. Caliper provides
+    <a href="#forum">Forum</a>, <a href="#thread">Thread</a>, and <a href="#message">Message</a> entities
+    for representing the <code>object</code> of these activities.</p>
+
+<p>Using the Forum Profile to track discussion behaviors allows instructors to better understand how students
+    are engaged within discussion forums.</p>
+
+<p>The Forum Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor I want to know who is posting most often.</li>
+    <li>As an instructor I want to know which posts generate the most replies.</li>
+    <li>As an instructor I want to compare graded vs. non-graded discussions.</li>
+</ul>
+
+<p>The Forum Profile defines a <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
+    <a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a>, and
+    <a href="#ViewEvent">ViewEvent</a> for describing <a href="#Forum">Forum</a>,
+    <a href="#Thread">Thread</a>, and <a href="#Message">Message</a> interactions. For each <a href="#Event">Event</a>
+    described, the governing <code>profile</code> SHOULD be referenced (e.g., "ForumProfile").
+</p>
+
+<p>If a <a href="#message">Message</a> is expressed as an object and is in the form of a reply, the
+    previous <a href="#message">Message</a> that prompted the reply SHOULD be referenced via
+    the <a href="#message">Message</a> <code>replyTo</code> property.</p>
+
+<p>Parent-child relationships that exist between a <a href="#message">Message</a>,
+    <a href="#thread">Thread</a> and a <a href="#forum">Forum</a> MAY be represented by use of
+    the <code>isPartOf</code> property.</p>
