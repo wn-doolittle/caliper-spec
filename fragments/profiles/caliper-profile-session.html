@@ -1,0 +1,47 @@
+<h3>Session Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_session.png" alt="Session Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/SessionProfile">
+        http://purl.imsglobal.org/caliper/SessionProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>SessionProfile</dd>
+</dl>
+
+<p>The Caliper Session Profile models the creation and subsequent termination of a user session
+    established by a <a href="#person">Person</a> interacting with a
+    <a href="#softwareApplication">SoftwareApplication</a>. A <a href="#session">Session</a> entity is
+    described for representing the user session.</p>
+
+<p>The session profile can facilitate the capture of data about who is logging into the learning
+    environment, and more importantly, which students are not logging in.</p>
+
+<p>The Session Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I want to know which students have not logged in for more than a week.</li>
+    <li>As an instructor, I want to know who logs in and logs out most and least frequently.</li>
+</ul>
+
+<p>The Session Profile defines a <a href="#SessionEvent">SessionEvent</a> for recording application log in,
+    log out, and time out activity.</p>
+
+<p>For <a href="#action-loggedIn">LoggedIn</a> and <a href="#action-loggedOut">LoggedOut</a> actions,
+    a <a href="Person">Person</a> MUST be specified as the <code>actor</code>. For a
+    <a href="#action-timedOut">TimedOut</a> action, a
+    <a href="#SoftwareApplication">SoftwareApplication</a> MUST be specified as the
+    <code>actor</code>.</p>
+
+<p>For a <a href="#loggedIn">LoggedIn</a> action, if the <code>actor</code> is attempting to access a
+    particular <a href="#digitalResource">DigitalResource</a>, the resource MAY be designated as
+    the <code>target</code> of the interaction.</p>
+
+<p>For a <a href="#timedOut">TimedOut</a> action, the
+    <a href="#softwareApplication">SoftwareApplication</a> MUST be specified as the
+    <code>actor</code> and the <a href="#session">Session</a> MUST be specified as the
+    <code>object</code>. If a <a href="#session">Session</a> is expressed as an object, the
+    <code>user</code>, <code>startedAtTime</code>, <code>endedAtTime</code>, and <code>duration</code>
+    property values SHOULD be provided.</p>

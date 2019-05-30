@@ -558,402 +558,70 @@
              class="notoc">
         </section>
 
-        <section id="profile-reading">
-            <h3>Reading Profile</h3>
+        <section id="profile-reading" data-include="fragments/profiles/caliper-profile-reading.html"></section>
 
-            <img height="100%" width="100%" src="assets/caliper-profile_reading.png" alt="Reading Profile">
-
-            <dl>
-                <dt>IRI</dt>
-                <dd><a href="http://purl.imsglobal.org/caliper/ReadingProfile">
-                    http://purl.imsglobal.org/caliper/ReadingProfile</a>
-                </dd>
-                <dt>Term</dt>
-                <dd>ReadingProfile</dd>
-            </dl>
-
-            <p>The Caliper Reading Profile models activities associated with navigating to and viewing digital textual
-                content. Caliper provides a number of entities representing digital content including a generic
-                <a href="#DigitalResource">DigitalResource</a> and
-                <a href="#DigitalResourceCollection">DigitalResourceCollection</a> along with
-                <a href="#Document">Document</a>, <a href="#Chapter">Chapter</a>, <a href="#Page">Page</a>,
-                <a href="#WebPage">WebPage</a>, <a href="#Message">Message</a> and <a href="#Frame">Frame</a>.</p>
-
-            <p>The Reading Profile supports the following user stories:</p>
-
-            <ul>
-                <li>As an instructor I want to know when assigned course content is first accessed by my students.</li>
-                <li>As an instructor I want to know what materials are being accessed.</li>
-                <li>As an instructor I want to know how often is the content viewed.</li>
-                <li>As an instructor I want to know what paths are taken to reach the content.</li>
-            </ul>
-
-            <p>When used in conjunction with the Assessment Profile viewing patterns can be correlated to performance measures.</p>
-
-            <section id="profile-reading-events" class="notoc">
-                <h4>Supported Events</h4>
-
-                <p>The profile defines a <a href="#NavigationEvent">NavigationEvent</a> for traversing resources and a
-                    <a href="#ViewEvent">ViewEvent</a> for viewing content.</p>
-
-                <p>A <a href="#Frame">Frame</a> MAY be specified as the <code>target</code> in order to indicate an
-                indexed segment or location.</p>
-
-                <table class="data">
-                    <thead>
-                    <tr>
-                        <th>Event</th>
-                        <th>Required</th>
-                        <th>Optional</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="#NavigationEvent">NavigationEvent</a><br />
-                                (<a href="#action-navigatedTo">NavigatedTo</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "NavigationEvent"<br />
-                                <code>profile</code>: "ReadingProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-navigatedTo">NavigatedTo</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        <tr>
-                            <td><a href="#ViewEvent">ViewEvent</a><br />
-                                (<a href="#action-viewed">Viewed</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ViewEvent"<br />
-                                <code>profile</code>: "ReadingProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-viewed">Viewed</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+        <section id="profile-reading-navigationevent-navigatedto"
+             data-include="fragments/profiles/caliper-profile-reading-navigationevent-navigatedto.html"
+             class="notoc">
         </section>
 
-        <section id="profile-resourcemanagement">
-            <h3>Resource Management Profile</h3>
+        <section id="profile-reading-viewevent-viewed"
+             data-include="fragments/profiles/caliper-profile-reading-viewevent-viewed.html"
+             class="notoc">
+        </section>
 
-            <img height="100%" width="100%" src="assets/caliper-profile_resource_management.png"
-                 alt="Resource Management Profile"/>
+        <section id="profile-resourcemanagement"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement.html">
+        </section>
 
-            <dl>
-                <dt>IRI</dt>
-                <dd><a href="http://purl.imsglobal.org/caliper/ResourceManagementProfile">
-                    http://purl.imsglobal.org/caliper/ResourceManagementProfile</a>
-                </dd>
-                <dt>Term</dt>
-                <dd>ResourceManagementProfile</dd>
-            </dl>
+        <section id="profile-resourcemanagement-resourcemanagementevent-archived_restored"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-archived_restored.html"
+             class="notoc">
+        </section>
 
-            <p>The Caliper Resource Management Profile models a <a href="Person">Person</a> managing a
-                <a href="#DigitalResource">DigitalResource</a>.</p>
+        <section id="profile-resourcemanagement-resourcemanagementevent-copied"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-copied.html"
+             class="notoc">
+        </section>
 
-            <p>The Resource Management Profile supports the following user stories:</p>
+        <section id="profile-resourcemanagement-resourcemanagementevent-created_deleted"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-created_deleted.html"
+             class="notoc">
+        </section>
 
-            <ul>
-                <li>As a content developer, I would like to measure the interval between resource availability and
-                    learner engagement with learning resources in order to gain insights into both the administrative
-                    impact on the learning process and the timing decisions of learners who are expected to ingest the
-                    materials.</li>
-                <li>As an instructor I would like to measure engagement between different revisions of learning
-                    resources over time in order to help determine what content is most effective.</li>
-            </ul>
+        <section id="profile-resourcemanagement-resourcemanagementevent-described"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-described.html"
+             class="notoc">
+        </section>
 
-            <section id="profile-resourcemanagement-events" class="notoc">
-                <h4>Supported Events</h4>
+        <section id="profile-resourcemanagement-resourcemanagementevent-downloaded_uploaded"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-downloaded_uploaded.html"
+             class="notoc">
+        </section>
 
-                <p>The profile defines a <a href="#ResourceManagementEvent">ResourceManagementEvent</a> for describing
-                    resource handling actions.</p>
+        <section id="profile-resourcemanagement-resourcemanagementevent-modified"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-modified.html"
+             class="notoc">
+        </section>
 
+        <section id="profile-resourcemanagement-resourcemanagementevent-printed"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-printed.html"
+             class="notoc">
+        </section>
 
-                <table class="data">
-                    <thead>
-                    <tr>
-                        <th>Event</th>
-                        <th>Required</th>
-                        <th>Optional</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-archived">Archived</a> | <a href="#action-restored">Restored</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-archived">Archived</a> |
-                                <a href="#action-restored">Restored</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-copied">Copied</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-copied">Copied</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-created">Created</a> | <a href="#action-deleted">Deleted</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-created">Created</a> |
-                                <a href="#action-deleted">Deleted</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-described">Described</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-described">Described</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-downloaded">Downloaded</a> |
-                                <a href="#action-uploaded">Uploaded</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-downloaded">Downloaded</a> |
-                                <a href="#action-uploaded">Uploaded</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-modified">Modified</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-modified">Modified</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-printed">Printed</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-printed">Printed</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-published">Published</a> |
-                                <a href="#action-unpublished">Unpublished</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-published">Published</a> |
-                                <a href="#action-unpublished">Unpublished</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-retrieved">Retrieved</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-retrieved">Retrieved</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a><br />
-                                (<a href="#action-saved">Saved</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "ResourceManagementEvent"<br />
-                                <code>profile</code>: "ResourceManagementProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-saved">Saved</a><br />
-                                <code>object</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+        <section id="profile-resourcemanagement-resourcemanagementevent-published_unpublished"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-published_unpublished.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-resourcemanagement-resourcemanagementevent-retrieved"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-retrieved.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-resourcemanagement-resourcemanagementevent-saved"
+             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-saved.html"
+             class="notoc">
         </section>
 
         <section id="profile-search">
@@ -961,120 +629,16 @@
 
         </section>
 
-        <section id="profile-session">
-            <h3>Session Profile</h3>
+        <section id="profile-session" data-include="fragments/profiles/caliper-profile-session.html"></section>
 
-            <img height="100%" width="100%" src="assets/caliper-profile_session.png" alt="Session Profile">
+        <section id="profile-session-sessionevent-loggedin_loggedout"
+             data-include="fragments/profiles/caliper-profile-session-sessionevent-loggedin_loggedout.html"
+             class="notoc">
+        </section>
 
-            <dl>
-                <dt>IRI</dt>
-                <dd><a href="http://purl.imsglobal.org/caliper/SessionProfile">
-                    http://purl.imsglobal.org/caliper/SessionProfile</a>
-                </dd>
-                <dt>Term</dt>
-                <dd>SessionProfile</dd>
-            </dl>
-
-            <p>The Caliper Session Profile models the creation and subsequent termination of a user session
-                established by a <a href="#person">Person</a> interacting with a
-                <a href="#softwareApplication">SoftwareApplication</a>.  A <a href="#session">Session</a> entity is
-                described for representing the user session.</p>
-
-            <p>The session profile can facilitate the capture of data about who is logging into the learning
-                environment, and more importantly, which students are not logging in.</p>
-
-            <p>The Session Profile supports the following user stories:</p>
-
-            <ul>
-                <li>As an instructor I want to know which students have not logged in for more than a week.</li>
-                <li>As an instructor I want to know who logs in/logs out most/least.</li>
-            </ul>
-
-            <section id="profile-session-events" class="notoc">
-                <h4>Supported Events</h4>
-
-                <p>The profile defines a <a href="#SessionEvent">SessionEvent</a> for recording application log in,
-                    log out, and time out activity.</p>
-
-                <p>For <a href="#action-loggedIn">LoggedIn</a> and <a href="#action-loggedOut">LoggedOut</a> actions
-                    a <a href="Person">Person</a> MUST be specified as the <code>actor</code>. For a
-                    <a href="#action-timedOut">TimedOut</a> action a
-                    <a href="#SoftwareApplication">SoftwareApplication</a> MUST be specified as the
-                    <code>actor</code>.</p>
-
-                <p>For a <a href="#loggedIn">LoggedIn</a> action, if the <code>actor</code> is attempting to access a
-                    particular <a href="#digitalResource">DigitalResource</a> the resource MAY be designated as
-                    the <code>target</code> of the interaction.</p>
-
-                <p>For a <a href="#timedOut">TimedOut</a> action, the
-                    <a href="#softwareApplication">SoftwareApplication</a> MUST be specified as the
-                    <code>actor</code> and the <a href="#session">Session</a> MUST be specified as the
-                    <code>object</code>. If a <a href="#session">Session</a> is expressed as an object the
-                    <code>user</code>, <code>startedAtTime</code>, <code>endedAtTime</code>, and <code>duration</code>
-                    property values SHOULD be provided.</p>
-
-                <table class="data">
-                    <thead>
-                    <tr>
-                        <th>Event</th>
-                        <th>Required</th>
-                        <th>Optional</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="#SessionEvent">SessionEvent</a><br />
-                                (<a href="#action-loggedIn">LoggedIn</a> | <a href="#action-loggedOut">LoggedOut</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "SessionEvent"<br />
-                                <code>profile</code>: "SessionProfile"<br />
-                                <code>actor</code>: <a href="Person">Person</a><br />
-                                <code>action</code>: <a href="#action-loggedIn">LoggedIn</a> |
-                                <a href="#action-loggedOut">LoggedOut</a><br />
-                                <code>object</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#DigitalResource">DigitalResource</a><br />
-                                <code>referrer</code>: <a href="#DigitalResource">DigitalResource</a> |
-                                <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        <tr>
-                        <tr>
-                            <td><a href="#SessionEvent">SessionEvent</a><br />
-                                (<a href="#action-timedOut">TimedOut</a>)</td>
-                            <td>
-                                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                                <code>type</code>: "SessionEvent"<br />
-                                <code>profile</code>: "SessionProfile"<br />
-                                <code>actor</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>action</code>: <a href="#action-timedOut">TimedOut</a><br />
-                                <code>object</code>: <a href="#Session">Session</a><br />
-                                <code>eventTime</code>: DateTime
-                            </td>
-                            <td>
-                                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                                <code>generated</code>: <a href="#Entity">Entity</a><br />
-                                <code>target</code>: <a href="#Entity">Entity</a><br />
-                                <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                                <code>group</code>: <a href="#Organization">Organization</a><br />
-                                <code>membership</code>: <a href="#Membership">Membership</a><br />
-                                <code>session</code>: <a href="#Session">Session</a><br />
-                                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                                <code>extensions</code>: Object
-                            </td>
-                        <tr>
-                    </tbody>
-                </table>
-            </section>
+        <section id="profile-session-sessionevent-timedout"
+             data-include="fragments/profiles/caliper-profile-session-sessionevent-timedout.html"
+             class="notoc">
         </section>
 
         <section id="profile-survey">
@@ -1087,101 +651,11 @@
 
         </section>
 
-        <section id="profile-tooluse" class="notoc">
-            <h3>Tool Use Profile</h3>
+        <section id="profile-tooluse" data-include="fragments/profiles/caliper-profile-tooluse.html"></section>
 
-            <img height="100%" width="100%" src="assets/caliper-profile_tool_use.png" alt="Tool Use Profile">
-
-            <dl>
-                <dt>IRI</dt>
-                <dd><a href="http://purl.imsglobal.org/caliper/ToolUseProfile">
-                    http://purl.imsglobal.org/caliper/ToolUseProfile</a>
-                </dd>
-                <dt>Term</dt>
-                <dd>ToolUseProfile</dd>
-            </dl>
-
-            <p>The Caliper Tool Use Profile models an intended interaction between a user and a tool. In other words,
-                when a <code>Person</code> utilizes a <code>SoftwareApplication</code> in a manner that the application
-                determines to be its intended use for learning, an application that implements the Tool  Use Profile
-                can emit a <code>ToolUseEvent</code> indicating such usage.</p>
-
-            <p>The Tool Use Profile enables the gathering of basic usage information. It provides an easy way to get
-                started with a base level of instrumentation by allowing the learning tool to make the determination
-                of its own use. Any learning app can be instrumented using this profile to detect when a learner
-                accesses the tool and uses it in the way it was intended.</p>
-
-            <p>The Tool Use Profile supports the following user stories:</p>
-
-            <ul>
-                <li>As an instructor I want to know what tools are being used, and how often.</li>
-                <li>As an instructor I want to know who is the most active/least active user of tools.</li>
-                <li>As an instructor I want to know whether or not tool usage helps/hinders student performance.</li>
-                <li>As an instructor I want to know which tools have the greatest impact on student performance.</li>
-                <li>As an instructor I want to know how much time learners are spending using a tool.</li>
-                <li>As an instructor I want to know how much curricular progress have learners made in a tool.</li>
-                <li>As an instructor I want to be able to view my students' "time on task" across multiple learning 
-                    tools using a dashboard powered by a Caliper event store.</li>
-                <li>As a data scientist I want to be able to study the impact of a student's curricular progress in a
-                    learning tool on his or her academic achievement.</li>
-                <li>As a student I want to confirm that the progress and time metrics I see in a learning tool matches 
-                    the metrics I see in an aggregated dashboard.</li>
-            </ul>
-
-            <section id="profile-tooluse-events">
-                <h4>Supported Events</h4>
-
-                <p>The profile defines a <a href="#ToolUseEvent">ToolUseEvent</a> for describing a
-                    <a href="#Person">Person</a> using a learning tool in a way that the tool's creators have
-                    determined is an indication of a learning interaction. A <a href="#ToolUseEvent">ToolUseEvent</a>
-                    MAY reference a generated <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>
-                    containing one or more <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities that
-                    provide information on a learner's "progress" using the tool. The following metrics can be recorded:
-                    <a href="#metric-assessmentpassed">AssessmentPassed</a>,
-                    <a href="#metric-assessmentsubmitted">AssessmentSubmitted</a>,
-                    <a href="#metric-minutesontask">MinutesOnTask</a>,
-                    <a href="#metric-skillsmastered">SkillsMastered</a>,
-                    <a href="#metric-standardsmastered">StandardsMastered</a>,
-                    <a href="#metric-unitscompleted">UnitsCompleted</a></li>,
-                    <a href="#metric-unitspassed">UnitsPassed</a>,
-                    <a href="#metric-wordsread">WordsRead</a>.
-
-                <table class="data">
-                    <thead>
-                    <tr>
-                        <th>Event</th>
-                        <th>Required</th>
-                        <th>Optional</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><a href="#ToolUseEvent">ToolUseEvent</a><br />
-                            (<a href="#action-used">Used</a>)</td>
-                        <td>
-                            <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
-                            <code>type</code>: "ToolUseEvent"<br />
-                            <code>profile</code>: "ToolUseProfile"<br />
-                            <code>actor</code>: <a href="Person">Person</a><br />
-                            <code>action</code>: <a href="#action-used">Used</a><br />
-                            <code>object</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                            <code>eventTime</code>: DateTime
-                        </td>
-                        <td>
-                            <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                            <code>generated</code>: <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a><br />
-                            <code>target</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
-                            <code>referrer</code>: <a href="#Entity">Entity</a><br />
-                            <code>group</code>: <a href="#Organization">Organization</a><br />
-                            <code>membership</code>: <a href="#Membership">Membership</a><br />
-                            <code>session</code>: <a href="#Session">Session</a><br />
-                            <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
-                            <code>extensions</code>: Object
-                        </td>
-                    <tr>
-                    </tbody>
-                </table>
-            </section>
+        <section id="profile-tooluse-tooluseevent-used"
+             data-include="fragments/profiles/caliper-profile-tooluse-tooluseevent-used.html"
+             class="notoc">
         </section>
 
         <section id="profile-general">
