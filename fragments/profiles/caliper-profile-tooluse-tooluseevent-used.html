@@ -1,0 +1,36 @@
+<h4><a href="#ToolUseEvent">ToolUseEvent</a> (<a href="#action-used">Used</a>)</h4>
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Required</th>
+            <th colspan="2">Optional</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <code>id</code>: "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"<br />
+                <code>type</code>: "ToolUseEvent"<br />
+                <code>actor</code>: <a href="Person">Person</a><br />
+                <code>action</code>: <a href="#action-used">Used</a><br />
+                <code>object</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                <code>eventTime</code>: DateTime
+            </td>
+            <td>
+                <code>profile</code>: "ToolUseProfile"<br />
+                <code>generated</code>: <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a><br />
+                <code>target</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                <code>referrer</code>: <a href="#Entity">Entity</a><br />
+            </td>
+            <td>
+                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                <code>group</code>: <a href="#Organization">Organization</a><br />
+                <code>membership</code>: <a href="#Membership">Membership</a><br />
+                <code>session</code>: <a href="#Session">Session</a><br />
+                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                <code>extensions</code>: Object
+            </td>
+        </tr>
+    </tbody>
+</table>
