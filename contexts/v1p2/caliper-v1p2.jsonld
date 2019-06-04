@@ -149,7 +149,6 @@
     "scale": {"@id": "caliper:scale", "@type": "@id"},
     "scoredBy": {"@id": "caliper:scoredBy", "@type": "@id"},
     "searchProvider": {"@id": "caliper:searchProvider", "@type": "@id"},
-    "searchResults": {"@id": "caliper:searchResults", "@type": "@id", "@container": "@list"},
     "searchTarget": {"@id": "caliper:searchTarget", "@type": "@id"},
     "selection": {"@id": "caliper:selection", "@type": "@id"},
     "selections": {"@id": "caliper:selections", "@type": "@id", "@container": "@list"},
