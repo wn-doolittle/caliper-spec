@@ -8,7 +8,7 @@
   "dateCreated": "2016-11-01T06:00:00.000Z",
   "dateToActivate": "2016-11-10T11:59:59.000Z",
   "dateToShow": "2016-11-10T11:59:59.000Z",
-  "dateToStartOn": "2016-11-10T11:59:59.000Z",
+  "dateToStartOn": "2016-11-10",
   "dateToSubmit": "2016-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,

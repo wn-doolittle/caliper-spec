@@ -1,0 +1,10 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "type": "SystemIdentifier",
+  "identifier": 554433,
+  "identifierType": "LtiUserId",
+  "source":  {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  }
+}

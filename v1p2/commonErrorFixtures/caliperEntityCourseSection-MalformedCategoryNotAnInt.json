@@ -1,0 +1,22 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1",
+  "type": "CourseSection",
+  "academicSession": "Fall 2016",
+  "courseNumber": "CPS 435-01",
+  "name": "CPS 435 Learning Analytics, Section 01",
+  "otherIdentifiers": [
+    {
+      "type": "SystemIdentifier",
+      "identifier": "example.edu:SI182-001-F16",
+      "identifierType": "LisSourcedId"
+    }
+  ],
+  "category": 1,
+  "subOrganizationOf": {
+    "id": "https://example.edu/terms/201601/courses/7",
+    "type": "CourseOffering",
+    "courseNumber": "CPS 435"
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z"
+}

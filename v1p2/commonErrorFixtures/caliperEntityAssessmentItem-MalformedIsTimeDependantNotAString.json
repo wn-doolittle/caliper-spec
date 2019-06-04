@@ -1,0 +1,14 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3",
+  "type": "AssessmentItem",
+  "isPartOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "type": "Assessment"
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "datePublished": "2016-08-15T09:30:00.000Z",
+  "isTimeDependent": "No",
+  "maxScore": 1.0,
+  "maxSubmits": 2
+}
