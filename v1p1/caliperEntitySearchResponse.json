@@ -22,21 +22,5 @@
     "dateCreated": "2018-11-15T10:05:00.000Z"
   },
   "searchResultsItemCount": 3,
-  "searchResults": [{
-    "id": "https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-    "type": "Document",
-    "mediaType": "application/pdf"
-  },
-    {
-      "id": "https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-      "type": "VideoObject",
-      "mediaType": "video/ogg"
-    },
-    {
-      "id": "https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-      "type": "Document",
-      "mediaType": "application/epub+zip"
-    }
-  ],
   "dateCreated": "2018-11-15T10:05:00.000Z"
 }
