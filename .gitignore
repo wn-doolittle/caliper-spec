@@ -9,8 +9,8 @@ out/
 # Mac
 .DS_Store
 
-# Sublime
-*.sublime*
-
 # Protege
 catalog*.*
+
+# Sublime
+*.sublime*

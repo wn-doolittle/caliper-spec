@@ -1,0 +1,16 @@
+{
+  "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", {
+    "SearchEvent": "caliper:SearchEvent",
+
+    "Query": "caliper:Query",
+    "SearchResponse": "caliper:SearchResponse",
+
+    "creator": {"@id": "caliper:creator", "@type": "@id"},
+    "query": {"@id": "caliper:query", "@type": "@id"},
+    "searchProvider": {"@id": "caliper:searchProvider", "@type": "@id"},
+    "searchTarget": {"@id": "caliper:searchTarget", "@type": "@id"},
+
+    "searchResultsItemCount": {"@id": "caliper:searchResultsItemCount", "@type": "xsd:nonNegativeInteger"},
+    "searchTerms": {"@id": "caliper:searchTerms", "@type": "xsd:string"}
+  }]
+}

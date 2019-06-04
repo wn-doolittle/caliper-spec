@@ -1,0 +1,16 @@
+{
+  "@context": ["http://purl.imsglobal.org/ctx/caliper/v1p1", {
+    "ToolLaunchEvent": "caliper:ToolLaunchEvent",
+
+    "Link": "caliper:Link",
+    "LtiLink": "caliper:LtiLink",
+
+    "messageType": {"@id": "caliper:messageType", "@type": "@vocab"},
+
+    "Launched": "caliper:actions/Launched",
+    "Returned": "caliper:actions/Returned",
+
+    "LtiDeepLinkingRequest": "caliper:lti/LtiDeepLinkingRequest",
+    "LtiResourceLinkRequest": "caliper:lti/LtiResourceLinkRequest"
+  }]
+}
