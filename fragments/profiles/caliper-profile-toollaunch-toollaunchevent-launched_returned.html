@@ -1,0 +1,38 @@
+<h4><a href="#ToolLaunchEvent">ToolLaunchEvent</a> (<a href="#action-launched">Launched</a> |
+    <a href="#action-returned">Returned</a>)</h4>
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Required</th>
+            <th colspan="2">Optional</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <code>id</code>: "urn:uuid:&lt<a href="#uuidDef">UUID</a>&gt"<br />
+                <code>type</code>: "ToolLaunchEvent"<br />
+                <code>actor</code>: <a href="#Person">Person</a><br />
+                <code>action</code>: <a href="#action-launched">Launched</a> | <a href="#action-returned">Returned</a>
+                <br />
+                <code>object</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                <code>eventTime</code>: DateTime
+            </td>
+            <td>
+                <code>profile</code>: "ToolLaunchProfile"<br />
+                <code>generated</code>: <a href="#DigitalResource">DigitalResource</a><br />
+                <code>target</code>: <a href="#Link">Link</a> | <a href="#LtiLink">LtiLink</a><br />
+                <code>referrer</code>: <a href="#Entity">Entity</a><br />
+            </td>
+            <td>
+                <code>edApp</code>: <a href="#SoftwareApplication">SoftwareApplication</a><br />
+                <code>group</code>: <a href="#Organization">Organization</a><br />
+                <code>membership</code>: <a href="#Membership">Membership</a><br />
+                <code>session</code>: <a href="#Session">Session</a><br />
+                <code>federatedSession</code>: <a href="#LtiSession">LtiSession</a><br />
+                <code>extensions</code>: Object
+            </td>
+        </tr>
+    </tbody>
+</table>

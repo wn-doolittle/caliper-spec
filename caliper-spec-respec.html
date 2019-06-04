@@ -229,7 +229,7 @@
                 authority to assure uniqueness. However, absolute uniqueness is not guaranteed although the collision
                 probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly
                 generated version 4 UUIDs. Each Caliper <a href="#event">Event</a> MUST be assigned a UUID that is
-                expressed as a <a href="#urnDef">URN</a> using the form "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt"
+                expressed as a <a href="#urnDef">URN</a> using the form "urn:uuid:&ltUUID&gt"
                 as described in <a href="#rfc4122">RFC 4122</a>.</p>
         </section>
 
@@ -432,9 +432,16 @@
              class="notoc">
         </section>
 
-        <section id="profile-feedback">
-            <h3>Feedback Profile</h3>
+        <section id="profile-feedback" data-include="fragments/profiles/caliper-profile-feedback.html"></section>
 
+        <section id="profile-feedback-feedbackevent-commented"
+                 data-include="fragments/profiles/caliper-profile-feedback-feedbackevent-commented.html"
+                 class="notoc">
+        </section>
+
+        <section id="profile-feedback-feedbackevent-ranked"
+                 data-include="fragments/profiles/caliper-profile-feedback-feedbackevent-ranked.html"
+                 class="notoc">
         </section>
 
         <section id="profile-forum" data-include="fragments/profiles/caliper-profile-forum.html"></section>
@@ -624,9 +631,11 @@
              class="notoc">
         </section>
 
-        <section id="profile-search">
-            <h3>Search Profile</h3>
+        <section id="profile-search" data-include="fragments/profiles/caliper-profile-search.html"></section>
 
+        <section id="profile-search-searchevent-searched"
+                 data-include="fragments/profiles/caliper-profile-search-searchevent-searched.html"
+                 class="notoc">
         </section>
 
         <section id="profile-session" data-include="fragments/profiles/caliper-profile-session.html"></section>
@@ -641,14 +650,58 @@
              class="notoc">
         </section>
 
-        <section id="profile-survey">
-            <h3>Survey Profile</h3>
+        <section id="profile-survey" data-include="fragments/profiles/caliper-profile-survey.html"></section>
 
+        <section id="profile-survey-navigationevent-navigatedto"
+                 data-include="fragments/profiles/caliper-profile-survey-navigationevent-navigatedto.html"
+                 class="notoc">
         </section>
 
-        <section id="profile-toollaunch">
-            <h3>Tool Launch Profile</h3>
+        <section id="profile-survey-questionnaireevent-started_submitted"
+             data-include="fragments/profiles/caliper-profile-survey-questionnaireevent-started_submitted.html"
+             class="notoc">
+        </section>
 
+        <section id="profile-survey-questionnaireitemevent-started"
+             data-include="fragments/profiles/caliper-profile-survey-questionnaireitemevent-started.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-survey-questionnaireitemevent-skipped"
+             data-include="fragments/profiles/caliper-profile-survey-questionnaireitemevent-skipped.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-survey-questionnaireitemevent-completed"
+             data-include="fragments/profiles/caliper-profile-survey-questionnaireitemevent-completed.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-survey-surveyevent-optedin_optedout"
+             data-include="fragments/profiles/caliper-profile-survey-surveyevent-optedin_optedout.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-survey-surveyinvitationevent-accepted_declined"
+             data-include="fragments/profiles/caliper-profile-survey-surveyinvitationevent-accepted_declined.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-survey-surveyinvitationevent-sent"
+             data-include="fragments/profiles/caliper-profile-survey-surveyinvitationevent-sent.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-survey-viewevent-viewed"
+             data-include="fragments/profiles/caliper-profile-survey-viewevent-viewed.html"
+             class="notoc">
+        </section>
+
+        <section id="profile-toollaunch" data-include="fragments/profiles/caliper-profile-toollaunch.html"></section>
+
+        <section id="profile-toollaunch-toollaunchevent-launched_returned"
+             data-include="fragments/profiles/caliper-profile-toollaunch-toollaunchevent-launched_returned.html"
+             class="notoc">
         </section>
 
         <section id="profile-tooluse" data-include="fragments/profiles/caliper-profile-tooluse.html"></section>
