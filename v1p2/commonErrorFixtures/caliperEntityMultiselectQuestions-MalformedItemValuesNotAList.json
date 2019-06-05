@@ -1,0 +1,9 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/4/question",
+  "type": "MultiselectQuestion",
+  "questionPosed": "What do you want to study today?",
+  "points": 4,
+  "itemLabels": ["Calculus", "Number theory", "Combinatorics", "Algebra"],
+  "itemValues": "This is not a list"
+}

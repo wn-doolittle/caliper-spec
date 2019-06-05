@@ -1,0 +1,16 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/surveys/100/invitations/users/112233",
+  "type": "SurveyInvitation",
+  "sentCount": "One",
+  "dateSent": "2018-11-15T10:05:00.000Z",
+  "rater": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "survey": {
+    "id": "https://example.edu/survey/1",
+    "type": "Survey"
+  },
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}

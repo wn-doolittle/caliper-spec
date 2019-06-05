@@ -1,0 +1,8 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+  "type": "Collection",
+  "items": "This is not a list.",
+  "dateCreated": "2019-08-01T06:00:00.000Z",
+  "dateModified": "2019-09-02T11:30:00.000Z"
+}

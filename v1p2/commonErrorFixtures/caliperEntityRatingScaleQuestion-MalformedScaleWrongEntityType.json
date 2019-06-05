@@ -1,0 +1,10 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/question/2",
+  "type": "RatingScaleQuestion",
+  "questionPosed": "Do you agree with the opinion presented?",
+  "scale": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  }
+}

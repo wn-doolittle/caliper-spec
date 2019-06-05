@@ -1,0 +1,14 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+  "type": "Session",
+  "user": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+    "id": "https://example.edu/autograder",
+    "type": "SoftwareApplication",
+    "name": "Auto Grader",
+    "description": "Automates assignment scoring.",
+    "version": "2.5.2"
+  },
+  "startedAtTime": "2016-09-15T10:00:00.000Z"
+}

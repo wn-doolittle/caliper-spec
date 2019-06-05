@@ -2,6 +2,36 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "https://example.edu/users/554433",
   "type": "Person",
+  "otherIdentifiers": [
+    {
+      "type": "SystemIdentifier",
+      "identifier": "example.edu:71ee7e42-f6d2-414a-80db-b69ac2defd4",
+      "identifierType": "LisSourcedId"
+    },
+    {
+      "type": "SystemIdentifier",
+      "identifier": "https://example.edu/users/554433",
+      "identifierType": "LtiUserId",
+      "source":  {
+        "id": "https://example.edu",
+        "type": "SoftwareApplication"
+      }
+    },
+    {
+      "type": "SystemIdentifier",
+      "identifier": "jane@example.edu",
+      "identifierType": "EmailAddress",
+      "source": "https://example.edu"
+    },
+    {
+      "type": "SystemIdentifier",
+      "identifier": "4567",
+      "identifierType": "SystemId",
+      "extensions": {
+        "com.examplePlatformVendor.identifier_type": "UserIdentifier"
+      }
+    }
+  ],
   "dateCreated": "2016-08-01T06:00:00.000Z",
   "dateModified": "2016-09-02T11:30:00.000Z"
 }

@@ -1,0 +1,6 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:60b4db01-f1e5-4a7f-add9-6a8f761625b1",
+  "type": "AggregateMeasureCollection",
+  "items": "Not an aggregate measure object"
+}

@@ -1,0 +1,6 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/scale/1",
+  "type": "Scale",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}

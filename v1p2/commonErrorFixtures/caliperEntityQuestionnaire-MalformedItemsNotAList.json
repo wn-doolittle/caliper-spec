@@ -1,0 +1,7 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/surveys/100/questionnaires/30",
+  "type": "Questionnaire",
+  "items": "This is not a list",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}
