@@ -1,0 +1,24 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/users/554433/etexts/201/shares/1",
+  "type": "SharedAnnotation",
+  "annotator": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "annotated": {
+    "id": "https://example.edu/etexts/201.epub",
+    "type": "Document"
+  },
+  "withAgents": [
+    {
+      "id": "https://example.edu/users/657585",
+      "type": "Person"
+    },
+    {
+      "id": "https://example.edu/users/667788",
+      "type": "Person"
+    }
+  ],
+  "dateCreated": "2016-08-01T09:00:00.000Z"
+}

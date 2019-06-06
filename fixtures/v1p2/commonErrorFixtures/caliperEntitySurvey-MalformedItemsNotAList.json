@@ -1,0 +1,6 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/collections/1",
+  "type": "Survey",
+  "items": "This is not a list"
+}

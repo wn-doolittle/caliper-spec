@@ -1,0 +1,11 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/videos/1225",
+  "type": "VideoObject",
+  "mediaType": "video/ogg",
+  "name": "Introduction to IMS Caliper",
+  "version": "1.1",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z",
+  "duration": "PT1H12M27S"
+}

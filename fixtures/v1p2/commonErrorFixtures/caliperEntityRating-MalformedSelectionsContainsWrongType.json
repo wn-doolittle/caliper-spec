@@ -1,0 +1,65 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/users/554433/rating/1",
+  "type": "Rating",
+  "rater": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "rated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "question": {
+    "id": "https://example.edu/question/2",
+    "type": "RatingScaleQuestion",
+    "questionPosed": "Do you agree with the opinion presented?",
+    "scale": {
+      "id": "https://example.edu/scale/2",
+      "type": "LikertScale",
+      "scalePoints": 4,
+      "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+      "itemValues": ["-2", "-1", "1", "2"]
+    }
+  },
+  "selections": [1],
+  "ratingComment": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
+    "type": "Comment",
+    "commenter": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "commentedOn": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2018-08-02T11:32:00.000Z"
+    },
+    "value": "I like what you did here but you need to improve on...",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}

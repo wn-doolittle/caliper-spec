@@ -1,0 +1,14 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.com/users/554433/texts/imscaliperimplguide/annotations/1",
+  "type": "Annotation",
+  "annotator": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "annotated": {
+    "id": "https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0",
+    "type": "Page"
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z"
+}

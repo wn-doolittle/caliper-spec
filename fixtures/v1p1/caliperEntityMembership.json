@@ -1,0 +1,20 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1/members/554433",
+  "type": "Membership",
+  "member": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "organization": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "subOrganizationOf": {
+      "id": "https://example.edu/terms/201601/courses/7",
+      "type": "CourseOffering"
+    }
+  },
+  "roles": [ "Learner" ],
+  "status": "Active",
+  "dateCreated": "2016-11-01T06:00:00.000Z"
+}

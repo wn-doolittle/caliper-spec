@@ -1,0 +1,12 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/6/users/554433/responses/1",
+  "type": "Response",
+  "attempt": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "dateCreated": "2016-11-15T10:15:46.000Z",
+  "startedAtTime": "2016-11-15T10:15:46.000Z",
+  "endedAtTime": "2016-11-15T10:17:20.000Z"
+}

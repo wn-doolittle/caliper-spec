@@ -1,0 +1,12 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/scale/3",
+  "type": "MultiselectScale",
+  "scalePoints": 5,
+  "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+  "itemValues": "This is not a list",
+  "isOrderedSelection": false,
+  "minSelections": 1,
+  "maxSelections": 5,
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}

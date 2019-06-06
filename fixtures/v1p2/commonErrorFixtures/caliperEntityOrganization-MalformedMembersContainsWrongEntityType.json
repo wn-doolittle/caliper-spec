@@ -1,0 +1,22 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/colleges/1/depts/1",
+  "type": "Organization",
+  "name": "Computer Science Department",
+  "subOrganizationOf": {
+    "id": "https://example.edu/colleges/1",
+    "type": "Organization",
+    "name": "College of Engineering"
+  },
+  "members": [
+    {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    }
+  ]
+}

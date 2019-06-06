@@ -1,0 +1,7 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/videos/1225",
+  "type": "MediaLocation",
+  "currentTime": "PT30M54S",
+  "dateCreated": "2016-08-01T06:00:00.000Z"
+}

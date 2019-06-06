@@ -1,0 +1,24 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:4e61cf6c-ffbe-45bc-893f-afe7ad4079dc",
+  "type": "SessionEvent",
+  "actor": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "action": "TimedOut",
+  "object": {
+    "id": "https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864",
+    "type": "Session",
+    "user": {
+      "id": "https://example.edu/users/112233",
+      "type": "Person"
+    },
+    "dateCreated": "2016-11-15T10:15:00.000Z",
+    "startedAtTime": "2016-11-15T10:15:00.000Z",
+    "endedAtTime": "2016-11-15T11:15:00.000Z",
+    "duration": "PT3600S"
+  },
+  "eventTime": "2016-11-15T11:15:00.000Z",
+  "edApp": "https://example.edu"
+}

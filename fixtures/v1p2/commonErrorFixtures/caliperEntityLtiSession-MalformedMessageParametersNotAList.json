@@ -1,0 +1,12 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+  "type": "LtiSession",
+  "user": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "dateCreated": "2018-11-15T10:15:00.000Z",
+  "startedAtTime": "2018-11-15T10:15:00.000Z",
+  "messageParameters": [ "https://example.edu", "https://example.edu/users/554433" ]
+}
