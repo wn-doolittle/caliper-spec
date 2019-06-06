@@ -1,0 +1,43 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:4be6d29d-5728-44cd-8a8f-3d3f07e46b61",
+  "type": "ViewEvent",
+  "profile": "ReadingProfile",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Viewed",
+  "object": {
+    "id": "https://example.com/lti/reader/202.epub",
+    "type": "Document",
+    "name": "Caliper Case Studies",
+    "mediaType": "application/epub+zip",
+    "dateCreated": "2016-08-01T09:00:00.000Z"
+  },
+  "eventTime": "2016-11-15T10:20:00.000Z",
+  "edApp": "https://example.com",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "extensions": {
+        "edu_example_course_section_instructor": "https://example.edu/faculty/1234"
+    }
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2016-08-01T06:00:00.000Z"
+  },
+  "federatedSession": "This is not an object or an IRI",
+  "session": {
+    "id": "https://example.com/sessions/c25fd3da-87fa-45f5-8875-b682113fa5ee",
+    "type": "Session",
+    "dateCreated": "2016-11-15T10:20:00.000Z",
+    "startedAtTime": "2016-11-15T10:20:00.000Z"
+  }
+}

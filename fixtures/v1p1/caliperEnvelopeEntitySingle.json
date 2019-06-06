@@ -1,0 +1,30 @@
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2016-11-15T11:05:01.000Z",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "creators": [
+        {
+          "id": "https://example.edu/users/223344",
+          "type": "Person"
+        }
+      ],
+      "isPartOf": {
+        "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201601/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2016-08-02T11:32:00.000Z"
+    }
+  ]
+}

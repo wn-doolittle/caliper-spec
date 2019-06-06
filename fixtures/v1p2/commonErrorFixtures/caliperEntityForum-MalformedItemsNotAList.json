@@ -1,0 +1,17 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/forums/1",
+  "type": "Forum",
+  "name": "Caliper Forum",
+  "items": "This is not a list",
+  "isPartOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "subOrganizationOf": {
+      "id": "https://example.edu/terms/201601/courses/7",
+      "type": "CourseOffering"
+    }
+  },
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
+}

@@ -1,0 +1,11 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/scale/4",
+  "type": "NumericScale",
+  "minValue": "Zero",
+  "minLabel": "Disliked",
+  "maxValue": 10.0,
+  "maxLabel": "Liked",
+  "step": 0.5,
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}

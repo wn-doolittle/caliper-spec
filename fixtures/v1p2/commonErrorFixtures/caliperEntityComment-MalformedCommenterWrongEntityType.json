@@ -1,0 +1,27 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
+  "type": "Comment",
+  "commenter": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection"
+  },
+  "commentedOn": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "value": "I like what you did here but you need to improve on...",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}

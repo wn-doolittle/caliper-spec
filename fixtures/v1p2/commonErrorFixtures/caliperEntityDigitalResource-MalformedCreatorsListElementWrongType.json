@@ -1,0 +1,26 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
+  "type": "DigitalResource",
+  "name": "Course Syllabus",
+  "storageName": "fall-2016-syllabus.pdf",
+  "mediaType": "application/pdf",
+  "creators": [
+    {
+      "id": "https://example.edu/etexts/201",
+      "type": "Document",
+      "name": "IMS Caliper Implementation Guide",
+      "version": "1.1"
+    }
+  ],
+  "isPartOf": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
+    "type": "DigitalResourceCollection",
+    "name": "Course Assets",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
+      "type": "CourseSection"
+    }
+  },
+  "dateCreated": "2016-08-02T11:32:00.000Z"
+}
