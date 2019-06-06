@@ -1,0 +1,29 @@
+{
+  "@context": [
+    "https://schema.org/docs/jsonldcontext.json",
+    "http://purl.imsglobal.org/ctx/caliper/v1p1"
+  ],
+  "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
+  "type": "Event",
+  "profile": "GeneralProfile",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Submitted",
+  "object": {
+    "id": "https://example.edu/handle/2027.42/130810",
+    "type": "Thesis",
+    "author": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "name": "A Dissertation",
+    "inSupportOf": "Doctor of Philosophy",
+    "sourceOrganization": {
+      "id": "https://example.edu/",
+      "type": "Organization"
+    }
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z"
+}
