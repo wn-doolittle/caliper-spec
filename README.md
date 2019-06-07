@@ -9,20 +9,15 @@ analysis and use.
 
 ## Files in the repository
 
-| Name                              | Description                      |
-|:--------------------------------- | :------------------------------- |
-|-----------------------------------|--------------------------------- |
-| `caliper-spec.md`                 | The main specification document. |
-| `/contexts`                       | Caliper JSON-LD context documents. |
-| `/fixtures`                       | Caliper JSON-LD envelope, event, and entity test fixtures. |
+| Name | Description |
+|:---- | :---------- |
+| `caliper-spec.md` | The main specification document. |
+| `/contexts/` | Caliper JSON-LD context documents. |
+| `/fixtures/` | Caliper JSON-LD envelope, event, and entity test fixtures. |
 | `/guides/implementation-guide.md` | The implementation guide document. |
-| `/guides/certification-guide.md`  | The certification guide specifies the requirements and process for 
-IMS certification. |
-| `/ontology/`                      | Machine-readable documents that define and formalize the concepts, relationships 
-and constraints that together comprise the Caliper information model. The ontology is available in three flavors: 
-JSON-LD, RDF/XML and Turtle. |
-| `/profiles/`                      | Additional Caliper Profiles that extend a given major or minor release of the 
-specification. |
+| `/guides/certification-guide.md` | The certification guide specifies the requirements and process for IMS certification. |
+| `/ontology/` | Machine-readable documents that define and formalize the concepts, relationships and constraints that together comprise the Caliper information model. The ontology is available in three flavors: JSON-LD, RDF/XML and Turtle. |
+| `/profiles/` | Additional Caliper Profiles that extend a major or minor release of the specification. |
 
 ## Caliper Central repository
 
