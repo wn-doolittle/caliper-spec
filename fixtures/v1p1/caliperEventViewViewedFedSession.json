@@ -12,25 +12,25 @@
     "type": "Document",
     "name": "Caliper Case Studies",
     "mediaType": "application/epub+zip",
-    "dateCreated": "2016-08-01T09:00:00.000Z"
+    "dateCreated": "2018-08-01T09:00:00.000Z"
   },
-  "eventTime": "2016-11-15T10:20:00.000Z",
+  "eventTime": "2018-11-15T10:20:00.000Z",
   "edApp": "https://example.com",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "extensions": {
         "edu_example_course_section_instructor": "https://example.edu/faculty/1234"
     }
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
-    "dateCreated": "2016-08-01T06:00:00.000Z"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "federatedSession": {
     "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
@@ -99,8 +99,8 @@
      },
       "https://purl.imsglobal.org/spec/lti/claim/lis": {
         "person_sourcedid": "example.edu:71ee7e42-f6d2-414a-80db-b69ac2defd4",
-        "course_offering_sourcedid": "example.edu:SI182-F16",
-        "course_section_sourcedid": "example.edu:SI182-001-F16"
+        "course_offering_sourcedid": "example.edu:SI182-F18",
+        "course_section_sourcedid": "example.edu:SI182-001-F18"
       },
       "http://www.ExamplePlatformVendor.com/session": {
         "id": "89023sj890dju080"
@@ -110,7 +110,7 @@
   "session": {
     "id": "https://example.com/sessions/c25fd3da-87fa-45f5-8875-b682113fa5ee",
     "type": "Session",
-    "dateCreated": "2016-11-15T10:20:00.000Z",
-    "startedAtTime": "2016-11-15T10:20:00.000Z"
+    "dateCreated": "2018-11-15T10:20:00.000Z",
+    "startedAtTime": "2018-11-15T10:20:00.000Z"
   }
 }
