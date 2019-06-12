@@ -1,25 +1,37 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "urn:uuid:79f18ac2-3c6b-11e9-b210-d663bd873d93",
-  "type": "QuestionnaireEvent",
+  "id": "urn:uuid:590f1ff2-3c6d-11e9-b210-d663bd873d93",
+  "type": "QuestionnaireItemEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "action": "Completed",
   "object": {
-    "id": "https://example.edu/surveys/100/questionnaires/30",
-    "type": "Questionnaire",
-    "items": [
-      {
-        "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
-        "type": "QuestionnaireItem"
-      },
-      {
-        "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
-        "type": "QuestionnaireItem"
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
+    "type": "QuestionnaireItem",
+    "question": {
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/1/question",
+      "type": "RatingScaleQuestion",
+      "questionPosed": "How satisfied are you with our services?",
+      "scale": {
+        "id": "https://example.edu/scale/2",
+        "type": "LikertScale",
+        "scalePoints": 4,
+        "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+        "itemValues": ["-2", "-1", "1", "2"]
       }
-    ],
+    },
+    "categories": ["teaching effectiveness", "Course structure"],
+    "weight": 1.0
+  },
+  "generated": {
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/1/users/554433/responses/1",
+    "type": "RatingScaleResponse",
+    "selections": ["Satisfied"],
+    "startedAtTime": "2018-08-01T05:55:48.000Z",
+    "endedAtTime": "2018-08-01T06:00:00.000Z",
+    "duration": "PT4M12S",
     "dateCreated": "2018-08-01T06:00:00.000Z"
   },
   "eventTime": "2018-11-12T10:15:00.000Z",

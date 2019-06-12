@@ -1,12 +1,12 @@
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
   "id": "urn:uuid:79f18ac2-3c6b-11e9-b210-d663bd873d93",
   "type": "QuestionnaireEvent",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "Completed",
+  "action": "Submitted",
   "object": {
     "id": "https://example.edu/surveys/100/questionnaires/30",
     "type": "Questionnaire",
