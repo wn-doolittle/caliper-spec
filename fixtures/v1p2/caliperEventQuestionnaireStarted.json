@@ -2,6 +2,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:23995ed4-3c6b-11e9-b210-d663bd873d93",
   "type": "QuestionnaireEvent",
+  "profile": "SurveyProfile",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"

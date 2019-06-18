@@ -2,6 +2,7 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:d3543a73-e307-4190-a755-5ce7b3187bc5",
   "type": "ResourceManagementEvent",
+  "profile": "ResourceManagementProfile",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
