@@ -1,0 +1,35 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/users/554433/rating/2",
+  "type": "Rating",
+  "rater": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "rated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+    "type": "DigitalResourceCollection",
+    "name": "Course Assets",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
+      "type": "CourseSection"
+    }
+  },
+  "question": {
+    "id": "https://example.edu/question/3",
+    "type": "RatingScaleQuestion",
+    "questionPosed": "How do you feel about this content? (select one or more)",
+    "scale": {
+      "id": "https://example.edu/scale/3",
+      "type": "MultiselectScale",
+      "scalePoints": 5,
+      "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+      "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+      "isOrderedSelection": false,
+      "minSelections": 1,
+      "maxSelections": 5
+    }
+  },
+  "selections": ["superhappy", "disappointed"],
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}
