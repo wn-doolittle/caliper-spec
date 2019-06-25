@@ -3390,7 +3390,7 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 
 ### <a name="collection"></a>C.10 Collection
 
-A Caliper [Collection](#collection) is a generic type that represents an order list of similar Caliper [Entities](#entity).
+A Caliper [Collection](#collection) is a generic type that represents an ordered list of similar Caliper [Entities](#entity).
 
 Utilize [Collection](#response) only if no suitable subtype exists to represent the list being described.
 
