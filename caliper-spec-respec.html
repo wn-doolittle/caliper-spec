@@ -1773,40 +1773,23 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
     <section id="selectors">
         <h2>Selectors</h2>
 
-        <p>A Caliper Selector represents a fragment, selection or part of an <a href="#Entity">Entity</a>.</p>
+        <p>A Caliper <code>Selector</code> represents a fragment, selection, or part of an <a href="#Entity">Entity</a>.</p>
 
         <section id="TextPositionSelector" data-include="fragments/selectors/caliper-selector-textpositionselector.html"></section>
     </section>
 
+    <section id="systemidentifiers">
+        <h2>System Identifiers</h2>
+
+        A Caliper <code>SystemIdentifier</code> represents a single, system-local identifier for a Caliper
+        <a href="#Entity">Entity</a>.
+
+        <section id="SystemIdentifier" data-include="fragments/identifiers/caliper-identifier-systemidentifier.html"></section>
+
+    </section>
+
     <section id="constants">
         <h2>Constants</h2>
-
-        <section id="lti-messageTypes">
-            <h3>LTI Message Types</h3>
-            <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
-                property for describing the type of LTI message associated with the
-                <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
-                values:</p>
-
-            <section id="LtiDeepLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
-            <section id="LtiResourceLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
-        </section>
-
-        <section id="metrics">
-            <h3>Use Metrics</h3>
-            <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
-                property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric values are
-                limited to the list of Caliper terms listed below.</p>
-
-            <section id="metric-assessmentpassed" data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html"></section>
-            <section id="metric-assessmentsubmitted" data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html"></section>
-            <section id="metric-minutesontask" data-include="fragments/usemetrics/caliper-metric-minutesontask.html"></section>
-            <section id="metric-skillsmastered" data-include="fragments/usemetrics/caliper-metric-skillsmastered.html"></section>
-            <section id="metric-standardsmastered" data-include="fragments/usemetrics/caliper-metric-standardsmastered.html"></section>
-            <section id="metric-unitscompleted" data-include="fragments/usemetrics/caliper-metric-unitscompleted.html"></section>
-            <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
-            <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
-        </section>
 
         <section id="lis-roles">
             <h3>LIS Roles</h3>
@@ -1835,6 +1818,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 <a href="#lisDef">LIS</a> specification. The value MUST be set to the appropriate
                 <a href="#termDef">Term</a> string value. ...TO DO
             </p>
+
             <section id="lis-status-active">
                 <h4>Active</h4>
                 <dl>
@@ -1844,6 +1828,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                     <dd>Active</dd>
                 </dl>
             </section>
+
             <section id="lis-status-inactive">
                 <h4>Inactive</h4>
                 <dl>
@@ -1853,6 +1838,162 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                     <dd>Inactive</dd>
                 </dl>
             </section>
+        </section>
+
+        <section id="lti-messageTypes">
+            <h3>LTI Message Types</h3>
+            <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
+                property for describing the type of LTI message associated with the
+                <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
+                values:</p>
+
+            <section id="LtiDeepLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
+            <section id="LtiResourceLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
+        </section>
+
+        <section id="systemidentifiertype">
+            <h3>System Identifier Types</h3>
+
+            <p>Caliper provides a controlled vocabulary for enumerating various categories of
+                <a href="#SystemIdentifier">SystemIdentifier</a> types associated with a Caliper
+                <a href="#Entity">Entity</a> that may prove meaningful when exchanging identifiers between systems
+                (especially with respect to other IMS Global standards).</p>
+
+            <section id="systemidentifier-accountusername">
+                <h4>AccountUserName</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/AccountUserName</dd>
+                    <dt>Term</dt>
+                    <dd>AccountUserName</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-emailaddress">
+                <h4>EmailAddress</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/EmailAddress</dd>
+                    <dt>Term</dt>
+                    <dd>EmailAddress</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-lissourcedid">
+                <h4>LisSourcedId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LisSourcedId</dd>
+                    <dt>Term</dt>
+                    <dd>LisSourcedId</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-lticontextid">
+                <h4>LtiContextId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiContextId</dd>
+                    <dt>Term</dt>
+                    <dd>LtiContextId</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-ltideploymentid">
+                <h4>LtiDeploymentId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiDeploymentId</dd>
+                    <dt>Term</dt>
+                    <dd>LtiDeploymentId</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-ltiplatformid">
+                <h4>LtiPlatformId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiPlatformId</dd>
+                    <dt>Term</dt>
+                    <dd>LtiPlatformId</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-ltitoolid">
+                <h4>LtiToolId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiToolId</dd>
+                    <dt>Term</dt>
+                    <dd>LtiToolId</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-ltiuserid">
+                <h4>LtiUserId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiUserId</dd>
+                    <dt>Term</dt>
+                    <dd>LtiUserId</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-onerostersourcedid">
+                <h4>OneRosterSourcedId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/OneRosterSourcedId</dd>
+                    <dt>Term</dt>
+                    <dd>OneRosterSourcedId</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-other">
+                <h4>Other</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/Other</dd>
+                    <dt>Term</dt>
+                    <dd>Other</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-sissourcedid">
+                <h4>SisSourcedId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/SisSourcedId</dd>
+                    <dt>Term</dt>
+                    <dd>SisSourcedId</dd>
+                </dl>
+            </section>
+
+            <section id="systemidentifier-systemid">
+                <h4>SystemId</h4>
+                <dl>
+                    <dt>IRI</dt>
+                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/SystemId</dd>
+                    <dt>Term</dt>
+                    <dd>SystemId</dd>
+                </dl>
+            </section>
+        </section>
+
+        <section id="metrics">
+            <h3>Use Metrics</h3>
+            <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
+                property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric values are
+                limited to the list of Caliper terms listed below.</p>
+
+            <section id="metric-assessmentpassed" data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html"></section>
+            <section id="metric-assessmentsubmitted" data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html"></section>
+            <section id="metric-minutesontask" data-include="fragments/usemetrics/caliper-metric-minutesontask.html"></section>
+            <section id="metric-skillsmastered" data-include="fragments/usemetrics/caliper-metric-skillsmastered.html"></section>
+            <section id="metric-standardsmastered" data-include="fragments/usemetrics/caliper-metric-standardsmastered.html"></section>
+            <section id="metric-unitscompleted" data-include="fragments/usemetrics/caliper-metric-unitscompleted.html"></section>
+            <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
+            <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
         </section>
     </section>
 
