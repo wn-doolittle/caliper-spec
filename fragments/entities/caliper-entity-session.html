@@ -1,6 +1,6 @@
 <h3>Session</h3>
 
-<p>A Caliper <a href="#session">Session</a> represents a web application user session.</p>
+<p>A Caliper <a href="#Session">Session</a> represents a web application user session.</p>
 
 <dl>
     <dt>IRI</dt>
@@ -40,7 +40,14 @@
     <tr>
         <td>user</td>
         <td><a href="#Person">Person</a></td>
-        <td>The <a href="#Person">Person</a> who initiated the <code>Session</code>.</td>
+        <td>The <a href="#Person">Person</a> who initiated this <code>Session</code>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>client</td>
+        <td><a href="#SoftwareApplication">SoftwareApplication</a></td>
+        <td>The <a href="#SoftwareApplication">SoftwareApplication</a> that is hosting this
+            <code>Session</code>.</td>
         <td>Optional</td>
     </tr>
     <tr>
