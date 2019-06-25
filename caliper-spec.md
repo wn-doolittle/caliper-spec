@@ -994,10 +994,11 @@ Here is how an [anonmyous](#anonymous) [Person](#person) [Entity](#entity) might
 
 #### Example: Anonymous Tool Use
 This example shows a full [Tool Use event](#toolUseEvent) containing a number of [anonymous](#anonymousDef) [Entities](#entity), in the use-case where a software application has been configured to report only the times and context of its use, but not to identify the [Persons](#persons) involved.
+
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
+  "id": "urn:uuid:7c0fc54b-cf2a-426f-9203-b2c97fb77bfd",
   "type": "ToolUseEvent",
   "profile": "ToolUseProfile",
   "actor": {
@@ -1009,16 +1010,27 @@ This example shows a full [Tool Use event](#toolUseEvent) containing a number of
     "id": "https://example.edu",
     "type": "SoftwareApplication"
   },
-  "eventTime": "2016-11-15T10:15:00.000Z",
+  "eventTime": "2018-11-15T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2016"
+    "id": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection"
+  },
+  "membership": {
+    "id": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
+    "member": {
+      "id": "http://purl.imsglobal.org/caliper/Person",
+      "type": "Person"
+    },
+    "organization": {
+      "id": "http://purl.imsglobal.org/caliper/CourseSection",
+      "type": "CourseSection"
+    },
+    "roles": [ "Learner" ],
+    "status": "Active"
   }
 }
-
 ```
 
 #### <a name="depersonalizedEntities"></a>4.4.1 Depersonalized Entities
