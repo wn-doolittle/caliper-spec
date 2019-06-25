@@ -113,6 +113,11 @@
                 <a href="#event">Event</a> includes an <code>actor</code> attribute for representing the
                 <a href="#agent">Agent</a>.</p>
 
+            <p><a name="anonymousDef"></a><strong>Anonymous, Anonymization</strong>: Applying a process to transform the
+                properties of an <a href="#Entity">Entity</a> to obscure its identity such that the process cannot be
+                reversed nor can the <a href="#Entity">Entity</a> be afterwards distinguished from other
+                such-treated entities.</p>
+
             <p><a name="blankNodeDef"></a><strong>Blank Node Identifier</strong>: a string that begins with "_:" that is
                 used to identify an <a href="#entity">Entity</a> for which an <a href="#iriDef">IRI</a> is not provided.
                 An <a href="#entity">Entity</a> provisioned with a blank node identifier is neither dereferenceable nor has
@@ -129,6 +134,11 @@
                 vocabularies. Inclusion of a <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> context provides
                 an economical way of communicating document semantics to services interested in consuming Caliper event
                 data.</p>
+
+            <p><a name="depersonalizedDef"></a><strong>Depersonalize, Depersonalized</strong>: applying a process to
+                transform the properties of an <a href="#Entity">Entity</a> in order to obscure its identity such that
+                the process might be reversed thus preserving the ability to afterwards distinguish from other
+                such-treated entities.</p>
 
             <p><a name="describeDef"></a><strong>Describe</strong>: a Caliper message containing an <a href="#entity">Entity</a>
                 that is not directly associated with an <a href="#event">Event</a>. Entities can be sent asynchronously using
@@ -1031,6 +1041,56 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
   "membership": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
   "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
 }</code></pre>
+            </figure>
+        </section>
+
+        <section>
+            <h3>Anonymous Entities</h3>
+
+            <p>Caliper has a formal convention for serializing <a href="#anonymousDef">anonymous</a> entities. When
+                a <a href="#sensor">Sensor</a> application wants to explicitly indicate that an
+                <a href="#Entity">Entity</a> it is sending in an <a href="#Event">Event</a> is
+                <a href="#anonymousDef">anonymous</a>, it should transmit an <a href="#anonymousDef">anonymous</a>
+                form of that <a href="#Entity">Entity</a> in its normal place within the <a href="#Event">Event</a>.
+                Caliper indicates an <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a> by using the
+                full Caliper vocabulary <code>type</code> <a href="#iriDef">IRI</a> value for that
+                <a href="#Entity">Entity</a> as its <code>id</code> value.</p>
+
+            <p>Note that because a Caliper <a href="#endpoint">Endpoint</a> might choose to store received Caliper
+                entities as individual nodes in a data graph, it may not be appropriate for a
+                <a href="#sensor">Sensor</a> to send more properties in an <a href="#anonymousDef">anonymous</a>
+                <a href="#Entity">Entity</a> than its <code>id</code> and <code>type</code>, as these properties may
+                not get recorded or may get overwritten by subsequent uses of the same type of
+                <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>. By best practice, a
+                <a href="#sensor">Sensor</a> should always send <a href="#anonymousDef">anonymous</a> entities fully
+                composed in-line within an <a href="#Event">Event</a> and not separately described. Also by best
+                practice, a Caliper <a href="endpoint">Endpoint</a> should treat this
+                <a href="#anonymousDef">anonymous</a> use in a distinct way to preserve any additional properties that
+                might also be carried with the <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>
+                within the <a href="#Event">Event</a>.</p>
+
+            <p><a href="#sensor">Sensor</a> applications MUST NOT use this method to convey
+                <a href="#depersonalizedDef">depersonalized</a> entities. The methods by which
+                <a href="#sensor">Sensor</a> applications might <a href="#depersonalizedDef">depersonalize</a> entities
+                to obscure or safeguard their identity are not within the scope of this document.</p>
+
+            <p>The following example illustrates how an <a href="#anonymousDef">anonymous</a>
+                <a href="#Person">Person</a> might be transmitted by a <a href="#sensor">Sensor</a>:</p>
+
+            <figure class="example">
+                <figcaption> - Anonymous Person Entity - JSON-LD</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEntityPersonAnonymous.json"></code></pre>
+            </figure>
+
+            <p>A Caliper <a href="#Event">Event</a> can include multiple <a href="#anonymousDef">anonymous</a> entities,
+                as in the case of the following <a href="#ToolUseEvent">ToolUseEvent</a> where the <code>edApp</code>
+                has been configured to report only the times and context of its use, but not to identify the
+                <code>actor</code> or the <code>group</code> using the <a href="#SoftwareApplication">SoftwareApplication</a>.
+            </p>
+
+            <figure class="example">
+                <figcaption> - ToolUseEvent with anonymous actor and group - JSON-LD</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventToolUseUsedAnonymous.json"></code></pre>
             </figure>
         </section>
     </section>
