@@ -1,6 +1,6 @@
 <h3>Event</h3>
 
-<img height="100%" width="100%" src="assets/caliper-event_model_no_title-v3.png" alt="Caliper Event">
+<img height="100%" width="100%" src="assets/caliper-event_model_no_title-v1p2.png" alt="Caliper Event">
 
 <p>A Caliper <code>Event</code> is a generic type that describes the relationship established between an
     <code>action</code> and an <code>object</code>, formed as a result of a purposeful
@@ -101,12 +101,13 @@
     <tr>
         <td>profile</td>
         <td><a href="#termDef">Term</a></td>
-        <td>A string value corresponding to the <a href="#termDef">Term</a> defined for the
-            <a href="#profileDef">Profile</a> that governs the vocabulary used in the creation of the
-            <code>Event</code>. The list of <a href="#profileDef">Profile</a> terms is listed in the external
-            IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>document. For a generic
+        <td>A string value corresponding to the <a href="#termDef">Term</a> value defined for the
+            <a href="#profileDef">Profile</a> that governs the rules of interpretation for this <code>Event</code>.
+            The range of <a href="#profileDef">Profile</a> values is limited to the set of profiles described in this
+            specification and any profile extension specifications extending this specification. Only one
+            <code>profile</code> [Term](#termDef) value may be specified per <code>Event</code>. For a generic
             <code>Event</code> set the <code>profile</code> property value to the string term
-            *GeneralProfile*.</td>
+            <em>GeneralProfile</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
