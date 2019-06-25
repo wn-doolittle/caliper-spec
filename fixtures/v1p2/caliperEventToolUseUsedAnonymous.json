@@ -1,0 +1,35 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:7c0fc54b-cf2a-426f-9203-b2c97fb77bfd",
+  "type": "ToolUseEvent",
+  "profile": "ToolUseProfile",
+  "actor": {
+    "id": "http://purl.imsglobal.org/caliper/Person",
+    "type": "Person"
+  },
+  "action": "Used",
+  "object": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection"
+  },
+  "membership": {
+    "id": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
+    "member": {
+      "id": "http://purl.imsglobal.org/caliper/Person",
+      "type": "Person"
+    },
+    "organization": {
+      "id": "http://purl.imsglobal.org/caliper/CourseSection",
+      "type": "CourseSection"
+    },
+    "roles": [ "Learner" ],
+    "status": "Active"
+  }
+}
