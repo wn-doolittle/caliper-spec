@@ -1,0 +1,9 @@
+{
+  "type": "SystemIdentifier",
+  "identifier": "https://example.edu/users/554433",
+  "identifierType": "LtiUserId",
+  "source":  {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  }
+}
