@@ -45,6 +45,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 4.1 [JSON-LD Context](#jsonldContext)
   * 4.2 [Identifiers](#jsonldIdentifiers)
   * 4.3 [Types and Type Coercion](#jsonldTypes)
+  * 4.4 [Anonymous Entities](#anonymousEntities)
 * 5.0 [Sensor API](#sensor)
   * 5.1 [Behavior](#sensorBehavior)
   * 5.2 [Envelope](#envelope)
@@ -180,11 +181,15 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 <a name="actorDef"></a>__Actor__: An actor is an [Agent](#agent) capable of initiating or performing an [action](#actionDef) on a thing or as part of a process.  A Caliper [Event](#event) includes an `actor` attribute for representing the [Agent](#agent).
 
+<a name="anonymousDef"></a>__Anonymous__, __Anonymization__: Applying a process to transform the properties of an [Entity](#entity) to obscure its identity such that the process cannot be reversed nor can the entity be afterwards distinguished from other such-treated entities renders the entity _anonymous_.
+
 <a name="blankNodeDef"></a>__Blank Node Identifier__: a string that begins with "_:" that is used to identify an [Entity](#entity) for which an [IRI](#iriDef) is not provided.  An [Entity](#entity) provisioned with a blank node identifier is neither dereferenceable nor has meaning outside the scope of the [JSON-LD](#jsonldDef) document within which it resides.
 
 <a name="actionDef"></a>__Action__: something performed or done to accomplish a purpose.  Caliper [Event](#event) subtypes define a controlled vocabulary of one or more [actions](#actions) relevant to the activity domain.  A Caliper [Event](#event) includes an `action` attribute for expressing the associated action.     
 
 <a name="contextDef"></a>__Context__: a special [JSON-LD](http://json-ld.org/spec/latest/json-ld/) keyword that maps the terms employed in a JSON document to [IRIs](https://www.ietf.org/rfc/rfc3987.txt) that link to one or more published vocabularies.  Inclusion of a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context provides an economical way of communicating document semantics to services interested in consuming Caliper event data.
+
+<a name="depersonalizedDef"></a>__Depersonalized__, __Depersonalize__: Applying a process to transform the properties of an [Entity](#entity) to obscure its identity such that the process might be reversable and preserving the ability to afterwards distinguish from other such-treated entities renders the entity _depersonalized_.
 
 <a name="describeDef"></a>__Describe__: a Caliper message containing an [Entity](#entity) that is not directly associated with an [Event](#event). Entities can be sent asynchronously from events using `Describe` messages in order to reduce verbosity (e.g. sending a [Person](#person) entity as a `Describe` avoids having to repeat the [Person](#person) object in each [Event](#event) that includes it).
 
@@ -994,6 +999,70 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
   "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
 }
 ```
+
+### <a name="anonymousEntities"></a>4.4 Anonymous Entities
+
+Caliper has a formal convention for serializing _anonymous entities_. When a [Sensor](#sensor) application wants to explicitly indicate that an [Entity](#entity) it is sending in an event is [anonymous](#anonymousDef), it should transmit an anonymous form of that entity in its normal place within the event. Caliper indicates an anonymous entity by using the full Caliper vocabulary `type` URL value for that entity as its `id` value.
+
+Note that because some [Caliper Endpoints](#endpointDef) might store received Caliper Entities as individual nodes in a data-graph, it may not be appropriate for a [Sensor](#sensor) to send more properties in an [anonymous](#anonymousDef) [Entity](#entity) than its `id` and `type`, as these properties may not get recorded or may get overwritten by subsequent uses of the same type of [anonymous](#anonymousDef) [Entity](#entity). By best practice, [Sensors](#sensor) should always send [anonymous](#anonymousDef) [Entities](#entity) fully composed in-line within an [Event](#event) and not separately described. By best practice, [Caliper Endpoints](#endpointDef) should treat this [anonymous](#anonymousDef) use in a distinct way to preserve any additional properties that might also be carried with the [anonymous](#anonymousDef) [Entity](#entity) within the [Event](#event).
+
+#### Example: Anonymous Person Entity
+
+Here is how an [anonmyous](#anonymous) [Person](#person) [Entity](#entity) might be transmitted by a [Sensor](#sensor):
+
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "http://purl.imsglobal.org/caliper/Person",
+  "type": "Person"
+}
+```
+
+#### Example: Anonymous Tool Use
+This example shows a full [Tool Use event](#toolUseEvent) containing a number of [anonymous](#anonymousDef) [Entities](#entity), in the use-case where a software application has been configured to report only the times and context of its use, but not to identify the [Persons](#persons) involved.
+
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:7c0fc54b-cf2a-426f-9203-b2c97fb77bfd",
+  "type": "ToolUseEvent",
+  "profile": "ToolUseProfile",
+  "actor": {
+    "id": "http://purl.imsglobal.org/caliper/Person",
+    "type": "Person"
+  },
+  "action": "Used",
+  "object": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "http://purl.imsglobal.org/caliper/CourseSection",
+    "type": "CourseSection"
+  },
+  "membership": {
+    "id": "http://purl.imsglobal.org/caliper/Membership",
+    "type": "Membership",
+    "member": {
+      "id": "http://purl.imsglobal.org/caliper/Person",
+      "type": "Person"
+    },
+    "organization": {
+      "id": "http://purl.imsglobal.org/caliper/CourseSection",
+      "type": "CourseSection"
+    },
+    "roles": [ "Learner" ],
+    "status": "Active"
+  }
+}
+```
+
+#### <a name="depersonalizedEntities"></a>4.4.1 Depersonalized Entities
+
+[Sensor](#sensor) applications should not use this method to convey [depersonalized](#depersonalizedDef)[Entities](#entity). The methods by which [Sensor](#sensor) applications might [depersonalize](#depersonalizeDef) [Entities](#entity) to obscure or safeguard their personal identity are not within the scope of this document.
+
 
 ## <a name="sensor"></a>5.0 The Sensor API&trade;
 
