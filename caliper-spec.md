@@ -81,45 +81,46 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * C.7 [AudioObject](#audioObject)
   * C.8 [BookmarkAnnotation](#bookmarkAnnotation)
   * C.9 [Chapter](#chapter)
-  * C.10 [CourseOffering](#courseOffering)
-  * C.11 [CourseSection](#courseSection)
-  * C.12 [DigitalResource](#digitalResource)
-  * C.13 [DigitalResourceCollection](#digitalResourceCollection)
-  * C.14 [Document](#document)
-  * C.15 [~~EpubChapter~~](#epubChapter)
-  * C.16 [~~EpubPart~~](#epubPart)
-  * C.17 [~~EpubSubChapter~~](#epubSubChapter)
-  * C.18 [~~EpubVolume~~](#epubVolume)
-  * C.19 [FillinBlankResponse](#fillinBlankResponse)
-  * C.20 [Forum](#forum)
-  * C.21 [Frame](#frame)
-  * C.22 [Group](#group)
-  * C.23 [HighlightAnnotation](#highlightAnnotation)
-  * C.24 [ImageObject](#imageObject)
-  * C.25 [LearningObjective](#learningObjective)
-  * C.26 [LtiSession](#ltiSession)
-  * C.27 [MediaLocation](#mediaLocation)
-  * C.28 [MediaObject](#mediaObject)
-  * C.29 [Membership](#membership)
-  * C.30 [Message](#message)
-  * C.31 [MultipleChoiceResponse](#multipleChoiceResponse)
-  * C.32 [MultipleResponseResponse](#multipleResponseResponse)
-  * C.33 [Organization](#organization)
-  * C.34 [Page](#page)
-  * C.35 [Person](#person)
-  * C.36 [~~Reading~~](#reading)
-  * C.37 [Response](#response)
-  * C.38 [Result](#result)
-  * C.39 [Score](#score)
-  * C.40 [SelectTextResponse](#selectTextResponse)
-  * C.41 [Session](#session)
-  * C.42 [SharedAnnotation](#sharedAnnotation)
-  * C.43 [SoftwareApplication](#softwareApplication)
-  * C.44 [TagAnnotation](#tagAnnotation)
-  * C.45 [Thread](#thread)
-  * C.46 [TrueFalseResponse](#trueFalseResponse)
-  * C.47 [VideoObject](#videoObject)
-  * C.48 [WebPage](#webPage)
+  * C.10 [Collection](#collection)
+  * C.11 [CourseOffering](#courseOffering)
+  * C.12 [CourseSection](#courseSection)
+  * C.13 [DigitalResource](#digitalResource)
+  * C.14 [DigitalResourceCollection](#digitalResourceCollection)
+  * C.15 [Document](#document)
+  * C.16 [~~EpubChapter~~](#epubChapter)
+  * C.17 [~~EpubPart~~](#epubPart)
+  * C.18 [~~EpubSubChapter~~](#epubSubChapter)
+  * C.19 [~~EpubVolume~~](#epubVolume)
+  * C.20 [FillinBlankResponse](#fillinBlankResponse)
+  * C.21 [Forum](#forum)
+  * C.22 [Frame](#frame)
+  * C.23 [Group](#group)
+  * C.24 [HighlightAnnotation](#highlightAnnotation)
+  * C.25 [ImageObject](#imageObject)
+  * C.26 [LearningObjective](#learningObjective)
+  * C.27 [LtiSession](#ltiSession)
+  * C.28 [MediaLocation](#mediaLocation)
+  * C.29 [MediaObject](#mediaObject)
+  * C.30 [Membership](#membership)
+  * C.31 [Message](#message)
+  * C.32 [MultipleChoiceResponse](#multipleChoiceResponse)
+  * C.33 [MultipleResponseResponse](#multipleResponseResponse)
+  * C.34 [Organization](#organization)
+  * C.35 [Page](#page)
+  * C.36 [Person](#person)
+  * C.37 [~~Reading~~](#reading)
+  * C.38 [Response](#response)
+  * C.39 [Result](#result)
+  * C.40 [Score](#score)
+  * C.41 [SelectTextResponse](#selectTextResponse)
+  * C.42 [Session](#session)
+  * C.43 [SharedAnnotation](#sharedAnnotation)
+  * C.44 [SoftwareApplication](#softwareApplication)
+  * C.45 [TagAnnotation](#tagAnnotation)
+  * C.46 [Thread](#thread)
+  * C.47 [TrueFalseResponse](#trueFalseResponse)
+  * C.48 [VideoObject](#videoObject)
+  * C.49 [WebPage](#webPage)
 * [Appendix D. Selectors](#selectors)
   * D.1 [TextPositionSelector](#textPositionSelector)
 * [Appendix E. Roles](#roles)
@@ -3404,7 +3405,69 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 }
 ```
 
-### <a name="courseOffering"></a>C.10 CourseOffering
+### <a name="collection"></a>C.10 Collection
+
+A Caliper [Collection](#collection) is a generic type that represents an ordered list of similar Caliper [Entities](#entity).
+
+Utilize [Collection](#response) only if no suitable subtype exists to represent the list being described.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Collection
+
+#### Supertype
+[Entity](#entity)
+
+#### Properties
+[Collection](#collection) inherits all the properties and requirements defined for its supertype [Entity](#entity). Additional properties and requirements are described below:
+
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Collection*. | Required |
+| items | Array | An ordered collection of Caliper [Entities](#entity). Each array item MUST be expressed either as an objedct or as a string corresponding to the item's [IRI](#iriDef). | Optional |
+| name | string | A string value comprising a word or phrase by which the [Collection](#collection)  is known. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Collection](#collection). | Optional |
+| dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Collection](#collection) was created.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
+| dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Collection](#collection)  was last changed or modified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
+| extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Collection](#collection). | Optional |
+
+#### Subtypes
+[AggregateMeasureCollection](#aggregateMeasureCollection), [Assessment](#Assessment), [DigitalResourceCollection](#digitalResourceCollection), [Forum](#Forum), [Questionnaire](#questionnaire), [Survey](#Survey), [Thread](#thread)
+
+#### Example
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
+  "type": "Collection",
+  "items": [
+    {
+      "id": "https://example.edu/videos/1225",
+      "type": "VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Introduction to IMS Caliper",
+      "storageName": "caliper-intro.ogg",
+      "dateCreated": "2019-08-01T06:00:00.000Z",
+      "duration": "PT1H12M27S",
+      "version": "1.1"
+    },
+    {
+      "id": "https://example.edu/videos/5629",
+      "type": "VideoObject",
+      "mediaType": "video/ogg",
+      "name": "IMS Caliper Activity Profiles",
+      "storageName": "caliper-activity-profiles.ogg",
+      "dateCreated": "2019-08-01T06:00:00.000Z",
+      "duration": "PT55M13S",
+      "version": "1.1.1"
+    }
+  ],
+  "dateCreated": "2019-08-01T06:00:00.000Z",
+  "dateModified": "2019-09-02T11:30:00.000Z"
+}
+```
+
+### <a name="courseOffering"></a>C.11 CourseOffering
 
 A Caliper [CourseOffering](#courseOffering) represents the occurrence of a course or a type during a specified time period.  [CourseOffering](#courseOffering) is composed of a subset of properties specified in the IMS [LTI 2.1](#ltiDef) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
@@ -3448,7 +3511,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
 }
 ```
 
-### <a name="courseSection"></a>C.11 CourseSection
+### <a name="courseSection"></a>C.12 CourseSection
 
 A Caliper [CourseSection](#courseSection) represents a specific instance of a [CourseOffering](#courseOffering) occurring during a specific semester, term or period.  [CourseSection](#courseSection) is composed of a subset of properties specified in the IMS [LTI 2.1](#ltiDef) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
@@ -3495,7 +3558,7 @@ http://purl.imsglobal.org/caliper/CourseSection
 }
 ```
 
-### <a name="digitalResource"></a>C.12 DigitalResource
+### <a name="digitalResource"></a>C.13 DigitalResource
 
 A Caliper [DigitalResource](#digitalResource) is a generic type that represents digital content.  
 
@@ -3568,7 +3631,7 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 }
 ```
 
-### <a name="digitalResourceCollection"></a>C.13 DigitalResourceCollection
+### <a name="digitalResourceCollection"></a>C.14 DigitalResourceCollection
 
 A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an ordered collection of [DigitalResource](#digitalResource) entities.
 
@@ -3576,7 +3639,7 @@ A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an 
 http://purl.imsglobal.org/caliper/DigitalResourceCollection
 
 #### Supertype
-[DigitalResource](#digitalResource)
+[Collection](#collection), [DigitalResource](#digitalResource)
 
 #### Properties
 [DigitalResourceCollection](#digitalResourceCollection) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
@@ -3651,7 +3714,7 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 }
 ```
 
-### <a name="document"></a>C.14 Document
+### <a name="document"></a>C.15 Document
 
 A Caliper [Document](#document) represents textual content.
 
@@ -3713,7 +3776,7 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
 }
 ```
 
-### <a name="epubChapter"></a>C.15 EpubChapter (DEPRECATED)
+### <a name="epubChapter"></a>C.16 EpubChapter (DEPRECATED)
 
 A Caliper [EpubChapter](#epubChapter) represents a major structural division of a piece of writing.  [EpubChapter](#epubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -3751,7 +3814,7 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Optional |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Optional |
 
-### <a name="epubPart"></a>C.16 EpubPart (DEPRECATED)
+### <a name="epubPart"></a>C.17 EpubPart (DEPRECATED)
 A Caliper [EpubPart](#epubPart) represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  [EpubPart](#epubPart) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### IRI
@@ -3788,7 +3851,7 @@ The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST NOT
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Optional |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Optional |   
 
-### <a name="epubSubChapter"></a>C.17 EpubSubChapter (DEPRECATED)
+### <a name="epubSubChapter"></a>C.18 EpubSubChapter (DEPRECATED)
 A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of an [EpubChapter](#epubChapter).  [EpubSubChapter](#epubSubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
 #### IRI
@@ -3825,7 +3888,7 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Optional |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Optional |
 
-### <a name="epubVolume"></a>C.18 EpubVolume (DEPRECATED)
+### <a name="epubVolume"></a>C.19 EpubVolume (DEPRECATED)
 
 A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its supertype.  [EpubVolume](#epubVolume) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -3863,7 +3926,7 @@ The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Optional |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Optional |  
 
-### <a name="fillinBlankResponse"></a>C.19 FillinBlankResponse
+### <a name="fillinBlankResponse"></a>C.20 FillinBlankResponse
 
 A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Response](#response) in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
@@ -3931,7 +3994,7 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 }
 ```
 
-### <a name="forum"></a>C.20 Forum
+### <a name="forum"></a>C.21 Forum
 
 A Caliper [Forum](#forum) represents a channel or virtual space in which group discussions take place.  A [Forum](#forum) typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.
 
@@ -4010,7 +4073,7 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 }
 ```
 
-### <a name="frame"></a>C.21 Frame
+### <a name="frame"></a>C.22 Frame
 
 A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalResource](#digitalResource).
 
@@ -4066,7 +4129,7 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
 }
 ```
 
-### <a name="group"></a>C.22 Group
+### <a name="group"></a>C.23 Group
 
 A Caliper [Group](#group) represents an ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
@@ -4132,7 +4195,7 @@ http://purl.imsglobal.org/caliper/Group
 }
 ```
 
-### <a name="highlightAnnotation"></a>C.23 HighlightAnnotation
+### <a name="highlightAnnotation"></a>C.24 HighlightAnnotation
 
 A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.
 
@@ -4183,7 +4246,7 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 }
 ```
 
-### <a name="imageObject"></a>C.24 ImageObject
+### <a name="imageObject"></a>C.25 ImageObject
 
 A Caliper [ImageObject](#imageObject) represents an image file.
 
@@ -4234,7 +4297,7 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
 }
 ```
 
-### <a name="learningObjective"></a>C.25 LearningObjective
+### <a name="learningObjective"></a>C.26 LearningObjective
 
 A Caliper [LearningObjective](#learningObjective) represents a brief statement of what a learner should know or be able to perform after completing a unit of instruction or a period of learning.
 
@@ -4285,7 +4348,7 @@ http://purl.imsglobal.org/caliper/LearningObjective
 }
 ```
 
-### <a name="ltiSession"></a>C.26 LtiSession
+### <a name="ltiSession"></a>C.27 LtiSession
 
 A Caliper [LtiSession](#ltiSession) represents an [LTI](#ltiDef) Tool Consumer user session.
 
@@ -4350,7 +4413,7 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
   }
 ```
 
-### <a name="mediaLocation"></a>C.27 MediaLocation
+### <a name="mediaLocation"></a>C.28 MediaLocation
 
 A Caliper [MediaLocation](#mediaLocation) provides the current playback position in a [MediaObject](#mediaObject) such as an [AudioObject](#audioObject) or [VideoObject](#videoObject).
 
@@ -4400,7 +4463,7 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
 }
 ```
 
-### <a name="mediaObject"></a>C.28 MediaObject
+### <a name="mediaObject"></a>C.29 MediaObject
 
 A Caliper [MediaObject](#mediaObject) represents a generic piece of media content.
 
@@ -4456,7 +4519,7 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 }
 ```
 
-### <a name="membership"></a>C.29 Membership
+### <a name="membership"></a>C.30 Membership
 
 A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and an [Agent](#agent), typically a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.
 
@@ -4507,7 +4570,7 @@ http://purl.imsglobal.org/caliper/Membership
 }
 ```
 
-### <a name="message"><a/>C.30 Message
+### <a name="message"><a/>C.31 Message
 
 A Caliper [Message](#message) is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.
 
@@ -4586,7 +4649,7 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
 }
  ```
 
-### <a name="multipleChoiceResponse"></a>C.31 MultipleChoiceResponse
+### <a name="multipleChoiceResponse"></a>C.32 MultipleChoiceResponse
 
 A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of [Response](#response) in which a respondent is asked to provide the best possible answer from a list of choices.
 
@@ -4654,7 +4717,7 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 }
 ```
 
-### <a name="multipleResponseResponse"></a>C.32 MultipleResponseResponse
+### <a name="multipleResponseResponse"></a>C.33 MultipleResponseResponse
 
 A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
@@ -4722,7 +4785,7 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 }
 ```
 
-### <a name="organization"></a>C.33 Organization
+### <a name="organization"></a>C.34 Organization
 
 A Caliper [Organization](#organization) represents a formal collection of people organized for some common educational, social or administrative purpose.  An [Organization](#organization) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
@@ -4765,7 +4828,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 }
 ```
 
-### <a name="page"></a>C.34 Page
+### <a name="page"></a>C.35 Page
 
 A Caliper [Page](#page) represents an item of paginated content.
 
@@ -4825,7 +4888,7 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
 }
 ```
 
-### <a name="person"></a>C.35 Person
+### <a name="person"></a>C.36 Person
 
 A Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.
 
@@ -4859,7 +4922,7 @@ http://purl.imsglobal.org/caliper/Person
 }
 ```
 
-### <a name="reading"></a>C.36 Reading (DEPRECATED)
+### <a name="reading"></a>C.37 Reading (DEPRECATED)
 
 A Caliper [Reading](#reading) represents an item of paginated content.  [Reading](#reading) is a DEPRECATED entity superseded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -4897,7 +4960,7 @@ The following [Reading](#reading) properties have been DEPRECATED and MUST NOT b
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Optional |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Optional |
 
-### <a name="response"></a>C.37 Response
+### <a name="response"></a>C.38 Response
 
 A Caliper [Response](#response) is a generic type that represents the selected option generated by a [Person](#person) interacting with an [DigitalResource](#digitalResource), typically an [AssessmentItem](#assessmentItem) or other [AssignableDigitalResource](#assignableDigitalResource).
 
@@ -4978,7 +5041,7 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 }
 ```
 
-### <a name="result"></a>C.38 Result
+### <a name="result"></a>C.39 Result
 
 A Caliper [Result](#result) represents the current score or grade as recorded in a gradebook.  The [Result](#result) score value may represent an adjusted or scaled value and is considered mutable.
 
@@ -5055,7 +5118,7 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 }
 ```
 
-### <a name="score"></a>C.39 Score
+### <a name="score"></a>C.40 Score
 
 A Caliper [Score](#score) represents a "raw" or unadjusted numeric score or grade awarded for a given assignment submission.  A gradebook SHOULD treat the `scoreGiven` value as read-only and preserve it.
 
@@ -5112,7 +5175,7 @@ http://purl.imsglobal.org/caliper/Score
 }
 ```
 
-### <a name="selectTextResponse"></a>C.40 SelectTextResponse
+### <a name="selectTextResponse"></a>C.41 SelectTextResponse
 
 A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
 
@@ -5180,7 +5243,7 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 }
 ```
 
-### <a name="session"></a>C.41 Session
+### <a name="session"></a>C.42 Session
 
 A Caliper [Session](#session) represents a web application user session.
 
@@ -5231,7 +5294,7 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 }
 ```
 
-### <a name="sharedAnnotation"></a>C.42 SharedAnnotation
+### <a name="sharedAnnotation"></a>C.43 SharedAnnotation
 
 A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
 
@@ -5285,7 +5348,7 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 }
 ```
 
-#### <a name="softwareApplication"></a>C.43 SoftwareApplication
+#### <a name="softwareApplication"></a>C.44 SoftwareApplication
 
 A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
 
@@ -5321,7 +5384,7 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 }
 ```
 
-### <a name="tagAnnotation"></a>C.44 TagAnnotation
+### <a name="tagAnnotation"></a>C.45 TagAnnotation
 
 A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
 
@@ -5366,7 +5429,7 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 }
 ```
 
-### <a name="thread"></a>C.45 Thread
+### <a name="thread"></a>C.46 Thread
 
 A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
@@ -5452,7 +5515,7 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 }
 ```
 
-### <a name="trueFalseResponse"></a>C.46 TrueFalseResponse
+### <a name="trueFalseResponse"></a>C.47 TrueFalseResponse
 
 A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
 
@@ -5520,7 +5583,7 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 }
 ```
 
-### <a name="videoObject"></a>C.47 VideoObject
+### <a name="videoObject"></a>C.48 VideoObject
 
 A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
 
@@ -5574,7 +5637,7 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 }
 ```
 
-### <a name="webPage"></a>C.48 WebPage
+### <a name="webPage"></a>C.49 WebPage
 
 A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
 
