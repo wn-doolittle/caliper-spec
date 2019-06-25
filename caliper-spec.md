@@ -5652,7 +5652,7 @@ http://purl.imsglobal.org/caliper/SystemIdentifier
 
 ### <a name="systemIdentifierType"></a>E.2 System Identifier Types
 
-Caliper provides a controlled vocabulary for enumerating the various categories of [SystemIdentifier](#systemIdentifier) types that might be meaningful (especially with respect to ther IMS Global standards).
+Caliper provides a controlled vocabulary for enumerating the various categories of [SystemIdentifier](#systemIdentifier) types that might be meaningful (especially with respect to other IMS Global standards).
 
 | Term | IRI |
 | :--- | :-- |
