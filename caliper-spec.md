@@ -3196,16 +3196,17 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 #### Example
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/assign/2",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assign/2",
   "type": "AssignableDigitalResource",
   "name": "Week 9 Reflection",
+  "storageName": "assignment-2.pdf",
   "description": "3-5 page reflection on this week's assigned readings.",
-  "dateCreated": "2018-11-01T06:00:00.000Z",
-  "dateToActivate": "2018-11-10T11:59:59.000Z",
-  "dateToShow": "2018-11-10T11:59:59.000Z",
-  "dateToStartOn": "2018-11-10T11:59:59.000Z",
-  "dateToSubmit": "2018-11-14T11:59:59.000Z",
+  "dateCreated": "2016-11-01T06:00:00.000Z",
+  "dateToActivate": "2016-11-10T11:59:59.000Z",
+  "dateToShow": "2016-11-10T11:59:59.000Z",
+  "dateToStartOn": "2016-11-10T11:59:59.000Z",
+  "dateToSubmit": "2016-11-14T11:59:59.000Z",
   "maxAttempts": 2,
   "maxSubmits": 2,
   "maxScore": 50.0
@@ -3609,6 +3610,7 @@ http://purl.imsglobal.org/caliper/DigitalResource
 | dateCreated | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the resource was created.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the resource was last changed or modified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
 | datePublished | DateTime | An ISO 8601 date and time value expressed with millisecond precision that provides the publication date of the resource.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
+| storageName | string | A string value that designates the name used to locally store this [Entity](#entity) known to the [Sensor](#sensor) application. | Optional |
 | version | string | A string value that designates the current form or version of the resource. | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [DigitalResource](#digitalResource). | Optional |
 
@@ -3629,10 +3631,11 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 #### Example
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1/syllabus.pdf",
   "type": "DigitalResource",
   "name": "Course Syllabus",
+  "storageName": "fall-2016-syllabus.pdf",
   "mediaType": "application/pdf",
   "creators": [
     {
@@ -3641,16 +3644,17 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/1",
     "type": "DigitalResourceCollection",
     "name": "Course Assets",
     "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1",
       "type": "CourseSection"
     }
   },
-  "dateCreated": "2018-08-02T11:32:00.000Z"
+  "dateCreated": "2016-08-02T11:32:00.000Z"
 }
+
 ```
 
 ### <a name="digitalResourceCollection"></a>C.14 DigitalResourceCollection
@@ -3698,8 +3702,8 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 #### Example
 ```
 {
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/2",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/resources/2",
   "type": "DigitalResourceCollection",
   "name": "Video Collection",
   "keywords": ["collection", "videos"],
@@ -3709,7 +3713,8 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
       "type": "VideoObject",
       "mediaType": "video/ogg",
       "name": "Introduction to IMS Caliper",
-      "dateCreated": "2018-08-01T06:00:00.000Z",
+      "storageName": "caliper-intro.ogg",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
       "duration": "PT1H12M27S",
       "version": "1.1"
     },
@@ -3718,21 +3723,22 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
       "type": "VideoObject",
       "mediaType": "video/ogg",
       "name": "IMS Caliper Activity Profiles",
-      "dateCreated": "2018-08-01T06:00:00.000Z",
+      "storageName": "caliper-activity-profiles.ogg",
+      "dateCreated": "2016-08-01T06:00:00.000Z",
       "duration": "PT55M13S",
       "version": "1.1.1"
     }
   ],
   "isPartOf": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
     "type": "CourseSection",
     "subOrganizationOf": {
-      "id": "https://example.edu/terms/201801/courses/7",
+      "id": "https://example.edu/terms/201601/courses/7",
       "type": "CourseOffering"
     }
   },
-  "dateCreated": "2018-08-01T06:00:00.000Z",
-  "dateModified": "2018-09-02T11:30:00.000Z"
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "dateModified": "2016-09-02T11:30:00.000Z"
 }
 ```
 
