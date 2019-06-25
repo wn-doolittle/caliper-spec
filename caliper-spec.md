@@ -178,7 +178,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 <a name="actorDef"></a>__Actor__: An actor is an [Agent](#agent) capable of initiating or performing an [action](#actionDef) on a thing or as part of a process.  A Caliper [Event](#event) includes an `actor` attribute for representing the [Agent](#agent).
 
-<a name="anonymousDef"></a>__Anonymous__, __Anonymiziation__: Applying a process to transform the properties of an [Entity](#entity) to obscure its identity such that the process cannot be reversed nor can the entity be afterwards distinguished from other such-treated entities renders the entity _anonymous_.
+<a name="anonymousDef"></a>__Anonymous__, __Anonymization__: Applying a process to transform the properties of an [Entity](#entity) to obscure its identity such that the process cannot be reversed nor can the entity be afterwards distinguished from other such-treated entities renders the entity _anonymous_.
 
 <a name="blankNodeDef"></a>__Blank Node Identifier__: a string that begins with "_:" that is used to identify an [Entity](#entity) for which an [IRI](#iriDef) is not provided.  An [Entity](#entity) provisioned with a blank node identifier is neither dereferenceable nor has meaning outside the scope of the [JSON-LD](#jsonldDef) document within which it resides.
 
@@ -976,7 +976,7 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
 
 ### <a name="anonymousEntities"></a>4.4 Anonymous Entities
 
-Caliper has a formal convention for serializing _anonymous entities_. When a [Sensor](#sensor) application wants to explicitly indicate that an [Entity](#entity) it is sending in an event is [anonymous](#anonymousDef), it should transmit an anonymous form of that entity in its normal place within the event. Caliper indicates an anonymous entity by using the full Caliper vocacbulary `type` URL value for that entity as its `id` value.
+Caliper has a formal convention for serializing _anonymous entities_. When a [Sensor](#sensor) application wants to explicitly indicate that an [Entity](#entity) it is sending in an event is [anonymous](#anonymousDef), it should transmit an anonymous form of that entity in its normal place within the event. Caliper indicates an anonymous entity by using the full Caliper vocabulary `type` URL value for that entity as its `id` value.
 
 Note that because some [Caliper Endpoints](#endpointDef) might store received Caliper Entities as individual nodes in a data-graph, it may not be appropriate for a [Sensor](#sensor) to send more properties in an [anonymous](#anonymousDef) [Entity](#entity) than its `id` and `type`, as these properties may not get recorded or may get overwritten by subsequent uses of the same type of [anonymous](#anonymousDef) [Entity](#entity). By best practice, [Sensors](#sensor) should always send [anonymous](#anonymousDef) [Entities](#entity) fully composed in-line within an [Event](#event) and not separately described. By best practice, [Caliper Endpoints](#endpointDef) should treat this [anonymous](#anonymousDef) use in a distinct way to preserve any additional properties that might also be carried with the [anonymous](#anonymousDef) [Entity](#entity) within the [Event](#event).
 
