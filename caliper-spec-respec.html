@@ -649,8 +649,8 @@
         <section id="profile-search" data-include="fragments/profiles/caliper-profile-search.html"></section>
 
         <section id="profile-search-searchevent-searched"
-                 data-include="fragments/profiles/caliper-profile-search-searchevent-searched.html"
-                 class="notoc">
+             data-include="fragments/profiles/caliper-profile-search-searchevent-searched.html"
+             class="notoc">
         </section>
 
         <section id="profile-session" data-include="fragments/profiles/caliper-profile-session.html"></section>
@@ -668,8 +668,8 @@
         <section id="profile-survey" data-include="fragments/profiles/caliper-profile-survey.html"></section>
 
         <section id="profile-survey-navigationevent-navigatedto"
-                 data-include="fragments/profiles/caliper-profile-survey-navigationevent-navigatedto.html"
-                 class="notoc">
+             data-include="fragments/profiles/caliper-profile-survey-navigationevent-navigatedto.html"
+             class="notoc">
         </section>
 
         <section id="profile-survey-questionnaireevent-started_submitted"
@@ -803,22 +803,8 @@
                 <a href="#event">Event</a> key:value pairings are mapped to [IRIs] in the referenced context.</p>
 
             <figure class="example">
-                <figcaption>Referencing the Caliper JSON-LD context</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
-  "type": "Event",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Created",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/123",
-    "type": "Document"
-  },
-  "eventTime": "2018-11-15T10:15:00.000Z"
-}</code></pre>
+                <figcaption> - Referencing the Caliper JSON-LD context</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventSessionLoggedIn.json"></code></pre>
             </figure>
 
             <p>As noted above, a <a href="#jsonldDef">JSON-LD</a> document can reference more than one context. Subject
@@ -840,7 +826,7 @@
             <figure class="example">
                 <figcaption>Combining inline and referenced JSON-LD contexts</figcaption>
                 <pre><code>{
-TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
+TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 }</code></pre>
             </figure>
         </section>
@@ -881,25 +867,9 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 <a href="#rfc4122">RFC 4122</a>, which describes a <a href="#urnDef">URN</a> namespace for
                 <a href="#uuidDef">UUIDs</a>.</p>
 
-
             <figure class="example">
-                <figcaption>Event and Entity identifiers</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f",
-  "type": "NavigationEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  . . .
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/2",
-    "type": "WebPage",
-    . . .
-  },
-  . . .
-}</code></pre>
+                <figcaption> - Event and Entity identifiers</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventNavigationNavigatedTo.json"></code></pre>
             </figure>
         </section>
 
@@ -933,47 +903,13 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 interpreted as <a href="#iriDef">IRIs</a> (as in the case of <code>edApp</code>). In a like manner,
                 the <code>action</code> value is coerced to the <code>@vocab</code> keyword indicating that the value
                 is to be interpreted as a <a href="#termDef">Term</a> defined in the active context or as an
-                <a href="#iriDef">IRI</a>; in this case <em>Posted</em>.  Terms such as <code>name</code>,
+                <a href="#iriDef">IRI</a>; in this case <em>Posted</em>. Terms such as <code>name</code>,
                 <code>description</code>, <code>dateCreated</code>, <code>dateModified</code> and <code>duration</code>
                 are coerced to a particular value type such as a string, integer, boolean or date.</p>
 
             <figure class="example">
-                <figcaption>Node and value types</figcaption>
-                <pre><code>{
-  "@context": {
-    "id": "@id",
-    "type": "@type",
-    "caliper": "http://purl.imsglobal.org/caliper/",
-    "verb": "http://purl.imsglobal.org/caliper/actions/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "MessageEvent": "caliper:MessageEvent",
-    "Message": "caliper:Message",
-    "Person": "caliper:Person",
-    "actor": {"@id": "caliper:actor", "@type": "@id"},
-    "action": {"@id": "caliper:action", "@type": "@vocab"},
-    "edApp": {"@id": "caliper:edApp", "@type": "@id"},
-    "object": {"@id": "caliper:object", "@type": "@id"},
-    "body": {"@id": "caliper:body", "@type": "xsd:string"},
-    "dateCreated": {"@id": "caliper:dateCreated", "@type": "xsd:dateTime"},
-    "eventTime": {"@id": "caliper:eventTime", "@type": "xsd:dateTime"},
-    "Posted": "verb:Posted"
-  },
-  "type": "MessageEvent",
-  "id": "urn:uuid:0d015a85-abf5-49ee-abb1-46dbd57fe64e",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Posted",
-  "object": {
-    "id": "https://example.edu/sections/1/forums/2/topics/1/messages/2",
-    "type": "Message",
-    "body": "What does Caliper Event JSON-LD look like?",
-    "dateCreated": "2018-12-15T10:15:00.000Z"
-  },
-  "eventTime": "2018-12-15T10:15:00.000Z",
-  "edApp": "https://example.edu"
-}</code></pre>
+                <figcaption> - JSON-LD node and value types</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventMessagePostedInlineContext.json"></code></pre>
             </figure>
 
             <p>As the abbreviated <a href="#forumEvent">ForumEvent</a> example below demonstrates, in cases where
@@ -985,46 +921,8 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 entity's <a href="#iriDef">IRI</a>.</p>
 
             <figure class="example">
-                <figcaption><code>membership</code> and <code>session</code> references to <code>actor</code> and
-                    <code>group</code> expressed as IRIs</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
-  "type": "ForumEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Subscribed",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
-    "type": "Forum",
-    "name": "Caliper Forum"
-  },
-  "eventTime": "2018-11-15T10:16:00.000Z",
-  "edApp": {
-    "id": "https://example.edu/forums",
-    "type": "SoftwareApplication"
-  },
-  "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [ "Learner" ]
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "user": "https://example.edu/users/554433",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
+                <figcaption> - Referencing the Caliper JSON-LD context</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventForumSubscribed.json"></code></pre>
             </figure>
 
             <p>Indeed, the example <a href="#forumEvent">ForumEvent</a> could be thinned still further if each
@@ -1032,22 +930,9 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 that permits consumers to retrieve a more robust representation of the object if required.</p>
 
             <figure class="example">
-                <figcaption>Thinned ForumEvent comprised of (dereferenceable) IRI values</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
-  "type": "ForumEvent",
-  "actor": "https://example.edu/users/554433",
-  "action": "Subscribed",
-  "object": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
-  "eventTime": "2018-11-15T10:16:00.000Z",
-  "edApp": "https://example.edu/forums",
-  "group": "https://example.edu/terms/201801/courses/7/sections/1",
-  "membership": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-  "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
-}</code></pre>
+                <figcaption> - Thinned ForumEvent comprised of (dereferenceable) IRI values</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventForumSubscribedThinned.json"></code></pre>
             </figure>
-        </section>
 
         <section>
             <h3>Anonymous Entities</h3>
@@ -1211,223 +1096,13 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 <a href="#jsonld">JSON-LD</a> document.</p>
 
             <figure class="example">
-                <figcaption>Single Event Payload</figcaption>
-                <pre><code>{
-      "sensor": "https://example.edu/sensors/1",
-      "sendTime": "2018-11-15T11:05:01.000Z",
-      "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-      "data": [{
-        "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-        "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
-        "type": "ToolUseEvent",
-        "actor": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        },
-        "action": "Used",
-        "object": {
-          "id": "https://example.edu",
-          "type": "SoftwareApplication"
-        },
-        "eventTime": "2018-11-15T10:15:00.000Z",
-        "edApp": "https://example.edu",
-        "group": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection",
-          "courseNumber": "CPS 435-01",
-          "academicSession": "Fall 2018"
-        },
-        "membership": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-          "type": "Membership",
-          "member": "https://example.edu/users/554433",
-          "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-          "roles": ["Learner"],
-          "status": "Active",
-          "dateCreated": "2018-08-01T06:00:00.000Z"
-        },
-        "session": {
-          "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-          "type": "Session",
-          "startedAtTime": "2018-11-15T10:00:00.000Z"
-        }
-      }]
-    }</code></pre>
+                <figcaption> - Envelope: single event payload</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEnvelopeEventSingle.json"></code></pre>
             </figure>
 
             <figure class="example">
-                <figcaption>Mixed Payload</figcaption>
-                <pre><code>{
-      "sensor": "https://example.edu/sensors/1",
-      "sendTime": "2018-11-15T11:05:01.000Z",
-      "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "data": [
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-          "id": "https://example.edu/users/554433",
-          "type": "Person",
-          "dateCreated": "2018-08-01T06:00:00.000Z",
-          "dateModified": "2018-09-02T11:30:00.000Z"
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-          "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-          "type": "Assessment",
-          "name": "Quiz One",
-          "items": [
-            {
-              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1",
-              "type": "AssessmentItem"
-            },
-            {
-              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2",
-              "type": "AssessmentItem"
-            },
-            {
-              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
-              "type": "AssessmentItem"
-            }
-          ],
-          "dateCreated": "2018-08-01T06:00:00.000Z",
-          "dateModified": "2018-09-02T11:30:00.000Z",
-          "datePublished": "2018-08-15T09:30:00.000Z",
-          "dateToActivate": "2018-08-16T05:00:00.000Z",
-          "dateToShow": "2018-08-16T05:00:00.000Z",
-          "dateToStartOn": "2018-08-16T05:00:00.000Z",
-          "dateToSubmit": "2018-09-28T11:59:59.000Z",
-          "maxAttempts": 2,
-          "maxScore": 15.0,
-          "maxSubmits": 2,
-          "version": "1.0"
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "https://example.edu",
-          "type": "SoftwareApplication",
-          "version": "v2"
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection",
-          "academicSession": "Fall 2018",
-          "courseNumber": "CPS 435-01",
-          "name": "CPS 435 Learning Analytics, Section 01",
-          "category": "seminar",
-          "subOrganizationOf": {
-            "id": "https://example.edu/terms/201801/courses/7",
-            "type": "CourseOffering",
-            "courseNumber": "CPS 435"
-          },
-          "dateCreated": "2018-08-01T06:00:00.000Z"
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
-          "type": "AssessmentEvent",
-          "actor": "https://example.edu/users/554433",
-          "action": "Started",
-          "object": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-          "generated": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "type": "Attempt",
-            "assignee": "https://example.edu/users/554433",
-            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-            "count": 1,
-            "dateCreated": "2018-11-15T10:15:00.000Z",
-            "startedAtTime": "2018-11-15T10:15:00.000Z"
-          },
-          "eventTime": "2018-11-15T10:15:00.000Z",
-          "edApp": "https://example.edu",
-          "group": "https://example.edu/terms/201801/courses/7/sections/1",
-          "membership": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-            "type": "Membership",
-            "member": "https://example.edu/users/554433",
-            "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-            "roles": [ "Learner" ],
-            "status": "Active",
-            "dateCreated": "2018-08-01T06:00:00.000Z"
-          },
-          "session": {
-            "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-            "type": "Session",
-            "startedAtTime": "2018-11-15T10:00:00.000Z"
-          }
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
-          "type": "AssessmentEvent",
-          "actor": "https://example.edu/users/554433",
-          "action": "Submitted",
-          "object": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-          "generated": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "type": "Attempt",
-            "assignee": "https://example.edu/users/554433",
-            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-            "count": 1,
-            "dateCreated": "2018-11-15T10:15:00.000Z",
-            "startedAtTime": "2018-11-15T10:15:00.000Z",
-            "endedAtTime": "2018-11-15T10:55:12.000Z",
-            "duration": "PT40M12S"
-          },
-          "eventTime": "2018-11-15T10:25:30.000Z",
-          "edApp": "https://example.edu",
-          "group": "https://example.edu/terms/201801/courses/7/sections/1",
-          "membership": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-            "type": "Membership",
-            "member": "https://example.edu/users/554433",
-            "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-            "roles": ["Learner"],
-            "status": "Active",
-            "dateCreated": "2018-08-01T06:00:00.000Z"
-          },
-          "session": {
-            "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-            "type": "Session",
-            "startedAtTime": "2018-11-15T10:00:00.000Z"
-          }
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
-          "type": "GradeEvent",
-          "actor": {
-            "id": "https://example.edu/autograder",
-            "type": "SoftwareApplication",
-            "version": "v2"
-          },
-          "action": "Graded",
-          "object": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "type": "Attempt",
-            "assignee": "https://example.edu/users/554433",
-            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-            "count": 1,
-            "dateCreated": "2018-11-15T10:15:00.000Z",
-            "startedAtTime": "2018-11-15T10:15:00.000Z",
-            "endedAtTime": "2018-11-15T10:55:12.000Z",
-            "duration": "PT40M12S"
-          },
-          "eventTime": "2018-11-15T10:57:06.000Z",
-          "edApp": "https://example.edu",
-          "generated": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
-            "type": "Score",
-            "attempt": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "maxScore": 15.0,
-            "scoreGiven": 10.0,
-            "scoredBy": "https://example.edu/autograder",
-            "comment": "auto-graded exam",
-            "dateCreated": "2018-11-15T10:56:00.000Z"
-          },
-          "group": "https://example.edu/terms/201801/courses/7/sections/1"
-        }
-      ]
-    }</code></pre>
+                <figcaption> - Envelope: mixed payload</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEnvelopeMixedBatch.json"></code></pre>
             </figure>
         </section>
 
@@ -2000,26 +1675,6 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
             <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
             <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
         </section>
-    </section>
-
-    <section id="jsonld">
-        <h2>Caliper JSON-LD Examples</h2>
-
-        <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
-            provides a remote Tool Use Profile JSON-LD <a href=
-            "http://purl.imsglobal.org/ctx/caliper/v1p2/ToolUseProfile-extension">context</a>
-            for mapping <code>Event</code> terms to IRIs. Caliper message producers MUST reference the Tool Use
-            Profile 1.1-extension context in every <a href="#event">Event</a> subtype described in this profile. Likewise,
-            Caliper message producers MUST reference the Tool Use Profile 1.1-extension context whenever an
-            <a href="#entity">Entity</a> subtype described in this profile is emitted on its own as a <em>describe</em>.</p>
-
-        <p>See the Caliper 1.2 specification [[!CALIPER-12]] for a discussion of JSON-LD and JSON-LD
-            context handling.</p>
-
-
-        TODO: add examples here or interleave them in Events and Entities sections as was done with 1.1.
-
-
     </section>
 
     <section class="appendix informative" id="revisionhistory">
