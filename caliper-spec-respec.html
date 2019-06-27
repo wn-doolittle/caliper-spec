@@ -732,11 +732,10 @@
              data-include="fragments/profiles/caliper-profile-general-event-action.html"
              class="notoc">
         </section>
-
     </section>
 
     <section id="serialization">
-        <h2>Serialization of the Model</h2>
+        <h2>Serialization</h2>
 
         <p>Over the last decade the advent of cloud-based, networked applications have led to changes in the way data
             is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course
@@ -936,6 +935,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <figcaption> - Thinned ForumEvent comprised of (dereferenceable) IRI values</figcaption>
                 <pre><code data-include="fixtures/v1p2/caliperEventForumSubscribedThinned.json"></code></pre>
             </figure>
+        </section>
 
         <section>
             <h3>Anonymous Entities</h3>
@@ -1496,31 +1496,14 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
         <section id="lis-statuses">
             <h3>LIS Statuses</h3>
-            <p>The status associated with a <a href="#Membership">Membership</a> within an organization can be set to
-                one of the following states: Active or Inactive. These states are derived from the IMS
-                <a href="#lisDef">LIS</a> specification. The value MUST be set to the appropriate
-                <a href="#termDef">Term</a> string value. ...TO DO
+
+            <p>The status of a <a href="#Membership">Membership</a> within an
+                <a href="#Organization">Organization</a> can be set to one of the following states: <em>Active</em>
+                or <em>Inactive</em>.
             </p>
 
-            <section id="lis-status-active">
-                <h4>Active</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/lis/v2/status#Active</dd>
-                    <dt>Term</dt>
-                    <dd>Active</dd>
-                </dl>
-            </section>
-
-            <section id="lis-status-inactive">
-                <h4>Inactive</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/lis/v2/status#Inactive</dd>
-                    <dt>Term</dt>
-                    <dd>Inactive</dd>
-                </dl>
-            </section>
+            <section id="lis-status-active" data-include="fragments/statuses/caliper-status-active.html"></section>
+            <section id="lis-status-inactive" data-include="fragments/statuses/caliper-status-inactive.html"></section>
         </section>
 
         <section id="lti-messageTypes">
@@ -1542,125 +1525,42 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <a href="#Entity">Entity</a> that may prove meaningful when exchanging identifiers between systems
                 (especially with respect to other IMS Global standards).</p>
 
-            <section id="systemidentifier-accountusername">
-                <h4>AccountUserName</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/AccountUserName</dd>
-                    <dt>Term</dt>
-                    <dd>AccountUserName</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-emailaddress">
-                <h4>EmailAddress</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/EmailAddress</dd>
-                    <dt>Term</dt>
-                    <dd>EmailAddress</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-lissourcedid">
-                <h4>LisSourcedId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LisSourcedId</dd>
-                    <dt>Term</dt>
-                    <dd>LisSourcedId</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-lticontextid">
-                <h4>LtiContextId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiContextId</dd>
-                    <dt>Term</dt>
-                    <dd>LtiContextId</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-ltideploymentid">
-                <h4>LtiDeploymentId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiDeploymentId</dd>
-                    <dt>Term</dt>
-                    <dd>LtiDeploymentId</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-ltiplatformid">
-                <h4>LtiPlatformId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiPlatformId</dd>
-                    <dt>Term</dt>
-                    <dd>LtiPlatformId</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-ltitoolid">
-                <h4>LtiToolId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiToolId</dd>
-                    <dt>Term</dt>
-                    <dd>LtiToolId</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-ltiuserid">
-                <h4>LtiUserId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LtiUserId</dd>
-                    <dt>Term</dt>
-                    <dd>LtiUserId</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-onerostersourcedid">
-                <h4>OneRosterSourcedId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/OneRosterSourcedId</dd>
-                    <dt>Term</dt>
-                    <dd>OneRosterSourcedId</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-other">
-                <h4>Other</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/Other</dd>
-                    <dt>Term</dt>
-                    <dd>Other</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-sissourcedid">
-                <h4>SisSourcedId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/SisSourcedId</dd>
-                    <dt>Term</dt>
-                    <dd>SisSourcedId</dd>
-                </dl>
-            </section>
-
-            <section id="systemidentifier-systemid">
-                <h4>SystemId</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/SystemId</dd>
-                    <dt>Term</dt>
-                    <dd>SystemId</dd>
-                </dl>
-            </section>
+                <section id="systemidentifier-accountusername"
+                     data-include="fragments/identifiers/caliper-identifier-accountusername.html">
+                </section>
+                <section id="systemidentifier-emailaddress"
+                     data-include="fragments/identifiers/caliper-identifier-emailaddress.html">
+                </section>
+                <section id="systemidentifier-lissourcedid"
+                     data-include="fragments/identifiers/caliper-identifier-lissourcedid.html">
+                </section>
+                <section id="systemidentifier-lticontextid"
+                    data-include="fragments/identifiers/caliper-identifier-lticontextid.html">
+                </section>
+                <section id="systemidentifier-ltideploymentid"
+                    data-include="fragments/identifiers/caliper-identifier-ltideploymentid.html">
+                </section>
+                <section id="systemidentifier-ltiplatformid"
+                    data-include="fragments/identifiers/caliper-identifier-ltiplatformid.html">
+                </section>
+                <section id="systemidentifier-ltitoolid"
+                    data-include="fragments/identifiers/caliper-identifier-ltitoolid.html">
+                </section>
+                <section id="systemidentifier-ltiuserid"
+                    data-include="fragments/identifiers/caliper-identifier-ltiuserid.html">
+                </section>
+                <section id="systemidentifier-onerostersourcedid"
+                    data-include="fragments/identifiers/caliper-identifier-onerostersourcedid.html">
+                </section>
+                <section id="systemidentifier-other"
+                    data-include="fragments/identifiers/caliper-identifier-other.html">
+                </section>
+                <section id="systemidentifier-sissourcedid"
+                    data-include="fragments/identifiers/caliper-identifier-sissourcedid.html">
+                </section>
+                <section id="systemidentifier-systemid"
+                    data-include="fragments/identifiers/caliper-identifier-systemid.html">
+                </section>
         </section>
 
         <section id="metrics">
