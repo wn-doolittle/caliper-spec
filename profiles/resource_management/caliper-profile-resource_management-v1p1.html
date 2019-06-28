@@ -190,68 +190,15 @@
         <section class="informative">
             <h3>ResourceManagementEvent</h3>
 
-        <section class="informative">
-            <h3>Created</h3>
+            <section class="informative">
+                <h3>Created</h3>
 
-            <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
-                records a <code>Person</code> creating a <code>DigitalResource</code>.</p>
+                <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
+                    records a <code>Person</code> creating a <code>DigitalResource</code>.</p>
 
-            <figure class="example">
-                <figcaption><code>ResourceManagementEvent</code> Created JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
-  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
-  "type": "ResourceManagementEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Created",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus",
-    "mediaType": "application/pdf",
-    "creators": [
-      {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      }
-    ],
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-08-02T11:32:00.000Z"
-  },
-  "eventTime": "2018-11-15T10:05:00.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": [ "Instructor" ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
+                <figure class="example">
+                    <figcaption><code>ResourceManagementEvent</code> Created JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEventResourceManagementCreated.json"></code></pre>
                 </figure>
             </section>
 
@@ -261,84 +208,9 @@
                 <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
                     records a <code>Person</code> generating a new copy of a <code>DigitalResource</code>.
 
-                    <figure class="example">
-                        <figcaption><code>ResourceManagementEvent</code> Copied JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
-  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
-  "type": "ResourceManagementEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Copied",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus",
-    "mediaType": "application/pdf",
-    "creators": [
-      {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      }
-    ],
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-08-02T11:32:00.000Z"
-  },
-  "generated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/2/syllabus_copy.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus (copy)",
-    "mediaType": "application/pdf",
-    "creators": [
-      {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      }
-    ],
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-11-15T10:05:00.000Z"
-  },
-  "eventTime": "2018-11-15T10:05:00.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": [ "Instructor" ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
+                <figure class="example">
+                    <figcaption><code>ResourceManagementEvent</code> Copied JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEventResourceManagementCopied.json"></code></pre>
                 </figure>
             </section>
         </section>
