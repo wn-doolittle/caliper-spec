@@ -179,89 +179,16 @@
         <section class="informative">
             <h3>FeedbackEvent</h3>
 
-        <section class="informative">
-            <h3>Commented</h3>
+            <section class="informative">
+                <h3>Commented</h3>
 
-            <p>Below is an example of a Caliper <a href="#FeedbackEvent">FeedbackEvent</a> that records a
-                <code>Person</code> providing informal feedback in the form of a <a href="#Comment">Comment</a>.
-            </p>
+                <p>Below is an example of a Caliper <a href="#FeedbackEvent">FeedbackEvent</a> that records a
+                    <code>Person</code> providing informal feedback in the form of a <a href="#Comment">Comment</a>.
+                </p>
 
-            <figure class="example">
-                <figcaption><code>FeedbackEvent</code> Commented JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
-  "type": "FeedbackEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Commented",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus",
-    "mediaType": "application/pdf",
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-08-02T11:32:00.000Z"
-  },
-  "generated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
-    "type": "Comment",
-    "commenter": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "commentedOn": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-      "type": "DigitalResource",
-      "name": "Course Syllabus",
-      "mediaType": "application/pdf",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-        "type": "DigitalResourceCollection",
-        "name": "Course Assets",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection"
-        }
-      },
-      "dateCreated": "2018-08-02T11:32:00.000Z"
-    },
-    "value": "I like what you did here but you need to improve on...",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "eventTime": "2018-11-15T10:05:00.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [ "Learner" ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
+                <figure class="example">
+                    <figcaption><code>FeedbackEvent</code> Commented JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEventFeedbackCommented.json"></code></pre>
                 </figure>
             </section>
 
@@ -274,118 +201,7 @@
 
                 <figure class="example">
                     <figcaption><code>FeedbackEvent</code> Ranked JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "urn:uuid:a502e4fc-24c1-11e9-ab14-d663bd873d93",
-  "type": "FeedbackEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Ranked",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus",
-    "mediaType": "application/pdf",
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-08-02T11:32:00.000Z"
-  },
-  "generated": {
-    "id": "https://example.edu/users/554433/rating/1",
-    "type": "Rating",
-    "rater": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "rated": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-      "type": "DigitalResource",
-      "name": "Course Syllabus",
-      "mediaType": "application/pdf",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-        "type": "DigitalResourceCollection",
-        "name": "Course Assets",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection"
-        }
-      },
-      "dateCreated": "2018-08-02T11:32:00.000Z"
-    },
-    "question": {
-      "id": "https://example.edu/question/2",
-      "type": "RatingScaleQuestion",
-      "questionPosed": "Do you agree with the opinion presented?",
-      "scale": {
-        "id": "https://example.edu/scale/2",
-        "type": "LikertScale",
-        "scalePoints": 4,
-        "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-        "itemValues": ["-2", "-1", "1", "2"]
-      }
-    },
-    "selections": ["1"],
-    "ratingComment": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
-      "type": "Comment",
-      "commenter": {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      },
-      "commentedOn": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-        "type": "DigitalResource",
-        "name": "Course Syllabus",
-        "mediaType": "application/pdf",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-          "type": "DigitalResourceCollection",
-          "name": "Course Assets",
-          "isPartOf": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1",
-            "type": "CourseSection"
-          }
-        },
-        "dateCreated": "2018-08-02T11:32:00.000Z"
-      },
-      "value": "I like what you did here but you need to improve on...",
-      "dateCreated": "2018-08-01T06:00:00.000Z"
-    },
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "eventTime": "2018-11-15T10:05:00.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [ "Learner" ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEventFeedbackRanked.json"></code></pre>
                 </figure>
             </section>
         </section>
@@ -394,42 +210,16 @@
     <section class="informative">
         <h2>Entity Describes</h2>
 
-            <section class="informative">
-                <h3>Comment</h3>
+        <section class="informative">
+            <h3>Comment</h3>
 
-                <p>Below is an example of a <a href="#Comment">Comment</a> entity describe that can also be sent to an
-                    endpoint. The <a href="#Comment">Comment</a> references the commenter, the resource commented on,
-                    and a the comment text value.</p>
+            <p>Below is an example of a <a href="#Comment">Comment</a> entity describe that can also be sent to an
+                endpoint. The <a href="#Comment">Comment</a> references the commenter, the resource commented on,
+                and the comment text value.</p>
 
-                <figure class="example">
-                    <figcaption><code>Comment</code> describe JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
-  "type": "Comment",
-  "commenter": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "commentedOn": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus",
-    "mediaType": "application/pdf",
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-08-02T11:32:00.000Z"
-  },
-  "value": "I like what you did here but you need to improve on...",
-  "dateCreated": "2018-08-01T06:00:00.000Z"
-}</code></pre>
+            <figure class="example">
+                <figcaption><code>Comment</code> describe JSON-LD</figcaption>
+                <pre><code data-include="../../fixtures/v1p1/caliperEntityComment.json"></code></pre>
             </figure>
         </section>
 
@@ -442,12 +232,7 @@
 
             <figure class="example">
                 <figcaption><code>Question</code> describe JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.edu/question/1",
-  "type": "Question",
-  "questionPosed": "How would you rate this?"
-}</code></pre>
+                <pre><code data-include="../../fixtures/v1p1/caliperEntityQuestion.json"></code></pre>
             </figure>
 
             <section class="informative">
@@ -455,20 +240,7 @@
 
                 <figure class="example">
                     <figcaption><code>RatingScaleQuestion</code> describe JSON-LD</figcaption>
-    <pre><code>{
-      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-      "id": "https://example.edu/question/2",
-      "type": "RatingScaleQuestion",
-      "questionPosed": "Do you agree with the opinion presented?",
-      "scale": {
-        "id": "https://example.edu/scale/2",
-        "type": "LikertScale",
-        "scalePoints": 4,
-        "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-        "itemValues": ["-2", "-1", "1", "2"],
-        "dateCreated": "2018-08-01T06:00:00.000Z"
-      }
-    }</code></pre>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEntityRatingScaleQuestion.json"></code></pre>
                 </figure>
             </section>
         </section>
@@ -482,119 +254,20 @@
 
             <figure class="example">
                 <figcaption>Likert Scale <code>Rating</code> describe JSON-LD</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.edu/users/554433/rating/1",
-  "type": "Rating",
-  "rater": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "rated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus",
-    "mediaType": "application/pdf",
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-08-02T11:32:00.000Z"
-  },
-  "question": {
-    "id": "https://example.edu/question/2",
-    "type": "RatingScaleQuestion",
-    "questionPosed": "Do you agree with the opinion presented?",
-    "scale": {
-      "id": "https://example.edu/scale/2",
-      "type": "LikertScale",
-      "scalePoints": 4,
-      "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-      "itemValues": ["-2", "-1", "1", "2"]
-    }
-  },
-  "selections": ["1"],
-  "ratingComment": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
-    "type": "Comment",
-    "commenter": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "commentedOn": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-      "type": "DigitalResource",
-      "name": "Course Syllabus",
-      "mediaType": "application/pdf",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-        "type": "DigitalResourceCollection",
-        "name": "Course Assets",
-        "isPartOf": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection"
-        }
-      },
-      "dateCreated": "2018-08-02T11:32:00.000Z"
-    },
-    "value": "I like what you did here but you need to improve on...",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "dateCreated": "2018-08-01T06:00:00.000Z"
-}</code></pre>
+                <pre><code data-include="../../fixtures/v1p1/caliperEntityRatingWithLikertScale.json"></code></pre>
             </figure>
         </section>
 
         <section class="informative">
-
             <h3>Rating (Multiselect)</h3>
 
-            <p>Below is an example of a multi-select <a href="#Rating">Rating</a> entity describe that can also be sent to an
-                endpoint. The <a href="#Rating">Rating</a> references the rater, the resource rated, the
+            <p>Below is an example of a multi-select <a href="#Rating">Rating</a> entity describe that can also be sent
+                to an endpoint. The <a href="#Rating">Rating</a> references the rater, the resource rated, the
                 scale question employed, the option selected, and a free-form comment.</p>
 
             <figure class="example">
                 <figcaption>Multi-Select <code>Rating</code> describe JSON-LD</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.edu/users/554433/rating/2",
-  "type": "Rating",
-  "rater": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "rated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-    "type": "DigitalResourceCollection",
-    "name": "Course Assets",
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1",
-      "type": "CourseSection"
-    }
-  },
-  "question": {
-    "id": "https://example.edu/question/3",
-    "type": "RatingScaleQuestion",
-    "questionPosed": "How do you feel about this content? (select one or more)",
-    "scale": {
-      "id": "https://example.edu/scale/3",
-      "type": "MultiselectScale",
-      "scalePoints": 5,
-      "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
-      "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-      "isOrderedSelection": false,
-      "minSelections": 1,
-      "maxSelections": 5
-    }
-  },
-  "selections": ["superhappy", "disappointed"],
-  "dateCreated": "2018-08-01T06:00:00.000Z"
-}</code></pre>
+                <pre><code data-include="../../fixtures/v1p1/caliperEntityRatingWithMultiselectScale.json"></code></pre>
             </figure>
         </section>
 
@@ -606,12 +279,7 @@
 
             <figure class="example">
                 <figcaption><code>Scale</code> describe JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.edu/scale/1",
-  "type": "Scale",
-  "dateCreated": "2018-08-01T06:00:00.000Z"
-}</code></pre>
+                <pre><code data-include="../../fixtures/v1p1/caliperEntityScale.json"></code></pre>
             </figure>
 
             <section class="informative">
@@ -623,14 +291,7 @@
 
                 <figure class="example">
                     <figcaption><code>LikertScale</code> describe JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.edu/scale/2",
-  "type": "LikertScale",
-  "scalePoints": 4,
-  "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-  "itemValues": ["-2", "-1", "1", "2"]
-}</code></pre>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEntityLikertScale.json"></code></pre>
                 </figure>
             </section>
 
@@ -644,18 +305,7 @@
 
                 <figure class="example">
                     <figcaption><code>MultiselectScale</code> describe JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.edu/scale/3",
-  "type": "MultiselectScale",
-  "scalePoints": 5,
-  "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
-  "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-  "isOrderedSelection": false,
-  "minSelections": 1,
-  "maxSelections": 5,
-  "dateCreated": "2018-08-01T06:00:00.000Z"
-}</code></pre>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEntityMultiselectScale.json"></code></pre>
                 </figure>
             </section>
 
@@ -668,17 +318,7 @@
 
                 <figure class="example">
                     <figcaption><code>NumericScale</code> describe JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-  "id": "https://example.edu/scale/4",
-  "type": "NumericScale",
-  "minValue": 0.0,
-  "minLabel": "Disliked",
-  "maxValue": 10.0,
-  "maxLabel": "Liked",
-  "step": 0.5,
-  "dateCreated": "2018-08-01T06:00:00.000Z"
-}</code></pre>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEntityNumericScale.json"></code></pre>
                 </figure>
             </section>
         </section>
