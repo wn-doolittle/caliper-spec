@@ -35,34 +35,35 @@
 
 <table class="data">
     <thead>
-    <tr>
-        <th>Event</th>
-        <th>actor</th>
-        <th>action</th>
-        <th>object</th>
-        <th>target</th>
-    </tr>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>target</th>
+        </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><a href="#NavigationEvent">NavigationEvent</a></td>
-        <td><a href="#Person">Person</a></td>
-        <td><a href="#action-navigatedTo">NavigatedTo</a></td>
-        <td><a href="#DigitalResource">DigitalResource</a></td>
-        <td><a href="#DigitalResource">DigitalResource</a></td>
-    </tr>
-    <tr>
-        <td><a href="#ViewEvent">ViewEvent</a></td>
-        <td><a href="#Person">Person</a></td>
-        <td><a href="#action-viewed">Viewed</a></td>
-        <td><a href="#DigitalResource">DigitalResource</a></td>
-        <td><a href="#DigitalResource">DigitalResource</a></td>
-    </tr>
+        <tr>
+            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+        </tr>
     </tbody>
 </table>
 
-When constructing a <a href="#NavigationEvent">NavigationEvent</a> or <a href="#ViewEvent">ViewEvent</a>
-the following rules and recommendations apply:
+When constructing a <a href="#NavigationEvent">NavigationEvent</a> or <a href="#ViewEvent">ViewEvent</a> governed by
+the Reading Profile the following rules and recommendations apply:
+
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
         <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>

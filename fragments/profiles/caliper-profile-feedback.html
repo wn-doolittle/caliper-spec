@@ -27,38 +27,39 @@
         based on peer and instructor comments, in order to gain insight on what areas I need to improve upon.</li>
 </ul>
 
-<p>The Feeback Profile defines a <a href="#FeedbackEvent">FeedbackEvent</a> for ranking resources and recording
+<p>The Feedback Profile defines a <a href="#FeedbackEvent">FeedbackEvent</a> for ranking resources and recording
     comments. Two actions are described:
 
 <table class="data">
     <thead>
-    <tr>
-        <th>Event</th>
-        <th>actor</th>
-        <th>action</th>
-        <th>object</th>
-        <th>generated</th>
-    </tr>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><a href="#FeedbackEvent">FeedbackEvent</a></td>
-        <td><a href="#Person">Person</a></td>
-        <td><a href="#action-commented">Commented</a></td>
-        <td><a href="#Entity">Entity</a></td>
-        <td><a href="#Comment">Comment</a></td>
-    </tr>
-    <tr>
-        <td><a href="#FeedbackEvent">FeedbackEvent</a></td>
-        <td><a href="#Person">Person</a></td>
-        <td><a href="#action-ranked">Ranked</a></td>
-        <td><a href="#Entity">Entity</a></td>
-        <td><a href="#Rating">Rating</a></td>
-    </tr>
+        <tr>
+            <td><a href="#FeedbackEvent">FeedbackEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-commented">Commented</a></td>
+            <td><a href="#Entity">Entity</a></td>
+            <td><a href="#Comment">Comment</a></td>
+        </tr>
+        <tr>
+            <td><a href="#FeedbackEvent">FeedbackEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-ranked">Ranked</a></td>
+            <td><a href="#Entity">Entity</a></td>
+            <td><a href="#Rating">Rating</a></td>
+        </tr>
     </tbody>
 </table>
 
-When constructing a <a href="#FeedbackEvent">FeedbackEvent</a> the following rules and recommendations apply:
+When constructing a <a href="#FeedbackEvent">FeedbackEvent</a> governed by the Feedback Profile the following rules
+and recommendations apply:
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
         <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>

@@ -57,6 +57,18 @@
             <td><a href="#Forum">Forum</a></td>
         </tr>
         <tr>
+            <td><a href="#ThreadEvent">ThreadEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-markedAsRead">MarkedAsRead</a></td>
+            <td><a href="#Thread">Thread</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ThreadEvent">ThreadEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-markedAsUnRead">MarkedAsUnRead</a></td>
+            <td><a href="#Thread">Thread</a></td>
+        </tr>
+        <tr>
             <td><a href="#MessageEvent">MessageEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-markedAsRead">MarkedAsRead</a></td>
@@ -83,18 +95,6 @@
                 <a href="#Thread">Thread</a></td>
         </tr>
         <tr>
-            <td><a href="#ThreadEvent">ThreadEvent</a></td>
-            <td><a href="#Person">Person</a></td>
-            <td><a href="#action-markedAsRead">MarkedAsRead</a></td>
-            <td><a href="#Thread">Thread</a></td>
-        </tr>
-        <tr>
-            <td><a href="#ThreadEvent">ThreadEvent</a></td>
-            <td><a href="#Person">Person</a></td>
-            <td><a href="#action-markedAsUnRead">MarkedAsUnRead</a></td>
-            <td><a href="#Thread">Thread</a></td>
-        </tr>
-        <tr>
             <td><a href="#ViewEvent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-viewed">Viewed</a></td>
@@ -107,7 +107,7 @@
 
 When constructing a <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
 <a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a>, or
-<a href="#ViewEvent">ViewEvent</a> the following rules and recommendations apply:
+<a href="#ViewEvent">ViewEvent</a> governed by the Forum Profile the following rules and recommendations apply:
 
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,

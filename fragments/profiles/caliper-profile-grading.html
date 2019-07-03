@@ -33,34 +33,35 @@
 
 <table class="data">
     <thead>
-    <tr>
-        <th>Event</th>
-        <th>actor</th>
-        <th>action</th>
-        <th>object</th>
-        <th>generated</th>
-    </tr>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><a href="#GradeEvent">GradeEvent</a></td>
-        <td><a href="#Agent">Agent</a></td>
-        <td><a href="#action-graded">Graded</a></td>
-        <td><a href="#attempt">Attempt</a></td>
-        <td><a href="#Score">Score</a></td>
-    </tr>
-    <tr>
-        <td><a href="#ViewEvent">ViewEvent</a></td>
-        <td><a href="#Person">Person</a></td>
-        <td><a href="#action-viewed">Viewed</a></td>
-        <td><a href="#Result">Result</a><br /></td>
-        <td>&nbsp;</td>
-    </tr>
+        <tr>
+            <td><a href="#GradeEvent">GradeEvent</a></td>
+            <td><a href="#Agent">Agent</a></td>
+            <td><a href="#action-graded">Graded</a></td>
+            <td><a href="#attempt">Attempt</a></td>
+            <td><a href="#Score">Score</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Result">Result</a><br /></td>
+            <td>&nbsp;</td>
+        </tr>
     </tbody>
 </table>
 
-When constructing a <a href="#GradeEvent">GradeEvent</a> or <a href="#ViewEvent">ViewEvent</a>
-the following rules and recommendations apply:
+When constructing a <a href="#GradeEvent">GradeEvent</a> or <a href="#ViewEvent">ViewEvent</a> governed by the Grading
+Profile the following rules and recommendations apply:
+
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
         <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
