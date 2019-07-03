@@ -40,15 +40,56 @@
 
 <p>The Tool Use Profile defines a <a href="#ToolUseEvent">ToolUseEvent</a> for describing a
     <a href="#Person">Person</a> using a learning tool in a way that the tool's creators have
-    determined is an indication of a learning interaction. A <a href="#ToolUseEvent">ToolUseEvent</a>
-    MAY reference a generated <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>
-    containing one or more <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities that
-    provide information on a learner's "progress" using the tool. The following metrics can be recorded:
-    <a href="#metric-assessmentpassed">AssessmentPassed</a>,
-    <a href="#metric-assessmentsubmitted">AssessmentSubmitted</a>,
-    <a href="#metric-minutesontask">MinutesOnTask</a>,
-    <a href="#metric-skillsmastered">SkillsMastered</a>,
-    <a href="#metric-standardsmastered">StandardsMastered</a>,
-    <a href="#metric-unitscompleted">UnitsCompleted</a></li>,
-    <a href="#metric-unitspassed">UnitsPassed</a>,
-    <a href="#metric-wordsread">WordsRead</a>.</p>
+    determined is an indication of a learning interaction. A single action is described:
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#ToolUseEvent">ToolUseEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-used">Used</a></td>
+            <td><a href="#SoftwareApplication">SoftwareApplication</a></td>
+            <td><a href="#Entity">Entity</a> (<a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>)</td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#ToolUseEvent">ToolUseEvent</a> governed by the Tool Use Profile the following rules and
+recommendations apply:
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>A <code>generated</code> <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>
+        containing one or more <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities providing
+        information on a learner's "progress" using the tool MAY be expressed. The following metrics MAY
+        be recorded:
+        <ul>
+            <li><a href="#metric-assessmentpassed">AssessmentPassed</a></li>
+            <li><a href="#metric-assessmentsubmitted">AssessmentSubmitted</a></li>
+            <li><a href="#metric-minutesontask">MinutesOnTask</a></li>
+            <li><a href="#metric-skillsmastered">SkillsMastered</a></li>
+            <li><a href="#metric-standardsmastered">StandardsMastered</a></li>
+            <li><a href="#metric-unitscompleted">UnitsCompleted</a></li>
+            <li><a href="#metric-unitspassed">UnitsPassed</a></li>
+            <li><a href="#metric-wordsread">WordsRead</a></li>
+        </ul>
+    </li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>
+
