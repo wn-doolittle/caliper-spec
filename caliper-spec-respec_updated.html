@@ -56,12 +56,6 @@
                     role: "Author"
                 },
                 {
-                    name: "Kara Armstrong",
-                    company: "Unizin",
-                    companyURL: "https://unizin.org/",
-                    role: "Author"
-                },
-                {
                     name: "Markus Gylling",
                     company: "IMS Global (Sweden)",
                     companyURL: "https://www.imsglobal.org",
@@ -119,6 +113,11 @@
                 <a href="#event">Event</a> includes an <code>actor</code> attribute for representing the
                 <a href="#agent">Agent</a>.</p>
 
+            <p><a name="anonymousDef"></a><strong>Anonymous, Anonymization</strong>: Applying a process to transform the
+                properties of an <a href="#Entity">Entity</a> to obscure its identity such that the process cannot be
+                reversed nor can the <a href="#Entity">Entity</a> be afterwards distinguished from other
+                such-treated entities.</p>
+
             <p><a name="blankNodeDef"></a><strong>Blank Node Identifier</strong>: a string that begins with "_:" that is
                 used to identify an <a href="#entity">Entity</a> for which an <a href="#iriDef">IRI</a> is not provided.
                 An <a href="#entity">Entity</a> provisioned with a blank node identifier is neither dereferenceable nor has
@@ -135,6 +134,11 @@
                 vocabularies. Inclusion of a <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> context provides
                 an economical way of communicating document semantics to services interested in consuming Caliper event
                 data.</p>
+
+            <p><a name="depersonalizedDef"></a><strong>Depersonalize, Depersonalized</strong>: applying a process to
+                transform the properties of an <a href="#Entity">Entity</a> in order to obscure its identity such that
+                the process might be reversed thus preserving the ability to afterwards distinguish from other
+                such-treated entities.</p>
 
             <p><a name="describeDef"></a><strong>Describe</strong>: a Caliper message containing an <a href="#entity">Entity</a>
                 that is not directly associated with an <a href="#event">Event</a>. Entities can be sent asynchronously using
@@ -198,6 +202,11 @@
                 A Caliper <a href="#event">Event</a> includes an <code>object</code> attribute for representing the
                 resource.</p>
 
+            <p><a name="profileDef"></a><strong>Profile</strong>: a segment of the information model that describes
+                a learning activity or a supporting activity that helps facilitate learning. A Caliper profile comprises
+                related Caliper events, entities and actions that together describe the activity. A Caliper profile also
+                serves as a unit of certification.</p>
+
             <p><a name="sensorDef"></a><strong>Sensor</strong>: Software assets deployed within a learning application that
                 implement the <a href="#sensorAPIDef">Sensor API&trade;</a> for marshalling and transmitting Caliper data to
                 a target endpoint.</p>
@@ -214,7 +223,7 @@
             <p><a name="typeCoercionDef"></a><strong>Type Coercion</strong>: the process of coercing values to a particular
                 data type.</p>
 
-            <p><a name="uriDef"></a><strong>URI</strong>: the Uniform Resource Identifier (<a href="#uriDef">URI</a>)
+            <p><a name="uriDef"></a><strong>URI</strong>:  the Uniform Resource Identifier (<a href="#uriDef">URI</a>)
                 utilizes the US-ASCII character set to identify a resource. Per <a href="#rfc2396">RFC 2396</a> a
                 <a href="#uriDef">URI</a> "can be further classified as a locator, a name or both."  Both the Uniform
                 Resource Locator (<a href="#urlDef">URL</a>) and the Uniform Resource Name (<a href="#urnDef">URN</a>)
@@ -342,389 +351,55 @@
 
         <p>Caliper 1.2 includes the following profiles which are summarized individually below:</p>
 
-        <section id="profile-annotation" data-include="fragments/profiles/caliper-profile-annotation.html"></section>
-
-        <section id="profile-annotation-annotationevent-bookmarked"
-             data-include="fragments/profiles/caliper-profile-annotation-annotationevent-bookmarked.html"
-             class="notoc">
+        <section id="profile-annotation"
+             data-include="fragments/profiles/caliper-profile-annotation.html">
         </section>
-
-        <section id="profile-annotation-annotationevent-highlighted"
-             data-include="fragments/profiles/caliper-profile-annotation-annotationevent-highlighted.html"
-             class="notoc">
+        <section id="profile-assessment"
+             data-include="fragments/profiles/caliper-profile-assessment.html">
         </section>
-
-        <section id="profile-annotation-annotationevent-shared"
-             data-include="fragments/profiles/caliper-profile-annotation-annotationevent-shared.html"
-             class="notoc">
+        <section id="profile-assignable"
+             data-include="fragments/profiles/caliper-profile-assignable.html">
         </section>
-
-        <section id="profile-annotation-annotationevent-tagged"
-             data-include="fragments/profiles/caliper-profile-annotation-annotationevent-tagged.html"
-             class="notoc">
+        <section id="profile-feedback"
+             data-include="fragments/profiles/caliper-profile-feedback.html">
         </section>
-
-        <section id="profile-assessment" data-include="fragments/profiles/caliper-profile-assessment.html"></section>
-
-        <section id="profile-assessment-assessmentevent-started_submitted"
-             data-include="fragments/profiles/caliper-profile-assessment-assessmentevent-started_submitted.html"
-             class="notoc">
+        <section id="profile-forum"
+             data-include="fragments/profiles/caliper-profile-forum.html">
         </section>
-
-        <section id="profile-assessment-assessmentevent-paused_resumed"
-             data-include="fragments/profiles/caliper-profile-assessment-assessmentevent-paused_resumed.html"
-             class="notoc">
+        <section id="profile-grading"
+             data-include="fragments/profiles/caliper-profile-grading.html">
         </section>
-
-        <section id="profile-assessment-assessmentevent-restarted"
-             data-include="fragments/profiles/caliper-profile-assessment-assessmentevent-restarted.html"
-             class="notoc">
+        <section id="profile-media"
+             data-include="fragments/profiles/caliper-profile-media.html">
         </section>
-
-        <section id="profile-assessment-assessmentitemevent-started"
-             data-include="fragments/profiles/caliper-profile-assessment-assessmentitemevent-started.html"
-             class="notoc">
+        <section id="profile-reading"
+             data-include="fragments/profiles/caliper-profile-reading.html">
         </section>
-
-        <section id="profile-assessment-assessmentitemevent-skipped"
-             data-include="fragments/profiles/caliper-profile-assessment-assessmentitemevent-skipped.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assessment-assessmentitemevent-completed"
-             data-include="fragments/profiles/caliper-profile-assessment-assessmentitemevent-completed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assessment-navigationevent-navigatedto"
-             data-include="fragments/profiles/caliper-profile-assessment-navigationevent-navigatedto.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assessment-viewevent-viewed"
-             data-include="fragments/profiles/caliper-profile-assessment-viewevent-viewed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assignable" data-include="fragments/profiles/caliper-profile-assignable.html"></section>
-
-        <section id="profile-assignable-assignableevent-activated_deactivated"
-             data-include="fragments/profiles/caliper-profile-assignable-assignableevent-activated_deactivated.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assignable-assignableevent-started_submitted"
-             data-include="fragments/profiles/caliper-profile-assignable-assignableevent-started_submitted.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assignable-assignableevent-completed"
-             data-include="fragments/profiles/caliper-profile-assignable-assignableevent-completed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assignable-assignableevent-reviewed"
-             data-include="fragments/profiles/caliper-profile-assignable-assignableevent-reviewed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assignable-navigationevent-navigatedto"
-             data-include="fragments/profiles/caliper-profile-assignable-navigationevent-navigatedto.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-assignable-viewevent-viewed"
-             data-include="fragments/profiles/caliper-profile-assignable-viewevent-viewed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-feedback" data-include="fragments/profiles/caliper-profile-feedback.html"></section>
-
-        <section id="profile-feedback-feedbackevent-commented"
-                 data-include="fragments/profiles/caliper-profile-feedback-feedbackevent-commented.html"
-                 class="notoc">
-        </section>
-
-        <section id="profile-feedback-feedbackevent-ranked"
-                 data-include="fragments/profiles/caliper-profile-feedback-feedbackevent-ranked.html"
-                 class="notoc">
-        </section>
-
-        <section id="profile-forum" data-include="fragments/profiles/caliper-profile-forum.html"></section>
-
-        <section id="profile-forum-forumevent-subscribed_unsubscribed"
-             data-include="fragments/profiles/caliper-profile-forum-forumevent-subscribed_unsubscribed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-forum-messageevent-markedasread_markedasunread"
-             data-include="fragments/profiles/caliper-profile-forum-messageevent-markedasread_markedasunread.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-forum-messageevent-posted"
-             data-include="fragments/profiles/caliper-profile-forum-messageevent-posted.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-forum-navigationevent-navigatedto"
-             data-include="fragments/profiles/caliper-profile-forum-navigationevent-navigatedto.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-forum-threadnevent-markedasread_markedasunread"
-             data-include="fragments/profiles/caliper-profile-forum-threadevent-markedasread_markedasunread.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-forum-viewevent-viewed"
-             data-include="fragments/profiles/caliper-profile-forum-viewevent-viewed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-grading" data-include="fragments/profiles/caliper-profile-grading.html"></section>
-
-        <section id="profile-grading-gradeevent-graded"
-             data-include="fragments/profiles/caliper-profile-grading-gradeevent-graded.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-grading-viewevent-viewed"
-             data-include="fragments/profiles/caliper-profile-grading-viewevent-viewed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media" data-include="fragments/profiles/caliper-profile-media.html"></section>
-
-        <section id="profile-media-mediaevent-started_ended"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-started_ended.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-paused_resumed"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-paused_resumed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-restarted"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-restarted.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-forwardedto"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-forwardedto.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-jumpedto"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-jumpedto.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-changedresolution"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-changedresolution.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-changedsize"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-changedsize.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-changedspeed"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-changedspeed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-changedvolume"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-changedvolume.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-closecaptioning"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-closecaptioning.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-fullscreen"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-fullscreen.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-muted_unmuted"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-muted_unmuted.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-mediaevent-popout"
-             data-include="fragments/profiles/caliper-profile-media-mediaevent-popout.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-navigationevent-navigatedto"
-             data-include="fragments/profiles/caliper-profile-media-navigationevent-navigatedto.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-media-viewevent-viewed"
-             data-include="fragments/profiles/caliper-profile-media-viewevent-viewed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-reading" data-include="fragments/profiles/caliper-profile-reading.html"></section>
-
-        <section id="profile-reading-navigationevent-navigatedto"
-             data-include="fragments/profiles/caliper-profile-reading-navigationevent-navigatedto.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-reading-viewevent-viewed"
-             data-include="fragments/profiles/caliper-profile-reading-viewevent-viewed.html"
-             class="notoc">
-        </section>
-
         <section id="profile-resourcemanagement"
              data-include="fragments/profiles/caliper-profile-resourcemanagement.html">
         </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-archived_restored"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-archived_restored.html"
-             class="notoc">
+        <section id="profile-search"
+             data-include="fragments/profiles/caliper-profile-search.html">
         </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-copied"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-copied.html"
-             class="notoc">
+        <section id="profile-session"
+             data-include="fragments/profiles/caliper-profile-session.html">
         </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-created_deleted"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-created_deleted.html"
-             class="notoc">
+        <section id="profile-survey"
+             data-include="fragments/profiles/caliper-profile-survey.html">
         </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-described"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-described.html"
-             class="notoc">
+        <section id="profile-toollaunch"
+             data-include="fragments/profiles/caliper-profile-toollaunch.html">
         </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-downloaded_uploaded"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-downloaded_uploaded.html"
-             class="notoc">
+        <section id="profile-tooluse"
+             data-include="fragments/profiles/caliper-profile-tooluse.html">
         </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-modified"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-modified.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-printed"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-printed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-published_unpublished"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-published_unpublished.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-retrieved"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-retrieved.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-resourcemanagement-resourcemanagementevent-saved"
-             data-include="fragments/profiles/caliper-profile-resourcemanagement-resourcemanagementevent-saved.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-search" data-include="fragments/profiles/caliper-profile-search.html"></section>
-
-        <section id="profile-search-searchevent-searched"
-                 data-include="fragments/profiles/caliper-profile-search-searchevent-searched.html"
-                 class="notoc">
-        </section>
-
-        <section id="profile-session" data-include="fragments/profiles/caliper-profile-session.html"></section>
-
-        <section id="profile-session-sessionevent-loggedin_loggedout"
-             data-include="fragments/profiles/caliper-profile-session-sessionevent-loggedin_loggedout.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-session-sessionevent-timedout"
-             data-include="fragments/profiles/caliper-profile-session-sessionevent-timedout.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-survey" data-include="fragments/profiles/caliper-profile-survey.html"></section>
-
-        <section id="profile-survey-navigationevent-navigatedto"
-                 data-include="fragments/profiles/caliper-profile-survey-navigationevent-navigatedto.html"
-                 class="notoc">
-        </section>
-
-        <section id="profile-survey-questionnaireevent-started_submitted"
-             data-include="fragments/profiles/caliper-profile-survey-questionnaireevent-started_submitted.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-survey-questionnaireitemevent-started"
-             data-include="fragments/profiles/caliper-profile-survey-questionnaireitemevent-started.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-survey-questionnaireitemevent-skipped"
-             data-include="fragments/profiles/caliper-profile-survey-questionnaireitemevent-skipped.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-survey-questionnaireitemevent-completed"
-             data-include="fragments/profiles/caliper-profile-survey-questionnaireitemevent-completed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-survey-surveyevent-optedin_optedout"
-             data-include="fragments/profiles/caliper-profile-survey-surveyevent-optedin_optedout.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-survey-surveyinvitationevent-accepted_declined"
-             data-include="fragments/profiles/caliper-profile-survey-surveyinvitationevent-accepted_declined.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-survey-surveyinvitationevent-sent"
-             data-include="fragments/profiles/caliper-profile-survey-surveyinvitationevent-sent.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-survey-viewevent-viewed"
-             data-include="fragments/profiles/caliper-profile-survey-viewevent-viewed.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-toollaunch" data-include="fragments/profiles/caliper-profile-toollaunch.html"></section>
-
-        <section id="profile-toollaunch-toollaunchevent-launched_returned"
-             data-include="fragments/profiles/caliper-profile-toollaunch-toollaunchevent-launched_returned.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-tooluse" data-include="fragments/profiles/caliper-profile-tooluse.html"></section>
-
-        <section id="profile-tooluse-tooluseevent-used"
-             data-include="fragments/profiles/caliper-profile-tooluse-tooluseevent-used.html"
-             class="notoc">
-        </section>
-
-        <section id="profile-general">
-            <h3>General Profile</h3>
-
+        <section id="profile-general"
+             data-include="fragments/profiles/caliper-profile-general.html">
         </section>
     </section>
 
     <section id="serialization">
-        <h2>Serialization of the Model</h2>
+        <h2>Serialization</h2>
 
         <p>Over the last decade the advent of cloud-based, networked applications have led to changes in the way data
             is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course
@@ -794,22 +469,8 @@
                 <a href="#event">Event</a> key:value pairings are mapped to [IRIs] in the referenced context.</p>
 
             <figure class="example">
-                <figcaption>Referencing the Caliper JSON-LD context</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
-  "type": "Event",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Created",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/123",
-    "type": "Document"
-  },
-  "eventTime": "2018-11-15T10:15:00.000Z"
-}</code></pre>
+                <figcaption> - Referencing the Caliper JSON-LD context</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventSessionLoggedIn.json"></code></pre>
             </figure>
 
             <p>As noted above, a <a href="#jsonldDef">JSON-LD</a> document can reference more than one context. Subject
@@ -831,7 +492,7 @@
             <figure class="example">
                 <figcaption>Combining inline and referenced JSON-LD contexts</figcaption>
                 <pre><code>{
-TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
+TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 }</code></pre>
             </figure>
         </section>
@@ -872,25 +533,9 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 <a href="#rfc4122">RFC 4122</a>, which describes a <a href="#urnDef">URN</a> namespace for
                 <a href="#uuidDef">UUIDs</a>.</p>
 
-
             <figure class="example">
-                <figcaption>Event and Entity identifiers</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f",
-  "type": "NavigationEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  . . .
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/2",
-    "type": "WebPage",
-    . . .
-  },
-  . . .
-}</code></pre>
+                <figcaption> - Event and Entity identifiers</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventNavigationNavigatedTo.json"></code></pre>
             </figure>
         </section>
 
@@ -924,47 +569,13 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 interpreted as <a href="#iriDef">IRIs</a> (as in the case of <code>edApp</code>). In a like manner,
                 the <code>action</code> value is coerced to the <code>@vocab</code> keyword indicating that the value
                 is to be interpreted as a <a href="#termDef">Term</a> defined in the active context or as an
-                <a href="#iriDef">IRI</a>; in this case <em>Posted</em>.  Terms such as <code>name</code>,
+                <a href="#iriDef">IRI</a>; in this case <em>Posted</em>. Terms such as <code>name</code>,
                 <code>description</code>, <code>dateCreated</code>, <code>dateModified</code> and <code>duration</code>
                 are coerced to a particular value type such as a string, integer, boolean or date.</p>
 
             <figure class="example">
-                <figcaption>Node and value types</figcaption>
-                <pre><code>{
-  "@context": {
-    "id": "@id",
-    "type": "@type",
-    "caliper": "http://purl.imsglobal.org/caliper/",
-    "verb": "http://purl.imsglobal.org/caliper/actions/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "MessageEvent": "caliper:MessageEvent",
-    "Message": "caliper:Message",
-    "Person": "caliper:Person",
-    "actor": {"@id": "caliper:actor", "@type": "@id"},
-    "action": {"@id": "caliper:action", "@type": "@vocab"},
-    "edApp": {"@id": "caliper:edApp", "@type": "@id"},
-    "object": {"@id": "caliper:object", "@type": "@id"},
-    "body": {"@id": "caliper:body", "@type": "xsd:string"},
-    "dateCreated": {"@id": "caliper:dateCreated", "@type": "xsd:dateTime"},
-    "eventTime": {"@id": "caliper:eventTime", "@type": "xsd:dateTime"},
-    "Posted": "verb:Posted"
-  },
-  "type": "MessageEvent",
-  "id": "urn:uuid:0d015a85-abf5-49ee-abb1-46dbd57fe64e",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Posted",
-  "object": {
-    "id": "https://example.edu/sections/1/forums/2/topics/1/messages/2",
-    "type": "Message",
-    "body": "What does Caliper Event JSON-LD look like?",
-    "dateCreated": "2018-12-15T10:15:00.000Z"
-  },
-  "eventTime": "2018-12-15T10:15:00.000Z",
-  "edApp": "https://example.edu"
-}</code></pre>
+                <figcaption> - JSON-LD node and value types</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventMessagePostedInlineContext.json"></code></pre>
             </figure>
 
             <p>As the abbreviated <a href="#forumEvent">ForumEvent</a> example below demonstrates, in cases where
@@ -976,46 +587,8 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 entity's <a href="#iriDef">IRI</a>.</p>
 
             <figure class="example">
-                <figcaption><code>membership</code> and <code>session</code> references to <code>actor</code> and
-                    <code>group</code> expressed as IRIs</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
-  "type": "ForumEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Subscribed",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
-    "type": "Forum",
-    "name": "Caliper Forum"
-  },
-  "eventTime": "2018-11-15T10:16:00.000Z",
-  "edApp": {
-    "id": "https://example.edu/forums",
-    "type": "SoftwareApplication"
-  },
-  "group": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-    "roles": [ "Learner" ]
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "user": "https://example.edu/users/554433",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
+                <figcaption> - Referencing the Caliper JSON-LD context</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventForumSubscribed.json"></code></pre>
             </figure>
 
             <p>Indeed, the example <a href="#forumEvent">ForumEvent</a> could be thinned still further if each
@@ -1023,20 +596,58 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 that permits consumers to retrieve a more robust representation of the object if required.</p>
 
             <figure class="example">
-                <figcaption>Thinned ForumEvent comprised of (dereferenceable) IRI values</figcaption>
-                <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
-  "type": "ForumEvent",
-  "actor": "https://example.edu/users/554433",
-  "action": "Subscribed",
-  "object": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
-  "eventTime": "2018-11-15T10:16:00.000Z",
-  "edApp": "https://example.edu/forums",
-  "group": "https://example.edu/terms/201801/courses/7/sections/1",
-  "membership": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-  "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
-}</code></pre>
+                <figcaption> - Thinned ForumEvent comprised of (dereferenceable) IRI values</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventForumSubscribedThinned.json"></code></pre>
+            </figure>
+        </section>
+
+        <section>
+            <h3>Anonymous Entities</h3>
+
+            <p>Caliper has a formal convention for serializing <a href="#anonymousDef">anonymous</a> entities. When
+                a <a href="#sensor">Sensor</a> application wants to explicitly indicate that an
+                <a href="#Entity">Entity</a> it is sending in an <a href="#Event">Event</a> is
+                <a href="#anonymousDef">anonymous</a>, it should transmit an <a href="#anonymousDef">anonymous</a>
+                form of that <a href="#Entity">Entity</a> in its normal place within the <a href="#Event">Event</a>.
+                Caliper indicates an <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a> by using the
+                full Caliper vocabulary <code>type</code> <a href="#iriDef">IRI</a> value for that
+                <a href="#Entity">Entity</a> as its <code>id</code> value.</p>
+
+            <p>Note that because a Caliper <a href="#endpoint">Endpoint</a> might choose to store received Caliper
+                entities as individual nodes in a data graph, it may not be appropriate for a
+                <a href="#sensor">Sensor</a> to send more properties in an <a href="#anonymousDef">anonymous</a>
+                <a href="#Entity">Entity</a> than its <code>id</code> and <code>type</code>, as these properties may
+                not get recorded or may get overwritten by subsequent uses of the same type of
+                <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>. By best practice, a
+                <a href="#sensor">Sensor</a> should always send <a href="#anonymousDef">anonymous</a> entities fully
+                composed in-line within an <a href="#Event">Event</a> and not separately described. Also by best
+                practice, a Caliper <a href="endpoint">Endpoint</a> should treat this
+                <a href="#anonymousDef">anonymous</a> use in a distinct way to preserve any additional properties that
+                might also be carried with the <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>
+                within the <a href="#Event">Event</a>.</p>
+
+            <p><a href="#sensor">Sensor</a> applications SHOULD NOT use this method to convey
+                <a href="#depersonalizedDef">depersonalized</a> entities. The methods by which
+                <a href="#sensor">Sensor</a> applications might <a href="#depersonalizedDef">depersonalize</a> entities
+                to obscure or safeguard their identity are not within the scope of this document.</p>
+
+            <p>The following example illustrates how an <a href="#anonymousDef">anonymous</a>
+                <a href="#Person">Person</a> might be transmitted by a <a href="#sensor">Sensor</a>:</p>
+
+            <figure class="example">
+                <figcaption> - Anonymous Person Entity - JSON-LD</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEntityPersonAnonymous.json"></code></pre>
+            </figure>
+
+            <p>A Caliper <a href="#Event">Event</a> can include multiple <a href="#anonymousDef">anonymous</a> entities,
+                as in the case of the following <a href="#ToolUseEvent">ToolUseEvent</a> where the <code>edApp</code>
+                has been configured to report only the times and context of its use, but not to identify the
+                <code>actor</code> or the <code>group</code> using the <a href="#SoftwareApplication">SoftwareApplication</a>.
+            </p>
+
+            <figure class="example">
+                <figcaption> - ToolUseEvent with anonymous actor and group - JSON-LD</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEventToolUseUsedAnonymous.json"></code></pre>
             </figure>
         </section>
     </section>
@@ -1152,223 +763,13 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 <a href="#jsonld">JSON-LD</a> document.</p>
 
             <figure class="example">
-                <figcaption>Single Event Payload</figcaption>
-                <pre><code>{
-      "sensor": "https://example.edu/sensors/1",
-      "sendTime": "2018-11-15T11:05:01.000Z",
-      "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-      "data": [{
-        "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-        "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
-        "type": "ToolUseEvent",
-        "actor": {
-          "id": "https://example.edu/users/554433",
-          "type": "Person"
-        },
-        "action": "Used",
-        "object": {
-          "id": "https://example.edu",
-          "type": "SoftwareApplication"
-        },
-        "eventTime": "2018-11-15T10:15:00.000Z",
-        "edApp": "https://example.edu",
-        "group": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection",
-          "courseNumber": "CPS 435-01",
-          "academicSession": "Fall 2018"
-        },
-        "membership": {
-          "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-          "type": "Membership",
-          "member": "https://example.edu/users/554433",
-          "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-          "roles": ["Learner"],
-          "status": "Active",
-          "dateCreated": "2018-08-01T06:00:00.000Z"
-        },
-        "session": {
-          "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-          "type": "Session",
-          "startedAtTime": "2018-11-15T10:00:00.000Z"
-        }
-      }]
-    }</code></pre>
+                <figcaption> - Envelope: single event payload</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEnvelopeEventSingle.json"></code></pre>
             </figure>
 
             <figure class="example">
-                <figcaption>Mixed Payload</figcaption>
-                <pre><code>{
-      "sensor": "https://example.edu/sensors/1",
-      "sendTime": "2018-11-15T11:05:01.000Z",
-      "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-      "data": [
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-          "id": "https://example.edu/users/554433",
-          "type": "Person",
-          "dateCreated": "2018-08-01T06:00:00.000Z",
-          "dateModified": "2018-09-02T11:30:00.000Z"
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-          "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-          "type": "Assessment",
-          "name": "Quiz One",
-          "items": [
-            {
-              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/1",
-              "type": "AssessmentItem"
-            },
-            {
-              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/2",
-              "type": "AssessmentItem"
-            },
-            {
-              "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/3",
-              "type": "AssessmentItem"
-            }
-          ],
-          "dateCreated": "2018-08-01T06:00:00.000Z",
-          "dateModified": "2018-09-02T11:30:00.000Z",
-          "datePublished": "2018-08-15T09:30:00.000Z",
-          "dateToActivate": "2018-08-16T05:00:00.000Z",
-          "dateToShow": "2018-08-16T05:00:00.000Z",
-          "dateToStartOn": "2018-08-16T05:00:00.000Z",
-          "dateToSubmit": "2018-09-28T11:59:59.000Z",
-          "maxAttempts": 2,
-          "maxScore": 15.0,
-          "maxSubmits": 2,
-          "version": "1.0"
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "https://example.edu",
-          "type": "SoftwareApplication",
-          "version": "v2"
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "https://example.edu/terms/201801/courses/7/sections/1",
-          "type": "CourseSection",
-          "academicSession": "Fall 2018",
-          "courseNumber": "CPS 435-01",
-          "name": "CPS 435 Learning Analytics, Section 01",
-          "category": "seminar",
-          "subOrganizationOf": {
-            "id": "https://example.edu/terms/201801/courses/7",
-            "type": "CourseOffering",
-            "courseNumber": "CPS 435"
-          },
-          "dateCreated": "2018-08-01T06:00:00.000Z"
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594",
-          "type": "AssessmentEvent",
-          "actor": "https://example.edu/users/554433",
-          "action": "Started",
-          "object": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-          "generated": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "type": "Attempt",
-            "assignee": "https://example.edu/users/554433",
-            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-            "count": 1,
-            "dateCreated": "2018-11-15T10:15:00.000Z",
-            "startedAtTime": "2018-11-15T10:15:00.000Z"
-          },
-          "eventTime": "2018-11-15T10:15:00.000Z",
-          "edApp": "https://example.edu",
-          "group": "https://example.edu/terms/201801/courses/7/sections/1",
-          "membership": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-            "type": "Membership",
-            "member": "https://example.edu/users/554433",
-            "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-            "roles": [ "Learner" ],
-            "status": "Active",
-            "dateCreated": "2018-08-01T06:00:00.000Z"
-          },
-          "session": {
-            "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-            "type": "Session",
-            "startedAtTime": "2018-11-15T10:00:00.000Z"
-          }
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33",
-          "type": "AssessmentEvent",
-          "actor": "https://example.edu/users/554433",
-          "action": "Submitted",
-          "object": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-          "generated": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "type": "Attempt",
-            "assignee": "https://example.edu/users/554433",
-            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-            "count": 1,
-            "dateCreated": "2018-11-15T10:15:00.000Z",
-            "startedAtTime": "2018-11-15T10:15:00.000Z",
-            "endedAtTime": "2018-11-15T10:55:12.000Z",
-            "duration": "PT40M12S"
-          },
-          "eventTime": "2018-11-15T10:25:30.000Z",
-          "edApp": "https://example.edu",
-          "group": "https://example.edu/terms/201801/courses/7/sections/1",
-          "membership": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
-            "type": "Membership",
-            "member": "https://example.edu/users/554433",
-            "organization": "https://example.edu/terms/201801/courses/7/sections/1",
-            "roles": ["Learner"],
-            "status": "Active",
-            "dateCreated": "2018-08-01T06:00:00.000Z"
-          },
-          "session": {
-            "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-            "type": "Session",
-            "startedAtTime": "2018-11-15T10:00:00.000Z"
-          }
-        },
-        {
-          "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-          "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
-          "type": "GradeEvent",
-          "actor": {
-            "id": "https://example.edu/autograder",
-            "type": "SoftwareApplication",
-            "version": "v2"
-          },
-          "action": "Graded",
-          "object": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "type": "Attempt",
-            "assignee": "https://example.edu/users/554433",
-            "assignable": "https://example.edu/terms/201801/courses/7/sections/1/assess/1?ver=v1p0",
-            "count": 1,
-            "dateCreated": "2018-11-15T10:15:00.000Z",
-            "startedAtTime": "2018-11-15T10:15:00.000Z",
-            "endedAtTime": "2018-11-15T10:55:12.000Z",
-            "duration": "PT40M12S"
-          },
-          "eventTime": "2018-11-15T10:57:06.000Z",
-          "edApp": "https://example.edu",
-          "generated": {
-            "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
-            "type": "Score",
-            "attempt": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
-            "maxScore": 15.0,
-            "scoreGiven": 10.0,
-            "scoredBy": "https://example.edu/autograder",
-            "comment": "auto-graded exam",
-            "dateCreated": "2018-11-15T10:56:00.000Z"
-          },
-          "group": "https://example.edu/terms/201801/courses/7/sections/1"
-        }
-      ]
-    }</code></pre>
+                <figcaption> - Envelope: mixed payload</figcaption>
+                <pre><code data-include="fixtures/v1p2/caliperEnvelopeMixedBatch.json"></code></pre>
             </figure>
         </section>
 
@@ -1376,7 +777,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
             <h3>HTTP Requests</h3>
 
             <p>A Caliper <a href="#sensor">Sensor</a> MUST be capable of transmitting Caliper data successfully to a
-                Caliper <a href="#endpoint">Endpoint</a>. Communication with an <a href="#endpoint">Endpoint</a> is
+                Caliper <a href="#endpoint">Endpoint</a>.  Communication with an <a href="#endpoint">Endpoint</a> is
                 limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted
                 with Transport Layer Security (TLS).</p>
 
@@ -1438,7 +839,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
             <h3>HTTP Responses</h3>
 
             <p>Following receipt of a <a href="#sensor">Sensor</a> HTTP request message, the
-                <a href="#endpoint">Endpoint</a> MUST reply with a HTTP response message. The response will include
+                <a href="#endpoint">Endpoint</a> MUST reply with an HTTP response message. The response will include
                 a three-digit status code indicating whether or not the <a href="#endpoint">Endpoint</a> was able to
                 understand and satisfy the request, as defined by <a href="#rfc7231">RFC 7231</a>.</p>
 
@@ -1481,94 +882,13 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
                 <a href="#sensor">Sensor</a> implementations may lack sophisticated error handling.</p>
         </section>
 
-        <section id="endpoint_config">
-            <h3>Configuration Information</h3>
-
-            <p>Before sending Caliper data, a <a href="#sensor">Sensor</a> MAY choose to check the current status of an
-                <a href="#endpoint">Endpoint</a> using the standard GET request method, with the same restrictions on
-                transport security and authorization as enforced when sending Caliper data.</p>
-
-            <ul>
-                <li>
-                    If an <a href="#endpoint">Endpoint</a> receives this request alongside appropriate authorization, it
-                    MUST respond with a `200 OK` status code. The body of a successful response MUST contain its
-                    configuration parameters in a JSON data structure.
-                </li>
-                <li>
-                    If the <a href="#sensor">Sensor</a> sends a message without an `Authorization` request header of
-                    the RECOMMENDED form or sends a token credential that the <a href="#endpoint">Endpoint</a> is unable to
-                    either validate or determine has sufficient privileges to submit Caliper data, the
-                    <a href="#endpoint">Endpoint</a> SHOULD reply with a `401 Unauthorized` response.
-                </li>
-            </ul>
-
-            <p>A <a href="#sensor">Sensor</a> sending a ping request SHOULD interpret any status code besides `200 OK` or
-                `401 Unauthorized` as the <a href="#endpoint">Endpoint</a> indicating that its service is currently
-                unavailable.</p>
-
-            <p>The properties of an Endpoint configuration are listed below. Each property MUST be included no more than
-                once. No custom properties are permitted.</p>
-
-            <table class="data">
-                <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                    <th>Disposition</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>caliper_maximum_payload_size</td>
-                    <td>integer</td>
-                    <td>Size (in kilobytes) of the maximum payload the <a href="#endpoint">Endpoint</a> can accept in a
-                        single POST request.</td>
-                    <td>Optional</td>
-                </tr>
-                <tr>
-                    <td>caliper_supported_versions </td>
-                    <td>array</td>
-                    <td>List of IRIs identifying the Caliper version(s) the <a href="#endpoint">Endpoint</a> supports.
-                        Sensors MUST ensure that the Caliper data they send to the Endpoint is based on one of the Caliper
-                        context document versions found in this list. By best practice, Tools should (if able) choose to
-                        use the most modern supported version in this list.</td>
-                    <td>Required</td>
-                </tr>
-                <tr>
-                    <td>caliper_supported_extensions</td>
-                    <td>Object</td>
-                    <td>Key-value map of additional information that the <a href="#endpoint">Endpoint</a> chooses to
-                        provide.</td>
-                    <td>Optional</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <figure class="example">
-                <figcaption>Endpoint configuration example</figcaption>
-                <pre><code>{
-  "caliper_maximum_payload_size": 512,
-  "caliper_supported_versions": [
-    "http://purl.imsglobal.org/ctx/caliper/v1p1",
-    "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
-    "http://purl.imsglobal.org/ctx/caliper/v1p2"
-  ],
-  "caliper_supported_extensions": {
-    "endpoint_name": "Example Endpoint",
-    "endpoint_version": "1.3.0"
-  }
-}</code></pre>
-            </figure>
-        </section>
-
         <section id="stringLengths">
             <h3>String Lengths and Storage</h3>
             <p>Certain Caliper data properties are expressed as strings of variable length.
                 <a href="#jsonldDef">JSON-LD</a> also defines a set of processing algorithms for transforming
                 <a href="#jsonldDef">JSON-LD</a> documents in ways that can change the length of keys and values
                 that are expressed as <a href="#iridDef">IRIs</a>, compact <a href="#iridDef">IRIs</a> or
-                <a href="#termDef">Terms</a>. Many implementers will choose to store each incoming
+                <a href="#termDef">Terms</a>.  Many implementers will choose to store each incoming
                 <a href="#event">Event</a> and <a href="#entity">Entity</a> <em><a href="#describeDef">describe</a></em>
                 received as a <a href="#jsonldDef">JSON-LD</a> document or as a graph data structure consisting of
                 nodes, edges and properties.  Others may opt to normalize or &quot;flatten&quot; some or all of the nested
@@ -1580,208 +900,615 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
         </section>
     </section>
 
-    <section id="events">
-        <h2>Event subtypes</h2>
+    <section id="events" class="appendix">
+        <h2>Events</h2>
         <section id="AnnotationEvent" data-include="fragments/events/caliper-event-annotation.html"></section>
         <figure class="example">
-            <figcaption> - AnnotationEvent (Bookmarked) - JSON-LD</figcaption>
+            <figcaption> - AnnotationEvent (Bookmarked) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAnnotationBookmarked.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - AnnotationEvent (Highlighted) - JSON-LD</figcaption>
+            <figcaption> - AnnotationEvent (Highlighted) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAnnotationHighlighted.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - AnnotationEvent (Shared) - JSON-LD</figcaption>
+            <figcaption> - AnnotationEvent (Shared) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAnnotationShared.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - AnnotationEvent (Tagged) - JSON-LD</figcaption>
+            <figcaption> - AnnotationEvent (Tagged) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAnnotationTagged.json"></code></pre>
         </figure>
         <section id="AssessmentEvent" data-include="fragments/events/caliper-event-assessment.html"></section>
         <figure class="example">
-            <figcaption> - AssessmentEvent (Started) - JSON-LD</figcaption>
+            <figcaption> - AssessmentEvent (Started) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAssessmentStarted.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - AssessmentEvent (Submitted) - JSON-LD</figcaption>
+            <figcaption> - AssessmentEvent (Submitted) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAssessmentSubmitted.json"></code></pre>
         </figure>
         <section id="AssessmentItemEvent" data-include="fragments/events/caliper-event-assessmentitem.html"></section>
         <figure class="example">
-            <figcaption> - AssessmentItemEvent (Completed) - JSON-LD</figcaption>
+            <figcaption> - AssessmentItemEvent (Completed) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAssessmentItemCompleted.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - AssessmentItemEvent (Skipped) - JSON-LD</figcaption>
+            <figcaption> - AssessmentItemEvent (Skipped) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAssessmentItemSkipped.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - AssessmentItemEvent (Started) - JSON-LD</figcaption>
+            <figcaption> - AssessmentItemEvent (Started) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAssessmentItemStarted.json"></code></pre>
         </figure>
         <section id="AssignableEvent" data-include="fragments/events/caliper-event-assignable.html"></section>
         <figure class="example">
-            <figcaption> - AssignableEvent (Activated) - JSON-LD</figcaption>
+            <figcaption> - AssignableEvent (Activated) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventAssignableActivated.json"></code></pre>
         </figure>
         <section id="FeedbackEvent" data-include="fragments/events/caliper-event-feedback.html"></section>
         <figure class="example">
-            <figcaption> - FeedbackEvent (Commented) - JSON-LD</figcaption>
+            <figcaption> - FeedbackEvent (Commented) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventFeedbackCommented.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - FeedbackEvent (Ranked) - JSON-LD</figcaption>
+            <figcaption> - FeedbackEvent (Ranked) with Rating with LikertScale JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventFeedbackRanked.json"></code></pre>
         </figure>
         <section id="ForumEvent" data-include="fragments/events/caliper-event-forum.html"></section>
         <figure class="example">
-            <figcaption> - ForumEvent (Subscribed) - JSON-LD</figcaption>
+            <figcaption> - ForumEvent (Subscribed Forum) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventForumSubscribed.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - ForumEvent (Subscribed) Thinned JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventForumSubscribedThinned.json"></code></pre>
         </figure>
         <section id="GradeEvent" data-include="fragments/events/caliper-event-grade.html"></section>
         <figure class="example">
-            <figcaption> - GradeEvent (Graded) - JSON-LD</figcaption>
+            <figcaption> - GradeEvent (Graded Assessment) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventGradeGraded.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - GradeEvent (GradedItem) - JSON-LD</figcaption>
+            <figcaption> - GradeEvent (Graded AssessmentItem) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventGradeGradedItem.json"></code></pre>
         </figure>
         <section id="MediaEvent" data-include="fragments/events/caliper-event-media.html"></section>
         <figure class="example">
-            <figcaption> - MediaEvent (PausedVideo) - JSON-LD</figcaption>
+            <figcaption> - MediaEvent (Paused) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventMediaPausedVideo.json"></code></pre>
         </figure>
         <section id="MessageEvent" data-include="fragments/events/caliper-event-message.html"></section>
         <figure class="example">
-            <figcaption> - MessageEvent (Posted) - JSON-LD</figcaption>
+            <figcaption> - MessageEvent (Posted Message) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventMessagePosted.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - MessageEvent (Replied) - JSON-LD</figcaption>
+            <figcaption> - MessageEvent (Posted Message with ReplyTo) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventMessageReplied.json"></code></pre>
         </figure>
         <section id="NavigationEvent" data-include="fragments/events/caliper-event-navigation.html"></section>
         <figure class="example">
-            <figcaption> - NavigationEvent (NavigatedTo) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventNavigationNavigatedTo.json"></code></pre>
-        </figure>
-        <figure class="example">
-            <figcaption> - NavigationEvent (NavigatedToCollectionItem) - JSON-LD</figcaption>
+            <figcaption> - NavigationEvent (NavigatedTo DigitalResourceCollection) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventNavigationNavigatedToCollectionItem.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - NavigationEvent (NavigatedToThinned) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventNavigationNavigatedToThinned.json"></code></pre>
+            <figcaption> - NavigationEvent (NavigatedTo QuestionnaireItem) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventNavigationNavigatedToQuestionnaireItem.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - NavigationEvent (NavigatedTo WebPage) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventNavigationNavigatedToWebPage.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - NavigationEvent (NavigatedTo) Thinned JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventNavigationNavigatedToWebPageThinned.json"></code></pre>
         </figure>
         <section id="QuestionnaireEvent" data-include="fragments/events/caliper-event-questionnaire.html"></section>
         <figure class="example">
-            <figcaption> - QuestionnaireEvent (Completed) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireCompleted.json"></code></pre>
+            <figcaption> - QuestionnaireEvent (Started) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireStarted.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - QuestionnaireEvent (Started) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireStarted.json"></code></pre>
+            <figcaption> - QuestionnaireEvent (Submitted) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireSubmitted.json"></code></pre>
         </figure>
         <section id="QuestionnaireItemEvent" data-include="fragments/events/caliper-event-questionnaireitem.html"></section>
         <figure class="example">
-            <figcaption> - QuestionnaireItemEvent (Started) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireItemStarted.json"></code></pre>
+            <figcaption> - QuestionnaireItemEvent (Completed OpenEndedQuestion) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireItemCompletedOpenEndedQuestion.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - QuestionnaireItemEvent (Submitted) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireItemSubmitted.json"></code></pre>
+            <figcaption> - QuestionnaireItemEvent (Completed RatingScaleQuestion) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireItemCompletedRatingScaleQuestion.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - QuestionnaireItemEvent (Started) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventQuestionnaireItemStarted.json"></code></pre>
         </figure>
         <section id="ResourceManagementEvent" data-include="fragments/events/caliper-event-resourcemanagement.html"></section>
         <figure class="example">
-            <figcaption> - ResourceManagementEvent (Copied) - JSON-LD</figcaption>
+            <figcaption> - ResourceManagementEvent (Copied) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventResourceManagementCopied.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - ResourceManagementEvent (Created) - JSON-LD</figcaption>
+            <figcaption> - ResourceManagementEvent (Created) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventResourceManagementCreated.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - ResourceManagementEvent (Printed) - JSON-LD</figcaption>
+            <figcaption> - ResourceManagementEvent (Printed) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventResourceManagementPrinted.json"></code></pre>
         </figure>
         <section id="SearchEvent" data-include="fragments/events/caliper-event-search.html"></section>
         <figure class="example">
-            <figcaption> - SearchEvent (Searched) - JSON-LD</figcaption>
+            <figcaption> - SearchEvent (Searched) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventSearchSearched.json"></code></pre>
         </figure>
         <section id="SessionEvent" data-include="fragments/events/caliper-event-session.html"></section>
         <figure class="example">
-            <figcaption> - SessionEvent (LoggedIn) - JSON-LD</figcaption>
+            <figcaption> - SessionEvent (LoggedIn SoftwareApplication) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventSessionLoggedIn.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - SessionEvent (LoggedInExtended) - JSON-LD</figcaption>
+            <figcaption> - SessionEvent (LoggedIn SoftwareApplication) with Session with Client JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventSessionLoggedInExtended.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - SessionEvent (LoggedOut) - JSON-LD</figcaption>
+            <figcaption> - SessionEvent (LoggedOut) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventSessionLoggedOut.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - SessionEvent (TimedOut) - JSON-LD</figcaption>
+            <figcaption> - SessionEvent (TimedOut) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventSessionTimedOut.json"></code></pre>
         </figure>
         <section id="SurveyEvent" data-include="fragments/events/caliper-event-survey.html"></section>
         <figure class="example">
-            <figcaption> - SurveyEvent (OptedIn) - JSON-LD</figcaption>
+            <figcaption> - SurveyEvent (OptedIn) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventSurveyOptedIn.json"></code></pre>
         </figure>
         <section id="SurveyInvitationEvent" data-include="fragments/events/caliper-event-surveyinvitation.html"></section>
         <figure class="example">
-            <figcaption> - SurveyInvitationEvent (Accepted) - JSON-LD</figcaption>
+            <figcaption> - SurveyInvitationEvent (Accepted) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventSurveyInvitationAccepted.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - SurveyInvitationEvent (Sent) - JSON-LD</figcaption>
+            <figcaption> - SurveyInvitationEvent (Sent) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventSurveyInvitationSent.json"></code></pre>
         </figure>
         <section id="ThreadEvent" data-include="fragments/events/caliper-event-thread.html"></section>
         <figure class="example">
-            <figcaption> - ThreadEvent (MarkedAsRead) - JSON-LD</figcaption>
+            <figcaption> - ThreadEvent (MarkedAsRead) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventThreadMarkedAsRead.json"></code></pre>
         </figure>
         <section id="ToolLaunchEvent" data-include="fragments/events/caliper-event-toollaunch.html"></section>
         <figure class="example">
-            <figcaption> - ToolLaunchEvent (Launched) - JSON-LD</figcaption>
+            <figcaption> - ToolLaunchEvent (Launched) with FederatedSession JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventToolLaunchLaunched.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - ToolLaunchEvent (Returned) - JSON-LD</figcaption>
+            <figcaption> - ToolLaunchEvent (Returned) with FederatedSession JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventToolLaunchReturned.json"></code></pre>
         </figure>
         <section id="ToolUseEvent" data-include="fragments/events/caliper-event-tooluse.html"></section>
         <figure class="example">
-            <figcaption> - ToolUseEvent (Used) - JSON-LD</figcaption>
+            <figcaption> - ToolUseEvent (Used SoftwareApplication) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventToolUseUsed.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - ToolUseEvent (UsedWithProgress) - JSON-LD</figcaption>
+            <figcaption> - ToolUseEvent (Used SoftwareApplication) with Person Anonymous, CourseSection Anonymous and Membership Anonymous JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventToolUseUsedAnonymous.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - ToolUseEvent (Used SoftwareApplication with Progress) JSON-LD</figcaption>
             <pre><code data-include="fixtures/v1p2/caliperEventToolUseUsedWithProgress.json"></code></pre>
         </figure>
         <section id="ViewEvent" data-include="fragments/events/caliper-event-view.html"></section>
         <figure class="example">
-            <figcaption> - ViewEvent (Viewed) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventViewViewed.json"></code></pre>
+            <figcaption> - ViewEvent (Viewed Document) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventViewViewedDocument.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - ViewEvent (ViewedExtended) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventViewViewedExtended.json"></code></pre>
+            <figcaption> - ViewEvent (Viewed Document) Extended JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventViewViewedDocumentExtended.json"></code></pre>
         </figure>
         <figure class="example">
-            <figcaption> - ViewEvent (ViewedFedSession) - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEventViewViewedFedSession.json"></code></pre>
+            <figcaption> - ViewEvent (Viewed Document) with FederatedSession and CourseSection Extended JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventViewViewedDocumentFedSession.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - ViewEvent (Viewed QuestionnaireItem) JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEventViewViewedQuestionnaireItem.json"></code></pre>
         </figure>
     </section>
 
-    <section id="actions">
+    <section id="entities" class="appendix">
+        <h2>Entities</h2>
+        <section id="Agent" data-include="fragments/entities/caliper-entity-agent.html"></section>
+        <figure class="example">
+            <figcaption> - Agent JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAgent.json"></code></pre>
+        </figure>
+        <section id="AggregateMeasure" data-include="fragments/entities/caliper-entity-aggregatemeasure.html"></section>
+        <figure class="example">
+            <figcaption> - AggregateMeasure JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAggregateMeasure.json"></code></pre>
+        </figure>
+        <section id="AggregateMeasureCollection" data-include="fragments/entities/caliper-entity-aggregatemeasurecollection.html"></section>
+        <figure class="example">
+            <figcaption> - AggregateMeasureCollection JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAggregateMeasureCollection.json"></code></pre>
+        </figure>
+        <section id="Annotation" data-include="fragments/entities/caliper-entity-annotation.html"></section>
+        <figure class="example">
+            <figcaption> - Annotation JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAnnotation.json"></code></pre>
+        </figure>
+        <section id="Assessment" data-include="fragments/entities/caliper-entity-assessment.html"></section>
+        <figure class="example">
+            <figcaption> - Assessment JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAssessment.json"></code></pre>
+        </figure>
+        <section id="AssessmentItem" data-include="fragments/entities/caliper-entity-assessmentitem.html"></section>
+        <figure class="example">
+            <figcaption> - AssessmentItem Extended JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAssessmentItemExtended.json"></code></pre>
+        </figure>
+        <section id="AssignableDigitalResource" data-include="fragments/entities/caliper-entity-assignabledigitalresource.html"></section>
+        <figure class="example">
+            <figcaption> - AssignableDigitalResource JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAssignableDigitalResource.json"></code></pre>
+        </figure>
+        <section id="Attempt" data-include="fragments/entities/caliper-entity-attempt.html"></section>
+        <figure class="example">
+            <figcaption> - Attempt JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAttempt.json"></code></pre>
+        </figure>
+        <section id="AudioObject" data-include="fragments/entities/caliper-entity-audioObject.html"></section>
+        <figure class="example">
+            <figcaption> - AudioObject JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityAudioObject.json"></code></pre>
+        </figure>
+        <section id="BookmarkAnnotation" data-include="fragments/entities/caliper-entity-bookmarkannotation.html"></section>
+        <figure class="example">
+            <figcaption> - BookmarkAnnotation JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityBookmarkAnnotation.json"></code></pre>
+        </figure>
+        <section id="Chapter" data-include="fragments/entities/caliper-entity-chapter.html"></section>
+        <figure class="example">
+            <figcaption> - Chapter JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityChapter.json"></code></pre>
+        </figure>
+        <section id="Collection" data-include="fragments/entities/caliper-entity-collection.html"></section>
+        <figure class="example">
+            <figcaption> - Collection JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityCollection.json"></code></pre>
+        </figure>
+        <section id="Comment" data-include="fragments/entities/caliper-entity-comment.html"></section>
+        <figure class="example">
+            <figcaption> - Comment JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityComment.json"></code></pre>
+        </figure>
+        <section id="CourseOffering" data-include="fragments/entities/caliper-entity-courseoffering.html"></section>
+        <figure class="example">
+            <figcaption> - CourseOffering JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityCourseOffering.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - CourseOffering Anonymous JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityCourseOfferingAnonymous.json"></code></pre>
+        </figure>
+        <section id="CourseSection" data-include="fragments/entities/caliper-entity-coursesection.html"></section>
+        <figure class="example">
+            <figcaption> - CourseSection JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityCourseSection.json"></code></pre>
+        </figure>
+        <section id="DateTimeQuestion" data-include="fragments/entities/caliper-entity-datetimequestion.html"></section>
+        <figure class="example">
+            <figcaption> - DateTimeQuestion JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityDateTimeQuestion.json"></code></pre>
+        </figure>
+        <section id="DateTimeResponse" data-include="fragments/entities/caliper-entity-datetimeresponse.html"></section>
+        <figure class="example">
+            <figcaption> - DateTimeResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityDateTimeResponse.json"></code></pre>
+        </figure>
+        <section id="DigitalResource" data-include="fragments/entities/caliper-entity-digitalresource.html"></section>
+        <figure class="example">
+            <figcaption> - DigitalResource JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityDigitalResource.json"></code></pre>
+        </figure>
+        <section id="DigitalResourceCollection" data-include="fragments/entities/caliper-entity-digitalresourcecollection.html"></section>
+        <figure class="example">
+            <figcaption> - DigitalResourceCollection JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityDigitalResourceCollection.json"></code></pre>
+        </figure>
+        <section id="Document" data-include="fragments/entities/caliper-entity-document.html"></section>
+        <figure class="example">
+            <figcaption> - Document JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityDocument.json"></code></pre>
+        </figure>
+        <section id="FillinBlankResponse" data-include="fragments/entities/caliper-entity-fillinblankresponse.html"></section>
+        <figure class="example">
+            <figcaption> - FillinBlankResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityFillinBlankResponse.json"></code></pre>
+        </figure>
+        <section id="Forum" data-include="fragments/entities/caliper-entity-forum.html"></section>
+        <figure class="example">
+            <figcaption> - Forum JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityForum.json"></code></pre>
+        </figure>
+        <section id="Frame" data-include="fragments/entities/caliper-entity-frame.html"></section>
+        <figure class="example">
+            <figcaption> - Frame JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityFrame.json"></code></pre>
+        </figure>
+        <section id="Group" data-include="fragments/entities/caliper-entity-group.html"></section>
+        <figure class="example">
+            <figcaption> - Group JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityGroup.json"></code></pre>
+        </figure>
+        <section id="HighlightAnnotation" data-include="fragments/entities/caliper-entity-highlightannotation.html"></section>
+        <figure class="example">
+            <figcaption> - HighlightAnnotation JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityHighlightAnnotation.json"></code></pre>
+        </figure>
+        <section id="ImageObject" data-include="fragments/entities/caliper-entity-imageobject.html"></section>
+        <figure class="example">
+            <figcaption> - ImageObject JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityImageObject.json"></code></pre>
+        </figure>
+        <section id="LearningObjective" data-include="fragments/entities/caliper-entity-learningobjective.html"></section>
+        <section id="LikertScale" data-include="fragments/entities/caliper-entity-likertscale.html"></section>
+        <figure class="example">
+            <figcaption> - LikertScale JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityLikertScale.json"></code></pre>
+        </figure>
+        <section id="Link" data-include="fragments/entities/caliper-entity-link.html"></section>
+        <figure class="example">
+            <figcaption> - Link JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityLink.json"></code></pre>
+        </figure>
+        <section id="LtiLink" data-include="fragments/entities/caliper-entity-ltilink.html"></section>
+        <figure class="example">
+            <figcaption> - LtiLink JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityLtiLink.json"></code></pre>
+        </figure>
+        <section id="LtiSession" data-include="fragments/entities/caliper-entity-ltisession.html"></section>
+        <figure class="example">
+            <figcaption> - LtiSession JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityLtiSession.json"></code></pre>
+        </figure>
+        <section id="MediaLocation" data-include="fragments/entities/caliper-entity-medialocation.html"></section>
+        <figure class="example">
+            <figcaption> - MediaLocation JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMediaLocation.json"></code></pre>
+        </figure>
+        <section id="MediaObject" data-include="fragments/entities/caliper-entity-mediaobject.html"></section>
+        <figure class="example">
+            <figcaption> - MediaObject JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMediaObject.json"></code></pre>
+        </figure>
+        <section id="Membership" data-include="fragments/entities/caliper-entity-membership.html"></section>
+        <figure class="example">
+            <figcaption> - Membership JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMembership.json"></code></pre>
+        </figure>
+        <section id="Message" data-include="fragments/entities/caliper-entity-message.html"></section>
+        <figure class="example">
+            <figcaption> - Message with ReplyTo JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMessage.json"></code></pre>
+        </figure>
+        <section id="MultipleChoiceResponse" data-include="fragments/entities/caliper-entity-multiplechoiceresponse.html"></section>
+        <figure class="example">
+            <figcaption> - MultipleChoiceResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMultipleChoiceResponse.json"></code></pre>
+        </figure>
+        <section id="MultipleResponseResponse" data-include="fragments/entities/caliper-entity-multipleresponseresponse.html"></section>
+        <figure class="example">
+            <figcaption> - MultipleResponseResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMultipleResponseResponse.json"></code></pre>
+        </figure>
+        <section id="MultiselectQuestion" data-include="fragments/entities/caliper-entity-multiselectquestion.html"></section>
+        <figure class="example">
+            <figcaption> - MultiselectQuestion JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMultiselectQuestion.json"></code></pre>
+        </figure>
+        <section id="MultiselectResponse" data-include="fragments/entities/caliper-entity-multiselectresponse.html"></section>
+        <figure class="example">
+            <figcaption> - MultiselectResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMultiselectResponse.json"></code></pre>
+        </figure>
+        <section id="MultiselectScale" data-include="fragments/entities/caliper-entity-multiselectscale.html"></section>
+        <figure class="example">
+            <figcaption> - MultiselectScale JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityMultiselectScale.json"></code></pre>
+        </figure>
+        <section id="NumericScale" data-include="fragments/entities/caliper-entity-numericscale.html"></section>
+        <figure class="example">
+            <figcaption> - NumericScale JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityNumericScale.json"></code></pre>
+        </figure>
+        <section id="OpenEndedQuestion" data-include="fragments/entities/caliper-entity-openendedquestion.html"></section>
+        <figure class="example">
+            <figcaption> - OpenEndedQuestion JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityOpenEndedQuestion.json"></code></pre>
+        </figure>
+        <section id="OpenEndedResponse" data-include="fragments/entities/caliper-entity-openendedresponse.html"></section>
+        <figure class="example">
+            <figcaption> - OpenEndedResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityOpenEndedResponse.json"></code></pre>
+        </figure>
+        <section id="Organization" data-include="fragments/entities/caliper-entity-organization.html"></section>
+        <figure class="example">
+            <figcaption> - Organization JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityOrganization.json"></code></pre>
+        </figure>
+        <section id="Page" data-include="fragments/entities/caliper-entity-page.html"></section>
+        <figure class="example">
+            <figcaption> - Page JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityPage.json"></code></pre>
+        </figure>
+        <section id="Person" data-include="fragments/entities/caliper-entity-person.html"></section>
+        <figure class="example">
+            <figcaption> - Person JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityPerson.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - Person Anonymous JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityPersonAnonymous.json"></code></pre>
+        </figure>
+        <section id="Query" data-include="fragments/entities/caliper-entity-query.html"></section>
+        <figure class="example">
+            <figcaption> - Query JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityQuery.json"></code></pre>
+        </figure>
+        <section id="Question" data-include="fragments/entities/caliper-entity-question.html"></section>
+        <figure class="example">
+            <figcaption> - Question JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityQuestion.json"></code></pre>
+        </figure>
+        <section id="Questionnaire" data-include="fragments/entities/caliper-entity-questionnaire.html"></section>
+        <figure class="example">
+            <figcaption> - Questionnaire JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityQuestionnaire.json"></code></pre>
+        </figure>
+        <section id="QuestionnaireItem" data-include="fragments/entities/caliper-entity-questionnaireitem.html"></section>
+        <figure class="example">
+            <figcaption> - QuestionnaireItem JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityQuestionnaireItem.json"></code></pre>
+        </figure>
+        <section id="Rating" data-include="fragments/entities/caliper-entity-rating.html"></section>
+        <figure class="example">
+            <figcaption> - Rating with LikertScale JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityRatingWithLikertScale.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - Rating with MultiselectScale JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityRatingWithMultiselectScale.json"></code></pre>
+        </figure>
+        <section id="RatingScaleQuestion" data-include="fragments/entities/caliper-entity-ratingscalequestion.html"></section>
+        <figure class="example">
+            <figcaption> - RatingScaleQuestion JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityRatingScaleQuestion.json"></code></pre>
+        </figure>
+        <section id="RatingScaleResponse" data-include="fragments/entities/caliper-entity-ratingscaleresponse.html"></section>
+        <figure class="example">
+            <figcaption> - RatingScaleResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityRatingScaleResponse.json"></code></pre>
+        </figure>
+        <section id="Response" data-include="fragments/entities/caliper-entity-response.html"></section>
+        <figure class="example">
+            <figcaption> - Response Extended JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityResponseExtended.json"></code></pre>
+        </figure>
+        <section id="Result" data-include="fragments/entities/caliper-entity-result.html"></section>
+        <figure class="example">
+            <figcaption> - Result JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityResult.json"></code></pre>
+        </figure>
+        <section id="Scale" data-include="fragments/entities/caliper-entity-scale.html"></section>
+        <figure class="example">
+            <figcaption> - Scale JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityScale.json"></code></pre>
+        </figure>
+        <section id="Score" data-include="fragments/entities/caliper-entity-score.html"></section>
+        <figure class="example">
+            <figcaption> - Score JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityScore.json"></code></pre>
+        </figure>
+        <section id="SearchResponse" data-include="fragments/entities/caliper-entity-searchresponse.html"></section>
+        <figure class="example">
+            <figcaption> - SearchResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySearchResponse.json"></code></pre>
+        </figure>
+        <section id="SelectTextResponse" data-include="fragments/entities/caliper-entity-selecttextresponse.html"></section>
+        <figure class="example">
+            <figcaption> - SelectTextResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySelectTextResponse.json"></code></pre>
+        </figure>
+        <section id="Session" data-include="fragments/entities/caliper-entity-session.html"></section>
+        <figure class="example">
+            <figcaption> - Session JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySession.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - Session with Client JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySessionClient.json"></code></pre>
+        </figure>
+        <section id="SharedAnnotation" data-include="fragments/entities/caliper-entity-sharedannotation.html"></section>
+        <figure class="example">
+            <figcaption> - SharedAnnotation JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySharedAnnotation.json"></code></pre>
+        </figure>
+        <section id="SoftwareApplication" data-include="fragments/entities/caliper-entity-softwareApplication.html"></section>
+        <figure class="example">
+            <figcaption> - SoftwareApplication JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySoftwareApplication.json"></code></pre>
+        </figure>
+        <figure class="example">
+            <figcaption> - SoftwareApplication with UserAgent JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySoftwareApplicationUserAgent.json"></code></pre>
+        </figure>
+        <section id="Survey" data-include="fragments/entities/caliper-entity-survey.html"></section>
+        <figure class="example">
+            <figcaption> - Survey JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySurvey.json"></code></pre>
+        </figure>
+        <section id="SurveyInvitation" data-include="fragments/entities/caliper-entity-surveyinvitation.html"></section>
+        <figure class="example">
+            <figcaption> - SurveyInvitation JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntitySurveyInvitation.json"></code></pre>
+        </figure>
+        <section id="TagAnnotation" data-include="fragments/entities/caliper-entity-tagannotation.html"></section>
+        <figure class="example">
+            <figcaption> - TagAnnotation JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityTagAnnotation.json"></code></pre>
+        </figure>
+        <section id="Thread" data-include="fragments/entities/caliper-entity-thread.html"></section>
+        <figure class="example">
+            <figcaption> - Thread JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityThread.json"></code></pre>
+        </figure>
+        <section id="TrueFalseResponse" data-include="fragments/entities/caliper-entity-truefalseresponse.html"></section>
+        <figure class="example">
+            <figcaption> - TrueFalseResponse JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityTrueFalseResponse.json"></code></pre>
+        </figure>
+        <section id="VideoObject" data-include="fragments/entities/caliper-entity-videoobject.html"></section>
+        <figure class="example">
+            <figcaption> - VideoObject JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityVideoObject.json"></code></pre>
+        </figure>
+        <section id="WebPage" data-include="fragments/entities/caliper-entity-webpage.html"></section>
+        <figure class="example">
+            <figcaption> - WebPage JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperEntityWebPage.json"></code></pre>
+        </figure>
+    </section>
+
+    <section id="selectors" class="appendix">
+        <h2>Selectors</h2>
+
+        <p>A Caliper <code>Selector</code> represents a fragment, selection, or part of an <a href="#Entity">Entity</a>.</p>
+
+        <section id="TextPositionSelector" data-include="fragments/selectors/caliper-selector-textpositionselector.html"></section>
+    </section>
+
+    <section id="systemidentifiers" class="appendix">
+        <h2>System Identifiers</h2>
+
+        A Caliper <code>SystemIdentifier</code> represents a single, system-local identifier for a Caliper
+        <a href="#Entity">Entity</a>.
+
+        <section id="SystemIdentifier" data-include="fragments/identifiers/caliper-identifier-systemidentifier.html"></section>
+
+        <figure class="example">
+            <figcaption> - SoftwareApplication (front-end browser-based) - JSON-LD</figcaption>
+            <pre><code data-include="fixtures/v1p2/caliperIdentifierSystemIdentifier.json"></code></pre>
+        </figure>
+    </section>
+
+    <section id="actions" class="appendix">
         <h2>Actions</h2>
 
         <p>Caliper includes a vocabulary of actions for describing learning interactions. Each action <a href="#termDef">Term</a>
@@ -1878,459 +1605,137 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superceded by new SearchEvent.
         <section id="action-viewed" data-include="fragments/actions/caliper-action-viewed.html"></section>
     </section>
 
-    <section id="entities">
-        <h2>Entity subtypes</h2>
-        <section id="Agent" data-include="fragments/entities/caliper-entity-agent.html"></section>
-        <figure class="example">
-            <figcaption> - Agent - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityAgent.json"></code></pre>
-        </figure>
-        <section id="AggregateMeasure" data-include="fragments/entities/caliper-entity-aggregatemeasure.html"></section>
-        <figure class="example">
-            <figcaption> - AggregateMeasure - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityAggregateMeasure.json"></code></pre>
-        </figure>
-        <section id="AggregateMeasureCollection" data-include="fragments/entities/caliper-entity-aggregatemeasurecollection.html"></section>
-        <figure class="example">
-            <figcaption> - AggregateMeasureCollection - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityAggregateMeasureCollection.json"></code></pre>
-        </figure>
-        <section id="Annotation" data-include="fragments/entities/caliper-entity-annotation.html"></section>
-        <figure class="example">
-            <figcaption> - Annotation - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityAnnotation.json"></code></pre>
-        </figure>
-        <section id="Assessment" data-include="fragments/entities/caliper-entity-assessment.html"></section>
-        <figure class="example">
-            <figcaption> - Assessment - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityAssessment.json"></code></pre>
-        </figure>
-        <section id="AssessmentItem" data-include="fragments/entities/caliper-entity-assessmentitem.html"></section>
-        <figure class="example">
-            <figcaption> - AssessmentItem - Extended - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityAssessmentItemExtended.json"></code></pre>
-        </figure>
-        <section id="AssignableDigitalResource" data-include="fragments/entities/caliper-entity-assignabledigitalresource.html"></section>
-        <figure class="example">
-            <figcaption> - AssignableDigitalResource - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityAssignableDigitalResource.json"></code></pre>
-        </figure>
-        <section id="Attempt" data-include="fragments/entities/caliper-entity-attempt.html"></section>
-        <figure class="example">
-            <figcaption> - Attempt - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityAttempt.json"></code></pre>
-        </figure>
-        <section id="AudioObject" data-include="fragments/entities/caliper-entity-audioObject.html"></section>
-        <section id="BookmarkAnnotation" data-include="fragments/entities/caliper-entity-bookmarkannotation.html"></section>
-        <figure class="example">
-            <figcaption> - BookmarkAnnotation - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityBookmarkAnnotation.json"></code></pre>
-        </figure>
-        <section id="Chapter" data-include="fragments/entities/caliper-entity-chapter.html"></section>
-        <figure class="example">
-            <figcaption> - Chapter - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityChapter.json"></code></pre>
-        </figure>
-        <section id="Collection" data-include="fragments/entities/caliper-entity-collection.html"></section>
-        <figure class="example">
-            <figcaption> - Collection - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityCollection.json"></code></pre>
-        </figure>
-        <section id="Comment" data-include="fragments/entities/caliper-entity-comment.html"></section>
-        <figure class="example">
-            <figcaption> - Comment - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityComment.json"></code></pre>
-        </figure>
-        <section id="CourseOffering" data-include="fragments/entities/caliper-entity-courseoffering.html"></section>
-        <figure class="example">
-            <figcaption> - CourseOffering - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityCourseOffering.json"></code></pre>
-        </figure>
-        <figure class="example">
-            <figcaption> - CourseOffering - Anonymous - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityCourseOfferingAnonymous.json"></code></pre>
-        </figure>
-        <section id="CourseSection" data-include="fragments/entities/caliper-entity-coursesection.html"></section>
-        <figure class="example">
-            <figcaption> - CourseSection - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityCourseSection.json"></code></pre>
-        </figure>
-        <section id="DateTimeQuestion" data-include="fragments/entities/caliper-entity-datetimequestion.html"></section>
-        <figure class="example">
-            <figcaption> - DateTimeQuestion - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityDateTimeQuestion.json"></code></pre>
-        </figure>
-        <section id="DateTimeResponse" data-include="fragments/entities/caliper-entity-datetimeresponse.html"></section>
-        <figure class="example">
-            <figcaption> - DateTimeResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityDateTimeResponse.json"></code></pre>
-        </figure>
-        <section id="DigitalResource" data-include="fragments/entities/caliper-entity-digitalresource.html"></section>
-        <figure class="example">
-            <figcaption> - DigitalResource - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityDigitalResource.json"></code></pre>
-        </figure>
-        <section id="DigitalResourceCollection" data-include="fragments/entities/caliper-entity-digitalresourcecollection.html"></section>
-        <figure class="example">
-            <figcaption> - DigitalResourceCollection - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityDigitalResourceCollection.json"></code></pre>
-        </figure>
-        <section id="Document" data-include="fragments/entities/caliper-entity-document.html"></section>
-        <figure class="example">
-            <figcaption> - Document - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityDocument.json"></code></pre>
-        </figure>
-        <section id="FillinBlankResponse" data-include="fragments/entities/caliper-entity-fillinblankresponse.html"></section>
-        <figure class="example">
-            <figcaption> - FillinBlankResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityFillinBlankResponse.json"></code></pre>
-        </figure>
-        <section id="Forum" data-include="fragments/entities/caliper-entity-forum.html"></section>
-        <figure class="example">
-            <figcaption> - Forum - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityForum.json"></code></pre>
-        </figure>
-        <section id="Frame" data-include="fragments/entities/caliper-entity-frame.html"></section>
-        <figure class="example">
-            <figcaption> - Frame - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityFrame.json"></code></pre>
-        </figure>
-        <section id="Group" data-include="fragments/entities/caliper-entity-group.html"></section>
-        <figure class="example">
-            <figcaption> - Group - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityGroup.json"></code></pre>
-        </figure>
-        <section id="HighlightAnnotation" data-include="fragments/entities/caliper-entity-highlightannotation.html"></section>
-        <figure class="example">
-            <figcaption> - HighlightAnnotation - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityHighlightAnnotation.json"></code></pre>
-        </figure>
-        <section id="ImageObject" data-include="fragments/entities/caliper-entity-imageobject.html"></section>
-        <figure class="example">
-            <figcaption> - ImageObject - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityImageObject.json"></code></pre>
-        </figure>
-        <section id="LearningObjective" data-include="fragments/entities/caliper-entity-learningobjective.html"></section>
-        <figure class="example">
-            <figcaption> - LearningObjective - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityLearningObjective.json"></code></pre>
-        </figure>
-        <section id="LikertScale" data-include="fragments/entities/caliper-entity-likertscale.html"></section>
-        <figure class="example">
-            <figcaption> - LikertScale - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityLikertScale.json"></code></pre>
-        </figure>
-        <section id="Link" data-include="fragments/entities/caliper-entity-link.html"></section>
-        <figure class="example">
-            <figcaption> - Link - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityLink.json"></code></pre>
-        </figure>
-        <section id="LtiLink" data-include="fragments/entities/caliper-entity-ltilink.html"></section>
-        <figure class="example">
-            <figcaption> - LtiLink - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityLtiLink.json"></code></pre>
-        </figure>
-        <section id="LtiSession" data-include="fragments/entities/caliper-entity-ltisession.html"></section>
-        <figure class="example">
-            <figcaption> - LtiSession - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityLtiSession.json"></code></pre>
-        </figure>
-        <section id="MediaLocation" data-include="fragments/entities/caliper-entity-medialocation.html"></section>
-        <figure class="example">
-            <figcaption> - MediaLocation - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMediaLocation.json"></code></pre>
-        </figure>
-        <section id="MediaObject" data-include="fragments/entities/caliper-entity-mediaobject.html"></section>
-        <figure class="example">
-            <figcaption> - MediaObject - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMediaObject.json"></code></pre>
-        </figure>
-        <section id="Membership" data-include="fragments/entities/caliper-entity-membership.html"></section>
-        <figure class="example">
-            <figcaption> - Membership - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMembership.json"></code></pre>
-        </figure>
-        <section id="Message" data-include="fragments/entities/caliper-entity-message.html"></section>
-        <figure class="example">
-            <figcaption> - Message - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMessage.json"></code></pre>
-        </figure>
-        <section id="MultipleChoiceResponse" data-include="fragments/entities/caliper-entity-multiplechoiceresponse.html"></section>
-        <figure class="example">
-            <figcaption> - MultipleChoiceResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMultipleChoiceResponse.json"></code></pre>
-        </figure>
-        <section id="MultipleResponseResponse" data-include="fragments/entities/caliper-entity-multipleresponseresponse.html"></section>
-        <figure class="example">
-            <figcaption> - MultipleResponseResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMultipleResponseResponse.json"></code></pre>
-        </figure>
-        <section id="MultiselectQuestion" data-include="fragments/entities/caliper-entity-multiselectquestion.html"></section>
-        <figure class="example">
-            <figcaption> - MultiselectQuestion - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMultiselectQuestion.json"></code></pre>
-        </figure>
-        <section id="MultiselectResponse" data-include="fragments/entities/caliper-entity-multiselectresponse.html"></section>
-        <figure class="example">
-            <figcaption> - MultiselectResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMultiselectResponse.json"></code></pre>
-        </figure>
-        <section id="MultiselectScale" data-include="fragments/entities/caliper-entity-multiselectscale.html"></section>
-        <figure class="example">
-            <figcaption> - MultiselectScale - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityMultiselectScale.json"></code></pre>
-        </figure>
-        <section id="NumericScale" data-include="fragments/entities/caliper-entity-numericscale.html"></section>
-        <figure class="example">
-            <figcaption> - NumericScale - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityNumericScale.json"></code></pre>
-        </figure>
-        <section id="OpenEndedQuestion" data-include="fragments/entities/caliper-entity-openendedquestion.html"></section>
-        <figure class="example">
-            <figcaption> - OpenEndedQuestion - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityOpenEndedQuestion.json"></code></pre>
-        </figure>
-        <section id="OpenEndedResponse" data-include="fragments/entities/caliper-entity-openendedresponse.html"></section>
-        <figure class="example">
-            <figcaption> - OpenEndedResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityOpenEndedResponse.json"></code></pre>
-        </figure>
-        <section id="Organization" data-include="fragments/entities/caliper-entity-organization.html"></section>
-        <figure class="example">
-            <figcaption> - Organization - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityOrganization.json"></code></pre>
-        </figure>
-        <section id="Page" data-include="fragments/entities/caliper-entity-page.html"></section>
-        <figure class="example">
-            <figcaption> - Page - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityPage.json"></code></pre>
-        </figure>
-        <section id="Person" data-include="fragments/entities/caliper-entity-person.html"></section>
-        <figure class="example">
-            <figcaption> - Person - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityPerson.json"></code></pre>
-        </figure>
-        <figure class="example">
-            <figcaption> - Person - Anonymous - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityPersonAnonymous.json"></code></pre>
-        </figure>
-        <section id="Query" data-include="fragments/entities/caliper-entity-query.html"></section>
-        <figure class="example">
-            <figcaption> - Query - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityQuery.json"></code></pre>
-        </figure>
-        <section id="Question" data-include="fragments/entities/caliper-entity-question.html"></section>
-        <figure class="example">
-            <figcaption> - Question - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityQuestion.json"></code></pre>
-        </figure>
-        <section id="Questionnaire" data-include="fragments/entities/caliper-entity-questionnaire.html"></section>
-        <figure class="example">
-            <figcaption> - Questionnaire - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityQuestionnaire.json"></code></pre>
-        </figure>
-        <section id="QuestionnaireItem" data-include="fragments/entities/caliper-entity-questionnaireitem.html"></section>
-        <figure class="example">
-            <figcaption> - QuestionnaireItem - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityQuestionnaireItem.json"></code></pre>
-        </figure>
-        <section id="Rating" data-include="fragments/entities/caliper-entity-rating.html"></section>
-        <figure class="example">
-            <figcaption> - Rating - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityRating.json"></code></pre>
-        </figure>
-        <section id="RatingScaleQuestion" data-include="fragments/entities/caliper-entity-ratingscalequestion.html"></section>
-        <figure class="example">
-            <figcaption> - RatingScaleQuestion - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityRatingScaleQuestion.json"></code></pre>
-        </figure>
-        <section id="RatingScaleResponse" data-include="fragments/entities/caliper-entity-ratingscaleresponse.html"></section>
-        <figure class="example">
-            <figcaption> - RatingScaleResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityRatingScaleResponse.json"></code></pre>
-        </figure>
-        <section id="Response" data-include="fragments/entities/caliper-entity-response.html"></section>
-        <figure class="example">
-            <figcaption> - Response - Extended - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityResponseExtended.json"></code></pre>
-        </figure>
-        <section id="Result" data-include="fragments/entities/caliper-entity-result.html"></section>
-        <figure class="example">
-            <figcaption> - Result - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityResult.json"></code></pre>
-        </figure>
-        <section id="Scale" data-include="fragments/entities/caliper-entity-scale.html"></section>
-        <figure class="example">
-            <figcaption> - Scale - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityScale.json"></code></pre>
-        </figure>
-        <section id="Score" data-include="fragments/entities/caliper-entity-score.html"></section>
-        <figure class="example">
-            <figcaption> - Score - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityScore.json"></code></pre>
-        </figure>
-        <section id="SearchResponse" data-include="fragments/entities/caliper-entity-searchresponse.html"></section>
-        <figure class="example">
-            <figcaption> - SearchResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntitySearchResponse.json"></code></pre>
-        </figure>
-        <section id="SelectTextResponse" data-include="fragments/entities/caliper-entity-selecttextresponse.html"></section>
-        <figure class="example">
-            <figcaption> - SelectTextResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntitySelectTextResponse.json"></code></pre>
-        </figure>
-        <section id="Session" data-include="fragments/entities/caliper-entity-session.html"></section>
-        <figure class="example">
-            <figcaption> - Session - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntitySession.json"></code></pre>
-        </figure>
-        <section id="SharedAnnotation" data-include="fragments/entities/caliper-entity-sharedannotation.html"></section>
-        <figure class="example">
-            <figcaption> - SharedAnnotation - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntitySharedAnnotation.json"></code></pre>
-        </figure>
-        <section id="SoftwareApplication" data-include="fragments/entities/caliper-entity-softwareApplication.html"></section>
-        <section id="Survey" data-include="fragments/entities/caliper-entity-survey.html"></section>
-        <figure class="example">
-            <figcaption> - Survey - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntitySurvey.json"></code></pre>
-        </figure>
-        <section id="SurveyInvitation" data-include="fragments/entities/caliper-entity-surveyinvitation.html"></section>
-        <figure class="example">
-            <figcaption> - SurveyInvitation - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntitySurveyInvitation.json"></code></pre>
-        </figure>
-        <section id="TagAnnotation" data-include="fragments/entities/caliper-entity-tagannotation.html"></section>
-        <figure class="example">
-            <figcaption> - TagAnnotation - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityTagAnnotation.json"></code></pre>
-        </figure>
-        <section id="Thread" data-include="fragments/entities/caliper-entity-thread.html"></section>
-        <figure class="example">
-            <figcaption> - Thread - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityThread.json"></code></pre>
-        </figure>
-        <section id="TrueFalseResponse" data-include="fragments/entities/caliper-entity-truefalseresponse.html"></section>
-        <figure class="example">
-            <figcaption> - TrueFalseResponse - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityTrueFalseResponse.json"></code></pre>
-        </figure>
-        <section id="VideoObject" data-include="fragments/entities/caliper-entity-videoobject.html"></section>
-        <figure class="example">
-            <figcaption> - VideoObject - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityVideoObject.json"></code></pre>
-        </figure>
-        <section id="WebPage" data-include="fragments/entities/caliper-entity-webpage.html"></section>
-        <figure class="example">
-            <figcaption> - WebPage - JSON-LD</figcaption>
-            <pre><code data-include="fixtures/v1p2/caliperEntityWebPage.json"></code></pre>
-        </figure>
+    <section id="lis-roles" class="appendix">
+        <h2>LIS Roles</h2>
+
+        <p><a href="#membership">Membership</a> includes an optional <code>roles</code> property for assigning one
+            or more roles to an <a href="#Event">Event</a> <code>actor</code> described as a <code>member</code> of
+            an <code>organization</code>. Role values are limited to the list of Caliper role terms derived from the
+            IMS <a href="#lisDef">LIS</a> specification. Assigning context roles should prove sufficient in most
+            cases. Whenever a sub-role is specified, the related context role SHOULD also be included. For example,
+            a role of <code>Instructor#TeachingAssistant</code> SHOULD always be accompanied by the
+            <code>Instructor</code> role.
+        </p>
+
+        <section id="role-administrator" data-include="fragments/roles/lis-role-administrator.html"></section>
+        <section id="role-contentdeveloper" data-include="fragments/roles/lis-role-contentdeveloper.html"></section>
+        <section id="role-instructor" data-include="fragments/roles/lis-role-instructor.html"></section>
+        <section id="role-learner" data-include="fragments/roles/lis-role-learner.html"></section>
+        <section id="role-manager" data-include="fragments/roles/lis-role-manager.html"></section>
+        <section id="role-member" data-include="fragments/roles/lis-role-member.html"></section>
+        <section id="role-mentor" data-include="fragments/roles/lis-role-mentor.html"></section>
+        <section id="role-officer" data-include="fragments/roles/lis-role-officer.html"></section>
     </section>
 
-    <section id="selectors">
-        <h2>Selectors</h2>
+    <section id="lis-statuses" class="appendix">
+        <h2>LIS Statuses</h2>
 
-        <p>A Caliper Selector represents a fragment, selection or part of an <a href="#Entity">Entity</a>.</p>
+        <p>The status of a <a href="#Membership">Membership</a> within an
+            <a href="#Organization">Organization</a> can be set to one of the following states: <em>Active</em>
+            or <em>Inactive</em>.
+        </p>
 
-        <section id="TextPositionSelector" data-include="fragments/selectors/caliper-selector-textpositionselector.html"></section>
-    </section>
-
-    <section id="constants">
-        <h2>Constants</h2>
-
-        <section id="lti-messageTypes">
-            <h3>LTI Message Types</h3>
-            <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
-                property for describing the type of LTI message associated with the
-                <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
-                values:</p>
-
-            <section id="LtiDeepLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html"></section>
-            <section id="LtiResourceLinkRequest" data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html"></section>
+        <section id="lis-status-active"
+             data-include="fragments/statuses/caliper-status-active.html">
         </section>
-
-        <section id="metrics">
-            <h3>Use Metrics</h3>
-            <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
-                property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric values are
-                limited to the list of Caliper terms listed below.</p>
-
-            <section id="metric-assessmentpassed" data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html"></section>
-            <section id="metric-assessmentsubmitted" data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html"></section>
-            <section id="metric-minutesontask" data-include="fragments/usemetrics/caliper-metric-minutesontask.html"></section>
-            <section id="metric-skillsmastered" data-include="fragments/usemetrics/caliper-metric-skillsmastered.html"></section>
-            <section id="metric-standardsmastered" data-include="fragments/usemetrics/caliper-metric-standardsmastered.html"></section>
-            <section id="metric-unitscompleted" data-include="fragments/usemetrics/caliper-metric-unitscompleted.html"></section>
-            <section id="metric-unitspassed" data-include="fragments/usemetrics/caliper-metric-unitspassed.html"></section>
-            <section id="metric-wordsread" data-include="fragments/usemetrics/caliper-metric-wordsread.html"></section>
-        </section>
-
-        <section id="lis-roles">
-            <h3>LIS Roles</h3>
-            <p><a href="#membership">Membership</a> includes an optional <code>roles</code> property for assigning one
-                or more roles to an <a href="#Event">Event</a> <code>actor</code> described as a <code>member</code> of
-                an <code>organization</code>. Role values are limited to the list of Caliper role terms derived from the
-                IMS <a href="#lisDef">LIS</a> specification. Assigning context roles should prove sufficient in most
-                cases. Whenever a sub-role is specified, the related context role SHOULD also be included. For example,
-                a role of <code>Instructor#TeachingAssistant</code> SHOULD always be accompanied by the
-                <code>Instructor</code> role.
-            </p>
-            <section id="role-administrator" data-include="fragments/roles/lis-role-administrator.html"></section>
-            <section id="role-contentdeveloper" data-include="fragments/roles/lis-role-contentdeveloper.html"></section>
-            <section id="role-instructor" data-include="fragments/roles/lis-role-instructor.html"></section>
-            <section id="role-learner" data-include="fragments/roles/lis-role-learner.html"></section>
-            <section id="role-manager" data-include="fragments/roles/lis-role-manager.html"></section>
-            <section id="role-member" data-include="fragments/roles/lis-role-member.html"></section>
-            <section id="role-mentor" data-include="fragments/roles/lis-role-mentor.html"></section>
-            <section id="role-officer" data-include="fragments/roles/lis-role-officer.html"></section>
-        </section>
-
-        <section id="lis-statuses">
-            <h3>LIS Statuses</h3>
-            <p>The status associated with a <a href="#Membership">Membership</a> within an organization can be set to
-                one of the following states: Active or Inactive. These states are derived from the IMS
-                <a href="#lisDef">LIS</a> specification. The value MUST be set to the appropriate
-                <a href="#termDef">Term</a> string value. ...TO DO
-            </p>
-            <section id="lis-status-active">
-                <h4>Active</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/lis/v2/status#Active</dd>
-                    <dt>Term</dt>
-                    <dd>Active</dd>
-                </dl>
-            </section>
-            <section id="lis-status-inactive">
-                <h4>Inactive</h4>
-                <dl>
-                    <dt>IRI</dt>
-                    <dd>http://purl.imsglobal.org/vocab/lis/v2/status#Inactive</dd>
-                    <dt>Term</dt>
-                    <dd>Inactive</dd>
-                </dl>
-            </section>
+        <section id="lis-status-inactive"
+             data-include="fragments/statuses/caliper-status-inactive.html">
         </section>
     </section>
 
-    <section id="jsonld">
-        <h2>Caliper JSON-LD Examples</h2>
+    <section id="lti-messageTypes" class="appendix">
+        <h2>LTI Message Types</h2>
 
-        <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
-            provides a remote Tool Use Profile JSON-LD <a href=
-            "http://purl.imsglobal.org/ctx/caliper/v1p2/ToolUseProfile-extension">context</a>
-            for mapping <code>Event</code> terms to IRIs. Caliper message producers MUST reference the Tool Use
-            Profile 1.1-extension context in every <a href="#event">Event</a> subtype described in this profile. Likewise,
-            Caliper message producers MUST reference the Tool Use Profile 1.1-extension context whenever an
-            <a href="#entity">Entity</a> subtype described in this profile is emitted on its own as a <em>describe</em>.</p>
+        <p>The Caliper <a href="#LtiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
+            property for describing the type of LTI message associated with the
+            <a href="#ToolLaunchEvent">ToolLaunchEvent</a>. The value range is limited to the following string
+            values:</p>
 
-        <p>See the Caliper 1.2 specification [[!CALIPER-12]] for a discussion of JSON-LD and JSON-LD
-            context handling.</p>
+        <section id="LtiDeepLinkRequest"
+             data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltideeplinkrequest.html">
+        </section>
+        <section id="LtiResourceLinkRequest"
+             data-include="fragments/ltimessagetypes/caliper-ltimessagetype-ltiresourcelinkrequest.html">
+        </section>
+    </section>
 
+    <section id="systemidentifiertype" class="appendix">
+        <h2>System Identifier Types</h2>
 
-        TODO: add examples here or interleave them in Events and Entities sections as was done with 1.1.
+        <p>Caliper provides a controlled vocabulary for enumerating various categories of
+            <a href="#SystemIdentifier">SystemIdentifier</a> types associated with a Caliper
+            <a href="#Entity">Entity</a> that may prove meaningful when exchanging identifiers between systems
+            (especially with respect to other IMS Global standards).</p>
 
+        <section id="systemidentifier-accountusername"
+             data-include="fragments/identifiers/caliper-identifier-accountusername.html">
+        </section>
+        <section id="systemidentifier-emailaddress"
+             data-include="fragments/identifiers/caliper-identifier-emailaddress.html">
+        </section>
+        <section id="systemidentifier-lissourcedid"
+             data-include="fragments/identifiers/caliper-identifier-lissourcedid.html">
+        </section>
+        <section id="systemidentifier-lticontextid"
+            data-include="fragments/identifiers/caliper-identifier-lticontextid.html">
+        </section>
+        <section id="systemidentifier-ltideploymentid"
+            data-include="fragments/identifiers/caliper-identifier-ltideploymentid.html">
+        </section>
+        <section id="systemidentifier-ltiplatformid"
+            data-include="fragments/identifiers/caliper-identifier-ltiplatformid.html">
+        </section>
+        <section id="systemidentifier-ltitoolid"
+            data-include="fragments/identifiers/caliper-identifier-ltitoolid.html">
+        </section>
+        <section id="systemidentifier-ltiuserid"
+            data-include="fragments/identifiers/caliper-identifier-ltiuserid.html">
+        </section>
+        <section id="systemidentifier-onerostersourcedid"
+            data-include="fragments/identifiers/caliper-identifier-onerostersourcedid.html">
+        </section>
+        <section id="systemidentifier-other"
+            data-include="fragments/identifiers/caliper-identifier-other.html">
+        </section>
+        <section id="systemidentifier-sissourcedid"
+            data-include="fragments/identifiers/caliper-identifier-sissourcedid.html">
+        </section>
+        <section id="systemidentifier-systemid"
+            data-include="fragments/identifiers/caliper-identifier-systemid.html">
+        </section>
+    </section>
 
+    <section id="metrics" class="appendix">
+        <h2>Use Metrics</h2>
+
+        <p>The <a href="#AggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
+            property for denoting the metric related to the <a href="#ToolUseEvent">ToolUseEvent</a>. Metric string
+            values are limited to the list of Caliper terms listed below.</p>
+
+        <section id="metric-assessmentpassed"
+             data-include="fragments/usemetrics/caliper-metric-assessmentpassed.html">
+        </section>
+        <section id="metric-assessmentsubmitted"
+             data-include="fragments/usemetrics/caliper-metric-assessmentssubmitted.html">
+        </section>
+        <section id="metric-minutesontask"
+             data-include="fragments/usemetrics/caliper-metric-minutesontask.html">
+        </section>
+        <section id="metric-skillsmastered"
+             data-include="fragments/usemetrics/caliper-metric-skillsmastered.html">
+        </section>
+        <section id="metric-standardsmastered"
+             data-include="fragments/usemetrics/caliper-metric-standardsmastered.html">
+        </section>
+        <section id="metric-unitscompleted"
+             data-include="fragments/usemetrics/caliper-metric-unitscompleted.html">
+        </section>
+        <section id="metric-unitspassed"
+             data-include="fragments/usemetrics/caliper-metric-unitspassed.html">
+        </section>
+        <section id="metric-wordsread"
+             data-include="fragments/usemetrics/caliper-metric-wordsread.html">
+        </section>
     </section>
 
     <section class="appendix informative" id="revisionhistory">
