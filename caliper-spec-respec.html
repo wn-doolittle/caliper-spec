@@ -56,6 +56,12 @@
                     role: "Author"
                 },
                 {
+                    name: "Kara Armstrong",
+                    company: "Unizin",
+                    companyURL: "https://unizin.org/",
+                    role: "Author"
+                },
+                {
                     name: "Markus Gylling",
                     company: "IMS Global (Sweden)",
                     companyURL: "https://www.imsglobal.org",
@@ -880,6 +886,87 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
             <p>Caliper <a href="#endpoint">Endpoint</a> implementers should bear in mind that some Caliper
                 <a href="#sensor">Sensor</a> implementations may lack sophisticated error handling.</p>
+        </section>
+
+        <section id="endpoint_config">
+            <h3>Configuration Information</h3>
+
+            <p>Before sending Caliper data, a <a href="#sensor">Sensor</a> MAY choose to check the current status of an
+                <a href="#endpoint">Endpoint</a> using the standard GET request method, with the same restrictions on
+                transport security and authorization as enforced when sending Caliper data.</p>
+
+            <ul>
+                <li>If an <a href="#endpoint">Endpoint</a> receives this request alongside appropriate authorization,
+                    it MUST respond with a `200 OK` status code. The body of a successful response MUST contain its
+                    configuration parameters in a JSON data structure.
+                </li>
+                <li>If the <a href="#sensor">Sensor</a> sends a message without an `Authorization` request header of
+                    the RECOMMENDED form or sends a token credential that the <a href="#endpoint">Endpoint</a> is
+                    unable to either validate or determine has sufficient privileges to submit Caliper data, the
+                    <a href="#endpoint">Endpoint</a> SHOULD reply with a `401 Unauthorized` response.
+                </li>
+            </ul>
+
+            <p>A <a href="#sensor">Sensor</a> sending a ping request SHOULD interpret any status code besides `200 OK`
+                or `401 Unauthorized` as the <a href="#endpoint">Endpoint</a> indicating that its service is currently
+                unavailable.</p>
+
+            <p>The properties of an Endpoint configuration are listed below. Each property MUST be included no more than
+                once. No custom properties are permitted.</p>
+
+            <table class="data">
+                <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Disposition</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>caliperMaximumPayloadSize</td>
+                    <td>integer</td>
+                    <td>Size (in kilobytes) of the maximum payload the <a href="#endpoint">Endpoint</a> can accept
+                        in a single POST request.</td>
+                    <td>Optional</td>
+                </tr>
+                <tr>
+                    <td>caliperSupportedVersions </td>
+                    <td>array</td>
+                    <td>List of IRIs identifying the Caliper version(s) the <a href="#endpoint">Endpoint</a>
+                        supports. A <a href="#sensor">Sensor</a> MUST ensure that the Caliper data they send to
+                        the <a href="#endpoint">Endpoint</a> is based on one of the Caliper
+                        <a href="#jsonldDef">JSON-LD</a> context document versions found in this list. By best
+                        practice, tools should (if able) choose to use the most modern supported version in this
+                        list.
+                    </td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td>caliperSupportedExtensions</td>
+                    <td>Object</td>
+                    <td>Key-value map of additional information that the <a href="#endpoint">Endpoint</a> chooses
+                        to provide.</td>
+                    <td>Optional</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <figure class="example">
+                <figcaption>Endpoint configuration example</figcaption>
+                <pre><code>{
+  "caliperMaximumPayloadSize": 512,
+  "caliperSupportedVersions": [
+    "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "http://purl.imsglobal.org/ctx/caliper/v1p2"
+  ],
+  "caliperSupportedExtensions": {
+    "endpointName": "Example Endpoint",
+    "endpointVersion": "1.3.0"
+  }
+}</code></pre>
+            </figure>
         </section>
 
         <section id="stringLengths">
