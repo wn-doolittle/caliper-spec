@@ -78,6 +78,11 @@
         <td>An <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> created or generated
             as a result of the interaction. The <code>generated</code> value MUST be expressed either as an object or
             as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.
+            </br>
+            Note that if the sender of the event wants to send aggregate measure information
+            as part of this <a href="#ToolUseEvent">ToolUseEvent</a> it should, by best practice, send a single
+            <a href="AggregateMeasureCollection">AggregateMeasureCollection</a> as
+            the <code>generated</code> value.
         </td>
         <td>Optional</td>
     </tr>
