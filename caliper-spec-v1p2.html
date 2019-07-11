@@ -337,7 +337,8 @@
             <li>other requirements</li>
         </ul>
 
-        <p>As an example, the <a href="#ForumProfile">Forum Profile</a> models a set of activities associated
+
+        <p>For example, the <a href="#ForumProfile">Forum Profile</a> models a set of activities associated
             with online discussions involving instructors and learners. The profile currently includes a
             <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
             <a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a> and
@@ -346,8 +347,7 @@
             to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as
             read.</p>
 
-        <p>
-            Extending Caliper's information model involves designing a new profile or enhancing an existing one.
+        <p>Extending Caliper's information model involves designing a new profile or enhancing an existing one.
             Implementers are free to implement only those Caliper profiles as are necessary to model a learning
             domain. A video platform provider may decide that only the
             <a href="#AssignableProfile">Assignable Profile</a>, <a href="#MediaProfile">Media Profile</a> and
@@ -441,10 +441,12 @@
                 an economical way for Caliper to communicate document semantics to services interested in consuming
                 Caliper event data.</p>
 
-            <p>IMS Global provides a remote Caliper 1.1 <a href="#jsonldDef">JSON-LD</a> context document
+            <p class="note" title="Caliper JSON-LD Context document">IMS Global provides a Caliper
+                <a href="#jsonldDef">JSON-LD</a> context document
                 (<a href="http://purl.imsglobal.org/ctx/caliper/v1p2/">http://purl.imsglobal.org/ctx/caliper/v1p2/</a>)
-                for mapping Caliper <a href="#termDef">Terms</a> to <a href="#iriDef">IRIs</a>. Implementers are
-                encouraged to familiarize themselves with the term definitions described therein.</p>
+                for remote mapping of Caliper <a href="#termDef">Terms</a> to <a href="#iriDef">IRIs</a>.
+                Implementers are encouraged to familiarize themselves with the term definitions
+                described therein.</p>
 
             <h4>Requirements</h4>
             <ul>
@@ -528,16 +530,18 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <a href="#entity">Entity</a> described by the model is provisioned with an <code>id</code> rather than
                 <code>@id</code> property for identifying the resource.</p>
 
-            <p>Every <a href="#entity">Entity</a> MUST be assigned an identifier in the form of a valid
-                <a href="#iriDef">IRI</a> or a blank node identifier. The <a href="#iriDef">IRI</a> MUST be unique and
-                persistent.  The <a href="#iriDef">IRI</a> SHOULD be dereferenceable; i.e., capable of returning a
-                representation of the <a href="#entity">Entity</a>.  A <a href="#uriDef">URI</a> employing the
-                <a href="#urnDef">URN</a> scheme MAY also be utilized.</p>
+            <p class="note" title="Entity identifiers">Every <a href="#entity">Entity</a> MUST be
+                assigned an identifier in the form of a valid <a href="#iriDef">IRI</a> or a blank
+                node identifier. The <a href="#iriDef">IRI</a> MUST be unique and persistent.
+                The <a href="#iriDef">IRI</a> SHOULD be dereferenceable; i.e., capable of returning a
+                representation of the <a href="#entity">Entity</a>.  A <a href="#uriDef">URI</a>
+                employing the <a href="#urnDef">URN</a> scheme MAY also be utilized.</p>
 
-            <p>Unlike Entities, each <a href="#event">Event</a> MUST be assigned a 128-bit long universally unique
+            <p class="note" title="Event identifiers">Unlike Entities, each
+                <a href="#event">Event</a> MUST be assigned a 128-bit long universally unique
                 identifier (<a href="#uuidDef">UUID</a>) formatted as a <a href="#urnDef">URN</a> per
-                <a href="#rfc4122">RFC 4122</a>, which describes a <a href="#urnDef">URN</a> namespace for
-                <a href="#uuidDef">UUIDs</a>.</p>
+                <a href="#rfc4122">RFC 4122</a>, which describes a <a href="#urnDef">URN</a>
+                namespace for <a href="#uuidDef">UUIDs</a>.</p>
 
             <figure class="example">
                 <figcaption> - Event and Entity identifiers</figcaption>
@@ -632,9 +636,11 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 might also be carried with the <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>
                 within the <a href="#Event">Event</a>.</p>
 
-            <p><a href="#sensor">Sensor</a> applications SHOULD NOT use this method to convey
+            <p class="note" title="Entity depersonalization"><a href="#sensor">Sensor</a>
+                applications SHOULD NOT use this method to convey
                 <a href="#depersonalizedDef">depersonalized</a> entities. The methods by which
-                <a href="#sensor">Sensor</a> applications might <a href="#depersonalizedDef">depersonalize</a> entities
+                <a href="#sensor">Sensor</a> applications might
+                <a href="#depersonalizedDef">depersonalize</a> entities
                 to obscure or safeguard their identity are not within the scope of this document.</p>
 
             <p>The following example illustrates how an <a href="#anonymousDef">anonymous</a>
@@ -711,7 +717,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>Caliper <a href="#envelope">Envelope</a> properties are listed below. The <code>sensor</code>,
                 <code>sendTime</code>, <code>dataVersion</code> and <code>data</code> properties are required. Each
                 property MUST be referenced only once.  No custom properties are permitted.</p>
-            <table class="data">
+            <table>
                 <thead>
                 <tr>
                     <th>Property</th>
@@ -791,14 +797,16 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <a href="#envelope">Envelope</a>.  Messages MUST be sent using the POST request method.
                 The HTTP <code>Host</code> and <code>Content-Type</code> request header fields MUST be set.</p>
 
-            <p>A <a href="#sensor">Sensor</a> SHOULD also set the <code>Authorization</code> request header field using
+            <p class="note" title="Authorization header">A <a href="#sensor">Sensor</a> SHOULD
+                also set the <code>Authorization</code> request header field using
                 the "Bearer" authentication scheme described in <a href="#rfc6750">RFC 6750</a>,
-                <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>. The <code>b64token</code>
-                authorization credential sent by a <a href="#sensor">Sensor</a> MUST be one the
-                <a href="#endpoint">Endpoint</a> can validate although the credential MAY be opaque to the emitting
-                <a href="#sensor">Sensor</a> itself.</p>
+                <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>.
+                The <code>b64token</code> authorization credential sent by a
+                <a href="#sensor">Sensor</a> MUST be one the
+                <a href="#endpoint">Endpoint</a> can validate although the credential MAY be
+                opaque to the emitting <a href="#sensor">Sensor</a> itself.</p>
 
-            <table class="data">
+            <table>
                 <thead>
                 <tr>
                     <th>Request Header</th>
@@ -884,8 +892,10 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 states, using the standard method for reporting problem details described in
                 <a href="#rfc7807">RFC 7807</a>.</p>
 
-            <p>Caliper <a href="#endpoint">Endpoint</a> implementers should bear in mind that some Caliper
-                <a href="#sensor">Sensor</a> implementations may lack sophisticated error handling.</p>
+            <p class="note" title="Beware simple Sensor implementations">Caliper
+                <a href="#endpoint">Endpoint</a> implementers should bear in mind that some Caliper
+                <a href="#sensor">Sensor</a> implementations may lack sophisticated error
+                handling.</p>
         </section>
 
         <section id="endpoint_config">
@@ -914,7 +924,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>The properties of an Endpoint configuration are listed below. Each property MUST be included no more than
                 once. No custom properties are permitted.</p>
 
-            <table class="data">
+            <table>
                 <thead>
                 <tr>
                     <th>Property</th>
