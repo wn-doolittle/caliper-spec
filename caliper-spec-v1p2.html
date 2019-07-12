@@ -1608,17 +1608,21 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
     <section id="actions" class="appendix">
         <h2>Actions</h2>
 
-        <p>Caliper includes a vocabulary of actions for describing learning interactions. Each action <a href="#termDef">Term</a>
-            is based on the past-tense form of an English (en-US) verb. An action <a href="#termDef">Term</a> can also
-            indicate a change in a particular characteristic of the <code>object</code> (e.g., resolution, size, speed,
-            volume). Each action <a href="#termDef">Term</a> is mapped to a persistent <a href="iriDef">IRI</a> listed
-            in the external IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>. Each
-            action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton
-            University's WordNet&reg; project in order to eliminate ambiguity and aid natural language processing.</p>
+        <p>Caliper includes a vocabulary of actions for describing learning interactions. Each
+            action <a href="#termDef">Term</a> is based on the past-tense form of an English (en-US)
+            verb. An action <a href="#termDef">Term</a> can also indicate a change in a particular
+            characteristic of the <code>object</code> (e.g., resolution, size, speed, volume). Each
+            action <a href="#termDef">Term</a> is mapped to a persistent <a href="iriDef">IRI</a>
+            listed in the external IMS Caliper JSON-LD
+            <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>. Each action is also
+            linked to one or more brief definitions ("glosses") derived in whole or in part from
+            Princeton University's WordNet&reg; project or the Wiktionary project in order to
+            eliminate ambiguity and aid natural language processing.</p>
 
-        <p>Each Caliper <a href="#Event">Event</a> type supports one or more of the actions listed below.
-            The <a href="#Event">Event</a> <code>action</code> property string value MUST be set to the appropriate
-            <a href="termDef">Term</a>. Only one action may be specified per <a href="#Event">Event</a>.</p>
+        <p>Each Caliper <a href="#Event">Event</a> type supports one or more of the actions listed
+            below. The <a href="#Event">Event</a> <code>action</code> property string value MUST be
+            set to the appropriate <a href="termDef">Term</a>. Only one action may be specified per
+            <a href="#Event">Event</a>.</p>
 
         <section id="action-abandoned" data-include="fragments/actions/caliper-action-abandoned.html"></section>
         <section id="action-accepted" data-include="fragments/actions/caliper-action-accepted.html"></section>
