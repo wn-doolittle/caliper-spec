@@ -18,14 +18,6 @@
     <a href="#mediaObject">MediaObject</a>. A <a href="#mediaLocation">MediaLocation</a> entity is also
     provided in order to represent the current location in an audio or video stream.</p>
 
-<p class="note" title='Collecting video interaction data'>As an example of how this profile could be used, consider the following scenario: an
-    instructor has decided to incorporate a video player into their course. The video content
-    may or may not be launched via <a href="#ltiDef">LTI</a> from the Learning Management
-    System (LMS). Since the video player tool is instrumented to emit activity data via Caliper,
-    the instructor will be able to collect useful information about student viewing behavior.
-    In addition, she will be able to compare this data along with other relevant information
-    in the LMS, such as assignment and quiz results.</p>
-
 <p>The Media Profile supports the following user stories:</p>
 
 <ul>
@@ -36,6 +28,14 @@
     <li>As an instructor, I want to know if there are instances of students replaying sections
         of the video.</li>
 </ul>
+
+<aside class="example" title='Collecting video interaction data'>
+    <p>Consider the following scenario: an instructor has decided to incorporate a
+        <em>caliperized</em> video player into their course. As video player emits activity data,
+        the instructor will be able to collect useful information about student viewing behavior.
+        In addition, she will be able to compare this data along with other
+        relevant information in the LMS, such as assignment and quiz results.</p>
+</aside>
 
 <p>The Media Profile defines a <a href="#MediaEvent">MediaEvent</a>, <a href="#navigationEvent">NavigationEvent</a>,
     and <a href="#viewEvent">ViewEvent</a> for describing interactions with media such as an
