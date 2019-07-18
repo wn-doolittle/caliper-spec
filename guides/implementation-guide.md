@@ -547,6 +547,95 @@ TODO: Explain and link to industry best practices around ethics, data retention 
 TODO: How Caliper uses JSON-LD and links to Caliper docs for further learning if necessary
 
 
+## Working with other IMS Specifications
+
+As an analytics standard, Caliper is relevant to almost every other IMS specification in some way. These sections will cover some of ways Caliper interacts with other specifications.
+
+
+### CASE - Competencies and Academic Standards Exchange
+
+[CASE](https://www.imsglobal.org/activity/case) is used to align learning content and activities with academic standards. It might be useful to pass the CASE standard a Caliper `Entity` is aligned with via a [LearningObjective](https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#learningObjective) `Entity` included with the `Object` in a Caliper `Event`.
+
+If the Caliper endpoint is able to retrieve this information from another source then it may be better to not include the `LearningObjective` to help keep the Caliper Event's JSON smaller.
+
+Here is an example of a CASE `LearningObjective` 
+
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assign/2",
+  "type": "AssignableDigitalResource",
+  "name": "Reading Assignment: Research techniques",
+  "learningObjectives": [
+    {
+      "id": "https://case.georgiastandards.org/ims/case/v1p0/CFItems/2f5e8130-46fa-11e7-b197-cd3432e719f9",
+      "type": "LearningObjective",
+      "name": "Research techniques",
+      "description": "ELAGSE1RL1 Ask and answer questions about key details in a text."
+    }
+  ]
+}
+```
+
+For brevity, it also valid to just include the `id` in the `learningObjectives` array like this:
+
+```json
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assign/2",
+  "type": "AssignableDigitalResource",
+  "name": "Reading Assignment: Research techniques",
+  "learningObjectives": [
+    "https://case.georgiastandards.org/ims/case/v1p0/CFItems/2f5e8130-46fa-11e7-b197-cd3432e719f9",
+    "https://case.georgiastandards.org/ims/case/v1p0/CFItems/2f5eda0e-46fa-11e7-b90a-62096a00843f"
+  ]
+}
+```
+
+
+### LTI - Learning Tools Interoperability
+
+
+#### LTI Caliper Connector Service
+
+An LTI Tool can use the [LTI Caliper Connector](https://github.com/IMSGlobal/LTI-spec-Caliper/blob/master/docs/lti-spec-caliper.md) service to retrieve a Caliper endpoint to send events to and get an authorization token from.
+
+This service also specifies that the `Caliper.sessionId` value should be sent on an LTI launch. This is what Caliper calls the "Federated Session ID" as described in the [LTI Sessions and Identifiers](#lti-sessions-and-identifiers) section.
+
+
+#### Tool Use and Tool Launch Profiles
+
+The [Tool Use](#) and [Tool Launch](#) profiles are meant to help understand how LTI tools are used at an institution. Their use is highly recommended for all LTI tools.
+
+
+#### Assignment and Grades
+
+Maybe something about how some assignment ids could come from here?
+
+#### Names and Role Provisioning
+
+Maybe something about how the user and context ids could come from here?
+
+
+### OneRoster & LIS
+
+Something about IDs for users/contexts?
+
+
+### OpenVideo
+
+The Media Profile should be used by platforms implementing [OpenVideo](https://www.imsglobal.org/activity/openvideo).
+
+
+### QTI - Question and Test Interoperability
+
+For a learner's interactions within a [QTI](https://www.imsglobal.org/question/index.html) assessment the [Assessment Profile](#) should be used. This profile is useful for all assessments whether driven by QTI or not allowing researchers and tool creators to send events about assessment generically.  
+
+For more research on detailed assessment interactions as supported by QTI the [QTI Profile](#) can be used.
+
+It is recommended that these two profiles are used together depending on the needs of the ongoing research or learning application.
+
+
 ## List of Contributors
 The following individuals contributed to the development of this document:
 
