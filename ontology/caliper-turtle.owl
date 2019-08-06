@@ -160,6 +160,16 @@ xsd:duration rdf:type rdfs:Datatype .
          rdfs:label "attempt"@en .
 
 
+###  http://purl.imsglobal.org/caliper/client
+:client rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :Session ;
+        rdfs:range :SoftwareApplication ;
+        rdfs:comment "The SoftwareApplication that is hosting a Session."@en ;
+        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+        rdfs:label "client"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/commentedOn
 :commentedOn rdf:type owl:ObjectProperty ,
                       owl:FunctionalProperty ;
