@@ -369,6 +369,16 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:range :LtiMessageType .
 
 
+###  http://purl.imsglobal.org/caliper/metric
+:metric rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :AggregateMeasure ;
+        rdfs:range :Metric ;
+        rdfs:comment "The standard of measurement associated with the progress value."@en ;
+        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+        rdfs:label "metric"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/navigatedFrom
 :navigatedFrom rdf:type owl:ObjectProperty ,
                         owl:FunctionalProperty ;
@@ -1033,15 +1043,6 @@ xsd:duration rdf:type rdfs:Datatype .
            rdfs:comment "A string value drawn from the list of IANA approved media types and subtypes that identifies the file format of a resource."@en ;
            rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
            rdfs:label "mediaType"@en .
-
-
-###  http://purl.imsglobal.org/caliper/metric
-:metric rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:domain :AggregateMeasure ;
-        rdfs:comment "The standard of measurement associated with the progress value."@en ;
-        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
-        rdfs:label "metric"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/metricValue
