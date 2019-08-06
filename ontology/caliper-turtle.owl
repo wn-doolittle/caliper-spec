@@ -858,6 +858,15 @@ xsd:duration rdf:type rdfs:Datatype .
                   owl:deprecated "true"^^xsd:boolean .
 
 
+###  http://purl.imsglobal.org/caliper/host
+:host rdf:type owl:DatatypeProperty ;
+      rdfs:domain :SoftwareApplication ;
+      rdfs:range xsd:string ;
+      rdfs:comment "Identifies the host of a SoftwareApplication. This property can be used to indicate the back-end service or domain hosting a front-end web application."@en ;
+      rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+      rdfs:label "host"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/id
 :id rdf:type owl:DatatypeProperty ,
              owl:FunctionalProperty ;
@@ -880,6 +889,15 @@ xsd:duration rdf:type rdfs:Datatype .
        rdfs:comment "A non-negative integer that represents the position of the Frame."@en ;
        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
        rdfs:label "index"@en .
+
+
+###  http://purl.imsglobal.org/caliper/ipAddress
+:ipAddress rdf:type owl:DatatypeProperty ;
+           rdfs:domain :SoftwareApplication ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Indicates the IPv4 or IPv6 address of a SoftwareApplication. This property can be used to indicate the user agent (browser) running a front-end web application."@en ;
+           rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+           rdfs:label "ipAddress"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/isTimeDependent
@@ -1281,6 +1299,15 @@ xsd:duration rdf:type rdfs:Datatype .
       rdfs:comment "A string value corresponding to the Class name or label of an Event or Entity."@en ;
       rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
       rdfs:label "type"@en .
+
+
+###  http://purl.imsglobal.org/caliper/userAgent
+:userAgent rdf:type owl:DatatypeProperty ;
+           rdfs:domain :SoftwareApplication ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Describes the properties of the user agent hosting a SoftwareApplication. This field can be used to carry the user agent string reported by the browser running a front-end web application."@en ;
+           rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+           rdfs:label "userAgent"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/value
