@@ -431,6 +431,16 @@ xsd:duration rdf:type rdfs:Datatype .
        rdfs:label "query"@en .
 
 
+###  http://purl.imsglobal.org/caliper/question
+:question rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Rating ;
+          rdfs:range :Question ;
+          rdfs:comment "The Question used for the Rating."@en ;
+          rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+          rdfs:label "question"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/rated
 :rated rdf:type owl:ObjectProperty ,
                 owl:FunctionalProperty ;
@@ -551,6 +561,7 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://purl.imsglobal.org/caliper/selections
 :selections rdf:type owl:ObjectProperty ;
+            rdfs:domain :Rating ;
             rdfs:comment "An array of the values representing the rater's selected response."@en ;
             rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
             rdfs:label "selections"@en .
@@ -1149,16 +1160,6 @@ xsd:duration rdf:type rdfs:Datatype .
         rdfs:comment "A integer value used to determine the amount of points on the LikertScale."@en ;
         rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
         rdfs:label "scalePoints"@en .
-
-
-###  http://purl.imsglobal.org/caliper/question
-:question rdf:type owl:DatatypeProperty ,
-                   owl:FunctionalProperty ;
-          rdfs:domain :Scale ;
-          rdfs:range xsd:string ;
-          rdfs:comment "A string value comprising the question posed to be scaled."@en ;
-          rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"@en ;
-          rdfs:label "question"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/resultScore
@@ -2546,6 +2547,14 @@ xsd:duration rdf:type rdfs:Datatype .
        rdfs:comment "A Caliper Query models search criteria created by an actor that targets a searchable resource."@en ;
        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
        rdfs:label "Query"@en .
+
+
+###  http://purl.imsglobal.org/caliper/Question
+:Question rdf:type owl:Class ;
+          rdfs:subClassOf :DigitalResource ;
+          rdfs:comment "A Question is a generic type that represents an interrogative expression designed to elicit information from a respondent, featuring either a closed-end format with a set of predefined responses or an open-ended format."@en ;
+          rdfs:label "Question"@en ,
+                     "http://purl.imsglobal.org/caliper"^^xsd:string .
 
 
 ###  http://purl.imsglobal.org/caliper/Rating
@@ -4690,6 +4699,23 @@ xsd:duration rdf:type rdfs:Datatype .
                 :ToolLaunchEvent
                 :ToolUseEvent
                 :ViewEvent
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AssignableDigitalResource
+                :Chapter
+                :DigitalResourceCollection
+                :Document
+                :Frame
+                :LtiLink
+                :MediaLocation
+                :MediaObject
+                :Message
+                :Page
+                :Question
+                :WebPage
               )
 ] .
 

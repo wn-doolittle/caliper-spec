@@ -2961,6 +2961,45 @@
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/Chapter"
     }, {
+      "@id" : "http://purl.imsglobal.org/caliper/DigitalResourceCollection"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/Document"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/Frame"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/LtiLink"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/MediaLocation"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/MediaObject"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/Message"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/Page"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/Question"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/WebPage"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid69",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/annotated"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/Entity"
+  } ]
+}, {
+  "@id" : "_:genid692",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
+    "@list" : [ {
+      "@id" : "http://purl.imsglobal.org/caliper/AssignableDigitalResource"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/Chapter"
+    }, {
       "@id" : "http://purl.imsglobal.org/caliper/Document"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/Frame"
@@ -2979,16 +3018,17 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid69",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/annotated"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/Entity"
+  "@id" : "_:genid70",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
+    "@list" : [ {
+      "@id" : "_:genid74"
+    }, {
+      "@id" : "_:genid72"
+    } ]
   } ]
 }, {
-  "@id" : "_:genid690",
+  "@id" : "_:genid703",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3000,7 +3040,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid694",
+  "@id" : "_:genid707",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3014,7 +3054,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid699",
+  "@id" : "_:genid712",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3030,17 +3070,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid70",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
-    "@list" : [ {
-      "@id" : "_:genid74"
-    }, {
-      "@id" : "_:genid72"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid705",
+  "@id" : "_:genid718",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3052,7 +3082,16 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid709",
+  "@id" : "_:genid72",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/Person"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/annotator"
+  } ]
+}, {
+  "@id" : "_:genid722",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3064,7 +3103,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid713",
+  "@id" : "_:genid726",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3086,16 +3125,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid72",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/Person"
-  } ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/annotator"
-  } ]
-}, {
-  "@id" : "_:genid722",
+  "@id" : "_:genid735",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
@@ -3311,7 +3341,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid802",
+  "@id" : "_:genid815",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
@@ -3321,7 +3351,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid805",
+  "@id" : "_:genid818",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
@@ -4776,6 +4806,22 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
+  } ]
+}, {
+  "@id" : "http://purl.imsglobal.org/caliper/Question",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A Question is a generic type that represents an interrogative expression designed to elicit information from a respondent, featuring either a closed-end format with a set of predefined responses or an open-ended format."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Question"
+  }, {
+    "@value" : "http://purl.imsglobal.org/caliper"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/DigitalResource"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/Rating",
@@ -8467,24 +8513,23 @@
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/question",
-  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "A string value comprising the question posed to be scaled."
+    "@value" : "The Question used for the Rating."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/Scale"
+    "@id" : "http://purl.imsglobal.org/caliper/Rating"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
-    "@language" : "en",
-    "@value" : "https://purl.imsglobal.org/caliper"
+    "@value" : "http://purl.imsglobal.org/caliper"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "question"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+    "@id" : "http://purl.imsglobal.org/caliper/Question"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/rated",
@@ -8812,6 +8857,9 @@
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An array of the values representing the rater's selected response."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/Rating"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@value" : "https://purl.imsglobal.org/caliper"
