@@ -552,6 +552,19 @@ The Caliper ontology provides a machine-readable document that defines the conce
     
 
 
+    <!-- http://purl.imsglobal.org/caliper/profile -->
+
+    <owl:ObjectProperty rdf:about="http://purl.imsglobal.org/caliper/profile">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.imsglobal.org/caliper/Event"/>
+        <rdfs:range rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">Named profile that governs the rules of interpretation for an Event. The range of profile values is limited to the set of profiles described by the Caliper specification and any profile extension specifications extending the Caliper specification.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">profile</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.imsglobal.org/caliper/query -->
 
     <owl:ObjectProperty rdf:about="http://purl.imsglobal.org/caliper/query">
@@ -3402,6 +3415,12 @@ The Caliper ontology provides a machine-readable document that defines the conce
     
 
 
+    <!-- http://purl.imsglobal.org/caliper/Profile -->
+
+    <owl:Class rdf:about="http://purl.imsglobal.org/caliper/Profile"/>
+    
+
+
     <!-- http://purl.imsglobal.org/caliper/Query -->
 
     <owl:Class rdf:about="http://purl.imsglobal.org/caliper/Query">
@@ -4497,6 +4516,171 @@ The Caliper ontology provides a machine-readable document that defines the conce
         <rdfs:comment xml:lang="en">Remove from public distribution or sale. Inverse of Published.</rdfs:comment>
         <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://wordnet-rdf.princeton.edu/wn31/200969657-v</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">Unpublished</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/AnnotationProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/AnnotationProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Annotation Profile models activities related to the annotation of a DigitalResource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">AnnotationProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/AssessmentProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/AssessmentProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Assessment Profile models assessment-related activities including interactions with individual assessment items.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">AssessmentProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/AssignableProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/AssignableProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">AssignableProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/FeedbackProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/FeedbackProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Feedback Profile models a Person providing informal feedback on a Entity, typically a piece of student work.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">FeedbackProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/ForumProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/ForumProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Forum Profile models learners and others participating in online discussion forums. Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">ForumProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/GeneralProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/GeneralProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Caliper General Profile provides a generic Event for describing learning or supporting activities that have yet to be modeled by Caliper.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">GeneralProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/GradingProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/GradingProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Grading Profile models grading activities performed by an Agent, typically a Person or a SoftwareApplication.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">GradingProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/MediaProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/MediaProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Media Profile models interactions between learners and rich content such as audio, images and video.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">MediaProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/ReadingProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/ReadingProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:isDefinedBy xml:lang="en">The Reading Profile models activities associated with navigating to and viewing digital textual content.</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">ReadingProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/ResourceManagementProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/ResourceManagementProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Resource Management Profile models a Person managing a DigitalResource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">ResourceManagementProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/SearchProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/SearchProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Search Profile models an actor, typically a learner, querying a resource for information.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">SearchProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/SessionProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/SessionProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Session Profile models the creation and subsequent termination of a user session established by a Person interacting with a SoftwareApplication.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">SessionProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/SurveyProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/SurveyProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Survey Profile provides a vocabulary for describing events associated with a respondent&apos;s participation in online surveys.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">SurveyProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/ToolLaunchProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/ToolLaunchProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Tool Launch Profile is intended to capture the utilization of learning tools from a centralized location, such as an LTI Tool Platform (often an LMS).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">ToolLaunchProfile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.imsglobal.org/caliper/ToolUseProfile -->
+
+    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/caliper/ToolUseProfile">
+        <rdf:type rdf:resource="http://purl.imsglobal.org/caliper/Profile"/>
+        <rdfs:comment xml:lang="en">The Tool Use Profile models an intended interaction between a user and a tool. In other words, when a Person utilizes a SoftwareApplication in a manner that the application determines to be its intended use for learning, an application that implements the Tool Use Profile can emit a ToolUseEvent indicating such usage.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">ToolUseProfile</rdfs:label>
     </owl:NamedIndividual>
     
 
