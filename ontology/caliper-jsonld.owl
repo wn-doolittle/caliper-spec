@@ -1751,7 +1751,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid434"
+      "@id" : "_:genid438"
     }, {
       "@id" : "_:genid421"
     } ]
@@ -1786,13 +1786,9 @@
     "@list" : [ {
       "@id" : "http://purl.imsglobal.org/actions/Archived"
     }, {
-      "@id" : "http://purl.imsglobal.org/actions/Copied"
-    }, {
-      "@id" : "http://purl.imsglobal.org/actions/Published"
-    }, {
       "@id" : "http://purl.imsglobal.org/actions/Restored"
     }, {
-      "@id" : "http://purl.imsglobal.org/actions/Unpublished"
+      "@id" : "http://purl.imsglobal.org/caliper/actions/Copied"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/actions/Created"
     }, {
@@ -1800,13 +1796,25 @@
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/actions/Described"
     }, {
+      "@id" : "http://purl.imsglobal.org/caliper/actions/Downloaded"
+    }, {
       "@id" : "http://purl.imsglobal.org/caliper/actions/Modified"
     }, {
+      "@id" : "http://purl.imsglobal.org/caliper/actions/Printed"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/actions/Published"
+    }, {
       "@id" : "http://purl.imsglobal.org/caliper/actions/Retrieved"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/actions/Saved"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/actions/Unpublished"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/actions/Uploaded"
     } ]
   } ]
 }, {
-  "@id" : "_:genid434",
+  "@id" : "_:genid438",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
@@ -1815,17 +1823,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Action"
   } ]
 }, {
-  "@id" : "_:genid435",
+  "@id" : "_:genid439",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid439"
+      "@id" : "_:genid443"
     }, {
-      "@id" : "_:genid437"
+      "@id" : "_:genid441"
     } ]
   } ]
 }, {
-  "@id" : "_:genid437",
+  "@id" : "_:genid441",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Person"
@@ -1834,7 +1842,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/actor"
   } ]
 }, {
-  "@id" : "_:genid439",
+  "@id" : "_:genid443",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actor"
@@ -1843,17 +1851,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid440",
+  "@id" : "_:genid444",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid444"
+      "@id" : "_:genid448"
     }, {
-      "@id" : "_:genid442"
+      "@id" : "_:genid446"
     } ]
   } ]
 }, {
-  "@id" : "_:genid442",
+  "@id" : "_:genid446",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/DigitalResource"
@@ -1862,7 +1870,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/object"
   } ]
 }, {
-  "@id" : "_:genid444",
+  "@id" : "_:genid448",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/object"
@@ -1871,7 +1879,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid445",
+  "@id" : "_:genid449",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/generated"
@@ -1880,17 +1888,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid446",
+  "@id" : "_:genid450",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid450"
+      "@id" : "_:genid454"
     }, {
-      "@id" : "_:genid448"
+      "@id" : "_:genid452"
     } ]
   } ]
 }, {
-  "@id" : "_:genid448",
+  "@id" : "_:genid452",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#hasValue" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actions/Searched"
@@ -1899,7 +1907,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/action"
   } ]
 }, {
-  "@id" : "_:genid450",
+  "@id" : "_:genid454",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
@@ -1908,17 +1916,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Action"
   } ]
 }, {
-  "@id" : "_:genid451",
+  "@id" : "_:genid455",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid455"
+      "@id" : "_:genid459"
     }, {
-      "@id" : "_:genid453"
+      "@id" : "_:genid457"
     } ]
   } ]
 }, {
-  "@id" : "_:genid453",
+  "@id" : "_:genid457",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Person"
@@ -1927,7 +1935,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/actor"
   } ]
 }, {
-  "@id" : "_:genid455",
+  "@id" : "_:genid459",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actor"
@@ -1936,7 +1944,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid456",
+  "@id" : "_:genid460",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/generated"
@@ -1945,17 +1953,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/SearchResponse"
   } ]
 }, {
-  "@id" : "_:genid457",
+  "@id" : "_:genid461",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid461"
+      "@id" : "_:genid465"
     }, {
-      "@id" : "_:genid459"
+      "@id" : "_:genid463"
     } ]
   } ]
 }, {
-  "@id" : "_:genid459",
+  "@id" : "_:genid463",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Person"
@@ -1964,7 +1972,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/user"
   } ]
 }, {
-  "@id" : "_:genid461",
+  "@id" : "_:genid465",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/user"
@@ -1973,26 +1981,26 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid462",
+  "@id" : "_:genid466",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid470"
+      "@id" : "_:genid474"
     }, {
-      "@id" : "_:genid464"
+      "@id" : "_:genid468"
     } ]
   } ]
 }, {
-  "@id" : "_:genid464",
+  "@id" : "_:genid468",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
   } ],
   "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "_:genid465"
+    "@id" : "_:genid469"
   } ]
 }, {
-  "@id" : "_:genid465",
+  "@id" : "_:genid469",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
@@ -2014,7 +2022,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid470",
+  "@id" : "_:genid474",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
@@ -2023,26 +2031,26 @@
     "@id" : "http://purl.imsglobal.org/caliper/Action"
   } ]
 }, {
-  "@id" : "_:genid471",
+  "@id" : "_:genid475",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid478"
+      "@id" : "_:genid482"
     }, {
-      "@id" : "_:genid473"
+      "@id" : "_:genid477"
     } ]
   } ]
 }, {
-  "@id" : "_:genid473",
+  "@id" : "_:genid477",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
-    "@id" : "_:genid474"
+    "@id" : "_:genid478"
   } ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actor"
   } ]
 }, {
-  "@id" : "_:genid474",
+  "@id" : "_:genid478",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
@@ -2052,7 +2060,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid478",
+  "@id" : "_:genid482",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actor"
@@ -2061,26 +2069,26 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid479",
+  "@id" : "_:genid483",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid486"
+      "@id" : "_:genid490"
     }, {
-      "@id" : "_:genid481"
+      "@id" : "_:genid485"
     } ]
   } ]
 }, {
-  "@id" : "_:genid481",
+  "@id" : "_:genid485",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
-    "@id" : "_:genid482"
+    "@id" : "_:genid486"
   } ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/object"
   } ]
 }, {
-  "@id" : "_:genid482",
+  "@id" : "_:genid486",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
@@ -2090,7 +2098,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid486",
+  "@id" : "_:genid490",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/object"
@@ -2099,26 +2107,26 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid487",
+  "@id" : "_:genid491",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid494"
+      "@id" : "_:genid498"
     }, {
-      "@id" : "_:genid489"
+      "@id" : "_:genid493"
     } ]
   } ]
 }, {
-  "@id" : "_:genid489",
+  "@id" : "_:genid493",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
-    "@id" : "_:genid490"
+    "@id" : "_:genid494"
   } ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/referrer"
   } ]
 }, {
-  "@id" : "_:genid490",
+  "@id" : "_:genid494",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
@@ -2128,7 +2136,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid494",
+  "@id" : "_:genid498",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/referrer"
@@ -2137,32 +2145,13 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid495",
+  "@id" : "_:genid499",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/target"
   } ],
   "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/DigitalResource"
-  } ]
-}, {
-  "@id" : "_:genid496",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
-    "@list" : [ {
-      "@id" : "_:genid500"
-    }, {
-      "@id" : "_:genid498"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid498",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/Forum"
-  } ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/isPartOf"
   } ]
 }, {
   "@id" : "_:genid5",
@@ -2186,6 +2175,25 @@
   } ]
 }, {
   "@id" : "_:genid500",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
+    "@list" : [ {
+      "@id" : "_:genid504"
+    }, {
+      "@id" : "_:genid502"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid502",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/Forum"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/isPartOf"
+  } ]
+}, {
+  "@id" : "_:genid504",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/isPartOf"
@@ -2194,17 +2202,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid501",
+  "@id" : "_:genid505",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid505"
+      "@id" : "_:genid509"
     }, {
-      "@id" : "_:genid503"
+      "@id" : "_:genid507"
     } ]
   } ]
 }, {
-  "@id" : "_:genid503",
+  "@id" : "_:genid507",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Message"
@@ -2213,7 +2221,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/items"
   } ]
 }, {
-  "@id" : "_:genid505",
+  "@id" : "_:genid509",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/items"
@@ -2222,26 +2230,26 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid506",
+  "@id" : "_:genid510",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid513"
+      "@id" : "_:genid517"
     }, {
-      "@id" : "_:genid508"
+      "@id" : "_:genid512"
     } ]
   } ]
 }, {
-  "@id" : "_:genid508",
+  "@id" : "_:genid512",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
   } ],
   "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "_:genid509"
+    "@id" : "_:genid513"
   } ]
 }, {
-  "@id" : "_:genid509",
+  "@id" : "_:genid513",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#oneOf" : [ {
     "@list" : [ {
@@ -2251,7 +2259,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid513",
+  "@id" : "_:genid517",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
@@ -2260,17 +2268,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Action"
   } ]
 }, {
-  "@id" : "_:genid514",
+  "@id" : "_:genid518",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid518"
+      "@id" : "_:genid522"
     }, {
-      "@id" : "_:genid516"
+      "@id" : "_:genid520"
     } ]
   } ]
 }, {
-  "@id" : "_:genid516",
+  "@id" : "_:genid520",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Person"
@@ -2279,7 +2287,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/actor"
   } ]
 }, {
-  "@id" : "_:genid518",
+  "@id" : "_:genid522",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actor"
@@ -2288,17 +2296,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid519",
+  "@id" : "_:genid523",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid523"
+      "@id" : "_:genid527"
     }, {
-      "@id" : "_:genid521"
+      "@id" : "_:genid525"
     } ]
   } ]
 }, {
-  "@id" : "_:genid521",
+  "@id" : "_:genid525",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Thread"
@@ -2307,7 +2315,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/object"
   } ]
 }, {
-  "@id" : "_:genid523",
+  "@id" : "_:genid527",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/object"
@@ -2316,32 +2324,13 @@
     "@id" : "http://purl.imsglobal.org/caliper/DigitalResource"
   } ]
 }, {
-  "@id" : "_:genid524",
+  "@id" : "_:genid528",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid531"
+      "@id" : "_:genid535"
     }, {
-      "@id" : "_:genid526"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid526",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/action"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "_:genid527"
-  } ]
-}, {
-  "@id" : "_:genid527",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#oneOf" : [ {
-    "@list" : [ {
-      "@id" : "http://purl.imsglobal.org/actions/Launched"
-    }, {
-      "@id" : "http://purl.imsglobal.org/actions/Returned"
+      "@id" : "_:genid530"
     } ]
   } ]
 }, {
@@ -2357,7 +2346,26 @@
     } ]
   } ]
 }, {
+  "@id" : "_:genid530",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/action"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "_:genid531"
+  } ]
+}, {
   "@id" : "_:genid531",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
+    "@list" : [ {
+      "@id" : "http://purl.imsglobal.org/actions/Launched"
+    }, {
+      "@id" : "http://purl.imsglobal.org/actions/Returned"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid535",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
@@ -2366,17 +2374,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Action"
   } ]
 }, {
-  "@id" : "_:genid532",
+  "@id" : "_:genid536",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid536"
+      "@id" : "_:genid540"
     }, {
-      "@id" : "_:genid534"
+      "@id" : "_:genid538"
     } ]
   } ]
 }, {
-  "@id" : "_:genid534",
+  "@id" : "_:genid538",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Person"
@@ -2385,7 +2393,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/actor"
   } ]
 }, {
-  "@id" : "_:genid536",
+  "@id" : "_:genid540",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actor"
@@ -2394,17 +2402,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid537",
+  "@id" : "_:genid541",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid541"
+      "@id" : "_:genid545"
     }, {
-      "@id" : "_:genid539"
+      "@id" : "_:genid543"
     } ]
   } ]
 }, {
-  "@id" : "_:genid539",
+  "@id" : "_:genid543",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/SoftwareApplication"
@@ -2413,7 +2421,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/object"
   } ]
 }, {
-  "@id" : "_:genid541",
+  "@id" : "_:genid545",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/object"
@@ -2422,26 +2430,26 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid542",
+  "@id" : "_:genid546",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid549"
+      "@id" : "_:genid553"
     }, {
-      "@id" : "_:genid544"
+      "@id" : "_:genid548"
     } ]
   } ]
 }, {
-  "@id" : "_:genid544",
+  "@id" : "_:genid548",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
-    "@id" : "_:genid545"
+    "@id" : "_:genid549"
   } ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/target"
   } ]
 }, {
-  "@id" : "_:genid545",
+  "@id" : "_:genid549",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
@@ -2451,7 +2459,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid549",
+  "@id" : "_:genid553",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/target"
@@ -2460,7 +2468,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid550",
+  "@id" : "_:genid554",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/generated"
@@ -2469,7 +2477,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/DigitalResource"
   } ]
 }, {
-  "@id" : "_:genid551",
+  "@id" : "_:genid555",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/LtiSession"
@@ -2478,17 +2486,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/federatedSession"
   } ]
 }, {
-  "@id" : "_:genid552",
+  "@id" : "_:genid556",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid556"
+      "@id" : "_:genid560"
     }, {
-      "@id" : "_:genid554"
+      "@id" : "_:genid558"
     } ]
   } ]
 }, {
-  "@id" : "_:genid554",
+  "@id" : "_:genid558",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#hasValue" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actions/Used"
@@ -2497,7 +2505,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/action"
   } ]
 }, {
-  "@id" : "_:genid556",
+  "@id" : "_:genid560",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
@@ -2506,17 +2514,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Action"
   } ]
 }, {
-  "@id" : "_:genid557",
+  "@id" : "_:genid561",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid561"
+      "@id" : "_:genid565"
     }, {
-      "@id" : "_:genid559"
+      "@id" : "_:genid563"
     } ]
   } ]
 }, {
-  "@id" : "_:genid559",
+  "@id" : "_:genid563",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Person"
@@ -2525,7 +2533,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/actor"
   } ]
 }, {
-  "@id" : "_:genid561",
+  "@id" : "_:genid565",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actor"
@@ -2534,51 +2542,23 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid562",
+  "@id" : "_:genid566",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid566"
+      "@id" : "_:genid570"
     }, {
-      "@id" : "_:genid564"
+      "@id" : "_:genid568"
     } ]
   } ]
 }, {
-  "@id" : "_:genid564",
+  "@id" : "_:genid568",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/SoftwareApplication"
   } ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/object"
-  } ]
-}, {
-  "@id" : "_:genid566",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/object"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/Agent"
-  } ]
-}, {
-  "@id" : "_:genid567",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
-  "http://www.w3.org/2002/07/owl#onProperty" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/target"
-  } ],
-  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/SoftwareApplication"
-  } ]
-}, {
-  "@id" : "_:genid568",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
-    "@list" : [ {
-      "@id" : "_:genid572"
-    }, {
-      "@id" : "_:genid570"
-    } ]
   } ]
 }, {
   "@id" : "_:genid57",
@@ -2593,6 +2573,34 @@
 }, {
   "@id" : "_:genid570",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/object"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/Agent"
+  } ]
+}, {
+  "@id" : "_:genid571",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/target"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/SoftwareApplication"
+  } ]
+}, {
+  "@id" : "_:genid572",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
+    "@list" : [ {
+      "@id" : "_:genid576"
+    }, {
+      "@id" : "_:genid574"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid574",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#hasValue" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actions/Viewed"
   } ],
@@ -2600,7 +2608,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/action"
   } ]
 }, {
-  "@id" : "_:genid572",
+  "@id" : "_:genid576",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/action"
@@ -2609,17 +2617,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Action"
   } ]
 }, {
-  "@id" : "_:genid573",
+  "@id" : "_:genid577",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid577"
+      "@id" : "_:genid581"
     }, {
-      "@id" : "_:genid575"
+      "@id" : "_:genid579"
     } ]
   } ]
 }, {
-  "@id" : "_:genid575",
+  "@id" : "_:genid579",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Person"
@@ -2628,7 +2636,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/actor"
   } ]
 }, {
-  "@id" : "_:genid577",
+  "@id" : "_:genid581",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/actor"
@@ -2637,17 +2645,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
   } ]
 }, {
-  "@id" : "_:genid578",
+  "@id" : "_:genid582",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid582"
+      "@id" : "_:genid586"
     }, {
-      "@id" : "_:genid580"
+      "@id" : "_:genid584"
     } ]
   } ]
 }, {
-  "@id" : "_:genid580",
+  "@id" : "_:genid584",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/DigitalResource"
@@ -2656,7 +2664,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/object"
   } ]
 }, {
-  "@id" : "_:genid582",
+  "@id" : "_:genid586",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/object"
@@ -2665,7 +2673,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid583",
+  "@id" : "_:genid587",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/target"
@@ -2674,17 +2682,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Frame"
   } ]
 }, {
-  "@id" : "_:genid584",
+  "@id" : "_:genid588",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
     "@list" : [ {
-      "@id" : "_:genid588"
+      "@id" : "_:genid592"
     }, {
-      "@id" : "_:genid586"
+      "@id" : "_:genid590"
     } ]
   } ]
 }, {
-  "@id" : "_:genid586",
+  "@id" : "_:genid590",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/epubChapter"
@@ -2693,7 +2701,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/isPartOf"
   } ]
 }, {
-  "@id" : "_:genid588",
+  "@id" : "_:genid592",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/isPartOf"
@@ -2702,7 +2710,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid589",
+  "@id" : "_:genid593",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -2722,7 +2730,17 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid597",
+  "@id" : "_:genid60",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
+    "@list" : [ {
+      "@id" : "_:genid64"
+    }, {
+      "@id" : "_:genid62"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid601",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -2762,17 +2780,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid60",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
-    "@list" : [ {
-      "@id" : "_:genid64"
-    }, {
-      "@id" : "_:genid62"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid615",
+  "@id" : "_:genid619",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -2819,7 +2827,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/items"
   } ]
 }, {
-  "@id" : "_:genid632",
+  "@id" : "_:genid636",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -2860,7 +2868,17 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid646",
+  "@id" : "_:genid65",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
+    "@list" : [ {
+      "@id" : "_:genid69"
+    }, {
+      "@id" : "_:genid67"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid650",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -2890,17 +2908,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid65",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#intersectionOf" : [ {
-    "@list" : [ {
-      "@id" : "_:genid69"
-    }, {
-      "@id" : "_:genid67"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid659",
+  "@id" : "_:genid663",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -2953,7 +2961,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/annotated"
   } ]
 }, {
-  "@id" : "_:genid679",
+  "@id" : "_:genid683",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -2992,7 +3000,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   } ]
 }, {
-  "@id" : "_:genid692",
+  "@id" : "_:genid696",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3028,7 +3036,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid703",
+  "@id" : "_:genid707",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3040,7 +3048,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid707",
+  "@id" : "_:genid711",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3054,7 +3062,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid712",
+  "@id" : "_:genid716",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3067,18 +3075,6 @@
       "@id" : "http://purl.imsglobal.org/caliper/SelectTextResponse"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/TrueFalseResponse"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid718",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
-  "http://www.w3.org/2002/07/owl#members" : [ {
-    "@list" : [ {
-      "@id" : "http://purl.imsglobal.org/caliper/LikertScale"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/NumericScale"
     } ]
   } ]
 }, {
@@ -3095,6 +3091,18 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
+      "@id" : "http://purl.imsglobal.org/caliper/LikertScale"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/NumericScale"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid726",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
+    "@list" : [ {
       "@id" : "http://purl.imsglobal.org/caliper/Organization"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/Person"
@@ -3103,7 +3111,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid726",
+  "@id" : "_:genid730",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
   "http://www.w3.org/2002/07/owl#members" : [ {
     "@list" : [ {
@@ -3125,167 +3133,13 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid735",
+  "@id" : "_:genid739",
   "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
   "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
     "@list" : [ {
-      "@id" : "http://purl.imsglobal.org/actions/Archived"
+      "@id" : "http://purl.imsglobal.org/caliper/lti/LtiDeepLinkingRequest"
     }, {
-      "@id" : "http://purl.imsglobal.org/actions/Copied"
-    }, {
-      "@id" : "http://purl.imsglobal.org/actions/Launched"
-    }, {
-      "@id" : "http://purl.imsglobal.org/actions/Published"
-    }, {
-      "@id" : "http://purl.imsglobal.org/actions/Restored"
-    }, {
-      "@id" : "http://purl.imsglobal.org/actions/Returned"
-    }, {
-      "@id" : "http://purl.imsglobal.org/actions/Unpublished"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Abandoned"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Activated"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Added"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Attached"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Bookmarked"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/ChangedResolution"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/ChangedSize"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/ChangedSpeed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/ChangedVolume"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Classified"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/ClosedPopout"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Commented"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Completed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Copied"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Created"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Deactivated"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Deleted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Described"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/DisabledClosedCaptioning"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Disliked"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Downloaded"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/EnabledClosedCaptioning"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Ended"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/EnteredFullScreen"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/ExitedFullScreen"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/ForwardedTo"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Graded"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Hid"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Highlighted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Identified"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/JumpedTo"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Liked"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Linked"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/LoggedIn"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/LoggedOut"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/MarkedAsRead"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/MarkedAsUnread"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Modified"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Muted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/NavigatedTo"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/OpenedPopout"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Paused"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Posted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Printed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Published"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Questioned"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Ranked"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Recommended"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Removed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Reset"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Restarted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Restored"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Resumed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Retrieved"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Reviewed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Rewound"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Saved"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Searched"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Shared"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Showed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Skipped"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Started"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Submitted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Subscribed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Tagged"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/TimedOut"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Unmuted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Unpublished"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Unsubscribed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Uploaded"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Used"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/actions/Viewed"
+      "@id" : "http://purl.imsglobal.org/caliper/lti/LtiResourceLinkRequest"
     } ]
   } ]
 }, {
@@ -3296,6 +3150,28 @@
   } ],
   "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Agent"
+  } ]
+}, {
+  "@id" : "_:genid742",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
+  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
+    "@list" : [ {
+      "@id" : "http://purl.imsglobal.org/caliper/metrics/AssessmentsPassed"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/metrics/AssessmentsSubmitted"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/metrics/MinutesOnTask"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/metrics/SkillsMastered"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/metrics/StandardsMastered"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/metrics/UnitsCompleted"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/metrics/UnitsPassed"
+    }, {
+      "@id" : "http://purl.imsglobal.org/caliper/metrics/WordsRead"
+    } ]
   } ]
 }, {
   "@id" : "_:genid75",
@@ -3338,38 +3214,6 @@
       "@id" : "http://purl.imsglobal.org/caliper/Entity"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/Event"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid815",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
-  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
-    "@list" : [ {
-      "@id" : "http://purl.imsglobal.org/caliper/lti/LtiDeepLinkingRequest"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/lti/LtiResourceLinkRequest"
-    } ]
-  } ]
-}, {
-  "@id" : "_:genid818",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AllDifferent" ],
-  "http://www.w3.org/2002/07/owl#distinctMembers" : [ {
-    "@list" : [ {
-      "@id" : "http://purl.imsglobal.org/caliper/metrics/AssessmentsPassed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/metrics/AssessmentsSubmitted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/metrics/MinutesOnTask"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/metrics/SkillsMastered"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/metrics/StandardsMastered"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/metrics/UnitsCompleted"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/metrics/UnitsPassed"
-    }, {
-      "@id" : "http://purl.imsglobal.org/caliper/metrics/WordsRead"
     } ]
   } ]
 }, {
@@ -3480,20 +3324,6 @@
     "@value" : "Archived"
   } ]
 }, {
-  "@id" : "http://purl.imsglobal.org/actions/Copied",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@language" : "en",
-    "@value" : "Make a replica of."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
-    "@value" : "http://wordnet-rdf.princeton.edu/wn31/201697776-v"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "en",
-    "@value" : "Copied"
-  } ]
-}, {
   "@id" : "http://purl.imsglobal.org/actions/Launched",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://purl.imsglobal.org/caliper/Action" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -3548,20 +3378,6 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Returned"
-  } ]
-}, {
-  "@id" : "http://purl.imsglobal.org/actions/Unpublished",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@language" : "en",
-    "@value" : "Remove from public distribution or sale. Inverse of Published."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
-    "@value" : "http://wordnet-rdf.princeton.edu/wn31/200969657-v"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "en",
-    "@value" : "Unpublished"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/",
@@ -4929,11 +4745,11 @@
   }, {
     "@id" : "_:genid419"
   }, {
-    "@id" : "_:genid435"
+    "@id" : "_:genid439"
   }, {
-    "@id" : "_:genid440"
+    "@id" : "_:genid444"
   }, {
-    "@id" : "_:genid445"
+    "@id" : "_:genid449"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/ResourceManagementProfile",
@@ -5049,11 +4865,11 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Event"
   }, {
-    "@id" : "_:genid446"
+    "@id" : "_:genid450"
   }, {
-    "@id" : "_:genid451"
+    "@id" : "_:genid455"
   }, {
-    "@id" : "_:genid456"
+    "@id" : "_:genid460"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/SearchProfile",
@@ -5135,7 +4951,7 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Entity"
   }, {
-    "@id" : "_:genid457"
+    "@id" : "_:genid461"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/SessionEvent",
@@ -5154,15 +4970,15 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Event"
   }, {
-    "@id" : "_:genid462"
+    "@id" : "_:genid466"
   }, {
-    "@id" : "_:genid471"
+    "@id" : "_:genid475"
   }, {
-    "@id" : "_:genid479"
+    "@id" : "_:genid483"
   }, {
-    "@id" : "_:genid487"
+    "@id" : "_:genid491"
   }, {
-    "@id" : "_:genid495"
+    "@id" : "_:genid499"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/SessionProfile",
@@ -5291,9 +5107,9 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/DigitalResourceCollection"
   }, {
-    "@id" : "_:genid496"
+    "@id" : "_:genid500"
   }, {
-    "@id" : "_:genid501"
+    "@id" : "_:genid505"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/ThreadEvent",
@@ -5312,11 +5128,11 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Event"
   }, {
-    "@id" : "_:genid506"
+    "@id" : "_:genid510"
   }, {
-    "@id" : "_:genid514"
+    "@id" : "_:genid518"
   }, {
-    "@id" : "_:genid519"
+    "@id" : "_:genid523"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/ToolLaunchEvent",
@@ -5336,17 +5152,17 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Event"
   }, {
-    "@id" : "_:genid524"
+    "@id" : "_:genid528"
   }, {
-    "@id" : "_:genid532"
+    "@id" : "_:genid536"
   }, {
-    "@id" : "_:genid537"
+    "@id" : "_:genid541"
   }, {
-    "@id" : "_:genid542"
+    "@id" : "_:genid546"
   }, {
-    "@id" : "_:genid550"
+    "@id" : "_:genid554"
   }, {
-    "@id" : "_:genid551"
+    "@id" : "_:genid555"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/ToolLaunchProfile",
@@ -5379,13 +5195,13 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Event"
   }, {
-    "@id" : "_:genid552"
+    "@id" : "_:genid556"
   }, {
-    "@id" : "_:genid557"
+    "@id" : "_:genid561"
   }, {
-    "@id" : "_:genid562"
+    "@id" : "_:genid566"
   }, {
-    "@id" : "_:genid567"
+    "@id" : "_:genid571"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/ToolUseProfile",
@@ -5452,13 +5268,13 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Event"
   }, {
-    "@id" : "_:genid568"
+    "@id" : "_:genid572"
   }, {
-    "@id" : "_:genid573"
+    "@id" : "_:genid577"
   }, {
-    "@id" : "_:genid578"
+    "@id" : "_:genid582"
   }, {
-    "@id" : "_:genid583"
+    "@id" : "_:genid587"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/WebPage",
@@ -7375,7 +7191,7 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/DigitalResource"
   }, {
-    "@id" : "_:genid584"
+    "@id" : "_:genid588"
   } ],
   "http://www.w3.org/2002/07/owl#deprecated" : [ {
     "@type" : "http://www.w3.org/2001/XMLSchema#boolean",

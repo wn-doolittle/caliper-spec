@@ -2652,15 +2652,19 @@ xsd:duration rdf:type rdfs:Datatype .
                                                                   owl:onProperty :action ;
                                                                   owl:someValuesFrom [ rdf:type owl:Class ;
                                                                                        owl:oneOf ( <http://purl.imsglobal.org/actions/Archived>
-                                                                                                   <http://purl.imsglobal.org/actions/Copied>
-                                                                                                   <http://purl.imsglobal.org/actions/Published>
                                                                                                    <http://purl.imsglobal.org/actions/Restored>
-                                                                                                   <http://purl.imsglobal.org/actions/Unpublished>
+                                                                                                   <http://purl.imsglobal.org/caliper/actions/Copied>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Created>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Deleted>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Described>
+                                                                                                   <http://purl.imsglobal.org/caliper/actions/Downloaded>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Modified>
+                                                                                                   <http://purl.imsglobal.org/caliper/actions/Printed>
+                                                                                                   <http://purl.imsglobal.org/caliper/actions/Published>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Retrieved>
+                                                                                                   <http://purl.imsglobal.org/caliper/actions/Saved>
+                                                                                                   <http://purl.imsglobal.org/caliper/actions/Unpublished>
+                                                                                                   <http://purl.imsglobal.org/caliper/actions/Uploaded>
                                                                                                  )
                                                                                      ]
                                                                 ]
@@ -3315,13 +3319,6 @@ xsd:duration rdf:type rdfs:Datatype .
                                              rdfs:label "Archived"@en .
 
 
-###  http://purl.imsglobal.org/actions/Copied
-<http://purl.imsglobal.org/actions/Copied> rdf:type owl:NamedIndividual ;
-                                           rdfs:comment "Make a replica of."@en ;
-                                           rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/201697776-v"^^xsd:string ;
-                                           rdfs:label "Copied"@en .
-
-
 ###  http://purl.imsglobal.org/actions/Launched
 <http://purl.imsglobal.org/actions/Launched> rdf:type owl:NamedIndividual ,
                                                       :Action ;
@@ -3350,13 +3347,6 @@ xsd:duration rdf:type rdfs:Datatype .
                                              rdfs:comment "Go or come back to place, condition, or activity where one has been before."@en ;
                                              rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/01515196-v"^^xsd:string ;
                                              rdfs:label "Returned"@en .
-
-
-###  http://purl.imsglobal.org/actions/Unpublished
-<http://purl.imsglobal.org/actions/Unpublished> rdf:type owl:NamedIndividual ;
-                                                rdfs:comment "Remove from public distribution or sale. Inverse of Published."@en ;
-                                                rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/200969657-v"^^xsd:string ;
-                                                rdfs:label "Unpublished"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/AnnotationProfile
@@ -4788,90 +4778,6 @@ xsd:duration rdf:type rdfs:Datatype .
                 <http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor>
                 <http://purl.imsglobal.org/vocab/lis/v2/membership#Officer>
               )
-] .
-
-
-[ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( <http://purl.imsglobal.org/actions/Archived>
-                        <http://purl.imsglobal.org/actions/Copied>
-                        <http://purl.imsglobal.org/actions/Launched>
-                        <http://purl.imsglobal.org/actions/Published>
-                        <http://purl.imsglobal.org/actions/Restored>
-                        <http://purl.imsglobal.org/actions/Returned>
-                        <http://purl.imsglobal.org/actions/Unpublished>
-                        <http://purl.imsglobal.org/caliper/actions/Abandoned>
-                        <http://purl.imsglobal.org/caliper/actions/Activated>
-                        <http://purl.imsglobal.org/caliper/actions/Added>
-                        <http://purl.imsglobal.org/caliper/actions/Attached>
-                        <http://purl.imsglobal.org/caliper/actions/Bookmarked>
-                        <http://purl.imsglobal.org/caliper/actions/ChangedResolution>
-                        <http://purl.imsglobal.org/caliper/actions/ChangedSize>
-                        <http://purl.imsglobal.org/caliper/actions/ChangedSpeed>
-                        <http://purl.imsglobal.org/caliper/actions/ChangedVolume>
-                        <http://purl.imsglobal.org/caliper/actions/Classified>
-                        <http://purl.imsglobal.org/caliper/actions/ClosedPopout>
-                        <http://purl.imsglobal.org/caliper/actions/Commented>
-                        <http://purl.imsglobal.org/caliper/actions/Completed>
-                        <http://purl.imsglobal.org/caliper/actions/Copied>
-                        <http://purl.imsglobal.org/caliper/actions/Created>
-                        <http://purl.imsglobal.org/caliper/actions/Deactivated>
-                        <http://purl.imsglobal.org/caliper/actions/Deleted>
-                        <http://purl.imsglobal.org/caliper/actions/Described>
-                        <http://purl.imsglobal.org/caliper/actions/DisabledClosedCaptioning>
-                        <http://purl.imsglobal.org/caliper/actions/Disliked>
-                        <http://purl.imsglobal.org/caliper/actions/Downloaded>
-                        <http://purl.imsglobal.org/caliper/actions/EnabledClosedCaptioning>
-                        <http://purl.imsglobal.org/caliper/actions/Ended>
-                        <http://purl.imsglobal.org/caliper/actions/EnteredFullScreen>
-                        <http://purl.imsglobal.org/caliper/actions/ExitedFullScreen>
-                        <http://purl.imsglobal.org/caliper/actions/ForwardedTo>
-                        <http://purl.imsglobal.org/caliper/actions/Graded>
-                        <http://purl.imsglobal.org/caliper/actions/Hid>
-                        <http://purl.imsglobal.org/caliper/actions/Highlighted>
-                        <http://purl.imsglobal.org/caliper/actions/Identified>
-                        <http://purl.imsglobal.org/caliper/actions/JumpedTo>
-                        <http://purl.imsglobal.org/caliper/actions/Liked>
-                        <http://purl.imsglobal.org/caliper/actions/Linked>
-                        <http://purl.imsglobal.org/caliper/actions/LoggedIn>
-                        <http://purl.imsglobal.org/caliper/actions/LoggedOut>
-                        <http://purl.imsglobal.org/caliper/actions/MarkedAsRead>
-                        <http://purl.imsglobal.org/caliper/actions/MarkedAsUnread>
-                        <http://purl.imsglobal.org/caliper/actions/Modified>
-                        <http://purl.imsglobal.org/caliper/actions/Muted>
-                        <http://purl.imsglobal.org/caliper/actions/NavigatedTo>
-                        <http://purl.imsglobal.org/caliper/actions/OpenedPopout>
-                        <http://purl.imsglobal.org/caliper/actions/Paused>
-                        <http://purl.imsglobal.org/caliper/actions/Posted>
-                        <http://purl.imsglobal.org/caliper/actions/Printed>
-                        <http://purl.imsglobal.org/caliper/actions/Published>
-                        <http://purl.imsglobal.org/caliper/actions/Questioned>
-                        <http://purl.imsglobal.org/caliper/actions/Ranked>
-                        <http://purl.imsglobal.org/caliper/actions/Recommended>
-                        <http://purl.imsglobal.org/caliper/actions/Removed>
-                        <http://purl.imsglobal.org/caliper/actions/Reset>
-                        <http://purl.imsglobal.org/caliper/actions/Restarted>
-                        <http://purl.imsglobal.org/caliper/actions/Restored>
-                        <http://purl.imsglobal.org/caliper/actions/Resumed>
-                        <http://purl.imsglobal.org/caliper/actions/Retrieved>
-                        <http://purl.imsglobal.org/caliper/actions/Reviewed>
-                        <http://purl.imsglobal.org/caliper/actions/Rewound>
-                        <http://purl.imsglobal.org/caliper/actions/Saved>
-                        <http://purl.imsglobal.org/caliper/actions/Searched>
-                        <http://purl.imsglobal.org/caliper/actions/Shared>
-                        <http://purl.imsglobal.org/caliper/actions/Showed>
-                        <http://purl.imsglobal.org/caliper/actions/Skipped>
-                        <http://purl.imsglobal.org/caliper/actions/Started>
-                        <http://purl.imsglobal.org/caliper/actions/Submitted>
-                        <http://purl.imsglobal.org/caliper/actions/Subscribed>
-                        <http://purl.imsglobal.org/caliper/actions/Tagged>
-                        <http://purl.imsglobal.org/caliper/actions/TimedOut>
-                        <http://purl.imsglobal.org/caliper/actions/Unmuted>
-                        <http://purl.imsglobal.org/caliper/actions/Unpublished>
-                        <http://purl.imsglobal.org/caliper/actions/Unsubscribed>
-                        <http://purl.imsglobal.org/caliper/actions/Uploaded>
-                        <http://purl.imsglobal.org/caliper/actions/Used>
-                        <http://purl.imsglobal.org/caliper/actions/Viewed>
-                      )
 ] .
 
 

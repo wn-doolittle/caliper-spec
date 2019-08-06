@@ -3561,15 +3561,19 @@ The Caliper ontology provides a machine-readable document that defines the conce
                             <owl:Class>
                                 <owl:oneOf rdf:parseType="Collection">
                                     <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Archived"/>
-                                    <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Copied"/>
-                                    <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Published"/>
                                     <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Restored"/>
-                                    <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Unpublished"/>
+                                    <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Copied"/>
                                     <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Created"/>
                                     <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Deleted"/>
                                     <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Described"/>
+                                    <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Downloaded"/>
                                     <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Modified"/>
+                                    <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Printed"/>
+                                    <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Published"/>
                                     <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Retrieved"/>
+                                    <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Saved"/>
+                                    <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Unpublished"/>
+                                    <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Uploaded"/>
                                 </owl:oneOf>
                             </owl:Class>
                         </owl:someValuesFrom>
@@ -4458,16 +4462,6 @@ The Caliper ontology provides a machine-readable document that defines the conce
     
 
 
-    <!-- http://purl.imsglobal.org/actions/Copied -->
-
-    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/actions/Copied">
-        <rdfs:comment xml:lang="en">Make a replica of.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://wordnet-rdf.princeton.edu/wn31/201697776-v</rdfs:isDefinedBy>
-        <rdfs:label xml:lang="en">Copied</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://purl.imsglobal.org/actions/Launched -->
 
     <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/actions/Launched">
@@ -4506,16 +4500,6 @@ The Caliper ontology provides a machine-readable document that defines the conce
         <rdfs:comment xml:lang="en">Go or come back to place, condition, or activity where one has been before.</rdfs:comment>
         <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://wordnet-rdf.princeton.edu/wn31/01515196-v</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">Returned</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.imsglobal.org/actions/Unpublished -->
-
-    <owl:NamedIndividual rdf:about="http://purl.imsglobal.org/actions/Unpublished">
-        <rdfs:comment xml:lang="en">Remove from public distribution or sale. Inverse of Published.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://wordnet-rdf.princeton.edu/wn31/200969657-v</rdfs:isDefinedBy>
-        <rdfs:label xml:lang="en">Unpublished</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -6408,90 +6392,6 @@ The Caliper ontology provides a machine-readable document that defines the conce
             <rdf:Description rdf:about="http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor"/>
             <rdf:Description rdf:about="http://purl.imsglobal.org/vocab/lis/v2/membership#Officer"/>
         </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Archived"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Copied"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Launched"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Published"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Restored"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Returned"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/actions/Unpublished"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Abandoned"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Activated"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Added"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Attached"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Bookmarked"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/ChangedResolution"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/ChangedSize"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/ChangedSpeed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/ChangedVolume"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Classified"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/ClosedPopout"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Commented"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Completed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Copied"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Created"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Deactivated"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Deleted"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Described"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/DisabledClosedCaptioning"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Disliked"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Downloaded"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/EnabledClosedCaptioning"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Ended"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/EnteredFullScreen"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/ExitedFullScreen"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/ForwardedTo"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Graded"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Hid"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Highlighted"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Identified"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/JumpedTo"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Liked"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Linked"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/LoggedIn"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/LoggedOut"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/MarkedAsRead"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/MarkedAsUnread"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Modified"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Muted"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/NavigatedTo"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/OpenedPopout"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Paused"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Posted"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Printed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Published"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Questioned"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Ranked"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Recommended"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Removed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Reset"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Restarted"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Restored"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Resumed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Retrieved"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Reviewed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Rewound"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Saved"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Searched"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Shared"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Showed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Skipped"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Started"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Submitted"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Subscribed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Tagged"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/TimedOut"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Unmuted"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Unpublished"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Unsubscribed"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Uploaded"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Used"/>
-            <rdf:Description rdf:about="http://purl.imsglobal.org/caliper/actions/Viewed"/>
-        </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
