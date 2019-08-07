@@ -288,6 +288,7 @@ xsd:duration rdf:type rdfs:Datatype .
             rdfs:domain [ rdf:type owl:Class ;
                           owl:unionOf ( :LikertScale
                                         :MultiSelectScale
+                                        :MultiselectQuestion
                                       )
                         ] ;
             rdfs:comment "The ordered list of labels for each point on the Likert scale."@en ;
@@ -300,6 +301,7 @@ xsd:duration rdf:type rdfs:Datatype .
             rdfs:domain [ rdf:type owl:Class ;
                           owl:unionOf ( :LikertScale
                                         :MultiSelectScale
+                                        :MultiselectQuestion
                                       )
                         ] ;
             rdfs:comment "The ordered list of values for each point on the Likert scale."@en ;
@@ -434,7 +436,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://purl.imsglobal.org/caliper/question
 :question rdf:type owl:ObjectProperty ,
                    owl:FunctionalProperty ;
-          rdfs:domain :Rating ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :QuestionnaireItem
+                                      :Rating
+                                    )
+                      ] ;
           rdfs:range :Question ;
           rdfs:comment "The Question used for the Rating."@en ;
           rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
@@ -454,7 +460,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://purl.imsglobal.org/caliper/rater
 :rater rdf:type owl:ObjectProperty ,
                 owl:FunctionalProperty ;
-       rdfs:domain :Rating ;
+       rdfs:domain [ rdf:type owl:Class ;
+                     owl:unionOf ( :Rating
+                                   :SurveyInvitation
+                                 )
+                   ] ;
        rdfs:range :Person ;
        rdfs:comment "The Person who provided the Rating."@en ;
        rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
@@ -504,9 +514,13 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://purl.imsglobal.org/caliper/scale
 :scale rdf:type owl:ObjectProperty ,
                 owl:FunctionalProperty ;
-       rdfs:domain :Rating ;
+       rdfs:domain [ rdf:type owl:Class ;
+                     owl:unionOf ( :Rating
+                                   :RatingScaleQuestion
+                                 )
+                   ] ;
        rdfs:range :Scale ;
-       rdfs:comment "The Scale used for the Rating."@en ;
+       rdfs:comment "The Scale associated with the Rating or RatingScaleQuestion."@en ;
        rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
        rdfs:label "scale"@en .
 
@@ -561,7 +575,12 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://purl.imsglobal.org/caliper/selections
 :selections rdf:type owl:ObjectProperty ;
-            rdfs:domain :Rating ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :MultiSelectResponse
+                                        :Rating
+                                        :RatingScaleResponse
+                                      )
+                        ] ;
             rdfs:comment "An array of the values representing the rater's selected response."@en ;
             rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
             rdfs:label "selections"@en .
@@ -596,6 +615,16 @@ xsd:duration rdf:type rdfs:Datatype .
                    rdfs:comment "The parent Organization of an Organization."@en ;
                    rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
                    rdfs:label "subOrganizationOf"@en .
+
+
+###  http://purl.imsglobal.org/caliper/survey
+:survey rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :SurveyInvitation ;
+        rdfs:range :Survey ;
+        rdfs:comment "The Survey that the invitation is for."@en ;
+        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+        rdfs:label "survey"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/target
@@ -659,6 +688,14 @@ xsd:duration rdf:type rdfs:Datatype .
                rdfs:comment "A plain text rendering of the note associated with a BookmarkAnnotation."@en ;
                rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
                rdfs:label "bookmarkNotes"@en .
+
+
+###  http://purl.imsglobal.org/caliper/categories
+:categories rdf:type owl:DatatypeProperty ;
+            rdfs:domain :QuestionnaireItem ;
+            rdfs:comment "An array of category items."@en ;
+            rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+            rdfs:label "categories"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/category
@@ -772,6 +809,26 @@ xsd:duration rdf:type rdfs:Datatype .
                rdfs:comment "A date and time value expressed with millisecond precision that provides the publication date of a resource."@en ;
                rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
                rdfs:label "datePublished"@en .
+
+
+###  http://purl.imsglobal.org/caliper/dateSent
+:dateSent rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :SurveyInvitation ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "A date and time value expressed with millisecond precision that describes when the SurveyInvitation was sent."@en ;
+          rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+          rdfs:label "dateSent"@en .
+
+
+###  http://purl.imsglobal.org/caliper/dateTimeSelected
+:dateTimeSelected rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain :DateTimeResponse ;
+                  rdfs:range xsd:dateTime ;
+                  rdfs:comment "The date and time selected in response to the Question."@en ;
+                  rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                  rdfs:label "dateTimeSelected"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/dateToActivate
@@ -890,7 +947,8 @@ xsd:duration rdf:type rdfs:Datatype .
 
 
 ###  http://purl.imsglobal.org/caliper/host
-:host rdf:type owl:DatatypeProperty ;
+:host rdf:type owl:DatatypeProperty ,
+               owl:FunctionalProperty ;
       rdfs:domain :SoftwareApplication ;
       rdfs:range xsd:string ;
       rdfs:comment "Identifies the host of a SoftwareApplication. This property can be used to indicate the back-end service or domain hosting a front-end web application."@en ;
@@ -923,7 +981,8 @@ xsd:duration rdf:type rdfs:Datatype .
 
 
 ###  http://purl.imsglobal.org/caliper/ipAddress
-:ipAddress rdf:type owl:DatatypeProperty ;
+:ipAddress rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
            rdfs:domain :SoftwareApplication ;
            rdfs:range xsd:string ;
            rdfs:comment "Indicates the IPv4 or IPv6 address of a SoftwareApplication. This property can be used to indicate the user agent (browser) running a front-end web application."@en ;
@@ -960,10 +1019,24 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:label "maxAttempts"@en .
 
 
+###  http://purl.imsglobal.org/caliper/maxDateTime
+:maxDateTime rdf:type owl:DatatypeProperty ;
+             rdfs:domain :DateTimeQuestion ;
+             rdfs:range xsd:dateTime ;
+             owl:propertyDisjointWith :minDateTime ;
+             rdfs:comment "A date and time value used to determine the maximum value allowed."@en ;
+             rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+             rdfs:label "maxDateTime"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/maxLabel
 :maxLabel rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
-          rdfs:domain :NumericScale ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :DateTimeQuestion
+                                      :NumericScale
+                                    )
+                      ] ;
           rdfs:range xsd:string ;
           owl:propertyDisjointWith :minLabel ;
           rdfs:comment "The label for the maximum value."@en ;
@@ -1056,10 +1129,23 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:label "metricValue"@en .
 
 
+###  http://purl.imsglobal.org/caliper/minDateTime
+:minDateTime rdf:type owl:DatatypeProperty ;
+             rdfs:domain :DateTimeQuestion ;
+             rdfs:range xsd:dateTime ;
+             rdfs:comment "A date and time value used to determine the minimum value allowed."@en ;
+             rdfs:isDefinedBy "http://purl.imsglobal.org/caliper" ;
+             rdfs:label "minDateTime"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/minLabel
 :minLabel rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
-          rdfs:domain :NumericScale ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :DateTimeQuestion
+                                      :NumericScale
+                                    )
+                      ] ;
           rdfs:range xsd:string ;
           rdfs:comment "The label for the minimum value."@en ;
           rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
@@ -1151,15 +1237,21 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://purl.imsglobal.org/caliper/points
 :points rdf:type owl:DatatypeProperty ,
                  owl:FunctionalProperty ;
-        rdfs:domain [ rdf:type owl:Class ;
-                      owl:unionOf ( :LikertScale
-                                    :MultiSelectScale
-                                  )
-                    ] ;
+        rdfs:domain :MultiselectQuestion ;
         rdfs:range xsd:integer ;
-        rdfs:comment "A integer value used to determine the amount of points on the LikertScale."@en ;
-        rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
-        rdfs:label "scalePoints"@en .
+        rdfs:comment "A integer value used to determine the amount of points on the  MultiselectQuestion."@en ;
+        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+        rdfs:label "points"@en .
+
+
+###  http://purl.imsglobal.org/caliper/questionPosed
+:questionPosed rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :Question ;
+               rdfs:range xsd:string ;
+               rdfs:comment "A string value comprising the question posed."@en ;
+               rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+               rdfs:label "questionPosed"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/resultScore
@@ -1170,6 +1262,20 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:comment "The result score awarded to the learner.  A result score can be updated."@en ;
              rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
              rdfs:label "resultScore"@en .
+
+
+###  http://purl.imsglobal.org/caliper/scalePoints
+:scalePoints rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :LikertScale
+                                         :MultiSelectScale
+                                       )
+                         ] ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "A integer value used to determine the amount of points on the LikertScale."@en ;
+             rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
+             rdfs:label "scalePoints"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/scoreGiven
@@ -1230,6 +1336,16 @@ xsd:duration rdf:type rdfs:Datatype .
         rdfs:comment "Sensor identifier."@en ;
         rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
         rdfs:label "sensor"@en .
+
+
+###  http://purl.imsglobal.org/caliper/sentCount
+:sentCount rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :SurveyInvitation ;
+           rdfs:range xsd:integer ;
+           rdfs:comment "An integer value used to determine the amount of times a SurveyInvitation was sent to the rater."@en ;
+           rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+           rdfs:label "sentCount"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/start
@@ -1314,7 +1430,8 @@ xsd:duration rdf:type rdfs:Datatype .
 
 
 ###  http://purl.imsglobal.org/caliper/userAgent
-:userAgent rdf:type owl:DatatypeProperty ;
+:userAgent rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
            rdfs:domain :SoftwareApplication ;
            rdfs:range xsd:string ;
            rdfs:comment "Describes the properties of the user agent hosting a SoftwareApplication. This field can be used to carry the user agent string reported by the browser running a front-end web application."@en ;
@@ -1327,6 +1444,7 @@ xsd:duration rdf:type rdfs:Datatype .
                 owl:FunctionalProperty ;
        rdfs:domain [ rdf:type owl:Class ;
                      owl:unionOf ( :MultipleChoiceResponse
+                                   :OpenEndedResponse
                                    :TrueFalseResponse
                                  )
                    ] ;
@@ -1393,6 +1511,16 @@ xsd:duration rdf:type rdfs:Datatype .
            rdfs:comment "A string value indicating the minimum volume level permitted."@en ;
            rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
            rdfs:label "volumeMin"@en .
+
+
+###  http://purl.imsglobal.org/caliper/weight
+:weight rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :QuestionnaireItem ;
+        rdfs:range xsd:decimal ;
+        rdfs:comment "A decimal value used to determine the weight of the QuestionnaireItem."@en ;
+        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+        rdfs:label "weight"@en .
 
 
 #################################################################
@@ -1854,6 +1982,22 @@ xsd:duration rdf:type rdfs:Datatype .
                rdfs:label "CourseSection"@en .
 
 
+###  http://purl.imsglobal.org/caliper/DateTimeQuestion
+:DateTimeQuestion rdf:type owl:Class ;
+                  rdfs:subClassOf :Question ;
+                  rdfs:comment "A Caliper DateTimeQuestion represents a closed-end question type with the response provided in a date and time format."@en ;
+                  rdfs:isDefinedBy "http://purl.imsglobal.org/caliper" ;
+                  rdfs:label "DateTimeQuestion"@en .
+
+
+###  http://purl.imsglobal.org/caliper/DateTimeResponse
+:DateTimeResponse rdf:type owl:Class ;
+                  rdfs:subClassOf :Response ;
+                  rdfs:comment "A Caliper DateTimeResponse represents a respondent's response to a DateTimeQuestion."@en ;
+                  rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                  rdfs:label "DateTimeResponse"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/DigitalResource
 :DigitalResource rdf:type owl:Class ;
                  rdfs:subClassOf :Entity ;
@@ -2156,7 +2300,7 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://purl.imsglobal.org/caliper/LtiLink
 :LtiLink rdf:type owl:Class ;
          rdfs:subClassOf :DigitalResource ;
-         rdfs:comment "The LtiLink entity represents a digital resource that must be retrieved from an external tool application via an LTI request message. It is, effectively, a Digital Resource that must use LTI for access."@en ;
+         rdfs:comment "The Caliper LtiLink entity represents a digital resource that must be retrieved from an external tool application via an LTI request message. It is, effectively, a Digital Resource that must use LTI for access."@en ;
          rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
          rdfs:label "LtiLink"@en .
 
@@ -2359,6 +2503,14 @@ xsd:duration rdf:type rdfs:Datatype .
         rdfs:label "Metric"@en .
 
 
+###  http://purl.imsglobal.org/caliper/MultiSelectResponse
+:MultiSelectResponse rdf:type owl:Class ;
+                     rdfs:subClassOf :Response ;
+                     rdfs:comment "A Caliper MultiselectResponse represents a response to a MultiselectQuestion in which the respondent is permitted to choose one or more options from a pre-defined set of responses."@en ;
+                     rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                     rdfs:label "MultiSelectResponse"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/MultiSelectScale
 :MultiSelectScale rdf:type owl:Class ;
                   rdfs:subClassOf :Scale ;
@@ -2381,6 +2533,14 @@ xsd:duration rdf:type rdfs:Datatype .
                           rdfs:comment "A Caliper MultipleResponseResponse represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices."@en ;
                           rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
                           rdfs:label "MultipleResponseResponse"@en .
+
+
+###  http://purl.imsglobal.org/caliper/MultiselectQuestion
+:MultiselectQuestion rdf:type owl:Class ;
+                     rdfs:subClassOf :Question ;
+                     rdfs:comment "A Caliper MultiselectQuestion represents a form of a closed-end question type with a pre-defined set of responses where a respondent can choose multiple items in the set."@en ;
+                     rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                     rdfs:label "MultiselectQuestion"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/NavigationEvent
@@ -2453,6 +2613,22 @@ xsd:duration rdf:type rdfs:Datatype .
               rdfs:comment "A Caliper NumericScale models a numeric scale used to capture some rating."@en ;
               rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
               rdfs:label "NumericScale"@en .
+
+
+###  http://purl.imsglobal.org/caliper/OpenEndedQuestion
+:OpenEndedQuestion rdf:type owl:Class ;
+                   rdfs:subClassOf :Question ;
+                   rdfs:comment "A Caliper OpenEndedQuestion represents a question with no pre-defined response. Respondents can record their response in the form of qualitative feedback with no length limit imposed."@en ;
+                   rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                   rdfs:label "OpenEndedQuestion"@en .
+
+
+###  http://purl.imsglobal.org/caliper/OpenEndedResponse
+:OpenEndedResponse rdf:type owl:Class ;
+                   rdfs:subClassOf :Response ;
+                   rdfs:comment "A Caliper OpenEndedResponse represents a respondent's response to a OpenEndedQuestion."@en ;
+                   rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                   rdfs:label "OpenEndedResponse"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/Organization
@@ -2557,6 +2733,117 @@ xsd:duration rdf:type rdfs:Datatype .
                      "http://purl.imsglobal.org/caliper"^^xsd:string .
 
 
+###  http://purl.imsglobal.org/caliper/Questionnaire
+:Questionnaire rdf:type owl:Class ;
+               rdfs:subClassOf :DigitalResourceCollection ;
+               rdfs:comment "A Caliper Questionnaire represents a collection of QuestionnaireItem entities that is designed to elicit information from one or more respondents."@en ;
+               rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+               rdfs:label "Questionnaire"@en .
+
+
+###  http://purl.imsglobal.org/caliper/QuestionnaireEvent
+:QuestionnaireEvent rdf:type owl:Class ;
+                    rdfs:subClassOf :Event ,
+                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :action ;
+                                                             owl:someValuesFrom :Action
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :action ;
+                                                             owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                  owl:oneOf ( <http://purl.imsglobal.org/caliper/actions/Started>
+                                                                                              <http://purl.imsglobal.org/caliper/actions/Submitted>
+                                                                                            )
+                                                                                ]
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ,
+                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :actor ;
+                                                             owl:someValuesFrom :Agent
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :actor ;
+                                                             owl:allValuesFrom :Person
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ,
+                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :object ;
+                                                             owl:someValuesFrom :Entity
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :object ;
+                                                             owl:allValuesFrom :Questionnaire
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                    rdfs:comment "A Caliper QuestionnaireEvent models activities associated with respondents or raters starting and submitting a Questionnaire."@en ;
+                    rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                    rdfs:label "QuestionnaireEvent"@en .
+
+
+###  http://purl.imsglobal.org/caliper/QuestionnaireItem
+:QuestionnaireItem rdf:type owl:Class ;
+                   rdfs:subClassOf :DigitalResource ;
+                   rdfs:comment "A Caliper QuestionnaireItem represents a Question that is associated with a Questionnaire."@en ;
+                   rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                   rdfs:label "QuestionnaireItem"@en .
+
+
+###  http://purl.imsglobal.org/caliper/QuestionnaireItemEvent
+:QuestionnaireItemEvent rdf:type owl:Class ;
+                        rdfs:subClassOf :Event ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :action ;
+                                                                 owl:someValuesFrom :Action
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :action ;
+                                                                 owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                      owl:oneOf ( <http://purl.imsglobal.org/caliper/actions/Completed>
+                                                                                                  <http://purl.imsglobal.org/caliper/actions/Skipped>
+                                                                                                  <http://purl.imsglobal.org/caliper/actions/Started>
+                                                                                                )
+                                                                                    ]
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :actor ;
+                                                                 owl:someValuesFrom :Agent
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :actor ;
+                                                                 owl:allValuesFrom :Person
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :object ;
+                                                                 owl:someValuesFrom :Entity
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :object ;
+                                                                 owl:allValuesFrom :QuestionnaireItem
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :generated ;
+                                          owl:someValuesFrom :Response
+                                        ] ;
+                        rdfs:comment "A Caliper QuestionnaireItemEvent models activities associated with respondents or raters starting, completing, or skipping a QuestionnaireItem."@en ;
+                        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                        rdfs:label "QuestionnaireItemEvent"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/Rating
 :Rating rdf:type owl:Class ;
         rdfs:subClassOf :Entity ,
@@ -2578,6 +2865,22 @@ xsd:duration rdf:type rdfs:Datatype .
         rdfs:comment "A Caliper Rating models quantitative reactions to an Entity."@en ;
         rdfs:isDefinedBy "https://purl.imsglobal.org/caliper"^^xsd:string ;
         rdfs:label "Rating"@en .
+
+
+###  http://purl.imsglobal.org/caliper/RatingScaleQuestion
+:RatingScaleQuestion rdf:type owl:Class ;
+                     rdfs:subClassOf :Question ;
+                     rdfs:comment "A Caliper RatingScaleQuestion represents a Question that employs a Scale."@en ;
+                     rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                     rdfs:label "RatingScaleQuestion"@en .
+
+
+###  http://purl.imsglobal.org/caliper/RatingScaleResponse
+:RatingScaleResponse rdf:type owl:Class ;
+                     rdfs:subClassOf :Response ;
+                     rdfs:comment "A Caliper RatingScaleResponse represents a respondent's response to a RatingScaleQuestion."@en ;
+                     rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                     rdfs:label "RatingScaleResponse"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/Reading
@@ -2651,8 +2954,7 @@ xsd:duration rdf:type rdfs:Datatype .
                                                                 [ rdf:type owl:Restriction ;
                                                                   owl:onProperty :action ;
                                                                   owl:someValuesFrom [ rdf:type owl:Class ;
-                                                                                       owl:oneOf ( <http://purl.imsglobal.org/actions/Archived>
-                                                                                                   <http://purl.imsglobal.org/actions/Restored>
+                                                                                       owl:oneOf ( <http://purl.imsglobal.org/caliper/actions/Archived>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Copied>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Created>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Deleted>
@@ -2661,6 +2963,7 @@ xsd:duration rdf:type rdfs:Datatype .
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Modified>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Printed>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Published>
+                                                                                                   <http://purl.imsglobal.org/caliper/actions/Restored>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Retrieved>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Saved>
                                                                                                    <http://purl.imsglobal.org/caliper/actions/Unpublished>
@@ -2913,6 +3216,124 @@ xsd:duration rdf:type rdfs:Datatype .
         rdfs:label "Status"@en .
 
 
+###  http://purl.imsglobal.org/caliper/Survey
+:Survey rdf:type owl:Class ;
+        rdfs:subClassOf :Collection ,
+                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :items ;
+                                                 owl:someValuesFrom :Entity
+                                               ]
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :items ;
+                                                 owl:allValuesFrom :Questionnaire
+                                               ]
+                                             ) ;
+                          rdf:type owl:Class
+                        ] ;
+        rdfs:comment "A Caliper Survey represents a research method for collecting data from a targeted group of respondents. The Survey provides a standardized process for gathering data that utilizes one or more Questionnaire entities."@en ;
+        rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+        rdfs:label "Survey"@en .
+
+
+###  http://purl.imsglobal.org/caliper/SurveyEvent
+:SurveyEvent rdf:type owl:Class ;
+             rdfs:subClassOf :Event ,
+                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :action ;
+                                                      owl:someValuesFrom :Action
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :action ;
+                                                      owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                           owl:oneOf ( <http://purl.imsglobal.org/caliper/actions/OptedIn>
+                                                                                       <http://purl.imsglobal.org/caliper/actions/OptedOut>
+                                                                                     )
+                                                                         ]
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ,
+                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :actor ;
+                                                      owl:someValuesFrom :Agent
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :actor ;
+                                                      owl:allValuesFrom :Person
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ,
+                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :object ;
+                                                      owl:someValuesFrom :Entity
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :object ;
+                                                      owl:allValuesFrom :Survey
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+             rdfs:comment "A SurveyEvent models activities associated with calls to participate in a Survey."@en ;
+             rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+             rdfs:label "SurveyEvent"@en .
+
+
+###  http://purl.imsglobal.org/caliper/SurveyInvitation
+:SurveyInvitation rdf:type owl:Class ;
+                  rdfs:subClassOf :DigitalResource ;
+                  rdfs:comment "A Caliper SurveyInvitation represents a survey invitation sent to raters."@en ;
+                  rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                  rdfs:label "SurveyInvitation"@en .
+
+
+###  http://purl.imsglobal.org/caliper/SurveyInvitationEvent
+:SurveyInvitationEvent rdf:type owl:Class ;
+                       rdfs:subClassOf :Event ,
+                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :action ;
+                                                                owl:someValuesFrom :Action
+                                                              ]
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :action ;
+                                                                owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                     owl:oneOf ( <http://purl.imsglobal.org/caliper/actions/Accepted>
+                                                                                                 <http://purl.imsglobal.org/caliper/actions/Declined>
+                                                                                                 <http://purl.imsglobal.org/caliper/actions/Sent>
+                                                                                               )
+                                                                                   ]
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ,
+                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :actor ;
+                                                                owl:someValuesFrom :Agent
+                                                              ]
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :actor ;
+                                                                owl:allValuesFrom :Person
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ,
+                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :object ;
+                                                                owl:someValuesFrom :Entity
+                                                              ]
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :object ;
+                                                                owl:allValuesFrom :SurveyInvitation
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                       rdfs:comment "A Caliper SurveyInvitationEvent models activities associated with calls to participate in a Survey."@en ;
+                       rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                       rdfs:label "SurveyInvitationEvent"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/TagAnnotation
 :TagAnnotation rdf:type owl:Class ;
                rdfs:subClassOf :Annotation ;
@@ -3014,8 +3435,8 @@ xsd:duration rdf:type rdfs:Datatype .
                                                         [ rdf:type owl:Restriction ;
                                                           owl:onProperty :action ;
                                                           owl:someValuesFrom [ rdf:type owl:Class ;
-                                                                               owl:oneOf ( <http://purl.imsglobal.org/actions/Launched>
-                                                                                           <http://purl.imsglobal.org/actions/Returned>
+                                                                               owl:oneOf ( <http://purl.imsglobal.org/caliper/actions/Launched>
+                                                                                           <http://purl.imsglobal.org/caliper/actions/Returned>
                                                                                          )
                                                                              ]
                                                         ]
@@ -3311,42 +3732,11 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Individuals
 #################################################################
 
-###  http://purl.imsglobal.org/actions/Archived
-<http://purl.imsglobal.org/actions/Archived> rdf:type owl:NamedIndividual ,
-                                                      :Action ;
-                                             rdfs:comment "Put into an archive. The Archived action signals that a resource has been put into long-term storage. Inverse of Restored."@en ;
-                                             rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/201387292-v"^^xsd:string ;
-                                             rdfs:label "Archived"@en .
-
-
-###  http://purl.imsglobal.org/actions/Launched
-<http://purl.imsglobal.org/actions/Launched> rdf:type owl:NamedIndividual ,
-                                                      :Action ;
-                                             rdfs:comment "Get going; give impetus to."@en ;
-                                             rdfs:isDefinedBy "href=\"http://wordnet-rdf.princeton.edu/wn31/01515196-v"^^xsd:string ;
-                                             rdfs:label "Launched"@en .
-
-
 ###  http://purl.imsglobal.org/actions/Published
 <http://purl.imsglobal.org/actions/Published> rdf:type owl:NamedIndividual ;
                                               rdfs:comment "Prepare and issue for public distribution or sale. Inverse of Unpublished."@en ;
                                               rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/200969657-v"^^xsd:string ;
                                               rdfs:label "Published"@en .
-
-
-###  http://purl.imsglobal.org/actions/Restored
-<http://purl.imsglobal.org/actions/Restored> rdf:type owl:NamedIndividual ;
-                                             rdfs:comment "Return to its original or usable and functioning condition. Inverse of Archived."@en ;
-                                             rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/202558146-v"^^xsd:string ;
-                                             rdfs:label "Restored"@en .
-
-
-###  http://purl.imsglobal.org/actions/Returned
-<http://purl.imsglobal.org/actions/Returned> rdf:type owl:NamedIndividual ,
-                                                      :Action ;
-                                             rdfs:comment "Go or come back to place, condition, or activity where one has been before."@en ;
-                                             rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/01515196-v"^^xsd:string ;
-                                             rdfs:label "Returned"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/AnnotationProfile
@@ -3477,6 +3867,14 @@ xsd:duration rdf:type rdfs:Datatype .
                                                       rdfs:label "Abandoned"@en .
 
 
+###  http://purl.imsglobal.org/caliper/actions/Accepted
+<http://purl.imsglobal.org/caliper/actions/Accepted> rdf:type owl:NamedIndividual ,
+                                                              :Action ;
+                                                     rdfs:comment "The Accepted action signals that an affirmative reply was given with regard to some Entity. Inverse of Declined."@en ;
+                                                     rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                                                     rdfs:label "Accepted"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/actions/Activated
 <http://purl.imsglobal.org/caliper/actions/Activated> rdf:type owl:NamedIndividual ,
                                                                :Action ;
@@ -3491,6 +3889,14 @@ xsd:duration rdf:type rdfs:Datatype .
                                                   rdfs:comment "Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of. Inverse of Removed."@en ;
                                                   rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/200182551-v"^^xsd:string ;
                                                   rdfs:label "Added"@en .
+
+
+###  http://purl.imsglobal.org/caliper/actions/Archived
+<http://purl.imsglobal.org/caliper/actions/Archived> rdf:type owl:NamedIndividual ,
+                                                              :Action ;
+                                                     rdfs:comment "Put into an archive. The Archived action signals that a resource has been put into long-term storage. Inverse of Restored."@en ;
+                                                     rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/201387292-v"^^xsd:string ;
+                                                     rdfs:label "Archived"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/actions/Attached
@@ -3600,6 +4006,14 @@ xsd:duration rdf:type rdfs:Datatype .
                                                         rdfs:comment "Make inactive. Inverse of Activated."@en ;
                                                         rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/200191849-v"^^xsd:string ;
                                                         rdfs:label "Deactivated"@en .
+
+
+###  http://purl.imsglobal.org/caliper/actions/Declined
+<http://purl.imsglobal.org/caliper/actions/Declined> rdf:type owl:NamedIndividual ,
+                                                              :Action ;
+                                                     rdfs:comment "The Declined action signals that a negative reply or refusal was given with regard to some Entity. Inverse of Accepted."@en ;
+                                                     rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                                                     rdfs:label "Declined"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/actions/Deleted
@@ -3726,6 +4140,14 @@ xsd:duration rdf:type rdfs:Datatype .
                                                      rdfs:label "JumpedTo"@en .
 
 
+###  http://purl.imsglobal.org/caliper/actions/Launched
+<http://purl.imsglobal.org/caliper/actions/Launched> rdf:type owl:NamedIndividual ,
+                                                              :Action ;
+                                                     rdfs:comment "Get going; give impetus to."@en ;
+                                                     rdfs:isDefinedBy "href=\"http://wordnet-rdf.princeton.edu/wn31/01515196-v"^^xsd:string ;
+                                                     rdfs:label "Launched"@en .
+
+
 ###  http://purl.imsglobal.org/caliper/actions/Liked
 <http://purl.imsglobal.org/caliper/actions/Liked> rdf:type owl:NamedIndividual ,
                                                            :Action ;
@@ -3807,6 +4229,20 @@ xsd:duration rdf:type rdfs:Datatype .
                                                          rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
                                                          rdfs:label "OpenedPopout"@en ;
                                                          rdfs:seeAlso "http://wordnet-rdf.princeton.edu/wn31/202431018-v"^^xsd:string .
+
+
+###  http://purl.imsglobal.org/caliper/actions/OptedIn
+<http://purl.imsglobal.org/caliper/actions/OptedIn> rdf:type owl:NamedIndividual ;
+                                                    rdfs:comment "The OptedIn action signals that a Person agreed to participate in an activity or complete a task. Inverse of OptedOut."@en ;
+                                                    rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                                                    rdfs:label "OptedIn"@en .
+
+
+###  http://purl.imsglobal.org/caliper/actions/OptedOut
+<http://purl.imsglobal.org/caliper/actions/OptedOut> rdf:type owl:NamedIndividual ;
+                                                     rdfs:comment "The OptedOut action signals that a Person declined to participate in an activity or complete a task. Inverse of OptedIn."@en ;
+                                                     rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                                                     rdfs:label "OptedOut"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/actions/Paused
@@ -3893,7 +4329,8 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://purl.imsglobal.org/caliper/actions/Restored
 <http://purl.imsglobal.org/caliper/actions/Restored> rdf:type owl:NamedIndividual ,
                                                               :Action ;
-                                                     rdfs:comment "Return to its original or usable and functioning condition. The Restored action signals that an archived resource has been retrieved from long-term storage. Inverse of Archived."@en ;
+                                                     rdfs:comment "Return to its original or usable and functioning condition. Inverse of Archived."@en ,
+                                                                  "Return to its original or usable and functioning condition. The Restored action signals that an archived resource has been retrieved from long-term storage. Inverse of Archived."@en ;
                                                      rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/202558146-v"^^xsd:string ;
                                                      rdfs:label "Restored"@en .
 
@@ -3913,6 +4350,14 @@ xsd:duration rdf:type rdfs:Datatype .
                                                       rdfs:comment "Obtain or retrieve from a storage device; as of information on a computer. The Retrieved action signals that a resource has been accessed or obtained."@en ;
                                                       rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/202253616-v"^^xsd:string ;
                                                       rdfs:label "Retrieved"@en .
+
+
+###  http://purl.imsglobal.org/caliper/actions/Returned
+<http://purl.imsglobal.org/caliper/actions/Returned> rdf:type owl:NamedIndividual ,
+                                                              :Action ;
+                                                     rdfs:comment "Go or come back to place, condition, or activity where one has been before."@en ;
+                                                     rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/01515196-v"^^xsd:string ;
+                                                     rdfs:label "Returned"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/actions/Reviewed
@@ -3945,6 +4390,14 @@ xsd:duration rdf:type rdfs:Datatype .
                                                      rdfs:comment "Try to locate or discover, or try to establish the existence of."@en ;
                                                      rdfs:isDefinedBy "http://wordnet-rdf.princeton.edu/wn31/201318273-v"^^xsd:string ;
                                                      rdfs:label "Searched"@en .
+
+
+###  http://purl.imsglobal.org/caliper/actions/Sent
+<http://purl.imsglobal.org/caliper/actions/Sent> rdf:type owl:NamedIndividual ,
+                                                          :Action ;
+                                                 rdfs:comment "The Sent action signals that some Entity was transmitted or transferred."@en ;
+                                                 rdfs:isDefinedBy "http://purl.imsglobal.org/caliper"^^xsd:string ;
+                                                 rdfs:label "Sent"@en .
 
 
 ###  http://purl.imsglobal.org/caliper/actions/Shared
@@ -4615,6 +5068,7 @@ xsd:duration rdf:type rdfs:Datatype .
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Agent
+                :AggregateMeasure
                 :Annotation
                 :Attempt
                 :Comment
@@ -4627,41 +5081,6 @@ xsd:duration rdf:type rdfs:Datatype .
                 :Response
                 :Result
                 :Scale
-                :Score
-                :SearchResponse
-                :Session
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Agent
-                :Annotation
-                :Attempt
-                :DigitalResource
-                :LearningObjective
-                :Link
-                :Membership
-                :Query
-                :Response
-                :Result
-                :Score
-                :SearchResponse
-                :Session
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Agent
-                :Annotation
-                :Attempt
-                :DigitalResource
-                :LearningObjective
-                :Membership
-                :Query
-                :Response
-                :Result
                 :Score
                 :SearchResponse
                 :Session
@@ -4694,33 +5113,10 @@ xsd:duration rdf:type rdfs:Datatype .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :AssignableDigitalResource
-                :Chapter
-                :DigitalResourceCollection
-                :Document
-                :Frame
-                :LtiLink
-                :MediaLocation
-                :MediaObject
-                :Message
-                :Page
-                :Question
-                :WebPage
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :AssignableDigitalResource
-                :Chapter
-                :Document
-                :Frame
-                :LtiLink
-                :MediaLocation
-                :MediaObject
-                :Message
-                :Page
-                :WebPage
+  owl:members ( :Assessment
+                :Forum
+                :Questionnaire
+                :Thread
               )
 ] .
 
@@ -4743,9 +5139,31 @@ xsd:duration rdf:type rdfs:Datatype .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :FillinBlankResponse
+  owl:members ( :Chapter
+                :DigitalResourceCollection
+                :Document
+                :Frame
+                :LtiLink
+                :MediaLocation
+                :MediaObject
+                :Message
+                :Page
+                :Question
+                :QuestionnaireItem
+                :SurveyInvitation
+                :WebPage
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :DateTimeResponse
+                :FillinBlankResponse
+                :MultiSelectResponse
                 :MultipleChoiceResponse
                 :MultipleResponseResponse
+                :OpenEndedResponse
+                :RatingScaleResponse
                 :SelectTextResponse
                 :TrueFalseResponse
               )
