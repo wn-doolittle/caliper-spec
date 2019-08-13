@@ -22,12 +22,37 @@
 <p>The Session Profile supports the following user stories:</p>
 
 <ul>
-    <li>As an instructor, I want to know which students have not logged in for more than a week.</li>
-    <li>As an instructor, I want to know who logs in and logs out most and least frequently.</li>
+    <li>As an instructor,
+        <ul>
+            <li>I want to know which students have not logged in for more than a week.</li>
+            <li>I want to know who logs in and logs out most and least frequently.</li>
+        </ul>
+    </li>
+    <li>As a student,
+        <ul>
+            <li>I would like to know what time of day I typically login.</li>
+            <li>I would like to know how much time I spend in the learning application each
+                day/week/month.</li>
+            <li>I would like to know how my session durations compare to my peers.</li>
+            <li>I would like to be notified if I have not logged in for more than a week
+                (when other students are also logging in).</li>
+        </ul>
+    </li>
+    <li>As a researcher,
+        <ul>
+            <li>I would like to understand patterns or trends in student login activity.</li>
+        </ul>
+    </li>
+    <li>As an administrator,
+        <ul>
+            <li>I would like to learn about host server IP and user agent of the users accessing
+                my application on a given moment.</li>
+        </ul>
+    </li>
 </ul>
 
-<p>The Session Profile defines a <a href="#SessionEvent">SessionEvent</a> for recording application log in, log out,
-    and time out activity.</p>
+<p>The Session Profile defines a <a href="#SessionEvent">SessionEvent</a> for recording application
+    log in, log out, and time out activity.</p>
 
 <table>
     <thead>
