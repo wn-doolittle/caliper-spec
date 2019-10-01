@@ -556,9 +556,13 @@ As an analytics standard, Caliper is relevant to almost every other IMS specific
 
 [CASE](https://www.imsglobal.org/activity/case) is used to align learning content and activities with academic standards. It might be useful to pass the CASE standard a Caliper `Entity` is aligned with via a [LearningObjective](https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#learningObjective) `Entity` included with the `Object` in a Caliper `Event`.
 
+Researchers and analytics who collect data aligned to learning objectives can use it to correlate between learning activities and academic standards.
+
+Wherever CASE-aligned learning objectives are associated to [DigitalResources] you may want to include them in the `learningObjectives` array on your resource. 
+
 If the Caliper endpoint is able to retrieve this information from another source then it may be better to not include the `LearningObjective` to help keep the Caliper Event's JSON smaller.
 
-Here is an example of a CASE `LearningObjective` 
+Here is an example of a CASE `LearningObjective` with a full object (`name` and`description` are optional)
 
 ```json
 {
@@ -595,31 +599,32 @@ For brevity, it also valid to just include the `id` in the `learningObjectives` 
 
 ### LTI - Learning Tools Interoperability
 
+TODO: overview paragraph about caliper/lti?
 
-#### LTI Caliper Connector Service
+#### How does an LTI Tool know where to send Caliper events?
 
 An LTI Tool can use the [LTI Caliper Connector](https://github.com/IMSGlobal/LTI-spec-Caliper/blob/master/docs/lti-spec-caliper.md) service to retrieve a Caliper endpoint to send events to and get an authorization token from.
 
 This service also specifies that the `Caliper.sessionId` value should be sent on an LTI launch. This is what Caliper calls the "Federated Session ID" as described in the [LTI Sessions and Identifiers](#lti-sessions-and-identifiers) section.
 
 
-#### Tool Use and Tool Launch Profiles
+#### How can I track how much LTI tools are used and privacy issues around them?
+
+For the institutions that heavily use LTI tools they often want to know how much a tool is used, and what information about the student and class is being sent to 3rd party vendors. There are 2 [Caliper Profiles] that help make this information available to faculty and administrators.
+
+##### Tool Launch Profile & LTI Insights
 
 The [Tool Use](#) and [Tool Launch](#) profiles are meant to help understand how LTI tools are used at an institution. Their use is highly recommended for all LTI tools.
 
-
-#### Assignment and Grades
-
-Maybe something about how some assignment ids could come from here?
-
-#### Names and Role Provisioning
-
-Maybe something about how the user and context ids could come from here?
+##### Tool Use Profile
 
 
 ### OneRoster & LIS
 
 Something about IDs for users/contexts?
+IDs could be in LIS vocabulary, and you can read about that in the [LIS Documentation]. 
+
+TODO: How would a system commonly fetch correlated information from a OneRoster, LIS, SIS system?
 
 
 ### OpenVideo
@@ -634,6 +639,9 @@ For a learner's interactions within a [QTI](https://www.imsglobal.org/question/i
 For more research on detailed assessment interactions as supported by QTI the [QTI Profile](#) can be used.
 
 It is recommended that these two profiles are used together depending on the needs of the ongoing research or learning application.
+
+
+### Unique ID Taskforce thing?
 
 
 ## List of Contributors
