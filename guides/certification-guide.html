@@ -7,7 +7,7 @@
     <!-- local alternative: -->
     <!-- <script src='./_cache/respec-ims-default.js' async class='remove'></script> -->
     <script src='../local-biblio.js' class='remove'></script>
-<!--    <script src='./contributors.js' class='remove'></script>-->
+<!--    <script src='./shared/contributors.js' class='remove'></script>-->
     <script class='remove'>
       var respecConfig = {
         // title of this document
@@ -30,6 +30,9 @@
 
         // spec type is "main", "cert", "impl", "errata" or other agreed upon string
         specType: "cert",
+
+        //if markdown is included in the body, set the format flag
+        format: "markdown",
 
         // localBiblio is used to store bib entries not yet in the online imsBiblio or on specref.org
         localBiblio: _localBiblio,

@@ -1,63 +1,6 @@
 var t2 = `
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="IMS Global Learning Consortium, Inc. Logo" src="../assets/ims-logo-h170w600.png"></div>
-
-# IMS Global Learning Consortium, Inc.
-
-# Caliper Analytics&reg; Sensor Certification Guide, version 1.1
-
-## IPR and Distribution Notices
-
-Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
-
-IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
-
-Copyright &copy; 2018 IMS Global Learning Consortium. All Rights Reserved.
-
-Use of this guide to develop products or services is governed by the license with IMS found on the IMS website: http://www.imsglobal.org/speclicense.html.
-
-Permission is granted to all parties to use excerpts from this document as needed in producing requests for proposals.
-
-The limited permissions granted above are perpetual and will not be revoked by IMS or its successors or assigns.
-
-THIS GUIDE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NON INFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS GUIDE SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS GUIDE.
-
-## Table of Contents
-* 1.0 [Introduction](#introduction)
-  * 1.1 [Status of this Document](#docStatus)
-  * 1.2 [Conventions](#conventions)
-  * 1.3 [Terminology](#terminology)
-* 2.0 [Certification Prerequisites](#certPreReqs)
-* 3.0 [Metric Profile Conformance](#profileConformance)
-  * 3.1 [Annotation Profile](#annotationProfile)
-  * 3.2 [Assessment Profile](#assessmentProfile)
-  * 3.3 [Assignable Profile](#assignableProfile)
-  * 3.4 [Forum Profile](#forumProfile)
-  * 3.5 [Grading Profile](#gradingProfile)
-  * 3.6 [Media Profile](#mediaProfile)
-  * 3.7 [Reading Profile](#readingProfile)
-  * 3.8 [Session Profile](#sessionProfile)
-  * 3.9 [Tool Use Profile](#toolUseProfile)
-  * 3.10 [General Profile](#generalProfile)
-* 4.0 [Data Interchange Format](#dataFormat)
-  * 4.1 [JSON-LD Context](#jsonldContext)
-  * 4.2 [Node Identifiers](#jsonldNodeIdentifiers)
-  * 4.3 [Type Coercion](#jsonldNodeIdentifiers)
-  * 4.4 [Expressing Events as JSON-LD](#jsonldEvents)
-  * 4.5 [Expressing Entities as JSON-LD](#jsonldEntities)
-* 5.0 [Transport Conformance](#transportConformance)
-  * 5.1 [The Envelope](#envelope)
-  * 5.2 [HTTP Message Requests](#httpRequest)
-  * 5.3 [HTTP Message Responses](#httpResponse)
-  * 5.4 [Other Transport Protocols](#otherTransports)
-* 6.0 [Using the Certification Service](#usingCertService)
-* 7.0 [Certification Mark](#certMark)
-* 8.0 [Certification Expiration and Renewal](#certRenewal)
-* [List of Contributors](#contributors)
-* [References](#references)
-* [About this Document](#aboutThisDoc)
-
-## <a name="introduction"></a>1.0 Introduction
+## Introduction
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="../assets/caliper-sensor-v2.png"></div>
 
@@ -67,62 +10,15 @@ Caliper also defines an application programming interface (the Sensor API&trade;
 
 This document is the certification guide for Caliper [Sensors](#sensorDef). In this release of the Caliper specification, certification services are not provided for Caliper [endpoints](#endpointDef). Endpoint implementors should take note that it is the intent of the Caliper Working Group to add endpoint certification in forthcoming releases of the specification. Implementors should also note that behavioral requirements for Caliper Endpoints are provided in the *Caliper Analytics&reg; Specification*, version 1.1, [Section 6.0](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#endpoint).
 
-### <a name="docStatus"></a>1.1 Status of this Document
+### Status of this Document
 This document is considered the _Final Release_.  This means that the Caliper Analytics&reg; Sensor Certification Guide, version 1.1, is now made available as a public document following acceptance by IMS Global member organizations, a number of whom have successfully achieved conformance certification at the time of the release of this document.
     
 IMS Global strongly encourages its members and the greater public to provide feedback that focuses on improving the Caliper specification. To join the IMS developer and conformance certification community focused on Caliper please visit https://www.imsglobal.org/activity/caliper.
     
 Public comments and questions can be posted at the Caliper Analytics&reg; [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
 
-### <a name="conventions"></a>1.2 Conventions
+### Conventions
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered by implementers.  MAY/OPTIONAL statements indicate that implementers are entirely free to choose whether or not to implement the option.
-
-### <a name="terminology"></a>1.3 Terminology
-<a name="actorDef"></a>__Actor__: An actor is an [Agent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#agent) capable of initiating or performing an [action](#actionDef) on a thing or as part of a process.  A Caliper [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event) includes an <code>actor</code> attribute for representing the [Agent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#agent). 
-
-<a name="blankNodeDef"></a>__Blank Node Identifier__: a string that begins with "_:" that is used to identify an [Entity](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#entity) for which an [IRI](#iriDef) is not provided.  An [Entity](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#entity) provisioned with a blank node identifier is neither dereferenceable nor has meaning outside the scope of the [JSON-LD](#jsonldDef) document within which it resides.
-
-<a name="actionDef"></a>__Action__: something performed or done to accomplish a purpose.  Caliper [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event) subtypes define a controlled vocabulary of one or more [actions](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#actions) relevant to the activity domain.  A Caliper [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event) includes an <code>action</code> attribute for expressing the associated action.     
-
-<a name="contextDef"></a>__Context__: a special [JSON-LD](http://json-ld.org/spec/latest/json-ld/) keyword that maps the terms employed in a JSON document to [IRIs](https://www.ietf.org/rfc/rfc3987.txt) that link to one or more published vocabularies.  Inclusion of a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context provides an economical way of communicating document semantics to services interested in consuming Caliper event data.
-
-<a name="describeDef"></a>__Describe__: a Caliper message containing an [Entity](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#entity) that is not directly associated with an [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event). Entities can be sent asynchronously from events using <code>Describe</code> messages in order to reduce verbosity (e.g. sending a [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) entity as a <code>Describe</code> avoids having to repeat the [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) object in each [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event) that includes it).
-
-<a name="endpointDef"></a>__Endpoint__: a receiver or consumer of Caliper data that is bound to a specific network protocol.  
-
-<a name="entityDef"></a>__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#entity) types provide coarse-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event).  Each [Entity](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#entity) corresponds to a node in a directed graph.
-
-<a name="envelopeDef"></a>__Envelope__: a data structure that serves as a transport container of Caliper [Event](#eventDef) and [Entity](#entityDef) data.  The envelope also includes metadata about the emitting [Sensor](#sensorDef) and the data payload.
-
-<a name="eventDef"></a>__Event__: describes a relationship established between an [Agent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#agent) (the <code>actor</code>) and an [Entity](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#entity) (the <code>object</code>) formed as a result of a purposeful <code>action</code> undertaken by the <code>actor</code> in connection to the <code>object</code> at a particular moment in time.
-
-<a name="jsonldDef"></a>__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with [Linked Data](#linkedDataDef).  The messages described in this guide are intended to be used in programming environments that support [JSON-LD](http://json-ld.org/spec/latest/json-ld/).
-
-<a name="iriDef"></a>__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier ([URI](#uriDef)) scheme by using characters drawn from the Universal character set rather than US-ASCII per [RFC 3987](https://www.ietf.org/rfc/rfc3987.txt).  [Linked Data](#linkedDataDef) rely on IRIs to refer to most nodes and properties.
-
-<a name="iso8601Def"></a>__ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is set to UTC.
-
-<a name="linkedDataDef"></a>__Linked Data__: A set of design principles first articulated by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web.  The principles can be summarized as follows: use [IRIs](#iriDef)/[URIs](#uriDef) as names for things; use HTTP [IRIs](#iriDef)/[URIs](#uriDef) so that information about things (e.g., people, objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of their [IRIs](#iriDef)/[URIs](#uriDef) in order to promote discovery of new relationships between things.
-
-<a name="metricProfileDef"></a>__Metric Profile__: models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.
-
-<a name="objectDef"></a>__Object__: an [Entity](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#entity) that an [Agent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#agent) interacts with that becomes the focus, target or object of an interaction.  A Caliper [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event) includes an <code>object</code> attribute for representing the resource.
-
-<a name="sensorDef"></a>__Sensor__: Software assets deployed within a learning application that implement the [Sensor API&trade;](#sensorAPIDef) for marshalling and transmitting Caliper data to the certification service endpoint.
-
-<a name="sensorAPIDef"></a>__Sensor API&trade;__: The standard set of methods and supported parameters that a [Sensor](#sensorDef) implements according to the *Caliper Analytics&reg; Specification*, version 1.1, [Section 5.0](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#sensor) in order to transmit Caliper data in an interoperable way.
-
-<a name="termDef"></a>__Term__: a word or short expression that expands to an [IRI](#iriDef) when mapped to a JSON-LD [context](#contextDef) document. Terms are employed by Caliper as <code>type</code> property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
-
-<a name="typeCoercionDef"></a>__Type Coercion__: the process of coercing values to a particular data type.
-
-<a name="uriDef"></a>__URI__:  the Uniform Resource Identifier ([URI](#uriDef)) utilizes the US-ASCII character set to identify a resource.  Per [RFC 2396](#rfc2396) a [URI](#uriDef) "can be further classified as a locator, a name or both."  Both the Uniform Resource Locator ([URL](#urlDef)) and the Uniform Resource Name ([URN](#urnDef)) are considered subspaces of the more general [URI](#uriDef) space. 
-
-<a name="urlDef"></a>__URL__: A Uniform Resource Locator ([URL](#urlDef)) is a type of [URI](#uriDef) that provides a reference to resource that specifies both its location and a means of retrieving a representation of it.  An HTTP [URI](#uriDef) is a [URL](#urlDef) and using HTTP IRIs/URIs to identify things is fundamental to [Linked Data](#linkedDataDef).
-
-<a name="urnDef"></a>__URN__: A Uniform Resource Name ([URN](#urnDef)) is a type of [URI](#uriDef) that provides a persistent identifier for a resource that is bound to a defined namespace.  Unlike a [URL](#urlDef) a [URN](#urnDef) is location-independent and provides no means of accessing a representation of the named resource.  
-
-<a name="uuidDef"></a>__UUID__: a 128-bit identifier that does not require a registration authority to assure uniqueness.  However, absolute uniqueness is not guaranteed although the collision probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly generated version 4 UUIDs.  Each Caliper [Event](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#event) MUST be assigned a UUID that is expressed as a [URN](#urnDef) using the form <code>urn:uuid:<UUID></code> as described in [RFC 4122](#rfc4122).
 
 ## <a name="certPreReqs"></a>2.0 Certification Prerequisites
 Certain prerequisites MUST be met before you can certify your platform, application or service as Caliper compliant. 
@@ -532,7 +428,8 @@ The following Caliper Working Group participants contributed to the writing of t
 | Name | Organization |
 | :--- | :----------- |
 | Anthony Whyte | University of Michigan |
-| Markus Gylling | IMS Global |
+| Bracken Mosbacker | IMS Global |
+| Joshua McGhee | IMS Global |
 | Lisa Mattson | IMS Global |
 
 ## <a name="references"></a>References
