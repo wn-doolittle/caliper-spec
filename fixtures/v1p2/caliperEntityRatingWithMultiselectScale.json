@@ -23,7 +23,7 @@
       "id": "https://example.edu/scale/3",
       "type": "MultiselectScale",
       "scalePoints": 5,
-      "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+      "itemLabels": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
       "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
       "isOrderedSelection": false,
       "minSelections": 1,
