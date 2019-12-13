@@ -623,7 +623,7 @@ As an _analytics_ specification, Caliper is not generally well suited to other u
 [JSON-LD](https://www.w3.org/2018/jsonld-cg-reports/json-ld/) is a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data. The messages described in this specification are intended to be used in programming environments that support JSON-LD
 
 
-## Working with other IMS Specifications
+## Caliper in the IMS ecosystem
 
 As an analytics standard, Caliper is relevant to almost every other IMS specification in some way. These sections will cover some of ways Caliper interacts with other specifications.
 
