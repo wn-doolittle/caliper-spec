@@ -3,7 +3,7 @@ var t2 = `
 
 ## Abstract
 
-IMS Caliper Analytics&reg; is a technical specification that describes a structured set of vocabulary that assists institutions in collecting learning and usage data from digital resources and learning tools. This data can be used to present information to students, instructors, advisers, and administrators in in order to drive effective decision making to improve learner success.
+IMS Caliper Analytics&reg; is a technical specification that describes a structured set of vocabulary that assists institutions in collecting learning and usage data from digital resources and learning tools. This data can be used to present information to students, instructors, advisers, and administrators in order to drive effective decision making and promote learner success.
 
 Caliper can help to answer various questions about learner activity, a few examples questions that Caliper might help answer.
 
@@ -90,6 +90,18 @@ Conformance certification offers more than claims of "compliance,". The only way
 
 ### How does my product get certified?
 Certification for Caliper Analytics involves certifying against one or more Metric Profiles.  This means  passing the appropriate tests for the profile or profiles that you are implementing using  the IMS Global suite of Caliper Analytics certification tools.  For more information on the conformance and certification process, please refer to the The Caliper Analytics [Conformance Certification Guide](https://www.imsglobal.org/spec/caliper/v1p2/cert).
+
+## What's new in Caliper 1.2?
+
+In addition to improvements and additions to vocabulary throughout the Caliper 1.2 information model, Caliper introduces 6 new metric profiles built based on market need and member feedback.  Please follow the associated links below to learn more about them.  Those profiles are:
+
+- [Feedback Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-feedback)
+- [Resource Management Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-resourcemanagement)
+- [Search Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-search)
+- [Survey Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-survey)
+- [Tool Launch Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-toollaunch)
+
+Additionally, the [Tool Use Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-tooluse) has been improved to account for the collection of measures that track student progress via the collection of aggregate measures.
 
 ## How to create a Caliper Event
 

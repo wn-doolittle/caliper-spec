@@ -1,7 +1,7 @@
 <h3>Entity</h3>
 
 <img height="100%" width="100%" src="assets/caliper-entities-v2.png" alt="Caliper Entity"/>
-
+For a complete list of Events, see <a href="#entities">Appendix B</a>
 <p>A Caliper <a href="#Entity">Entity</a> is a generic type that represents objects that participate in learning-related
     activities. A variety of <a href="#Entity">Entity</a> subtypes have been defined in order to better describe people,
     groups, organizations, digital content, courses, software applications, and other objects that constitute the
@@ -12,9 +12,9 @@
     to the resource's <a href="#iriDef">IRI</a>. If the <a href="#Entity">Entity</a> is expressed as an object, both the
     <code>id</code> and <code>type</code> properties MUST be specified. The <code>type</code> value is a string that
     MUST match the term specified for the <a href="#Entity">Entity</a> by the Caliper information model (e.g. "Person").
-    The <code>id</code> value is a string that MUST be expressed as an <a href="#iriDef">IRI</a>.  The 
+    The <code>id</code> value is a string that MUST be expressed as an <a href="#iriDef">IRI</a>.  The
     <a href="#iriDef">IRI</a> MUST be valid and unique.  The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, 
-    i.e., capable of returning a representation of the resource assuming authorization to access the resource is granted.  
+    i.e., capable of returning a representation of the resource assuming authorization to access the resource is granted.
     A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided although care should be
     taken when employing a location-independent identifier since it precludes the possibility of utilizing it to
     retrieve machine-readable data over HTTP.
@@ -142,8 +142,8 @@
         <td><a href="#termDef">Term</a></td>
         <td>A string value corresponding to the <a href="#termDef">Term</a> defined for the <a href="#Entity">Entity</a>
             in the external IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a> document.
-            For a generic <a href="#Entity">Entity</a> set the <code>type</code> value to the term <em>Entity</em>.  
-            If a subtype of <a href="#Entity">Entity</a> is created, set the type to the <a href="#termDef">Term</a> 
+            For a generic <a href="#Entity">Entity</a> set the <code>type</code> value to the term <em>Entity</em>.
+            If a subtype of <a href="#Entity">Entity</a> is created, set the type to the <a href="#termDef">Term</a>
             corresponding to the subtype utilized, e.g., <a href="#Person">Person</a>.</td>
         <td>Required</td>
     </tr>

@@ -79,7 +79,9 @@
 </head>
 <body>
     <section id="abstract" class="introductory">
-        <h2>Abstract</h2> This document comprises the TODO . . . .
+        <h2>Abstract</h2>
+        <p>IMS Caliper Analytics® is a technical specification that describes a structured set of vocabulary that assists institutions in collecting learning and usage data from digital resources and learning tools. This data can be used to present information to students, instructors, advisers, and administrators in order to drive effective decision making and promote learner success.</p>
+
     </section>
 
     <section>
@@ -415,7 +417,7 @@
 
         <p>Over the last decade the advent of cloud-based, networked applications have led to changes in the way data
             is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course
-            roster, or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing
+            roster, or a transcript can now frequently link out to other kinds of data.  Modeling bundles of data pointing
             to other bundles of data now requires thinking in terms of graphs and <a href="#linkedData">Linked Data</a>.
             Caliper <a href="#event">Event</a> data presents us with similar structures. A Caliper
             <a href="#event">Event</a> can link to user data, digital content, courses and rosters, grades and
@@ -686,18 +688,14 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>A <code>Sensor</code> MUST implement the following behaviors:</p>
 
             <ul>
-                <li>create in-memory object representations of Caliper <a href="#event">Event</a> and
+                <li>create JSON object representations of Caliper <a href="#event">Event</a> and
                     <a href="#entity">Entity</a> types as described in Section <a href="#infoModel">2.0</a>. The particular
                     <a href="#event">Event</a> and <a href="#entity">Entity</a> types that a <code>Sensor</code>
                     must be capable of expressing are determined by the <a href="#profiles">profiles</a>
                     implemented as described in Section <a href="#profiles">3.0</a>.</li>
                 <li>express <a href="#entity">Entity</a> values as either an object or a string corresponding to the
                     resource's <a href="#iriDef">IRI</a> as described in Section <a href="#entity">2.2</a>.</li>
-                <li>serialize in-memory <a href="#event">Event</a> and <a href="#entity">Entity</a> objects as
-                    <a href="#jsonldDef">JSON-LD</a> as described in Section <a href="#serialization">4.0</a>.</li>
-                <li>create an in-memory object representation of a Caliper <a href="#envelope">Envelope</a> as
-                    described in Section <a href="#envelope">5.2</a>.</li>
-                <li>serialize in-memory Caliper <a href="#envelope">Envelope</a> objects as JSON as described in
+                <li>serialize Caliper <a href="#envelope">Envelope</a> objects as JSON as described in
                     Section <a href="#envelope">5.2</a>.  <a href="#event">Event</a> and <a href="#entity">Entity</a>
                     <em><a href="#describeDef">describe</a></em> data serialized as JSON-LD MUST be transmitted inside
                     an <a href="#envelope">Envelope</a> as described in Sections <a href="#envelope">5.2</a> and
@@ -1005,6 +1003,9 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
     <section id="events" class="appendix">
         <h2>Events</h2>
+        <p>
+          See the <a href="#Event">Event section</a> for more details.
+        </p>
         <section id="AnnotationEvent" data-include="fragments/events/caliper-event-annotation.html"></section>
         <figure class="example">
             <figcaption> - AnnotationEvent (Bookmarked) JSON-LD</figcaption>
@@ -1226,6 +1227,9 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
     <section id="entities" class="appendix">
         <h2>Entities</h2>
+        <p>
+          See the <a href="#Entity">Entity section</a> for more details.
+        </p>
         <section id="Agent" data-include="fragments/entities/caliper-entity-agent.html"></section>
         <figure class="example">
             <figcaption> - Agent JSON-LD</figcaption>
