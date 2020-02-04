@@ -126,7 +126,7 @@ A full list of event types is available in the Caliper Spec (See "Subtype" subse
 
 To choose the best Event for your situation you can scan the list of event types and see which one seems to match best, or you can also start by looking at a Metric Profile and see what events are described there that might meet your needs already.
 
-If there is no existing Event that meets your needs you can use a "generic" event from the [Generic Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-general). These events allow any actor, action, and object you need and aren't constrained like the specific events from other profiles. This should provide you with the flexibility you need when your use case isn't already met by existing profiles.
+If there is no existing Event that meets your needs you can use a "generic" event from the [General Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-general). These events allow any actor, action, and object you need and aren't constrained like the specific events from other profiles. This should provide you with the flexibility you need when your use case isn't already met by existing profiles.
 
 #### Event Required Properties
 
