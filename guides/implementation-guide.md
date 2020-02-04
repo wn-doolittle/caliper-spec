@@ -1,24 +1,5 @@
 var t2 = `
 
-
-## Abstract
-
-IMS Caliper Analytics&reg; is a technical specification that describes a structured set of vocabulary that assists institutions in collecting learning and usage data from digital resources and learning tools. This data can be used to present information to students, instructors, advisers, and administrators in order to drive effective decision making and promote learner success.
-
-Caliper can help to answer various questions about learner activity, a few examples questions that Caliper might help answer.
-
-* How often is a learner logging in to view their digital resources?
-* Are learners interacting with a forum post?
-* How often is a learner consuming course readings or videos?
-* What activities is a learner interacting with while taking an assessment?
-* Are learners annotating certain digital resources?
-
-With the answers to these questions in tow, decision makers can drive analysis that answers critical questions such as:
-
-* Is there a performance difference between learners who interact with a certain digital resource versus learners who do not?
-
-The sky is the limit with the ways to use Caliper data to measurably improve the learning ecosystem.
-
 ## Introduction
 
 ### What is this document?
