@@ -7,49 +7,57 @@
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
       "type": "AggregateMeasure",
-      "metric": "AssessmentsPassed"
+      "metric": "AssessmentsPassed",
+      "metricValue": 12.0
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
       "type": "AggregateMeasure",
-      "metric": "AssessmentsSubmitted"
+      "metric": "AssessmentsSubmitted",
+      "metricValue": 12.0
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
       "type": "AggregateMeasure",
-      "metric": "MinutesOnTask"
+      "metric": "MinutesOnTask",
+      "metricValue": 12.0
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
       "type": "AggregateMeasure",
-      "metric": "SkillsMastered"
+      "metric": "SkillsMastered",
+      "metricValue": 12.0
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
       "type": "AggregateMeasure",
-      "metric": "StandardsMastered"
+      "metric": "StandardsMastered",
+      "metricValue": 12.0
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
       "type": "AggregateMeasure",
-      "metric": "UnitsCompleted"
+      "metric": "UnitsCompleted",
+      "metricValue": 12.0
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
       "type": "AggregateMeasure",
-      "metric": "UnitsPassed"
+      "metric": "UnitsPassed",
+      "metricValue": 12.0
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
       "type": "AggregateMeasure",
-      "metric": "WordsRead"
+      "metric": "WordsRead",
+      "metricValue": 12.0
     }
   ]
 }

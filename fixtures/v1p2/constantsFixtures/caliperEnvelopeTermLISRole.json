@@ -7,336 +7,504 @@
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Administrator" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Administrator", "Administrator#Administrator" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Administrator", "Administrator#Developer" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Administrator", "Administrator#ExternalDeveloper" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Administrator", "Administrator#ExternalSupport" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Administrator", "Administrator#ExternalSystemAdministrator" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Administrator", "Administrator#Support" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Administrator", "Administrator#SystemAdministrator" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "ContentDeveloper" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "ContentDeveloper", "ContentDeveloper#ContentDeveloper" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "ContentDeveloper", "ContentDeveloper#ContentExpert" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "ContentDeveloper", "ContentDeveloper#ExternalContentExpert" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "ContentDeveloper", "ContentDeveloper#Librarian" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#ExternalInstructor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#Grader" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#GuestInstructor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#Instructor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#Lecturer" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#PrimaryInstructor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#SecondaryInstructor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#TeachingAssistant" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#TeachingAssistantGroup" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#TeachingAssistantOffering" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#TeachingAssistantSection" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Instructor", "Instructor#TeachingAssistantTemplate" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Learner" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Learner", "Learner#ExternalLearner" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Learner", "Learner#GuestLearner" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Learner", "Learner#Learner" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Learner", "Learner#NonCreditLearner" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Manager" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Manager", "Manager#AreaManager" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Manager", "Manager#CourseCoordinator" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Manager", "Manager#ExternalObserver" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Manager", "Manager#Manager" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Manager", "Manager#Observer" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Member" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Member", "Member#Member" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#Advisor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#ExternalAdvisor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#ExternalAuditor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#ExternalLearningFacilitator" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#ExternalMentor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#ExternalReviewer" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#ExternalTutor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#LearningFacilitator" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#Mentor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#Reviewer" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Mentor", "Mentor#Tutor" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Officer" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Officer", "Officer#Chair" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Officer", "Officer#Secretary" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Officer", "Officer#Treasurer" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
       "roles": [ "Officer", "Officer#Vice-Chair" ]
     }
   ]

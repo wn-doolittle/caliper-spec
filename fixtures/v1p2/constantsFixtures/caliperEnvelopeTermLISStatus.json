@@ -7,13 +7,19 @@
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
-      "status": "Active"
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Active",
+      "roles": [ "Administrator" ]
     },
     {
       "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
       "id": "http://purl.imsglobal.org/caliper/Membership",
       "type": "Membership",
-      "status": "Inactive"
+      "member": "http://purl.imsglobal.org/caliper/Person",
+      "organization": "http://purl.imsglobal.org/caliper/CourseOffering",
+      "status": "Inactive",
+      "roles": [ "Administrator" ]
     }
   ]
 }
