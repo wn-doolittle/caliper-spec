@@ -509,7 +509,7 @@ Below are some of the collected best practices from members who have successfull
 
 ### How often is Caliper updated?
 
-Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all current uses. New Metric Profiles can also be created and published without a new release of Caliper.
+Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all current uses. New Metric Profiles can also be created and published without a new release of Caliper.
 
 ### How much data should be sent in an Event?
 
