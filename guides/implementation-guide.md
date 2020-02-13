@@ -639,10 +639,6 @@ As an _analytics_ specification, Caliper is not generally well suited to other u
 [JSON-LD](https://www.w3.org/2018/jsonld-cg-reports/json-ld/) is a specification providing a JSON-based data serialization and messaging format, processing algorithms, and API for working with Linked Data. Implementations of Caliper do not need to utilize JSON-LD itself to emit or consume Caliper events as they can be treated as regular JSON objects. If your implementation utilizes some of the benefits of JSON-LD that is excellent, but it is important to realize most implementations will not.
 
 
-## Frequently Asked Questions
-
-
-
 ## Caliper in the IMS ecosystem
 
 As an analytics standard, Caliper is relevant to almost every other IMS specification in some way. These sections will cover some of ways Caliper interacts with other specifications.
@@ -701,7 +697,7 @@ For brevity, it is also valid to just include the <code>id</code> in the <code>l
 </code></pre>
 
 
-### v - Learning Tools Interoperability
+### Learning Tools Interoperability
 
 
 #### How does an LTI Tool know where to send Caliper events?
