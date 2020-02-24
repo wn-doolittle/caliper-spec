@@ -511,7 +511,36 @@ Below are some of the collected best practices from members who have successfull
 
 ### Extending Caliper
 
-Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all current uses. New Metric Profiles can also be created and published without a new release of Caliper.
+Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all current uses. [New Metric Profiles](#creating-new-profiles) can also be created and published without a new release of Caliper.
+
+#### Extending Entities and Events
+
+All Entities and Events have an optional property called <code>extensions</code> which is a map of undefined key:value pairs. Other than syntax, this property is ignored during certification. Since these properties are not defined as part of Caliper the emitter and consumer of these events may need to work together to understand the meanings of extension properties and it should not be assumed all consumers will understand the data included in the <code>extensions</code> area.
+
+There are no restrictions on key names, but it is best practice to use a name less likely to collide with others who are also using custom extensions. A common practice for this is using a name like <code>"com.toolVendor.identifier_type"</code>.
+
+The values can also be any type or complex objects, though simpler values are recommended.
+
+Using extension properties is encouraged, but they should still be used with caution and purpose since over-use can limit interoperability, and increase payload sizes. There are other such considerations discussed in this section: [Deciding how much data to send in an Event](#deciding-how-much-data-to-send-in-an-event)
+
+##### Example: Extended AssessmentItem Entity
+
+It is recommended that extra information needed for analytics purposes is retrievable by using the ID of an entity, but that isn't always a viable or scalable option so in this example the implementors decided to include the <code>questionType</code> with each assessment item in the extensions area.
+
+
+<pre><code class="json">
+{
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/6",
+  "type": "AssessmentItem",
+  "dateCreated": "2016-08-01T06:00:00.000Z",
+  "datePublished": "2016-08-15T09:30:00.000Z",
+  "maxScore": 5.0,
+  "extensions": {
+    "questionType": "Short Answer",
+    "questionText": "Define a Caliper Event and provide examples."
+  }
+}
+</code></pre>
 
 ### Deciding how much data to send in an Event
 
