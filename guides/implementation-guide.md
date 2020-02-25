@@ -511,11 +511,11 @@ Below are some of the collected best practices from members who have successfull
 
 ### Extending Caliper
 
-Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all current uses. [New Metric Profiles](#creating-new-profiles) can also be created and published without a new release of Caliper.
+Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all use cases. [New Metric Profiles](#creating-new-profiles) can also be created and published without a new release of Caliper.
 
 #### Extending Entities and Events
 
-All Entities and Events have an optional property called <code>extensions</code> which is a map of undefined key:value pairs. Other than syntax, this property is ignored during certification. Since these properties are not defined as part of Caliper the emitter and consumer of these events may need to work together to understand the meanings of extension properties and it should not be assumed all consumers will understand the data included in the <code>extensions</code> area.
+All Entities and Events have an optional property called <code>extensions</code> which is a map of undefined key:value pairs. Other than syntax, this property is ignored during certification. Since these properties are not defined as part of Caliper the emitter and consumer of these events will need to work together to understand the meanings of extension properties and it should not be assumed all consumers will understand the data included in the <code>extensions</code> area.
 
 There are no restrictions on key names, but it is best practice to use a name less likely to collide with others who are also using custom extensions. A common practice for this is using a name like <code>"com.toolVendor.identifier_type"</code>.
 
