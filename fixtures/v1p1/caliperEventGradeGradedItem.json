@@ -36,8 +36,7 @@
     "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1/scores/1",
     "type": "Score",
     "attempt": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
-    "maxScore": 5.0,
-    "scoreGiven": 5.0,
+    "maxScore": 0.0,
     "scoredBy": "https://example.edu/autograder",
     "comment": "auto-graded exam",
     "dateCreated": "2016-11-15T10:55:05.000Z"
